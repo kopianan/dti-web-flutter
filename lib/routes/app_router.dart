@@ -1,6 +1,15 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:dti_web/domain/questionnaire/result_model.dart';
+import 'package:dti_web/presentation/applications/upload_document_page.dart';
 import 'package:dti_web/presentation/auth/pages/splash_screen_page.dart';
+import 'package:dti_web/presentation/questionnaire/personal_information_1_page.dart';
+import 'package:dti_web/presentation/questionnaire/personal_information_3_page.dart';
+import 'package:dti_web/presentation/questionnaire/personal_information_4_page.dart';
+import 'package:dti_web/presentation/questionnaire/questionnaire_page.dart';
+import 'package:dti_web/presentation/questionnaire/questionnaire_summary_page.dart';
 import 'package:flutter/material.dart';
+import 'package:dti_web/domain/questionnaire/questionnaire_model.dart';
+import 'package:dti_web/domain/questionnaire/questionnaire_data_model.dart';
 
 import '../presentation/auth/pages/check_email_page.dart';
 import '../presentation/auth/pages/create_new_password_page.dart';
@@ -10,6 +19,7 @@ import '../presentation/auth/pages/sign_in_page.dart';
 import '../presentation/auth/pages/sign_up_page.dart';
 import '../presentation/dashboard/pages/dashboard_page.dart';
 import '../presentation/landing/presentation/pages/landing_page.dart';
+import '../presentation/questionnaire/personal_information_2_page.dart';
 // import 'package:auto_route/annotations.dart';
 
 part "app_router.gr.dart";
@@ -19,7 +29,27 @@ part "app_router.gr.dart";
   routes: <AutoRoute>[
     AutoRoute(page: SplashScreenPage, initial: true, path: '/'),
     AutoRoute(page: DashboardPage, path: DashboardPage.routeName),
+    AutoRoute(
+        page: PersonalInformation2Page,
+        path: PersonalInformation2Page.routeName),
+    AutoRoute(
+        page: PersonalInformation4Page,
+        path: PersonalInformation4Page.routeName),
+    AutoRoute(
+        page: PersonalInformation3Page,
+        path: PersonalInformation3Page.routeName),
+    AutoRoute(
+        page: PersonalInformation1Page,
+        path: PersonalInformation1Page.routeName),
     AutoRoute(page: SignInPage, path: SignInPage.routeName),
+    AutoRoute(page: UploadDocumentPage, path: UploadDocumentPage.routeName),
+    AutoRoute(
+        page: QuestionnaireSummaryPage,
+        path: QuestionnaireSummaryPage.routeName),
+    AutoRoute(
+      page: QuestionnairePage,
+      path: QuestionnairePage.routeName,
+    ),
     AutoRoute(page: SignUpPage, path: SignUpPage.routeName),
     AutoRoute(page: ResetPage, path: ResetPage.routeName),
     AutoRoute(page: OTPPage, path: OTPPage.routeName),

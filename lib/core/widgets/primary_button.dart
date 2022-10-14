@@ -34,7 +34,7 @@ class PrimaryButton extends StatelessWidget {
               backgroundColor: MaterialStateProperty.all(bgColor),
               shape: MaterialStateProperty.all(RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)))),
-          onPressed: () {},
+          onPressed: () => onClick(),
           child: Text(
             label,
             style:

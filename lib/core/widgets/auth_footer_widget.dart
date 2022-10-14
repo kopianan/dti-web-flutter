@@ -1,3 +1,4 @@
+import 'package:dti_web/core/widgets/social_button_widget.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,42 +19,7 @@ class AuthFooterWidget extends StatelessWidget {
               'assets/images/dti_bottom_icon.png',
               width: 40.w,
             ),
-            Row(
-              children: [
-                InkWell(
-                    onTap: () {},
-                    child: CircleAvatar(
-                        backgroundColor: AppColor.primaryColor,
-                        child: Padding(
-                            padding: REdgeInsets.all(10),
-                            child: Image.asset(
-                              'assets/icons/facebook.png',
-                              color: Colors.white,
-                            )))),
-                10.horizontalSpace,
-                InkWell(
-                    onTap: () {},
-                    child: CircleAvatar(
-                        backgroundColor: AppColor.primaryColor,
-                        child: Padding(
-                            padding: REdgeInsets.all(10),
-                            child: Image.asset(
-                              'assets/icons/instagram.png',
-                              color: Colors.white,
-                            )))),
-                10.horizontalSpace,
-                InkWell(
-                    onTap: () {},
-                    child: CircleAvatar(
-                        backgroundColor: AppColor.primaryColor,
-                        child: Padding(
-                            padding: REdgeInsets.all(10),
-                            child: Image.asset(
-                              'assets/icons/twitter.png',
-                              color: Colors.white,
-                            )))),
-              ],
-            )
+            SocialButtonWidget()
           ],
         ),
         Divider(

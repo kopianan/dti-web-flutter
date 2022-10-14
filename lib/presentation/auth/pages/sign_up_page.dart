@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:dti_web/core/widgets/auth_footer_widget.dart';
 import 'package:dti_web/core/widgets/auth_header_widget.dart';
+import 'package:dti_web/core/widgets/primary_button.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -24,7 +26,6 @@ class SignUpPage extends StatelessWidget {
               children: [
                 Expanded(
                   child: Container(
-                    color: Colors.green,
                     child: Image.asset('assets/images/img_auth.png'),
                   ),
                 ),
@@ -78,10 +79,13 @@ class SignUpPage extends StatelessWidget {
                               "Already a member?",
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
+                            5.horizontalSpace,
                             InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                AutoRouter.of(context).pop();
+                              },
                               child: Text(
-                                "20.verticalSpace,Login",
+                                "Login",
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                             ),
@@ -90,8 +94,8 @@ class SignUpPage extends StatelessWidget {
                         20.verticalSpace,
                         SizedBox(
                             height: 30.h,
-                            child: ElevatedButton(
-                                onPressed: () {}, child: Text('Register'))),
+                            child: PrimaryButton(
+                                onClick: () {}, label: 'Register')),
                       ],
                     ),
                   ),

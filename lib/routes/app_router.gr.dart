@@ -29,10 +29,81 @@ class _$AppRouter extends RootStackRouter {
         child: const DashboardPage(),
       );
     },
+    PersonalInformation2Route.name: (routeData) {
+      final args = routeData.argsAs<PersonalInformation2RouteArgs>(
+          orElse: () => const PersonalInformation2RouteArgs());
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: PersonalInformation2Page(
+          key: args.key,
+          question: args.question,
+        ),
+      );
+    },
+    PersonalInformation4Route.name: (routeData) {
+      final args = routeData.argsAs<PersonalInformation4RouteArgs>(
+          orElse: () => const PersonalInformation4RouteArgs());
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: PersonalInformation4Page(
+          key: args.key,
+          question: args.question,
+        ),
+      );
+    },
+    PersonalInformation3Route.name: (routeData) {
+      final args = routeData.argsAs<PersonalInformation3RouteArgs>(
+          orElse: () => const PersonalInformation3RouteArgs());
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: PersonalInformation3Page(
+          key: args.key,
+          question: args.question,
+        ),
+      );
+    },
+    PersonalInformation1Route.name: (routeData) {
+      final args = routeData.argsAs<PersonalInformation1RouteArgs>(
+          orElse: () => const PersonalInformation1RouteArgs());
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: PersonalInformation1Page(
+          key: args.key,
+          question: args.question,
+        ),
+      );
+    },
     SignInRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
         child: const SignInPage(),
+      );
+    },
+    UploadDocumentRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const UploadDocumentPage(),
+      );
+    },
+    QuestionnaireSummaryRoute.name: (routeData) {
+      final args = routeData.argsAs<QuestionnaireSummaryRouteArgs>();
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: QuestionnaireSummaryPage(
+          key: args.key,
+          resultModel: args.resultModel,
+        ),
+      );
+    },
+    QuestionnaireRoute.name: (routeData) {
+      final args = routeData.argsAs<QuestionnaireRouteArgs>(
+          orElse: () => const QuestionnaireRouteArgs());
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: QuestionnairePage(
+          key: args.key,
+          question: args.question,
+        ),
       );
     },
     SignUpRoute.name: (routeData) {
@@ -84,8 +155,36 @@ class _$AppRouter extends RootStackRouter {
           path: '/dashboard-page',
         ),
         RouteConfig(
+          PersonalInformation2Route.name,
+          path: '/personal-information2',
+        ),
+        RouteConfig(
+          PersonalInformation4Route.name,
+          path: '/personal-information4',
+        ),
+        RouteConfig(
+          PersonalInformation3Route.name,
+          path: '/personal-information3',
+        ),
+        RouteConfig(
+          PersonalInformation1Route.name,
+          path: '/personal-information1',
+        ),
+        RouteConfig(
           SignInRoute.name,
           path: '/login',
+        ),
+        RouteConfig(
+          UploadDocumentRoute.name,
+          path: '/upload-document',
+        ),
+        RouteConfig(
+          QuestionnaireSummaryRoute.name,
+          path: '/questionnaire-summary',
+        ),
+        RouteConfig(
+          QuestionnaireRoute.name,
+          path: '/questionnaire',
         ),
         RouteConfig(
           SignUpRoute.name,
@@ -139,6 +238,146 @@ class DashboardRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [PersonalInformation2Page]
+class PersonalInformation2Route
+    extends PageRouteInfo<PersonalInformation2RouteArgs> {
+  PersonalInformation2Route({
+    Key? key,
+    List<QuestionnaireModel>? question,
+  }) : super(
+          PersonalInformation2Route.name,
+          path: '/personal-information2',
+          args: PersonalInformation2RouteArgs(
+            key: key,
+            question: question,
+          ),
+        );
+
+  static const String name = 'PersonalInformation2Route';
+}
+
+class PersonalInformation2RouteArgs {
+  const PersonalInformation2RouteArgs({
+    this.key,
+    this.question,
+  });
+
+  final Key? key;
+
+  final List<QuestionnaireModel>? question;
+
+  @override
+  String toString() {
+    return 'PersonalInformation2RouteArgs{key: $key, question: $question}';
+  }
+}
+
+/// generated route for
+/// [PersonalInformation4Page]
+class PersonalInformation4Route
+    extends PageRouteInfo<PersonalInformation4RouteArgs> {
+  PersonalInformation4Route({
+    Key? key,
+    List<QuestionnaireModel>? question,
+  }) : super(
+          PersonalInformation4Route.name,
+          path: '/personal-information4',
+          args: PersonalInformation4RouteArgs(
+            key: key,
+            question: question,
+          ),
+        );
+
+  static const String name = 'PersonalInformation4Route';
+}
+
+class PersonalInformation4RouteArgs {
+  const PersonalInformation4RouteArgs({
+    this.key,
+    this.question,
+  });
+
+  final Key? key;
+
+  final List<QuestionnaireModel>? question;
+
+  @override
+  String toString() {
+    return 'PersonalInformation4RouteArgs{key: $key, question: $question}';
+  }
+}
+
+/// generated route for
+/// [PersonalInformation3Page]
+class PersonalInformation3Route
+    extends PageRouteInfo<PersonalInformation3RouteArgs> {
+  PersonalInformation3Route({
+    Key? key,
+    List<QuestionnaireModel>? question,
+  }) : super(
+          PersonalInformation3Route.name,
+          path: '/personal-information3',
+          args: PersonalInformation3RouteArgs(
+            key: key,
+            question: question,
+          ),
+        );
+
+  static const String name = 'PersonalInformation3Route';
+}
+
+class PersonalInformation3RouteArgs {
+  const PersonalInformation3RouteArgs({
+    this.key,
+    this.question,
+  });
+
+  final Key? key;
+
+  final List<QuestionnaireModel>? question;
+
+  @override
+  String toString() {
+    return 'PersonalInformation3RouteArgs{key: $key, question: $question}';
+  }
+}
+
+/// generated route for
+/// [PersonalInformation1Page]
+class PersonalInformation1Route
+    extends PageRouteInfo<PersonalInformation1RouteArgs> {
+  PersonalInformation1Route({
+    Key? key,
+    List<QuestionnaireModel>? question,
+  }) : super(
+          PersonalInformation1Route.name,
+          path: '/personal-information1',
+          args: PersonalInformation1RouteArgs(
+            key: key,
+            question: question,
+          ),
+        );
+
+  static const String name = 'PersonalInformation1Route';
+}
+
+class PersonalInformation1RouteArgs {
+  const PersonalInformation1RouteArgs({
+    this.key,
+    this.question,
+  });
+
+  final Key? key;
+
+  final List<QuestionnaireModel>? question;
+
+  @override
+  String toString() {
+    return 'PersonalInformation1RouteArgs{key: $key, question: $question}';
+  }
+}
+
+/// generated route for
 /// [SignInPage]
 class SignInRoute extends PageRouteInfo<void> {
   const SignInRoute()
@@ -148,6 +387,87 @@ class SignInRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'SignInRoute';
+}
+
+/// generated route for
+/// [UploadDocumentPage]
+class UploadDocumentRoute extends PageRouteInfo<void> {
+  const UploadDocumentRoute()
+      : super(
+          UploadDocumentRoute.name,
+          path: '/upload-document',
+        );
+
+  static const String name = 'UploadDocumentRoute';
+}
+
+/// generated route for
+/// [QuestionnaireSummaryPage]
+class QuestionnaireSummaryRoute
+    extends PageRouteInfo<QuestionnaireSummaryRouteArgs> {
+  QuestionnaireSummaryRoute({
+    Key? key,
+    required ResultModel? resultModel,
+  }) : super(
+          QuestionnaireSummaryRoute.name,
+          path: '/questionnaire-summary',
+          args: QuestionnaireSummaryRouteArgs(
+            key: key,
+            resultModel: resultModel,
+          ),
+        );
+
+  static const String name = 'QuestionnaireSummaryRoute';
+}
+
+class QuestionnaireSummaryRouteArgs {
+  const QuestionnaireSummaryRouteArgs({
+    this.key,
+    required this.resultModel,
+  });
+
+  final Key? key;
+
+  final ResultModel? resultModel;
+
+  @override
+  String toString() {
+    return 'QuestionnaireSummaryRouteArgs{key: $key, resultModel: $resultModel}';
+  }
+}
+
+/// generated route for
+/// [QuestionnairePage]
+class QuestionnaireRoute extends PageRouteInfo<QuestionnaireRouteArgs> {
+  QuestionnaireRoute({
+    Key? key,
+    List<QuestionnaireModel>? question,
+  }) : super(
+          QuestionnaireRoute.name,
+          path: '/questionnaire',
+          args: QuestionnaireRouteArgs(
+            key: key,
+            question: question,
+          ),
+        );
+
+  static const String name = 'QuestionnaireRoute';
+}
+
+class QuestionnaireRouteArgs {
+  const QuestionnaireRouteArgs({
+    this.key,
+    this.question,
+  });
+
+  final Key? key;
+
+  final List<QuestionnaireModel>? question;
+
+  @override
+  String toString() {
+    return 'QuestionnaireRouteArgs{key: $key, question: $question}';
+  }
 }
 
 /// generated route for

@@ -1,0 +1,264 @@
+{
+  "document_list": [
+    {
+      "id": "A1",
+      "previewImage": "assets/imgs/documentpage/A1.png",
+      "isSubmited": false,
+      "body": "Visa Request Letter (Signed By Director/Commisionnaire/Leader) With Stamp",
+      "attachment": "/files/A1.docx",
+      "numberOfDocs": 1,
+      "header": "Visa Request Letter",
+      "imageList": []
+    },
+    {
+      "isSubmited": false,
+      "numberOfDocs": 1,
+      "imageList": [],
+      "body": "A passport cover personalises a uniform item, it makes your passport easy to identify and it adds a touch of style. ",
+      "attachment": null,
+      "previewImage": "assets/imgs/documentpage/A2.png",
+      "header": "Passport Cover",
+      "id": "A2"
+    },
+    {
+      "isSubmited": false,
+      "numberOfDocs": 1,
+      "previewImage": "assets/imgs/documentpage/A3.png",
+      "attachment": null,
+      "imageList": [],
+      "header": "Passport",
+      "body": "a travel document issued by a country's government to its citizens that verifies the identity and nationality of the holder for the purpose of international travel.",
+      "id": "A3"
+    },
+    {
+      "body": "a ticket that allows a person to travel to one place and then return back to the place he or she left",
+      "attachment": null,
+      "id": "A4",
+      "header": "Return Ticket or Through Ticket",
+      "imageList": [],
+      "isSubmited": false,
+      "numberOfDocs": 4,
+      "previewImage": "assets/imgs/documentpage/A4.png"
+    },
+    {
+      "imageList": [],
+      "attachment": null,
+      "numberOfDocs": 4,
+      "previewImage": "assets/imgs/documentpage/A5.png",
+      "body": "Guarantor's Bank Statement (Minimum Balance Should Be At Least Usd 10.000 Equivalent)",
+      "isSubmited": false,
+      "header": "Guarantor's Bank Statement",
+      "id": "A5"
+    },
+    {
+      "attachment": null,
+      "id": "A6",
+      "header": "Cover Photo",
+      "isSubmited": false,
+      "imageList": [],
+      "previewImage": "assets/imgs/documentpage/A6.png",
+      "body": "Cover Photo",
+      "numberOfDocs": 1
+    },
+    {
+      "isSubmited": false,
+      "numberOfDocs": 4,
+      "previewImage": "assets/imgs/documentpage/B2.png",
+      "body": "a written statement from a physician or another medically qualified health care provider",
+      "attachment": null,
+      "id": "B2",
+      "imageList": [],
+      "header": "Medical Certificate"
+    },
+    {
+      "body": "Statement Letter Of Willing To Carry Out Quarantine And Treatment At My Own Expense",
+      "attachment": "/files/B3.docx",
+      "id": "B3",
+      "imageList": [],
+      "header": "Statement Letter Of Willing To Carry Out Quarantine And Treatment",
+      "previewImage": "assets/imgs/documentpage/B3.png",
+      "numberOfDocs": 1,
+      "isSubmited": false
+    },
+    {
+      "header": "Statement Letter Of Willing To Follow The Health Monitoring Process During The Quarantine",
+      "id": "B4",
+      "attachment": "/files/B4.docx",
+      "numberOfDocs": 1,
+      "imageList": [],
+      "body": "Statement Letter Of Willing To Follow The Health Monitoring Process During The Quarantine Or Isolation Period",
+      "previewImage": "assets/imgs/documentpage/B4.png",
+      "isSubmited": false
+    },
+    {
+      "previewImage": "assets/imgs/documentpage/B5.png",
+      "numberOfDocs": 4,
+      "body": "Health Insurance To Cover Covid19 Treatment If You Are Positive Covid-19 In Indonesia",
+      "imageList": [],
+      "attachment": null,
+      "isSubmited": false,
+      "header": "Health Insurance To Cover Covid19 Treatment",
+      "id": "B5"
+    },
+    {
+      "header": "Proof That You Are/were Indonesian Citizen",
+      "imageList": [],
+      "previewImage": "assets/imgs/documentpage/C1.png",
+      "id": "C1",
+      "isSubmited": false,
+      "numberOfDocs": 4,
+      "attachment": null,
+      "body": "Proof That You Are/were Indonesian Citizen"
+    },
+    {
+      "attachment": null,
+      "imageList": [],
+      "isSubmited": false,
+      "numberOfDocs": 4,
+      "id": "C2",
+      "previewImage": "assets/imgs/documentpage/DTI.png",
+      "body": "Proof That You Have At Least US$1500 For Your Own/family's Expense While You Are In Indonesia ",
+      "header": "Proof That You Have At Least US$1500"
+    },
+    {
+      "previewImage": "assets/imgs/documentpage/DTI.png",
+      "imageList": [],
+      "header": "Recommendation Letter From Related Institution",
+      "id": "C3",
+      "attachment": null,
+      "numberOfDocs": 4,
+      "body": "Recommendation Letter From Related Institution For Employment or Capital Investment or Training Or Research or Education or Ministry Of Religious",
+      "isSubmited": false
+    },
+    {
+      "id": "C13",
+      "attachment": null,
+      "header": "Valid Business Registration Certificate And Tax Identification Number Of The Travel Agent",
+      "body": "Valid Business Registration Certificate And Tax Identification Number Of The Travel Agent",
+      "isSubmited": false,
+      "imageList": [],
+      "numberOfDocs": 4,
+      "previewImage": "assets/imgs/documentpage/DTI.png"
+    },
+    {
+      "body": "Proof From Retiree Institution Or Bank That You Have At Least US$1500 Per Month For Your Own Expense While You Are In Indonesia ",
+      "id": "C15",
+      "attachment": null,
+      "isSubmited": false,
+      "imageList": [],
+      "numberOfDocs": 4,
+      "previewImage": "assets/imgs/documentpage/DTI.png",
+      "header": "Proof From Retiree Institution Or Bank That You Have At Least US$1500 Per Month"
+    },
+    {
+      "previewImage": "assets/imgs/documentpage/DTI.png",
+      "numberOfDocs": 4,
+      "imageList": [],
+      "body": "Health Insurance, Life Insurance, And Legal Commitment From The Third Party Of Civil Firm",
+      "isSubmited": false,
+      "header": "Health Insurance, Life Insurance, And Legal Commitment",
+      "id": "C16",
+      "attachment": null
+    },
+    {
+      "body": "Evidence Of Stay In Indonesia with at Least US$35,000 Or Rent Per Month At Least  1) US $500 Jakarta, Bandung, And Bali  2) US $300 Jawa, Batam, And Medan Or  3) US $200 Outside City Stated Above",
+      "imageList": [],
+      "attachment": null,
+      "header": "Evidence Of Stay In Indonesia",
+      "previewImage": "assets/imgs/documentpage/DTI.png",
+      "numberOfDocs": 4,
+      "isSubmited": false,
+      "id": "C17"
+    },
+    {
+      "attachment": null,
+      "body": "Statement Letter To Employ At Least 2 Indonesian People",
+      "imageList": [],
+      "id": "C18",
+      "header": "Statement Letter To Employ At Least 2 Indonesian People",
+      "isSubmited": false,
+      "previewImage": "assets/imgs/documentpage/DTI.png",
+      "numberOfDocs": 4
+    },
+    {
+      "body": "Latest Stay Permit Evidence In Your Passport",
+      "attachment": null,
+      "header": "Latest Stay Permit Evidence In Your Passport",
+      "isSubmited": false,
+      "id": "D1",
+      "numberOfDocs": 4,
+      "previewImage": "assets/imgs/documentpage/DTI.png",
+      "imageList": []
+    },
+    {
+      "imageList": [],
+      "id": "D2",
+      "body": "Electronic ITAS",
+      "isSubmited": false,
+      "numberOfDocs": 4,
+      "header": "Electronic ITAS",
+      "attachment": null,
+      "previewImage": "assets/imgs/documentpage/DTI.png"
+    },
+    {
+      "attachment": null,
+      "isSubmited": false,
+      "previewImage": "assets/imgs/documentpage/DTI.png",
+      "imageList": [],
+      "numberOfDocs": 2,
+      "body": "Request Letter For Transfer Of Guarantor",
+      "header": "Request Letter For Transfer Of Guarantor",
+      "id": "D3"
+    },
+    {
+      "attachment": null,
+      "header": "Guarantor Statement Letter From New Guarantor",
+      "id": "D4",
+      "previewImage": "assets/imgs/documentpage/DTI.png",
+      "body": "Guarantor Statement Letter From New Guarantor",
+      "isSubmited": false,
+      "imageList": [],
+      "numberOfDocs": 2
+    },
+    {
+      "body": "Guarantor Statement Letter From Old Guarantor",
+      "previewImage": "assets/imgs/documentpage/DTI.png",
+      "attachment": null,
+      "imageList": [],
+      "numberOfDocs": 2,
+      "isSubmited": false,
+      "header": "Guarantor Statement Letter From Old Guarantor",
+      "id": "D5"
+    },
+    {
+      "body": "Recommendation Letter From Government Agency Related To Its Activities",
+      "id": "D6",
+      "numberOfDocs": 4,
+      "imageList": [],
+      "attachment": null,
+      "previewImage": "assets/imgs/documentpage/DTI.png",
+      "header": "Recommendation Letter From Government Agency Related To Its Activities",
+      "isSubmited": false
+    },
+    {
+      "id": "D7",
+      "header": "Multiple Re-Entry Permit",
+      "previewImage": "assets/imgs/documentpage/DTI.png",
+      "imageList": [],
+      "body": "Multiple Re-Entry Permit",
+      "numberOfDocs": 2,
+      "attachment": null,
+      "isSubmited": false
+    },
+    {
+      "id": "D8",
+      "previewImage": "assets/imgs/documentpage/DTI.png",
+      "numberOfDocs": 2,
+      "body": "ITAP Card",
+      "attachment": null,
+      "isSubmited": false,
+      "imageList": [],
+      "header": "ITAP Card"
+    }
+  ]
+}
