@@ -1,8 +1,11 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:dti_web/application/application_cubit.dart';
 import 'package:dti_web/application/questionnaire_cubit.dart';
+import 'package:dti_web/core/widgets/primary_button.dart';
 import 'package:dti_web/domain/core/document_data_model.dart';
 import 'package:dti_web/domain/questionnaire/raw_data.dart';
 import 'package:dti_web/domain/questionnaire/result_model.dart';
+import 'package:dti_web/injection.dart';
 import 'package:dti_web/routes/app_router.dart';
 
 import 'package:dti_web/utils/app_color.dart';
@@ -39,110 +42,132 @@ class _QuestionnaireSummaryPageState extends State<QuestionnaireSummaryPage> {
             .firstWhere((element) => element.id!.trim() == idDocument.trim()));
       } catch (e) {}
     }
-    print(listData.length);
+
     super.initState();
   }
 
-  void getDocumentData() {}
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        floatingActionButton: FloatingActionButton(onPressed: () {}),
-        body: Stack(
-          children: [
-            Container(
-                width: ScreenUtil().screenWidth,
-                height: ScreenUtil().screenHeight,
-                child: Image.network(
-                  'https://picsum.photos/200/300',
-                  fit: BoxFit.cover,
-                )),
-            Container(
-              width: ScreenUtil().screenWidth / 2.2,
-              height: ScreenUtil().screenHeight,
-              padding: REdgeInsets.symmetric(horizontal: 50.w, vertical: 20.h),
-              margin: EdgeInsets.symmetric(vertical: 40.h),
-              decoration: BoxDecoration(
-                color: Colors.white.withAlpha(180),
-                borderRadius:
-                    BorderRadius.horizontal(right: Radius.circular(10)),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    widget.resultModel!.visaTitle!,
-                    style: TextStyle(
-                        fontSize: 30.sp,
-                        color: AppColor.primaryColor,
-                        fontWeight: FontWeight.bold),
+    return BlocBuilder<QuestionnaireCubit, QuestionnaireState>(
+      builder: (context, state) {
+        return Scaffold(
+            floatingActionButton: FloatingActionButton(onPressed: () {
+              print(state.listQuestionnaire);
+              print(state.importantNotes!);
+              print(state.description!);
+            }),
+            body: Stack(
+              children: [
+                Container(
+                    width: ScreenUtil().screenWidth,
+                    height: ScreenUtil().screenHeight,
+                    child: Image.network(
+                      'https://picsum.photos/200/300',
+                      fit: BoxFit.cover,
+                    )),
+                Container(
+                  width: ScreenUtil().screenWidth / 2.2,
+                  height: ScreenUtil().screenHeight,
+                  padding:
+                      REdgeInsets.symmetric(horizontal: 50.w, vertical: 20.h),
+                  margin: EdgeInsets.symmetric(vertical: 40.h),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withAlpha(180),
+                    borderRadius:
+                        BorderRadius.horizontal(right: Radius.circular(10)),
                   ),
-                  20.verticalSpace,
-                  Column(
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Description",
+                        widget.resultModel!.visaTitle!,
                         style: TextStyle(
-                            fontSize: 16.sp, color: AppColor.primaryColor),
+                            fontSize: 30.sp,
+                            color: AppColor.primaryColor,
+                            fontWeight: FontWeight.bold),
                       ),
-                      10.verticalSpace,
+                      20.verticalSpace,
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        children: listData
-                            .map((e) => Text("- " + e.header!))
-                            .toList(),
+                        children: [
+                          Text(
+                            "Description",
+                            style: TextStyle(
+                                fontSize: 16.sp, color: AppColor.primaryColor),
+                          ),
+                          10.verticalSpace,
+                          Text(
+                              "Indonesia immigration law details business visitor activities as the following (non-exhaustive): "),
+                          5.verticalSpace,
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: state.description!
+                                .map((e) => Text("- " + e))
+                                .toList(),
+                          ),
+                          5.verticalSpace,
+                          Text(
+                              "The activities being performed on a Short Term Visit Pass should not involve a contract of service or a contract for service"),
+                        ],
                       ),
-                    ],
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Document Required",
-                        style: TextStyle(
-                            fontSize: 16.sp, color: AppColor.primaryColor),
-                      ),
-                      10.verticalSpace,
+                      20.verticalSpace,
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        children: listData
-                            .map((e) => Text("- " + e.header!))
-                            .toList(),
+                        children: [
+                          Text(
+                            "Document Required",
+                            style: TextStyle(
+                                fontSize: 16.sp, color: AppColor.primaryColor),
+                          ),
+                          10.verticalSpace,
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: listData
+                                .map((e) => Text("- " + e.header!))
+                                .toList(),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Important Notes",
-                        style: TextStyle(
-                            fontSize: 16.sp, color: AppColor.primaryColor),
-                      ),
-                      10.verticalSpace,
+                      20.verticalSpace,
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        children: listData
-                            .map((e) => Text("- " + e.header!))
-                            .toList(),
+                        children: [
+                          Text(
+                            "Important Notes",
+                            style: TextStyle(
+                                fontSize: 16.sp, color: AppColor.primaryColor),
+                          ),
+                          10.verticalSpace,
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: state.importantNotes!
+                                .map((e) => Text("- " + e))
+                                .toList(),
+                          ),
+                        ],
                       ),
+                      20.verticalSpace,
+                      SizedBox(
+                        width: double.infinity,
+                        child: PrimaryButton(
+                            label: "Next",
+                            onClick: () {
+                              context
+                                  .read<ApplicationCubit>()
+                                  .updateData(listData);
+                              AutoRouter.of(context)
+                                  .push(PersonalInformation1Route());
+                            }),
+                      )
                     ],
                   ),
-                  ElevatedButton(
-                      onPressed: () {
-                        AutoRouter.of(context)
-                            .push(PersonalInformation1Route());
-                      },
-                      child: Text("Next"))
-                ],
-              ),
-            )
-          ],
-        ));
+                )
+              ],
+            ));
+      },
+    );
   }
 }

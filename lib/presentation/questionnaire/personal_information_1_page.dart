@@ -15,6 +15,7 @@ import 'package:flutter_material_pickers/flutter_material_pickers.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:group_radio_button/group_radio_button.dart';
+import 'package:intl/intl.dart';
 
 class PersonalInformation1Page extends StatefulWidget {
   const PersonalInformation1Page({super.key, this.question});
@@ -32,6 +33,9 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
   void initState() {
     super.initState();
   }
+
+  final _formKey = GlobalKey<FormBuilderState>();
+  var initialDateOfBirth = "";
 
   @override
   Widget build(BuildContext context) {
@@ -68,6 +72,7 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                 Expanded(
                   child: SingleChildScrollView(
                     child: FormBuilder(
+                      key: _formKey,
                       child: Column(
                         children: [
                           //First Name
@@ -75,12 +80,14 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                             Expanded(
                               child: FormBuilderTextField(
                                 name: 'firstName',
+                                initialValue: "",
                                 enableSuggestions: false,
                                 decoration: InputDecoration(
                                     hintText: "First Name",
                                     labelText: "First Name"),
                                 autocorrect: false,
-                                validator: FormBuilderValidators.required(),
+                                validator: FormBuilderValidators.required(
+                                    errorText: "First name can not be empty"),
                                 autovalidateMode:
                                     AutovalidateMode.onUserInteraction,
                                 enabled: true,
@@ -90,12 +97,14 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                             Expanded(
                               child: FormBuilderTextField(
                                 name: 'lastName',
+                                initialValue: "",
                                 enableSuggestions: false,
                                 decoration: InputDecoration(
                                     hintText: "Last Name",
                                     labelText: "Last Name"),
                                 autocorrect: false,
-                                validator: FormBuilderValidators.required(),
+                                validator: FormBuilderValidators.required(
+                                    errorText: "Last name can not be empty"),
                                 autovalidateMode:
                                     AutovalidateMode.onUserInteraction,
                                 enabled: true,
@@ -106,12 +115,14 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
 
                           FormBuilderTextField(
                             name: 'placeBirthDate',
+                            initialValue: "",
                             enableSuggestions: false,
                             decoration: InputDecoration(
                                 hintText: "Place Of Birth Date",
                                 labelText: "Place Of Birth Date"),
                             autocorrect: false,
-                            validator: FormBuilderValidators.required(),
+                            validator: FormBuilderValidators.required(
+                                errorText: "Place of birth can not be empty"),
                             autovalidateMode:
                                 AutovalidateMode.onUserInteraction,
                             enabled: true,
@@ -120,14 +131,21 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                           FormBuilderTextField(
                             onTap: () async {
                               final nowDate = DateTime.now();
-                              await showDatePicker(
+                              final selectedDate = await showDatePicker(
                                   context: context,
                                   initialDate: DateTime(nowDate.year - 10),
                                   firstDate: DateTime(1800),
                                   lastDate: nowDate);
+
+                              _formKey.currentState!.fields['dateOfBirthDate']!
+                                  .didChange(DateFormat('dd MMM yyyy')
+                                      .format(selectedDate!));
                             },
                             readOnly: true,
                             name: 'dateOfBirthDate',
+                            initialValue: initialDateOfBirth,
+                            validator: FormBuilderValidators.required(
+                                errorText: "Date can not be empty"),
                             autovalidateMode:
                                 AutovalidateMode.onUserInteraction,
                             decoration: InputDecoration(
@@ -169,8 +187,8 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                               items: Constant.getCountries(),
                               selectedItem: Constant.getCountries().first,
                               onChanged: (value) {
-                                //   _formKey.currentState!.fields['NationalityField']!
-                                //       .didChange(value.name);
+                                _formKey.currentState!.fields['nationality']!
+                                    .didChange(value.name.toString());
                               },
                             ),
                             readOnly: true,

@@ -1,7 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:country_code_picker/country_code_picker.dart';
-import 'package:dropdown_search/dropdown_search.dart';
-import 'package:dti_web/application/questionnaire_cubit.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
 import 'package:dti_web/domain/core/country_nationality.dart';
 import 'package:dti_web/domain/questionnaire/questionnaire_model.dart';
@@ -9,12 +6,11 @@ import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:dti_web/utils/constant.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_material_pickers/flutter_material_pickers.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:group_radio_button/group_radio_button.dart';
+import 'package:intl/intl.dart';
 
 class PersonalInformation2Page extends StatefulWidget {
   const PersonalInformation2Page({super.key, this.question});
@@ -32,6 +28,8 @@ class _PersonalInformation2PageState extends State<PersonalInformation2Page> {
   void initState() {
     super.initState();
   }
+
+  final _formKey = GlobalKey<FormBuilderState>();
 
   @override
   Widget build(BuildContext context) {
@@ -66,6 +64,7 @@ class _PersonalInformation2PageState extends State<PersonalInformation2Page> {
                 ),
                 20.verticalSpace,
                 FormBuilder(
+                  key: _formKey,
                   child: Column(
                     children: [
                       //Passport Number
@@ -90,11 +89,15 @@ class _PersonalInformation2PageState extends State<PersonalInformation2Page> {
                       FormBuilderTextField(
                         onTap: () async {
                           final nowDate = DateTime.now();
-                          await showDatePicker(
+                          final selectedDate = await showDatePicker(
                               context: context,
                               initialDate: DateTime(nowDate.year - 10),
                               firstDate: DateTime(1800),
                               lastDate: nowDate);
+
+                          _formKey.currentState!.fields['dateOfIssue']!
+                              .didChange(DateFormat('dd MMM yyyy')
+                                  .format(selectedDate!));
                         },
                         readOnly: true,
                         name: 'dateOfIssue',
@@ -110,11 +113,15 @@ class _PersonalInformation2PageState extends State<PersonalInformation2Page> {
                       FormBuilderTextField(
                         onTap: () async {
                           final nowDate = DateTime.now();
-                          await showDatePicker(
+                          final selectedDate = await showDatePicker(
                               context: context,
                               initialDate: DateTime(nowDate.year - 10),
                               firstDate: DateTime(1800),
                               lastDate: nowDate);
+
+                          _formKey.currentState!.fields['dateOfExpire']!
+                              .didChange(DateFormat('dd MMM yyyy')
+                                  .format(selectedDate!));
                         },
                         readOnly: true,
                         name: 'dateOfExpire',
@@ -136,8 +143,8 @@ class _PersonalInformation2PageState extends State<PersonalInformation2Page> {
                           items: Constant.getCountries(),
                           selectedItem: Constant.getCountries().first,
                           onChanged: (value) {
-                            //   _formKey.currentState!.fields['NationalityField']!
-                            //       .didChange(value.name);
+                            _formKey.currentState!.fields['nationality']!
+                                .didChange(value.name.toString());
                           },
                         ),
                         readOnly: true,

@@ -104,6 +104,7 @@ class _$AppRouter extends RootStackRouter {
           key: args.key,
           question: args.question,
         ),
+        fullscreenDialog: true,
       );
     },
     SignUpRoute.name: (routeData) {
@@ -148,7 +149,7 @@ class _$AppRouter extends RootStackRouter {
   List<RouteConfig> get routes => [
         RouteConfig(
           SplashScreenRoute.name,
-          path: '/',
+          path: '/splash-screen-page',
         ),
         RouteConfig(
           DashboardRoute.name,
@@ -168,7 +169,7 @@ class _$AppRouter extends RootStackRouter {
         ),
         RouteConfig(
           PersonalInformation1Route.name,
-          path: '/personal-information1',
+          path: '/',
         ),
         RouteConfig(
           SignInRoute.name,
@@ -176,7 +177,7 @@ class _$AppRouter extends RootStackRouter {
         ),
         RouteConfig(
           UploadDocumentRoute.name,
-          path: '/upload-document',
+          path: '/upload-document-page',
         ),
         RouteConfig(
           QuestionnaireSummaryRoute.name,
@@ -184,7 +185,7 @@ class _$AppRouter extends RootStackRouter {
         ),
         RouteConfig(
           QuestionnaireRoute.name,
-          path: '/questionnaire',
+          path: '/questionnaire-page',
         ),
         RouteConfig(
           SignUpRoute.name,
@@ -219,7 +220,7 @@ class SplashScreenRoute extends PageRouteInfo<void> {
   const SplashScreenRoute()
       : super(
           SplashScreenRoute.name,
-          path: '/',
+          path: '/splash-screen-page',
         );
 
   static const String name = 'SplashScreenRoute';
@@ -351,7 +352,7 @@ class PersonalInformation1Route
     List<QuestionnaireModel>? question,
   }) : super(
           PersonalInformation1Route.name,
-          path: '/personal-information1',
+          path: '/',
           args: PersonalInformation1RouteArgs(
             key: key,
             question: question,
@@ -395,7 +396,7 @@ class UploadDocumentRoute extends PageRouteInfo<void> {
   const UploadDocumentRoute()
       : super(
           UploadDocumentRoute.name,
-          path: '/upload-document',
+          path: '/upload-document-page',
         );
 
   static const String name = 'UploadDocumentRoute';
@@ -444,7 +445,7 @@ class QuestionnaireRoute extends PageRouteInfo<QuestionnaireRouteArgs> {
     List<QuestionnaireModel>? question,
   }) : super(
           QuestionnaireRoute.name,
-          path: '/questionnaire',
+          path: '/questionnaire-page',
           args: QuestionnaireRouteArgs(
             key: key,
             question: question,

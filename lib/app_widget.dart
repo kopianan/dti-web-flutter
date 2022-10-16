@@ -1,10 +1,14 @@
+import 'package:dti_web/application/application_cubit.dart';
 import 'package:dti_web/application/auth/auth_cubit.dart';
+import 'package:dti_web/application/questionnaire_cubit.dart';
 import 'package:dti_web/injection.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppWidget extends StatelessWidget {
@@ -22,10 +26,20 @@ class AppWidget extends StatelessWidget {
           BlocProvider(
             create: (context) => getIt<AuthCubit>(),
           ),
+          BlocProvider(
+            create: (context) => getIt<ApplicationCubit>(),
+          ),
+          BlocProvider(
+            create: (context) => getIt<QuestionnaireCubit>(),
+          ),
         ],
-        child: MaterialApp.router(
+        child: GetMaterialApp.router(
           routerDelegate: _appRouter.delegate(),
           routeInformationParser: _appRouter.defaultRouteParser(),
+          supportedLocales: FormBuilderLocalizations.delegate.supportedLocales,
+          localizationsDelegates: const [
+            FormBuilderLocalizations.delegate,
+          ],
           title: 'DTI WEB',
           theme: ThemeData(
               textTheme: GoogleFonts.latoTextTheme(),

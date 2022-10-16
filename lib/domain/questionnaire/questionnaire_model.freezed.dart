@@ -167,7 +167,7 @@ class __$$_QuestionnaireModelCopyWithImpl<$Res>
   }) {
     return _then(_$_QuestionnaireModel(
       subQuestionnaire: subQuestionnaire == freezed
-          ? _value._subQuestionnaire
+          ? _value.subQuestionnaire
           : subQuestionnaire // ignore: cast_nullable_to_non_nullable
               as List<QuestionnaireModel>?,
       footer: footer == freezed
@@ -206,28 +206,20 @@ class __$$_QuestionnaireModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_QuestionnaireModel implements _QuestionnaireModel {
   _$_QuestionnaireModel(
-      {final List<QuestionnaireModel>? subQuestionnaire,
+      {this.subQuestionnaire,
       this.footer,
       this.imgName,
       this.body,
       this.header,
       this.description,
       this.importantNotes,
-      this.results})
-      : _subQuestionnaire = subQuestionnaire;
+      this.results});
 
   factory _$_QuestionnaireModel.fromJson(Map<String, dynamic> json) =>
       _$$_QuestionnaireModelFromJson(json);
 
-  final List<QuestionnaireModel>? _subQuestionnaire;
   @override
-  List<QuestionnaireModel>? get subQuestionnaire {
-    final value = _subQuestionnaire;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
+  final List<QuestionnaireModel>? subQuestionnaire;
   @override
   final String? footer;
   @override
@@ -254,7 +246,7 @@ class _$_QuestionnaireModel implements _QuestionnaireModel {
         (other.runtimeType == runtimeType &&
             other is _$_QuestionnaireModel &&
             const DeepCollectionEquality()
-                .equals(other._subQuestionnaire, _subQuestionnaire) &&
+                .equals(other.subQuestionnaire, subQuestionnaire) &&
             const DeepCollectionEquality().equals(other.footer, footer) &&
             const DeepCollectionEquality().equals(other.imgName, imgName) &&
             const DeepCollectionEquality().equals(other.body, body) &&
@@ -270,7 +262,7 @@ class _$_QuestionnaireModel implements _QuestionnaireModel {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(_subQuestionnaire),
+      const DeepCollectionEquality().hash(subQuestionnaire),
       const DeepCollectionEquality().hash(footer),
       const DeepCollectionEquality().hash(imgName),
       const DeepCollectionEquality().hash(body),

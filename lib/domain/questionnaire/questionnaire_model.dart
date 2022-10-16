@@ -4,7 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'questionnaire_model.freezed.dart';
 part 'questionnaire_model.g.dart';
 
-@freezed
+@Freezed(makeCollectionsUnmodifiable: false)
 class QuestionnaireModel with _$QuestionnaireModel {
   factory QuestionnaireModel({
     List<QuestionnaireModel>? subQuestionnaire,

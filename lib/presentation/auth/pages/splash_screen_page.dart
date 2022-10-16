@@ -63,6 +63,12 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
             },
             child: Text("GO TO Dashboard"),
           ),
+          ElevatedButton(
+            onPressed: () {
+              AutoRouter.of(context).push(UploadDocumentRoute());
+            },
+            child: Text("GO TO UpLOAD DOCUMENT"),
+          ),
         ],
       )),
     );

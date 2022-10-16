@@ -27,8 +27,8 @@ part "app_router.gr.dart";
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
-    AutoRoute(page: SplashScreenPage, initial: true, path: '/'),
-    AutoRoute(page: DashboardPage, path: DashboardPage.routeName),
+    AutoRoute(page: SplashScreenPage),
+    AutoRoute(page: DashboardPage),
     AutoRoute(
         page: PersonalInformation2Page,
         path: PersonalInformation2Page.routeName),
@@ -38,17 +38,17 @@ part "app_router.gr.dart";
     AutoRoute(
         page: PersonalInformation3Page,
         path: PersonalInformation3Page.routeName),
-    AutoRoute(
-        page: PersonalInformation1Page,
-        path: PersonalInformation1Page.routeName),
+    AutoRoute(page: PersonalInformation1Page, path: '/', initial: true),
     AutoRoute(page: SignInPage, path: SignInPage.routeName),
-    AutoRoute(page: UploadDocumentPage, path: UploadDocumentPage.routeName),
+    AutoRoute(
+      page: UploadDocumentPage,
+    ),
     AutoRoute(
         page: QuestionnaireSummaryPage,
         path: QuestionnaireSummaryPage.routeName),
     AutoRoute(
       page: QuestionnairePage,
-      path: QuestionnairePage.routeName,
+      fullscreenDialog: true,
     ),
     AutoRoute(page: SignUpPage, path: SignUpPage.routeName),
     AutoRoute(page: ResetPage, path: ResetPage.routeName),

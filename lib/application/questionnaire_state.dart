@@ -1,8 +1,13 @@
 part of 'questionnaire_cubit.dart';
 
-@freezed
+@Freezed(makeCollectionsUnmodifiable: false)
 class QuestionnaireState with _$QuestionnaireState {
-  const factory QuestionnaireState(
-      {String? importantNotes, String? description}) = _QuestionnaireState;
-  const factory QuestionnaireState.initial() = _Initial;
+  factory QuestionnaireState({
+    List<QuestionnaireModel>? listQuestionnaire,
+    List<String>? importantNotes,
+    List<String>? description,
+  }) = _QuestionnaireState;
+
+  factory QuestionnaireState.initial() => QuestionnaireState(
+      listQuestionnaire: [], description: [], importantNotes: []);
 }

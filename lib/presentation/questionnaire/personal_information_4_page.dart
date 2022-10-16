@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
 import 'package:dti_web/domain/core/city.dart';
 import 'package:dti_web/domain/core/distict.dart';
 import 'package:dti_web/domain/core/province.dart';
 import 'package:dti_web/domain/questionnaire/questionnaire_model.dart';
+import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:dti_web/utils/constant.dart';
 import 'package:flutter/material.dart';
@@ -90,7 +92,10 @@ class _PersonalInformation4PageState extends State<PersonalInformation4Page> {
                         SizedBox(
                             width: double.infinity,
                             child:
-                                PrimaryButton(onClick: () {}, label: "Submit")),
+                                PrimaryButton(onClick: () {
+                                  AutoRouter.of(context).push(UploadDocumentRoute());
+
+                                }, label: "Submit")),
                         //validate button
                         20.verticalSpace,
                         Card(

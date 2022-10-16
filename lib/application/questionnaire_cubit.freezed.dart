@@ -16,43 +16,13 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$QuestionnaireState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(String? importantNotes, String? description) $default, {
-    required TResult Function() initial,
-  }) =>
+  List<QuestionnaireModel>? get listQuestionnaire =>
       throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult Function(String? importantNotes, String? description)? $default, {
-    TResult Function()? initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String? importantNotes, String? description)? $default, {
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_QuestionnaireState value) $default, {
-    required TResult Function(_Initial value) initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult Function(_QuestionnaireState value)? $default, {
-    TResult Function(_Initial value)? initial,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_QuestionnaireState value)? $default, {
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) =>
+  List<String>? get importantNotes => throw _privateConstructorUsedError;
+  List<String>? get description => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $QuestionnaireStateCopyWith<QuestionnaireState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -61,6 +31,10 @@ abstract class $QuestionnaireStateCopyWith<$Res> {
   factory $QuestionnaireStateCopyWith(
           QuestionnaireState value, $Res Function(QuestionnaireState) then) =
       _$QuestionnaireStateCopyWithImpl<$Res>;
+  $Res call(
+      {List<QuestionnaireModel>? listQuestionnaire,
+      List<String>? importantNotes,
+      List<String>? description});
 }
 
 /// @nodoc
@@ -71,14 +45,41 @@ class _$QuestionnaireStateCopyWithImpl<$Res>
   final QuestionnaireState _value;
   // ignore: unused_field
   final $Res Function(QuestionnaireState) _then;
+
+  @override
+  $Res call({
+    Object? listQuestionnaire = freezed,
+    Object? importantNotes = freezed,
+    Object? description = freezed,
+  }) {
+    return _then(_value.copyWith(
+      listQuestionnaire: listQuestionnaire == freezed
+          ? _value.listQuestionnaire
+          : listQuestionnaire // ignore: cast_nullable_to_non_nullable
+              as List<QuestionnaireModel>?,
+      importantNotes: importantNotes == freezed
+          ? _value.importantNotes
+          : importantNotes // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
+    ));
+  }
 }
 
 /// @nodoc
-abstract class _$$_QuestionnaireStateCopyWith<$Res> {
+abstract class _$$_QuestionnaireStateCopyWith<$Res>
+    implements $QuestionnaireStateCopyWith<$Res> {
   factory _$$_QuestionnaireStateCopyWith(_$_QuestionnaireState value,
           $Res Function(_$_QuestionnaireState) then) =
       __$$_QuestionnaireStateCopyWithImpl<$Res>;
-  $Res call({String? importantNotes, String? description});
+  @override
+  $Res call(
+      {List<QuestionnaireModel>? listQuestionnaire,
+      List<String>? importantNotes,
+      List<String>? description});
 }
 
 /// @nodoc
@@ -94,18 +95,23 @@ class __$$_QuestionnaireStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? listQuestionnaire = freezed,
     Object? importantNotes = freezed,
     Object? description = freezed,
   }) {
     return _then(_$_QuestionnaireState(
+      listQuestionnaire: listQuestionnaire == freezed
+          ? _value.listQuestionnaire
+          : listQuestionnaire // ignore: cast_nullable_to_non_nullable
+              as List<QuestionnaireModel>?,
       importantNotes: importantNotes == freezed
           ? _value.importantNotes
           : importantNotes // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as List<String>?,
       description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as List<String>?,
     ));
   }
 }
@@ -113,16 +119,19 @@ class __$$_QuestionnaireStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_QuestionnaireState implements _QuestionnaireState {
-  const _$_QuestionnaireState({this.importantNotes, this.description});
+  _$_QuestionnaireState(
+      {this.listQuestionnaire, this.importantNotes, this.description});
 
   @override
-  final String? importantNotes;
+  final List<QuestionnaireModel>? listQuestionnaire;
   @override
-  final String? description;
+  final List<String>? importantNotes;
+  @override
+  final List<String>? description;
 
   @override
   String toString() {
-    return 'QuestionnaireState(importantNotes: $importantNotes, description: $description)';
+    return 'QuestionnaireState(listQuestionnaire: $listQuestionnaire, importantNotes: $importantNotes, description: $description)';
   }
 
   @override
@@ -130,6 +139,8 @@ class _$_QuestionnaireState implements _QuestionnaireState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_QuestionnaireState &&
+            const DeepCollectionEquality()
+                .equals(other.listQuestionnaire, listQuestionnaire) &&
             const DeepCollectionEquality()
                 .equals(other.importantNotes, importantNotes) &&
             const DeepCollectionEquality()
@@ -139,6 +150,7 @@ class _$_QuestionnaireState implements _QuestionnaireState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      const DeepCollectionEquality().hash(listQuestionnaire),
       const DeepCollectionEquality().hash(importantNotes),
       const DeepCollectionEquality().hash(description));
 
@@ -147,182 +159,22 @@ class _$_QuestionnaireState implements _QuestionnaireState {
   _$$_QuestionnaireStateCopyWith<_$_QuestionnaireState> get copyWith =>
       __$$_QuestionnaireStateCopyWithImpl<_$_QuestionnaireState>(
           this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(String? importantNotes, String? description) $default, {
-    required TResult Function() initial,
-  }) {
-    return $default(importantNotes, description);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult Function(String? importantNotes, String? description)? $default, {
-    TResult Function()? initial,
-  }) {
-    return $default?.call(importantNotes, description);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String? importantNotes, String? description)? $default, {
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(importantNotes, description);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_QuestionnaireState value) $default, {
-    required TResult Function(_Initial value) initial,
-  }) {
-    return $default(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult Function(_QuestionnaireState value)? $default, {
-    TResult Function(_Initial value)? initial,
-  }) {
-    return $default?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_QuestionnaireState value)? $default, {
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(this);
-    }
-    return orElse();
-  }
 }
 
 abstract class _QuestionnaireState implements QuestionnaireState {
-  const factory _QuestionnaireState(
-      {final String? importantNotes,
-      final String? description}) = _$_QuestionnaireState;
+  factory _QuestionnaireState(
+      {final List<QuestionnaireModel>? listQuestionnaire,
+      final List<String>? importantNotes,
+      final List<String>? description}) = _$_QuestionnaireState;
 
-  String? get importantNotes;
-  String? get description;
+  @override
+  List<QuestionnaireModel>? get listQuestionnaire;
+  @override
+  List<String>? get importantNotes;
+  @override
+  List<String>? get description;
+  @override
   @JsonKey(ignore: true)
   _$$_QuestionnaireStateCopyWith<_$_QuestionnaireState> get copyWith =>
       throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$QuestionnaireStateCopyWithImpl<$Res>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, (v) => _then(v as _$_Initial));
-
-  @override
-  _$_Initial get _value => super._value as _$_Initial;
-}
-
-/// @nodoc
-
-class _$_Initial implements _Initial {
-  const _$_Initial();
-
-  @override
-  String toString() {
-    return 'QuestionnaireState.initial()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(String? importantNotes, String? description) $default, {
-    required TResult Function() initial,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult Function(String? importantNotes, String? description)? $default, {
-    TResult Function()? initial,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String? importantNotes, String? description)? $default, {
-    TResult Function()? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_QuestionnaireState value) $default, {
-    required TResult Function(_Initial value) initial,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult Function(_QuestionnaireState value)? $default, {
-    TResult Function(_Initial value)? initial,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_QuestionnaireState value)? $default, {
-    TResult Function(_Initial value)? initial,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Initial implements QuestionnaireState {
-  const factory _Initial() = _$_Initial;
 }
