@@ -8,5 +8,6 @@ class ApplicationState with _$ApplicationState {
   factory ApplicationState.initial() => ApplicationState(
       documnets: (documentRaw['document_list'] as List)
           .map((e) => DocumentDataModel.fromJson(e))
-          .toList().sublist(0,10));
+          .toList()
+          .sublist(0, 10));
 }

@@ -1,11 +1,14 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:dti_web/application/create_edit_application/create_edit_application_cubit.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
 import 'package:dti_web/domain/core/country_nationality.dart';
 import 'package:dti_web/domain/questionnaire/questionnaire_model.dart';
+import 'package:dti_web/injection.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:dti_web/utils/constant.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_material_pickers/flutter_material_pickers.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -65,6 +68,9 @@ class _PersonalInformation2PageState extends State<PersonalInformation2Page> {
                 20.verticalSpace,
                 FormBuilder(
                   key: _formKey,
+                  onChanged: () => {},
+                  initialValue: const {'textfield': ''},
+                  skipDisabled: true,
                   child: Column(
                     children: [
                       //Passport Number
@@ -75,9 +81,9 @@ class _PersonalInformation2PageState extends State<PersonalInformation2Page> {
                         validator: FormBuilderValidators.required(),
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         enabled: true,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           labelText: "Passport Number",
-                          hintStyle: const TextStyle(
+                          hintStyle: TextStyle(
                             color: Colors.grey,
                           ),
                           hintText: "Passport Number",
@@ -101,6 +107,8 @@ class _PersonalInformation2PageState extends State<PersonalInformation2Page> {
                         },
                         readOnly: true,
                         name: 'dateOfIssue',
+                        validator: FormBuilderValidators.required(
+                            errorText: "Can not be empty"),
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         decoration: InputDecoration(
                           labelText: "Date Of Issue",
@@ -125,6 +133,8 @@ class _PersonalInformation2PageState extends State<PersonalInformation2Page> {
                         },
                         readOnly: true,
                         name: 'dateOfExpire',
+                        validator: FormBuilderValidators.required(
+                            errorText: "Can not be empty"),
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         decoration: InputDecoration(
                           labelText: "Date Of Expire",
@@ -138,22 +148,22 @@ class _PersonalInformation2PageState extends State<PersonalInformation2Page> {
                         onTap: () =>
                             showMaterialScrollPicker<CountryNationality>(
                           context: context,
-                          title: "Nationality",
+                          title: "Isuuing Country",
                           showDivider: false,
                           items: Constant.getCountries(),
                           selectedItem: Constant.getCountries().first,
                           onChanged: (value) {
-                            _formKey.currentState!.fields['nationality']!
+                            _formKey.currentState!.fields['issuingCountry']!
                                 .didChange(value.name.toString());
                           },
                         ),
                         readOnly: true,
-                        name: 'nationality',
+                        name: 'issuingCountry',
                         validator: FormBuilderValidators.required(),
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         decoration: InputDecoration(
-                          labelText: "Nationality",
-                          hintText: "Nationality",
+                          labelText: "Isuuing Country",
+                          hintText: "Isuuing Country",
                           fillColor: Colors.white70,
                         ),
                       ),
@@ -164,15 +174,13 @@ class _PersonalInformation2PageState extends State<PersonalInformation2Page> {
                         child: PrimaryButton(
                             label: "Submit",
                             onClick: () {
-                              AutoRouter.of(context)
-                                  .push(PersonalInformation3Route());
+                              updateData(context);
+                              // AutoRouter.of(context)
+                              //     .push(PersonalInformation3Route());
                             }),
                       )
                     ],
                   ),
-                  onChanged: () => {},
-                  initialValue: const {'textfield': ''},
-                  skipDisabled: true,
                 ),
                 20.verticalSpace,
                 Card(
@@ -215,5 +223,19 @@ class _PersonalInformation2PageState extends State<PersonalInformation2Page> {
             ))
       ],
     ));
+  }
+
+  void updateData(BuildContext context) {
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+      final formData = _formKey.currentState!.value;
+      getIt<CreateEditApplicationCubit>().updatePersonalInformation2(
+          passportNumber: formData['passportNumber'],
+          dateOfIssue: formData['dateOfIssue'],
+          dateOfExpire: formData['dateOfExpire'],
+          issuingCountry: formData['issuingCountry']);
+
+      AutoRouter.of(context).push(PersonalInformation3Route());
+    }
   }
 }

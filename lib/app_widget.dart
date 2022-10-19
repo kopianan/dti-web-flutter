@@ -1,5 +1,6 @@
 import 'package:dti_web/application/application_cubit.dart';
 import 'package:dti_web/application/auth/auth_cubit.dart';
+import 'package:dti_web/application/create_edit_application/create_edit_application_cubit.dart';
 import 'package:dti_web/application/questionnaire_cubit.dart';
 import 'package:dti_web/injection.dart';
 import 'package:dti_web/routes/app_router.dart';
@@ -27,13 +28,17 @@ class AppWidget extends StatelessWidget {
             create: (context) => getIt<AuthCubit>(),
           ),
           BlocProvider(
+            lazy: true,
+            create: (context) => getIt<CreateEditApplicationCubit>(),
+          ),
+          BlocProvider(
             create: (context) => getIt<ApplicationCubit>(),
           ),
           BlocProvider(
             create: (context) => getIt<QuestionnaireCubit>(),
           ),
         ],
-        child: GetMaterialApp.router(
+        child: MaterialApp.router(
           routerDelegate: _appRouter.delegate(),
           routeInformationParser: _appRouter.defaultRouteParser(),
           supportedLocales: FormBuilderLocalizations.delegate.supportedLocales,

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
 import 'package:dti_web/domain/core/city.dart';
@@ -7,6 +9,7 @@ import 'package:dti_web/domain/questionnaire/questionnaire_model.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_material_pickers/flutter_material_pickers.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -48,8 +51,28 @@ class _PersonalInformation3PageState extends State<PersonalInformation3Page> {
   City? selectedCity;
 
   District? selectedDistrict;
+
+  Future<void> getProvince() async {
+    final String response = await rootBundle.loadString('files/locations.json');
+    final data = await json.decode(response);
+
+    try {
+      List provinceList = data['province'].entries.map((element) {
+        var code = int.parse(element.key);
+        var newProvince = Province(code, element.value);
+        return newProvince;
+      }).toList();
+
+      print(provinceList.length);
+      // return list;
+    } on Exception catch (e) {
+      // return null;
+    }
+  }
+
   @override
   void initState() {
+    getProvince();
     super.initState();
   }
 
@@ -93,6 +116,9 @@ class _PersonalInformation3PageState extends State<PersonalInformation3Page> {
                       ),
                       FormBuilder(
                         key: _formKey,
+                        onChanged: () => {},
+                        initialValue: const {'textfield': ''},
+                        skipDisabled: true,
                         child: Column(
                           children: [
                             //Address
@@ -198,9 +224,6 @@ class _PersonalInformation3PageState extends State<PersonalInformation3Page> {
                             )
                           ],
                         ),
-                        onChanged: () => {},
-                        initialValue: const {'textfield': ''},
-                        skipDisabled: true,
                       ),
                     ],
                   ),

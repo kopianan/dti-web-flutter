@@ -1,13 +1,11 @@
 import 'dart:html' as html;
 import 'dart:io';
 import 'package:dti_web/application/application_cubit.dart';
-import 'package:dti_web/injection.dart';
+
 import 'package:dti_web/utils/app_color.dart';
 import 'package:dti_web/utils/image_function.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker_web/image_picker_web.dart';
