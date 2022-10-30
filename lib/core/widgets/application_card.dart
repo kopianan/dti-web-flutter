@@ -1,5 +1,6 @@
 // ignore_for_file: constant_identifier_names
 
+import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -9,8 +10,10 @@ class VisaApplicationCard extends StatelessWidget {
   VisaApplicationCard({
     Key? key,
     this.onCardClick,
+    required this.visaApps,
   }) : super(key: key);
-  String _subtitle = "";
+  VisaApplicationModel visaApps;
+
   @override
   Widget build(BuildContext context) {
     // if (visaApplication.subTitle!.length < 35) {
@@ -36,7 +39,7 @@ class VisaApplicationCard extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Text(
-                      "Date",
+                      "Application Reference Number${visaApps.applicationID!}",
                       style: const TextStyle(fontSize: 9),
                     ),
                   ),
@@ -44,15 +47,15 @@ class VisaApplicationCard extends StatelessWidget {
                     children: [
                       CircleAvatar(
                         radius: 3,
-                        backgroundColor: checkStatusColor("date"),
+                        backgroundColor: checkStatusColor(visaApps.status!),
                       ),
                       const SizedBox(width: 4),
                       Text(
-                        "Date",
+                        visaApps.status!,
                         style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.bold,
-                          color: checkStatusColor('completed'),
+                          color: checkStatusColor(visaApps.status!),
                         ),
                       )
                     ],
@@ -85,14 +88,14 @@ class VisaApplicationCard extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "Date",
+                                      visaApps.title ?? "Title",
                                       style: const TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
                                     Text(
-                                      "_subtitle",
+                                      visaApps.subTitle ?? "Subtitle",
                                       style: const TextStyle(
                                         fontSize: 12,
                                         fontWeight: FontWeight.bold,
@@ -109,7 +112,7 @@ class VisaApplicationCard extends StatelessWidget {
                             TableRow(
                               children: [
                                 Text(
-                                  "Date",
+                                  "Estimated",
                                   style: const TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
@@ -137,14 +140,14 @@ class VisaApplicationCard extends StatelessWidget {
                                     TableRow(
                                       children: [
                                         Text(
-                                          "Date",
+                                          "Used By",
                                           style: const TextStyle(
                                             fontSize: 10,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
                                         Text(
-                                          "Date",
+                                          "Length of Stay",
                                           style: const TextStyle(
                                             fontSize: 10,
                                             fontWeight: FontWeight.bold,
@@ -155,7 +158,7 @@ class VisaApplicationCard extends StatelessWidget {
                                   ],
                                 ),
                                 Text(
-                                  "Date",
+                                  "Created Date",
                                   style: const TextStyle(
                                     fontSize: 10,
                                     fontWeight: FontWeight.bold,
@@ -179,9 +182,7 @@ class VisaApplicationCard extends StatelessWidget {
                                         //   ),
                                         // ),
                                         Text(
-                                          DateFormat('dd MMM yy').format(
-                                              DateTime.now().add(
-                                                  const Duration(days: 90))),
+                                          "CreatedDate",
                                           style: const TextStyle(
                                             fontSize: 12,
                                             fontWeight: FontWeight.bold,
@@ -199,8 +200,7 @@ class VisaApplicationCard extends StatelessWidget {
                                   ],
                                 ),
                                 Text(
-                                  DateFormat('dd MMM yy')
-                                      .format(DateTime.now()),
+                                  "CreatedDate",
                                   style: const TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.bold,

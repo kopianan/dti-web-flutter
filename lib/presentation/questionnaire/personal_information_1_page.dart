@@ -1,25 +1,19 @@
-import 'dart:convert';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:country_code_picker/country_code_picker.dart';
-import 'package:dropdown_search/dropdown_search.dart';
-import 'package:dti_web/application/create_edit_application/create_edit_application_cubit.dart';
-import 'package:dti_web/application/questionnaire_cubit.dart';
+import 'package:dti_web/application/application_cubit.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
 import 'package:dti_web/domain/core/country_nationality.dart';
 import 'package:dti_web/domain/questionnaire/questionnaire_model.dart';
-import 'package:dti_web/injection.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:dti_web/utils/constant.dart';
+import 'package:dti_web/utils/date_converter.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_material_pickers/flutter_material_pickers.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:group_radio_button/group_radio_button.dart';
 import 'package:intl/intl.dart';
 
 class PersonalInformation1Page extends StatefulWidget {
@@ -44,7 +38,7 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CreateEditApplicationCubit, CreateEditApplicationState>(
+    return BlocBuilder<ApplicationCubit, ApplicationState>(
       builder: (context, state) {
         return Scaffold(
             body: Stack(
@@ -94,9 +88,12 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                                 Expanded(
                                   child: FormBuilderTextField(
                                     name: 'firstName',
-                                    initialValue: "",
+                                    initialValue: state.visaApplicationModel ==
+                                            null
+                                        ? ''
+                                        : state.visaApplicationModel!.firstName,
                                     enableSuggestions: false,
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                         hintText: "First Name",
                                         labelText: "First Name"),
                                     autocorrect: false,
@@ -112,9 +109,12 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                                 Expanded(
                                   child: FormBuilderTextField(
                                     name: 'lastName',
-                                    initialValue: "",
+                                    initialValue: state.visaApplicationModel ==
+                                            null
+                                        ? ''
+                                        : state.visaApplicationModel!.lastName,
                                     enableSuggestions: false,
-                                    decoration: InputDecoration(
+                                    decoration: const InputDecoration(
                                         hintText: "Last Name",
                                         labelText: "Last Name"),
                                     autocorrect: false,
@@ -131,7 +131,9 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
 
                               FormBuilderTextField(
                                 name: 'placeBirthDate',
-                                initialValue: "",
+                                initialValue: state.visaApplicationModel == null
+                                    ? ''
+                                    : state.visaApplicationModel!.placeOfBirth,
                                 enableSuggestions: false,
                                 decoration: InputDecoration(
                                     hintText: "Place Of Birth Date",
@@ -156,17 +158,20 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
 
                                   _formKey
                                       .currentState!.fields['dateOfBirthDate']!
-                                      .didChange(DateFormat('dd MMM yyyy')
+                                      .didChange(DateFormat('MM/dd/yyyy')
                                           .format(selectedDate!));
                                 },
                                 readOnly: true,
                                 name: 'dateOfBirthDate',
-                                initialValue: initialDateOfBirth,
+                                initialValue: state.visaApplicationModel == null
+                                    ? ''
+                                    : DateConverter.convertDateDefault(state
+                                        .visaApplicationModel!.dateOfBirth),
                                 validator: FormBuilderValidators.required(
                                     errorText: "Date can not be empty"),
                                 autovalidateMode:
                                     AutovalidateMode.onUserInteraction,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   labelText: "Date Of Birth Date",
                                   hintText: "Date Of Birth Date",
                                 ),
@@ -174,8 +179,15 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                               // //Date of Birth
                               20.verticalSpace,
                               FormBuilderRadioGroup(
-                                  initialValue: 'male',
-                                  decoration: InputDecoration(
+                                  initialValue: state.visaApplicationModel ==
+                                          null
+                                      ? ''
+                                      : state.visaApplicationModel!.gender ==
+                                              null
+                                          ? 'male'
+                                          : state.visaApplicationModel!.gender!
+                                              .toLowerCase(),
+                                  decoration: const InputDecoration(
                                       labelText: "Gender",
                                       border: UnderlineInputBorder(
                                           borderSide: BorderSide.none)),
@@ -183,7 +195,7 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                                   validator: FormBuilderValidators.required(),
                                   autovalidateMode:
                                       AutovalidateMode.onUserInteraction,
-                                  options: [
+                                  options: const [
                                     FormBuilderFieldOption(
                                       value: 'male',
                                       child: Text("Male"),
@@ -205,6 +217,9 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                                   items: Constant.getCountries(),
                                   selectedItem: Constant.getCountries().first,
                                   onChanged: (value) {
+                                    context
+                                        .read<ApplicationCubit>()
+                                        .updateNationality(value.name);
                                     _formKey
                                         .currentState!.fields['nationality']!
                                         .didChange(value.name.toString());
@@ -212,10 +227,14 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                                 ),
                                 readOnly: true,
                                 name: 'nationality',
+                                initialValue: state.visaApplicationModel == null
+                                    ? ''
+                                    : state.visaApplicationModel!.nationality ??
+                                        '',
                                 validator: FormBuilderValidators.required(),
                                 autovalidateMode:
                                     AutovalidateMode.onUserInteraction,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   labelText: "Nationality",
                                   hintText: "Nationality",
                                   fillColor: Colors.white70,
@@ -226,6 +245,10 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                               FormBuilderDropdown(
                                 name: 'relation',
                                 validator: FormBuilderValidators.required(),
+                                initialValue: state.visaApplicationModel == null
+                                    ? ''
+                                    : state.visaApplicationModel!
+                                        .relationshipStatus,
                                 autovalidateMode:
                                     AutovalidateMode.onUserInteraction,
                                 items:
@@ -237,7 +260,7 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                                           ),
                                         )
                                         .toList(),
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                     labelText: "Relation",
                                     hintStyle:
                                         const TextStyle(color: Colors.grey),
@@ -248,6 +271,11 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                               //Mobile Number
                               FormBuilderTextField(
                                 name: 'MobileNumberField',
+                                initialValue: state.visaApplicationModel == null
+                                    ? ''
+                                    : state.visaApplicationModel!
+                                            .mobileNumber ??
+                                        '',
                                 enableSuggestions: false,
                                 autocorrect: false,
                                 enabled: true,
@@ -257,8 +285,18 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                                 //     AutovalidateMode.onUserInteraction,
                                 decoration: InputDecoration(
                                   prefixIcon: CountryCodePicker(
-                                    onChanged: (value) {},
-                                    boxDecoration: BoxDecoration(
+                                    initialSelection:
+                                        state.visaApplicationModel == null
+                                            ? "US"
+                                            : state.visaApplicationModel!
+                                                    .mobileCountryCode ??
+                                                "US",
+                                    onChanged: (value) {
+                                      context
+                                          .read<ApplicationCubit>()
+                                          .updatePhoneDialCode(value);
+                                    },
+                                    boxDecoration: const BoxDecoration(
                                         border: Border(
                                             bottom: BorderSide(
                                                 width: 1,
@@ -279,16 +317,20 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                               20.verticalSpace,
 
                               FormBuilderRadioGroup(
-                                initialValue: false,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                     labelText:
                                         "Have you been deported from Indonesia before ?"),
                                 name: 'deported',
                                 validator: FormBuilderValidators.required(),
+                                initialValue: state.visaApplicationModel == null
+                                    ? false
+                                    : state.visaApplicationModel!
+                                            .deportedFlag ??
+                                        false,
                                 autovalidateMode:
                                     AutovalidateMode.onUserInteraction,
                                 separator: 10.horizontalSpace,
-                                options: [
+                                options: const [
                                   FormBuilderFieldOption(
                                     value: false,
                                     child: Text("NO"),
@@ -303,7 +345,7 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                               20.verticalSpace,
 
                               FormBuilderRadioGroup(
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   labelText:
                                       "Have you been overstayed in Indonesia before ?",
                                 ),
@@ -311,9 +353,13 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                                 validator: FormBuilderValidators.required(),
                                 autovalidateMode:
                                     AutovalidateMode.onUserInteraction,
-                                initialValue: false,
-                                separator: 10.verticalSpace,
-                                options: [
+                                initialValue: state.visaApplicationModel == null
+                                    ? false
+                                    : state.visaApplicationModel!
+                                            .overstayedFlag ??
+                                        false,
+                                separator: 10.horizontalSpace,
+                                options: const [
                                   FormBuilderFieldOption(
                                     value: false,
                                     child: Text('NO'),
@@ -330,7 +376,6 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                                 child: PrimaryButton(
                                   onClick: () async {
                                     await updateData(context);
-                                    print(state.visa);
                                   },
                                   label: "SUBMIT",
                                 ),
@@ -341,68 +386,6 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                       ),
                     )
                   ],
-                  // Expanded(
-                  //     child: Column(
-                  //   crossAxisAlignment: CrossAxisAlignment.start,
-                  //   children: [
-                  //     Row(
-                  //       children: [
-                  //         Expanded(
-                  //           child: TextFormField(
-                  //             decoration: InputDecoration(
-                  //                 hintText: "First Name", labelText: "First Name"),
-                  //           ),
-                  //         ),
-                  //         20.horizontalSpace,
-                  //         Expanded(
-                  //           child: TextFormField(
-                  //             decoration: InputDecoration(
-                  //                 hintText: "Last Name", labelText: "Last Name"),
-                  //           ),
-                  //         ),
-                  //       ],
-                  //     ),
-                  //     10.verticalSpace,
-                  //     TextFormField(
-                  //       decoration: InputDecoration(
-                  //           hintText: "Place Of Birth",
-                  //           labelText: "Place Of Birth"),
-                  //     ),
-                  //     10.verticalSpace,
-                  //     TextFormField(
-                  //       readOnly: true,
-                  //       onTap: () async {
-                  //         final nowDate = DateTime.now();
-                  //         await showDatePicker(
-                  //             context: context,
-                  //             initialDate: DateTime(nowDate.year - 10),
-                  //             firstDate: DateTime(1800),
-                  //             lastDate: nowDate);
-                  //       },
-                  //       decoration: InputDecoration(
-                  //           hintText: "Date Of Birth", labelText: "Date Of Birth"),
-                  //     ),
-                  //     10.verticalSpace,
-                  //     Text(
-                  //       "Gender",
-                  //       style: TextStyle(fontSize: 13.sp),
-                  //     ),
-                  //     5.verticalSpace,
-                  //     RadioGroup<String>.builder(
-                  //       groupValue: 'test',
-                  //       onChanged: (value) => setState(() {}),
-                  //       items: ["Female", "Male"],
-                  //       spacebetween: 20.w,
-                  //       direction: Axis.horizontal,
-                  //       horizontalAlignment: MainAxisAlignment.start,
-                  //       itemBuilder: (item) => RadioButtonBuilder(
-                  //         item,
-                  //       ),
-                  //     ),
-                  //   ],
-                  // )),
-                  // ],
-                  // ),
                 ))
           ],
         ));
@@ -414,17 +397,17 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
       final formData = _formKey.currentState!.value;
-      context.read<CreateEditApplicationCubit>().updatePersonalInformation1(
-          firstName: formData['firstName'],
-          lastName: formData['lastName'],
-          placeOfBirth: formData['placeBirthDate'],
-          dateOfBirth: formData['dateOfBirthDate'],
-          gender: formData['gender'],
-          nationality: formData['nationality'],
-          relation: formData['relation'],
-          phoneNumber: formData['MobileNumberField'],
-          haveDeported: formData['deported'],
-          haveOverstayed: formData['overstay']);
+      context.read<ApplicationCubit>().updatePersonalInformation1(
+            firstName: formData['firstName'],
+            lastName: formData['lastName'],
+            placeOfBirth: formData['placeBirthDate'],
+            dateOfBirth: formData['dateOfBirthDate'],
+            gender: formData['gender'],
+            relation: formData['relation'],
+            mobileNumber: formData['MobileNumberField'],
+            deportedFlag: formData['deported'],
+            overstayedFlag: formData['overstay'],
+          );
 
       AutoRouter.of(context).push(PersonalInformation2Route());
     }

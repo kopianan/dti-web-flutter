@@ -1,4 +1,4 @@
-import 'dart:html' as html;
+// import 'dart:html' as html;
 import 'dart:io';
 import 'package:dti_web/application/application_cubit.dart';
 
@@ -8,7 +8,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:image_picker_web/image_picker_web.dart';
+// import 'package:image_picker_web/image_picker_web.dart';
 
 class UploadDocumentPage extends StatefulWidget {
   static const String routeName = '/upload-document';
@@ -19,7 +19,7 @@ class UploadDocumentPage extends StatefulWidget {
 }
 
 class _UploadDocumentPageState extends State<UploadDocumentPage> {
-  MediaInfo? selectedImage;
+  // MediaInfo? selectedImage;
   int? selectedIndex;
   @override
   Widget build(BuildContext context) {
@@ -114,17 +114,17 @@ class _UploadDocumentPageState extends State<UploadDocumentPage> {
 
                                               return Column(
                                                 children: [
-                                                  PhotoImageWidget(
-                                                    shownImage: selectedImage ==
-                                                            null
-                                                        ? null
-                                                        : selectedImage!.data,
-                                                    onAddPhoto: (p0) {
-                                                      setState(() {
-                                                        selectedImage = p0;
-                                                      });
-                                                    },
-                                                  ),
+                                                  // PhotoImageWidget(
+                                                  //   shownImage: selectedImage ==
+                                                  //           null
+                                                  //       ? null
+                                                  //       : selectedImage!.data,
+                                                  //   onAddPhoto: (p0) {
+                                                  //     setState(() {
+                                                  //       selectedImage = p0;
+                                                  //     });
+                                                  //   },
+                                                  // ),
                                                   20.verticalSpace
                                                 ],
                                               );
@@ -147,71 +147,71 @@ class _UploadDocumentPageState extends State<UploadDocumentPage> {
   }
 }
 
-class PhotoImageWidget extends StatelessWidget {
-  const PhotoImageWidget(
-      {super.key, required this.onAddPhoto, this.shownImage});
+// class PhotoImageWidget extends StatelessWidget {
+//   const PhotoImageWidget(
+//       {super.key, required this.onAddPhoto, this.shownImage});
 
-  final Function(MediaInfo?) onAddPhoto;
-  final Uint8List? shownImage;
+//   final Function(MediaInfo?) onAddPhoto;
+//   final Uint8List? shownImage;
 
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () async {
-        var file = await ImageFunction.pickImageFile();
+//   @override
+//   Widget build(BuildContext context) {
+//     return InkWell(
+//       onTap: () async {
+//         var file = await ImageFunction.pickImageFile();
 
-        if (file != null) {
-          return onAddPhoto(file);
-        }
-        return onAddPhoto(null);
-      },
-      child: Container(
-        width: ScreenUtil().screenWidth / 4,
-        child: (shownImage == null)
-            ? Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset('assets/icons/upload_image.png'),
-                  10.horizontalSpace,
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Upload Passport Cover",
-                        style: TextStyle(
-                            fontSize: 14.sp,
-                            color: AppColor.primaryColor,
-                            fontWeight: FontWeight.w600),
-                      ),
-                      5.verticalSpace,
-                      Text(
-                        "Drop your file here or browse",
-                        style: TextStyle(
-                            color: AppColor.primaryColor,
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w100),
-                      ),
-                    ],
-                  )
-                ],
-              )
-            : Stack(
-                children: [
-                  Image.memory(shownImage!),
-                  Positioned(
-                    right: 0,
-                    top: 0,
-                    child: IconButton(
-                      onPressed: () {},
-                      icon: Icon(Icons.delete),
-                    ),
-                  )
-                ],
-              ),
-        decoration: BoxDecoration(
-            border: Border.all(color: Color(0xff15247C)),
-            borderRadius: BorderRadius.circular(10)),
-      ),
-    );
-  }
-}
+//         if (file != null) {
+//           return onAddPhoto(file);
+//         }
+//         return onAddPhoto(null);
+//       },
+//       child: Container(
+//         width: ScreenUtil().screenWidth / 4,
+//         child: (shownImage == null)
+//             ? Row(
+//                 mainAxisAlignment: MainAxisAlignment.center,
+//                 children: [
+//                   Image.asset('assets/icons/upload_image.png'),
+//                   10.horizontalSpace,
+//                   Column(
+//                     crossAxisAlignment: CrossAxisAlignment.start,
+//                     children: [
+//                       Text(
+//                         "Upload Passport Cover",
+//                         style: TextStyle(
+//                             fontSize: 14.sp,
+//                             color: AppColor.primaryColor,
+//                             fontWeight: FontWeight.w600),
+//                       ),
+//                       5.verticalSpace,
+//                       Text(
+//                         "Drop your file here or browse",
+//                         style: TextStyle(
+//                             color: AppColor.primaryColor,
+//                             fontSize: 14.sp,
+//                             fontWeight: FontWeight.w100),
+//                       ),
+//                     ],
+//                   )
+//                 ],
+//               )
+//             : Stack(
+//                 children: [
+//                   Image.memory(shownImage!),
+//                   Positioned(
+//                     right: 0,
+//                     top: 0,
+//                     child: IconButton(
+//                       onPressed: () {},
+//                       icon: Icon(Icons.delete),
+//                     ),
+//                   )
+//                 ],
+//               ),
+//         decoration: BoxDecoration(
+//             border: Border.all(color: Color(0xff15247C)),
+//             borderRadius: BorderRadius.circular(10)),
+//       ),
+//     );
+//   }
+// }

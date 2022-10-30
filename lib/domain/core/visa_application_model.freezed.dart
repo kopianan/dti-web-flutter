@@ -933,7 +933,8 @@ class __$$_VisaApplicationModelCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(explicitToJson: true)
 class _$_VisaApplicationModel implements _VisaApplicationModel {
   _$_VisaApplicationModel(
       {@JsonKey(name: 'rejectionNote')

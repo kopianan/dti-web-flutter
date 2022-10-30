@@ -7,6 +7,7 @@ part 'visa_application_model.g.dart';
 
 @freezed
 class VisaApplicationModel with _$VisaApplicationModel {
+  @JsonSerializable(explicitToJson: true)
   factory VisaApplicationModel({
     @JsonKey(name: 'rejectionNote') String? rejectionNote,
     @JsonKey(name: 'entry') String? entry,

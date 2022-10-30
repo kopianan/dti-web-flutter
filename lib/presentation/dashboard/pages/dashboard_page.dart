@@ -118,10 +118,15 @@ class _DashboardPageState extends State<DashboardPage> {
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(right: 20.w),
-                        child: VisaApplicationCard(),
-                      ),
+                      InkWell(
+                          onTap: () {
+                            context.router.push(ApplicationCardRoute());
+                          },
+                          child: Text("See All")),
+                      // Padding(
+                      //   padding: EdgeInsets.only(right: 20.w),
+                      //   child: VisaApplicationCard(),
+                      // ),
                       20.verticalSpace,
                     ],
                   ),

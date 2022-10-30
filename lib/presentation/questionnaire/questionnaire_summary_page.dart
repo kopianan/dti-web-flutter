@@ -49,12 +49,12 @@ class _QuestionnaireSummaryPageState extends State<QuestionnaireSummaryPage> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<QuestionnaireCubit, QuestionnaireState>(
-      builder: (context, state) {
+      builder: (context, qState) {
         return Scaffold(
             floatingActionButton: FloatingActionButton(onPressed: () {
-              print(state.listQuestionnaire);
-              print(state.importantNotes!);
-              print(state.description!);
+              print(qState.listQuestionnaire);
+              print(qState.importantNotes!);
+              print(qState.description!);
             }),
             body: Stack(
               children: [
@@ -102,7 +102,7 @@ class _QuestionnaireSummaryPageState extends State<QuestionnaireSummaryPage> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisSize: MainAxisSize.min,
-                            children: state.description!
+                            children: qState.description!
                                 .map((e) => Text("- " + e))
                                 .toList(),
                           ),
@@ -143,24 +143,41 @@ class _QuestionnaireSummaryPageState extends State<QuestionnaireSummaryPage> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisSize: MainAxisSize.min,
-                            children: state.importantNotes!
+                            children: qState.importantNotes!
                                 .map((e) => Text("- " + e))
                                 .toList(),
                           ),
                         ],
                       ),
                       20.verticalSpace,
-                      SizedBox(
-                        width: double.infinity,
-                        child: PrimaryButton(
-                            label: "Next",
-                            onClick: () {
-                              context
-                                  .read<ApplicationCubit>()
-                                  .updateData(listData);
-                              AutoRouter.of(context)
-                                  .push(PersonalInformation1Route());
-                            }),
+                      BlocConsumer<ApplicationCubit, ApplicationState>(
+                        listener: ((context, state) {
+                          print(state.onSuccess); 
+                          if (state.onSuccess != null) {
+                            //GO to next page
+                            AutoRouter.of(context)
+                                .push(PersonalInformation1Route());
+                          }
+                        }),
+                        builder: (context, aState) {
+                          return SizedBox(
+                            width: double.infinity,
+                            child: aState.onLoading
+                                ? PrimaryButton(
+                                    onClick: () {}, label: "Loading . . .")
+                                : PrimaryButton(
+                                    label: "Next",
+                                    onClick: () {
+                                      context
+                                          .read<ApplicationCubit>()
+                                          .updateData(listData);
+                                      context
+                                          .read<ApplicationCubit>()
+                                          .createUserApplication(
+                                              qState.listQuestionnaire!.last);
+                                    }),
+                          );
+                        },
                       )
                     ],
                   ),

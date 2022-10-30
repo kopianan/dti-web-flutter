@@ -29,6 +29,23 @@ class _$AppRouter extends RootStackRouter {
         child: const DashboardPage(),
       );
     },
+    ApplicationDetailRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const ApplicationDetailPage(),
+      );
+    },
+    UserDomicileRoute.name: (routeData) {
+      final args = routeData.argsAs<UserDomicileRouteArgs>(
+          orElse: () => const UserDomicileRouteArgs());
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: UserDomicilePage(
+          key: args.key,
+          question: args.question,
+        ),
+      );
+    },
     PersonalInformation2Route.name: (routeData) {
       final args = routeData.argsAs<PersonalInformation2RouteArgs>(
           orElse: () => const PersonalInformation2RouteArgs());
@@ -49,6 +66,12 @@ class _$AppRouter extends RootStackRouter {
           key: args.key,
           question: args.question,
         ),
+      );
+    },
+    ApplicationCardRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const ApplicationCardPage(),
       );
     },
     PersonalInformation3Route.name: (routeData) {
@@ -153,7 +176,15 @@ class _$AppRouter extends RootStackRouter {
         ),
         RouteConfig(
           DashboardRoute.name,
-          path: '/dashboard-page',
+          path: '/',
+        ),
+        RouteConfig(
+          ApplicationDetailRoute.name,
+          path: '/application-detail',
+        ),
+        RouteConfig(
+          UserDomicileRoute.name,
+          path: '/user-domicile',
         ),
         RouteConfig(
           PersonalInformation2Route.name,
@@ -164,12 +195,16 @@ class _$AppRouter extends RootStackRouter {
           path: '/personal-information4',
         ),
         RouteConfig(
+          ApplicationCardRoute.name,
+          path: '/application-card',
+        ),
+        RouteConfig(
           PersonalInformation3Route.name,
           path: '/personal-information3',
         ),
         RouteConfig(
           PersonalInformation1Route.name,
-          path: '/',
+          path: '/personal-information1-page',
         ),
         RouteConfig(
           SignInRoute.name,
@@ -232,10 +267,56 @@ class DashboardRoute extends PageRouteInfo<void> {
   const DashboardRoute()
       : super(
           DashboardRoute.name,
-          path: '/dashboard-page',
+          path: '/',
         );
 
   static const String name = 'DashboardRoute';
+}
+
+/// generated route for
+/// [ApplicationDetailPage]
+class ApplicationDetailRoute extends PageRouteInfo<void> {
+  const ApplicationDetailRoute()
+      : super(
+          ApplicationDetailRoute.name,
+          path: '/application-detail',
+        );
+
+  static const String name = 'ApplicationDetailRoute';
+}
+
+/// generated route for
+/// [UserDomicilePage]
+class UserDomicileRoute extends PageRouteInfo<UserDomicileRouteArgs> {
+  UserDomicileRoute({
+    Key? key,
+    List<QuestionnaireModel>? question,
+  }) : super(
+          UserDomicileRoute.name,
+          path: '/user-domicile',
+          args: UserDomicileRouteArgs(
+            key: key,
+            question: question,
+          ),
+        );
+
+  static const String name = 'UserDomicileRoute';
+}
+
+class UserDomicileRouteArgs {
+  const UserDomicileRouteArgs({
+    this.key,
+    this.question,
+  });
+
+  final Key? key;
+
+  final List<QuestionnaireModel>? question;
+
+  @override
+  String toString() {
+    return 'UserDomicileRouteArgs{key: $key, question: $question}';
+  }
 }
 
 /// generated route for
@@ -309,6 +390,18 @@ class PersonalInformation4RouteArgs {
 }
 
 /// generated route for
+/// [ApplicationCardPage]
+class ApplicationCardRoute extends PageRouteInfo<void> {
+  const ApplicationCardRoute()
+      : super(
+          ApplicationCardRoute.name,
+          path: '/application-card',
+        );
+
+  static const String name = 'ApplicationCardRoute';
+}
+
+/// generated route for
 /// [PersonalInformation3Page]
 class PersonalInformation3Route
     extends PageRouteInfo<PersonalInformation3RouteArgs> {
@@ -352,7 +445,7 @@ class PersonalInformation1Route
     List<QuestionnaireModel>? question,
   }) : super(
           PersonalInformation1Route.name,
-          path: '/',
+          path: '/personal-information1-page',
           args: PersonalInformation1RouteArgs(
             key: key,
             question: question,

@@ -1,7 +1,8 @@
+import 'package:dti_web/application/app_list/app_list_cubit.dart';
 import 'package:dti_web/application/application_cubit.dart';
 import 'package:dti_web/application/auth/auth_cubit.dart';
-import 'package:dti_web/application/create_edit_application/create_edit_application_cubit.dart';
 import 'package:dti_web/application/questionnaire_cubit.dart';
+import 'package:dti_web/application/startup/startup_cubit.dart';
 import 'package:dti_web/injection.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
@@ -25,11 +26,13 @@ class AppWidget extends StatelessWidget {
       builder: (context, child) => MultiBlocProvider(
         providers: [
           BlocProvider(
+            create: (context) => getIt<StartupCubit>()..setupStartupData(),
+          ),
+          BlocProvider(
             create: (context) => getIt<AuthCubit>(),
           ),
           BlocProvider(
-            lazy: true,
-            create: (context) => getIt<CreateEditApplicationCubit>(),
+            create: (context) => getIt<AppListCubit>(),
           ),
           BlocProvider(
             create: (context) => getIt<ApplicationCubit>(),

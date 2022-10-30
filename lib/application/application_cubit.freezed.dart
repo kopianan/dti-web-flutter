@@ -16,7 +16,12 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ApplicationState {
+  bool get onLoading => throw _privateConstructorUsedError;
+  String? get onError => throw _privateConstructorUsedError;
+  String? get onSuccess => throw _privateConstructorUsedError;
   List<DocumentDataModel>? get documnets => throw _privateConstructorUsedError;
+  VisaApplicationModel? get visaApplicationModel =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ApplicationStateCopyWith<ApplicationState> get copyWith =>
@@ -28,7 +33,14 @@ abstract class $ApplicationStateCopyWith<$Res> {
   factory $ApplicationStateCopyWith(
           ApplicationState value, $Res Function(ApplicationState) then) =
       _$ApplicationStateCopyWithImpl<$Res>;
-  $Res call({List<DocumentDataModel>? documnets});
+  $Res call(
+      {bool onLoading,
+      String? onError,
+      String? onSuccess,
+      List<DocumentDataModel>? documnets,
+      VisaApplicationModel? visaApplicationModel});
+
+  $VisaApplicationModelCopyWith<$Res>? get visaApplicationModel;
 }
 
 /// @nodoc
@@ -42,14 +54,46 @@ class _$ApplicationStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? onLoading = freezed,
+    Object? onError = freezed,
+    Object? onSuccess = freezed,
     Object? documnets = freezed,
+    Object? visaApplicationModel = freezed,
   }) {
     return _then(_value.copyWith(
+      onLoading: onLoading == freezed
+          ? _value.onLoading
+          : onLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      onError: onError == freezed
+          ? _value.onError
+          : onError // ignore: cast_nullable_to_non_nullable
+              as String?,
+      onSuccess: onSuccess == freezed
+          ? _value.onSuccess
+          : onSuccess // ignore: cast_nullable_to_non_nullable
+              as String?,
       documnets: documnets == freezed
           ? _value.documnets
           : documnets // ignore: cast_nullable_to_non_nullable
               as List<DocumentDataModel>?,
+      visaApplicationModel: visaApplicationModel == freezed
+          ? _value.visaApplicationModel
+          : visaApplicationModel // ignore: cast_nullable_to_non_nullable
+              as VisaApplicationModel?,
     ));
+  }
+
+  @override
+  $VisaApplicationModelCopyWith<$Res>? get visaApplicationModel {
+    if (_value.visaApplicationModel == null) {
+      return null;
+    }
+
+    return $VisaApplicationModelCopyWith<$Res>(_value.visaApplicationModel!,
+        (value) {
+      return _then(_value.copyWith(visaApplicationModel: value));
+    });
   }
 }
 
@@ -60,7 +104,15 @@ abstract class _$$_ApplicationStateCopyWith<$Res>
           _$_ApplicationState value, $Res Function(_$_ApplicationState) then) =
       __$$_ApplicationStateCopyWithImpl<$Res>;
   @override
-  $Res call({List<DocumentDataModel>? documnets});
+  $Res call(
+      {bool onLoading,
+      String? onError,
+      String? onSuccess,
+      List<DocumentDataModel>? documnets,
+      VisaApplicationModel? visaApplicationModel});
+
+  @override
+  $VisaApplicationModelCopyWith<$Res>? get visaApplicationModel;
 }
 
 /// @nodoc
@@ -76,13 +128,33 @@ class __$$_ApplicationStateCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? onLoading = freezed,
+    Object? onError = freezed,
+    Object? onSuccess = freezed,
     Object? documnets = freezed,
+    Object? visaApplicationModel = freezed,
   }) {
     return _then(_$_ApplicationState(
+      onLoading: onLoading == freezed
+          ? _value.onLoading
+          : onLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      onError: onError == freezed
+          ? _value.onError
+          : onError // ignore: cast_nullable_to_non_nullable
+              as String?,
+      onSuccess: onSuccess == freezed
+          ? _value.onSuccess
+          : onSuccess // ignore: cast_nullable_to_non_nullable
+              as String?,
       documnets: documnets == freezed
           ? _value._documnets
           : documnets // ignore: cast_nullable_to_non_nullable
               as List<DocumentDataModel>?,
+      visaApplicationModel: visaApplicationModel == freezed
+          ? _value.visaApplicationModel
+          : visaApplicationModel // ignore: cast_nullable_to_non_nullable
+              as VisaApplicationModel?,
     ));
   }
 }
@@ -90,9 +162,21 @@ class __$$_ApplicationStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ApplicationState implements _ApplicationState {
-  const _$_ApplicationState({final List<DocumentDataModel>? documnets})
+  const _$_ApplicationState(
+      {this.onLoading = false,
+      this.onError,
+      this.onSuccess,
+      final List<DocumentDataModel>? documnets,
+      this.visaApplicationModel})
       : _documnets = documnets;
 
+  @override
+  @JsonKey()
+  final bool onLoading;
+  @override
+  final String? onError;
+  @override
+  final String? onSuccess;
   final List<DocumentDataModel>? _documnets;
   @override
   List<DocumentDataModel>? get documnets {
@@ -103,8 +187,11 @@ class _$_ApplicationState implements _ApplicationState {
   }
 
   @override
+  final VisaApplicationModel? visaApplicationModel;
+
+  @override
   String toString() {
-    return 'ApplicationState(documnets: $documnets)';
+    return 'ApplicationState(onLoading: $onLoading, onError: $onError, onSuccess: $onSuccess, documnets: $documnets, visaApplicationModel: $visaApplicationModel)';
   }
 
   @override
@@ -112,13 +199,23 @@ class _$_ApplicationState implements _ApplicationState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ApplicationState &&
+            const DeepCollectionEquality().equals(other.onLoading, onLoading) &&
+            const DeepCollectionEquality().equals(other.onError, onError) &&
+            const DeepCollectionEquality().equals(other.onSuccess, onSuccess) &&
             const DeepCollectionEquality()
-                .equals(other._documnets, _documnets));
+                .equals(other._documnets, _documnets) &&
+            const DeepCollectionEquality()
+                .equals(other.visaApplicationModel, visaApplicationModel));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_documnets));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(onLoading),
+      const DeepCollectionEquality().hash(onError),
+      const DeepCollectionEquality().hash(onSuccess),
+      const DeepCollectionEquality().hash(_documnets),
+      const DeepCollectionEquality().hash(visaApplicationModel));
 
   @JsonKey(ignore: true)
   @override
@@ -127,11 +224,23 @@ class _$_ApplicationState implements _ApplicationState {
 }
 
 abstract class _ApplicationState implements ApplicationState {
-  const factory _ApplicationState({final List<DocumentDataModel>? documnets}) =
-      _$_ApplicationState;
+  const factory _ApplicationState(
+      {final bool onLoading,
+      final String? onError,
+      final String? onSuccess,
+      final List<DocumentDataModel>? documnets,
+      final VisaApplicationModel? visaApplicationModel}) = _$_ApplicationState;
 
   @override
+  bool get onLoading;
+  @override
+  String? get onError;
+  @override
+  String? get onSuccess;
+  @override
   List<DocumentDataModel>? get documnets;
+  @override
+  VisaApplicationModel? get visaApplicationModel;
   @override
   @JsonKey(ignore: true)
   _$$_ApplicationStateCopyWith<_$_ApplicationState> get copyWith =>
