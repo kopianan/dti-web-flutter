@@ -3,11 +3,8 @@ import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:country_code_picker/country_code_picker.dart';
-import 'package:dti_web/core/widgets/application_card.dart';
-import 'package:dti_web/domain/application/i_application.dart';
 import 'package:dti_web/domain/core/document_data_model.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
-import 'package:dti_web/domain/questionnaire/questionnaire_model.dart';
 import 'package:dti_web/domain/questionnaire/raw_data.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -18,14 +15,29 @@ part 'application_cubit.freezed.dart';
 
 @injectable
 class ApplicationCubit extends Cubit<ApplicationState> {
-  ApplicationCubit(this.iApplication) : super(ApplicationState.initial());
-
-  final IApplication iApplication;
+  ApplicationCubit() : super(ApplicationState.initial());
 
   void setupApplication(VisaApplicationModel visa) {
-    emit(state.copyWith(
-      visaApplicationModel: visa,
-    ));
+    //SETUP DOCUMENTS
+    final docs = visa.documents!.split(',');
+    final documents = (documentRaw['document_list'] as List);
+    final documentModel =
+        documents.map((e) => DocumentDataModel.fromJson(e)).toList();
+    List<DocumentDataModel> modelsDocument = [];
+
+    for (var element in docs) {
+      final selected =
+          documentModel.firstWhere((single) => single.id == element.trim());
+      modelsDocument.add(selected);
+    }
+
+    emit(state.copyWith(visaApplicationModel: visa, documnets: modelsDocument));
+  }
+
+  void updateGuarantor(bool dtiGuarantor) {
+    final newVisa =
+        state.visaApplicationModel!.copyWith(guarantorDTI: dtiGuarantor);
+    emit(state.copyWith(visaApplicationModel: newVisa));
   }
 
   void updateData(List<DocumentDataModel> documents) async {
@@ -42,44 +54,6 @@ class ApplicationCubit extends Cubit<ApplicationState> {
     //  state.documnets![ state.documnets!.indexWhere((element) => element.id == document.id)] = selectedData;
 
     emit(state);
-  }
-
-  void createUserApplication(QuestionnaireModel lastQuestionnaire) async {
-    log(lastQuestionnaire.results.toString(), name: "RESULTS");
-    final result = lastQuestionnaire.results;
-    final newVisa = VisaApplicationModel(
-        title: result!.visaTitle,
-        subTitle: result.visaSubTitle,
-        entry: result.visaEntry,
-        price: 0,
-        currency: 'Rp',
-        documents: result.documents,
-        status: 'Draft',
-        inIndonesia: true);
-    log(newVisa.toJson().toString());
-    emit(state.copyWith(
-      onLoading: true,
-      visaApplicationModel: newVisa,
-    ));
-    try {
-      final data = await iApplication.createNewApplicationDocument(newVisa);
-      data.fold(
-        (l) {
-          emit(state.copyWith(onLoading: false, onError: l));
-        },
-        (r) {
-          print(r);
-          emit(state.copyWith(onLoading: false, onError: null, onSuccess: r));
-        },
-      );
-    } on Exception catch (e) {
-      emit(state.copyWith(
-        onLoading: false,
-        onError: e.toString(),
-      ));
-    }
-
-    //update result
   }
 
   void updateNationality(String nationality) {
@@ -102,6 +76,8 @@ class ApplicationCubit extends Cubit<ApplicationState> {
     required String gender,
     required String relation,
     required String mobileNumber,
+    String? mobileCountryCode,
+    String? mobileDialCode,
     required bool deportedFlag,
     required bool overstayedFlag,
   }) async {
@@ -114,7 +90,9 @@ class ApplicationCubit extends Cubit<ApplicationState> {
         relationshipStatus: relation,
         deportedFlag: deportedFlag,
         mobileNumber: mobileNumber,
-        overstayedFlag: overstayedFlag);
+        overstayedFlag: overstayedFlag,
+        mobileDialCode: mobileDialCode,
+        mobileCountryCode: mobileCountryCode);
     emit(state.copyWith(
       visaApplicationModel: visa,
     ));
@@ -150,26 +128,11 @@ class ApplicationCubit extends Cubit<ApplicationState> {
   }
 
   void updateUserDomicile(bool inIndonesia, String city) {
-    final visa = state.visaApplicationModel!
-        .copyWith(inIndonesia: inIndonesia, cityDomicile: city);
+    final visa = state.visaApplicationModel!.copyWith(
+      inIndonesia: inIndonesia,
+      cityDomicile: city,
+    );
 
     emit(state.copyWith(visaApplicationModel: visa));
-  }
-
-  void uploadParticularData() async {
-    final visa = state.visaApplicationModel!;
-    log(visa.toJson().toString());
-    //remove null
-    final jsonData = visa.toJson();
-    jsonData.removeWhere((key, value) => value == null);
-    log(jsonData.toString());
-
-    // final result = await iApplication
-    //     .updateApplicationDocument(state.visaApplicationModel!);
-
-    // result.fold(
-    //   (l) => print(l),
-    //   (r) => print(r),
-    // );
   }
 }

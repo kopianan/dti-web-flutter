@@ -6,7 +6,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized(); 
   initializeDateFormatting();
 
   await GetStorage.init();

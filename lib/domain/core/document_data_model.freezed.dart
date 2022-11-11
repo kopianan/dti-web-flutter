@@ -21,7 +21,7 @@ DocumentDataModel _$DocumentDataModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$DocumentDataModel {
   String? get header => throw _privateConstructorUsedError;
-  List<String>? get imageList => throw _privateConstructorUsedError;
+  List<String?>? get imageList => throw _privateConstructorUsedError;
   bool? get isSubmited => throw _privateConstructorUsedError;
   String? get previewImage => throw _privateConstructorUsedError;
   String? get body => throw _privateConstructorUsedError;
@@ -42,7 +42,7 @@ abstract class $DocumentDataModelCopyWith<$Res> {
       _$DocumentDataModelCopyWithImpl<$Res>;
   $Res call(
       {String? header,
-      List<String>? imageList,
+      List<String?>? imageList,
       bool? isSubmited,
       String? previewImage,
       String? body,
@@ -79,7 +79,7 @@ class _$DocumentDataModelCopyWithImpl<$Res>
       imageList: imageList == freezed
           ? _value.imageList
           : imageList // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<String?>?,
       isSubmited: isSubmited == freezed
           ? _value.isSubmited
           : isSubmited // ignore: cast_nullable_to_non_nullable
@@ -117,7 +117,7 @@ abstract class _$$_DocumentDataModelCopyWith<$Res>
   @override
   $Res call(
       {String? header,
-      List<String>? imageList,
+      List<String?>? imageList,
       bool? isSubmited,
       String? previewImage,
       String? body,
@@ -154,9 +154,9 @@ class __$$_DocumentDataModelCopyWithImpl<$Res>
           : header // ignore: cast_nullable_to_non_nullable
               as String?,
       imageList: imageList == freezed
-          ? _value._imageList
+          ? _value.imageList
           : imageList // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+              as List<String?>?,
       isSubmited: isSubmited == freezed
           ? _value.isSubmited
           : isSubmited // ignore: cast_nullable_to_non_nullable
@@ -190,29 +190,21 @@ class __$$_DocumentDataModelCopyWithImpl<$Res>
 class _$_DocumentDataModel implements _DocumentDataModel {
   _$_DocumentDataModel(
       {this.header,
-      final List<String>? imageList,
+      this.imageList,
       this.isSubmited,
       this.previewImage,
       this.body,
       this.id,
       this.attachment,
-      this.numberOfDocs})
-      : _imageList = imageList;
+      this.numberOfDocs});
 
   factory _$_DocumentDataModel.fromJson(Map<String, dynamic> json) =>
       _$$_DocumentDataModelFromJson(json);
 
   @override
   final String? header;
-  final List<String>? _imageList;
   @override
-  List<String>? get imageList {
-    final value = _imageList;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
+  final List<String?>? imageList;
   @override
   final bool? isSubmited;
   @override
@@ -237,8 +229,7 @@ class _$_DocumentDataModel implements _DocumentDataModel {
         (other.runtimeType == runtimeType &&
             other is _$_DocumentDataModel &&
             const DeepCollectionEquality().equals(other.header, header) &&
-            const DeepCollectionEquality()
-                .equals(other._imageList, _imageList) &&
+            const DeepCollectionEquality().equals(other.imageList, imageList) &&
             const DeepCollectionEquality()
                 .equals(other.isSubmited, isSubmited) &&
             const DeepCollectionEquality()
@@ -256,7 +247,7 @@ class _$_DocumentDataModel implements _DocumentDataModel {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(header),
-      const DeepCollectionEquality().hash(_imageList),
+      const DeepCollectionEquality().hash(imageList),
       const DeepCollectionEquality().hash(isSubmited),
       const DeepCollectionEquality().hash(previewImage),
       const DeepCollectionEquality().hash(body),
@@ -281,7 +272,7 @@ class _$_DocumentDataModel implements _DocumentDataModel {
 abstract class _DocumentDataModel implements DocumentDataModel {
   factory _DocumentDataModel(
       {final String? header,
-      final List<String>? imageList,
+      final List<String?>? imageList,
       final bool? isSubmited,
       final String? previewImage,
       final String? body,
@@ -295,7 +286,7 @@ abstract class _DocumentDataModel implements DocumentDataModel {
   @override
   String? get header;
   @override
-  List<String>? get imageList;
+  List<String?>? get imageList;
   @override
   bool? get isSubmited;
   @override

@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:dti_web/core/storage.dart';
 import 'package:dti_web/domain/app_list/i_app_list.dart';
 import 'package:dti_web/domain/application/i_application.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
@@ -9,17 +10,17 @@ import 'package:injectable/injectable.dart';
 @LazySingleton(as: IAppList)
 class AppListRepository extends IAppList {
   Dio? dio;
-
+  final storage = Storage();
   @override
   Future<Either<String, List<VisaApplicationModel>>>
       getUserVisaApplication() async {
     dio = Dio();
     final result = await dio!.get('${Constant.baseUrl}/applicationsByUser',
         options: Options(
-          headers: {'Authorization': 'Bearer ${Constant.header}'},
+          headers: {'Authorization': 'Bearer ${storage.getToken()}'},
         ));
     print(result);
-    final listData = (result.data as List)
+    final listData = (result.data['data'] as List)
         .map((e) => VisaApplicationModel.fromJson(e))
         .toList();
     return Right(listData);

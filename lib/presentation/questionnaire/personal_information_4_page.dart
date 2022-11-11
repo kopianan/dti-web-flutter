@@ -39,8 +39,8 @@ class _PersonalInformation4PageState extends State<PersonalInformation4Page> {
       Container(
           width: ScreenUtil().screenWidth,
           height: ScreenUtil().screenHeight,
-          child: Image.network(
-            'https://picsum.photos/200/300',
+          child: Image.asset(
+            'assets/images/bg/bg_visa4.png',
             fit: BoxFit.cover,
           )),
       Container(
@@ -49,7 +49,7 @@ class _PersonalInformation4PageState extends State<PersonalInformation4Page> {
           padding: REdgeInsets.symmetric(horizontal: 50.w, vertical: 20.h),
           margin: EdgeInsets.symmetric(vertical: 40.h),
           decoration: BoxDecoration(
-            color: Colors.white.withAlpha(180),
+            color: Colors.white.withAlpha(240),
             borderRadius: BorderRadius.horizontal(right: Radius.circular(10)),
           ),
           child:

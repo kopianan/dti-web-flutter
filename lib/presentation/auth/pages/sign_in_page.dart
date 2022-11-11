@@ -34,10 +34,13 @@ class _SignInPageState extends State<SignInPage> {
       body: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
           state.maybeMap(
-              orElse: () {},
-              onLoginSuccess: (e) {
-                context.router.push(DashboardRoute());
-              });
+            orElse: () {},
+            onLoginSuccess: (e) {
+              //Save data to shared preferences
+              
+              context.router.push(DashboardRoute());
+            },
+          );
         },
         builder: (context, state) {
           return Container(
@@ -191,8 +194,10 @@ class _SignInPageState extends State<SignInPage> {
                                     5.horizontalSpace,
                                     InkWell(
                                         onTap: () {
-                                          AutoRouter.of(context).push(SignUpRoute()); 
-                                        }, child: Text("Sign Up")),
+                                          AutoRouter.of(context)
+                                              .push(SignUpRoute());
+                                        },
+                                        child: Text("Sign Up")),
                                   ],
                                 )
                               ],

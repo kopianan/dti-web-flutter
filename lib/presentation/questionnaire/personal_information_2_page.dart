@@ -44,8 +44,8 @@ class _PersonalInformation2PageState extends State<PersonalInformation2Page> {
             Container(
                 width: ScreenUtil().screenWidth,
                 height: ScreenUtil().screenHeight,
-                child: Image.network(
-                  'https://picsum.photos/200/300',
+                child: Image.asset(
+                  'assets/images/bg/bg_visa2.png',
                   fit: BoxFit.cover,
                 )),
             Container(

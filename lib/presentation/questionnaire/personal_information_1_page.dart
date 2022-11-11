@@ -3,7 +3,6 @@ import 'package:country_code_picker/country_code_picker.dart';
 import 'package:dti_web/application/application_cubit.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
 import 'package:dti_web/domain/core/country_nationality.dart';
-import 'package:dti_web/domain/questionnaire/questionnaire_model.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:dti_web/utils/constant.dart';
@@ -17,10 +16,10 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:intl/intl.dart';
 
 class PersonalInformation1Page extends StatefulWidget {
-  const PersonalInformation1Page({super.key, this.question});
+  const PersonalInformation1Page({
+    super.key,
+  });
   static const String routeName = '/personal-information1';
-
-  final List<QuestionnaireModel>? question;
 
   @override
   State<PersonalInformation1Page> createState() =>
@@ -46,8 +45,8 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
             Container(
                 width: ScreenUtil().screenWidth,
                 height: ScreenUtil().screenHeight,
-                child: Image.network(
-                  'https://picsum.photos/200/300',
+                child: Image.asset(
+                  'assets/images/bg/bg_visa3.png',
                   fit: BoxFit.cover,
                 )),
             Container(
@@ -57,7 +56,7 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                     REdgeInsets.symmetric(horizontal: 50.w, vertical: 20.h),
                 margin: EdgeInsets.symmetric(vertical: 40.h),
                 decoration: BoxDecoration(
-                  color: Colors.white.withAlpha(180),
+                  color: Colors.white.withAlpha(250),
                   borderRadius:
                       BorderRadius.horizontal(right: Radius.circular(10)),
                 ),
@@ -152,7 +151,7 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                                   final nowDate = DateTime.now();
                                   final selectedDate = await showDatePicker(
                                       context: context,
-                                      initialDate: DateTime(nowDate.year - 10),
+                                      initialDate: DateTime.now(),
                                       firstDate: DateTime(1800),
                                       lastDate: nowDate);
 
@@ -219,7 +218,8 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                                   onChanged: (value) {
                                     context
                                         .read<ApplicationCubit>()
-                                        .updateNationality(value.name);
+                                        .updateNationality(
+                                            value.name.toUpperCase());
                                     _formKey
                                         .currentState!.fields['nationality']!
                                         .didChange(value.name.toString());
@@ -375,7 +375,7 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                                 width: double.infinity,
                                 child: PrimaryButton(
                                   onClick: () async {
-                                    await updateData(context);
+                                    await updateData(context, state);
                                   },
                                   label: "SUBMIT",
                                 ),
@@ -393,10 +393,14 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
     );
   }
 
-  Future<void> updateData(BuildContext context) async {
+  Future<void> updateData(BuildContext context, ApplicationState state) async {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
       final formData = _formKey.currentState!.value;
+      context
+          .read<ApplicationCubit>()
+          .updatePhoneDialCode(CountryCode.fromCountryCode('US'));
+
       context.read<ApplicationCubit>().updatePersonalInformation1(
             firstName: formData['firstName'],
             lastName: formData['lastName'],
@@ -407,6 +411,10 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
             mobileNumber: formData['MobileNumberField'],
             deportedFlag: formData['deported'],
             overstayedFlag: formData['overstay'],
+            mobileCountryCode: state.visaApplicationModel!.mobileCountryCode ??
+                CountryCode.fromCountryCode('US').code,
+            mobileDialCode: state.visaApplicationModel!.mobileDialCode ??
+                CountryCode.fromCountryCode('US').dialCode,
           );
 
       AutoRouter.of(context).push(PersonalInformation2Route());

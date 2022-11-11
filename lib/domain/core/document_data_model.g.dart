@@ -10,7 +10,7 @@ _$_DocumentDataModel _$$_DocumentDataModelFromJson(Map<String, dynamic> json) =>
     _$_DocumentDataModel(
       header: json['header'] as String?,
       imageList: (json['imageList'] as List<dynamic>?)
-          ?.map((e) => e as String)
+          ?.map((e) => e as String?)
           .toList(),
       isSubmited: json['isSubmited'] as bool?,
       previewImage: json['previewImage'] as String?,

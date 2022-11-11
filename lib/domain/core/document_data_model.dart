@@ -3,11 +3,11 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'document_data_model.freezed.dart';
 part 'document_data_model.g.dart';
 
-@freezed
+@Freezed(makeCollectionsUnmodifiable: false)
 class DocumentDataModel with _$DocumentDataModel {
   factory DocumentDataModel({
     String? header,
-    List<String>? imageList,
+    List<String?>? imageList,
     bool? isSubmited,
     String? previewImage,
     String? body,

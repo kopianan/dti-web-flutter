@@ -82,8 +82,8 @@ class _PersonalInformation3PageState extends State<PersonalInformation3Page> {
                   Container(
                       width: ScreenUtil().screenWidth,
                       height: ScreenUtil().screenHeight,
-                      child: Image.network(
-                        'https://picsum.photos/200/300',
+                      child: Image.asset(
+                        'assets/images/bg/bg_visa4.png',
                         fit: BoxFit.cover,
                       )),
                   Container(
@@ -93,7 +93,7 @@ class _PersonalInformation3PageState extends State<PersonalInformation3Page> {
                           horizontal: 50.w, vertical: 20.h),
                       margin: EdgeInsets.symmetric(vertical: 40.h),
                       decoration: BoxDecoration(
-                        color: Colors.white.withAlpha(180),
+                        color: Colors.white.withAlpha(240),
                         borderRadius:
                             BorderRadius.horizontal(right: Radius.circular(10)),
                       ),
@@ -284,36 +284,9 @@ class _PersonalInformation3PageState extends State<PersonalInformation3Page> {
                                           child: PrimaryButton(
                                               label: "Submit",
                                               onClick: () {
+                                                onSubmit(appState);
                                                 // AutoRouter.of(context)
                                                 //     .push(PersonalInformation4Route());
-                                                final formData = _formKey
-                                                    .currentState!.value;
-                                                _formKey.currentState!
-                                                    .validate();
-                                                _formKey.currentState!.save();
-                                                context
-                                                    .read<ApplicationCubit>()
-                                                    .updatePersonalInformation3(
-                                                      address: formData[
-                                                          'AddressField'],
-                                                      province: formData[
-                                                          'ProvinceField'],
-                                                      city:
-                                                          formData['cityField'],
-                                                      district: formData[
-                                                          'districtField'],
-                                                    );
-
-                                                if (appState
-                                                        .visaApplicationModel!
-                                                        .entry ==
-                                                    "Multiple Entry Visa") {
-                                                  AutoRouter.of(context).push(
-                                                      PersonalInformation4Route());
-                                                } else {
-                                                  AutoRouter.of(context).push(
-                                                      UserDomicileRoute());
-                                                }
                                               }))
                                     ],
                                   ),
@@ -332,5 +305,24 @@ class _PersonalInformation3PageState extends State<PersonalInformation3Page> {
         }
       },
     );
+  }
+
+  void onSubmit(ApplicationState appState) {
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+      final formData = _formKey.currentState!.value;
+
+      context.read<ApplicationCubit>().updatePersonalInformation3(
+          address: formData['AddressField'],
+          province: formData['ProvinceField'],
+          city: formData['cityField'],
+          district: formData['districtField']);
+
+      if (appState.visaApplicationModel!.entry == "Multiple Entry Visa") {
+        AutoRouter.of(context).push(PersonalInformation4Route());
+      } else {
+        AutoRouter.of(context).push(UserDomicileRoute());
+      }
+    }
   }
 }

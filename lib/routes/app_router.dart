@@ -1,14 +1,17 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:dti_web/application/document/document_cubit.dart';
 import 'package:dti_web/domain/questionnaire/result_model.dart';
 import 'package:dti_web/presentation/applications/application_detail_page.dart';
 import 'package:dti_web/presentation/applications/upload_document_page.dart';
 import 'package:dti_web/presentation/auth/pages/splash_screen_page.dart';
 import 'package:dti_web/presentation/dashboard/pages/application_card_page.dart';
+import 'package:dti_web/presentation/questionnaire/guarantor_page.dart';
 import 'package:dti_web/presentation/questionnaire/personal_information_1_page.dart';
 import 'package:dti_web/presentation/questionnaire/personal_information_3_page.dart';
 import 'package:dti_web/presentation/questionnaire/personal_information_4_page.dart';
 import 'package:dti_web/presentation/questionnaire/questionnaire_page.dart';
 import 'package:dti_web/presentation/questionnaire/questionnaire_summary_page.dart';
+import 'package:dti_web/presentation/questionnaire/submit_screen_page.dart';
 import 'package:dti_web/presentation/questionnaire/user_domicile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dti_web/domain/questionnaire/questionnaire_model.dart';
@@ -29,15 +32,29 @@ part "app_router.gr.dart";
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
-    AutoRoute(page: SplashScreenPage),
-    AutoRoute(page: DashboardPage, path: '/', initial: true),
+    AutoRoute(
+      page: SplashScreenPage,
+    ),
+    AutoRoute(
+      path: '/',
+      initial: true,
+      page: DashboardPage,
+    ),
     AutoRoute(
       page: ApplicationDetailPage,
       path: ApplicationDetailPage.routeName,
     ),
+    // AutoRoute(
+    //   page: SubmitScreenPage,
+    //   path: SubmitScreenPage.routeName,
+    // ),
     AutoRoute(
       page: UserDomicilePage,
       path: UserDomicilePage.routeName,
+    ),
+    AutoRoute(
+      page: GuarantorPage,
+      path: GuarantorPage.routeName,
     ),
     AutoRoute(
         page: PersonalInformation2Page,
@@ -62,7 +79,7 @@ part "app_router.gr.dart";
         path: QuestionnaireSummaryPage.routeName),
     AutoRoute(
       page: QuestionnairePage,
-      fullscreenDialog: true,
+      path: QuestionnairePage.routeName,
     ),
     AutoRoute(page: SignUpPage, path: SignUpPage.routeName),
     AutoRoute(page: ResetPage, path: ResetPage.routeName),

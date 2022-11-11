@@ -24,7 +24,6 @@ class AuthCubit extends Cubit<AuthState> {
       (l) => AuthState.error(l),
       (r) async {
         await storage.saveToken(r);
-        
         emit(AuthState.onLoginSuccess(r));
       },
     );

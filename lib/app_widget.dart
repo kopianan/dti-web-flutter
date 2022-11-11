@@ -3,6 +3,7 @@ import 'package:dti_web/application/application_cubit.dart';
 import 'package:dti_web/application/auth/auth_cubit.dart';
 import 'package:dti_web/application/questionnaire_cubit.dart';
 import 'package:dti_web/application/startup/startup_cubit.dart';
+import 'package:dti_web/application/update_application/update_application_cubit.dart';
 import 'package:dti_web/injection.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
@@ -27,6 +28,9 @@ class AppWidget extends StatelessWidget {
         providers: [
           BlocProvider(
             create: (context) => getIt<StartupCubit>()..setupStartupData(),
+          ),
+          BlocProvider(
+            create: (context) => getIt<UpdateApplicationCubit>(),
           ),
           BlocProvider(
             create: (context) => getIt<AuthCubit>(),

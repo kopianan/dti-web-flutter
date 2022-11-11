@@ -30,9 +30,14 @@ class _$AppRouter extends RootStackRouter {
       );
     },
     ApplicationDetailRoute.name: (routeData) {
+      final args = routeData.argsAs<ApplicationDetailRouteArgs>();
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const ApplicationDetailPage(),
+        child: ApplicationDetailPage(
+          key: args.key,
+          firebaseDocId: args.firebaseDocId,
+          documentCubit: args.documentCubit,
+        ),
       );
     },
     UserDomicileRoute.name: (routeData) {
@@ -41,6 +46,17 @@ class _$AppRouter extends RootStackRouter {
       return MaterialPageX<dynamic>(
         routeData: routeData,
         child: UserDomicilePage(
+          key: args.key,
+          question: args.question,
+        ),
+      );
+    },
+    GuarantorRoute.name: (routeData) {
+      final args = routeData.argsAs<GuarantorRouteArgs>(
+          orElse: () => const GuarantorRouteArgs());
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: GuarantorPage(
           key: args.key,
           question: args.question,
         ),
@@ -86,14 +102,9 @@ class _$AppRouter extends RootStackRouter {
       );
     },
     PersonalInformation1Route.name: (routeData) {
-      final args = routeData.argsAs<PersonalInformation1RouteArgs>(
-          orElse: () => const PersonalInformation1RouteArgs());
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: PersonalInformation1Page(
-          key: args.key,
-          question: args.question,
-        ),
+        child: const PersonalInformation1Page(),
       );
     },
     SignInRoute.name: (routeData) {
@@ -127,7 +138,6 @@ class _$AppRouter extends RootStackRouter {
           key: args.key,
           question: args.question,
         ),
-        fullscreenDialog: true,
       );
     },
     SignUpRoute.name: (routeData) {
@@ -187,6 +197,10 @@ class _$AppRouter extends RootStackRouter {
           path: '/user-domicile',
         ),
         RouteConfig(
+          GuarantorRoute.name,
+          path: '/guaraontor',
+        ),
+        RouteConfig(
           PersonalInformation2Route.name,
           path: '/personal-information2',
         ),
@@ -220,7 +234,7 @@ class _$AppRouter extends RootStackRouter {
         ),
         RouteConfig(
           QuestionnaireRoute.name,
-          path: '/questionnaire-page',
+          path: '/questionnaire',
         ),
         RouteConfig(
           SignUpRoute.name,
@@ -275,14 +289,41 @@ class DashboardRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [ApplicationDetailPage]
-class ApplicationDetailRoute extends PageRouteInfo<void> {
-  const ApplicationDetailRoute()
-      : super(
+class ApplicationDetailRoute extends PageRouteInfo<ApplicationDetailRouteArgs> {
+  ApplicationDetailRoute({
+    Key? key,
+    required String firebaseDocId,
+    required DocumentCubit documentCubit,
+  }) : super(
           ApplicationDetailRoute.name,
           path: '/application-detail',
+          args: ApplicationDetailRouteArgs(
+            key: key,
+            firebaseDocId: firebaseDocId,
+            documentCubit: documentCubit,
+          ),
         );
 
   static const String name = 'ApplicationDetailRoute';
+}
+
+class ApplicationDetailRouteArgs {
+  const ApplicationDetailRouteArgs({
+    this.key,
+    required this.firebaseDocId,
+    required this.documentCubit,
+  });
+
+  final Key? key;
+
+  final String firebaseDocId;
+
+  final DocumentCubit documentCubit;
+
+  @override
+  String toString() {
+    return 'ApplicationDetailRouteArgs{key: $key, firebaseDocId: $firebaseDocId, documentCubit: $documentCubit}';
+  }
 }
 
 /// generated route for
@@ -316,6 +357,40 @@ class UserDomicileRouteArgs {
   @override
   String toString() {
     return 'UserDomicileRouteArgs{key: $key, question: $question}';
+  }
+}
+
+/// generated route for
+/// [GuarantorPage]
+class GuarantorRoute extends PageRouteInfo<GuarantorRouteArgs> {
+  GuarantorRoute({
+    Key? key,
+    List<QuestionnaireModel>? question,
+  }) : super(
+          GuarantorRoute.name,
+          path: '/guaraontor',
+          args: GuarantorRouteArgs(
+            key: key,
+            question: question,
+          ),
+        );
+
+  static const String name = 'GuarantorRoute';
+}
+
+class GuarantorRouteArgs {
+  const GuarantorRouteArgs({
+    this.key,
+    this.question,
+  });
+
+  final Key? key;
+
+  final List<QuestionnaireModel>? question;
+
+  @override
+  String toString() {
+    return 'GuarantorRouteArgs{key: $key, question: $question}';
   }
 }
 
@@ -438,37 +513,14 @@ class PersonalInformation3RouteArgs {
 
 /// generated route for
 /// [PersonalInformation1Page]
-class PersonalInformation1Route
-    extends PageRouteInfo<PersonalInformation1RouteArgs> {
-  PersonalInformation1Route({
-    Key? key,
-    List<QuestionnaireModel>? question,
-  }) : super(
+class PersonalInformation1Route extends PageRouteInfo<void> {
+  const PersonalInformation1Route()
+      : super(
           PersonalInformation1Route.name,
           path: '/personal-information1-page',
-          args: PersonalInformation1RouteArgs(
-            key: key,
-            question: question,
-          ),
         );
 
   static const String name = 'PersonalInformation1Route';
-}
-
-class PersonalInformation1RouteArgs {
-  const PersonalInformation1RouteArgs({
-    this.key,
-    this.question,
-  });
-
-  final Key? key;
-
-  final List<QuestionnaireModel>? question;
-
-  @override
-  String toString() {
-    return 'PersonalInformation1RouteArgs{key: $key, question: $question}';
-  }
 }
 
 /// generated route for
@@ -538,7 +590,7 @@ class QuestionnaireRoute extends PageRouteInfo<QuestionnaireRouteArgs> {
     List<QuestionnaireModel>? question,
   }) : super(
           QuestionnaireRoute.name,
-          path: '/questionnaire-page',
+          path: '/questionnaire',
           args: QuestionnaireRouteArgs(
             key: key,
             question: question,
