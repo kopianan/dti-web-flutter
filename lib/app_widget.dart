@@ -9,6 +9,7 @@ import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
@@ -24,6 +25,7 @@ class AppWidget extends StatelessWidget {
       designSize: const Size(1280, 720),
       minTextAdapt: true,
       splitScreenMode: true,
+
       builder: (context, child) => MultiBlocProvider(
         providers: [
           BlocProvider(
@@ -53,6 +55,7 @@ class AppWidget extends StatelessWidget {
             FormBuilderLocalizations.delegate,
           ],
           title: 'DTI WEB',
+           builder: EasyLoading.init(),
           theme: ThemeData(
               textTheme: GoogleFonts.latoTextTheme(),
               primarySwatch: Colors.blue,

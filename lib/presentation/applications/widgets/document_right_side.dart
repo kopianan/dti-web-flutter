@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:auto_route/auto_route.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dio/dio.dart';
 import 'package:dti_web/application/document/document_cubit.dart';
 import 'package:dti_web/application/update_application/update_application_cubit.dart';
@@ -7,6 +9,7 @@ import 'package:dti_web/core/storage.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/injection.dart';
+import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:dti_web/utils/constant.dart';
 import 'package:file_picker/file_picker.dart';
@@ -93,27 +96,66 @@ class _RighSideState extends State<RighSide> {
                                       itemBuilder: (context, index) {
                                         return Column(
                                           children: [
-                                            PhotoImageWidget(
-                                              documentId: docState
-                                                  .selectedDocument!.id!,
-                                              visa: docState.visa!,
-                                              shownImage: docState
-                                                              .selectedDocument!
-                                                              .imageList ==
-                                                          null ||
-                                                      docState.selectedDocument!
-                                                          .imageList!.isEmpty
-                                                  ? null
-                                                  : docState.selectedDocument!
-                                                      .imageList![index],
-                                              onAddPhoto: (p0) {
-                                                widget.documentCubit
-                                                    .addNewPhotoDocument(
-                                                        p0!.files.single.path!,
-                                                        index);
-                                                setState(() {});
-                                              },
-                                            ),
+                                            (docState.selectedDocument!
+                                                        .attachment !=
+                                                    null)
+                                                ? InkWell(
+                                                    onTap: () {
+                                                      AwesomeDialog(
+                                                        context: context,
+                                                        title: "Choose Action",
+                                                        body: Text(
+                                                            "Select action "),
+                                                        btnOkText:
+                                                            "Upload document",
+                                                        btnCancelText:
+                                                            "Sign Document",
+                                                        btnOkOnPress: () {},
+                                                        btnCancelOnPress: () {
+                                                          AutoRouter.of(context)
+                                                              .push(SignatureRoute(visaApplication: docState.visa!, appDocument: docState.selectedDocument!));
+                                                        },
+                                                      ).show();
+                                                    },
+                                                    child: Container(
+                                                      width: 100,
+                                                      height: 100,
+                                                      color: Colors.green,
+                                                    ),
+                                                  )
+                                                : PhotoImageWidget(
+                                                    documentId: docState
+                                                        .selectedDocument!.id!,
+                                                    visa: docState.visa!,
+                                                    deleteImage: (e) {
+                                                      widget.documentCubit
+                                                          .removePhotoDocument(
+                                                              e,
+                                                              docState
+                                                                  .selectedIndex!);
+                                                      setState(() {});
+                                                    },
+                                                    shownImage: docState
+                                                                    .selectedDocument!
+                                                                    .imageList ==
+                                                                null ||
+                                                            docState
+                                                                .selectedDocument!
+                                                                .imageList!
+                                                                .isEmpty
+                                                        ? null
+                                                        : docState
+                                                            .selectedDocument!
+                                                            .imageList![index],
+                                                    onAddPhoto: (p0) {
+                                                      widget.documentCubit
+                                                          .addNewPhotoDocument(
+                                                              p0!.files.single
+                                                                  .path!,
+                                                              index);
+                                                      setState(() {});
+                                                    },
+                                                  ),
                                             20.verticalSpace
                                           ],
                                         );
@@ -130,9 +172,11 @@ class _RighSideState extends State<RighSide> {
                                           context
                                               .read<UpdateApplicationCubit>()
                                               .uploadImages(
-                                                  docState.visa!, docs);
+                                                  docState.visa!,
+                                                  docs,
+                                                  docState.deletedImagesName!);
                                         },
-                                        label: "Upload",
+                                        label: "Update",
                                         labelStyle: TextStyle(fontSize: 20),
                                       ),
                                     )
@@ -154,18 +198,19 @@ class _RighSideState extends State<RighSide> {
 
 // "https://firebasestorage.googleapis.com/v0/b/doortoid-mobile.appspot.com/o/applications%2FM2g51a7LATaAqEvzHYSBOvdDgPE2%2FV20221109-EXNC8IT6JIG%2FA2%2F1668006266636?alt=media&token=93278b24-fb34-4836-bda5-f1067666b364"
 class PhotoImageWidget extends StatefulWidget {
-  const PhotoImageWidget({
-    super.key,
-    required this.onAddPhoto,
-    this.shownImage,
-    required this.visa,
-    required this.documentId,
-  });
+  const PhotoImageWidget(
+      {super.key,
+      required this.onAddPhoto,
+      this.shownImage,
+      required this.visa,
+      required this.documentId,
+      required this.deleteImage});
 
   final Function(FilePickerResult?) onAddPhoto;
   final String? shownImage;
   final VisaApplicationModel visa;
   final String documentId;
+  final Function(String) deleteImage;
 
   @override
   State<PhotoImageWidget> createState() => _PhotoImageWidgetState();
@@ -221,8 +266,13 @@ class _PhotoImageWidgetState extends State<PhotoImageWidget> {
                     right: 0,
                     top: 0,
                     child: IconButton(
-                      onPressed: () {},
-                      icon: Icon(Icons.delete),
+                      onPressed: () {
+                        widget.deleteImage(widget.shownImage!);
+                      },
+                      icon: const Icon(
+                        Icons.delete,
+                        color: Colors.red,
+                      ),
                     ),
                   )
                 ],

@@ -27,6 +27,8 @@ mixin _$UpdateApplicationState {
     required TResult Function() onUpdateApplication,
     required TResult Function() onUpdateGuarantor,
     required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
+    required TResult Function(SingleVisaResponse singleResponse)
+        onGetSingleApplicationWithImage,
     required TResult Function() deleteApplication,
     required TResult Function() onUploadImageComplete,
   }) =>
@@ -41,6 +43,8 @@ mixin _$UpdateApplicationState {
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
     TResult Function()? onUploadImageComplete,
   }) =>
@@ -55,6 +59,8 @@ mixin _$UpdateApplicationState {
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
     TResult Function()? onUploadImageComplete,
     required TResult orElse(),
@@ -71,6 +77,8 @@ mixin _$UpdateApplicationState {
     required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
     required TResult Function(_OnGetSingleApplication value)
         onGetSingleApplication,
+    required TResult Function(_OnGetSingleApplicationWithImage value)
+        onGetSingleApplicationWithImage,
     required TResult Function(_DeleteApplication value) deleteApplication,
     required TResult Function(_OnUploadImageComplete value)
         onUploadImageComplete,
@@ -86,6 +94,8 @@ mixin _$UpdateApplicationState {
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
+    TResult Function(_OnGetSingleApplicationWithImage value)?
+        onGetSingleApplicationWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
   }) =>
@@ -100,6 +110,8 @@ mixin _$UpdateApplicationState {
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
+    TResult Function(_OnGetSingleApplicationWithImage value)?
+        onGetSingleApplicationWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
     required TResult orElse(),
@@ -173,6 +185,8 @@ class _$_Initial implements _Initial {
     required TResult Function() onUpdateApplication,
     required TResult Function() onUpdateGuarantor,
     required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
+    required TResult Function(SingleVisaResponse singleResponse)
+        onGetSingleApplicationWithImage,
     required TResult Function() deleteApplication,
     required TResult Function() onUploadImageComplete,
   }) {
@@ -190,6 +204,8 @@ class _$_Initial implements _Initial {
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
     TResult Function()? onUploadImageComplete,
   }) {
@@ -207,6 +223,8 @@ class _$_Initial implements _Initial {
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
     TResult Function()? onUploadImageComplete,
     required TResult orElse(),
@@ -229,6 +247,8 @@ class _$_Initial implements _Initial {
     required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
     required TResult Function(_OnGetSingleApplication value)
         onGetSingleApplication,
+    required TResult Function(_OnGetSingleApplicationWithImage value)
+        onGetSingleApplicationWithImage,
     required TResult Function(_DeleteApplication value) deleteApplication,
     required TResult Function(_OnUploadImageComplete value)
         onUploadImageComplete,
@@ -247,6 +267,8 @@ class _$_Initial implements _Initial {
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
+    TResult Function(_OnGetSingleApplicationWithImage value)?
+        onGetSingleApplicationWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
   }) {
@@ -264,6 +286,8 @@ class _$_Initial implements _Initial {
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
+    TResult Function(_OnGetSingleApplicationWithImage value)?
+        onGetSingleApplicationWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
     required TResult orElse(),
@@ -329,6 +353,8 @@ class _$_OnLoading implements _OnLoading {
     required TResult Function() onUpdateApplication,
     required TResult Function() onUpdateGuarantor,
     required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
+    required TResult Function(SingleVisaResponse singleResponse)
+        onGetSingleApplicationWithImage,
     required TResult Function() deleteApplication,
     required TResult Function() onUploadImageComplete,
   }) {
@@ -346,6 +372,8 @@ class _$_OnLoading implements _OnLoading {
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
     TResult Function()? onUploadImageComplete,
   }) {
@@ -363,6 +391,8 @@ class _$_OnLoading implements _OnLoading {
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
     TResult Function()? onUploadImageComplete,
     required TResult orElse(),
@@ -385,6 +415,8 @@ class _$_OnLoading implements _OnLoading {
     required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
     required TResult Function(_OnGetSingleApplication value)
         onGetSingleApplication,
+    required TResult Function(_OnGetSingleApplicationWithImage value)
+        onGetSingleApplicationWithImage,
     required TResult Function(_DeleteApplication value) deleteApplication,
     required TResult Function(_OnUploadImageComplete value)
         onUploadImageComplete,
@@ -403,6 +435,8 @@ class _$_OnLoading implements _OnLoading {
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
+    TResult Function(_OnGetSingleApplicationWithImage value)?
+        onGetSingleApplicationWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
   }) {
@@ -420,6 +454,8 @@ class _$_OnLoading implements _OnLoading {
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
+    TResult Function(_OnGetSingleApplicationWithImage value)?
+        onGetSingleApplicationWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
     required TResult orElse(),
@@ -508,6 +544,8 @@ class _$_OnError implements _OnError {
     required TResult Function() onUpdateApplication,
     required TResult Function() onUpdateGuarantor,
     required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
+    required TResult Function(SingleVisaResponse singleResponse)
+        onGetSingleApplicationWithImage,
     required TResult Function() deleteApplication,
     required TResult Function() onUploadImageComplete,
   }) {
@@ -525,6 +563,8 @@ class _$_OnError implements _OnError {
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
     TResult Function()? onUploadImageComplete,
   }) {
@@ -542,6 +582,8 @@ class _$_OnError implements _OnError {
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
     TResult Function()? onUploadImageComplete,
     required TResult orElse(),
@@ -564,6 +606,8 @@ class _$_OnError implements _OnError {
     required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
     required TResult Function(_OnGetSingleApplication value)
         onGetSingleApplication,
+    required TResult Function(_OnGetSingleApplicationWithImage value)
+        onGetSingleApplicationWithImage,
     required TResult Function(_DeleteApplication value) deleteApplication,
     required TResult Function(_OnUploadImageComplete value)
         onUploadImageComplete,
@@ -582,6 +626,8 @@ class _$_OnError implements _OnError {
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
+    TResult Function(_OnGetSingleApplicationWithImage value)?
+        onGetSingleApplicationWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
   }) {
@@ -599,6 +645,8 @@ class _$_OnError implements _OnError {
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
+    TResult Function(_OnGetSingleApplicationWithImage value)?
+        onGetSingleApplicationWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
     required TResult orElse(),
@@ -703,6 +751,8 @@ class _$_OnCreateApplication implements _OnCreateApplication {
     required TResult Function() onUpdateApplication,
     required TResult Function() onUpdateGuarantor,
     required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
+    required TResult Function(SingleVisaResponse singleResponse)
+        onGetSingleApplicationWithImage,
     required TResult Function() deleteApplication,
     required TResult Function() onUploadImageComplete,
   }) {
@@ -720,6 +770,8 @@ class _$_OnCreateApplication implements _OnCreateApplication {
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
     TResult Function()? onUploadImageComplete,
   }) {
@@ -737,6 +789,8 @@ class _$_OnCreateApplication implements _OnCreateApplication {
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
     TResult Function()? onUploadImageComplete,
     required TResult orElse(),
@@ -759,6 +813,8 @@ class _$_OnCreateApplication implements _OnCreateApplication {
     required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
     required TResult Function(_OnGetSingleApplication value)
         onGetSingleApplication,
+    required TResult Function(_OnGetSingleApplicationWithImage value)
+        onGetSingleApplicationWithImage,
     required TResult Function(_DeleteApplication value) deleteApplication,
     required TResult Function(_OnUploadImageComplete value)
         onUploadImageComplete,
@@ -777,6 +833,8 @@ class _$_OnCreateApplication implements _OnCreateApplication {
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
+    TResult Function(_OnGetSingleApplicationWithImage value)?
+        onGetSingleApplicationWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
   }) {
@@ -794,6 +852,8 @@ class _$_OnCreateApplication implements _OnCreateApplication {
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
+    TResult Function(_OnGetSingleApplicationWithImage value)?
+        onGetSingleApplicationWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
     required TResult orElse(),
@@ -891,6 +951,8 @@ class _$_OnSubmitApplication implements _OnSubmitApplication {
     required TResult Function() onUpdateApplication,
     required TResult Function() onUpdateGuarantor,
     required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
+    required TResult Function(SingleVisaResponse singleResponse)
+        onGetSingleApplicationWithImage,
     required TResult Function() deleteApplication,
     required TResult Function() onUploadImageComplete,
   }) {
@@ -908,6 +970,8 @@ class _$_OnSubmitApplication implements _OnSubmitApplication {
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
     TResult Function()? onUploadImageComplete,
   }) {
@@ -925,6 +989,8 @@ class _$_OnSubmitApplication implements _OnSubmitApplication {
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
     TResult Function()? onUploadImageComplete,
     required TResult orElse(),
@@ -947,6 +1013,8 @@ class _$_OnSubmitApplication implements _OnSubmitApplication {
     required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
     required TResult Function(_OnGetSingleApplication value)
         onGetSingleApplication,
+    required TResult Function(_OnGetSingleApplicationWithImage value)
+        onGetSingleApplicationWithImage,
     required TResult Function(_DeleteApplication value) deleteApplication,
     required TResult Function(_OnUploadImageComplete value)
         onUploadImageComplete,
@@ -965,6 +1033,8 @@ class _$_OnSubmitApplication implements _OnSubmitApplication {
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
+    TResult Function(_OnGetSingleApplicationWithImage value)?
+        onGetSingleApplicationWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
   }) {
@@ -982,6 +1052,8 @@ class _$_OnSubmitApplication implements _OnSubmitApplication {
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
+    TResult Function(_OnGetSingleApplicationWithImage value)?
+        onGetSingleApplicationWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
     required TResult orElse(),
@@ -1053,6 +1125,8 @@ class _$_OnUpdateApplication implements _OnUpdateApplication {
     required TResult Function() onUpdateApplication,
     required TResult Function() onUpdateGuarantor,
     required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
+    required TResult Function(SingleVisaResponse singleResponse)
+        onGetSingleApplicationWithImage,
     required TResult Function() deleteApplication,
     required TResult Function() onUploadImageComplete,
   }) {
@@ -1070,6 +1144,8 @@ class _$_OnUpdateApplication implements _OnUpdateApplication {
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
     TResult Function()? onUploadImageComplete,
   }) {
@@ -1087,6 +1163,8 @@ class _$_OnUpdateApplication implements _OnUpdateApplication {
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
     TResult Function()? onUploadImageComplete,
     required TResult orElse(),
@@ -1109,6 +1187,8 @@ class _$_OnUpdateApplication implements _OnUpdateApplication {
     required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
     required TResult Function(_OnGetSingleApplication value)
         onGetSingleApplication,
+    required TResult Function(_OnGetSingleApplicationWithImage value)
+        onGetSingleApplicationWithImage,
     required TResult Function(_DeleteApplication value) deleteApplication,
     required TResult Function(_OnUploadImageComplete value)
         onUploadImageComplete,
@@ -1127,6 +1207,8 @@ class _$_OnUpdateApplication implements _OnUpdateApplication {
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
+    TResult Function(_OnGetSingleApplicationWithImage value)?
+        onGetSingleApplicationWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
   }) {
@@ -1144,6 +1226,8 @@ class _$_OnUpdateApplication implements _OnUpdateApplication {
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
+    TResult Function(_OnGetSingleApplicationWithImage value)?
+        onGetSingleApplicationWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
     required TResult orElse(),
@@ -1209,6 +1293,8 @@ class _$_OnUpdateGuarantor implements _OnUpdateGuarantor {
     required TResult Function() onUpdateApplication,
     required TResult Function() onUpdateGuarantor,
     required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
+    required TResult Function(SingleVisaResponse singleResponse)
+        onGetSingleApplicationWithImage,
     required TResult Function() deleteApplication,
     required TResult Function() onUploadImageComplete,
   }) {
@@ -1226,6 +1312,8 @@ class _$_OnUpdateGuarantor implements _OnUpdateGuarantor {
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
     TResult Function()? onUploadImageComplete,
   }) {
@@ -1243,6 +1331,8 @@ class _$_OnUpdateGuarantor implements _OnUpdateGuarantor {
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
     TResult Function()? onUploadImageComplete,
     required TResult orElse(),
@@ -1265,6 +1355,8 @@ class _$_OnUpdateGuarantor implements _OnUpdateGuarantor {
     required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
     required TResult Function(_OnGetSingleApplication value)
         onGetSingleApplication,
+    required TResult Function(_OnGetSingleApplicationWithImage value)
+        onGetSingleApplicationWithImage,
     required TResult Function(_DeleteApplication value) deleteApplication,
     required TResult Function(_OnUploadImageComplete value)
         onUploadImageComplete,
@@ -1283,6 +1375,8 @@ class _$_OnUpdateGuarantor implements _OnUpdateGuarantor {
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
+    TResult Function(_OnGetSingleApplicationWithImage value)?
+        onGetSingleApplicationWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
   }) {
@@ -1300,6 +1394,8 @@ class _$_OnUpdateGuarantor implements _OnUpdateGuarantor {
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
+    TResult Function(_OnGetSingleApplicationWithImage value)?
+        onGetSingleApplicationWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
     required TResult orElse(),
@@ -1400,6 +1496,8 @@ class _$_OnGetSingleApplication implements _OnGetSingleApplication {
     required TResult Function() onUpdateApplication,
     required TResult Function() onUpdateGuarantor,
     required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
+    required TResult Function(SingleVisaResponse singleResponse)
+        onGetSingleApplicationWithImage,
     required TResult Function() deleteApplication,
     required TResult Function() onUploadImageComplete,
   }) {
@@ -1417,6 +1515,8 @@ class _$_OnGetSingleApplication implements _OnGetSingleApplication {
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
     TResult Function()? onUploadImageComplete,
   }) {
@@ -1434,6 +1534,8 @@ class _$_OnGetSingleApplication implements _OnGetSingleApplication {
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
     TResult Function()? onUploadImageComplete,
     required TResult orElse(),
@@ -1456,6 +1558,8 @@ class _$_OnGetSingleApplication implements _OnGetSingleApplication {
     required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
     required TResult Function(_OnGetSingleApplication value)
         onGetSingleApplication,
+    required TResult Function(_OnGetSingleApplicationWithImage value)
+        onGetSingleApplicationWithImage,
     required TResult Function(_DeleteApplication value) deleteApplication,
     required TResult Function(_OnUploadImageComplete value)
         onUploadImageComplete,
@@ -1474,6 +1578,8 @@ class _$_OnGetSingleApplication implements _OnGetSingleApplication {
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
+    TResult Function(_OnGetSingleApplicationWithImage value)?
+        onGetSingleApplicationWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
   }) {
@@ -1491,6 +1597,8 @@ class _$_OnGetSingleApplication implements _OnGetSingleApplication {
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
+    TResult Function(_OnGetSingleApplicationWithImage value)?
+        onGetSingleApplicationWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
     required TResult orElse(),
@@ -1510,6 +1618,223 @@ abstract class _OnGetSingleApplication implements UpdateApplicationState {
   @JsonKey(ignore: true)
   _$$_OnGetSingleApplicationCopyWith<_$_OnGetSingleApplication> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_OnGetSingleApplicationWithImageCopyWith<$Res> {
+  factory _$$_OnGetSingleApplicationWithImageCopyWith(
+          _$_OnGetSingleApplicationWithImage value,
+          $Res Function(_$_OnGetSingleApplicationWithImage) then) =
+      __$$_OnGetSingleApplicationWithImageCopyWithImpl<$Res>;
+  $Res call({SingleVisaResponse singleResponse});
+
+  $SingleVisaResponseCopyWith<$Res> get singleResponse;
+}
+
+/// @nodoc
+class __$$_OnGetSingleApplicationWithImageCopyWithImpl<$Res>
+    extends _$UpdateApplicationStateCopyWithImpl<$Res>
+    implements _$$_OnGetSingleApplicationWithImageCopyWith<$Res> {
+  __$$_OnGetSingleApplicationWithImageCopyWithImpl(
+      _$_OnGetSingleApplicationWithImage _value,
+      $Res Function(_$_OnGetSingleApplicationWithImage) _then)
+      : super(_value, (v) => _then(v as _$_OnGetSingleApplicationWithImage));
+
+  @override
+  _$_OnGetSingleApplicationWithImage get _value =>
+      super._value as _$_OnGetSingleApplicationWithImage;
+
+  @override
+  $Res call({
+    Object? singleResponse = freezed,
+  }) {
+    return _then(_$_OnGetSingleApplicationWithImage(
+      singleResponse == freezed
+          ? _value.singleResponse
+          : singleResponse // ignore: cast_nullable_to_non_nullable
+              as SingleVisaResponse,
+    ));
+  }
+
+  @override
+  $SingleVisaResponseCopyWith<$Res> get singleResponse {
+    return $SingleVisaResponseCopyWith<$Res>(_value.singleResponse, (value) {
+      return _then(_value.copyWith(singleResponse: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_OnGetSingleApplicationWithImage
+    implements _OnGetSingleApplicationWithImage {
+  const _$_OnGetSingleApplicationWithImage(this.singleResponse);
+
+  @override
+  final SingleVisaResponse singleResponse;
+
+  @override
+  String toString() {
+    return 'UpdateApplicationState.onGetSingleApplicationWithImage(singleResponse: $singleResponse)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_OnGetSingleApplicationWithImage &&
+            const DeepCollectionEquality()
+                .equals(other.singleResponse, singleResponse));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(singleResponse));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_OnGetSingleApplicationWithImageCopyWith<
+          _$_OnGetSingleApplicationWithImage>
+      get copyWith => __$$_OnGetSingleApplicationWithImageCopyWithImpl<
+          _$_OnGetSingleApplicationWithImage>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() onLoading,
+    required TResult Function(String error) onError,
+    required TResult Function(VisaApplicationModel visaApps)
+        onCreateApplication,
+    required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function() onUpdateApplication,
+    required TResult Function() onUpdateGuarantor,
+    required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
+    required TResult Function(SingleVisaResponse singleResponse)
+        onGetSingleApplicationWithImage,
+    required TResult Function() deleteApplication,
+    required TResult Function() onUploadImageComplete,
+  }) {
+    return onGetSingleApplicationWithImage(singleResponse);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? onLoading,
+    TResult Function(String error)? onError,
+    TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
+    TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdateGuarantor,
+    TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSingleApplicationWithImage,
+    TResult Function()? deleteApplication,
+    TResult Function()? onUploadImageComplete,
+  }) {
+    return onGetSingleApplicationWithImage?.call(singleResponse);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? onLoading,
+    TResult Function(String error)? onError,
+    TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
+    TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdateGuarantor,
+    TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSingleApplicationWithImage,
+    TResult Function()? deleteApplication,
+    TResult Function()? onUploadImageComplete,
+    required TResult orElse(),
+  }) {
+    if (onGetSingleApplicationWithImage != null) {
+      return onGetSingleApplicationWithImage(singleResponse);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_OnLoading value) onLoading,
+    required TResult Function(_OnError value) onError,
+    required TResult Function(_OnCreateApplication value) onCreateApplication,
+    required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnUpdateApplication value) onUpdateApplication,
+    required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
+    required TResult Function(_OnGetSingleApplication value)
+        onGetSingleApplication,
+    required TResult Function(_OnGetSingleApplicationWithImage value)
+        onGetSingleApplicationWithImage,
+    required TResult Function(_DeleteApplication value) deleteApplication,
+    required TResult Function(_OnUploadImageComplete value)
+        onUploadImageComplete,
+  }) {
+    return onGetSingleApplicationWithImage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OnLoading value)? onLoading,
+    TResult Function(_OnError value)? onError,
+    TResult Function(_OnCreateApplication value)? onCreateApplication,
+    TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
+    TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
+    TResult Function(_OnGetSingleApplicationWithImage value)?
+        onGetSingleApplicationWithImage,
+    TResult Function(_DeleteApplication value)? deleteApplication,
+    TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+  }) {
+    return onGetSingleApplicationWithImage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OnLoading value)? onLoading,
+    TResult Function(_OnError value)? onError,
+    TResult Function(_OnCreateApplication value)? onCreateApplication,
+    TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
+    TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
+    TResult Function(_OnGetSingleApplicationWithImage value)?
+        onGetSingleApplicationWithImage,
+    TResult Function(_DeleteApplication value)? deleteApplication,
+    TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    required TResult orElse(),
+  }) {
+    if (onGetSingleApplicationWithImage != null) {
+      return onGetSingleApplicationWithImage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnGetSingleApplicationWithImage
+    implements UpdateApplicationState {
+  const factory _OnGetSingleApplicationWithImage(
+          final SingleVisaResponse singleResponse) =
+      _$_OnGetSingleApplicationWithImage;
+
+  SingleVisaResponse get singleResponse;
+  @JsonKey(ignore: true)
+  _$$_OnGetSingleApplicationWithImageCopyWith<
+          _$_OnGetSingleApplicationWithImage>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1562,6 +1887,8 @@ class _$_DeleteApplication implements _DeleteApplication {
     required TResult Function() onUpdateApplication,
     required TResult Function() onUpdateGuarantor,
     required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
+    required TResult Function(SingleVisaResponse singleResponse)
+        onGetSingleApplicationWithImage,
     required TResult Function() deleteApplication,
     required TResult Function() onUploadImageComplete,
   }) {
@@ -1579,6 +1906,8 @@ class _$_DeleteApplication implements _DeleteApplication {
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
     TResult Function()? onUploadImageComplete,
   }) {
@@ -1596,6 +1925,8 @@ class _$_DeleteApplication implements _DeleteApplication {
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
     TResult Function()? onUploadImageComplete,
     required TResult orElse(),
@@ -1618,6 +1949,8 @@ class _$_DeleteApplication implements _DeleteApplication {
     required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
     required TResult Function(_OnGetSingleApplication value)
         onGetSingleApplication,
+    required TResult Function(_OnGetSingleApplicationWithImage value)
+        onGetSingleApplicationWithImage,
     required TResult Function(_DeleteApplication value) deleteApplication,
     required TResult Function(_OnUploadImageComplete value)
         onUploadImageComplete,
@@ -1636,6 +1969,8 @@ class _$_DeleteApplication implements _DeleteApplication {
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
+    TResult Function(_OnGetSingleApplicationWithImage value)?
+        onGetSingleApplicationWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
   }) {
@@ -1653,6 +1988,8 @@ class _$_DeleteApplication implements _DeleteApplication {
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
+    TResult Function(_OnGetSingleApplicationWithImage value)?
+        onGetSingleApplicationWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
     required TResult orElse(),
@@ -1719,6 +2056,8 @@ class _$_OnUploadImageComplete implements _OnUploadImageComplete {
     required TResult Function() onUpdateApplication,
     required TResult Function() onUpdateGuarantor,
     required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
+    required TResult Function(SingleVisaResponse singleResponse)
+        onGetSingleApplicationWithImage,
     required TResult Function() deleteApplication,
     required TResult Function() onUploadImageComplete,
   }) {
@@ -1736,6 +2075,8 @@ class _$_OnUploadImageComplete implements _OnUploadImageComplete {
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
     TResult Function()? onUploadImageComplete,
   }) {
@@ -1753,6 +2094,8 @@ class _$_OnUploadImageComplete implements _OnUploadImageComplete {
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
     TResult Function()? onUploadImageComplete,
     required TResult orElse(),
@@ -1775,6 +2118,8 @@ class _$_OnUploadImageComplete implements _OnUploadImageComplete {
     required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
     required TResult Function(_OnGetSingleApplication value)
         onGetSingleApplication,
+    required TResult Function(_OnGetSingleApplicationWithImage value)
+        onGetSingleApplicationWithImage,
     required TResult Function(_DeleteApplication value) deleteApplication,
     required TResult Function(_OnUploadImageComplete value)
         onUploadImageComplete,
@@ -1793,6 +2138,8 @@ class _$_OnUploadImageComplete implements _OnUploadImageComplete {
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
+    TResult Function(_OnGetSingleApplicationWithImage value)?
+        onGetSingleApplicationWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
   }) {
@@ -1810,6 +2157,8 @@ class _$_OnUploadImageComplete implements _OnUploadImageComplete {
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
+    TResult Function(_OnGetSingleApplicationWithImage value)?
+        onGetSingleApplicationWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
     required TResult orElse(),

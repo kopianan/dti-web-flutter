@@ -6,6 +6,7 @@ import 'package:dio/dio.dart';
 import 'package:dti_web/core/storage.dart';
 import 'package:dti_web/domain/application/i_application.dart';
 import 'package:dti_web/domain/core/document_data_model.dart';
+import 'package:dti_web/domain/core/single_visa_response.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/domain/global/failures.dart';
 import 'package:dti_web/domain/update/i_update_application.dart';
@@ -19,59 +20,58 @@ class IUpdateApplicationRepository extends IUpdateApplication {
 
   @override
   Future<Either<Failures, String>> uploadImagesAndUpdateData(
-      VisaApplicationModel visa, DocumentDataModel doc) async {
+      VisaApplicationModel visa,
+      DocumentDataModel doc,
+      List<String> deletedImages) async {
     dio = Dio();
     final storage = Storage();
     try {
-      // doc.imageList!.forEach((element) async {
-      //   var formData = FormData.fromMap({
-      //     'docId': doc.id,
-      //     'visaAppId': visa.applicationID,
-      //     'userId': visa.createdBy,
-      //     'file': MultipartFile.fromFileSync(doc.imageList!.single!,
-      //         filename: DateTime.now().millisecondsSinceEpoch.toString())
-      //   });
-      // });
+      //Cek and uplaod image
+      if (doc.imageList != null && doc.imageList!.isNotEmpty) {
+        final multiRequest = doc.imageList!.map((e) async {
+          if (e != null && e.contains('/')) {
+            var formData = FormData.fromMap({
+              'docId': doc.id,
+              'visaAppId': visa.applicationID,
+              'userId': visa.createdBy,
+              'file': await MultipartFile.fromFile(
+                e,
+                filename:
+                    "${DateTime.now().millisecondsSinceEpoch}.${e.split('.').last}",
+              )
+            });
+            var result =
+                dio!.post('${Constant.baseUrl}/application/file/upload',
+                    options: Options(
+                      headers: {
+                        'Authorization': 'Bearer ${storage.getToken()}'
+                      },
+                    ),
+                    data: formData);
+            return result;
+          }
+        }).toList();
 
-      //  final result = await dio!.post(
-      //   '${Constant.baseUploadUrl}/fileUpload',
-      //   options: Options(
-      //     headers: {'Authorization': 'Bearer ${storage.getToken()}'},
-      //   ),
-      //   data: formData,
-      // );
-      // log(result.toString(), name: "UPLOAD FILE");
-      // if (result.data['downloadURL'] != null) {
-      //   return Right(result.data['downloadURL']);
-      // }
-      // return Left(
-      //     Failures.generalError(result.data['message'] ?? "Something wrong"));
-      print(doc.imageList);
-      print(visa.applicationID);
-      print(visa.createdBy);
-      final multiRequest = doc.imageList!.map((e) async {
-        if (e != null) {
-          var formData = FormData.fromMap({
-            'docId': doc.id,
-            'visaAppId': visa.applicationID,
-            'userId': visa.createdBy,
-            'file': await MultipartFile.fromFile(
-              e,
-              filename:
-                  "${DateTime.now().millisecondsSinceEpoch}.${e.split('.').last}",
-            )
-          });
-          var result = dio!.post('${Constant.baseUrl}/application/file/upload',
-              options: Options(
-                headers: {'Authorization': 'Bearer ${storage.getToken()}'},
-              ),
-              data: formData);
-          return result;
-        }
-      }).toList();
+        final multiResponse = await Future.wait(multiRequest);
+      }
 
-      final multiResponse = await Future.wait(multiRequest);
-      return Right("Success Upload photo");
+      //DELETE IMAGE
+      if (deletedImages.isNotEmpty) {
+        var result = dio!.post(
+          '${Constant.baseUrl}/application/file/delete',
+          options: Options(
+            headers: {'Authorization': 'Bearer ${storage.getToken()}'},
+          ),
+          //TODO
+          data: {
+            "fileName": deletedImages,
+            "docId": doc.id,
+            "visaAppId": visa.applicationID,
+          },
+        );
+      }
+
+      return Right("Success Upload and delete photo");
     } on DioError catch (e) {
       ErrorResponse err = ErrorResponse();
       return Left(err.dioErrorChecker(e));
@@ -249,6 +249,27 @@ class IUpdateApplicationRepository extends IUpdateApplication {
           break;
       }
       return Left(Failures.serverError());
+    }
+  }
+
+  @override
+  Future<Either<String, SingleVisaResponse>> getUserApplicationByIdWithImages(
+      String firebaseDocId) async {
+    dio = Dio();
+    final storage = Storage();
+
+    try {
+      final result = await dio!.get(
+          "${Constant.baseUrl}/application/$firebaseDocId",
+          options: Options(
+              headers: {"Authorization": "Bearer ${storage.getToken()}"}));
+ 
+      final visaApps = SingleVisaResponse.fromJson(result.data);
+      print(visaApps);
+      ;
+      return Right(visaApps);
+    } on Exception catch (e) {
+      return Left(e.toString());
     }
   }
 }

@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dti_web/core/widgets/application_card.dart';
 import 'package:dti_web/domain/core/document_data_model.dart';
+import 'package:dti_web/domain/core/single_visa_response.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/domain/global/failures.dart';
 
@@ -11,8 +12,12 @@ abstract class IUpdateApplication {
       VisaApplicationModel visaApplicationModel);
   Future<Either<String, String>> updateGuarantor(VisaApplicationModel visa);
   Future<Either<Failures, String>> uploadImagesAndUpdateData(
-      VisaApplicationModel visa, DocumentDataModel doc);
+      VisaApplicationModel visa,
+      DocumentDataModel doc,
+      List<String> deletedImages);
   Future<Either<Failures, String>> submitVisa(String firebaseDocId);
   Future<Either<String, VisaApplicationModel>> getUserApplicationById(
+      String firebaseDocId);
+  Future<Either<String, SingleVisaResponse>> getUserApplicationByIdWithImages(
       String firebaseDocId);
 }

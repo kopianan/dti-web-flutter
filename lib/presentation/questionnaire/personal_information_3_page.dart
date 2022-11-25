@@ -278,16 +278,18 @@ class _PersonalInformation3PageState extends State<PersonalInformation3Page> {
                                         ),
                                       ),
                                       20.verticalSpace,
-
                                       SizedBox(
-                                          width: double.infinity,
-                                          child: PrimaryButton(
-                                              label: "Submit",
-                                              onClick: () {
-                                                onSubmit(appState);
-                                                // AutoRouter.of(context)
-                                                //     .push(PersonalInformation4Route());
-                                              }))
+                                        width: double.infinity,
+                                        height: 45.h,
+                                        child: PrimaryButton(
+                                          labelStyle:
+                                              TextStyle(fontSize: 15.sp),
+                                          onClick: () async {
+                                            onSubmit(appState);
+                                          },
+                                          label: "SUBMIT",
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ),

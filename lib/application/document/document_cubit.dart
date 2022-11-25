@@ -21,6 +21,27 @@ class DocumentCubit extends Cubit<DocumentState> {
     emit(state.copyWith.selectedDocument!(imageList: list));
   }
 
+  void removePhotoDocument(String path, int index) {
+    List<String?>? lists = [];
+    List<String>? deletedImage = [];
+    lists = state.selectedDocument!.imageList;
+    if (!path.contains('/')) {
+      //get deleted images
+      deletedImage = state.deletedImagesName;
+      //add new item on deleted image
+      deletedImage!.add(path);
+    }
+    //remove image from current view 
+    lists!.removeWhere((element) => element == path);
+    lists.add(null); 
+    //update data
+    state.copyWith(
+        selectedDocument: state.selectedDocument!.copyWith(imageList: lists),
+        deletedImagesName: deletedImage);
+
+    print(state.deletedImagesName);
+  }
+
   void updateSelectedIndex(int index) {
     try {
       emit(state.copyWith(

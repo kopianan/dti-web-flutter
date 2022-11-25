@@ -47,11 +47,12 @@ class _ApplicationCardPageState extends State<ApplicationCardPage> {
                         child: VisaApplicationCard(
                       visaApps: e.apps[index],
                       onCardClick: () {
-                        context
-                            .read<ApplicationCubit>()
-                            .setupApplication(e.apps[index]);
-                        AutoRouter.of(context)
-                            .push(PersonalInformation1Route());
+                        
+                        // context
+                        //     .read<ApplicationCubit>()
+                        //     .setupApplication(e.apps[index]);
+                        AutoRouter.of(context).push(PersonalInformation1Route(
+                            firebaseDocId: e.apps[index].firebaseDocId!));
                       },
                     ));
                   },

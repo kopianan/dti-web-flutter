@@ -7,6 +7,7 @@ import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GuarantorPage extends StatefulWidget {
@@ -32,22 +33,13 @@ class _GuarantorPageState extends State<GuarantorPage> {
         state.maybeMap(
           orElse: () {},
           onLoading: (e) {
-            showDialog(
-              context: context,
-              barrierDismissible: false,
-              builder: (context) => AlertDialog(
-                content: Container(
-                    height: 100,
-                    width: 100,
-                    child: Center(child: CircularProgressIndicator())),
-              ),
-            );
+            EasyLoading.show();
           },
           onError: (e) {
-            AutoRouter.of(context).popTop();
+            EasyLoading.dismiss();
           },
           onUpdateGuarantor: (e) {
-            AutoRouter.of(context).popTop();
+            EasyLoading.dismiss();
             AutoRouter.of(context)
                 .replaceAll([DashboardRoute(), UploadDocumentRoute()]);
           },

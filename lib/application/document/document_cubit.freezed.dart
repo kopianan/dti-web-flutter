@@ -19,6 +19,7 @@ mixin _$DocumentState {
   VisaApplicationModel? get visa => throw _privateConstructorUsedError;
   List<DocumentDataModel>? get docs => throw _privateConstructorUsedError;
   int? get selectedIndex => throw _privateConstructorUsedError;
+  List<String>? get deletedImagesName => throw _privateConstructorUsedError;
   DocumentDataModel? get selectedDocument => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -35,6 +36,7 @@ abstract class $DocumentStateCopyWith<$Res> {
       {VisaApplicationModel? visa,
       List<DocumentDataModel>? docs,
       int? selectedIndex,
+      List<String>? deletedImagesName,
       DocumentDataModel? selectedDocument});
 
   $VisaApplicationModelCopyWith<$Res>? get visa;
@@ -55,6 +57,7 @@ class _$DocumentStateCopyWithImpl<$Res>
     Object? visa = freezed,
     Object? docs = freezed,
     Object? selectedIndex = freezed,
+    Object? deletedImagesName = freezed,
     Object? selectedDocument = freezed,
   }) {
     return _then(_value.copyWith(
@@ -70,6 +73,10 @@ class _$DocumentStateCopyWithImpl<$Res>
           ? _value.selectedIndex
           : selectedIndex // ignore: cast_nullable_to_non_nullable
               as int?,
+      deletedImagesName: deletedImagesName == freezed
+          ? _value.deletedImagesName
+          : deletedImagesName // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
       selectedDocument: selectedDocument == freezed
           ? _value.selectedDocument
           : selectedDocument // ignore: cast_nullable_to_non_nullable
@@ -111,6 +118,7 @@ abstract class _$$_DocumentStateCopyWith<$Res>
       {VisaApplicationModel? visa,
       List<DocumentDataModel>? docs,
       int? selectedIndex,
+      List<String>? deletedImagesName,
       DocumentDataModel? selectedDocument});
 
   @override
@@ -135,6 +143,7 @@ class __$$_DocumentStateCopyWithImpl<$Res>
     Object? visa = freezed,
     Object? docs = freezed,
     Object? selectedIndex = freezed,
+    Object? deletedImagesName = freezed,
     Object? selectedDocument = freezed,
   }) {
     return _then(_$_DocumentState(
@@ -150,6 +159,10 @@ class __$$_DocumentStateCopyWithImpl<$Res>
           ? _value.selectedIndex
           : selectedIndex // ignore: cast_nullable_to_non_nullable
               as int?,
+      deletedImagesName: deletedImagesName == freezed
+          ? _value.deletedImagesName
+          : deletedImagesName // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
       selectedDocument: selectedDocument == freezed
           ? _value.selectedDocument
           : selectedDocument // ignore: cast_nullable_to_non_nullable
@@ -162,7 +175,11 @@ class __$$_DocumentStateCopyWithImpl<$Res>
 
 class _$_DocumentState implements _DocumentState {
   _$_DocumentState(
-      {this.visa, this.docs, this.selectedIndex, this.selectedDocument});
+      {this.visa,
+      this.docs,
+      this.selectedIndex,
+      this.deletedImagesName,
+      this.selectedDocument});
 
   @override
   final VisaApplicationModel? visa;
@@ -171,11 +188,13 @@ class _$_DocumentState implements _DocumentState {
   @override
   final int? selectedIndex;
   @override
+  final List<String>? deletedImagesName;
+  @override
   final DocumentDataModel? selectedDocument;
 
   @override
   String toString() {
-    return 'DocumentState(visa: $visa, docs: $docs, selectedIndex: $selectedIndex, selectedDocument: $selectedDocument)';
+    return 'DocumentState(visa: $visa, docs: $docs, selectedIndex: $selectedIndex, deletedImagesName: $deletedImagesName, selectedDocument: $selectedDocument)';
   }
 
   @override
@@ -188,6 +207,8 @@ class _$_DocumentState implements _DocumentState {
             const DeepCollectionEquality()
                 .equals(other.selectedIndex, selectedIndex) &&
             const DeepCollectionEquality()
+                .equals(other.deletedImagesName, deletedImagesName) &&
+            const DeepCollectionEquality()
                 .equals(other.selectedDocument, selectedDocument));
   }
 
@@ -197,6 +218,7 @@ class _$_DocumentState implements _DocumentState {
       const DeepCollectionEquality().hash(visa),
       const DeepCollectionEquality().hash(docs),
       const DeepCollectionEquality().hash(selectedIndex),
+      const DeepCollectionEquality().hash(deletedImagesName),
       const DeepCollectionEquality().hash(selectedDocument));
 
   @JsonKey(ignore: true)
@@ -210,6 +232,7 @@ abstract class _DocumentState implements DocumentState {
       {final VisaApplicationModel? visa,
       final List<DocumentDataModel>? docs,
       final int? selectedIndex,
+      final List<String>? deletedImagesName,
       final DocumentDataModel? selectedDocument}) = _$_DocumentState;
 
   @override
@@ -218,6 +241,8 @@ abstract class _DocumentState implements DocumentState {
   List<DocumentDataModel>? get docs;
   @override
   int? get selectedIndex;
+  @override
+  List<String>? get deletedImagesName;
   @override
   DocumentDataModel? get selectedDocument;
   @override

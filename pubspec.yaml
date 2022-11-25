@@ -32,6 +32,7 @@ dependencies:
   auto_route: ^5.0.1
   awesome_dialog: ^3.0.2
   bloc: ^8.1.0
+  carousel_slider: ^4.1.1
   country_code_picker: ^2.0.2
   country_codes: ^2.2.0
   country_picker: ^2.0.16
@@ -42,6 +43,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.1
+  flutter_easyloading: ^3.0.5
   flutter_form_builder: ^7.7.0
   flutter_material_pickers: ^3.1.4+1
   flutter_screenutil: ^5.5.4
@@ -58,6 +60,9 @@ dependencies:
   json_annotation: ^4.7.0
   pinput: ^2.2.13
   shimmer: ^2.0.0
+  syncfusion_flutter_pdf: ^20.3.56
+  syncfusion_flutter_pdfviewer: ^20.3.57
+  syncfusion_flutter_signaturepad: ^20.3.56
   url_launcher: ^6.1.6
 
 dev_dependencies:

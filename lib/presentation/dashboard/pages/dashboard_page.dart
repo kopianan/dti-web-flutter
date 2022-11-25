@@ -134,51 +134,56 @@ class _DashboardPageState extends State<DashboardPage> {
                             builder: (context, state) {
                               return InkWell(
                                 onTap: () {
-                                  state.maybeMap(
-                                      orElse: () {},
-                                      onGetSingleData: (e) {
-                                        if (e.visa.status!.toLowerCase() ==
-                                            'draft') {
-                                          AwesomeDialog(
-                                              context: context,
-                                              width:
-                                                  ScreenUtil().screenWidth / 4,
-                                              title: "Draft Application",
-                                              body: const Center(
-                                                child: Text(
-                                                  "You have Incomplete Visa Application. Do you want to continue from your latest draft? ",
-                                                  textAlign: TextAlign.center,
-                                                ),
-                                              ),
-                                              btnOkText: "Continue",
-                                              btnCancelText: "Delete",
-                                              btnOkOnPress: () {
-                                                context
-                                                    .read<ApplicationCubit>()
-                                                    .setupApplication(e.visa);
-                                                AutoRouter.of(context).push(
-                                                    PersonalInformation1Route());
-                                              },
-                                              btnCancelOnPress: () {
-                                                dashboardCubit.deleteSingleData(
-                                                    e.visa.firebaseDocId!);
-                                              }).show();
-                                        } else {
-                                          print("DATA");
-                                          final data =
-                                              QuestionnaireDataModel.fromJson(
-                                                  rawData);
-                                         
-                                          AutoRouter.of(context).push(
-                                              QuestionnaireRoute(
-                                                  question:
-                                                      data.questionnaire));
-                                          // AutoRouter.of(context).navigate(
-                                          //   QuestionnaireRoute(
-                                          //       question: data.questionnaire),
-                                          // );
-                                        }
-                                      });
+                                  state.maybeMap(orElse: () {
+                                    final data =
+                                        QuestionnaireDataModel.fromJson(
+                                            rawData);
+                                    AutoRouter.of(context).push(
+                                        QuestionnaireRoute(
+                                            question: data.questionnaire));
+                                  }, onGetSingleData: (e) {
+                                    if (e.visa.status!.toLowerCase() ==
+                                        'draft') {
+                                      AwesomeDialog(
+                                          context: context,
+                                          width: ScreenUtil().screenWidth / 4,
+                                          title: "Draft Application",
+                                          body: const Center(
+                                            child: Text(
+                                              "You have Incomplete Visa Application. Do you want to continue from your latest draft? ",
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          ),
+                                          btnOkText: "Continue",
+                                          btnCancelText: "Delete",
+                                          btnOkOnPress: () {
+                                            // context
+                                            //     .read<ApplicationCubit>()
+                                            //     .setupApplication(e.visa);
+                                            AutoRouter.of(context).push(
+                                                PersonalInformation1Route(
+                                                    firebaseDocId:
+                                                        e.visa.firebaseDocId!));
+                                          },
+                                          btnCancelOnPress: () {
+                                            dashboardCubit.deleteSingleData(
+                                                e.visa.firebaseDocId!);
+                                          }).show();
+                                    } else {
+                                      print("DATA");
+                                      final data =
+                                          QuestionnaireDataModel.fromJson(
+                                              rawData);
+
+                                      AutoRouter.of(context).push(
+                                          QuestionnaireRoute(
+                                              question: data.questionnaire));
+                                      // AutoRouter.of(context).navigate(
+                                      //   QuestionnaireRoute(
+                                      //       question: data.questionnaire),
+                                      // );
+                                    }
+                                  });
                                 },
                                 child: Card(
                                   clipBehavior: Clip.hardEdge,
@@ -222,7 +227,10 @@ class _DashboardPageState extends State<DashboardPage> {
                             builder: (context, state) {
                               return state.maybeMap(
                                 orElse: () {
-                                  return Container();
+                                  return Text(
+                                    "No Application Found",
+                                    style: TextStyle(fontSize: 20.sp),
+                                  );
                                 },
                                 loading: (e) {
                                   return Card(
@@ -254,11 +262,13 @@ class _DashboardPageState extends State<DashboardPage> {
                                             btnOkText: "Continue",
                                             btnCancelText: "Delete",
                                             btnOkOnPress: () {
-                                              context
-                                                  .read<ApplicationCubit>()
-                                                  .setupApplication(e.visa);
+                                              // context
+                                              //     .read<ApplicationCubit>()
+                                              //     .setupApplication(e.visa);
                                               AutoRouter.of(context).push(
-                                                  PersonalInformation1Route());
+                                                  PersonalInformation1Route(
+                                                      firebaseDocId: e.visa
+                                                          .firebaseDocId!));
                                               //TODO
                                               // AutoRouter.of(context)
                                               //     .push(UploadDocumentRoute());
@@ -342,10 +352,9 @@ class _DashboardFooter extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 SafetyInfoWidget(
-                                  title: "Data Privacy",
-                                  subtitle:
-                                      "We are in compliance with data\nprotection laws and regulations",
-                                ),
+                                    title: "Data Privacy",
+                                    subtitle:
+                                        "We are in compliance with data\nprotection laws and regulations"),
                                 10.horizontalSpace,
                                 SafetyInfoWidget(
                                   title: "Data Security",

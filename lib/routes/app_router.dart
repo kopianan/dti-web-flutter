@@ -1,14 +1,18 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:dti_web/application/document/document_cubit.dart';
+import 'package:dti_web/domain/core/document_data_model.dart';
+import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/domain/questionnaire/result_model.dart';
 import 'package:dti_web/presentation/applications/application_detail_page.dart';
 import 'package:dti_web/presentation/applications/upload_document_page.dart';
+import 'package:dti_web/presentation/applications/widgets/signature_page.dart';
 import 'package:dti_web/presentation/auth/pages/splash_screen_page.dart';
 import 'package:dti_web/presentation/dashboard/pages/application_card_page.dart';
 import 'package:dti_web/presentation/questionnaire/guarantor_page.dart';
 import 'package:dti_web/presentation/questionnaire/personal_information_1_page.dart';
 import 'package:dti_web/presentation/questionnaire/personal_information_3_page.dart';
 import 'package:dti_web/presentation/questionnaire/personal_information_4_page.dart';
+import 'package:dti_web/presentation/questionnaire/photo_view_page.dart';
 import 'package:dti_web/presentation/questionnaire/questionnaire_page.dart';
 import 'package:dti_web/presentation/questionnaire/questionnaire_summary_page.dart';
 import 'package:dti_web/presentation/questionnaire/submit_screen_page.dart';
@@ -36,13 +40,16 @@ part "app_router.gr.dart";
       page: SplashScreenPage,
     ),
     AutoRoute(
-      path: '/',
-      initial: true,
+      path: DashboardPage.routeName,
       page: DashboardPage,
     ),
     AutoRoute(
       page: ApplicationDetailPage,
       path: ApplicationDetailPage.routeName,
+    ),
+    AutoRoute(
+      page: SignaturePage,
+      path: SignaturePage.routeName,
     ),
     // AutoRoute(
     //   page: SubmitScreenPage,
@@ -70,9 +77,19 @@ part "app_router.gr.dart";
     AutoRoute(
       page: PersonalInformation1Page,
     ),
-    AutoRoute(page: SignInPage, path: SignInPage.routeName),
     AutoRoute(
+      page: SignInPage,
+      path: '/',
+      initial: true,
+    ),
+    AutoRoute(
+      path: UploadDocumentPage.routeName,
       page: UploadDocumentPage,
+    ),
+    AutoRoute(
+      page: PhotoViewPage,
+      path: PhotoViewPage.routeName,
+      fullscreenDialog: true
     ),
     AutoRoute(
         page: QuestionnaireSummaryPage,
@@ -81,7 +98,10 @@ part "app_router.gr.dart";
       page: QuestionnairePage,
       path: QuestionnairePage.routeName,
     ),
-    AutoRoute(page: SignUpPage, path: SignUpPage.routeName),
+    AutoRoute(
+      page: SignUpPage,
+      path: SignUpPage.routeName,
+    ),
     AutoRoute(page: ResetPage, path: ResetPage.routeName),
     AutoRoute(page: OTPPage, path: OTPPage.routeName),
     AutoRoute(page: LandingPage, path: LandingPage.routeName),

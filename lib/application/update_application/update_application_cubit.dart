@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:dti_web/domain/core/document_data_model.dart';
+import 'package:dti_web/domain/core/single_visa_response.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/domain/global/failures.dart';
 import 'package:dti_web/domain/questionnaire/questionnaire_model.dart';
@@ -21,18 +22,18 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
   void uploadImages(
     VisaApplicationModel visa,
     DocumentDataModel document,
+    List<String> deletedImageName,
   ) async {
     emit(UpdateApplicationState.onLoading());
     //Remove null data on list
     // var imageList = document.imageList!;
     // imageList.removeWhere((element) => element == null);
     //=====Null is gone ======
+    print(document.imageList);
 
     try {
-      final data =
-          await iUpdateApplication.uploadImagesAndUpdateData(visa, document
-              // document.copyWith(imageList: imageList),
-              );
+      final data = await iUpdateApplication.uploadImagesAndUpdateData(
+          visa, document, deletedImageName);
 
       data.fold(
         (l) => emit(UpdateApplicationState.onError(l.toString())),
@@ -117,6 +118,17 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
     result.fold(
       (l) => emit(UpdateApplicationState.onError(l)),
       (r) => emit(UpdateApplicationState.onGetSingleApplication(r)),
+    );
+  }
+
+  void getUserApplicationWithImages(String firebaseDocId) async {
+    emit(UpdateApplicationState.onLoading());
+
+    final result = await iUpdateApplication
+        .getUserApplicationByIdWithImages(firebaseDocId);
+    result.fold(
+      (l) => emit(UpdateApplicationState.onError(l)),
+      (r) => emit(UpdateApplicationState.onGetSingleApplicationWithImage(r)),
     );
   }
 

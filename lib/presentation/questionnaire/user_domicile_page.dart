@@ -136,11 +136,14 @@ class _UserDomicilePageState extends State<UserDomicilePage> {
                     builder: (context, state) {
                       return SizedBox(
                         width: double.infinity,
+                        height: 45.h,
                         child: PrimaryButton(
-                            onClick: () async {
-                              onSubmit(context, appState);
-                            },
-                            label: "Continue"),
+                          labelStyle: TextStyle(fontSize: 15.sp),
+                          onClick: () async {
+                            onSubmit(context, appState);
+                          },
+                          label: "SUBMIT",
+                        ),
                       );
                     },
                   ),

@@ -200,16 +200,18 @@ class _PersonalInformation2PageState extends State<PersonalInformation2Page> {
                           ),
                           20.verticalSpace,
                           //validate button
+
                           SizedBox(
                             width: double.infinity,
+                            height: 45.h,
                             child: PrimaryButton(
-                                label: "Submit",
-                                onClick: () {
-                                  updateData(context);
-                                  // AutoRouter.of(context)
-                                  //     .push(PersonalInformation3Route());
-                                }),
-                          )
+                              labelStyle: TextStyle(fontSize: 15.sp),
+                              onClick: () async {
+                                updateData(context);
+                              },
+                              label: "SUBMIT",
+                            ),
+                          ),
                         ],
                       ),
                     ),

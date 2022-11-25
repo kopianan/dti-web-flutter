@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:auto_route/auto_route.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dti_web/application/application_cubit.dart';
 import 'package:dti_web/application/document/document_cubit.dart';
@@ -5,6 +8,7 @@ import 'package:dti_web/application/update_application/update_application_cubit.
 import 'package:dti_web/core/widgets/primary_button.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/injection.dart';
+import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:dti_web/utils/date_converter.dart';
 import 'package:flutter/material.dart';
@@ -30,19 +34,24 @@ class _ApplicationDetailPageState extends State<ApplicationDetailPage> {
     return Scaffold(
       body: BlocProvider(
         create: (context) => getIt<UpdateApplicationCubit>()
-          ..getUserApplication(widget.firebaseDocId),
+          ..getUserApplicationWithImages(widget.firebaseDocId),
         child: BlocBuilder<UpdateApplicationCubit, UpdateApplicationState>(
           builder: (context, state) {
-            return state.maybeMap(orElse: () {
-              return Container();
-            }, onLoading: (e) {
-              return const Center(child: CircularProgressIndicator());
-            }, onGetSingleApplication: (e) {
-              return SuccessBody(
-                visa: e.visa,
-                documentCubit: widget.documentCubit,
-              );
-            });
+            return state.maybeMap(
+              orElse: () {
+                return Container();
+              },
+              onLoading: (e) {
+                return const Center(child: CircularProgressIndicator());
+              },
+              onGetSingleApplicationWithImage: (e) {
+                return SuccessBody(
+                  imagesUrl: e.singleResponse.documentUserApplicationUrl,
+                  visa: e.singleResponse.visaApplicationModel!,
+                  documentCubit: widget.documentCubit,
+                );
+              },
+            );
           },
         ),
       ),
@@ -55,9 +64,13 @@ TableRow get vertDistance =>
 
 class SuccessBody extends StatelessWidget {
   const SuccessBody(
-      {super.key, required this.visa, required this.documentCubit});
+      {super.key,
+      required this.visa,
+      required this.documentCubit,
+      required this.imagesUrl});
   final VisaApplicationModel visa;
   final DocumentCubit documentCubit;
+  final List<dynamic>? imagesUrl;
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -224,8 +237,16 @@ class SuccessBody extends StatelessWidget {
                       return InkWell(
                           onTap: () {
                             var data = e.imageList!;
+                            List<String>? filtered = [];
                             data.removeWhere((element) => element == null);
                             if (data.isNotEmpty) {
+                              imagesUrl!.forEach((element) {
+                                final data = element as Map<String, dynamic>;
+                                filtered.add(data[e.id!.trim()]);
+                              });
+
+                              AutoRouter.of(context)
+                                  .push(PhotoViewRoute(images: filtered));
                               // showDialog(
                               //     context: context,
                               //     builder: (context) {
@@ -261,16 +282,19 @@ class SuccessBody extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       fontSize: 18.sp),
                 ),
+                20.verticalSpace,
                 Text(
                   "(a) You attest that you have read Moral Character Requirments carefully and state that your attestation here is true and correct, and ",
-                  style: TextStyle(color: Colors.black, fontSize: 15.sp),
+                  style: TextStyle(color: Colors.black, fontSize: 16.sp),
                 ),
+                8.verticalSpace,
                 Text(
                   "(b) You are understand that, while sponsored, employed or volunteering in any position that requires Door To Indonesia background screening as a condition of guaranteed",
-                  style: TextStyle(color: Colors.black, fontSize: 15.sp),
+                  style: TextStyle(color: Colors.black, fontSize: 16.sp),
                 ),
               ],
             ),
+            10.verticalSpace,
             CheckboxListTile(
               contentPadding: EdgeInsets.zero,
               controlAffinity: ListTileControlAffinity.leading,
@@ -300,9 +324,7 @@ class SuccessBody extends StatelessWidget {
                             ),
                           ),
                           btnOkText: "Continue",
-                          btnOkOnPress: () {
-                            
-                          },
+                          btnOkOnPress: () {},
                         ).show();
                       });
                 },

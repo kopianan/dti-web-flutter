@@ -7,6 +7,7 @@ import 'package:dti_web/core/widgets/auth_header_widget.dart';
 import 'package:dti_web/core/widgets/loading_primary_button.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
 import 'package:dti_web/injection.dart';
+import 'package:dti_web/presentation/auth/pages/reset_page.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +38,7 @@ class _SignInPageState extends State<SignInPage> {
             orElse: () {},
             onLoginSuccess: (e) {
               //Save data to shared preferences
-              
+
               context.router.push(DashboardRoute());
             },
           );
@@ -163,7 +164,10 @@ class _SignInPageState extends State<SignInPage> {
                                   ),
                                   alignment: Alignment.centerRight,
                                   child: InkWell(
-                                      onTap: () {},
+                                      onTap: () {
+                                        AutoRouter.of(context)
+                                            .push(ResetRoute());
+                                      },
                                       child: Text("Forgot Password",
                                           style: TextStyle(
                                             fontSize: 13.sp,
@@ -171,7 +175,7 @@ class _SignInPageState extends State<SignInPage> {
                                 ),
                                 20.verticalSpace,
                                 SizedBox(
-                                  height: 30.h,
+                                  height: 45.h,
                                   child: state.maybeMap(
                                     loading: (value) => LoadingPrimaryButton(),
                                     orElse: () => PrimaryButton(
@@ -180,6 +184,7 @@ class _SignInPageState extends State<SignInPage> {
                                             context, email.text, password.text);
                                       },
                                       label: "LOGIN",
+                                      labelStyle: TextStyle(fontSize: 15.sp),
                                     ),
                                   ),
                                 ),
@@ -218,12 +223,8 @@ class _SignInPageState extends State<SignInPage> {
   }
 
   void loginUser(BuildContext context, String email, String password) {
-    context
-        .read<AuthCubit>()
-        .loginWithEmailAndPassword("dti@gmail.com", "dti123");
-    // if (formKey.currentState!.validate()) {
-    //   formKey.currentState!.save();
-    //   context.read<AuthCubit>().loginWithEmailAndPassword("dti@gmail.com", "dti123");
-    // }
+    if (formKey.currentState!.validate()) {
+      context.read<AuthCubit>().loginWithEmailAndPassword(email, password);
+    }
   }
 }

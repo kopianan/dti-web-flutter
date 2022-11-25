@@ -40,6 +40,17 @@ class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    SignatureRoute.name: (routeData) {
+      final args = routeData.argsAs<SignatureRouteArgs>();
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: SignaturePage(
+          key: args.key,
+          visaApplication: args.visaApplication,
+          appDocument: args.appDocument,
+        ),
+      );
+    },
     UserDomicileRoute.name: (routeData) {
       final args = routeData.argsAs<UserDomicileRouteArgs>(
           orElse: () => const UserDomicileRouteArgs());
@@ -102,9 +113,13 @@ class _$AppRouter extends RootStackRouter {
       );
     },
     PersonalInformation1Route.name: (routeData) {
+      final args = routeData.argsAs<PersonalInformation1RouteArgs>();
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const PersonalInformation1Page(),
+        child: PersonalInformation1Page(
+          key: args.key,
+          firebaseDocId: args.firebaseDocId,
+        ),
       );
     },
     SignInRoute.name: (routeData) {
@@ -117,6 +132,17 @@ class _$AppRouter extends RootStackRouter {
       return MaterialPageX<dynamic>(
         routeData: routeData,
         child: const UploadDocumentPage(),
+      );
+    },
+    PhotoViewRoute.name: (routeData) {
+      final args = routeData.argsAs<PhotoViewRouteArgs>();
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: PhotoViewPage(
+          key: args.key,
+          images: args.images,
+        ),
+        fullscreenDialog: true,
       );
     },
     QuestionnaireSummaryRoute.name: (routeData) {
@@ -141,15 +167,19 @@ class _$AppRouter extends RootStackRouter {
       );
     },
     SignUpRoute.name: (routeData) {
+      final args = routeData.argsAs<SignUpRouteArgs>(
+          orElse: () => const SignUpRouteArgs());
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const SignUpPage(),
+        child: SignUpPage(key: args.key),
       );
     },
     ResetRoute.name: (routeData) {
+      final args = routeData.argsAs<ResetRouteArgs>(
+          orElse: () => const ResetRouteArgs());
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const ResetPage(),
+        child: ResetPage(key: args.key),
       );
     },
     OTPRoute.name: (routeData) {
@@ -186,11 +216,15 @@ class _$AppRouter extends RootStackRouter {
         ),
         RouteConfig(
           DashboardRoute.name,
-          path: '/',
+          path: '/dashboard-page',
         ),
         RouteConfig(
           ApplicationDetailRoute.name,
           path: '/application-detail',
+        ),
+        RouteConfig(
+          SignatureRoute.name,
+          path: '/signature',
         ),
         RouteConfig(
           UserDomicileRoute.name,
@@ -222,11 +256,15 @@ class _$AppRouter extends RootStackRouter {
         ),
         RouteConfig(
           SignInRoute.name,
-          path: '/login',
+          path: '/',
         ),
         RouteConfig(
           UploadDocumentRoute.name,
-          path: '/upload-document-page',
+          path: '/upload-document',
+        ),
+        RouteConfig(
+          PhotoViewRoute.name,
+          path: '/photo-view',
         ),
         RouteConfig(
           QuestionnaireSummaryRoute.name,
@@ -281,7 +319,7 @@ class DashboardRoute extends PageRouteInfo<void> {
   const DashboardRoute()
       : super(
           DashboardRoute.name,
-          path: '/',
+          path: '/dashboard-page',
         );
 
   static const String name = 'DashboardRoute';
@@ -323,6 +361,45 @@ class ApplicationDetailRouteArgs {
   @override
   String toString() {
     return 'ApplicationDetailRouteArgs{key: $key, firebaseDocId: $firebaseDocId, documentCubit: $documentCubit}';
+  }
+}
+
+/// generated route for
+/// [SignaturePage]
+class SignatureRoute extends PageRouteInfo<SignatureRouteArgs> {
+  SignatureRoute({
+    Key? key,
+    required VisaApplicationModel visaApplication,
+    required DocumentDataModel appDocument,
+  }) : super(
+          SignatureRoute.name,
+          path: '/signature',
+          args: SignatureRouteArgs(
+            key: key,
+            visaApplication: visaApplication,
+            appDocument: appDocument,
+          ),
+        );
+
+  static const String name = 'SignatureRoute';
+}
+
+class SignatureRouteArgs {
+  const SignatureRouteArgs({
+    this.key,
+    required this.visaApplication,
+    required this.appDocument,
+  });
+
+  final Key? key;
+
+  final VisaApplicationModel visaApplication;
+
+  final DocumentDataModel appDocument;
+
+  @override
+  String toString() {
+    return 'SignatureRouteArgs{key: $key, visaApplication: $visaApplication, appDocument: $appDocument}';
   }
 }
 
@@ -513,14 +590,37 @@ class PersonalInformation3RouteArgs {
 
 /// generated route for
 /// [PersonalInformation1Page]
-class PersonalInformation1Route extends PageRouteInfo<void> {
-  const PersonalInformation1Route()
-      : super(
+class PersonalInformation1Route
+    extends PageRouteInfo<PersonalInformation1RouteArgs> {
+  PersonalInformation1Route({
+    Key? key,
+    required String firebaseDocId,
+  }) : super(
           PersonalInformation1Route.name,
           path: '/personal-information1-page',
+          args: PersonalInformation1RouteArgs(
+            key: key,
+            firebaseDocId: firebaseDocId,
+          ),
         );
 
   static const String name = 'PersonalInformation1Route';
+}
+
+class PersonalInformation1RouteArgs {
+  const PersonalInformation1RouteArgs({
+    this.key,
+    required this.firebaseDocId,
+  });
+
+  final Key? key;
+
+  final String firebaseDocId;
+
+  @override
+  String toString() {
+    return 'PersonalInformation1RouteArgs{key: $key, firebaseDocId: $firebaseDocId}';
+  }
 }
 
 /// generated route for
@@ -529,7 +629,7 @@ class SignInRoute extends PageRouteInfo<void> {
   const SignInRoute()
       : super(
           SignInRoute.name,
-          path: '/login',
+          path: '/',
         );
 
   static const String name = 'SignInRoute';
@@ -541,10 +641,44 @@ class UploadDocumentRoute extends PageRouteInfo<void> {
   const UploadDocumentRoute()
       : super(
           UploadDocumentRoute.name,
-          path: '/upload-document-page',
+          path: '/upload-document',
         );
 
   static const String name = 'UploadDocumentRoute';
+}
+
+/// generated route for
+/// [PhotoViewPage]
+class PhotoViewRoute extends PageRouteInfo<PhotoViewRouteArgs> {
+  PhotoViewRoute({
+    Key? key,
+    required List<String> images,
+  }) : super(
+          PhotoViewRoute.name,
+          path: '/photo-view',
+          args: PhotoViewRouteArgs(
+            key: key,
+            images: images,
+          ),
+        );
+
+  static const String name = 'PhotoViewRoute';
+}
+
+class PhotoViewRouteArgs {
+  const PhotoViewRouteArgs({
+    this.key,
+    required this.images,
+  });
+
+  final Key? key;
+
+  final List<String> images;
+
+  @override
+  String toString() {
+    return 'PhotoViewRouteArgs{key: $key, images: $images}';
+  }
 }
 
 /// generated route for
@@ -618,26 +752,50 @@ class QuestionnaireRouteArgs {
 
 /// generated route for
 /// [SignUpPage]
-class SignUpRoute extends PageRouteInfo<void> {
-  const SignUpRoute()
+class SignUpRoute extends PageRouteInfo<SignUpRouteArgs> {
+  SignUpRoute({Key? key})
       : super(
           SignUpRoute.name,
           path: '/register',
+          args: SignUpRouteArgs(key: key),
         );
 
   static const String name = 'SignUpRoute';
 }
 
+class SignUpRouteArgs {
+  const SignUpRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'SignUpRouteArgs{key: $key}';
+  }
+}
+
 /// generated route for
 /// [ResetPage]
-class ResetRoute extends PageRouteInfo<void> {
-  const ResetRoute()
+class ResetRoute extends PageRouteInfo<ResetRouteArgs> {
+  ResetRoute({Key? key})
       : super(
           ResetRoute.name,
           path: '/reset',
+          args: ResetRouteArgs(key: key),
         );
 
   static const String name = 'ResetRoute';
+}
+
+class ResetRouteArgs {
+  const ResetRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'ResetRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for

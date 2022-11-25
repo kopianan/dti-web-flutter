@@ -89,14 +89,19 @@ class _PersonalInformation4PageState extends State<PersonalInformation4Page> {
                           ),
                         ),
                         20.verticalSpace,
+
                         SizedBox(
-                            width: double.infinity,
-                            child: PrimaryButton(
-                                onClick: () {
-                                  AutoRouter.of(context)
-                                      .push(UserDomicileRoute());
-                                },
-                                label: "Submit")),
+                          width: double.infinity,
+                          height: 45.h,
+                          child: PrimaryButton(
+                            labelStyle: TextStyle(fontSize: 15.sp),
+                            onClick: () async {
+                              AutoRouter.of(context).push(UserDomicileRoute());
+                            },
+                            label: "SUBMIT",
+                          ),
+                        ),
+
                         //validate button
                         20.verticalSpace,
                         Card(
