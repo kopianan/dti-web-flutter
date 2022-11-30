@@ -16,6 +16,10 @@ part 'application_cubit.freezed.dart';
 @injectable
 class ApplicationCubit extends Cubit<ApplicationState> {
   ApplicationCubit() : super(ApplicationState.initial());
+  
+  void setupDocumentsMasterData(List<Map<String, dynamic>> list) {
+    emit(state.copyWith(masterImagesDocument: list));
+  }
 
   void setupApplication(VisaApplicationModel visa) {
     //SETUP DOCUMENTS

@@ -169,7 +169,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
           "${Constant.baseUrl}/application/$firebaseDocId",
           options: Options(
               headers: {"Authorization": "Bearer ${storage.getToken()}"}));
-
+      print(result); 
       if (result.data['data'] != null) {
         dynamic data = result.data['data'];
         final visaApps = VisaApplicationModel.fromJson(data);

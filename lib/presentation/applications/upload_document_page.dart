@@ -2,6 +2,7 @@
 import 'dart:io';
 import 'package:dti_web/application/application_cubit.dart';
 import 'package:dti_web/application/document/document_cubit.dart';
+import 'package:dti_web/application/other/other_cubit.dart';
 import 'package:dti_web/injection.dart';
 import 'package:dti_web/presentation/applications/widgets/document_left_side.dart';
 import 'package:dti_web/presentation/applications/widgets/document_right_side.dart';
@@ -56,13 +57,11 @@ class _UploadDocumentPageState extends State<UploadDocumentPage> {
                     BlocBuilder<DocumentCubit, DocumentState>(
                       builder: (context, docState) {
                         return Expanded(
-                            child: Container(
-                          child: Row(
-                            children: [
-                              LeftSide(documentCubit: documentCubit),
-                              RighSide(documentCubit: documentCubit)
-                            ],
-                          ),
+                            child: Row(
+                          children: [
+                            LeftSide(documentCubit: documentCubit),
+                            RighSide(documentCubit: documentCubit)
+                          ],
                         ));
                       },
                     )

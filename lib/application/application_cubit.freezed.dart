@@ -20,6 +20,8 @@ mixin _$ApplicationState {
   String? get onError => throw _privateConstructorUsedError;
   String? get onSuccess => throw _privateConstructorUsedError;
   List<DocumentDataModel>? get documnets => throw _privateConstructorUsedError;
+  List<Map<String, dynamic>>? get masterImagesDocument =>
+      throw _privateConstructorUsedError;
   VisaApplicationModel? get visaApplicationModel =>
       throw _privateConstructorUsedError;
 
@@ -38,6 +40,7 @@ abstract class $ApplicationStateCopyWith<$Res> {
       String? onError,
       String? onSuccess,
       List<DocumentDataModel>? documnets,
+      List<Map<String, dynamic>>? masterImagesDocument,
       VisaApplicationModel? visaApplicationModel});
 
   $VisaApplicationModelCopyWith<$Res>? get visaApplicationModel;
@@ -58,6 +61,7 @@ class _$ApplicationStateCopyWithImpl<$Res>
     Object? onError = freezed,
     Object? onSuccess = freezed,
     Object? documnets = freezed,
+    Object? masterImagesDocument = freezed,
     Object? visaApplicationModel = freezed,
   }) {
     return _then(_value.copyWith(
@@ -77,6 +81,10 @@ class _$ApplicationStateCopyWithImpl<$Res>
           ? _value.documnets
           : documnets // ignore: cast_nullable_to_non_nullable
               as List<DocumentDataModel>?,
+      masterImagesDocument: masterImagesDocument == freezed
+          ? _value.masterImagesDocument
+          : masterImagesDocument // ignore: cast_nullable_to_non_nullable
+              as List<Map<String, dynamic>>?,
       visaApplicationModel: visaApplicationModel == freezed
           ? _value.visaApplicationModel
           : visaApplicationModel // ignore: cast_nullable_to_non_nullable
@@ -109,6 +117,7 @@ abstract class _$$_ApplicationStateCopyWith<$Res>
       String? onError,
       String? onSuccess,
       List<DocumentDataModel>? documnets,
+      List<Map<String, dynamic>>? masterImagesDocument,
       VisaApplicationModel? visaApplicationModel});
 
   @override
@@ -132,6 +141,7 @@ class __$$_ApplicationStateCopyWithImpl<$Res>
     Object? onError = freezed,
     Object? onSuccess = freezed,
     Object? documnets = freezed,
+    Object? masterImagesDocument = freezed,
     Object? visaApplicationModel = freezed,
   }) {
     return _then(_$_ApplicationState(
@@ -151,6 +161,10 @@ class __$$_ApplicationStateCopyWithImpl<$Res>
           ? _value._documnets
           : documnets // ignore: cast_nullable_to_non_nullable
               as List<DocumentDataModel>?,
+      masterImagesDocument: masterImagesDocument == freezed
+          ? _value._masterImagesDocument
+          : masterImagesDocument // ignore: cast_nullable_to_non_nullable
+              as List<Map<String, dynamic>>?,
       visaApplicationModel: visaApplicationModel == freezed
           ? _value.visaApplicationModel
           : visaApplicationModel // ignore: cast_nullable_to_non_nullable
@@ -167,8 +181,10 @@ class _$_ApplicationState implements _ApplicationState {
       this.onError,
       this.onSuccess,
       final List<DocumentDataModel>? documnets,
+      final List<Map<String, dynamic>>? masterImagesDocument,
       this.visaApplicationModel})
-      : _documnets = documnets;
+      : _documnets = documnets,
+        _masterImagesDocument = masterImagesDocument;
 
   @override
   @JsonKey()
@@ -186,12 +202,21 @@ class _$_ApplicationState implements _ApplicationState {
     return EqualUnmodifiableListView(value);
   }
 
+  final List<Map<String, dynamic>>? _masterImagesDocument;
+  @override
+  List<Map<String, dynamic>>? get masterImagesDocument {
+    final value = _masterImagesDocument;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final VisaApplicationModel? visaApplicationModel;
 
   @override
   String toString() {
-    return 'ApplicationState(onLoading: $onLoading, onError: $onError, onSuccess: $onSuccess, documnets: $documnets, visaApplicationModel: $visaApplicationModel)';
+    return 'ApplicationState(onLoading: $onLoading, onError: $onError, onSuccess: $onSuccess, documnets: $documnets, masterImagesDocument: $masterImagesDocument, visaApplicationModel: $visaApplicationModel)';
   }
 
   @override
@@ -205,6 +230,8 @@ class _$_ApplicationState implements _ApplicationState {
             const DeepCollectionEquality()
                 .equals(other._documnets, _documnets) &&
             const DeepCollectionEquality()
+                .equals(other._masterImagesDocument, _masterImagesDocument) &&
+            const DeepCollectionEquality()
                 .equals(other.visaApplicationModel, visaApplicationModel));
   }
 
@@ -215,6 +242,7 @@ class _$_ApplicationState implements _ApplicationState {
       const DeepCollectionEquality().hash(onError),
       const DeepCollectionEquality().hash(onSuccess),
       const DeepCollectionEquality().hash(_documnets),
+      const DeepCollectionEquality().hash(_masterImagesDocument),
       const DeepCollectionEquality().hash(visaApplicationModel));
 
   @JsonKey(ignore: true)
@@ -229,6 +257,7 @@ abstract class _ApplicationState implements ApplicationState {
       final String? onError,
       final String? onSuccess,
       final List<DocumentDataModel>? documnets,
+      final List<Map<String, dynamic>>? masterImagesDocument,
       final VisaApplicationModel? visaApplicationModel}) = _$_ApplicationState;
 
   @override
@@ -239,6 +268,8 @@ abstract class _ApplicationState implements ApplicationState {
   String? get onSuccess;
   @override
   List<DocumentDataModel>? get documnets;
+  @override
+  List<Map<String, dynamic>>? get masterImagesDocument;
   @override
   VisaApplicationModel? get visaApplicationModel;
   @override

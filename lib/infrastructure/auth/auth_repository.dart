@@ -23,13 +23,10 @@ class AuthRepository extends IAuth {
       'email': email,
       'password': password,
     });
-    if (result.data['general'] != null) {
-      //error
-      return Left(result.data['general']);
-    }
-    if (result.data['token'] != null) {
+
+    if (result.data['data'] != null) {
       //Success
-      return Right(result.data['token']);
+      return Right(result.data['data']['token']);
     }
     // return
     return Left("Something wrong");
@@ -90,7 +87,7 @@ class AuthRepository extends IAuth {
           await dio!.post("${Constant.baseUrl}/resetPassword", data: {
         'email': email,
       });
-      print(result); 
+      print(result);
       if (result.data['message'] != null) {
         return Right(result.data['message'].toString());
       }

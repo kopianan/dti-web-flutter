@@ -28,6 +28,7 @@ class LeftSide extends StatelessWidget {
                           onTap: () {
                             documentCubit
                                 .updateSelectedIndex(docState.docs!.indexOf(e));
+                            print(docState.docs!.indexOf(e));
                           },
                           child: Container(
                               margin: REdgeInsets.symmetric(vertical: 5),

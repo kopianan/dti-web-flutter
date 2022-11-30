@@ -13,6 +13,7 @@ import 'package:dti_web/utils/constant.dart';
 import 'package:dti_web/utils/date_converter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_material_pickers/flutter_material_pickers.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -44,24 +45,28 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
     final AppRouter router = AppRouter();
     return BlocProvider(
         create: (context) =>
-            updateCubit..getUserApplication(widget.firebaseDocId),
+            updateCubit..getUserApplicationWithImages(widget.firebaseDocId),
         child: BlocConsumer<UpdateApplicationCubit, UpdateApplicationState>(
             listener: (context, updateState) {
           updateState.maybeMap(
             orElse: () {},
             onLoading: (e) {
-              LoadingDialog.showDialogLoading(context);
+              EasyLoading.show(
+                  dismissOnTap: false, maskType: EasyLoadingMaskType.black);
             },
             onError: (e) {
               //close loading dialog
-              router.pop();
-              print(e);
+              EasyLoading.dismiss();
             },
-            onGetSingleApplication: (e) {
+            onGetSingleApplicationWithImage: (e) {
               //close loading dialog
-              router.pop();
-              print(e);
-              context.read<ApplicationCubit>().setupApplication(e.visa);
+              EasyLoading.dismiss();
+  
+              context
+                  .read<ApplicationCubit>()
+                  .setupApplication(e.singleResponse.visaApplicationModel!);
+              context.read<ApplicationCubit>().setupDocumentsMasterData(
+                  e.singleResponse.documentUserApplicationUrl!);
             },
           );
         }, builder: (context, updateState) {
@@ -69,7 +74,7 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
             orElse: () {
               return LoadingPage();
             },
-            onGetSingleApplication: (e) {
+            onGetSingleApplicationWithImage: (e) {
               return BlocBuilder<ApplicationCubit, ApplicationState>(
                 builder: (context, state) {
                   return Scaffold(

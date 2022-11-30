@@ -19,18 +19,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class RighSide extends StatefulWidget {
-  const RighSide({
+class DocumentRightSide2 extends StatefulWidget {
+  const DocumentRightSide2({
     Key? key,
     required this.documentCubit,
   }) : super(key: key);
   final DocumentCubit documentCubit;
 
   @override
-  State<RighSide> createState() => _RighSideState();
+  State<DocumentRightSide2> createState() => _DocumentRightSide2State();
 }
 
-class _RighSideState extends State<RighSide> {
+class _DocumentRightSide2State extends State<DocumentRightSide2> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -323,7 +323,7 @@ class ImageFromUrl extends StatelessWidget {
           getIt<OtherCubit>()..getImageUrl(appId, docId, imagePath),
       child: BlocBuilder<OtherCubit, OtherState>(
         builder: (context, state) {
-          print(state); 
+          print(state);
           return state.maybeMap(
             orElse: () {
               return SizedBox();

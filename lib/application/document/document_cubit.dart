@@ -31,9 +31,9 @@ class DocumentCubit extends Cubit<DocumentState> {
       //add new item on deleted image
       deletedImage!.add(path);
     }
-    //remove image from current view 
+    //remove image from current view
     lists!.removeWhere((element) => element == path);
-    lists.add(null); 
+    lists.add(null);
     //update data
     state.copyWith(
         selectedDocument: state.selectedDocument!.copyWith(imageList: lists),
@@ -45,7 +45,9 @@ class DocumentCubit extends Cubit<DocumentState> {
   void updateSelectedIndex(int index) {
     try {
       emit(state.copyWith(
-          selectedIndex: index, selectedDocument: state.docs![index]));
+        selectedIndex: index,
+        selectedDocument: state.docs![index],
+      ));
     } catch (e) {}
   }
 
@@ -85,12 +87,6 @@ class DocumentCubit extends Cubit<DocumentState> {
     }
     print(visa.applicationID);
     if (visa.documentsData != null) {
-      //reduce list.
-
-      //Make All Null For The First Data.
-      //Check the real data
-      //if the real data is exist then replace
-
       for (var documentFromVisa in visa.documentsData!) {
         try {
           var needUpdatedData = modelsDocument.firstWhere(

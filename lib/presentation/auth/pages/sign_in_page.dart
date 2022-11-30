@@ -223,8 +223,9 @@ class _SignInPageState extends State<SignInPage> {
   }
 
   void loginUser(BuildContext context, String email, String password) {
-    if (formKey.currentState!.validate()) {
-      context.read<AuthCubit>().loginWithEmailAndPassword(email, password);
-    }
+    // if (formKey.currentState!.validate()) {
+      context.read<AuthCubit>().loginWithEmailAndPassword('kopianandev@gmail.com', 'ananalfred');
+      // context.read<AuthCubit>().loginWithEmailAndPassword(email, password);
+    // }
   }
 }
