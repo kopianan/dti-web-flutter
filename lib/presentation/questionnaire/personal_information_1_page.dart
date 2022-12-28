@@ -1,3 +1,7 @@
+import 'dart:developer';
+import 'package:dti_web/utils/date_time_child.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:dti_web/application/application_cubit.dart';
@@ -38,30 +42,32 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
 
   final _formKey = GlobalKey<FormBuilderState>();
   var initialDateOfBirth = "";
-  final updateCubit = getIt<UpdateApplicationCubit>();
 
   @override
   Widget build(BuildContext context) {
     final AppRouter router = AppRouter();
     return BlocProvider(
-        create: (context) =>
-            updateCubit..getUserApplicationWithImages(widget.firebaseDocId),
+        create: (context) => getIt<UpdateApplicationCubit>()
+          ..getUserApplicationWithImages(widget.firebaseDocId),
         child: BlocConsumer<UpdateApplicationCubit, UpdateApplicationState>(
             listener: (context, updateState) {
           updateState.maybeMap(
             orElse: () {},
             onLoading: (e) {
+              log("LOADING");
               EasyLoading.show(
-                  dismissOnTap: false, maskType: EasyLoadingMaskType.black);
+                dismissOnTap: false,
+                maskType: EasyLoadingMaskType.black,
+              );
             },
             onError: (e) {
               //close loading dialog
               EasyLoading.dismiss();
             },
             onGetSingleApplicationWithImage: (e) {
+              log("Success");
               //close loading dialog
               EasyLoading.dismiss();
-  
               context
                   .read<ApplicationCubit>()
                   .setupApplication(e.singleResponse.visaApplicationModel!);
@@ -102,7 +108,7 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Personal Information",
+                                "Personal Particular",
                                 style: TextStyle(
                                     fontSize: 30.sp,
                                     color: AppColor.primaryColor,
@@ -183,8 +189,8 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                                                       .placeOfBirth,
                                           enableSuggestions: false,
                                           decoration: InputDecoration(
-                                              hintText: "Place Of Birth Date",
-                                              labelText: "Place Of Birth Date"),
+                                              hintText: "Place Of Birth",
+                                              labelText: "Place Of Birth"),
                                           autocorrect: false,
                                           validator: FormBuilderValidators.required(
                                               errorText:
@@ -197,12 +203,15 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                                         FormBuilderTextField(
                                           onTap: () async {
                                             final nowDate = DateTime.now();
+
                                             final selectedDate =
                                                 await showDatePicker(
-                                                    context: context,
-                                                    initialDate: DateTime.now(),
-                                                    firstDate: DateTime(1800),
-                                                    lastDate: nowDate);
+                                              context: context,
+                                              initialDate: DateTime.now(),
+                                              firstDate: DateTime(1800),
+                                              lastDate: nowDate,
+                                              builder: dateTimThemeChild,
+                                            );
 
                                             _formKey.currentState!
                                                 .fields['dateOfBirthDate']!
@@ -226,8 +235,8 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                                           autovalidateMode: AutovalidateMode
                                               .onUserInteraction,
                                           decoration: const InputDecoration(
-                                            labelText: "Date Of Birth Date",
-                                            hintText: "Date Of Birth Date",
+                                            labelText: "Date Of Birth",
+                                            hintText: "Date Of Birth",
                                           ),
                                         ),
                                         // //Date of Birth
@@ -255,6 +264,7 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                                                 .required(),
                                             autovalidateMode: AutovalidateMode
                                                 .onUserInteraction,
+                                            activeColor: AppColor.primaryColor,
                                             options: const [
                                               FormBuilderFieldOption(
                                                 value: 'male',
@@ -411,6 +421,7 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                                           autovalidateMode: AutovalidateMode
                                               .onUserInteraction,
                                           separator: 10.horizontalSpace,
+                                          activeColor: AppColor.primaryColor,
                                           options: const [
                                             FormBuilderFieldOption(
                                               value: false,
@@ -442,6 +453,7 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                                                           .overstayedFlag ??
                                                       false,
                                           separator: 10.horizontalSpace,
+                                          activeColor: AppColor.primaryColor,
                                           options: const [
                                             FormBuilderFieldOption(
                                               value: false,

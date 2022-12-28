@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:math' as math;
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
@@ -12,6 +13,7 @@ import 'package:dti_web/domain/global/failures.dart';
 import 'package:dti_web/domain/update/i_update_application.dart';
 import 'package:dti_web/infrastructure/core/error_response.dart';
 import 'package:dti_web/utils/constant.dart';
+import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: IUpdateApplication)
@@ -20,39 +22,75 @@ class IUpdateApplicationRepository extends IUpdateApplication {
 
   @override
   Future<Either<Failures, String>> uploadImagesAndUpdateData(
-      VisaApplicationModel visa,
-      DocumentDataModel doc,
-      List<String> deletedImages) async {
+    VisaApplicationModel visa,
+    DocumentDataModel doc,
+    List<String> deletedImages, {
+    Map<String, dynamic>? imageCollection,
+  }) async {
     dio = Dio();
     final storage = Storage();
     try {
+      String token = storage.getToken() ?? "";
       //Cek and uplaod image
       if (doc.imageList != null && doc.imageList!.isNotEmpty) {
-        final multiRequest = doc.imageList!.map((e) async {
+        for (var e in doc.imageList!) {
           if (e != null && e.contains('/')) {
+            //get image name / path if web then make the file
+
+            final fileName =
+                "${DateTime.now().millisecondsSinceEpoch + math.Random().nextInt(20000)}.${e.split('.').last}";
+
             var formData = FormData.fromMap({
               'docId': doc.id,
               'visaAppId': visa.applicationID,
               'userId': visa.createdBy,
-              'file': await MultipartFile.fromFile(
-                e,
-                filename:
-                    "${DateTime.now().millisecondsSinceEpoch}.${e.split('.').last}",
-              )
+              'file': kIsWeb
+                  ? MultipartFile.fromBytes(imageCollection![e],
+                      filename: fileName)
+                  : MultipartFile.fromFileSync(
+                      e,
+                      filename: fileName,
+                    )
             });
-            var result =
-                dio!.post('${Constant.baseUrl}/application/file/upload',
-                    options: Options(
-                      headers: {
-                        'Authorization': 'Bearer ${storage.getToken()}'
-                      },
-                    ),
-                    data: formData);
-            return result;
+            var result = await dio!.post(
+                '${Constant.baseUrl}/application/file/upload',
+                options: Options(headers: {'Authorization': 'Bearer $token'}),
+                data: formData);
+            print(result.data);
           }
-        }).toList();
+        }
+        // final multiRequest = doc.imageList!.map((e) async {
+        //   if (e != null && e.contains('/')) {
+        //     //get image name / path if web then make the file
 
-        final multiResponse = await Future.wait(multiRequest);
+        //     final fileName =
+        //         "${DateTime.now().millisecondsSinceEpoch + math.Random().nextInt(20000)}.${e.split('.').last}";
+
+        //     var formData = FormData.fromMap({
+        //       'docId': doc.id,
+        //       'visaAppId': visa.applicationID,
+        //       'userId': visa.createdBy,
+        //       'file': kIsWeb
+        //           ? MultipartFile.fromBytes(imageCollection![e],
+        //               filename: fileName)
+        //           : MultipartFile.fromFileSync(
+        //               e,
+        //               filename: fileName,
+        //             )
+        //     });
+        //     var result =
+        //         dio!.post('${Constant.baseUrl}/application/file/upload',
+        //             options: Options(
+        //               headers: {
+        //                 'Authorization': 'Bearer $token'
+        //               },
+        //             ),
+        //             data: formData);
+        //     return result;
+        //   }
+        // }).toList();
+
+        // final multiResponse = await Future.wait(multiRequest);
       }
 
       //DELETE IMAGE
@@ -91,19 +129,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
           headers: {'Authorization': 'Bearer ${storage.getToken()}'},
         ),
         data: visaApplicationModel.toJson());
-    if (result.data['firebaseDocId'] != null) {
-      return Right(result.data['firebaseDocId']);
-    }
-
-    if (result.data['code'] != null) {
-      //ERROR
-      return Left(result.data['message']);
-    } else {
-      String msg = result.data['message'].toString();
-      String id = msg.split(' ')[1];
-      log(id, name: "ID DOCS");
-      return Right(id);
-    }
+    return Right(result.data['data']['firebaseDocId']);
   }
 
   @override
@@ -169,7 +195,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
           "${Constant.baseUrl}/application/$firebaseDocId",
           options: Options(
               headers: {"Authorization": "Bearer ${storage.getToken()}"}));
-      print(result); 
+      print(result);
       if (result.data['data'] != null) {
         dynamic data = result.data['data'];
         final visaApps = VisaApplicationModel.fromJson(data);
@@ -196,12 +222,12 @@ class IUpdateApplicationRepository extends IUpdateApplication {
             },
           ),
           data: {"guarantorDTI": visa.guarantorDTI});
-      print(result);
-      if (result.data['code'] != null) {
+
+      if (result.data['data'] == null) {
         //ERROR
-        return Left(result.data['message']);
+        return Left(result.data['error']);
       } else {
-        return Right(result.data['message']);
+        return Right(result.data['data']['message']);
       }
     } on Exception catch (e) {
       return Left("");
@@ -232,10 +258,8 @@ class IUpdateApplicationRepository extends IUpdateApplication {
           // TODO: Handle this case.
           break;
         case DioErrorType.response:
-          print(e.response);
-          print(e.response!.statusCode!);
           if (e.response!.statusCode! == 404) {
-            if (e.response!.data['error']) {
+            if (e.response!.data['error'] != null) {
               return Left(Failures.generalError(e.response!.data['error']));
             }
             return Left(Failures.generalError("Something wrong"));
@@ -257,13 +281,13 @@ class IUpdateApplicationRepository extends IUpdateApplication {
       String firebaseDocId) async {
     dio = Dio();
     final storage = Storage();
-
+    print(firebaseDocId);
     try {
       final result = await dio!.get(
           "${Constant.baseUrl}/application/$firebaseDocId",
           options: Options(
               headers: {"Authorization": "Bearer ${storage.getToken()}"}));
- 
+
       final visaApps = SingleVisaResponse.fromJson(result.data);
       print(visaApps);
       ;

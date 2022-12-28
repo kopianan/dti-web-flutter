@@ -1,12 +1,17 @@
 import 'dart:io';
 import 'dart:ui';
 
+import 'package:auto_route/auto_route.dart';
+import 'package:dti_web/application/document/document_cubit.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
 import 'package:dti_web/domain/core/document_data_model.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/presentation/applications/core/pdf_api.dart';
+import 'package:dti_web/routes/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 import 'package:syncfusion_flutter_signaturepad/signaturepad.dart';
@@ -17,9 +22,11 @@ class SignaturePage extends StatefulWidget {
     Key? key,
     required this.visaApplication,
     required this.appDocument,
+    required this.index,
   }) : super(key: key);
   final VisaApplicationModel visaApplication;
   final DocumentDataModel appDocument;
+  final int index;
   @override
   _SignaturePageState createState() => _SignaturePageState();
 }
@@ -58,7 +65,7 @@ class _SignaturePageState extends State<SignaturePage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10),
                   child: Text(
-                    "Statement PReview",
+                    "Statement Preview",
                     style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -67,13 +74,15 @@ class _SignaturePageState extends State<SignaturePage> {
                   ),
                 ),
                 SizedBox(
-                  height: Get.height * 0.6,
+                  height: ScreenUtil().screenWidth * 2 / 3,
                   child: FutureBuilder<File>(
                     future: generatePDFPreview(),
                     builder: (context, snp) {
                       if (snp.connectionState == ConnectionState.done) {
                         return SfPdfViewer.file(
                           snp.data!,
+                          pageLayoutMode: PdfPageLayoutMode.single,
+                          scrollDirection: PdfScrollDirection.vertical,
                         );
                       } else if (snp.connectionState ==
                           ConnectionState.waiting) {
@@ -86,73 +95,83 @@ class _SignaturePageState extends State<SignaturePage> {
                     },
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: Text(
+              ],
+            ),
+            Container(
+              width: ScreenUtil().screenWidth / 2,
+              child: Column(
+                children: [
+                  SizedBox(height: 20),
+                  const Text(
                     "Draw your signature",
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
                     textAlign: TextAlign.center,
                   ),
-                ),
-              ],
-            ),
-            Column(
-              children: [
-                Container(
-                  height: 280,
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.black, width: 2)),
-                  width: double.infinity,
-                  child: SfSignaturePad(
-                    onDrawEnd: () {
-                      isSignatureDrawed = true;
-                    },
-                    key: _signaturePadKey,
-                    backgroundColor: Colors.white,
+                  SizedBox(height: 20),
+                  Container(
+                    height: 280,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black, width: 2)),
+                    width: double.infinity,
+                    child: SfSignaturePad(
+                      onDrawEnd: () {
+                        isSignatureDrawed = true;
+                      },
+                      key: _signaturePadKey,
+                      backgroundColor: Colors.white,
+                    ),
                   ),
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
-                Center(
-                  child: TextButton(
-                    onPressed: () {
-                      isSignatureDrawed = false;
-                      _signaturePadKey.currentState!.clear();
-                    },
-                    child: Text("Clear signature"),
+                  const SizedBox(
+                    height: 5,
                   ),
-                ),
-                SizedBox(height: 20),
-                PrimaryButton(
-                  onClick: () async {
-                    var image = await _signaturePadKey.currentState!.toImage();
-                    final imageSignature =
-                        await image.toByteData(format: ImageByteFormat.png);
+                  Center(
+                    child: TextButton(
+                      onPressed: () {
+                        isSignatureDrawed = false;
+                        _signaturePadKey.currentState!.clear();
+                      },
+                      child: Text("Clear signature"),
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  PrimaryButton(
+                    onClick: () async {
+                      var image =
+                          await _signaturePadKey.currentState!.toImage();
+                      final imageSignature =
+                          await image.toByteData(format: ImageByteFormat.png);
 
-                    final file = await PdfApi.generatePdf(
-                        signature: imageSignature!,
-                        visaApplication: widget.visaApplication,
-                        documentType: widget.appDocument.id!.trim());
-                    // await OpenFile.open(file.path);
-                    if (isSignatureDrawed == false) {
-                      Get.showSnackbar(GetSnackBar(
-                        message: "Please draw your signature",
-                        backgroundColor: Colors.red,
-                        borderRadius: 10,
-                        margin: const EdgeInsets.all(20),
-                        snackPosition: SnackPosition.BOTTOM,
-                      ));
-                    } else {
-                      Get.back(result: file, closeOverlays: true);
-                    }
-                  },
-                  label: "Generate PDF",
-                ),
-              ],
+                      final file = await PdfApi.generatePdf(
+                          signature: imageSignature!,
+                          visaApplication: widget.visaApplication,
+                          documentType: widget.appDocument.id!.trim());
+                      // await OpenFile.open(file.path);
+                      if (isSignatureDrawed == false) {
+                        print(isSignatureDrawed);
+                        Get.showSnackbar(
+                          const GetSnackBar(
+                            message: "Please draw your signature",
+                            backgroundColor: Colors.red,
+                            borderRadius: 10,
+                            margin: EdgeInsets.all(20),
+                            snackPosition: SnackPosition.BOTTOM,
+                          ),
+                        );
+                      } else {
+                        await AutoRouter.of(context).pop(file);
+                      }
+                    },
+                    height: 45,
+                    width: double.infinity,
+                    labelStyle: TextStyle(fontSize: 16.sp),
+                    label: "Generate PDF",
+                  ),
+                  40.verticalSpace
+                ],
+              ),
             )
           ],
         ),

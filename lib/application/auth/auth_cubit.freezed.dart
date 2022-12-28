@@ -25,6 +25,7 @@ mixin _$AuthState {
     required TResult Function(String token) onLoginSuccess,
     required TResult Function(String token) onRegisterSuccess,
     required TResult Function(String message) onResetPassword,
+    required TResult Function(UserData userData) onGetUserData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,6 +37,7 @@ mixin _$AuthState {
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onRegisterSuccess,
     TResult Function(String message)? onResetPassword,
+    TResult Function(UserData userData)? onGetUserData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -47,6 +49,7 @@ mixin _$AuthState {
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onRegisterSuccess,
     TResult Function(String message)? onResetPassword,
+    TResult Function(UserData userData)? onGetUserData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -59,6 +62,7 @@ mixin _$AuthState {
     required TResult Function(_OnLoginSuccess value) onLoginSuccess,
     required TResult Function(_OnRegisterSuccess value) onRegisterSuccess,
     required TResult Function(_OnResetPassword value) onResetPassword,
+    required TResult Function(_OnGetUserData value) onGetUserData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,6 +74,7 @@ mixin _$AuthState {
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
     TResult Function(_OnResetPassword value)? onResetPassword,
+    TResult Function(_OnGetUserData value)? onGetUserData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -81,6 +86,7 @@ mixin _$AuthState {
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
     TResult Function(_OnResetPassword value)? onResetPassword,
+    TResult Function(_OnGetUserData value)? onGetUserData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -147,6 +153,7 @@ class _$_Initial implements _Initial {
     required TResult Function(String token) onLoginSuccess,
     required TResult Function(String token) onRegisterSuccess,
     required TResult Function(String message) onResetPassword,
+    required TResult Function(UserData userData) onGetUserData,
   }) {
     return initial();
   }
@@ -161,6 +168,7 @@ class _$_Initial implements _Initial {
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onRegisterSuccess,
     TResult Function(String message)? onResetPassword,
+    TResult Function(UserData userData)? onGetUserData,
   }) {
     return initial?.call();
   }
@@ -175,6 +183,7 @@ class _$_Initial implements _Initial {
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onRegisterSuccess,
     TResult Function(String message)? onResetPassword,
+    TResult Function(UserData userData)? onGetUserData,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -193,6 +202,7 @@ class _$_Initial implements _Initial {
     required TResult Function(_OnLoginSuccess value) onLoginSuccess,
     required TResult Function(_OnRegisterSuccess value) onRegisterSuccess,
     required TResult Function(_OnResetPassword value) onResetPassword,
+    required TResult Function(_OnGetUserData value) onGetUserData,
   }) {
     return initial(this);
   }
@@ -207,6 +217,7 @@ class _$_Initial implements _Initial {
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
     TResult Function(_OnResetPassword value)? onResetPassword,
+    TResult Function(_OnGetUserData value)? onGetUserData,
   }) {
     return initial?.call(this);
   }
@@ -221,6 +232,7 @@ class _$_Initial implements _Initial {
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
     TResult Function(_OnResetPassword value)? onResetPassword,
+    TResult Function(_OnGetUserData value)? onGetUserData,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -280,6 +292,7 @@ class _$_Loading implements _Loading {
     required TResult Function(String token) onLoginSuccess,
     required TResult Function(String token) onRegisterSuccess,
     required TResult Function(String message) onResetPassword,
+    required TResult Function(UserData userData) onGetUserData,
   }) {
     return loading();
   }
@@ -294,6 +307,7 @@ class _$_Loading implements _Loading {
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onRegisterSuccess,
     TResult Function(String message)? onResetPassword,
+    TResult Function(UserData userData)? onGetUserData,
   }) {
     return loading?.call();
   }
@@ -308,6 +322,7 @@ class _$_Loading implements _Loading {
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onRegisterSuccess,
     TResult Function(String message)? onResetPassword,
+    TResult Function(UserData userData)? onGetUserData,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -326,6 +341,7 @@ class _$_Loading implements _Loading {
     required TResult Function(_OnLoginSuccess value) onLoginSuccess,
     required TResult Function(_OnRegisterSuccess value) onRegisterSuccess,
     required TResult Function(_OnResetPassword value) onResetPassword,
+    required TResult Function(_OnGetUserData value) onGetUserData,
   }) {
     return loading(this);
   }
@@ -340,6 +356,7 @@ class _$_Loading implements _Loading {
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
     TResult Function(_OnResetPassword value)? onResetPassword,
+    TResult Function(_OnGetUserData value)? onGetUserData,
   }) {
     return loading?.call(this);
   }
@@ -354,6 +371,7 @@ class _$_Loading implements _Loading {
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
     TResult Function(_OnResetPassword value)? onResetPassword,
+    TResult Function(_OnGetUserData value)? onGetUserData,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -436,6 +454,7 @@ class _$_Error implements _Error {
     required TResult Function(String token) onLoginSuccess,
     required TResult Function(String token) onRegisterSuccess,
     required TResult Function(String message) onResetPassword,
+    required TResult Function(UserData userData) onGetUserData,
   }) {
     return error(this.error);
   }
@@ -450,6 +469,7 @@ class _$_Error implements _Error {
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onRegisterSuccess,
     TResult Function(String message)? onResetPassword,
+    TResult Function(UserData userData)? onGetUserData,
   }) {
     return error?.call(this.error);
   }
@@ -464,6 +484,7 @@ class _$_Error implements _Error {
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onRegisterSuccess,
     TResult Function(String message)? onResetPassword,
+    TResult Function(UserData userData)? onGetUserData,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -482,6 +503,7 @@ class _$_Error implements _Error {
     required TResult Function(_OnLoginSuccess value) onLoginSuccess,
     required TResult Function(_OnRegisterSuccess value) onRegisterSuccess,
     required TResult Function(_OnResetPassword value) onResetPassword,
+    required TResult Function(_OnGetUserData value) onGetUserData,
   }) {
     return error(this);
   }
@@ -496,6 +518,7 @@ class _$_Error implements _Error {
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
     TResult Function(_OnResetPassword value)? onResetPassword,
+    TResult Function(_OnGetUserData value)? onGetUserData,
   }) {
     return error?.call(this);
   }
@@ -510,6 +533,7 @@ class _$_Error implements _Error {
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
     TResult Function(_OnResetPassword value)? onResetPassword,
+    TResult Function(_OnGetUserData value)? onGetUserData,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -607,6 +631,7 @@ class _$_OnError implements _OnError {
     required TResult Function(String token) onLoginSuccess,
     required TResult Function(String token) onRegisterSuccess,
     required TResult Function(String message) onResetPassword,
+    required TResult Function(UserData userData) onGetUserData,
   }) {
     return onError(this.error);
   }
@@ -621,6 +646,7 @@ class _$_OnError implements _OnError {
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onRegisterSuccess,
     TResult Function(String message)? onResetPassword,
+    TResult Function(UserData userData)? onGetUserData,
   }) {
     return onError?.call(this.error);
   }
@@ -635,6 +661,7 @@ class _$_OnError implements _OnError {
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onRegisterSuccess,
     TResult Function(String message)? onResetPassword,
+    TResult Function(UserData userData)? onGetUserData,
     required TResult orElse(),
   }) {
     if (onError != null) {
@@ -653,6 +680,7 @@ class _$_OnError implements _OnError {
     required TResult Function(_OnLoginSuccess value) onLoginSuccess,
     required TResult Function(_OnRegisterSuccess value) onRegisterSuccess,
     required TResult Function(_OnResetPassword value) onResetPassword,
+    required TResult Function(_OnGetUserData value) onGetUserData,
   }) {
     return onError(this);
   }
@@ -667,6 +695,7 @@ class _$_OnError implements _OnError {
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
     TResult Function(_OnResetPassword value)? onResetPassword,
+    TResult Function(_OnGetUserData value)? onGetUserData,
   }) {
     return onError?.call(this);
   }
@@ -681,6 +710,7 @@ class _$_OnError implements _OnError {
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
     TResult Function(_OnResetPassword value)? onResetPassword,
+    TResult Function(_OnGetUserData value)? onGetUserData,
     required TResult orElse(),
   }) {
     if (onError != null) {
@@ -771,6 +801,7 @@ class _$_OnLoginSuccess implements _OnLoginSuccess {
     required TResult Function(String token) onLoginSuccess,
     required TResult Function(String token) onRegisterSuccess,
     required TResult Function(String message) onResetPassword,
+    required TResult Function(UserData userData) onGetUserData,
   }) {
     return onLoginSuccess(token);
   }
@@ -785,6 +816,7 @@ class _$_OnLoginSuccess implements _OnLoginSuccess {
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onRegisterSuccess,
     TResult Function(String message)? onResetPassword,
+    TResult Function(UserData userData)? onGetUserData,
   }) {
     return onLoginSuccess?.call(token);
   }
@@ -799,6 +831,7 @@ class _$_OnLoginSuccess implements _OnLoginSuccess {
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onRegisterSuccess,
     TResult Function(String message)? onResetPassword,
+    TResult Function(UserData userData)? onGetUserData,
     required TResult orElse(),
   }) {
     if (onLoginSuccess != null) {
@@ -817,6 +850,7 @@ class _$_OnLoginSuccess implements _OnLoginSuccess {
     required TResult Function(_OnLoginSuccess value) onLoginSuccess,
     required TResult Function(_OnRegisterSuccess value) onRegisterSuccess,
     required TResult Function(_OnResetPassword value) onResetPassword,
+    required TResult Function(_OnGetUserData value) onGetUserData,
   }) {
     return onLoginSuccess(this);
   }
@@ -831,6 +865,7 @@ class _$_OnLoginSuccess implements _OnLoginSuccess {
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
     TResult Function(_OnResetPassword value)? onResetPassword,
+    TResult Function(_OnGetUserData value)? onGetUserData,
   }) {
     return onLoginSuccess?.call(this);
   }
@@ -845,6 +880,7 @@ class _$_OnLoginSuccess implements _OnLoginSuccess {
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
     TResult Function(_OnResetPassword value)? onResetPassword,
+    TResult Function(_OnGetUserData value)? onGetUserData,
     required TResult orElse(),
   }) {
     if (onLoginSuccess != null) {
@@ -936,6 +972,7 @@ class _$_OnRegisterSuccess implements _OnRegisterSuccess {
     required TResult Function(String token) onLoginSuccess,
     required TResult Function(String token) onRegisterSuccess,
     required TResult Function(String message) onResetPassword,
+    required TResult Function(UserData userData) onGetUserData,
   }) {
     return onRegisterSuccess(token);
   }
@@ -950,6 +987,7 @@ class _$_OnRegisterSuccess implements _OnRegisterSuccess {
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onRegisterSuccess,
     TResult Function(String message)? onResetPassword,
+    TResult Function(UserData userData)? onGetUserData,
   }) {
     return onRegisterSuccess?.call(token);
   }
@@ -964,6 +1002,7 @@ class _$_OnRegisterSuccess implements _OnRegisterSuccess {
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onRegisterSuccess,
     TResult Function(String message)? onResetPassword,
+    TResult Function(UserData userData)? onGetUserData,
     required TResult orElse(),
   }) {
     if (onRegisterSuccess != null) {
@@ -982,6 +1021,7 @@ class _$_OnRegisterSuccess implements _OnRegisterSuccess {
     required TResult Function(_OnLoginSuccess value) onLoginSuccess,
     required TResult Function(_OnRegisterSuccess value) onRegisterSuccess,
     required TResult Function(_OnResetPassword value) onResetPassword,
+    required TResult Function(_OnGetUserData value) onGetUserData,
   }) {
     return onRegisterSuccess(this);
   }
@@ -996,6 +1036,7 @@ class _$_OnRegisterSuccess implements _OnRegisterSuccess {
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
     TResult Function(_OnResetPassword value)? onResetPassword,
+    TResult Function(_OnGetUserData value)? onGetUserData,
   }) {
     return onRegisterSuccess?.call(this);
   }
@@ -1010,6 +1051,7 @@ class _$_OnRegisterSuccess implements _OnRegisterSuccess {
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
     TResult Function(_OnResetPassword value)? onResetPassword,
+    TResult Function(_OnGetUserData value)? onGetUserData,
     required TResult orElse(),
   }) {
     if (onRegisterSuccess != null) {
@@ -1100,6 +1142,7 @@ class _$_OnResetPassword implements _OnResetPassword {
     required TResult Function(String token) onLoginSuccess,
     required TResult Function(String token) onRegisterSuccess,
     required TResult Function(String message) onResetPassword,
+    required TResult Function(UserData userData) onGetUserData,
   }) {
     return onResetPassword(message);
   }
@@ -1114,6 +1157,7 @@ class _$_OnResetPassword implements _OnResetPassword {
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onRegisterSuccess,
     TResult Function(String message)? onResetPassword,
+    TResult Function(UserData userData)? onGetUserData,
   }) {
     return onResetPassword?.call(message);
   }
@@ -1128,6 +1172,7 @@ class _$_OnResetPassword implements _OnResetPassword {
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onRegisterSuccess,
     TResult Function(String message)? onResetPassword,
+    TResult Function(UserData userData)? onGetUserData,
     required TResult orElse(),
   }) {
     if (onResetPassword != null) {
@@ -1146,6 +1191,7 @@ class _$_OnResetPassword implements _OnResetPassword {
     required TResult Function(_OnLoginSuccess value) onLoginSuccess,
     required TResult Function(_OnRegisterSuccess value) onRegisterSuccess,
     required TResult Function(_OnResetPassword value) onResetPassword,
+    required TResult Function(_OnGetUserData value) onGetUserData,
   }) {
     return onResetPassword(this);
   }
@@ -1160,6 +1206,7 @@ class _$_OnResetPassword implements _OnResetPassword {
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
     TResult Function(_OnResetPassword value)? onResetPassword,
+    TResult Function(_OnGetUserData value)? onGetUserData,
   }) {
     return onResetPassword?.call(this);
   }
@@ -1174,6 +1221,7 @@ class _$_OnResetPassword implements _OnResetPassword {
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
     TResult Function(_OnResetPassword value)? onResetPassword,
+    TResult Function(_OnGetUserData value)? onGetUserData,
     required TResult orElse(),
   }) {
     if (onResetPassword != null) {
@@ -1189,5 +1237,183 @@ abstract class _OnResetPassword implements AuthState {
   String get message;
   @JsonKey(ignore: true)
   _$$_OnResetPasswordCopyWith<_$_OnResetPassword> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_OnGetUserDataCopyWith<$Res> {
+  factory _$$_OnGetUserDataCopyWith(
+          _$_OnGetUserData value, $Res Function(_$_OnGetUserData) then) =
+      __$$_OnGetUserDataCopyWithImpl<$Res>;
+  $Res call({UserData userData});
+
+  $UserDataCopyWith<$Res> get userData;
+}
+
+/// @nodoc
+class __$$_OnGetUserDataCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
+    implements _$$_OnGetUserDataCopyWith<$Res> {
+  __$$_OnGetUserDataCopyWithImpl(
+      _$_OnGetUserData _value, $Res Function(_$_OnGetUserData) _then)
+      : super(_value, (v) => _then(v as _$_OnGetUserData));
+
+  @override
+  _$_OnGetUserData get _value => super._value as _$_OnGetUserData;
+
+  @override
+  $Res call({
+    Object? userData = freezed,
+  }) {
+    return _then(_$_OnGetUserData(
+      userData == freezed
+          ? _value.userData
+          : userData // ignore: cast_nullable_to_non_nullable
+              as UserData,
+    ));
+  }
+
+  @override
+  $UserDataCopyWith<$Res> get userData {
+    return $UserDataCopyWith<$Res>(_value.userData, (value) {
+      return _then(_value.copyWith(userData: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_OnGetUserData implements _OnGetUserData {
+  const _$_OnGetUserData(this.userData);
+
+  @override
+  final UserData userData;
+
+  @override
+  String toString() {
+    return 'AuthState.onGetUserData(userData: $userData)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_OnGetUserData &&
+            const DeepCollectionEquality().equals(other.userData, userData));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(userData));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_OnGetUserDataCopyWith<_$_OnGetUserData> get copyWith =>
+      __$$_OnGetUserDataCopyWithImpl<_$_OnGetUserData>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String error) error,
+    required TResult Function(Failures error) onError,
+    required TResult Function(String token) onLoginSuccess,
+    required TResult Function(String token) onRegisterSuccess,
+    required TResult Function(String message) onResetPassword,
+    required TResult Function(UserData userData) onGetUserData,
+  }) {
+    return onGetUserData(userData);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String error)? error,
+    TResult Function(Failures error)? onError,
+    TResult Function(String token)? onLoginSuccess,
+    TResult Function(String token)? onRegisterSuccess,
+    TResult Function(String message)? onResetPassword,
+    TResult Function(UserData userData)? onGetUserData,
+  }) {
+    return onGetUserData?.call(userData);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String error)? error,
+    TResult Function(Failures error)? onError,
+    TResult Function(String token)? onLoginSuccess,
+    TResult Function(String token)? onRegisterSuccess,
+    TResult Function(String message)? onResetPassword,
+    TResult Function(UserData userData)? onGetUserData,
+    required TResult orElse(),
+  }) {
+    if (onGetUserData != null) {
+      return onGetUserData(userData);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Error value) error,
+    required TResult Function(_OnError value) onError,
+    required TResult Function(_OnLoginSuccess value) onLoginSuccess,
+    required TResult Function(_OnRegisterSuccess value) onRegisterSuccess,
+    required TResult Function(_OnResetPassword value) onResetPassword,
+    required TResult Function(_OnGetUserData value) onGetUserData,
+  }) {
+    return onGetUserData(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_OnError value)? onError,
+    TResult Function(_OnLoginSuccess value)? onLoginSuccess,
+    TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
+    TResult Function(_OnResetPassword value)? onResetPassword,
+    TResult Function(_OnGetUserData value)? onGetUserData,
+  }) {
+    return onGetUserData?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_OnError value)? onError,
+    TResult Function(_OnLoginSuccess value)? onLoginSuccess,
+    TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
+    TResult Function(_OnResetPassword value)? onResetPassword,
+    TResult Function(_OnGetUserData value)? onGetUserData,
+    required TResult orElse(),
+  }) {
+    if (onGetUserData != null) {
+      return onGetUserData(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnGetUserData implements AuthState {
+  const factory _OnGetUserData(final UserData userData) = _$_OnGetUserData;
+
+  UserData get userData;
+  @JsonKey(ignore: true)
+  _$$_OnGetUserDataCopyWith<_$_OnGetUserData> get copyWith =>
       throw _privateConstructorUsedError;
 }

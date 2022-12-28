@@ -21,7 +21,7 @@ mixin _$DashboardState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(Failures err) error,
-    required TResult Function(VisaApplicationModel visa) onGetSingleData,
+    required TResult Function(SimpleVisaModel visa) onGetSingleData,
     required TResult Function(String message) onDeleteSingleData,
   }) =>
       throw _privateConstructorUsedError;
@@ -30,7 +30,7 @@ mixin _$DashboardState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Failures err)? error,
-    TResult Function(VisaApplicationModel visa)? onGetSingleData,
+    TResult Function(SimpleVisaModel visa)? onGetSingleData,
     TResult Function(String message)? onDeleteSingleData,
   }) =>
       throw _privateConstructorUsedError;
@@ -39,7 +39,7 @@ mixin _$DashboardState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Failures err)? error,
-    TResult Function(VisaApplicationModel visa)? onGetSingleData,
+    TResult Function(SimpleVisaModel visa)? onGetSingleData,
     TResult Function(String message)? onDeleteSingleData,
     required TResult orElse(),
   }) =>
@@ -133,7 +133,7 @@ class _$_Initial implements _Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(Failures err) error,
-    required TResult Function(VisaApplicationModel visa) onGetSingleData,
+    required TResult Function(SimpleVisaModel visa) onGetSingleData,
     required TResult Function(String message) onDeleteSingleData,
   }) {
     return initial();
@@ -145,7 +145,7 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Failures err)? error,
-    TResult Function(VisaApplicationModel visa)? onGetSingleData,
+    TResult Function(SimpleVisaModel visa)? onGetSingleData,
     TResult Function(String message)? onDeleteSingleData,
   }) {
     return initial?.call();
@@ -157,7 +157,7 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Failures err)? error,
-    TResult Function(VisaApplicationModel visa)? onGetSingleData,
+    TResult Function(SimpleVisaModel visa)? onGetSingleData,
     TResult Function(String message)? onDeleteSingleData,
     required TResult orElse(),
   }) {
@@ -254,7 +254,7 @@ class _$_Loading implements _Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(Failures err) error,
-    required TResult Function(VisaApplicationModel visa) onGetSingleData,
+    required TResult Function(SimpleVisaModel visa) onGetSingleData,
     required TResult Function(String message) onDeleteSingleData,
   }) {
     return loading();
@@ -266,7 +266,7 @@ class _$_Loading implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Failures err)? error,
-    TResult Function(VisaApplicationModel visa)? onGetSingleData,
+    TResult Function(SimpleVisaModel visa)? onGetSingleData,
     TResult Function(String message)? onDeleteSingleData,
   }) {
     return loading?.call();
@@ -278,7 +278,7 @@ class _$_Loading implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Failures err)? error,
-    TResult Function(VisaApplicationModel visa)? onGetSingleData,
+    TResult Function(SimpleVisaModel visa)? onGetSingleData,
     TResult Function(String message)? onDeleteSingleData,
     required TResult orElse(),
   }) {
@@ -407,7 +407,7 @@ class _$_Error implements _Error {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(Failures err) error,
-    required TResult Function(VisaApplicationModel visa) onGetSingleData,
+    required TResult Function(SimpleVisaModel visa) onGetSingleData,
     required TResult Function(String message) onDeleteSingleData,
   }) {
     return error(err);
@@ -419,7 +419,7 @@ class _$_Error implements _Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Failures err)? error,
-    TResult Function(VisaApplicationModel visa)? onGetSingleData,
+    TResult Function(SimpleVisaModel visa)? onGetSingleData,
     TResult Function(String message)? onDeleteSingleData,
   }) {
     return error?.call(err);
@@ -431,7 +431,7 @@ class _$_Error implements _Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Failures err)? error,
-    TResult Function(VisaApplicationModel visa)? onGetSingleData,
+    TResult Function(SimpleVisaModel visa)? onGetSingleData,
     TResult Function(String message)? onDeleteSingleData,
     required TResult orElse(),
   }) {
@@ -496,9 +496,9 @@ abstract class _$$_OnGetSingleDataCopyWith<$Res> {
   factory _$$_OnGetSingleDataCopyWith(
           _$_OnGetSingleData value, $Res Function(_$_OnGetSingleData) then) =
       __$$_OnGetSingleDataCopyWithImpl<$Res>;
-  $Res call({VisaApplicationModel visa});
+  $Res call({SimpleVisaModel visa});
 
-  $VisaApplicationModelCopyWith<$Res> get visa;
+  $SimpleVisaModelCopyWith<$Res> get visa;
 }
 
 /// @nodoc
@@ -520,13 +520,13 @@ class __$$_OnGetSingleDataCopyWithImpl<$Res>
       visa == freezed
           ? _value.visa
           : visa // ignore: cast_nullable_to_non_nullable
-              as VisaApplicationModel,
+              as SimpleVisaModel,
     ));
   }
 
   @override
-  $VisaApplicationModelCopyWith<$Res> get visa {
-    return $VisaApplicationModelCopyWith<$Res>(_value.visa, (value) {
+  $SimpleVisaModelCopyWith<$Res> get visa {
+    return $SimpleVisaModelCopyWith<$Res>(_value.visa, (value) {
       return _then(_value.copyWith(visa: value));
     });
   }
@@ -538,7 +538,7 @@ class _$_OnGetSingleData implements _OnGetSingleData {
   const _$_OnGetSingleData(this.visa);
 
   @override
-  final VisaApplicationModel visa;
+  final SimpleVisaModel visa;
 
   @override
   String toString() {
@@ -568,7 +568,7 @@ class _$_OnGetSingleData implements _OnGetSingleData {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(Failures err) error,
-    required TResult Function(VisaApplicationModel visa) onGetSingleData,
+    required TResult Function(SimpleVisaModel visa) onGetSingleData,
     required TResult Function(String message) onDeleteSingleData,
   }) {
     return onGetSingleData(visa);
@@ -580,7 +580,7 @@ class _$_OnGetSingleData implements _OnGetSingleData {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Failures err)? error,
-    TResult Function(VisaApplicationModel visa)? onGetSingleData,
+    TResult Function(SimpleVisaModel visa)? onGetSingleData,
     TResult Function(String message)? onDeleteSingleData,
   }) {
     return onGetSingleData?.call(visa);
@@ -592,7 +592,7 @@ class _$_OnGetSingleData implements _OnGetSingleData {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Failures err)? error,
-    TResult Function(VisaApplicationModel visa)? onGetSingleData,
+    TResult Function(SimpleVisaModel visa)? onGetSingleData,
     TResult Function(String message)? onDeleteSingleData,
     required TResult orElse(),
   }) {
@@ -644,10 +644,10 @@ class _$_OnGetSingleData implements _OnGetSingleData {
 }
 
 abstract class _OnGetSingleData implements DashboardState {
-  const factory _OnGetSingleData(final VisaApplicationModel visa) =
+  const factory _OnGetSingleData(final SimpleVisaModel visa) =
       _$_OnGetSingleData;
 
-  VisaApplicationModel get visa;
+  SimpleVisaModel get visa;
   @JsonKey(ignore: true)
   _$$_OnGetSingleDataCopyWith<_$_OnGetSingleData> get copyWith =>
       throw _privateConstructorUsedError;
@@ -722,7 +722,7 @@ class _$_OnDeleteSingleData implements _OnDeleteSingleData {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(Failures err) error,
-    required TResult Function(VisaApplicationModel visa) onGetSingleData,
+    required TResult Function(SimpleVisaModel visa) onGetSingleData,
     required TResult Function(String message) onDeleteSingleData,
   }) {
     return onDeleteSingleData(message);
@@ -734,7 +734,7 @@ class _$_OnDeleteSingleData implements _OnDeleteSingleData {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Failures err)? error,
-    TResult Function(VisaApplicationModel visa)? onGetSingleData,
+    TResult Function(SimpleVisaModel visa)? onGetSingleData,
     TResult Function(String message)? onDeleteSingleData,
   }) {
     return onDeleteSingleData?.call(message);
@@ -746,7 +746,7 @@ class _$_OnDeleteSingleData implements _OnDeleteSingleData {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Failures err)? error,
-    TResult Function(VisaApplicationModel visa)? onGetSingleData,
+    TResult Function(SimpleVisaModel visa)? onGetSingleData,
     TResult Function(String message)? onDeleteSingleData,
     required TResult orElse(),
   }) {

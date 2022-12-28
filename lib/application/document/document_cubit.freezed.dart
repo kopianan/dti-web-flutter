@@ -19,8 +19,15 @@ mixin _$DocumentState {
   VisaApplicationModel? get visa => throw _privateConstructorUsedError;
   List<DocumentDataModel>? get docs => throw _privateConstructorUsedError;
   int? get selectedIndex => throw _privateConstructorUsedError;
+  List<Map<String, dynamic>>? get masterListData =>
+      throw _privateConstructorUsedError;
+  List<String>? get selectedMasterListData =>
+      throw _privateConstructorUsedError;
   List<String>? get deletedImagesName => throw _privateConstructorUsedError;
   DocumentDataModel? get selectedDocument => throw _privateConstructorUsedError;
+  Map<String, dynamic>? get selectedDataCollection =>
+      throw _privateConstructorUsedError;
+  int? get selectedDataType => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DocumentStateCopyWith<DocumentState> get copyWith =>
@@ -36,8 +43,12 @@ abstract class $DocumentStateCopyWith<$Res> {
       {VisaApplicationModel? visa,
       List<DocumentDataModel>? docs,
       int? selectedIndex,
+      List<Map<String, dynamic>>? masterListData,
+      List<String>? selectedMasterListData,
       List<String>? deletedImagesName,
-      DocumentDataModel? selectedDocument});
+      DocumentDataModel? selectedDocument,
+      Map<String, dynamic>? selectedDataCollection,
+      int? selectedDataType});
 
   $VisaApplicationModelCopyWith<$Res>? get visa;
   $DocumentDataModelCopyWith<$Res>? get selectedDocument;
@@ -57,8 +68,12 @@ class _$DocumentStateCopyWithImpl<$Res>
     Object? visa = freezed,
     Object? docs = freezed,
     Object? selectedIndex = freezed,
+    Object? masterListData = freezed,
+    Object? selectedMasterListData = freezed,
     Object? deletedImagesName = freezed,
     Object? selectedDocument = freezed,
+    Object? selectedDataCollection = freezed,
+    Object? selectedDataType = freezed,
   }) {
     return _then(_value.copyWith(
       visa: visa == freezed
@@ -73,6 +88,14 @@ class _$DocumentStateCopyWithImpl<$Res>
           ? _value.selectedIndex
           : selectedIndex // ignore: cast_nullable_to_non_nullable
               as int?,
+      masterListData: masterListData == freezed
+          ? _value.masterListData
+          : masterListData // ignore: cast_nullable_to_non_nullable
+              as List<Map<String, dynamic>>?,
+      selectedMasterListData: selectedMasterListData == freezed
+          ? _value.selectedMasterListData
+          : selectedMasterListData // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
       deletedImagesName: deletedImagesName == freezed
           ? _value.deletedImagesName
           : deletedImagesName // ignore: cast_nullable_to_non_nullable
@@ -81,6 +104,14 @@ class _$DocumentStateCopyWithImpl<$Res>
           ? _value.selectedDocument
           : selectedDocument // ignore: cast_nullable_to_non_nullable
               as DocumentDataModel?,
+      selectedDataCollection: selectedDataCollection == freezed
+          ? _value.selectedDataCollection
+          : selectedDataCollection // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
+      selectedDataType: selectedDataType == freezed
+          ? _value.selectedDataType
+          : selectedDataType // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 
@@ -118,8 +149,12 @@ abstract class _$$_DocumentStateCopyWith<$Res>
       {VisaApplicationModel? visa,
       List<DocumentDataModel>? docs,
       int? selectedIndex,
+      List<Map<String, dynamic>>? masterListData,
+      List<String>? selectedMasterListData,
       List<String>? deletedImagesName,
-      DocumentDataModel? selectedDocument});
+      DocumentDataModel? selectedDocument,
+      Map<String, dynamic>? selectedDataCollection,
+      int? selectedDataType});
 
   @override
   $VisaApplicationModelCopyWith<$Res>? get visa;
@@ -143,8 +178,12 @@ class __$$_DocumentStateCopyWithImpl<$Res>
     Object? visa = freezed,
     Object? docs = freezed,
     Object? selectedIndex = freezed,
+    Object? masterListData = freezed,
+    Object? selectedMasterListData = freezed,
     Object? deletedImagesName = freezed,
     Object? selectedDocument = freezed,
+    Object? selectedDataCollection = freezed,
+    Object? selectedDataType = freezed,
   }) {
     return _then(_$_DocumentState(
       visa: visa == freezed
@@ -159,6 +198,14 @@ class __$$_DocumentStateCopyWithImpl<$Res>
           ? _value.selectedIndex
           : selectedIndex // ignore: cast_nullable_to_non_nullable
               as int?,
+      masterListData: masterListData == freezed
+          ? _value.masterListData
+          : masterListData // ignore: cast_nullable_to_non_nullable
+              as List<Map<String, dynamic>>?,
+      selectedMasterListData: selectedMasterListData == freezed
+          ? _value.selectedMasterListData
+          : selectedMasterListData // ignore: cast_nullable_to_non_nullable
+              as List<String>?,
       deletedImagesName: deletedImagesName == freezed
           ? _value.deletedImagesName
           : deletedImagesName // ignore: cast_nullable_to_non_nullable
@@ -167,6 +214,14 @@ class __$$_DocumentStateCopyWithImpl<$Res>
           ? _value.selectedDocument
           : selectedDocument // ignore: cast_nullable_to_non_nullable
               as DocumentDataModel?,
+      selectedDataCollection: selectedDataCollection == freezed
+          ? _value.selectedDataCollection
+          : selectedDataCollection // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
+      selectedDataType: selectedDataType == freezed
+          ? _value.selectedDataType
+          : selectedDataType // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -178,8 +233,12 @@ class _$_DocumentState implements _DocumentState {
       {this.visa,
       this.docs,
       this.selectedIndex,
+      this.masterListData,
+      this.selectedMasterListData,
       this.deletedImagesName,
-      this.selectedDocument});
+      this.selectedDocument,
+      this.selectedDataCollection,
+      this.selectedDataType});
 
   @override
   final VisaApplicationModel? visa;
@@ -188,13 +247,21 @@ class _$_DocumentState implements _DocumentState {
   @override
   final int? selectedIndex;
   @override
+  final List<Map<String, dynamic>>? masterListData;
+  @override
+  final List<String>? selectedMasterListData;
+  @override
   final List<String>? deletedImagesName;
   @override
   final DocumentDataModel? selectedDocument;
+  @override
+  final Map<String, dynamic>? selectedDataCollection;
+  @override
+  final int? selectedDataType;
 
   @override
   String toString() {
-    return 'DocumentState(visa: $visa, docs: $docs, selectedIndex: $selectedIndex, deletedImagesName: $deletedImagesName, selectedDocument: $selectedDocument)';
+    return 'DocumentState(visa: $visa, docs: $docs, selectedIndex: $selectedIndex, masterListData: $masterListData, selectedMasterListData: $selectedMasterListData, deletedImagesName: $deletedImagesName, selectedDocument: $selectedDocument, selectedDataCollection: $selectedDataCollection, selectedDataType: $selectedDataType)';
   }
 
   @override
@@ -207,9 +274,17 @@ class _$_DocumentState implements _DocumentState {
             const DeepCollectionEquality()
                 .equals(other.selectedIndex, selectedIndex) &&
             const DeepCollectionEquality()
+                .equals(other.masterListData, masterListData) &&
+            const DeepCollectionEquality()
+                .equals(other.selectedMasterListData, selectedMasterListData) &&
+            const DeepCollectionEquality()
                 .equals(other.deletedImagesName, deletedImagesName) &&
             const DeepCollectionEquality()
-                .equals(other.selectedDocument, selectedDocument));
+                .equals(other.selectedDocument, selectedDocument) &&
+            const DeepCollectionEquality()
+                .equals(other.selectedDataCollection, selectedDataCollection) &&
+            const DeepCollectionEquality()
+                .equals(other.selectedDataType, selectedDataType));
   }
 
   @override
@@ -218,8 +293,12 @@ class _$_DocumentState implements _DocumentState {
       const DeepCollectionEquality().hash(visa),
       const DeepCollectionEquality().hash(docs),
       const DeepCollectionEquality().hash(selectedIndex),
+      const DeepCollectionEquality().hash(masterListData),
+      const DeepCollectionEquality().hash(selectedMasterListData),
       const DeepCollectionEquality().hash(deletedImagesName),
-      const DeepCollectionEquality().hash(selectedDocument));
+      const DeepCollectionEquality().hash(selectedDocument),
+      const DeepCollectionEquality().hash(selectedDataCollection),
+      const DeepCollectionEquality().hash(selectedDataType));
 
   @JsonKey(ignore: true)
   @override
@@ -232,8 +311,12 @@ abstract class _DocumentState implements DocumentState {
       {final VisaApplicationModel? visa,
       final List<DocumentDataModel>? docs,
       final int? selectedIndex,
+      final List<Map<String, dynamic>>? masterListData,
+      final List<String>? selectedMasterListData,
       final List<String>? deletedImagesName,
-      final DocumentDataModel? selectedDocument}) = _$_DocumentState;
+      final DocumentDataModel? selectedDocument,
+      final Map<String, dynamic>? selectedDataCollection,
+      final int? selectedDataType}) = _$_DocumentState;
 
   @override
   VisaApplicationModel? get visa;
@@ -242,9 +325,17 @@ abstract class _DocumentState implements DocumentState {
   @override
   int? get selectedIndex;
   @override
+  List<Map<String, dynamic>>? get masterListData;
+  @override
+  List<String>? get selectedMasterListData;
+  @override
   List<String>? get deletedImagesName;
   @override
   DocumentDataModel? get selectedDocument;
+  @override
+  Map<String, dynamic>? get selectedDataCollection;
+  @override
+  int? get selectedDataType;
   @override
   @JsonKey(ignore: true)
   _$$_DocumentStateCopyWith<_$_DocumentState> get copyWith =>

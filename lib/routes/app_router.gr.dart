@@ -36,7 +36,6 @@ class _$AppRouter extends RootStackRouter {
         child: ApplicationDetailPage(
           key: args.key,
           firebaseDocId: args.firebaseDocId,
-          documentCubit: args.documentCubit,
         ),
       );
     },
@@ -48,6 +47,7 @@ class _$AppRouter extends RootStackRouter {
           key: args.key,
           visaApplication: args.visaApplication,
           appDocument: args.appDocument,
+          index: args.index,
         ),
       );
     },
@@ -101,6 +101,16 @@ class _$AppRouter extends RootStackRouter {
         child: const ApplicationCardPage(),
       );
     },
+    PaymentRoute.name: (routeData) {
+      final args = routeData.argsAs<PaymentRouteArgs>();
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: PaymentPage(
+          key: args.key,
+          visa: args.visa,
+        ),
+      );
+    },
     PersonalInformation3Route.name: (routeData) {
       final args = routeData.argsAs<PersonalInformation3RouteArgs>(
           orElse: () => const PersonalInformation3RouteArgs());
@@ -134,6 +144,18 @@ class _$AppRouter extends RootStackRouter {
         child: const UploadDocumentPage(),
       );
     },
+    DTIPdfViewerRoute.name: (routeData) {
+      final args = routeData.argsAs<DTIPdfViewerRouteArgs>();
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: DTIPdfViewerPage(
+          key: args.key,
+          imageUrl: args.imageUrl,
+          isNetwork: args.isNetwork,
+        ),
+        fullscreenDialog: true,
+      );
+    },
     PhotoViewRoute.name: (routeData) {
       final args = routeData.argsAs<PhotoViewRouteArgs>();
       return MaterialPageX<dynamic>(
@@ -141,6 +163,7 @@ class _$AppRouter extends RootStackRouter {
         child: PhotoViewPage(
           key: args.key,
           images: args.images,
+          isNetwork: args.isNetwork,
         ),
         fullscreenDialog: true,
       );
@@ -163,6 +186,9 @@ class _$AppRouter extends RootStackRouter {
         child: QuestionnairePage(
           key: args.key,
           question: args.question,
+          title: args.title,
+          subtitle: args.subtitle,
+          boolIsInit: args.boolIsInit,
         ),
       );
     },
@@ -247,6 +273,10 @@ class _$AppRouter extends RootStackRouter {
           path: '/application-card',
         ),
         RouteConfig(
+          PaymentRoute.name,
+          path: '/payment',
+        ),
+        RouteConfig(
           PersonalInformation3Route.name,
           path: '/personal-information3',
         ),
@@ -261,6 +291,10 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           UploadDocumentRoute.name,
           path: '/upload-document',
+        ),
+        RouteConfig(
+          DTIPdfViewerRoute.name,
+          path: '/dti-pdf-viewer',
         ),
         RouteConfig(
           PhotoViewRoute.name,
@@ -331,14 +365,12 @@ class ApplicationDetailRoute extends PageRouteInfo<ApplicationDetailRouteArgs> {
   ApplicationDetailRoute({
     Key? key,
     required String firebaseDocId,
-    required DocumentCubit documentCubit,
   }) : super(
           ApplicationDetailRoute.name,
           path: '/application-detail',
           args: ApplicationDetailRouteArgs(
             key: key,
             firebaseDocId: firebaseDocId,
-            documentCubit: documentCubit,
           ),
         );
 
@@ -349,18 +381,15 @@ class ApplicationDetailRouteArgs {
   const ApplicationDetailRouteArgs({
     this.key,
     required this.firebaseDocId,
-    required this.documentCubit,
   });
 
   final Key? key;
 
   final String firebaseDocId;
 
-  final DocumentCubit documentCubit;
-
   @override
   String toString() {
-    return 'ApplicationDetailRouteArgs{key: $key, firebaseDocId: $firebaseDocId, documentCubit: $documentCubit}';
+    return 'ApplicationDetailRouteArgs{key: $key, firebaseDocId: $firebaseDocId}';
   }
 }
 
@@ -371,6 +400,7 @@ class SignatureRoute extends PageRouteInfo<SignatureRouteArgs> {
     Key? key,
     required VisaApplicationModel visaApplication,
     required DocumentDataModel appDocument,
+    required int index,
   }) : super(
           SignatureRoute.name,
           path: '/signature',
@@ -378,6 +408,7 @@ class SignatureRoute extends PageRouteInfo<SignatureRouteArgs> {
             key: key,
             visaApplication: visaApplication,
             appDocument: appDocument,
+            index: index,
           ),
         );
 
@@ -389,6 +420,7 @@ class SignatureRouteArgs {
     this.key,
     required this.visaApplication,
     required this.appDocument,
+    required this.index,
   });
 
   final Key? key;
@@ -397,9 +429,11 @@ class SignatureRouteArgs {
 
   final DocumentDataModel appDocument;
 
+  final int index;
+
   @override
   String toString() {
-    return 'SignatureRouteArgs{key: $key, visaApplication: $visaApplication, appDocument: $appDocument}';
+    return 'SignatureRouteArgs{key: $key, visaApplication: $visaApplication, appDocument: $appDocument, index: $index}';
   }
 }
 
@@ -554,6 +588,40 @@ class ApplicationCardRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [PaymentPage]
+class PaymentRoute extends PageRouteInfo<PaymentRouteArgs> {
+  PaymentRoute({
+    Key? key,
+    required VisaApplicationModel visa,
+  }) : super(
+          PaymentRoute.name,
+          path: '/payment',
+          args: PaymentRouteArgs(
+            key: key,
+            visa: visa,
+          ),
+        );
+
+  static const String name = 'PaymentRoute';
+}
+
+class PaymentRouteArgs {
+  const PaymentRouteArgs({
+    this.key,
+    required this.visa,
+  });
+
+  final Key? key;
+
+  final VisaApplicationModel visa;
+
+  @override
+  String toString() {
+    return 'PaymentRouteArgs{key: $key, visa: $visa}';
+  }
+}
+
+/// generated route for
 /// [PersonalInformation3Page]
 class PersonalInformation3Route
     extends PageRouteInfo<PersonalInformation3RouteArgs> {
@@ -648,17 +716,58 @@ class UploadDocumentRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [DTIPdfViewerPage]
+class DTIPdfViewerRoute extends PageRouteInfo<DTIPdfViewerRouteArgs> {
+  DTIPdfViewerRoute({
+    Key? key,
+    required String imageUrl,
+    bool isNetwork = false,
+  }) : super(
+          DTIPdfViewerRoute.name,
+          path: '/dti-pdf-viewer',
+          args: DTIPdfViewerRouteArgs(
+            key: key,
+            imageUrl: imageUrl,
+            isNetwork: isNetwork,
+          ),
+        );
+
+  static const String name = 'DTIPdfViewerRoute';
+}
+
+class DTIPdfViewerRouteArgs {
+  const DTIPdfViewerRouteArgs({
+    this.key,
+    required this.imageUrl,
+    this.isNetwork = false,
+  });
+
+  final Key? key;
+
+  final String imageUrl;
+
+  final bool isNetwork;
+
+  @override
+  String toString() {
+    return 'DTIPdfViewerRouteArgs{key: $key, imageUrl: $imageUrl, isNetwork: $isNetwork}';
+  }
+}
+
+/// generated route for
 /// [PhotoViewPage]
 class PhotoViewRoute extends PageRouteInfo<PhotoViewRouteArgs> {
   PhotoViewRoute({
     Key? key,
     required List<String> images,
+    bool isNetwork = true,
   }) : super(
           PhotoViewRoute.name,
           path: '/photo-view',
           args: PhotoViewRouteArgs(
             key: key,
             images: images,
+            isNetwork: isNetwork,
           ),
         );
 
@@ -669,15 +778,18 @@ class PhotoViewRouteArgs {
   const PhotoViewRouteArgs({
     this.key,
     required this.images,
+    this.isNetwork = true,
   });
 
   final Key? key;
 
   final List<String> images;
 
+  final bool isNetwork;
+
   @override
   String toString() {
-    return 'PhotoViewRouteArgs{key: $key, images: $images}';
+    return 'PhotoViewRouteArgs{key: $key, images: $images, isNetwork: $isNetwork}';
   }
 }
 
@@ -722,12 +834,18 @@ class QuestionnaireRoute extends PageRouteInfo<QuestionnaireRouteArgs> {
   QuestionnaireRoute({
     Key? key,
     List<QuestionnaireModel>? question,
+    String? title,
+    String? subtitle,
+    bool boolIsInit = false,
   }) : super(
           QuestionnaireRoute.name,
           path: '/questionnaire',
           args: QuestionnaireRouteArgs(
             key: key,
             question: question,
+            title: title,
+            subtitle: subtitle,
+            boolIsInit: boolIsInit,
           ),
         );
 
@@ -738,15 +856,24 @@ class QuestionnaireRouteArgs {
   const QuestionnaireRouteArgs({
     this.key,
     this.question,
+    this.title,
+    this.subtitle,
+    this.boolIsInit = false,
   });
 
   final Key? key;
 
   final List<QuestionnaireModel>? question;
 
+  final String? title;
+
+  final String? subtitle;
+
+  final bool boolIsInit;
+
   @override
   String toString() {
-    return 'QuestionnaireRouteArgs{key: $key, question: $question}';
+    return 'QuestionnaireRouteArgs{key: $key, question: $question, title: $title, subtitle: $subtitle, boolIsInit: $boolIsInit}';
   }
 }
 

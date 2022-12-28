@@ -7,7 +7,7 @@ class ApplicationState with _$ApplicationState {
       String? onError,
       String? onSuccess,
       List<DocumentDataModel>? documnets,
-      List<Map<String, dynamic>>? masterImagesDocument,
+      List<Map<String, dynamic>>? masterListData,
       VisaApplicationModel? visaApplicationModel}) = _ApplicationState;
 
   factory ApplicationState.initial() => ApplicationState(

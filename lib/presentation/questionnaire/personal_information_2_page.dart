@@ -7,6 +7,7 @@ import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:dti_web/utils/constant.dart';
 import 'package:dti_web/utils/date_converter.dart';
+import 'package:dti_web/utils/date_time_child.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -108,6 +109,7 @@ class _PersonalInformation2PageState extends State<PersonalInformation2Page> {
                                 context: context,
                                 initialDate: DateTime.now(),
                                 firstDate: DateTime(1800),
+                                builder: dateTimThemeChild,
                                 lastDate: nowDate,
                               );
                               if (selectedDate != null) {
@@ -138,18 +140,21 @@ class _PersonalInformation2PageState extends State<PersonalInformation2Page> {
                           FormBuilderTextField(
                             onTap: () async {
                               final nowDate = DateTime.now();
+
                               final selectedDate = await showDatePicker(
                                   context: context,
                                   initialDate:
                                       nowDate.add(const Duration(hours: 1)),
                                   firstDate: nowDate
                                       .subtract(const Duration(hours: 1)),
+                                  builder: dateTimThemeChild,
                                   lastDate: nowDate.add(Duration(days: 10000)));
                               if (selectedDate != null) {
                                 _formKey.currentState!.fields['dateOfExpire']!
                                     .didChange(
                                         DateConverter.convertDateDefault2(
-                                            selectedDate));
+                                  selectedDate,
+                                ));
                               }
                             },
                             readOnly: true,
@@ -192,7 +197,7 @@ class _PersonalInformation2PageState extends State<PersonalInformation2Page> {
                             validator: FormBuilderValidators.required(),
                             autovalidateMode:
                                 AutovalidateMode.onUserInteraction,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               labelText: "Isuuing Country",
                               hintText: "Isuuing Country",
                               fillColor: Colors.white70,

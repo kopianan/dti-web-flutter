@@ -123,7 +123,7 @@ mixin _$VisaApplicationModel {
   @JsonKey(name: 'dateOfBirth')
   String? get dateOfBirth => throw _privateConstructorUsedError;
   @JsonKey(name: 'price')
-  int? get price => throw _privateConstructorUsedError;
+  double? get price => throw _privateConstructorUsedError;
   @JsonKey(name: 'multiVisaDuration')
   String? get multiVisaDuration => throw _privateConstructorUsedError;
 
@@ -240,7 +240,7 @@ abstract class $VisaApplicationModelCopyWith<$Res> {
       @JsonKey(name: 'dateOfBirth')
           String? dateOfBirth,
       @JsonKey(name: 'price')
-          int? price,
+          double? price,
       @JsonKey(name: 'multiVisaDuration')
           String? multiVisaDuration});
 
@@ -515,7 +515,7 @@ class _$VisaApplicationModelCopyWithImpl<$Res>
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       multiVisaDuration: multiVisaDuration == freezed
           ? _value.multiVisaDuration
           : multiVisaDuration // ignore: cast_nullable_to_non_nullable
@@ -645,7 +645,7 @@ abstract class _$$_VisaApplicationModelCopyWith<$Res>
       @JsonKey(name: 'dateOfBirth')
           String? dateOfBirth,
       @JsonKey(name: 'price')
-          int? price,
+          double? price,
       @JsonKey(name: 'multiVisaDuration')
           String? multiVisaDuration});
 
@@ -923,7 +923,7 @@ class __$$_VisaApplicationModelCopyWithImpl<$Res>
       price: price == freezed
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as double?,
       multiVisaDuration: multiVisaDuration == freezed
           ? _value.multiVisaDuration
           : multiVisaDuration // ignore: cast_nullable_to_non_nullable
@@ -1205,7 +1205,7 @@ class _$_VisaApplicationModel implements _VisaApplicationModel {
   final String? dateOfBirth;
   @override
   @JsonKey(name: 'price')
-  final int? price;
+  final double? price;
   @override
   @JsonKey(name: 'multiVisaDuration')
   final String? multiVisaDuration;
@@ -1486,7 +1486,7 @@ abstract class _VisaApplicationModel implements VisaApplicationModel {
       @JsonKey(name: 'dateOfBirth')
           final String? dateOfBirth,
       @JsonKey(name: 'price')
-          final int? price,
+          final double? price,
       @JsonKey(name: 'multiVisaDuration')
           final String? multiVisaDuration}) = _$_VisaApplicationModel;
 
@@ -1645,7 +1645,7 @@ abstract class _VisaApplicationModel implements VisaApplicationModel {
   String? get dateOfBirth;
   @override
   @JsonKey(name: 'price')
-  int? get price;
+  double? get price;
   @override
   @JsonKey(name: 'multiVisaDuration')
   String? get multiVisaDuration;

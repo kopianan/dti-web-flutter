@@ -1,10 +1,15 @@
+import 'dart:io';
+
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart'; 
+import 'package:url_launcher/url_launcher.dart';
 
 class PhotoViewPage extends StatefulWidget {
   static const String routeName = '/photo-view';
-  const PhotoViewPage({super.key, required this.images});
+  const PhotoViewPage({super.key, required this.images, this.isNetwork = true});
   final List<String> images;
+  final bool isNetwork;
 
   @override
   State<PhotoViewPage> createState() => _PhotoViewPageState();
@@ -21,34 +26,41 @@ class _PhotoViewPageState extends State<PhotoViewPage> {
                     borderRadius: BorderRadius.all(Radius.circular(5.0)),
                     child: Stack(
                       children: <Widget>[
-                        Image.network(item, fit: BoxFit.cover, width: 1000.0),
-                        Positioned(
-                          bottom: 0.0,
-                          left: 0.0,
-                          right: 0.0,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                colors: [
-                                  Color.fromARGB(200, 0, 0, 0),
-                                  Color.fromARGB(0, 0, 0, 0)
-                                ],
-                                begin: Alignment.bottomCenter,
-                                end: Alignment.topCenter,
-                              ),
-                            ),
-                            padding: EdgeInsets.symmetric(
-                                vertical: 10.0, horizontal: 20.0),
-                            child: Text(
-                              'No. ${widget.images.indexOf(item)} image',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20.0,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ),
+                        widget.isNetwork
+                            ? Image.network(item,
+                                fit: BoxFit.contain, width: 1000.0)
+                            : kIsWeb
+                                ? Image.network(item,
+                                    fit: BoxFit.contain, width: 1000.0)
+                                : Image.file(File(item),
+                                    fit: BoxFit.contain, width: 1000.0)
+                        // Positioned(
+                        //   bottom: 0.0,
+                        //   left: 0.0,
+                        //   right: 0.0,
+                        //   child: Container(
+                        //     decoration: BoxDecoration(
+                        //       gradient: LinearGradient(
+                        //         colors: [
+                        //           Color.fromARGB(200, 0, 0, 0),
+                        //           Color.fromARGB(0, 0, 0, 0)
+                        //         ],
+                        //         begin: Alignment.bottomCenter,
+                        //         end: Alignment.topCenter,
+                        //       ),
+                        //     ),
+                        //     padding: EdgeInsets.symmetric(
+                        //         vertical: 10.0, horizontal: 20.0),
+                        //     child: Text(
+                        //       'No. ${widget.images.indexOf(item)} image',
+                        //       style: TextStyle(
+                        //         color: Colors.white,
+                        //         fontSize: 20.0,
+                        //         fontWeight: FontWeight.bold,
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
                       ],
                     )),
               ),
@@ -65,6 +77,13 @@ class _PhotoViewPageState extends State<PhotoViewPage> {
         elevation: 0,
         backgroundColor: Colors.transparent,
         foregroundColor: Colors.black,
+        actions: [
+          IconButton(
+              onPressed: () {
+                launch(widget.images[_current]);
+              },
+              icon: Icon(Icons.download))
+        ],
       ),
       body: Column(children: [
         Expanded(

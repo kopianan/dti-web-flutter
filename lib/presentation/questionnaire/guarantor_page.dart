@@ -33,7 +33,9 @@ class _GuarantorPageState extends State<GuarantorPage> {
         state.maybeMap(
           orElse: () {},
           onLoading: (e) {
-            EasyLoading.show();
+            EasyLoading.show(
+              maskType: EasyLoadingMaskType.black,
+            );
           },
           onError: (e) {
             EasyLoading.dismiss();

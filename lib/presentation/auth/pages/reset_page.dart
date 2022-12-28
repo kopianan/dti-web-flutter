@@ -5,14 +5,13 @@ import 'package:dti_web/core/widgets/auth_footer_widget.dart';
 import 'package:dti_web/core/widgets/auth_header_widget.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
 import 'package:dti_web/injection.dart';
+import 'package:dti_web/presentation/auth/widgets/email_text_field.dart';
 import 'package:dti_web/routes/app_router.dart';
+import 'package:dti_web/utils/app_color.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:dti_web/presentation/auth/pages/sign_up_page.dart';
 
 class ResetPage extends StatelessWidget {
   static const String routeName = '/reset';
@@ -62,7 +61,7 @@ class ResetPage extends StatelessWidget {
                 title: "Reset Password",
                 btnOkText: "Ok",
                 btnOkOnPress: () {
-                  AutoRouter.of(context).popAndPush(SignInRoute());
+                  AutoRouter.of(context).popAndPush(const SignInRoute());
                 },
               ).show();
             },
@@ -71,104 +70,99 @@ class ResetPage extends StatelessWidget {
         child: BlocBuilder<AuthCubit, AuthState>(
           builder: (context, state) {
             return Scaffold(
-              body: Container(
-                margin: EdgeInsets.symmetric(horizontal: 0.1.sw),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    AuthHeaderWidget(label: "Reset Password"),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Container(
-                            color: Colors.green,
+              body: SingleChildScrollView(
+                child: Container(
+                  margin: EdgeInsets.symmetric(horizontal: 0.1.sw),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const AuthHeaderWidget(label: "Reset Password"),
+                      Row(
+                        children: [
+                          Expanded(
                             child: Image.asset(
                                 'assets/images/dti_auth_register.png'),
                           ),
-                        ),
-                        100.horizontalSpace,
-                        Expanded(
-                          child: Container(
-                            alignment: Alignment.center,
-                            padding: REdgeInsets.symmetric(horizontal: 40),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'Enter the email the email associated with your account and we’ll send an email with instructions to reset yout password.',
-                                  style: TextStyle(
-                                    fontSize: 20.sp,
-                                  ),
-                                ),
-                                20.verticalSpace,
-                                Form(
-                                  key: formKey,
-                                  autovalidateMode:
-                                      AutovalidateMode.onUserInteraction,
-                                  child: TextFormField(
-                                    controller: email,
-                                    validator: (value) {
-                                      if (value == null || value.isEmpty) {
-                                        return "Email can not be empty";
-                                      }
-                                      final bool emailValid = RegExp(
-                                              r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                                          .hasMatch(value);
-                                      if (!emailValid) {
-                                        return "Wrong e-mail format";
-                                      }
-                                      return null;
-                                    },
-                                    decoration: InputDecoration(
-                                      hintText: 'Input your name or e-mail',
-                                      border: OutlineInputBorder(),
+                          100.horizontalSpace,
+                          Expanded(
+                            child: Container(
+                              alignment: Alignment.center,
+                              padding: REdgeInsets.symmetric(horizontal: 40),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Enter the email the email associated with your account and we’ll send an email with instructions to reset yout password.',
+                                    style: TextStyle(
+                                      fontSize: 20.sp,
                                     ),
                                   ),
-                                ),
-                                20.verticalSpace,
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Don’t have an account yet ?",
-                                      style: TextStyle(fontSize: 14.sp),
-                                    ),
-                                    InkWell(
+                                  40.verticalSpace,
+                                  Form(
+                                      key: formKey,
+                                      autovalidateMode:
+                                          AutovalidateMode.onUserInteraction,
+                                      child: EmailTextField(
+                                        email: email,
+                                      )),
+                                  20.verticalSpace,
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      const Text(
+                                        "Don’t have an account yet ?",
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.grey,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      5.horizontalSpace,
+                                      InkWell(
                                         onTap: () {
-                                          context.router
+                                          AutoRouter.of(context)
                                               .popAndPush(SignUpRoute());
                                         },
-                                        child: Text(
-                                          " Sign Up",
-                                          style: TextStyle(fontSize: 14.sp),
-                                        )),
-                                  ],
-                                ),
-                                20.verticalSpace,
-                                SizedBox(
-                                    height: 45.h,
-                                    child: PrimaryButton(
-                                      onClick: () {
-                                        if (formKey.currentState!.validate()) {
-                                          print(email.text);
-                                          context
-                                              .read<AuthCubit>()
-                                              .resetPassword(email.text);
-                                        }
-                                      },
-                                      label: 'SEND INSTRUCTION',
-                                      labelStyle: TextStyle(fontSize: 16.sp),
-                                    )),
-                              ],
+                                        child: const Text(
+                                          "Sign Up",
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            color: AppColor.primaryColor,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                      30.verticalSpace,
+                                    ],
+                                  ),
+                                  40.verticalSpace,
+                                  SizedBox(
+                                      height: 45.h,
+                                      child: PrimaryButton(
+                                        onClick: () {
+                                          if (formKey.currentState!
+                                              .validate()) {
+                                            context
+                                                .read<AuthCubit>()
+                                                .resetPassword(email.text);
+                                          }
+                                        },
+                                        label: 'SEND INSTRUCTION',
+                                        labelStyle: TextStyle(fontSize: 16.sp),
+                                      )),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    AuthFooterWidget()
-                  ],
+                        ],
+                      ),
+                      const AuthFooterWidget()
+                    ],
+                  ),
                 ),
               ),
             );

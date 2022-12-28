@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:dti_web/core/storage.dart';
+import 'package:dti_web/domain/core/simple_visa_model.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dti_web/domain/dashboard/i_dashboard.dart';
@@ -12,11 +13,11 @@ import 'package:injectable/injectable.dart';
 @LazySingleton(as: IDashboard)
 class DashboardRepository extends IDashboard {
   @override
-  Future<Either<Failures, VisaApplicationModel>> getSingleData() async {
+  Future<Either<Failures, SimpleVisaModel>> getSingleData() async {
     final dio = Dio();
     final storage = Storage();
     try {
-      final result = await dio.get(Constant.baseUrl + "/applicationsByUser/",
+      final result = await dio.get(Constant.baseUrl + "/applicationsByUser/1",
           options: Options(
             headers: {'Authorization': 'Bearer ${storage.getToken()}'},
           ));
@@ -25,7 +26,7 @@ class DashboardRepository extends IDashboard {
         if (listData.isEmpty) {
           return Left(Failures.noData("EMPTY"));
         } else {
-          final modelData = VisaApplicationModel.fromJson(listData.first);
+          final modelData = SimpleVisaModel.fromJson(listData.first);
           return Right(modelData);
         }
       }
@@ -45,8 +46,8 @@ class DashboardRepository extends IDashboard {
     try {
       final result = await dio.get(
           Constant.baseUrl + "/application/$firebaseDocId/delete",
-          options:
-              Options(headers: {'Authorization': 'Bearer ${storage.getToken() }'}));
+          options: Options(
+              headers: {'Authorization': 'Bearer ${storage.getToken()}'}));
       if (result.data['message'] != null) {
         //SUCCESS
         return Right(result.data['message']);

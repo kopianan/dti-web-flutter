@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:dti_web/core/storage.dart';
 import 'package:dti_web/domain/app_list/i_app_list.dart';
 import 'package:dti_web/domain/application/i_application.dart';
+import 'package:dti_web/domain/core/simple_visa_model.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/utils/constant.dart';
 import 'package:injectable/injectable.dart';
@@ -12,8 +13,7 @@ class AppListRepository extends IAppList {
   Dio? dio;
   final storage = Storage();
   @override
-  Future<Either<String, List<VisaApplicationModel>>>
-      getUserVisaApplication() async {
+  Future<Either<String, List<SimpleVisaModel>>> getUserVisaApplication() async {
     dio = Dio();
     final result = await dio!.get('${Constant.baseUrl}/applicationsByUser',
         options: Options(
@@ -21,7 +21,7 @@ class AppListRepository extends IAppList {
         ));
     print(result);
     final listData = (result.data['data'] as List)
-        .map((e) => VisaApplicationModel.fromJson(e))
+        .map((e) => SimpleVisaModel.fromJson(e))
         .toList();
     return Right(listData);
   }

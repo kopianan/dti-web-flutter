@@ -16,15 +16,13 @@ part 'update_application_cubit.freezed.dart';
 @Injectable()
 class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
   UpdateApplicationCubit(this.iUpdateApplication)
-      : super(UpdateApplicationState.initial());
+      : super(const UpdateApplicationState.initial());
   IUpdateApplication iUpdateApplication;
 
-  void uploadImages(
-    VisaApplicationModel visa,
-    DocumentDataModel document,
-    List<String> deletedImageName,
-  ) async {
-    emit(UpdateApplicationState.onLoading());
+  void uploadImages(VisaApplicationModel visa, DocumentDataModel document,
+      List<String> deletedImageName,
+      {Map<String, dynamic>? imageCollection}) async {
+    emit(const UpdateApplicationState.onLoading());
     //Remove null data on list
     // var imageList = document.imageList!;
     // imageList.removeWhere((element) => element == null);
@@ -33,7 +31,8 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
 
     try {
       final data = await iUpdateApplication.uploadImagesAndUpdateData(
-          visa, document, deletedImageName);
+          visa, document, deletedImageName,
+          imageCollection: imageCollection);
 
       data.fold(
         (l) => emit(UpdateApplicationState.onError(l.toString())),
@@ -47,7 +46,7 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
   void createUserApplication(QuestionnaireModel lastQuestionnaire) async {
     log(lastQuestionnaire.results.toString(), name: "RESULTS");
 
-    emit(UpdateApplicationState.onLoading());
+    emit(const UpdateApplicationState.onLoading());
     final result = lastQuestionnaire.results;
     final newVisa = VisaApplicationModel(
         title: result!.visaTitle,
@@ -122,7 +121,7 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
   }
 
   void getUserApplicationWithImages(String firebaseDocId) async {
-    emit(UpdateApplicationState.onLoading());
+    emit(const UpdateApplicationState.onLoading());
 
     final result = await iUpdateApplication
         .getUserApplicationByIdWithImages(firebaseDocId);

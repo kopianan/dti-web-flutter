@@ -60,7 +60,7 @@ class VisaApplicationModel with _$VisaApplicationModel {
     @JsonKey(name: 'deportedFlag') bool? deportedFlag,
     @JsonKey(name: 'xenditPaymentPaidAt') String? xenditPaymentPaidAt,
     @JsonKey(name: 'dateOfBirth') String? dateOfBirth,
-    @JsonKey(name: 'price') int? price,
+    @JsonKey(name: 'price') double? price,
     @JsonKey(name: 'multiVisaDuration') String? multiVisaDuration,
   }) = _VisaApplicationModel;
 

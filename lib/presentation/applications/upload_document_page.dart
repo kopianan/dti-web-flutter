@@ -26,7 +26,6 @@ class UploadDocumentPage extends StatefulWidget {
 class _UploadDocumentPageState extends State<UploadDocumentPage> {
   // MediaInfo? selectedImage;
 
-  final documentCubit = getIt<DocumentCubit>();
   final appCubit = getIt<ApplicationCubit>();
   @override
   Widget build(BuildContext context) {
@@ -39,10 +38,11 @@ class _UploadDocumentPageState extends State<UploadDocumentPage> {
         },
         builder: (context, state) {
           return BlocProvider(
-            create: (context) =>
-                documentCubit..setupApplication(state.visaApplicationModel!),
+            create: (context) => getIt<DocumentCubit>()
+              ..setupApplication(state.visaApplicationModel!)
+              ..updateMasterImageData(state.masterListData!),
             child: Container(
-              padding: REdgeInsets.symmetric(horizontal: 60.w),
+              padding: REdgeInsets.symmetric(horizontal: 60.w, vertical: 30.h),
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -59,8 +59,8 @@ class _UploadDocumentPageState extends State<UploadDocumentPage> {
                         return Expanded(
                             child: Row(
                           children: [
-                            LeftSide(documentCubit: documentCubit),
-                            RighSide(documentCubit: documentCubit)
+                            LeftSide(documentCubit:  getIt<DocumentCubit>()),
+                            RighSide(documentCubit:  getIt<DocumentCubit>())
                           ],
                         ));
                       },

@@ -21,9 +21,12 @@ mixin _$OtherState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() error,
+    required TResult Function(Failures failures) errorState,
     required TResult Function() nullImage,
     required TResult Function(String url) imageLocal,
     required TResult Function(String url) onGetImageUrl,
+    required TResult Function(QuestionnaireDataModel questionnaire)
+        getAllQuestionnaire,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -31,9 +34,11 @@ mixin _$OtherState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? error,
+    TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
     TResult Function(String url)? onGetImageUrl,
+    TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,9 +46,11 @@ mixin _$OtherState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? error,
+    TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
     TResult Function(String url)? onGetImageUrl,
+    TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -52,9 +59,11 @@ mixin _$OtherState {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
+    required TResult Function(_ErrorState value) errorState,
     required TResult Function(_NullImage value) nullImage,
     required TResult Function(_ImageLocal value) imageLocal,
     required TResult Function(_OnGetImageUrl value) onGetImageUrl,
+    required TResult Function(_GetAllQuestionnaire value) getAllQuestionnaire,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -62,9 +71,11 @@ mixin _$OtherState {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
+    TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
+    TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -72,9 +83,11 @@ mixin _$OtherState {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
+    TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
+    TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -138,9 +151,12 @@ class _$_Initial implements _Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() error,
+    required TResult Function(Failures failures) errorState,
     required TResult Function() nullImage,
     required TResult Function(String url) imageLocal,
     required TResult Function(String url) onGetImageUrl,
+    required TResult Function(QuestionnaireDataModel questionnaire)
+        getAllQuestionnaire,
   }) {
     return initial();
   }
@@ -151,9 +167,11 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? error,
+    TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
     TResult Function(String url)? onGetImageUrl,
+    TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
   }) {
     return initial?.call();
   }
@@ -164,9 +182,11 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? error,
+    TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
     TResult Function(String url)? onGetImageUrl,
+    TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -181,9 +201,11 @@ class _$_Initial implements _Initial {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
+    required TResult Function(_ErrorState value) errorState,
     required TResult Function(_NullImage value) nullImage,
     required TResult Function(_ImageLocal value) imageLocal,
     required TResult Function(_OnGetImageUrl value) onGetImageUrl,
+    required TResult Function(_GetAllQuestionnaire value) getAllQuestionnaire,
   }) {
     return initial(this);
   }
@@ -194,9 +216,11 @@ class _$_Initial implements _Initial {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
+    TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
+    TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
   }) {
     return initial?.call(this);
   }
@@ -207,9 +231,11 @@ class _$_Initial implements _Initial {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
+    TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
+    TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -265,9 +291,12 @@ class _$_Loading implements _Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() error,
+    required TResult Function(Failures failures) errorState,
     required TResult Function() nullImage,
     required TResult Function(String url) imageLocal,
     required TResult Function(String url) onGetImageUrl,
+    required TResult Function(QuestionnaireDataModel questionnaire)
+        getAllQuestionnaire,
   }) {
     return loading();
   }
@@ -278,9 +307,11 @@ class _$_Loading implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? error,
+    TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
     TResult Function(String url)? onGetImageUrl,
+    TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
   }) {
     return loading?.call();
   }
@@ -291,9 +322,11 @@ class _$_Loading implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? error,
+    TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
     TResult Function(String url)? onGetImageUrl,
+    TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -308,9 +341,11 @@ class _$_Loading implements _Loading {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
+    required TResult Function(_ErrorState value) errorState,
     required TResult Function(_NullImage value) nullImage,
     required TResult Function(_ImageLocal value) imageLocal,
     required TResult Function(_OnGetImageUrl value) onGetImageUrl,
+    required TResult Function(_GetAllQuestionnaire value) getAllQuestionnaire,
   }) {
     return loading(this);
   }
@@ -321,9 +356,11 @@ class _$_Loading implements _Loading {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
+    TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
+    TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
   }) {
     return loading?.call(this);
   }
@@ -334,9 +371,11 @@ class _$_Loading implements _Loading {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
+    TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
+    TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -391,9 +430,12 @@ class _$_Error implements _Error {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() error,
+    required TResult Function(Failures failures) errorState,
     required TResult Function() nullImage,
     required TResult Function(String url) imageLocal,
     required TResult Function(String url) onGetImageUrl,
+    required TResult Function(QuestionnaireDataModel questionnaire)
+        getAllQuestionnaire,
   }) {
     return error();
   }
@@ -404,9 +446,11 @@ class _$_Error implements _Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? error,
+    TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
     TResult Function(String url)? onGetImageUrl,
+    TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
   }) {
     return error?.call();
   }
@@ -417,9 +461,11 @@ class _$_Error implements _Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? error,
+    TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
     TResult Function(String url)? onGetImageUrl,
+    TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -434,9 +480,11 @@ class _$_Error implements _Error {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
+    required TResult Function(_ErrorState value) errorState,
     required TResult Function(_NullImage value) nullImage,
     required TResult Function(_ImageLocal value) imageLocal,
     required TResult Function(_OnGetImageUrl value) onGetImageUrl,
+    required TResult Function(_GetAllQuestionnaire value) getAllQuestionnaire,
   }) {
     return error(this);
   }
@@ -447,9 +495,11 @@ class _$_Error implements _Error {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
+    TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
+    TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
   }) {
     return error?.call(this);
   }
@@ -460,9 +510,11 @@ class _$_Error implements _Error {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
+    TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
+    TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -474,6 +526,185 @@ class _$_Error implements _Error {
 
 abstract class _Error implements OtherState {
   const factory _Error() = _$_Error;
+}
+
+/// @nodoc
+abstract class _$$_ErrorStateCopyWith<$Res> {
+  factory _$$_ErrorStateCopyWith(
+          _$_ErrorState value, $Res Function(_$_ErrorState) then) =
+      __$$_ErrorStateCopyWithImpl<$Res>;
+  $Res call({Failures failures});
+
+  $FailuresCopyWith<$Res> get failures;
+}
+
+/// @nodoc
+class __$$_ErrorStateCopyWithImpl<$Res> extends _$OtherStateCopyWithImpl<$Res>
+    implements _$$_ErrorStateCopyWith<$Res> {
+  __$$_ErrorStateCopyWithImpl(
+      _$_ErrorState _value, $Res Function(_$_ErrorState) _then)
+      : super(_value, (v) => _then(v as _$_ErrorState));
+
+  @override
+  _$_ErrorState get _value => super._value as _$_ErrorState;
+
+  @override
+  $Res call({
+    Object? failures = freezed,
+  }) {
+    return _then(_$_ErrorState(
+      failures == freezed
+          ? _value.failures
+          : failures // ignore: cast_nullable_to_non_nullable
+              as Failures,
+    ));
+  }
+
+  @override
+  $FailuresCopyWith<$Res> get failures {
+    return $FailuresCopyWith<$Res>(_value.failures, (value) {
+      return _then(_value.copyWith(failures: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_ErrorState implements _ErrorState {
+  const _$_ErrorState(this.failures);
+
+  @override
+  final Failures failures;
+
+  @override
+  String toString() {
+    return 'OtherState.errorState(failures: $failures)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ErrorState &&
+            const DeepCollectionEquality().equals(other.failures, failures));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(failures));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_ErrorStateCopyWith<_$_ErrorState> get copyWith =>
+      __$$_ErrorStateCopyWithImpl<_$_ErrorState>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() error,
+    required TResult Function(Failures failures) errorState,
+    required TResult Function() nullImage,
+    required TResult Function(String url) imageLocal,
+    required TResult Function(String url) onGetImageUrl,
+    required TResult Function(QuestionnaireDataModel questionnaire)
+        getAllQuestionnaire,
+  }) {
+    return errorState(failures);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? error,
+    TResult Function(Failures failures)? errorState,
+    TResult Function()? nullImage,
+    TResult Function(String url)? imageLocal,
+    TResult Function(String url)? onGetImageUrl,
+    TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
+  }) {
+    return errorState?.call(failures);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? error,
+    TResult Function(Failures failures)? errorState,
+    TResult Function()? nullImage,
+    TResult Function(String url)? imageLocal,
+    TResult Function(String url)? onGetImageUrl,
+    TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
+    required TResult orElse(),
+  }) {
+    if (errorState != null) {
+      return errorState(failures);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Error value) error,
+    required TResult Function(_ErrorState value) errorState,
+    required TResult Function(_NullImage value) nullImage,
+    required TResult Function(_ImageLocal value) imageLocal,
+    required TResult Function(_OnGetImageUrl value) onGetImageUrl,
+    required TResult Function(_GetAllQuestionnaire value) getAllQuestionnaire,
+  }) {
+    return errorState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_ErrorState value)? errorState,
+    TResult Function(_NullImage value)? nullImage,
+    TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnGetImageUrl value)? onGetImageUrl,
+    TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
+  }) {
+    return errorState?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_ErrorState value)? errorState,
+    TResult Function(_NullImage value)? nullImage,
+    TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnGetImageUrl value)? onGetImageUrl,
+    TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
+    required TResult orElse(),
+  }) {
+    if (errorState != null) {
+      return errorState(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ErrorState implements OtherState {
+  const factory _ErrorState(final Failures failures) = _$_ErrorState;
+
+  Failures get failures;
+  @JsonKey(ignore: true)
+  _$$_ErrorStateCopyWith<_$_ErrorState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -519,9 +750,12 @@ class _$_NullImage implements _NullImage {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() error,
+    required TResult Function(Failures failures) errorState,
     required TResult Function() nullImage,
     required TResult Function(String url) imageLocal,
     required TResult Function(String url) onGetImageUrl,
+    required TResult Function(QuestionnaireDataModel questionnaire)
+        getAllQuestionnaire,
   }) {
     return nullImage();
   }
@@ -532,9 +766,11 @@ class _$_NullImage implements _NullImage {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? error,
+    TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
     TResult Function(String url)? onGetImageUrl,
+    TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
   }) {
     return nullImage?.call();
   }
@@ -545,9 +781,11 @@ class _$_NullImage implements _NullImage {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? error,
+    TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
     TResult Function(String url)? onGetImageUrl,
+    TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
     required TResult orElse(),
   }) {
     if (nullImage != null) {
@@ -562,9 +800,11 @@ class _$_NullImage implements _NullImage {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
+    required TResult Function(_ErrorState value) errorState,
     required TResult Function(_NullImage value) nullImage,
     required TResult Function(_ImageLocal value) imageLocal,
     required TResult Function(_OnGetImageUrl value) onGetImageUrl,
+    required TResult Function(_GetAllQuestionnaire value) getAllQuestionnaire,
   }) {
     return nullImage(this);
   }
@@ -575,9 +815,11 @@ class _$_NullImage implements _NullImage {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
+    TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
+    TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
   }) {
     return nullImage?.call(this);
   }
@@ -588,9 +830,11 @@ class _$_NullImage implements _NullImage {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
+    TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
+    TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
     required TResult orElse(),
   }) {
     if (nullImage != null) {
@@ -671,9 +915,12 @@ class _$_ImageLocal implements _ImageLocal {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() error,
+    required TResult Function(Failures failures) errorState,
     required TResult Function() nullImage,
     required TResult Function(String url) imageLocal,
     required TResult Function(String url) onGetImageUrl,
+    required TResult Function(QuestionnaireDataModel questionnaire)
+        getAllQuestionnaire,
   }) {
     return imageLocal(url);
   }
@@ -684,9 +931,11 @@ class _$_ImageLocal implements _ImageLocal {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? error,
+    TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
     TResult Function(String url)? onGetImageUrl,
+    TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
   }) {
     return imageLocal?.call(url);
   }
@@ -697,9 +946,11 @@ class _$_ImageLocal implements _ImageLocal {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? error,
+    TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
     TResult Function(String url)? onGetImageUrl,
+    TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
     required TResult orElse(),
   }) {
     if (imageLocal != null) {
@@ -714,9 +965,11 @@ class _$_ImageLocal implements _ImageLocal {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
+    required TResult Function(_ErrorState value) errorState,
     required TResult Function(_NullImage value) nullImage,
     required TResult Function(_ImageLocal value) imageLocal,
     required TResult Function(_OnGetImageUrl value) onGetImageUrl,
+    required TResult Function(_GetAllQuestionnaire value) getAllQuestionnaire,
   }) {
     return imageLocal(this);
   }
@@ -727,9 +980,11 @@ class _$_ImageLocal implements _ImageLocal {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
+    TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
+    TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
   }) {
     return imageLocal?.call(this);
   }
@@ -740,9 +995,11 @@ class _$_ImageLocal implements _ImageLocal {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
+    TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
+    TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
     required TResult orElse(),
   }) {
     if (imageLocal != null) {
@@ -829,9 +1086,12 @@ class _$_OnGetImageUrl implements _OnGetImageUrl {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() error,
+    required TResult Function(Failures failures) errorState,
     required TResult Function() nullImage,
     required TResult Function(String url) imageLocal,
     required TResult Function(String url) onGetImageUrl,
+    required TResult Function(QuestionnaireDataModel questionnaire)
+        getAllQuestionnaire,
   }) {
     return onGetImageUrl(url);
   }
@@ -842,9 +1102,11 @@ class _$_OnGetImageUrl implements _OnGetImageUrl {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? error,
+    TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
     TResult Function(String url)? onGetImageUrl,
+    TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
   }) {
     return onGetImageUrl?.call(url);
   }
@@ -855,9 +1117,11 @@ class _$_OnGetImageUrl implements _OnGetImageUrl {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? error,
+    TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
     TResult Function(String url)? onGetImageUrl,
+    TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
     required TResult orElse(),
   }) {
     if (onGetImageUrl != null) {
@@ -872,9 +1136,11 @@ class _$_OnGetImageUrl implements _OnGetImageUrl {
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
+    required TResult Function(_ErrorState value) errorState,
     required TResult Function(_NullImage value) nullImage,
     required TResult Function(_ImageLocal value) imageLocal,
     required TResult Function(_OnGetImageUrl value) onGetImageUrl,
+    required TResult Function(_GetAllQuestionnaire value) getAllQuestionnaire,
   }) {
     return onGetImageUrl(this);
   }
@@ -885,9 +1151,11 @@ class _$_OnGetImageUrl implements _OnGetImageUrl {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
+    TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
+    TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
   }) {
     return onGetImageUrl?.call(this);
   }
@@ -898,9 +1166,11 @@ class _$_OnGetImageUrl implements _OnGetImageUrl {
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
+    TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
+    TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
     required TResult orElse(),
   }) {
     if (onGetImageUrl != null) {
@@ -916,5 +1186,188 @@ abstract class _OnGetImageUrl implements OtherState {
   String get url;
   @JsonKey(ignore: true)
   _$$_OnGetImageUrlCopyWith<_$_OnGetImageUrl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_GetAllQuestionnaireCopyWith<$Res> {
+  factory _$$_GetAllQuestionnaireCopyWith(_$_GetAllQuestionnaire value,
+          $Res Function(_$_GetAllQuestionnaire) then) =
+      __$$_GetAllQuestionnaireCopyWithImpl<$Res>;
+  $Res call({QuestionnaireDataModel questionnaire});
+
+  $QuestionnaireDataModelCopyWith<$Res> get questionnaire;
+}
+
+/// @nodoc
+class __$$_GetAllQuestionnaireCopyWithImpl<$Res>
+    extends _$OtherStateCopyWithImpl<$Res>
+    implements _$$_GetAllQuestionnaireCopyWith<$Res> {
+  __$$_GetAllQuestionnaireCopyWithImpl(_$_GetAllQuestionnaire _value,
+      $Res Function(_$_GetAllQuestionnaire) _then)
+      : super(_value, (v) => _then(v as _$_GetAllQuestionnaire));
+
+  @override
+  _$_GetAllQuestionnaire get _value => super._value as _$_GetAllQuestionnaire;
+
+  @override
+  $Res call({
+    Object? questionnaire = freezed,
+  }) {
+    return _then(_$_GetAllQuestionnaire(
+      questionnaire == freezed
+          ? _value.questionnaire
+          : questionnaire // ignore: cast_nullable_to_non_nullable
+              as QuestionnaireDataModel,
+    ));
+  }
+
+  @override
+  $QuestionnaireDataModelCopyWith<$Res> get questionnaire {
+    return $QuestionnaireDataModelCopyWith<$Res>(_value.questionnaire, (value) {
+      return _then(_value.copyWith(questionnaire: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_GetAllQuestionnaire implements _GetAllQuestionnaire {
+  const _$_GetAllQuestionnaire(this.questionnaire);
+
+  @override
+  final QuestionnaireDataModel questionnaire;
+
+  @override
+  String toString() {
+    return 'OtherState.getAllQuestionnaire(questionnaire: $questionnaire)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_GetAllQuestionnaire &&
+            const DeepCollectionEquality()
+                .equals(other.questionnaire, questionnaire));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(questionnaire));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_GetAllQuestionnaireCopyWith<_$_GetAllQuestionnaire> get copyWith =>
+      __$$_GetAllQuestionnaireCopyWithImpl<_$_GetAllQuestionnaire>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() error,
+    required TResult Function(Failures failures) errorState,
+    required TResult Function() nullImage,
+    required TResult Function(String url) imageLocal,
+    required TResult Function(String url) onGetImageUrl,
+    required TResult Function(QuestionnaireDataModel questionnaire)
+        getAllQuestionnaire,
+  }) {
+    return getAllQuestionnaire(questionnaire);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? error,
+    TResult Function(Failures failures)? errorState,
+    TResult Function()? nullImage,
+    TResult Function(String url)? imageLocal,
+    TResult Function(String url)? onGetImageUrl,
+    TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
+  }) {
+    return getAllQuestionnaire?.call(questionnaire);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? error,
+    TResult Function(Failures failures)? errorState,
+    TResult Function()? nullImage,
+    TResult Function(String url)? imageLocal,
+    TResult Function(String url)? onGetImageUrl,
+    TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
+    required TResult orElse(),
+  }) {
+    if (getAllQuestionnaire != null) {
+      return getAllQuestionnaire(questionnaire);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Error value) error,
+    required TResult Function(_ErrorState value) errorState,
+    required TResult Function(_NullImage value) nullImage,
+    required TResult Function(_ImageLocal value) imageLocal,
+    required TResult Function(_OnGetImageUrl value) onGetImageUrl,
+    required TResult Function(_GetAllQuestionnaire value) getAllQuestionnaire,
+  }) {
+    return getAllQuestionnaire(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_ErrorState value)? errorState,
+    TResult Function(_NullImage value)? nullImage,
+    TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnGetImageUrl value)? onGetImageUrl,
+    TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
+  }) {
+    return getAllQuestionnaire?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_ErrorState value)? errorState,
+    TResult Function(_NullImage value)? nullImage,
+    TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnGetImageUrl value)? onGetImageUrl,
+    TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
+    required TResult orElse(),
+  }) {
+    if (getAllQuestionnaire != null) {
+      return getAllQuestionnaire(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetAllQuestionnaire implements OtherState {
+  const factory _GetAllQuestionnaire(
+      final QuestionnaireDataModel questionnaire) = _$_GetAllQuestionnaire;
+
+  QuestionnaireDataModel get questionnaire;
+  @JsonKey(ignore: true)
+  _$$_GetAllQuestionnaireCopyWith<_$_GetAllQuestionnaire> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -1,13 +1,15 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:auto_route/annotations.dart';
 import 'package:dti_web/application/document/document_cubit.dart';
-import 'package:dti_web/domain/core/document_data_model.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
+import 'package:dti_web/domain/core/document_data_model.dart';
 import 'package:dti_web/domain/questionnaire/result_model.dart';
 import 'package:dti_web/presentation/applications/application_detail_page.dart';
 import 'package:dti_web/presentation/applications/upload_document_page.dart';
 import 'package:dti_web/presentation/applications/widgets/signature_page.dart';
 import 'package:dti_web/presentation/auth/pages/splash_screen_page.dart';
 import 'package:dti_web/presentation/dashboard/pages/application_card_page.dart';
+import 'package:dti_web/presentation/payment/payment_page.dart';
 import 'package:dti_web/presentation/questionnaire/guarantor_page.dart';
 import 'package:dti_web/presentation/questionnaire/personal_information_1_page.dart';
 import 'package:dti_web/presentation/questionnaire/personal_information_3_page.dart';
@@ -17,6 +19,7 @@ import 'package:dti_web/presentation/questionnaire/questionnaire_page.dart';
 import 'package:dti_web/presentation/questionnaire/questionnaire_summary_page.dart';
 import 'package:dti_web/presentation/questionnaire/submit_screen_page.dart';
 import 'package:dti_web/presentation/questionnaire/user_domicile_page.dart';
+import 'package:dti_web/presentation/viewer/dti_pdf_viewer_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dti_web/domain/questionnaire/questionnaire_model.dart';
 
@@ -24,7 +27,7 @@ import '../presentation/auth/pages/check_email_page.dart';
 import '../presentation/auth/pages/create_new_password_page.dart';
 import '../presentation/auth/pages/otp_page.dart';
 import '../presentation/auth/pages/reset_page.dart';
-import '../presentation/auth/pages/sign_in_page.dart';
+import '../presentation/auth/pages/sign_in/sign_in_page.dart';
 import '../presentation/auth/pages/sign_up_page.dart';
 import '../presentation/dashboard/pages/dashboard_page.dart';
 import '../presentation/landing/presentation/pages/landing_page.dart';
@@ -71,6 +74,10 @@ part "app_router.gr.dart";
         path: PersonalInformation4Page.routeName),
     AutoRoute(page: ApplicationCardPage, path: ApplicationCardPage.routeName),
     AutoRoute(
+      page: PaymentPage,
+      path: PaymentPage.routeName
+    ),
+    AutoRoute(
       page: PersonalInformation3Page,
       path: PersonalInformation3Page.routeName,
     ),
@@ -82,15 +89,19 @@ part "app_router.gr.dart";
       path: '/',
       initial: true,
     ),
+
     AutoRoute(
       path: UploadDocumentPage.routeName,
       page: UploadDocumentPage,
     ),
     AutoRoute(
-      page: PhotoViewPage,
-      path: PhotoViewPage.routeName,
-      fullscreenDialog: true
-    ),
+        path: DTIPdfViewerPage.routeName,
+        page: DTIPdfViewerPage,
+        fullscreenDialog: true),
+    AutoRoute(
+        page: PhotoViewPage,
+        path: PhotoViewPage.routeName,
+        fullscreenDialog: true),
     AutoRoute(
         page: QuestionnaireSummaryPage,
         path: QuestionnaireSummaryPage.routeName),

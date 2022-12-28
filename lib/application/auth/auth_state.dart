@@ -12,4 +12,5 @@ class AuthState with _$AuthState {
   const factory AuthState.onLoginSuccess(String token) = _OnLoginSuccess;
   const factory AuthState.onRegisterSuccess(String token) = _OnRegisterSuccess;
   const factory AuthState.onResetPassword(String message) = _OnResetPassword;
+  const factory AuthState.onGetUserData(UserData userData) = _OnGetUserData;
 }

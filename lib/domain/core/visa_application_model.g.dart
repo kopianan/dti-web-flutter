@@ -64,7 +64,7 @@ _$_VisaApplicationModel _$$_VisaApplicationModelFromJson(
       deportedFlag: json['deportedFlag'] as bool?,
       xenditPaymentPaidAt: json['xenditPaymentPaidAt'] as String?,
       dateOfBirth: json['dateOfBirth'] as String?,
-      price: json['price'] as int?,
+      price: (json['price'] as num?)?.toDouble(),
       multiVisaDuration: json['multiVisaDuration'] as String?,
     );
 

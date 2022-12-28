@@ -1,13 +1,16 @@
 import 'dart:developer';
 
 import 'package:auto_route/auto_route.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dti_web/application/auth/auth_cubit.dart';
 import 'package:dti_web/core/widgets/auth_footer_widget.dart';
 import 'package:dti_web/core/widgets/auth_header_widget.dart';
 import 'package:dti_web/core/widgets/loading_primary_button.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
+import 'package:dti_web/domain/auth/i_auth.dart';
 import 'package:dti_web/injection.dart';
 import 'package:dti_web/presentation/auth/pages/reset_page.dart';
+import 'package:dti_web/presentation/auth/widgets/password_text_field.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +18,9 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../widgets/email_text_field.dart';
+import 'widget/media_social_button.dart';
 
 class SignInPage extends StatefulWidget {
   static const String routeName = '/login';
@@ -36,28 +42,40 @@ class _SignInPageState extends State<SignInPage> {
         listener: (context, state) {
           state.maybeMap(
             orElse: () {},
+            error: (e) {
+              AwesomeDialog(
+                      width: ScreenUtil().screenWidth / 2,
+                      padding: REdgeInsets.symmetric(horizontal: 20),
+                      context: context,
+                      dialogType: DialogType.error,
+                      title: "Error",
+                      desc: e.error,
+                      btnCancelOnPress: () {
+                        AutoRouter.of(context).pop();
+                      },
+                      btnCancelText: "Try again")
+                  .show();
+            },
             onLoginSuccess: (e) {
               //Save data to shared preferences
 
-              context.router.push(DashboardRoute());
+              context.router.replace(DashboardRoute());
             },
           );
         },
         builder: (context, state) {
-          return Container(
-            margin: EdgeInsets.symmetric(horizontal: 0.1.sw),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                AuthHeaderWidget(label: "Login"),
-                Expanded(
-                  child: Row(
+          return SingleChildScrollView(
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 0.1.sw),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const AuthHeaderWidget(label: "Login"),
+                  Row(
                     children: [
                       Expanded(
-                        child: Container(
-                          child: Image.asset('assets/images/img_auth.png'),
-                        ),
+                        child: Image.asset('assets/images/img_auth.png'),
                       ),
                       100.horizontalSpace,
                       Expanded(
@@ -80,87 +98,38 @@ class _SignInPageState extends State<SignInPage> {
                                       color: AppColor.primaryColor),
                                 ),
                                 20.verticalSpace,
-                                SizedBox(
-                                  height: 30.h,
-                                  child: ElevatedButton(
-                                    onPressed: () {},
-                                    child: Row(
-                                      children: [
-                                        Icon(Icons.dangerous),
-                                        20.horizontalSpace,
-                                        Text("Login with Google")
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                20.verticalSpace,
-                                SizedBox(
-                                  height: 30.h,
-                                  child: ElevatedButton(
-                                    onPressed: () {},
-                                    child: Row(
-                                      children: [
-                                        Icon(Icons.dangerous),
-                                        20.horizontalSpace,
-                                        Text("Login with Facebook")
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                20.verticalSpace,
-                                Row(
-                                  children: [
-                                    Expanded(child: Divider()),
-                                    Text('OR LOGIN WITH EMAIL'),
-                                    Expanded(child: Divider()),
-                                  ],
-                                ),
-                                20.verticalSpace,
-                                TextFormField(
-                                    controller: email,
-                                    validator: (e) {
-                                      if (e!.isEmpty) {
-                                        return 'Email can not be empty';
-                                      }
-                                      return null;
-                                    },
-                                    keyboardType: TextInputType.emailAddress,
-                                    decoration: InputDecoration(
-                                      prefixIcon: Icon(Icons.email),
-                                      hintText: 'Input your e-mail',
-                                    )),
-                                20.verticalSpace,
-                                TextFormField(
-                                  controller: password,
-                                  validator: (e) {
-                                    if (e!.isEmpty) {
-                                      return "Password can not be empty";
-                                    }
-                                    if (e.length < 6) {
-                                      return "Password must be 8 characters";
-                                    }
-                                    return null;
+                                MediaSocialButton(
+                                  icon: 'assets/icons/ic_gg.png',
+                                  label: "Login with Google",
+                                  onTap: () {
+                                    // context
+                                    //     .read<AuthCubit>()
+                                    //     .loginUsingGoogle();
                                   },
-                                  obscureText: obsecureText,
-                                  decoration: InputDecoration(
-                                    prefixIcon: Icon(Icons.lock),
-                                    suffixIcon: InkWell(
-                                      onTap: () {
-                                        setState(() {
-                                          obsecureText = !obsecureText;
-                                        });
-                                      },
-                                      child: Icon(obsecureText == true
-                                          ? Icons.visibility
-                                          : Icons.visibility_off),
-                                    ),
-                                    hintText: 'Password',
-                                    border: OutlineInputBorder(),
-                                  ),
+                                ),
+                                20.verticalSpace,
+                                MediaSocialButton(
+                                  icon: 'assets/icons/ic_fb.png',
+                                  label: "Login with Facebook",
+                                  onTap: () {},
+                                ),
+                                30.verticalSpace,
+                                _loginWithEmail(),
+                                20.verticalSpace,
+                                EmailTextField(email: email),
+                                20.verticalSpace,
+                                PasswordTextField(
+                                  controller: password,
+                                  obSecure: obsecureText,
+                                  onObsecure: (e) {
+                                    setState(() {
+                                      obsecureText = e;
+                                    });
+                                  },
                                 ),
                                 Container(
                                   padding: EdgeInsets.symmetric(
-                                    vertical: 10.h,
+                                    vertical: 20.h,
                                   ),
                                   alignment: Alignment.centerRight,
                                   child: InkWell(
@@ -170,10 +139,11 @@ class _SignInPageState extends State<SignInPage> {
                                       },
                                       child: Text("Forgot Password",
                                           style: TextStyle(
-                                            fontSize: 13.sp,
+                                            color: AppColor.primaryColor,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16.sp,
                                           ))),
                                 ),
-                                20.verticalSpace,
                                 SizedBox(
                                   height: 45.h,
                                   child: state.maybeMap(
@@ -195,14 +165,30 @@ class _SignInPageState extends State<SignInPage> {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text("Don’t have an account yet ?"),
+                                    const Text(
+                                      "Don’t have an account yet ?",
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        color: Colors.grey,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
                                     5.horizontalSpace,
                                     InkWell(
-                                        onTap: () {
-                                          AutoRouter.of(context)
-                                              .push(SignUpRoute());
-                                        },
-                                        child: Text("Sign Up")),
+                                      onTap: () {
+                                        AutoRouter.of(context)
+                                            .push(SignUpRoute());
+                                      },
+                                      child: const Text(
+                                        "Sign Up",
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          color: AppColor.primaryColor,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                    30.verticalSpace,
                                   ],
                                 )
                               ],
@@ -212,9 +198,10 @@ class _SignInPageState extends State<SignInPage> {
                       ),
                     ],
                   ),
-                ),
-                AuthFooterWidget()
-              ],
+                  40.verticalSpace,
+                  const AuthFooterWidget()
+                ],
+              ),
             ),
           );
         },
@@ -222,10 +209,28 @@ class _SignInPageState extends State<SignInPage> {
     );
   }
 
+  Row _loginWithEmail() {
+    return Row(
+      children: const [
+        Expanded(child: Divider()),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 10),
+          child: Text(
+            'OR LOGIN WITH EMAIL',
+            style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
+          ),
+        ),
+        Expanded(child: Divider()),
+      ],
+    );
+  }
+
   void loginUser(BuildContext context, String email, String password) {
     // if (formKey.currentState!.validate()) {
-      context.read<AuthCubit>().loginWithEmailAndPassword('kopianandev@gmail.com', 'ananalfred');
-      // context.read<AuthCubit>().loginWithEmailAndPassword(email, password);
+    context
+        .read<AuthCubit>()
+        .loginWithEmailAndPassword('kopianandev@gmail.com', '123456');
+    // context.read<AuthCubit>().loginWithEmailAndPassword(email, password);
     // }
   }
 }

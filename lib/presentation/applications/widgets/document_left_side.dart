@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:dti_web/application/application_cubit.dart';
 import 'package:dti_web/application/document/document_cubit.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
 import 'package:dti_web/routes/app_router.dart';
@@ -28,7 +29,6 @@ class LeftSide extends StatelessWidget {
                           onTap: () {
                             documentCubit
                                 .updateSelectedIndex(docState.docs!.indexOf(e));
-                            print(docState.docs!.indexOf(e));
                           },
                           child: Container(
                               margin: REdgeInsets.symmetric(vertical: 5),
@@ -38,7 +38,7 @@ class LeftSide extends StatelessWidget {
                                   border: Border.all(color: Colors.grey),
                                   color: docState.selectedIndex ==
                                           docState.docs!.indexOf(e)
-                                      ? Colors.grey[800]
+                                      ? AppColor.primaryColor.withAlpha(200)
                                       : Colors.grey[300],
                                   borderRadius: BorderRadius.circular(10)),
                               child: Row(children: [
@@ -57,7 +57,10 @@ class LeftSide extends StatelessWidget {
                                 e.isSubmited == true
                                     ? Icon(
                                         Icons.check_box,
-                                        color: AppColor.primaryColor,
+                                        color: docState.selectedIndex ==
+                                                docState.docs!.indexOf(e)
+                                            ? Colors.white
+                                            : AppColor.primaryColor,
                                       )
                                     : SizedBox()
                               ])),
@@ -71,8 +74,8 @@ class LeftSide extends StatelessWidget {
                   child: PrimaryButton(
                     onClick: () {
                       AutoRouter.of(context).push(ApplicationDetailRoute(
-                          firebaseDocId: docState.visa!.firebaseDocId!,
-                          documentCubit: documentCubit));
+                        firebaseDocId: docState.visa!.firebaseDocId!,
+                      ));
                     },
                     label: "Submit",
                     labelStyle: TextStyle(fontSize: 20),

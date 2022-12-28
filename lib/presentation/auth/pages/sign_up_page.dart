@@ -7,7 +7,9 @@ import 'package:dti_web/core/widgets/auth_footer_widget.dart';
 import 'package:dti_web/core/widgets/auth_header_widget.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
 import 'package:dti_web/injection.dart';
-import 'package:dti_web/presentation/auth/pages/sign_in_page.dart';
+import 'package:dti_web/presentation/auth/pages/sign_in/sign_in_page.dart';
+import 'package:dti_web/presentation/auth/widgets/email_text_field.dart';
+import 'package:dti_web/presentation/auth/widgets/password_text_field.dart';
 import 'package:dti_web/presentation/widgets/loading_dialog.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
@@ -18,14 +20,26 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SignUpPage extends StatelessWidget {
+class SignUpPage extends StatefulWidget {
   static const String routeName = '/register';
   SignUpPage({super.key});
 
+  @override
+  State<SignUpPage> createState() => _SignUpPageState();
+}
+
+class _SignUpPageState extends State<SignUpPage> {
   final email = TextEditingController();
+
   final password = TextEditingController();
+
   final confirmPassword = TextEditingController();
+
   final formKey = GlobalKey<FormState>();
+
+  bool obsecurePassword = true;
+  bool obsecureConfirm = true;
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -76,145 +90,128 @@ class SignUpPage extends StatelessWidget {
         child: BlocBuilder<AuthCubit, AuthState>(
           builder: (context, state) {
             return Scaffold(
-              body: Container(
-                margin: EdgeInsets.symmetric(horizontal: 0.1.sw),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    AuthHeaderWidget(label: "Register"),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Container(
-                            child: Image.asset('assets/images/img_auth.png'),
+              body: SingleChildScrollView(
+                child: Container(
+                  margin: EdgeInsets.symmetric(horizontal: 0.1.sw),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const AuthHeaderWidget(label: "Register"),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              child: Image.asset('assets/images/img_auth.png'),
+                            ),
                           ),
-                        ),
-                        100.horizontalSpace,
-                        Expanded(
-                          child: Container(
-                            alignment: Alignment.center,
-                            padding: REdgeInsets.symmetric(horizontal: 40),
-                            child: Form(
-                              key: formKey,
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "Sign Up",
-                                    style: TextStyle(
-                                        fontSize: 30.sp,
-                                        fontWeight: FontWeight.bold,
-                                        color: AppColor.primaryColor),
-                                  ),
-                                  20.verticalSpace,
-                                  TextFormField(
-                                    controller: email,
-                                    validator: (value) {
-                                      if (value!.isEmpty) {
-                                        return "Email can not be empty";
-                                      } else {
-                                        return null;
-                                      }
-                                    },
-                                    decoration: InputDecoration(
-                                      hintText: "Email",
-                                      border: OutlineInputBorder(),
+                          100.horizontalSpace,
+                          Expanded(
+                            child: Container(
+                              alignment: Alignment.center,
+                              padding: REdgeInsets.symmetric(horizontal: 40),
+                              child: Form(
+                                key: formKey,
+                                autovalidateMode:
+                                    AutovalidateMode.onUserInteraction,
+                                child: Column(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.stretch,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "Sign Up",
+                                      style: TextStyle(
+                                          fontSize: 30.sp,
+                                          fontWeight: FontWeight.bold,
+                                          color: AppColor.primaryColor),
                                     ),
-                                  ),
-                                  20.verticalSpace,
-                                  TextFormField(
-                                    controller: password,
-                                    obscureText: true,
-                                    validator: ((value) {
-                                      if (value!.isEmpty) {
-                                        return "Password can not be empty";
-                                      } else {
-                                        return null;
-                                      }
-                                    }),
-                                    decoration: InputDecoration(
-                                      hintText: "Password",
-                                      border: OutlineInputBorder(),
-                                    ),
-                                  ),
-                                  20.verticalSpace,
-                                  TextFormField(
-                                    controller: confirmPassword,
-                                    validator: (value) {
-                                      if (value!.isEmpty) {
-                                        return "Password can not be empty";
-                                      } else if (confirmPassword.text !=
-                                          password.text) {
-                                        return "Password doesn't match";
-                                      } else {
-                                        return null;
-                                      }
-                                    },
-                                    obscureText: true,
-                                    decoration: InputDecoration(
-                                      hintText: "Password",
-                                      border: OutlineInputBorder(),
-                                    ),
-                                  ),
-                                  20.verticalSpace,
-                                  Text(
-                                    "Creating an account means you agree to all terms and conditions of our services",
-                                    style: TextStyle(color: Colors.grey),
-                                  ),
-                                  20.verticalSpace,
-                                  Row(
-                                    children: [
-                                      Text(
-                                        "Already a member?",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
+                                    30.verticalSpace,
+                                    EmailTextField(email: email),
+                                    30.verticalSpace,
+                                    PasswordTextField(
+                                        controller: password,
+                                        obSecure: obsecurePassword,
+                                        onObsecure: (e) {
+                                          setState(() {
+                                            obsecurePassword = e;
+                                          });
+                                        }),
+                                    30.verticalSpace,
+                                    PasswordTextField(
+                                        controller: confirmPassword,
+                                        obSecure: obsecureConfirm,
+                                        hint: "Password Confirmation",
+                                        onObsecure: (e) {
+                                          setState(() {
+                                            obsecureConfirm = e;
+                                          });
+                                        }),
+                                    30.verticalSpace,
+                                    const Text(
+                                      "Creating an account means you agree to all terms and conditions of our services",
+                                      style: TextStyle(
+                                        color: Colors.grey,
+                                        fontSize: 17,
                                       ),
-                                      5.horizontalSpace,
-                                      InkWell(
-                                        onTap: () {
-                                          AutoRouter.of(context)
-                                              .popAndPush(SignInRoute());
-                                        },
-                                        child: Text(
-                                          "Login",
+                                    ),
+                                    20.verticalSpace,
+                                    Row(
+                                      children: [
+                                        const Text(
+                                          "Already a member ?",
                                           style: TextStyle(
-                                              fontWeight: FontWeight.bold),
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 17,
+                                          ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                  20.verticalSpace,
-                                  SizedBox(
-                                      height: 45.h,
-                                      child: PrimaryButton(
-                                        onClick: () {
-                                          if (formKey.currentState!
-                                              .validate()) {
-                                            context
-                                                .read<AuthCubit>()
-                                                .registerWithEmailAndPassword(
-                                                  email.text,
-                                                  password.text,
-                                                  confirmPassword.text,
-                                                );
-                                          }
-                                        },
-                                        labelStyle: TextStyle(fontSize: 16.sp),
-                                        label: 'Register',
-                                      )),
-                                ],
+                                        5.horizontalSpace,
+                                        InkWell(
+                                          onTap: () {
+                                            AutoRouter.of(context).popAndPush(
+                                                const SignInRoute());
+                                          },
+                                          child: const Text(
+                                            "Login",
+                                            style: TextStyle(
+                                                fontSize: 17,
+                                                color: AppColor.primaryColor,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    20.verticalSpace,
+                                    SizedBox(
+                                        height: 45.h,
+                                        child: PrimaryButton(
+                                          onClick: () {
+                                            if (formKey.currentState!
+                                                .validate()) {
+                                              context
+                                                  .read<AuthCubit>()
+                                                  .registerWithEmailAndPassword(
+                                                    email.text,
+                                                    password.text,
+                                                    confirmPassword.text,
+                                                  );
+                                            }
+                                          },
+                                          labelStyle:
+                                              TextStyle(fontSize: 16.sp),
+                                          label: 'Register',
+                                        )),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    AuthFooterWidget()
-                  ],
+                        ],
+                      ),
+                      30.verticalSpace,
+                      const AuthFooterWidget()
+                    ],
+                  ),
                 ),
               ),
             );

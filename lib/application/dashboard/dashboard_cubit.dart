@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:dti_web/domain/core/simple_visa_model.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/domain/dashboard/i_dashboard.dart';
 import 'package:dti_web/domain/global/failures.dart';

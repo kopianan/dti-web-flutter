@@ -1,6 +1,7 @@
 import 'package:dti_web/application/app_list/app_list_cubit.dart';
 import 'package:dti_web/application/application_cubit.dart';
 import 'package:dti_web/application/auth/auth_cubit.dart';
+import 'package:dti_web/application/document/document_cubit.dart';
 import 'package:dti_web/application/questionnaire_cubit.dart';
 import 'package:dti_web/application/startup/startup_cubit.dart';
 import 'package:dti_web/application/update_application/update_application_cubit.dart';
@@ -25,7 +26,6 @@ class AppWidget extends StatelessWidget {
       designSize: const Size(1280, 720),
       minTextAdapt: true,
       splitScreenMode: true,
-
       builder: (context, child) => MultiBlocProvider(
         providers: [
           BlocProvider(
@@ -33,6 +33,9 @@ class AppWidget extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) => getIt<UpdateApplicationCubit>(),
+          ),
+          BlocProvider(
+            create: (context) => getIt<DocumentCubit>(),
           ),
           BlocProvider(
             create: (context) => getIt<AuthCubit>(),
@@ -55,18 +58,25 @@ class AppWidget extends StatelessWidget {
             FormBuilderLocalizations.delegate,
           ],
           title: 'DTI WEB',
-           builder: EasyLoading.init(),
+          builder: EasyLoading.init(),
           theme: ThemeData(
               textTheme: GoogleFonts.latoTextTheme(),
-              primarySwatch: Colors.blue,
+              primaryColor: AppColor.primaryColor,
               inputDecorationTheme: const InputDecorationTheme(
+                prefixIconColor: AppColor.primaryColor,
+                focusColor: AppColor.primaryColor,
+                labelStyle: TextStyle(
+                  fontSize: 17,
+                  color: AppColor.primaryColor,
+                ),
                 iconColor: AppColor.primaryColor,
                 focusedErrorBorder: UnderlineInputBorder(
                     borderSide: BorderSide(color: Colors.red)),
                 errorBorder: UnderlineInputBorder(
                     borderSide: BorderSide(color: Colors.red)),
                 enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: AppColor.primaryColor)),
+                  borderSide: BorderSide(color: AppColor.primaryColor),
+                ),
                 focusedBorder: UnderlineInputBorder(
                     borderSide: BorderSide(color: AppColor.primaryColor)),
                 border: UnderlineInputBorder(

@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:dti_web/core/storage.dart';
 import 'package:dti_web/domain/auth/i_auth.dart';
+import 'package:dti_web/domain/auth/user_data.dart';
 import 'package:dti_web/domain/global/failures.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -14,6 +15,16 @@ class AuthCubit extends Cubit<AuthState> {
   final IAuth iAuth;
 
   final Storage storage = Storage();
+
+  void getUserData() async {
+    emit(const AuthState.loading());
+    final result = await iAuth.getUserData();
+    result.fold(
+      (l) => emit(AuthState.onError(l)),
+      (r) => emit(AuthState.onGetUserData(r)),
+    );
+  }
+
   void loginWithEmailAndPassword(String email, String password) async {
     emit(AuthState.loading());
 
@@ -29,6 +40,21 @@ class AuthCubit extends Cubit<AuthState> {
       },
     );
   }
+
+  // void loginUsingGoogle() async {
+  //   emit(AuthState.loading());
+
+  //   final result = await iAuth.loginWithGoogle();
+
+  //   //SAVE DATA TO LOCALE
+  //   result.fold(
+  //     (l) => emit(AuthState.onError(l)),
+  //     (r) async {
+  //       await storage.saveToken(r);
+  //       emit(AuthState.onLoginSuccess(r));
+  //     },
+  //   );
+  // }
 
   void resetPassword(String email) async {
     emit(const AuthState.loading());

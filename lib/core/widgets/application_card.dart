@@ -1,6 +1,8 @@
 // ignore_for_file: constant_identifier_names
 
+import 'package:dti_web/domain/core/simple_visa_model.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
+import 'package:dti_web/utils/date_converter.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -12,7 +14,7 @@ class VisaApplicationCard extends StatelessWidget {
     this.onCardClick,
     required this.visaApps,
   }) : super(key: key);
-  VisaApplicationModel visaApps;
+  SimpleVisaModel visaApps;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +42,10 @@ class VisaApplicationCard extends StatelessWidget {
                   Expanded(
                     child: Text(
                       "Application Reference Number${visaApps.applicationID!}",
-                      style: const TextStyle(fontSize: 9),
+                      style: const TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   Row(
@@ -182,14 +187,15 @@ class VisaApplicationCard extends StatelessWidget {
                                         //   ),
                                         // ),
                                         Text(
-                                          "CreatedDate",
+                                          DateConverter.convertDateDefault(
+                                              visaApps.usedByDate),
                                           style: const TextStyle(
                                             fontSize: 12,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
                                         Text(
-                                          "60  ",
+                                          visaApps.lengthOfStay.toString(),
                                           style: const TextStyle(
                                             fontSize: 12,
                                             fontWeight: FontWeight.bold,
@@ -200,7 +206,9 @@ class VisaApplicationCard extends StatelessWidget {
                                   ],
                                 ),
                                 Text(
-                                  "CreatedDate",
+                                  DateConverter.convertDateDefault(
+                                      visaApps.createdDate),
+                                  maxLines: 1,
                                   style: const TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.bold,

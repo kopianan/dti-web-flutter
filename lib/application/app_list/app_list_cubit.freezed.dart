@@ -21,8 +21,7 @@ mixin _$AppListState {
     required TResult Function() initial,
     required TResult Function() onLoading,
     required TResult Function(String errMsg) onError,
-    required TResult Function(List<VisaApplicationModel> apps)
-        onGetUsersApplication,
+    required TResult Function(List<SimpleVisaModel> apps) onGetUsersApplication,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,7 +29,7 @@ mixin _$AppListState {
     TResult Function()? initial,
     TResult Function()? onLoading,
     TResult Function(String errMsg)? onError,
-    TResult Function(List<VisaApplicationModel> apps)? onGetUsersApplication,
+    TResult Function(List<SimpleVisaModel> apps)? onGetUsersApplication,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,7 +37,7 @@ mixin _$AppListState {
     TResult Function()? initial,
     TResult Function()? onLoading,
     TResult Function(String errMsg)? onError,
-    TResult Function(List<VisaApplicationModel> apps)? onGetUsersApplication,
+    TResult Function(List<SimpleVisaModel> apps)? onGetUsersApplication,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -128,8 +127,7 @@ class _$_Initial implements _Initial {
     required TResult Function() initial,
     required TResult Function() onLoading,
     required TResult Function(String errMsg) onError,
-    required TResult Function(List<VisaApplicationModel> apps)
-        onGetUsersApplication,
+    required TResult Function(List<SimpleVisaModel> apps) onGetUsersApplication,
   }) {
     return initial();
   }
@@ -140,7 +138,7 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function()? onLoading,
     TResult Function(String errMsg)? onError,
-    TResult Function(List<VisaApplicationModel> apps)? onGetUsersApplication,
+    TResult Function(List<SimpleVisaModel> apps)? onGetUsersApplication,
   }) {
     return initial?.call();
   }
@@ -151,7 +149,7 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function()? onLoading,
     TResult Function(String errMsg)? onError,
-    TResult Function(List<VisaApplicationModel> apps)? onGetUsersApplication,
+    TResult Function(List<SimpleVisaModel> apps)? onGetUsersApplication,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -246,8 +244,7 @@ class _$_OnLoading implements _OnLoading {
     required TResult Function() initial,
     required TResult Function() onLoading,
     required TResult Function(String errMsg) onError,
-    required TResult Function(List<VisaApplicationModel> apps)
-        onGetUsersApplication,
+    required TResult Function(List<SimpleVisaModel> apps) onGetUsersApplication,
   }) {
     return onLoading();
   }
@@ -258,7 +255,7 @@ class _$_OnLoading implements _OnLoading {
     TResult Function()? initial,
     TResult Function()? onLoading,
     TResult Function(String errMsg)? onError,
-    TResult Function(List<VisaApplicationModel> apps)? onGetUsersApplication,
+    TResult Function(List<SimpleVisaModel> apps)? onGetUsersApplication,
   }) {
     return onLoading?.call();
   }
@@ -269,7 +266,7 @@ class _$_OnLoading implements _OnLoading {
     TResult Function()? initial,
     TResult Function()? onLoading,
     TResult Function(String errMsg)? onError,
-    TResult Function(List<VisaApplicationModel> apps)? onGetUsersApplication,
+    TResult Function(List<SimpleVisaModel> apps)? onGetUsersApplication,
     required TResult orElse(),
   }) {
     if (onLoading != null) {
@@ -387,8 +384,7 @@ class _$_OnError implements _OnError {
     required TResult Function() initial,
     required TResult Function() onLoading,
     required TResult Function(String errMsg) onError,
-    required TResult Function(List<VisaApplicationModel> apps)
-        onGetUsersApplication,
+    required TResult Function(List<SimpleVisaModel> apps) onGetUsersApplication,
   }) {
     return onError(errMsg);
   }
@@ -399,7 +395,7 @@ class _$_OnError implements _OnError {
     TResult Function()? initial,
     TResult Function()? onLoading,
     TResult Function(String errMsg)? onError,
-    TResult Function(List<VisaApplicationModel> apps)? onGetUsersApplication,
+    TResult Function(List<SimpleVisaModel> apps)? onGetUsersApplication,
   }) {
     return onError?.call(errMsg);
   }
@@ -410,7 +406,7 @@ class _$_OnError implements _OnError {
     TResult Function()? initial,
     TResult Function()? onLoading,
     TResult Function(String errMsg)? onError,
-    TResult Function(List<VisaApplicationModel> apps)? onGetUsersApplication,
+    TResult Function(List<SimpleVisaModel> apps)? onGetUsersApplication,
     required TResult orElse(),
   }) {
     if (onError != null) {
@@ -472,7 +468,7 @@ abstract class _$$_OnGetUsersApplicationCopyWith<$Res> {
   factory _$$_OnGetUsersApplicationCopyWith(_$_OnGetUsersApplication value,
           $Res Function(_$_OnGetUsersApplication) then) =
       __$$_OnGetUsersApplicationCopyWithImpl<$Res>;
-  $Res call({List<VisaApplicationModel> apps});
+  $Res call({List<SimpleVisaModel> apps});
 }
 
 /// @nodoc
@@ -495,7 +491,7 @@ class __$$_OnGetUsersApplicationCopyWithImpl<$Res>
       apps == freezed
           ? _value._apps
           : apps // ignore: cast_nullable_to_non_nullable
-              as List<VisaApplicationModel>,
+              as List<SimpleVisaModel>,
     ));
   }
 }
@@ -503,12 +499,12 @@ class __$$_OnGetUsersApplicationCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_OnGetUsersApplication implements _OnGetUsersApplication {
-  const _$_OnGetUsersApplication(final List<VisaApplicationModel> apps)
+  const _$_OnGetUsersApplication(final List<SimpleVisaModel> apps)
       : _apps = apps;
 
-  final List<VisaApplicationModel> _apps;
+  final List<SimpleVisaModel> _apps;
   @override
-  List<VisaApplicationModel> get apps {
+  List<SimpleVisaModel> get apps {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_apps);
   }
@@ -542,8 +538,7 @@ class _$_OnGetUsersApplication implements _OnGetUsersApplication {
     required TResult Function() initial,
     required TResult Function() onLoading,
     required TResult Function(String errMsg) onError,
-    required TResult Function(List<VisaApplicationModel> apps)
-        onGetUsersApplication,
+    required TResult Function(List<SimpleVisaModel> apps) onGetUsersApplication,
   }) {
     return onGetUsersApplication(apps);
   }
@@ -554,7 +549,7 @@ class _$_OnGetUsersApplication implements _OnGetUsersApplication {
     TResult Function()? initial,
     TResult Function()? onLoading,
     TResult Function(String errMsg)? onError,
-    TResult Function(List<VisaApplicationModel> apps)? onGetUsersApplication,
+    TResult Function(List<SimpleVisaModel> apps)? onGetUsersApplication,
   }) {
     return onGetUsersApplication?.call(apps);
   }
@@ -565,7 +560,7 @@ class _$_OnGetUsersApplication implements _OnGetUsersApplication {
     TResult Function()? initial,
     TResult Function()? onLoading,
     TResult Function(String errMsg)? onError,
-    TResult Function(List<VisaApplicationModel> apps)? onGetUsersApplication,
+    TResult Function(List<SimpleVisaModel> apps)? onGetUsersApplication,
     required TResult orElse(),
   }) {
     if (onGetUsersApplication != null) {
@@ -614,10 +609,10 @@ class _$_OnGetUsersApplication implements _OnGetUsersApplication {
 }
 
 abstract class _OnGetUsersApplication implements AppListState {
-  const factory _OnGetUsersApplication(final List<VisaApplicationModel> apps) =
+  const factory _OnGetUsersApplication(final List<SimpleVisaModel> apps) =
       _$_OnGetUsersApplication;
 
-  List<VisaApplicationModel> get apps;
+  List<SimpleVisaModel> get apps;
   @JsonKey(ignore: true)
   _$$_OnGetUsersApplicationCopyWith<_$_OnGetUsersApplication> get copyWith =>
       throw _privateConstructorUsedError;

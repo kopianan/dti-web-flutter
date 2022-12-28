@@ -14,11 +14,8 @@ class QuestionnaireCubit extends Cubit<QuestionnaireState> {
 
   void addQuestionnaireToList(QuestionnaireModel questionnaireModel) {
     var lists = state.listQuestionnaire ?? [];
-
     final newList = questionnaireModel.copyWith(subQuestionnaire: []);
-    print(newList.importantNotes);
     lists.add(newList);
-
     emit(state.copyWith(listQuestionnaire: lists));
   }
 
@@ -46,6 +43,4 @@ class QuestionnaireCubit extends Cubit<QuestionnaireState> {
       description: description,
     ));
   }
-
- 
 }

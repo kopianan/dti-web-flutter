@@ -26,8 +26,7 @@ class CreateNewPasswordPage extends StatelessWidget {
             Row(
               children: [
                 Expanded(
-                  child: Container(
-                    color: Colors.green,
+                  child: Container( 
                     child: Image.asset('assets/images/dti_auth_register.png'),
                   ),
                 ),
