@@ -165,10 +165,10 @@ class _SignInPageState extends State<SignInPage> {
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    const Text(
+                                    Text(
                                       "Don’t have an account yet ?",
                                       style: TextStyle(
-                                        fontSize: 16,
+                                        fontSize: 16.sp,
                                         color: Colors.grey,
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -179,10 +179,10 @@ class _SignInPageState extends State<SignInPage> {
                                         AutoRouter.of(context)
                                             .push(SignUpRoute());
                                       },
-                                      child: const Text(
+                                      child: Text(
                                         "Sign Up",
                                         style: TextStyle(
-                                          fontSize: 16,
+                                          fontSize: 16.sp,
                                           color: AppColor.primaryColor,
                                           fontWeight: FontWeight.bold,
                                         ),

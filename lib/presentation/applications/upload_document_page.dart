@@ -1,4 +1,6 @@
 // import 'dart:html' as html;
+
+import 'dart:developer';
 import 'dart:io';
 import 'package:dti_web/application/application_cubit.dart';
 import 'package:dti_web/application/document/document_cubit.dart';
@@ -28,6 +30,22 @@ class _UploadDocumentPageState extends State<UploadDocumentPage> {
 
   final appCubit = getIt<ApplicationCubit>();
   @override
+  void initState() {
+    log("TO STRING");
+
+    super.initState();
+    initData();
+  }
+
+  void initData() {
+    //get data from state
+    final visa = context.read<ApplicationCubit>().state.visaApplicationModel;
+    final masterData = context.read<ApplicationCubit>().state.masterListData;
+    getIt<DocumentCubit>().setupApplication(visa!);
+    getIt<DocumentCubit>().updateMasterImageData(masterData!);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocConsumer<ApplicationCubit, ApplicationState>(
@@ -37,37 +55,73 @@ class _UploadDocumentPageState extends State<UploadDocumentPage> {
               .setupApplication(state.visaApplicationModel!);
         },
         builder: (context, state) {
-          return BlocProvider(
-            create: (context) => getIt<DocumentCubit>()
-              ..setupApplication(state.visaApplicationModel!)
-              ..updateMasterImageData(state.masterListData!),
-            child: Container(
-              padding: REdgeInsets.symmetric(horizontal: 60.w, vertical: 30.h),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Multiple Entry Duration',
-                      style: TextStyle(
-                          fontSize: 30.sp,
-                          color: AppColor.primaryColor,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    30.verticalSpace,
-                    BlocBuilder<DocumentCubit, DocumentState>(
-                      builder: (context, docState) {
-                        return Expanded(
-                            child: Row(
-                          children: [
-                            LeftSide(documentCubit:  getIt<DocumentCubit>()),
-                            RighSide(documentCubit:  getIt<DocumentCubit>())
-                          ],
-                        ));
-                      },
-                    )
-                  ]),
-            ),
-          );
+          return Container(child: BlocBuilder<DocumentCubit, DocumentState>(
+            builder: (context, docState) {
+              return Row(
+                children: [
+                  Expanded(
+                      flex: 2,
+                      child: SingleChildScrollView(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 15),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                docState.visa?.title ?? "",
+                                style: TextStyle(
+                                    fontSize: 30.sp,
+                                    color: AppColor.primaryColor,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                docState.visa?.subTitle ?? "",
+                                maxLines: 1,
+                                style: TextStyle(
+                                    fontSize: 25.sp,
+                                    color: AppColor.primaryColor,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              30.verticalSpace,
+                              LeftSide(documentCubit: getIt<DocumentCubit>())
+                            ],
+                          ),
+                        ),
+                      )),
+                  Expanded(
+                      flex: 3,
+                      child: Stack(
+                        children: [
+                          Container(
+                            child: Image.asset(
+                              'assets/images/bg/bg_upload.png',
+                              fit: BoxFit.cover,
+                              width: ScreenUtil().screenWidth,
+                            ),
+                          ),
+                          Positioned(
+                            right: 100.w,
+                            left: 100.w,
+                            top: 20,
+                            bottom: 20,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.white,
+                              ),
+                              // padding: EdgeInsets.symmetric(horizontal: 30.w),
+                              child: RighSide(
+                                  documentCubit: getIt<DocumentCubit>()),
+                            ),
+                          )
+                        ],
+                      )),
+                  // LeftSide(documentCubit:  getIt<DocumentCubit>()),
+                  // RighSide(documentCubit:  getIt<DocumentCubit>())
+                ],
+              );
+            },
+          ));
         },
       ),
     );

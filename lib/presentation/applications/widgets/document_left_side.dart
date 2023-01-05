@@ -16,7 +16,8 @@ class LeftSide extends StatelessWidget {
   final DocumentCubit documentCubit;
   @override
   Widget build(BuildContext context) {
-    return Expanded(child: BlocBuilder<DocumentCubit, DocumentState>(
+    return BlocBuilder<DocumentCubit, DocumentState>(
+      bloc: documentCubit,
       builder: (context, docState) {
         return Container(
           width: double.infinity,
@@ -31,45 +32,72 @@ class LeftSide extends StatelessWidget {
                                 .updateSelectedIndex(docState.docs!.indexOf(e));
                           },
                           child: Container(
-                              margin: REdgeInsets.symmetric(vertical: 5),
-                              padding: REdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 10),
-                              decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.grey),
-                                  color: docState.selectedIndex ==
-                                          docState.docs!.indexOf(e)
-                                      ? AppColor.primaryColor.withAlpha(200)
-                                      : Colors.grey[300],
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Row(children: [
-                                Expanded(
-                                  child: Text(
-                                    e.header!,
-                                    style: TextStyle(
-                                      fontSize: 16.sp,
-                                      color: docState.selectedIndex ==
-                                              docState.docs!.indexOf(e)
-                                          ? Colors.white
-                                          : Colors.black,
-                                    ),
+                            decoration: const BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(color: Colors.grey))),
+                            child: Theme(
+                              data: ThemeData(
+                                disabledColor: AppColor.primaryColor,
+                                focusColor: AppColor.primaryColor,
+                                unselectedWidgetColor: AppColor.primaryColor,
+                              ),
+                              child: CheckboxListTile(
+                                contentPadding:
+                                    const EdgeInsets.symmetric(vertical: 5),
+                                value: docState.docs!
+                                    .firstWhere((element) => element.id == e.id)
+                                    .isSubmited,
+                                controlAffinity:
+                                    ListTileControlAffinity.leading,
+                                onChanged: (e) {},
+                                enabled: false,
+                                tileColor: docState.selectedIndex ==
+                                        docState.docs!.indexOf(e)
+                                    ? AppColor.primaryColor.withAlpha(200)
+                                    : Colors.transparent,
+                                title: Text(
+                                  e.header!,
+                                  style: TextStyle(
+                                    fontSize: 16.sp,
+                                    color: docState.selectedIndex ==
+                                            docState.docs!.indexOf(e)
+                                        ? Colors.white
+                                        : Colors.black,
                                   ),
                                 ),
-                                e.isSubmited == true
-                                    ? Icon(
-                                        Icons.check_box,
-                                        color: docState.selectedIndex ==
-                                                docState.docs!.indexOf(e)
-                                            ? Colors.white
-                                            : AppColor.primaryColor,
-                                      )
-                                    : SizedBox()
-                              ])),
+                              ),
+                            ),
+                            // child: Row(children: [
+                            //   Expanded(
+                            //     child: Text(
+                            //       e.header!,
+                            //       style: TextStyle(
+                            //         fontSize: 16.sp,
+                            //         color: docState.selectedIndex ==
+                            //                 docState.docs!.indexOf(e)
+                            //             ? Colors.white
+                            //             : Colors.black,
+                            //       ),
+                            //     ),
+                            //   ),
+                            //   e.isSubmited == true
+                            //       ? Icon(
+                            //           Icons.check_box,
+                            //           color: docState.selectedIndex ==
+                            //                   docState.docs!.indexOf(e)
+                            //               ? Colors.white
+                            //               : AppColor.primaryColor,
+                            //         )
+                            //       : SizedBox()
+                            // ]),
+                          ),
                         ))
                     .toList(),
               ),
+              40.verticalSpace,
               Container(
                   width: double.infinity,
-                  height: 40,
+                  height: 45,
                   margin: EdgeInsets.symmetric(vertical: 20),
                   child: PrimaryButton(
                     onClick: () {
@@ -84,6 +112,6 @@ class LeftSide extends StatelessWidget {
           ),
         );
       },
-    ));
+    );
   }
 }

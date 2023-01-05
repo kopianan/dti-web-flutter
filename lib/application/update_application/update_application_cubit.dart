@@ -7,6 +7,7 @@ import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/domain/global/failures.dart';
 import 'package:dti_web/domain/questionnaire/questionnaire_model.dart';
 import 'package:dti_web/domain/update/i_update_application.dart';
+import 'package:dti_web/domain/update/image_upload_response.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
@@ -18,6 +19,19 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
   UpdateApplicationCubit(this.iUpdateApplication)
       : super(const UpdateApplicationState.initial());
   IUpdateApplication iUpdateApplication;
+  void deleteSingleImage(
+    String imageName,
+    String docId,
+    String appId,
+  ) async {
+    emit(const UpdateApplicationState.onLoading());
+    final result =
+        await iUpdateApplication.deleteSingleImage(imageName, docId, appId);
+    result.fold(
+      (l) => emit(UpdateApplicationState.onError(l)),
+      (r) => emit(UpdateApplicationState.onDeleteSingleImage(r)),
+    );
+  }
 
   void uploadImages(VisaApplicationModel visa, DocumentDataModel document,
       List<String> deletedImageName,
@@ -31,12 +45,15 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
 
     try {
       final data = await iUpdateApplication.uploadImagesAndUpdateData(
-          visa, document, deletedImageName,
-          imageCollection: imageCollection);
-
+        visa,
+        document,
+        deletedImageName,
+        imageCollection: imageCollection,
+      );
+      print(data);
       data.fold(
         (l) => emit(UpdateApplicationState.onError(l.toString())),
-        (r) => emit(const UpdateApplicationState.onUploadImageComplete()),
+        (r) => emit(UpdateApplicationState.onUploadImageComplete(r)),
       );
     } on Exception catch (e) {
       emit(UpdateApplicationState.onError(e.toString()));
@@ -79,6 +96,10 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
     }
 
     //update result
+  }
+
+  void updateMultiVisaDuration(String value) async {
+    emit(const UpdateApplicationState.onLoading());
   }
 
   void updateGuaranotr(VisaApplicationModel visa) async {

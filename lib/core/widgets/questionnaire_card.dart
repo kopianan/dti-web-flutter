@@ -54,7 +54,12 @@ class QuestionnaireCard extends StatelessWidget {
               Container(
                   padding:
                       EdgeInsets.symmetric(vertical: 20.h, horizontal: 10.w),
-                  child: Text(body)),
+                  child: Text(
+                    body,
+                    style: TextStyle(
+                      fontSize: 16.sp,
+                    ),
+                  )),
               Container(
                   alignment: Alignment.center,
                   width: double.infinity,

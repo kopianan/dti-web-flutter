@@ -26,11 +26,13 @@ mixin _$UpdateApplicationState {
     required TResult Function(String firebaseDocId) onSubmitApplication,
     required TResult Function() onUpdateApplication,
     required TResult Function() onUpdateGuarantor,
+    required TResult Function(String message) onDeleteSingleImage,
     required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
     required TResult Function(SingleVisaResponse singleResponse)
         onGetSingleApplicationWithImage,
     required TResult Function() deleteApplication,
-    required TResult Function() onUploadImageComplete,
+    required TResult Function(List<ImageUploadResponse> list)
+        onUploadImageComplete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -42,11 +44,12 @@ mixin _$UpdateApplicationState {
     TResult Function(String firebaseDocId)? onSubmitApplication,
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
+    TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
-    TResult Function()? onUploadImageComplete,
+    TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,11 +61,12 @@ mixin _$UpdateApplicationState {
     TResult Function(String firebaseDocId)? onSubmitApplication,
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
+    TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
-    TResult Function()? onUploadImageComplete,
+    TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -75,6 +79,7 @@ mixin _$UpdateApplicationState {
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
     required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
+    required TResult Function(_OnDeleteSingleImage value) onDeleteSingleImage,
     required TResult Function(_OnGetSingleApplication value)
         onGetSingleApplication,
     required TResult Function(_OnGetSingleApplicationWithImage value)
@@ -93,6 +98,7 @@ mixin _$UpdateApplicationState {
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
+    TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
@@ -109,6 +115,7 @@ mixin _$UpdateApplicationState {
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
+    TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
@@ -184,11 +191,13 @@ class _$_Initial implements _Initial {
     required TResult Function(String firebaseDocId) onSubmitApplication,
     required TResult Function() onUpdateApplication,
     required TResult Function() onUpdateGuarantor,
+    required TResult Function(String message) onDeleteSingleImage,
     required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
     required TResult Function(SingleVisaResponse singleResponse)
         onGetSingleApplicationWithImage,
     required TResult Function() deleteApplication,
-    required TResult Function() onUploadImageComplete,
+    required TResult Function(List<ImageUploadResponse> list)
+        onUploadImageComplete,
   }) {
     return initial();
   }
@@ -203,11 +212,12 @@ class _$_Initial implements _Initial {
     TResult Function(String firebaseDocId)? onSubmitApplication,
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
+    TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
-    TResult Function()? onUploadImageComplete,
+    TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
   }) {
     return initial?.call();
   }
@@ -222,11 +232,12 @@ class _$_Initial implements _Initial {
     TResult Function(String firebaseDocId)? onSubmitApplication,
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
+    TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
-    TResult Function()? onUploadImageComplete,
+    TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -245,6 +256,7 @@ class _$_Initial implements _Initial {
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
     required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
+    required TResult Function(_OnDeleteSingleImage value) onDeleteSingleImage,
     required TResult Function(_OnGetSingleApplication value)
         onGetSingleApplication,
     required TResult Function(_OnGetSingleApplicationWithImage value)
@@ -266,6 +278,7 @@ class _$_Initial implements _Initial {
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
+    TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
@@ -285,6 +298,7 @@ class _$_Initial implements _Initial {
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
+    TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
@@ -352,11 +366,13 @@ class _$_OnLoading implements _OnLoading {
     required TResult Function(String firebaseDocId) onSubmitApplication,
     required TResult Function() onUpdateApplication,
     required TResult Function() onUpdateGuarantor,
+    required TResult Function(String message) onDeleteSingleImage,
     required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
     required TResult Function(SingleVisaResponse singleResponse)
         onGetSingleApplicationWithImage,
     required TResult Function() deleteApplication,
-    required TResult Function() onUploadImageComplete,
+    required TResult Function(List<ImageUploadResponse> list)
+        onUploadImageComplete,
   }) {
     return onLoading();
   }
@@ -371,11 +387,12 @@ class _$_OnLoading implements _OnLoading {
     TResult Function(String firebaseDocId)? onSubmitApplication,
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
+    TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
-    TResult Function()? onUploadImageComplete,
+    TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
   }) {
     return onLoading?.call();
   }
@@ -390,11 +407,12 @@ class _$_OnLoading implements _OnLoading {
     TResult Function(String firebaseDocId)? onSubmitApplication,
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
+    TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
-    TResult Function()? onUploadImageComplete,
+    TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
     required TResult orElse(),
   }) {
     if (onLoading != null) {
@@ -413,6 +431,7 @@ class _$_OnLoading implements _OnLoading {
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
     required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
+    required TResult Function(_OnDeleteSingleImage value) onDeleteSingleImage,
     required TResult Function(_OnGetSingleApplication value)
         onGetSingleApplication,
     required TResult Function(_OnGetSingleApplicationWithImage value)
@@ -434,6 +453,7 @@ class _$_OnLoading implements _OnLoading {
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
+    TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
@@ -453,6 +473,7 @@ class _$_OnLoading implements _OnLoading {
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
+    TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
@@ -543,11 +564,13 @@ class _$_OnError implements _OnError {
     required TResult Function(String firebaseDocId) onSubmitApplication,
     required TResult Function() onUpdateApplication,
     required TResult Function() onUpdateGuarantor,
+    required TResult Function(String message) onDeleteSingleImage,
     required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
     required TResult Function(SingleVisaResponse singleResponse)
         onGetSingleApplicationWithImage,
     required TResult Function() deleteApplication,
-    required TResult Function() onUploadImageComplete,
+    required TResult Function(List<ImageUploadResponse> list)
+        onUploadImageComplete,
   }) {
     return onError(error);
   }
@@ -562,11 +585,12 @@ class _$_OnError implements _OnError {
     TResult Function(String firebaseDocId)? onSubmitApplication,
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
+    TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
-    TResult Function()? onUploadImageComplete,
+    TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
   }) {
     return onError?.call(error);
   }
@@ -581,11 +605,12 @@ class _$_OnError implements _OnError {
     TResult Function(String firebaseDocId)? onSubmitApplication,
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
+    TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
-    TResult Function()? onUploadImageComplete,
+    TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
     required TResult orElse(),
   }) {
     if (onError != null) {
@@ -604,6 +629,7 @@ class _$_OnError implements _OnError {
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
     required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
+    required TResult Function(_OnDeleteSingleImage value) onDeleteSingleImage,
     required TResult Function(_OnGetSingleApplication value)
         onGetSingleApplication,
     required TResult Function(_OnGetSingleApplicationWithImage value)
@@ -625,6 +651,7 @@ class _$_OnError implements _OnError {
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
+    TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
@@ -644,6 +671,7 @@ class _$_OnError implements _OnError {
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
+    TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
@@ -750,11 +778,13 @@ class _$_OnCreateApplication implements _OnCreateApplication {
     required TResult Function(String firebaseDocId) onSubmitApplication,
     required TResult Function() onUpdateApplication,
     required TResult Function() onUpdateGuarantor,
+    required TResult Function(String message) onDeleteSingleImage,
     required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
     required TResult Function(SingleVisaResponse singleResponse)
         onGetSingleApplicationWithImage,
     required TResult Function() deleteApplication,
-    required TResult Function() onUploadImageComplete,
+    required TResult Function(List<ImageUploadResponse> list)
+        onUploadImageComplete,
   }) {
     return onCreateApplication(visaApps);
   }
@@ -769,11 +799,12 @@ class _$_OnCreateApplication implements _OnCreateApplication {
     TResult Function(String firebaseDocId)? onSubmitApplication,
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
+    TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
-    TResult Function()? onUploadImageComplete,
+    TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
   }) {
     return onCreateApplication?.call(visaApps);
   }
@@ -788,11 +819,12 @@ class _$_OnCreateApplication implements _OnCreateApplication {
     TResult Function(String firebaseDocId)? onSubmitApplication,
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
+    TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
-    TResult Function()? onUploadImageComplete,
+    TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
     required TResult orElse(),
   }) {
     if (onCreateApplication != null) {
@@ -811,6 +843,7 @@ class _$_OnCreateApplication implements _OnCreateApplication {
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
     required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
+    required TResult Function(_OnDeleteSingleImage value) onDeleteSingleImage,
     required TResult Function(_OnGetSingleApplication value)
         onGetSingleApplication,
     required TResult Function(_OnGetSingleApplicationWithImage value)
@@ -832,6 +865,7 @@ class _$_OnCreateApplication implements _OnCreateApplication {
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
+    TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
@@ -851,6 +885,7 @@ class _$_OnCreateApplication implements _OnCreateApplication {
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
+    TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
@@ -950,11 +985,13 @@ class _$_OnSubmitApplication implements _OnSubmitApplication {
     required TResult Function(String firebaseDocId) onSubmitApplication,
     required TResult Function() onUpdateApplication,
     required TResult Function() onUpdateGuarantor,
+    required TResult Function(String message) onDeleteSingleImage,
     required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
     required TResult Function(SingleVisaResponse singleResponse)
         onGetSingleApplicationWithImage,
     required TResult Function() deleteApplication,
-    required TResult Function() onUploadImageComplete,
+    required TResult Function(List<ImageUploadResponse> list)
+        onUploadImageComplete,
   }) {
     return onSubmitApplication(firebaseDocId);
   }
@@ -969,11 +1006,12 @@ class _$_OnSubmitApplication implements _OnSubmitApplication {
     TResult Function(String firebaseDocId)? onSubmitApplication,
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
+    TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
-    TResult Function()? onUploadImageComplete,
+    TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
   }) {
     return onSubmitApplication?.call(firebaseDocId);
   }
@@ -988,11 +1026,12 @@ class _$_OnSubmitApplication implements _OnSubmitApplication {
     TResult Function(String firebaseDocId)? onSubmitApplication,
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
+    TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
-    TResult Function()? onUploadImageComplete,
+    TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
     required TResult orElse(),
   }) {
     if (onSubmitApplication != null) {
@@ -1011,6 +1050,7 @@ class _$_OnSubmitApplication implements _OnSubmitApplication {
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
     required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
+    required TResult Function(_OnDeleteSingleImage value) onDeleteSingleImage,
     required TResult Function(_OnGetSingleApplication value)
         onGetSingleApplication,
     required TResult Function(_OnGetSingleApplicationWithImage value)
@@ -1032,6 +1072,7 @@ class _$_OnSubmitApplication implements _OnSubmitApplication {
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
+    TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
@@ -1051,6 +1092,7 @@ class _$_OnSubmitApplication implements _OnSubmitApplication {
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
+    TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
@@ -1124,11 +1166,13 @@ class _$_OnUpdateApplication implements _OnUpdateApplication {
     required TResult Function(String firebaseDocId) onSubmitApplication,
     required TResult Function() onUpdateApplication,
     required TResult Function() onUpdateGuarantor,
+    required TResult Function(String message) onDeleteSingleImage,
     required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
     required TResult Function(SingleVisaResponse singleResponse)
         onGetSingleApplicationWithImage,
     required TResult Function() deleteApplication,
-    required TResult Function() onUploadImageComplete,
+    required TResult Function(List<ImageUploadResponse> list)
+        onUploadImageComplete,
   }) {
     return onUpdateApplication();
   }
@@ -1143,11 +1187,12 @@ class _$_OnUpdateApplication implements _OnUpdateApplication {
     TResult Function(String firebaseDocId)? onSubmitApplication,
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
+    TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
-    TResult Function()? onUploadImageComplete,
+    TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
   }) {
     return onUpdateApplication?.call();
   }
@@ -1162,11 +1207,12 @@ class _$_OnUpdateApplication implements _OnUpdateApplication {
     TResult Function(String firebaseDocId)? onSubmitApplication,
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
+    TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
-    TResult Function()? onUploadImageComplete,
+    TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
     required TResult orElse(),
   }) {
     if (onUpdateApplication != null) {
@@ -1185,6 +1231,7 @@ class _$_OnUpdateApplication implements _OnUpdateApplication {
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
     required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
+    required TResult Function(_OnDeleteSingleImage value) onDeleteSingleImage,
     required TResult Function(_OnGetSingleApplication value)
         onGetSingleApplication,
     required TResult Function(_OnGetSingleApplicationWithImage value)
@@ -1206,6 +1253,7 @@ class _$_OnUpdateApplication implements _OnUpdateApplication {
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
+    TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
@@ -1225,6 +1273,7 @@ class _$_OnUpdateApplication implements _OnUpdateApplication {
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
+    TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
@@ -1292,11 +1341,13 @@ class _$_OnUpdateGuarantor implements _OnUpdateGuarantor {
     required TResult Function(String firebaseDocId) onSubmitApplication,
     required TResult Function() onUpdateApplication,
     required TResult Function() onUpdateGuarantor,
+    required TResult Function(String message) onDeleteSingleImage,
     required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
     required TResult Function(SingleVisaResponse singleResponse)
         onGetSingleApplicationWithImage,
     required TResult Function() deleteApplication,
-    required TResult Function() onUploadImageComplete,
+    required TResult Function(List<ImageUploadResponse> list)
+        onUploadImageComplete,
   }) {
     return onUpdateGuarantor();
   }
@@ -1311,11 +1362,12 @@ class _$_OnUpdateGuarantor implements _OnUpdateGuarantor {
     TResult Function(String firebaseDocId)? onSubmitApplication,
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
+    TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
-    TResult Function()? onUploadImageComplete,
+    TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
   }) {
     return onUpdateGuarantor?.call();
   }
@@ -1330,11 +1382,12 @@ class _$_OnUpdateGuarantor implements _OnUpdateGuarantor {
     TResult Function(String firebaseDocId)? onSubmitApplication,
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
+    TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
-    TResult Function()? onUploadImageComplete,
+    TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
     required TResult orElse(),
   }) {
     if (onUpdateGuarantor != null) {
@@ -1353,6 +1406,7 @@ class _$_OnUpdateGuarantor implements _OnUpdateGuarantor {
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
     required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
+    required TResult Function(_OnDeleteSingleImage value) onDeleteSingleImage,
     required TResult Function(_OnGetSingleApplication value)
         onGetSingleApplication,
     required TResult Function(_OnGetSingleApplicationWithImage value)
@@ -1374,6 +1428,7 @@ class _$_OnUpdateGuarantor implements _OnUpdateGuarantor {
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
+    TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
@@ -1393,6 +1448,7 @@ class _$_OnUpdateGuarantor implements _OnUpdateGuarantor {
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
+    TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
@@ -1409,6 +1465,212 @@ class _$_OnUpdateGuarantor implements _OnUpdateGuarantor {
 
 abstract class _OnUpdateGuarantor implements UpdateApplicationState {
   const factory _OnUpdateGuarantor() = _$_OnUpdateGuarantor;
+}
+
+/// @nodoc
+abstract class _$$_OnDeleteSingleImageCopyWith<$Res> {
+  factory _$$_OnDeleteSingleImageCopyWith(_$_OnDeleteSingleImage value,
+          $Res Function(_$_OnDeleteSingleImage) then) =
+      __$$_OnDeleteSingleImageCopyWithImpl<$Res>;
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$_OnDeleteSingleImageCopyWithImpl<$Res>
+    extends _$UpdateApplicationStateCopyWithImpl<$Res>
+    implements _$$_OnDeleteSingleImageCopyWith<$Res> {
+  __$$_OnDeleteSingleImageCopyWithImpl(_$_OnDeleteSingleImage _value,
+      $Res Function(_$_OnDeleteSingleImage) _then)
+      : super(_value, (v) => _then(v as _$_OnDeleteSingleImage));
+
+  @override
+  _$_OnDeleteSingleImage get _value => super._value as _$_OnDeleteSingleImage;
+
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_$_OnDeleteSingleImage(
+      message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_OnDeleteSingleImage implements _OnDeleteSingleImage {
+  const _$_OnDeleteSingleImage(this.message);
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'UpdateApplicationState.onDeleteSingleImage(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_OnDeleteSingleImage &&
+            const DeepCollectionEquality().equals(other.message, message));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(message));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_OnDeleteSingleImageCopyWith<_$_OnDeleteSingleImage> get copyWith =>
+      __$$_OnDeleteSingleImageCopyWithImpl<_$_OnDeleteSingleImage>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() onLoading,
+    required TResult Function(String error) onError,
+    required TResult Function(VisaApplicationModel visaApps)
+        onCreateApplication,
+    required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function() onUpdateApplication,
+    required TResult Function() onUpdateGuarantor,
+    required TResult Function(String message) onDeleteSingleImage,
+    required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
+    required TResult Function(SingleVisaResponse singleResponse)
+        onGetSingleApplicationWithImage,
+    required TResult Function() deleteApplication,
+    required TResult Function(List<ImageUploadResponse> list)
+        onUploadImageComplete,
+  }) {
+    return onDeleteSingleImage(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? onLoading,
+    TResult Function(String error)? onError,
+    TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
+    TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdateGuarantor,
+    TResult Function(String message)? onDeleteSingleImage,
+    TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSingleApplicationWithImage,
+    TResult Function()? deleteApplication,
+    TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+  }) {
+    return onDeleteSingleImage?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? onLoading,
+    TResult Function(String error)? onError,
+    TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
+    TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdateGuarantor,
+    TResult Function(String message)? onDeleteSingleImage,
+    TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSingleApplicationWithImage,
+    TResult Function()? deleteApplication,
+    TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    required TResult orElse(),
+  }) {
+    if (onDeleteSingleImage != null) {
+      return onDeleteSingleImage(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_OnLoading value) onLoading,
+    required TResult Function(_OnError value) onError,
+    required TResult Function(_OnCreateApplication value) onCreateApplication,
+    required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnUpdateApplication value) onUpdateApplication,
+    required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
+    required TResult Function(_OnDeleteSingleImage value) onDeleteSingleImage,
+    required TResult Function(_OnGetSingleApplication value)
+        onGetSingleApplication,
+    required TResult Function(_OnGetSingleApplicationWithImage value)
+        onGetSingleApplicationWithImage,
+    required TResult Function(_DeleteApplication value) deleteApplication,
+    required TResult Function(_OnUploadImageComplete value)
+        onUploadImageComplete,
+  }) {
+    return onDeleteSingleImage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OnLoading value)? onLoading,
+    TResult Function(_OnError value)? onError,
+    TResult Function(_OnCreateApplication value)? onCreateApplication,
+    TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
+    TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
+    TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
+    TResult Function(_OnGetSingleApplicationWithImage value)?
+        onGetSingleApplicationWithImage,
+    TResult Function(_DeleteApplication value)? deleteApplication,
+    TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+  }) {
+    return onDeleteSingleImage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OnLoading value)? onLoading,
+    TResult Function(_OnError value)? onError,
+    TResult Function(_OnCreateApplication value)? onCreateApplication,
+    TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
+    TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
+    TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
+    TResult Function(_OnGetSingleApplicationWithImage value)?
+        onGetSingleApplicationWithImage,
+    TResult Function(_DeleteApplication value)? deleteApplication,
+    TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    required TResult orElse(),
+  }) {
+    if (onDeleteSingleImage != null) {
+      return onDeleteSingleImage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnDeleteSingleImage implements UpdateApplicationState {
+  const factory _OnDeleteSingleImage(final String message) =
+      _$_OnDeleteSingleImage;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$$_OnDeleteSingleImageCopyWith<_$_OnDeleteSingleImage> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1495,11 +1757,13 @@ class _$_OnGetSingleApplication implements _OnGetSingleApplication {
     required TResult Function(String firebaseDocId) onSubmitApplication,
     required TResult Function() onUpdateApplication,
     required TResult Function() onUpdateGuarantor,
+    required TResult Function(String message) onDeleteSingleImage,
     required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
     required TResult Function(SingleVisaResponse singleResponse)
         onGetSingleApplicationWithImage,
     required TResult Function() deleteApplication,
-    required TResult Function() onUploadImageComplete,
+    required TResult Function(List<ImageUploadResponse> list)
+        onUploadImageComplete,
   }) {
     return onGetSingleApplication(visa);
   }
@@ -1514,11 +1778,12 @@ class _$_OnGetSingleApplication implements _OnGetSingleApplication {
     TResult Function(String firebaseDocId)? onSubmitApplication,
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
+    TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
-    TResult Function()? onUploadImageComplete,
+    TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
   }) {
     return onGetSingleApplication?.call(visa);
   }
@@ -1533,11 +1798,12 @@ class _$_OnGetSingleApplication implements _OnGetSingleApplication {
     TResult Function(String firebaseDocId)? onSubmitApplication,
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
+    TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
-    TResult Function()? onUploadImageComplete,
+    TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
     required TResult orElse(),
   }) {
     if (onGetSingleApplication != null) {
@@ -1556,6 +1822,7 @@ class _$_OnGetSingleApplication implements _OnGetSingleApplication {
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
     required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
+    required TResult Function(_OnDeleteSingleImage value) onDeleteSingleImage,
     required TResult Function(_OnGetSingleApplication value)
         onGetSingleApplication,
     required TResult Function(_OnGetSingleApplicationWithImage value)
@@ -1577,6 +1844,7 @@ class _$_OnGetSingleApplication implements _OnGetSingleApplication {
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
+    TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
@@ -1596,6 +1864,7 @@ class _$_OnGetSingleApplication implements _OnGetSingleApplication {
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
+    TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
@@ -1709,11 +1978,13 @@ class _$_OnGetSingleApplicationWithImage
     required TResult Function(String firebaseDocId) onSubmitApplication,
     required TResult Function() onUpdateApplication,
     required TResult Function() onUpdateGuarantor,
+    required TResult Function(String message) onDeleteSingleImage,
     required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
     required TResult Function(SingleVisaResponse singleResponse)
         onGetSingleApplicationWithImage,
     required TResult Function() deleteApplication,
-    required TResult Function() onUploadImageComplete,
+    required TResult Function(List<ImageUploadResponse> list)
+        onUploadImageComplete,
   }) {
     return onGetSingleApplicationWithImage(singleResponse);
   }
@@ -1728,11 +1999,12 @@ class _$_OnGetSingleApplicationWithImage
     TResult Function(String firebaseDocId)? onSubmitApplication,
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
+    TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
-    TResult Function()? onUploadImageComplete,
+    TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
   }) {
     return onGetSingleApplicationWithImage?.call(singleResponse);
   }
@@ -1747,11 +2019,12 @@ class _$_OnGetSingleApplicationWithImage
     TResult Function(String firebaseDocId)? onSubmitApplication,
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
+    TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
-    TResult Function()? onUploadImageComplete,
+    TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
     required TResult orElse(),
   }) {
     if (onGetSingleApplicationWithImage != null) {
@@ -1770,6 +2043,7 @@ class _$_OnGetSingleApplicationWithImage
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
     required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
+    required TResult Function(_OnDeleteSingleImage value) onDeleteSingleImage,
     required TResult Function(_OnGetSingleApplication value)
         onGetSingleApplication,
     required TResult Function(_OnGetSingleApplicationWithImage value)
@@ -1791,6 +2065,7 @@ class _$_OnGetSingleApplicationWithImage
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
+    TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
@@ -1810,6 +2085,7 @@ class _$_OnGetSingleApplicationWithImage
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
+    TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
@@ -1886,11 +2162,13 @@ class _$_DeleteApplication implements _DeleteApplication {
     required TResult Function(String firebaseDocId) onSubmitApplication,
     required TResult Function() onUpdateApplication,
     required TResult Function() onUpdateGuarantor,
+    required TResult Function(String message) onDeleteSingleImage,
     required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
     required TResult Function(SingleVisaResponse singleResponse)
         onGetSingleApplicationWithImage,
     required TResult Function() deleteApplication,
-    required TResult Function() onUploadImageComplete,
+    required TResult Function(List<ImageUploadResponse> list)
+        onUploadImageComplete,
   }) {
     return deleteApplication();
   }
@@ -1905,11 +2183,12 @@ class _$_DeleteApplication implements _DeleteApplication {
     TResult Function(String firebaseDocId)? onSubmitApplication,
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
+    TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
-    TResult Function()? onUploadImageComplete,
+    TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
   }) {
     return deleteApplication?.call();
   }
@@ -1924,11 +2203,12 @@ class _$_DeleteApplication implements _DeleteApplication {
     TResult Function(String firebaseDocId)? onSubmitApplication,
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
+    TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
-    TResult Function()? onUploadImageComplete,
+    TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
     required TResult orElse(),
   }) {
     if (deleteApplication != null) {
@@ -1947,6 +2227,7 @@ class _$_DeleteApplication implements _DeleteApplication {
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
     required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
+    required TResult Function(_OnDeleteSingleImage value) onDeleteSingleImage,
     required TResult Function(_OnGetSingleApplication value)
         onGetSingleApplication,
     required TResult Function(_OnGetSingleApplicationWithImage value)
@@ -1968,6 +2249,7 @@ class _$_DeleteApplication implements _DeleteApplication {
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
+    TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
@@ -1987,6 +2269,7 @@ class _$_DeleteApplication implements _DeleteApplication {
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
+    TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
@@ -2010,6 +2293,7 @@ abstract class _$$_OnUploadImageCompleteCopyWith<$Res> {
   factory _$$_OnUploadImageCompleteCopyWith(_$_OnUploadImageComplete value,
           $Res Function(_$_OnUploadImageComplete) then) =
       __$$_OnUploadImageCompleteCopyWithImpl<$Res>;
+  $Res call({List<ImageUploadResponse> list});
 }
 
 /// @nodoc
@@ -2023,26 +2307,55 @@ class __$$_OnUploadImageCompleteCopyWithImpl<$Res>
   @override
   _$_OnUploadImageComplete get _value =>
       super._value as _$_OnUploadImageComplete;
+
+  @override
+  $Res call({
+    Object? list = freezed,
+  }) {
+    return _then(_$_OnUploadImageComplete(
+      list == freezed
+          ? _value._list
+          : list // ignore: cast_nullable_to_non_nullable
+              as List<ImageUploadResponse>,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_OnUploadImageComplete implements _OnUploadImageComplete {
-  const _$_OnUploadImageComplete();
+  const _$_OnUploadImageComplete(final List<ImageUploadResponse> list)
+      : _list = list;
+
+  final List<ImageUploadResponse> _list;
+  @override
+  List<ImageUploadResponse> get list {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_list);
+  }
 
   @override
   String toString() {
-    return 'UpdateApplicationState.onUploadImageComplete()';
+    return 'UpdateApplicationState.onUploadImageComplete(list: $list)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_OnUploadImageComplete);
+        (other.runtimeType == runtimeType &&
+            other is _$_OnUploadImageComplete &&
+            const DeepCollectionEquality().equals(other._list, _list));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_list));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_OnUploadImageCompleteCopyWith<_$_OnUploadImageComplete> get copyWith =>
+      __$$_OnUploadImageCompleteCopyWithImpl<_$_OnUploadImageComplete>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2055,13 +2368,15 @@ class _$_OnUploadImageComplete implements _OnUploadImageComplete {
     required TResult Function(String firebaseDocId) onSubmitApplication,
     required TResult Function() onUpdateApplication,
     required TResult Function() onUpdateGuarantor,
+    required TResult Function(String message) onDeleteSingleImage,
     required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
     required TResult Function(SingleVisaResponse singleResponse)
         onGetSingleApplicationWithImage,
     required TResult Function() deleteApplication,
-    required TResult Function() onUploadImageComplete,
+    required TResult Function(List<ImageUploadResponse> list)
+        onUploadImageComplete,
   }) {
-    return onUploadImageComplete();
+    return onUploadImageComplete(list);
   }
 
   @override
@@ -2074,13 +2389,14 @@ class _$_OnUploadImageComplete implements _OnUploadImageComplete {
     TResult Function(String firebaseDocId)? onSubmitApplication,
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
+    TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
-    TResult Function()? onUploadImageComplete,
+    TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
   }) {
-    return onUploadImageComplete?.call();
+    return onUploadImageComplete?.call(list);
   }
 
   @override
@@ -2093,15 +2409,16 @@ class _$_OnUploadImageComplete implements _OnUploadImageComplete {
     TResult Function(String firebaseDocId)? onSubmitApplication,
     TResult Function()? onUpdateApplication,
     TResult Function()? onUpdateGuarantor,
+    TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
     TResult Function()? deleteApplication,
-    TResult Function()? onUploadImageComplete,
+    TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
     required TResult orElse(),
   }) {
     if (onUploadImageComplete != null) {
-      return onUploadImageComplete();
+      return onUploadImageComplete(list);
     }
     return orElse();
   }
@@ -2116,6 +2433,7 @@ class _$_OnUploadImageComplete implements _OnUploadImageComplete {
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
     required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
+    required TResult Function(_OnDeleteSingleImage value) onDeleteSingleImage,
     required TResult Function(_OnGetSingleApplication value)
         onGetSingleApplication,
     required TResult Function(_OnGetSingleApplicationWithImage value)
@@ -2137,6 +2455,7 @@ class _$_OnUploadImageComplete implements _OnUploadImageComplete {
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
+    TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
@@ -2156,6 +2475,7 @@ class _$_OnUploadImageComplete implements _OnUploadImageComplete {
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
+    TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
@@ -2171,5 +2491,11 @@ class _$_OnUploadImageComplete implements _OnUploadImageComplete {
 }
 
 abstract class _OnUploadImageComplete implements UpdateApplicationState {
-  const factory _OnUploadImageComplete() = _$_OnUploadImageComplete;
+  const factory _OnUploadImageComplete(final List<ImageUploadResponse> list) =
+      _$_OnUploadImageComplete;
+
+  List<ImageUploadResponse> get list;
+  @JsonKey(ignore: true)
+  _$$_OnUploadImageCompleteCopyWith<_$_OnUploadImageComplete> get copyWith =>
+      throw _privateConstructorUsedError;
 }

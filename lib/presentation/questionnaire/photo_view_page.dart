@@ -1,15 +1,22 @@
 import 'dart:io';
 
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:dti_web/utils/app_color.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart'; 
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class PhotoViewPage extends StatefulWidget {
   static const String routeName = '/photo-view';
-  const PhotoViewPage({super.key, required this.images, this.isNetwork = true});
+  const PhotoViewPage(
+      {super.key,
+      required this.images,
+      this.isNetwork = true,
+      this.isAsset = false});
   final List<String> images;
   final bool isNetwork;
+  final bool isAsset;
 
   @override
   State<PhotoViewPage> createState() => _PhotoViewPageState();
@@ -29,11 +36,16 @@ class _PhotoViewPageState extends State<PhotoViewPage> {
                         widget.isNetwork
                             ? Image.network(item,
                                 fit: BoxFit.contain, width: 1000.0)
-                            : kIsWeb
-                                ? Image.network(item,
-                                    fit: BoxFit.contain, width: 1000.0)
-                                : Image.file(File(item),
-                                    fit: BoxFit.contain, width: 1000.0)
+                            : widget.isAsset
+                                ? Image.asset(
+                                    item,
+                                    fit: BoxFit.cover,
+                                  )
+                                : kIsWeb
+                                    ? Image.network(item,
+                                        fit: BoxFit.contain, width: 1000.0)
+                                    : Image.file(File(item),
+                                        fit: BoxFit.contain, width: 1000.0)
                         // Positioned(
                         //   bottom: 0.0,
                         //   left: 0.0,
@@ -78,11 +90,31 @@ class _PhotoViewPageState extends State<PhotoViewPage> {
         backgroundColor: Colors.transparent,
         foregroundColor: Colors.black,
         actions: [
-          IconButton(
-              onPressed: () {
-                launch(widget.images[_current]);
-              },
-              icon: Icon(Icons.download))
+          InkWell(
+            onTap: () {
+              launch(widget.images[_current]);
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  Text(
+                    "Download",
+                    style: TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold,
+                        color: AppColor.primaryColor),
+                  ),
+                  10.horizontalSpace,
+                  Icon(
+                    Icons.download,
+                    color: AppColor.primaryColor,
+                  ),
+                  10.horizontalSpace
+                ],
+              ),
+            ),
+          )
         ],
       ),
       body: Column(children: [

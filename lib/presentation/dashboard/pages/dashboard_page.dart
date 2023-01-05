@@ -46,22 +46,25 @@ class _DashboardPageState extends State<DashboardPage> {
             },
             onDeleteSingleData: (e) {
               //get another data
-              e.maybeMap(
-                orElse: () {},
-                error: (e) {
-                  e.err.maybeMap(
-                    orElse: () {},
-                    apiExpired: (e) {
-                      AutoRouter.of(context).replaceAll([SignInRoute()]);
-                    },
-                  );
-                },
-                onDeleteSingleData: (e) {
-                  AutoRouter.of(context)
-                      .push(QuestionnaireRoute(boolIsInit: true));
-                  dashboardCubit.getLastData();
-                },
-              );
+              dashboardCubit.getLastData();
+              AutoRouter.of(context).push(QuestionnaireRoute(boolIsInit: true));
+
+              // e.maybeMap(
+              //   orElse: () {},
+              //   error: (e) {
+              //     e.err.maybeMap(
+              //       orElse: () {},
+              //       apiExpired: (e) {
+              //         AutoRouter.of(context).replaceAll([SignInRoute()]);
+              //       },
+              //     );
+              //   },
+              //   onDeleteSingleData: (e) {
+              //     AutoRouter.of(context)
+              //         .push(QuestionnaireRoute(boolIsInit: true));
+              //     dashboardCubit.getLastData();
+              //   },
+              // );
             },
           );
         },
@@ -102,21 +105,44 @@ class _DashboardPageState extends State<DashboardPage> {
                 ),
               ),
               10.horizontalSpace,
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 15.h),
-                width: 50.w,
-                height: 50.h,
-                child: Icon(
-                  Icons.menu,
-                  color: Colors.white,
+              BlocProvider(
+                create: (context) => getIt<AuthCubit>(),
+                child: BlocConsumer<AuthCubit, AuthState>(
+                  listener: (context, state) {
+                    state.maybeMap(
+                      orElse: () {},
+                      onSignOut: (e) {
+                        AutoRouter.of(context).replaceAll([SignInRoute()]);
+                      },
+                    );
+                  },
+                  builder: (context, state) {
+                    return PopupMenuButton(
+                      itemBuilder: (context) {
+                        return [
+                          PopupMenuItem(
+                            child: Text("Log Out"),
+                            onTap: () {
+                              context.read<AuthCubit>().signOut();
+                            },
+                          ),
+                        ];
+                      },
+                      child: Container(
+                        margin: EdgeInsets.symmetric(vertical: 15.h),
+                        width: 50.w,
+                        height: 50.h,
+                        child: Icon(
+                          Icons.menu,
+                          color: Colors.white,
+                        ),
+                      ),
+                    );
+                  },
                 ),
               )
             ],
           ),
-          floatingActionButton: FloatingActionButton(onPressed: () {
-            AutoRouter.of(context)
-                .push(PaymentRoute(visa: VisaApplicationModel()));
-          }),
           body: Container(
             height: ScreenUtil().screenHeight - kToolbarHeight,
             child: Column(

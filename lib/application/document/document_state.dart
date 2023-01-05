@@ -1,12 +1,14 @@
 part of 'document_cubit.dart';
 
-@Freezed(makeCollectionsUnmodifiable: false)
+@Freezed(
+  makeCollectionsUnmodifiable: false,
+)
 class DocumentState with _$DocumentState {
   factory DocumentState({
     VisaApplicationModel? visa,
     List<DocumentDataModel>? docs,
     int? selectedIndex,
-    List<Map<String, dynamic>>? masterListData,
+    @Default([]) List<Map<String, dynamic>> masterListData,
     List<String>? selectedMasterListData,
     List<String>? deletedImagesName,
     DocumentDataModel? selectedDocument,
@@ -16,6 +18,7 @@ class DocumentState with _$DocumentState {
   factory DocumentState.initial() => DocumentState(
       visa: VisaApplicationModel(),
       docs: [],
+      masterListData: [],
       deletedImagesName: [],
       selectedDataCollection: {});
 }

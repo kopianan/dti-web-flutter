@@ -22,6 +22,7 @@ mixin _$AuthState {
     required TResult Function() loading,
     required TResult Function(String error) error,
     required TResult Function(Failures error) onError,
+    required TResult Function() onSignOut,
     required TResult Function(String token) onLoginSuccess,
     required TResult Function(String token) onRegisterSuccess,
     required TResult Function(String message) onResetPassword,
@@ -34,6 +35,7 @@ mixin _$AuthState {
     TResult Function()? loading,
     TResult Function(String error)? error,
     TResult Function(Failures error)? onError,
+    TResult Function()? onSignOut,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onRegisterSuccess,
     TResult Function(String message)? onResetPassword,
@@ -46,6 +48,7 @@ mixin _$AuthState {
     TResult Function()? loading,
     TResult Function(String error)? error,
     TResult Function(Failures error)? onError,
+    TResult Function()? onSignOut,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onRegisterSuccess,
     TResult Function(String message)? onResetPassword,
@@ -59,6 +62,7 @@ mixin _$AuthState {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
     required TResult Function(_OnError value) onError,
+    required TResult Function(_OnSignOut value) onSignOut,
     required TResult Function(_OnLoginSuccess value) onLoginSuccess,
     required TResult Function(_OnRegisterSuccess value) onRegisterSuccess,
     required TResult Function(_OnResetPassword value) onResetPassword,
@@ -71,6 +75,7 @@ mixin _$AuthState {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_OnError value)? onError,
+    TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
     TResult Function(_OnResetPassword value)? onResetPassword,
@@ -83,6 +88,7 @@ mixin _$AuthState {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_OnError value)? onError,
+    TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
     TResult Function(_OnResetPassword value)? onResetPassword,
@@ -150,6 +156,7 @@ class _$_Initial implements _Initial {
     required TResult Function() loading,
     required TResult Function(String error) error,
     required TResult Function(Failures error) onError,
+    required TResult Function() onSignOut,
     required TResult Function(String token) onLoginSuccess,
     required TResult Function(String token) onRegisterSuccess,
     required TResult Function(String message) onResetPassword,
@@ -165,6 +172,7 @@ class _$_Initial implements _Initial {
     TResult Function()? loading,
     TResult Function(String error)? error,
     TResult Function(Failures error)? onError,
+    TResult Function()? onSignOut,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onRegisterSuccess,
     TResult Function(String message)? onResetPassword,
@@ -180,6 +188,7 @@ class _$_Initial implements _Initial {
     TResult Function()? loading,
     TResult Function(String error)? error,
     TResult Function(Failures error)? onError,
+    TResult Function()? onSignOut,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onRegisterSuccess,
     TResult Function(String message)? onResetPassword,
@@ -199,6 +208,7 @@ class _$_Initial implements _Initial {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
     required TResult Function(_OnError value) onError,
+    required TResult Function(_OnSignOut value) onSignOut,
     required TResult Function(_OnLoginSuccess value) onLoginSuccess,
     required TResult Function(_OnRegisterSuccess value) onRegisterSuccess,
     required TResult Function(_OnResetPassword value) onResetPassword,
@@ -214,6 +224,7 @@ class _$_Initial implements _Initial {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_OnError value)? onError,
+    TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
     TResult Function(_OnResetPassword value)? onResetPassword,
@@ -229,6 +240,7 @@ class _$_Initial implements _Initial {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_OnError value)? onError,
+    TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
     TResult Function(_OnResetPassword value)? onResetPassword,
@@ -289,6 +301,7 @@ class _$_Loading implements _Loading {
     required TResult Function() loading,
     required TResult Function(String error) error,
     required TResult Function(Failures error) onError,
+    required TResult Function() onSignOut,
     required TResult Function(String token) onLoginSuccess,
     required TResult Function(String token) onRegisterSuccess,
     required TResult Function(String message) onResetPassword,
@@ -304,6 +317,7 @@ class _$_Loading implements _Loading {
     TResult Function()? loading,
     TResult Function(String error)? error,
     TResult Function(Failures error)? onError,
+    TResult Function()? onSignOut,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onRegisterSuccess,
     TResult Function(String message)? onResetPassword,
@@ -319,6 +333,7 @@ class _$_Loading implements _Loading {
     TResult Function()? loading,
     TResult Function(String error)? error,
     TResult Function(Failures error)? onError,
+    TResult Function()? onSignOut,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onRegisterSuccess,
     TResult Function(String message)? onResetPassword,
@@ -338,6 +353,7 @@ class _$_Loading implements _Loading {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
     required TResult Function(_OnError value) onError,
+    required TResult Function(_OnSignOut value) onSignOut,
     required TResult Function(_OnLoginSuccess value) onLoginSuccess,
     required TResult Function(_OnRegisterSuccess value) onRegisterSuccess,
     required TResult Function(_OnResetPassword value) onResetPassword,
@@ -353,6 +369,7 @@ class _$_Loading implements _Loading {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_OnError value)? onError,
+    TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
     TResult Function(_OnResetPassword value)? onResetPassword,
@@ -368,6 +385,7 @@ class _$_Loading implements _Loading {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_OnError value)? onError,
+    TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
     TResult Function(_OnResetPassword value)? onResetPassword,
@@ -451,6 +469,7 @@ class _$_Error implements _Error {
     required TResult Function() loading,
     required TResult Function(String error) error,
     required TResult Function(Failures error) onError,
+    required TResult Function() onSignOut,
     required TResult Function(String token) onLoginSuccess,
     required TResult Function(String token) onRegisterSuccess,
     required TResult Function(String message) onResetPassword,
@@ -466,6 +485,7 @@ class _$_Error implements _Error {
     TResult Function()? loading,
     TResult Function(String error)? error,
     TResult Function(Failures error)? onError,
+    TResult Function()? onSignOut,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onRegisterSuccess,
     TResult Function(String message)? onResetPassword,
@@ -481,6 +501,7 @@ class _$_Error implements _Error {
     TResult Function()? loading,
     TResult Function(String error)? error,
     TResult Function(Failures error)? onError,
+    TResult Function()? onSignOut,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onRegisterSuccess,
     TResult Function(String message)? onResetPassword,
@@ -500,6 +521,7 @@ class _$_Error implements _Error {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
     required TResult Function(_OnError value) onError,
+    required TResult Function(_OnSignOut value) onSignOut,
     required TResult Function(_OnLoginSuccess value) onLoginSuccess,
     required TResult Function(_OnRegisterSuccess value) onRegisterSuccess,
     required TResult Function(_OnResetPassword value) onResetPassword,
@@ -515,6 +537,7 @@ class _$_Error implements _Error {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_OnError value)? onError,
+    TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
     TResult Function(_OnResetPassword value)? onResetPassword,
@@ -530,6 +553,7 @@ class _$_Error implements _Error {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_OnError value)? onError,
+    TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
     TResult Function(_OnResetPassword value)? onResetPassword,
@@ -628,6 +652,7 @@ class _$_OnError implements _OnError {
     required TResult Function() loading,
     required TResult Function(String error) error,
     required TResult Function(Failures error) onError,
+    required TResult Function() onSignOut,
     required TResult Function(String token) onLoginSuccess,
     required TResult Function(String token) onRegisterSuccess,
     required TResult Function(String message) onResetPassword,
@@ -643,6 +668,7 @@ class _$_OnError implements _OnError {
     TResult Function()? loading,
     TResult Function(String error)? error,
     TResult Function(Failures error)? onError,
+    TResult Function()? onSignOut,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onRegisterSuccess,
     TResult Function(String message)? onResetPassword,
@@ -658,6 +684,7 @@ class _$_OnError implements _OnError {
     TResult Function()? loading,
     TResult Function(String error)? error,
     TResult Function(Failures error)? onError,
+    TResult Function()? onSignOut,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onRegisterSuccess,
     TResult Function(String message)? onResetPassword,
@@ -677,6 +704,7 @@ class _$_OnError implements _OnError {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
     required TResult Function(_OnError value) onError,
+    required TResult Function(_OnSignOut value) onSignOut,
     required TResult Function(_OnLoginSuccess value) onLoginSuccess,
     required TResult Function(_OnRegisterSuccess value) onRegisterSuccess,
     required TResult Function(_OnResetPassword value) onResetPassword,
@@ -692,6 +720,7 @@ class _$_OnError implements _OnError {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_OnError value)? onError,
+    TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
     TResult Function(_OnResetPassword value)? onResetPassword,
@@ -707,6 +736,7 @@ class _$_OnError implements _OnError {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_OnError value)? onError,
+    TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
     TResult Function(_OnResetPassword value)? onResetPassword,
@@ -727,6 +757,152 @@ abstract class _OnError implements AuthState {
   @JsonKey(ignore: true)
   _$$_OnErrorCopyWith<_$_OnError> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_OnSignOutCopyWith<$Res> {
+  factory _$$_OnSignOutCopyWith(
+          _$_OnSignOut value, $Res Function(_$_OnSignOut) then) =
+      __$$_OnSignOutCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_OnSignOutCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
+    implements _$$_OnSignOutCopyWith<$Res> {
+  __$$_OnSignOutCopyWithImpl(
+      _$_OnSignOut _value, $Res Function(_$_OnSignOut) _then)
+      : super(_value, (v) => _then(v as _$_OnSignOut));
+
+  @override
+  _$_OnSignOut get _value => super._value as _$_OnSignOut;
+}
+
+/// @nodoc
+
+class _$_OnSignOut implements _OnSignOut {
+  const _$_OnSignOut();
+
+  @override
+  String toString() {
+    return 'AuthState.onSignOut()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_OnSignOut);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String error) error,
+    required TResult Function(Failures error) onError,
+    required TResult Function() onSignOut,
+    required TResult Function(String token) onLoginSuccess,
+    required TResult Function(String token) onRegisterSuccess,
+    required TResult Function(String message) onResetPassword,
+    required TResult Function(UserData userData) onGetUserData,
+  }) {
+    return onSignOut();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String error)? error,
+    TResult Function(Failures error)? onError,
+    TResult Function()? onSignOut,
+    TResult Function(String token)? onLoginSuccess,
+    TResult Function(String token)? onRegisterSuccess,
+    TResult Function(String message)? onResetPassword,
+    TResult Function(UserData userData)? onGetUserData,
+  }) {
+    return onSignOut?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String error)? error,
+    TResult Function(Failures error)? onError,
+    TResult Function()? onSignOut,
+    TResult Function(String token)? onLoginSuccess,
+    TResult Function(String token)? onRegisterSuccess,
+    TResult Function(String message)? onResetPassword,
+    TResult Function(UserData userData)? onGetUserData,
+    required TResult orElse(),
+  }) {
+    if (onSignOut != null) {
+      return onSignOut();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Error value) error,
+    required TResult Function(_OnError value) onError,
+    required TResult Function(_OnSignOut value) onSignOut,
+    required TResult Function(_OnLoginSuccess value) onLoginSuccess,
+    required TResult Function(_OnRegisterSuccess value) onRegisterSuccess,
+    required TResult Function(_OnResetPassword value) onResetPassword,
+    required TResult Function(_OnGetUserData value) onGetUserData,
+  }) {
+    return onSignOut(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_OnError value)? onError,
+    TResult Function(_OnSignOut value)? onSignOut,
+    TResult Function(_OnLoginSuccess value)? onLoginSuccess,
+    TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
+    TResult Function(_OnResetPassword value)? onResetPassword,
+    TResult Function(_OnGetUserData value)? onGetUserData,
+  }) {
+    return onSignOut?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_OnError value)? onError,
+    TResult Function(_OnSignOut value)? onSignOut,
+    TResult Function(_OnLoginSuccess value)? onLoginSuccess,
+    TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
+    TResult Function(_OnResetPassword value)? onResetPassword,
+    TResult Function(_OnGetUserData value)? onGetUserData,
+    required TResult orElse(),
+  }) {
+    if (onSignOut != null) {
+      return onSignOut(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnSignOut implements AuthState {
+  const factory _OnSignOut() = _$_OnSignOut;
 }
 
 /// @nodoc
@@ -798,6 +974,7 @@ class _$_OnLoginSuccess implements _OnLoginSuccess {
     required TResult Function() loading,
     required TResult Function(String error) error,
     required TResult Function(Failures error) onError,
+    required TResult Function() onSignOut,
     required TResult Function(String token) onLoginSuccess,
     required TResult Function(String token) onRegisterSuccess,
     required TResult Function(String message) onResetPassword,
@@ -813,6 +990,7 @@ class _$_OnLoginSuccess implements _OnLoginSuccess {
     TResult Function()? loading,
     TResult Function(String error)? error,
     TResult Function(Failures error)? onError,
+    TResult Function()? onSignOut,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onRegisterSuccess,
     TResult Function(String message)? onResetPassword,
@@ -828,6 +1006,7 @@ class _$_OnLoginSuccess implements _OnLoginSuccess {
     TResult Function()? loading,
     TResult Function(String error)? error,
     TResult Function(Failures error)? onError,
+    TResult Function()? onSignOut,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onRegisterSuccess,
     TResult Function(String message)? onResetPassword,
@@ -847,6 +1026,7 @@ class _$_OnLoginSuccess implements _OnLoginSuccess {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
     required TResult Function(_OnError value) onError,
+    required TResult Function(_OnSignOut value) onSignOut,
     required TResult Function(_OnLoginSuccess value) onLoginSuccess,
     required TResult Function(_OnRegisterSuccess value) onRegisterSuccess,
     required TResult Function(_OnResetPassword value) onResetPassword,
@@ -862,6 +1042,7 @@ class _$_OnLoginSuccess implements _OnLoginSuccess {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_OnError value)? onError,
+    TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
     TResult Function(_OnResetPassword value)? onResetPassword,
@@ -877,6 +1058,7 @@ class _$_OnLoginSuccess implements _OnLoginSuccess {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_OnError value)? onError,
+    TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
     TResult Function(_OnResetPassword value)? onResetPassword,
@@ -969,6 +1151,7 @@ class _$_OnRegisterSuccess implements _OnRegisterSuccess {
     required TResult Function() loading,
     required TResult Function(String error) error,
     required TResult Function(Failures error) onError,
+    required TResult Function() onSignOut,
     required TResult Function(String token) onLoginSuccess,
     required TResult Function(String token) onRegisterSuccess,
     required TResult Function(String message) onResetPassword,
@@ -984,6 +1167,7 @@ class _$_OnRegisterSuccess implements _OnRegisterSuccess {
     TResult Function()? loading,
     TResult Function(String error)? error,
     TResult Function(Failures error)? onError,
+    TResult Function()? onSignOut,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onRegisterSuccess,
     TResult Function(String message)? onResetPassword,
@@ -999,6 +1183,7 @@ class _$_OnRegisterSuccess implements _OnRegisterSuccess {
     TResult Function()? loading,
     TResult Function(String error)? error,
     TResult Function(Failures error)? onError,
+    TResult Function()? onSignOut,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onRegisterSuccess,
     TResult Function(String message)? onResetPassword,
@@ -1018,6 +1203,7 @@ class _$_OnRegisterSuccess implements _OnRegisterSuccess {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
     required TResult Function(_OnError value) onError,
+    required TResult Function(_OnSignOut value) onSignOut,
     required TResult Function(_OnLoginSuccess value) onLoginSuccess,
     required TResult Function(_OnRegisterSuccess value) onRegisterSuccess,
     required TResult Function(_OnResetPassword value) onResetPassword,
@@ -1033,6 +1219,7 @@ class _$_OnRegisterSuccess implements _OnRegisterSuccess {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_OnError value)? onError,
+    TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
     TResult Function(_OnResetPassword value)? onResetPassword,
@@ -1048,6 +1235,7 @@ class _$_OnRegisterSuccess implements _OnRegisterSuccess {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_OnError value)? onError,
+    TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
     TResult Function(_OnResetPassword value)? onResetPassword,
@@ -1139,6 +1327,7 @@ class _$_OnResetPassword implements _OnResetPassword {
     required TResult Function() loading,
     required TResult Function(String error) error,
     required TResult Function(Failures error) onError,
+    required TResult Function() onSignOut,
     required TResult Function(String token) onLoginSuccess,
     required TResult Function(String token) onRegisterSuccess,
     required TResult Function(String message) onResetPassword,
@@ -1154,6 +1343,7 @@ class _$_OnResetPassword implements _OnResetPassword {
     TResult Function()? loading,
     TResult Function(String error)? error,
     TResult Function(Failures error)? onError,
+    TResult Function()? onSignOut,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onRegisterSuccess,
     TResult Function(String message)? onResetPassword,
@@ -1169,6 +1359,7 @@ class _$_OnResetPassword implements _OnResetPassword {
     TResult Function()? loading,
     TResult Function(String error)? error,
     TResult Function(Failures error)? onError,
+    TResult Function()? onSignOut,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onRegisterSuccess,
     TResult Function(String message)? onResetPassword,
@@ -1188,6 +1379,7 @@ class _$_OnResetPassword implements _OnResetPassword {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
     required TResult Function(_OnError value) onError,
+    required TResult Function(_OnSignOut value) onSignOut,
     required TResult Function(_OnLoginSuccess value) onLoginSuccess,
     required TResult Function(_OnRegisterSuccess value) onRegisterSuccess,
     required TResult Function(_OnResetPassword value) onResetPassword,
@@ -1203,6 +1395,7 @@ class _$_OnResetPassword implements _OnResetPassword {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_OnError value)? onError,
+    TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
     TResult Function(_OnResetPassword value)? onResetPassword,
@@ -1218,6 +1411,7 @@ class _$_OnResetPassword implements _OnResetPassword {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_OnError value)? onError,
+    TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
     TResult Function(_OnResetPassword value)? onResetPassword,
@@ -1317,6 +1511,7 @@ class _$_OnGetUserData implements _OnGetUserData {
     required TResult Function() loading,
     required TResult Function(String error) error,
     required TResult Function(Failures error) onError,
+    required TResult Function() onSignOut,
     required TResult Function(String token) onLoginSuccess,
     required TResult Function(String token) onRegisterSuccess,
     required TResult Function(String message) onResetPassword,
@@ -1332,6 +1527,7 @@ class _$_OnGetUserData implements _OnGetUserData {
     TResult Function()? loading,
     TResult Function(String error)? error,
     TResult Function(Failures error)? onError,
+    TResult Function()? onSignOut,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onRegisterSuccess,
     TResult Function(String message)? onResetPassword,
@@ -1347,6 +1543,7 @@ class _$_OnGetUserData implements _OnGetUserData {
     TResult Function()? loading,
     TResult Function(String error)? error,
     TResult Function(Failures error)? onError,
+    TResult Function()? onSignOut,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onRegisterSuccess,
     TResult Function(String message)? onResetPassword,
@@ -1366,6 +1563,7 @@ class _$_OnGetUserData implements _OnGetUserData {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
     required TResult Function(_OnError value) onError,
+    required TResult Function(_OnSignOut value) onSignOut,
     required TResult Function(_OnLoginSuccess value) onLoginSuccess,
     required TResult Function(_OnRegisterSuccess value) onRegisterSuccess,
     required TResult Function(_OnResetPassword value) onResetPassword,
@@ -1381,6 +1579,7 @@ class _$_OnGetUserData implements _OnGetUserData {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_OnError value)? onError,
+    TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
     TResult Function(_OnResetPassword value)? onResetPassword,
@@ -1396,6 +1595,7 @@ class _$_OnGetUserData implements _OnGetUserData {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_OnError value)? onError,
+    TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
     TResult Function(_OnResetPassword value)? onResetPassword,

@@ -247,7 +247,12 @@ class _QuestionnairePageState extends State<QuestionnairePage> {
                                                                       20.h,
                                                                   horizontal:
                                                                       10.w),
-                                                          child: Text(e.body!)),
+                                                          child: Text(
+                                                            e.body!,
+                                                            style: TextStyle(
+                                                                fontSize:
+                                                                    15.sp),
+                                                          )),
                                                       Container(
                                                           alignment:
                                                               Alignment.center,
@@ -261,6 +266,7 @@ class _QuestionnairePageState extends State<QuestionnairePage> {
                                                           child: Text(
                                                             e.footer!,
                                                             style: TextStyle(
+                                                                fontSize: 16.sp,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .bold,

@@ -44,7 +44,7 @@ _i1.GetIt $initGetIt(
     environment,
     environmentFilter,
   );
-  gh.factory<_i3.ApplicationCubit>(() => _i3.ApplicationCubit());
+  gh.lazySingleton<_i3.ApplicationCubit>(() => _i3.ApplicationCubit());
   gh.lazySingleton<_i4.DocumentCubit>(() => _i4.DocumentCubit());
   gh.lazySingleton<_i5.IAppList>(() => _i6.AppListRepository());
   gh.lazySingleton<_i7.IAuth>(() => _i8.AuthRepository());

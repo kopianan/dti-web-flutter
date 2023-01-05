@@ -68,22 +68,32 @@ class _SignUpPageState extends State<SignUpPage> {
                       btnOkText: "Try Again")
                   .show();
             },
+            onLoginSuccess: (e) {
+              EasyLoading.dismiss();
+              context.router.replace(DashboardRoute());
+            },
             onRegisterSuccess: (e) {
               EasyLoading.dismiss();
 
-              AwesomeDialog(
-                      width: ScreenUtil().screenWidth / 3,
-                      padding: REdgeInsets.symmetric(horizontal: 20),
-                      context: context,
-                      dialogType: DialogType.success,
-                      title: "User Created",
-                      desc:
-                          "Successful Register user. Please Login Using Your Email",
-                      btnOkOnPress: () {
-                        AutoRouter.of(context).pop();
-                      },
-                      btnOkText: "OK")
-                  .show();
+              //loginuser
+
+              context
+                  .read<AuthCubit>()
+                  .loginWithEmailAndPassword(email.text, password.text);
+
+              // AwesomeDialog(
+              //         width: ScreenUtil().screenWidth / 3,
+              //         padding: REdgeInsets.symmetric(horizontal: 20),
+              //         context: context,
+              //         dialogType: DialogType.success,
+              //         title: "User Created",
+              //         desc:
+              //             "Successful Register user. Please Login Using Your Email",
+              //         btnOkOnPress: () {
+              //           AutoRouter.of(context).pop();
+              //         },
+              //         btnOkText: "OK")
+              //     .show();
             },
           );
         },

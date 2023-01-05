@@ -8,6 +8,7 @@ import 'package:dti_web/domain/core/document_data_model.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/presentation/applications/core/pdf_api.dart';
 import 'package:dti_web/routes/app_router.dart';
+import 'package:dti_web/utils/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -56,23 +57,126 @@ class _SignaturePageState extends State<SignaturePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: AppColor.primaryColor,
+        title: Text(widget.appDocument.header ?? ""),
+      ),
+      floatingActionButton: Align(
+        alignment: Alignment.bottomCenter,
+        child: FloatingActionButton.extended(
+          isExtended: true,
+          backgroundColor: AppColor.primaryColor,
+          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          label: Text("Sign Document"),
+          onPressed: () async {
+            await showDialog(
+              context: context,
+              builder: (context) {
+                return Container(
+                  color: Colors.white,
+                  margin: EdgeInsets.symmetric(horizontal: 100, vertical: 100),
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    width: ScreenUtil().screenWidth / 2,
+                    child: Column(
+                      children: [
+                        SizedBox(height: 20),
+                        const Text(
+                          "Draw your signature",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        SizedBox(height: 20),
+                        Container(
+                          height: 280,
+                          decoration: BoxDecoration(
+                              border:
+                                  Border.all(color: Colors.black, width: 2)),
+                          width: double.infinity,
+                          child: SfSignaturePad(
+                            onDrawEnd: () {
+                              isSignatureDrawed = true;
+                            },
+                            key: _signaturePadKey,
+                            backgroundColor: Colors.white,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        Center(
+                          child: TextButton(
+                            onPressed: () {
+                              isSignatureDrawed = false;
+                              _signaturePadKey.currentState!.clear();
+                            },
+                            child: Text("Clear signature"),
+                          ),
+                        ),
+                        SizedBox(height: 20),
+                        PrimaryButton(
+                          onClick: () async {
+                            var image =
+                                await _signaturePadKey.currentState!.toImage();
+                            final imageSignature = await image.toByteData(
+                                format: ImageByteFormat.png);
+
+                            final file = await PdfApi.generatePdf(
+                                signature: imageSignature!,
+                                visaApplication: widget.visaApplication,
+                                documentType: widget.appDocument.id!.trim());
+                            // await OpenFile.open(file.path);
+                            if (isSignatureDrawed == false) {
+                              print(isSignatureDrawed);
+                              Get.showSnackbar(
+                                const GetSnackBar(
+                                  message: "Please draw your signature",
+                                  backgroundColor: Colors.red,
+                                  borderRadius: 10,
+                                  margin: EdgeInsets.all(20),
+                                  snackPosition: SnackPosition.BOTTOM,
+                                ),
+                              );
+                            } else {
+                              await AutoRouter.of(context).pop();
+                              await AutoRouter.of(context).pop(file);
+                            }
+                          },
+                          height: 45,
+                          width: double.infinity,
+                          labelStyle: TextStyle(fontSize: 16.sp),
+                          label: "Generate PDF",
+                        ),
+                        40.verticalSpace
+                      ],
+                    ),
+                  ),
+                );
+              },
+            );
+          },
+        ),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: Text(
-                    "Statement Preview",
-                    style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(vertical: 10),
+                //   child: Text(
+                //     "Statement Preview",
+                //     style: const TextStyle(
+                //       fontSize: 20,
+                //       fontWeight: FontWeight.bold,
+                //     ),
+                //     textAlign: TextAlign.center,
+                //   ),
+                // ),
                 SizedBox(
                   height: ScreenUtil().screenWidth * 2 / 3,
                   child: FutureBuilder<File>(
@@ -81,6 +185,7 @@ class _SignaturePageState extends State<SignaturePage> {
                       if (snp.connectionState == ConnectionState.done) {
                         return SfPdfViewer.file(
                           snp.data!,
+                          enableDoubleTapZooming: true,
                           pageLayoutMode: PdfPageLayoutMode.single,
                           scrollDirection: PdfScrollDirection.vertical,
                         );
@@ -97,82 +202,82 @@ class _SignaturePageState extends State<SignaturePage> {
                 ),
               ],
             ),
-            Container(
-              width: ScreenUtil().screenWidth / 2,
-              child: Column(
-                children: [
-                  SizedBox(height: 20),
-                  const Text(
-                    "Draw your signature",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  SizedBox(height: 20),
-                  Container(
-                    height: 280,
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Colors.black, width: 2)),
-                    width: double.infinity,
-                    child: SfSignaturePad(
-                      onDrawEnd: () {
-                        isSignatureDrawed = true;
-                      },
-                      key: _signaturePadKey,
-                      backgroundColor: Colors.white,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Center(
-                    child: TextButton(
-                      onPressed: () {
-                        isSignatureDrawed = false;
-                        _signaturePadKey.currentState!.clear();
-                      },
-                      child: Text("Clear signature"),
-                    ),
-                  ),
-                  SizedBox(height: 20),
-                  PrimaryButton(
-                    onClick: () async {
-                      var image =
-                          await _signaturePadKey.currentState!.toImage();
-                      final imageSignature =
-                          await image.toByteData(format: ImageByteFormat.png);
+            // Container(
+            //   width: ScreenUtil().screenWidth / 2,
+            //   child: Column(
+            //     children: [
+            //       SizedBox(height: 20),
+            //       const Text(
+            //         "Draw your signature",
+            //         style: TextStyle(
+            //           fontSize: 20,
+            //           fontWeight: FontWeight.bold,
+            //         ),
+            //         textAlign: TextAlign.center,
+            //       ),
+            //       SizedBox(height: 20),
+            //       Container(
+            //         height: 280,
+            //         decoration: BoxDecoration(
+            //             border: Border.all(color: Colors.black, width: 2)),
+            //         width: double.infinity,
+            //         child: SfSignaturePad(
+            //           onDrawEnd: () {
+            //             isSignatureDrawed = true;
+            //           },
+            //           key: _signaturePadKey,
+            //           backgroundColor: Colors.white,
+            //         ),
+            //       ),
+            //       const SizedBox(
+            //         height: 5,
+            //       ),
+            //       Center(
+            //         child: TextButton(
+            //           onPressed: () {
+            //             isSignatureDrawed = false;
+            //             _signaturePadKey.currentState!.clear();
+            //           },
+            //           child: Text("Clear signature"),
+            //         ),
+            //       ),
+            //       SizedBox(height: 20),
+            //       PrimaryButton(
+            //         onClick: () async {
+            //           var image =
+            //               await _signaturePadKey.currentState!.toImage();
+            //           final imageSignature =
+            //               await image.toByteData(format: ImageByteFormat.png);
 
-                      final file = await PdfApi.generatePdf(
-                          signature: imageSignature!,
-                          visaApplication: widget.visaApplication,
-                          documentType: widget.appDocument.id!.trim());
-                      // await OpenFile.open(file.path);
-                      if (isSignatureDrawed == false) {
-                        print(isSignatureDrawed);
-                        Get.showSnackbar(
-                          const GetSnackBar(
-                            message: "Please draw your signature",
-                            backgroundColor: Colors.red,
-                            borderRadius: 10,
-                            margin: EdgeInsets.all(20),
-                            snackPosition: SnackPosition.BOTTOM,
-                          ),
-                        );
-                      } else {
-                        await AutoRouter.of(context).pop(file);
-                      }
-                    },
-                    height: 45,
-                    width: double.infinity,
-                    labelStyle: TextStyle(fontSize: 16.sp),
-                    label: "Generate PDF",
-                  ),
-                  40.verticalSpace
-                ],
-              ),
-            )
+            //           final file = await PdfApi.generatePdf(
+            //               signature: imageSignature!,
+            //               visaApplication: widget.visaApplication,
+            //               documentType: widget.appDocument.id!.trim());
+            //           // await OpenFile.open(file.path);
+            //           if (isSignatureDrawed == false) {
+            //             print(isSignatureDrawed);
+            //             Get.showSnackbar(
+            //               const GetSnackBar(
+            //                 message: "Please draw your signature",
+            //                 backgroundColor: Colors.red,
+            //                 borderRadius: 10,
+            //                 margin: EdgeInsets.all(20),
+            //                 snackPosition: SnackPosition.BOTTOM,
+            //               ),
+            //             );
+            //           } else {
+            //             await AutoRouter.of(context).pop(file);
+            //           }
+            //         },
+            //         height: 45,
+            //         width: double.infinity,
+            //         labelStyle: TextStyle(fontSize: 16.sp),
+            //         label: "Generate PDF",
+            //       ),
+            //       40.verticalSpace
+            //     ],
+            //   ),
+            // )
           ],
         ),
       ),

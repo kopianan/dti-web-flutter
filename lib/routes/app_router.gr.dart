@@ -164,6 +164,7 @@ class _$AppRouter extends RootStackRouter {
           key: args.key,
           images: args.images,
           isNetwork: args.isNetwork,
+          isAsset: args.isAsset,
         ),
         fullscreenDialog: true,
       );
@@ -761,6 +762,7 @@ class PhotoViewRoute extends PageRouteInfo<PhotoViewRouteArgs> {
     Key? key,
     required List<String> images,
     bool isNetwork = true,
+    bool isAsset = false,
   }) : super(
           PhotoViewRoute.name,
           path: '/photo-view',
@@ -768,6 +770,7 @@ class PhotoViewRoute extends PageRouteInfo<PhotoViewRouteArgs> {
             key: key,
             images: images,
             isNetwork: isNetwork,
+            isAsset: isAsset,
           ),
         );
 
@@ -779,6 +782,7 @@ class PhotoViewRouteArgs {
     this.key,
     required this.images,
     this.isNetwork = true,
+    this.isAsset = false,
   });
 
   final Key? key;
@@ -787,9 +791,11 @@ class PhotoViewRouteArgs {
 
   final bool isNetwork;
 
+  final bool isAsset;
+
   @override
   String toString() {
-    return 'PhotoViewRouteArgs{key: $key, images: $images, isNetwork: $isNetwork}';
+    return 'PhotoViewRouteArgs{key: $key, images: $images, isNetwork: $isNetwork, isAsset: $isAsset}';
   }
 }
 

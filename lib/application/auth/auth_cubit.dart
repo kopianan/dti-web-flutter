@@ -11,10 +11,16 @@ part 'auth_cubit.freezed.dart';
 
 @injectable
 class AuthCubit extends Cubit<AuthState> {
-  AuthCubit(this.iAuth) : super(AuthState.initial());
+  AuthCubit(this.iAuth) : super(const AuthState.initial());
   final IAuth iAuth;
 
   final Storage storage = Storage();
+
+  void signOut() async {
+    emit(const AuthState.loading());
+    await storage.deleteStorage();
+    emit(const AuthState.onSignOut());
+  }
 
   void getUserData() async {
     emit(const AuthState.loading());

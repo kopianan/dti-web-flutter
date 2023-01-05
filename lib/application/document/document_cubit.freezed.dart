@@ -19,7 +19,7 @@ mixin _$DocumentState {
   VisaApplicationModel? get visa => throw _privateConstructorUsedError;
   List<DocumentDataModel>? get docs => throw _privateConstructorUsedError;
   int? get selectedIndex => throw _privateConstructorUsedError;
-  List<Map<String, dynamic>>? get masterListData =>
+  List<Map<String, dynamic>> get masterListData =>
       throw _privateConstructorUsedError;
   List<String>? get selectedMasterListData =>
       throw _privateConstructorUsedError;
@@ -43,7 +43,7 @@ abstract class $DocumentStateCopyWith<$Res> {
       {VisaApplicationModel? visa,
       List<DocumentDataModel>? docs,
       int? selectedIndex,
-      List<Map<String, dynamic>>? masterListData,
+      List<Map<String, dynamic>> masterListData,
       List<String>? selectedMasterListData,
       List<String>? deletedImagesName,
       DocumentDataModel? selectedDocument,
@@ -91,7 +91,7 @@ class _$DocumentStateCopyWithImpl<$Res>
       masterListData: masterListData == freezed
           ? _value.masterListData
           : masterListData // ignore: cast_nullable_to_non_nullable
-              as List<Map<String, dynamic>>?,
+              as List<Map<String, dynamic>>,
       selectedMasterListData: selectedMasterListData == freezed
           ? _value.selectedMasterListData
           : selectedMasterListData // ignore: cast_nullable_to_non_nullable
@@ -149,7 +149,7 @@ abstract class _$$_DocumentStateCopyWith<$Res>
       {VisaApplicationModel? visa,
       List<DocumentDataModel>? docs,
       int? selectedIndex,
-      List<Map<String, dynamic>>? masterListData,
+      List<Map<String, dynamic>> masterListData,
       List<String>? selectedMasterListData,
       List<String>? deletedImagesName,
       DocumentDataModel? selectedDocument,
@@ -201,7 +201,7 @@ class __$$_DocumentStateCopyWithImpl<$Res>
       masterListData: masterListData == freezed
           ? _value.masterListData
           : masterListData // ignore: cast_nullable_to_non_nullable
-              as List<Map<String, dynamic>>?,
+              as List<Map<String, dynamic>>,
       selectedMasterListData: selectedMasterListData == freezed
           ? _value.selectedMasterListData
           : selectedMasterListData // ignore: cast_nullable_to_non_nullable
@@ -233,7 +233,7 @@ class _$_DocumentState implements _DocumentState {
       {this.visa,
       this.docs,
       this.selectedIndex,
-      this.masterListData,
+      this.masterListData = const [],
       this.selectedMasterListData,
       this.deletedImagesName,
       this.selectedDocument,
@@ -247,7 +247,8 @@ class _$_DocumentState implements _DocumentState {
   @override
   final int? selectedIndex;
   @override
-  final List<Map<String, dynamic>>? masterListData;
+  @JsonKey()
+  final List<Map<String, dynamic>> masterListData;
   @override
   final List<String>? selectedMasterListData;
   @override
@@ -311,7 +312,7 @@ abstract class _DocumentState implements DocumentState {
       {final VisaApplicationModel? visa,
       final List<DocumentDataModel>? docs,
       final int? selectedIndex,
-      final List<Map<String, dynamic>>? masterListData,
+      final List<Map<String, dynamic>> masterListData,
       final List<String>? selectedMasterListData,
       final List<String>? deletedImagesName,
       final DocumentDataModel? selectedDocument,
@@ -325,7 +326,7 @@ abstract class _DocumentState implements DocumentState {
   @override
   int? get selectedIndex;
   @override
-  List<Map<String, dynamic>>? get masterListData;
+  List<Map<String, dynamic>> get masterListData;
   @override
   List<String>? get selectedMasterListData;
   @override

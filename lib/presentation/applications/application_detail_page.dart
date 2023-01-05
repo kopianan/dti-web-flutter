@@ -2,23 +2,22 @@ import 'dart:developer';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:dti_web/application/application_cubit.dart';
 import 'package:dti_web/application/document/document_cubit.dart';
 import 'package:dti_web/application/update_application/update_application_cubit.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/injection.dart';
+import 'package:dti_web/presentation/questionnaire/photo_view_page.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:dti_web/utils/converter.dart';
 import 'package:dti_web/utils/date_converter.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:injectable/injectable.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ApplicationDetailPage extends StatefulWidget {
   static const String routeName = '/application-detail';
@@ -35,13 +34,8 @@ class ApplicationDetailPage extends StatefulWidget {
 class _ApplicationDetailPageState extends State<ApplicationDetailPage> {
   @override
   void initState() {
-    // TODO: implement initState
-    log("TODO");
-
     super.initState();
   }
-
-  bool onCheck = false;
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +48,7 @@ class _ApplicationDetailPageState extends State<ApplicationDetailPage> {
             state.maybeMap(
               orElse: () {},
               onLoading: (e) async {
-                await EasyLoading.show(
+                EasyLoading.show(
                   maskType: EasyLoadingMaskType.black,
                 );
               },
@@ -123,9 +117,23 @@ class SuccessBody extends StatefulWidget {
 }
 
 class _SuccessBodyState extends State<SuccessBody> {
-  bool onCheck = false;
+  bool isCheckedA = false;
+  bool isCheckedB = false;
+  bool isCheckedC = false;
   @override
   Widget build(BuildContext context) {
+    Color getColor(Set<MaterialState> states) {
+      const Set<MaterialState> interactiveStates = <MaterialState>{
+        MaterialState.pressed,
+        MaterialState.hovered,
+        MaterialState.focused,
+      };
+      if (states.any(interactiveStates.contains)) {
+        return AppColor.primaryColor;
+      }
+      return AppColor.primaryColor;
+    }
+
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w),
@@ -135,7 +143,7 @@ class _SuccessBodyState extends State<SuccessBody> {
             Text(
               'Visa Detail Summary',
               style: TextStyle(
-                  fontSize: 30.sp,
+                  fontSize: 33.sp,
                   color: AppColor.primaryColor,
                   fontWeight: FontWeight.bold),
             ),
@@ -172,14 +180,14 @@ class _SuccessBodyState extends State<SuccessBody> {
                   label: "Length of Stay in Indonesia",
                   value: widget.visa.entry == "Single Entry Visa"
                       ? "60 Days after entering Indonesia"
-                      : '${widget.visa.multiVisaDuration!} after entering Indonesia',
+                      : '${widget.visa.multiVisaDuration ?? ""} after entering Indonesia',
                 ),
                 10.verticalSpace,
                 DetailItemWidget(
                   label: "Visa must used by",
                   value: widget.visa.entry == "Single Entry Visa"
                       ? "90 Days after issuance date"
-                      : '${widget.visa.multiVisaDuration!} after issuance date',
+                      : '${widget.visa.multiVisaDuration ?? ""} after issuance date',
                 ),
               ],
             ),
@@ -287,56 +295,91 @@ class _SuccessBodyState extends State<SuccessBody> {
               bloc: getIt<DocumentCubit>(),
               builder: (context, state) {
                 return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: state.docs!.map((e) {
-                      return InkWell(
-                          onTap: () {
-                            var data = e.imageList!;
-                            List<String>? filtered = [];
-                            data.removeWhere((element) => element == null);
-                            if (data.isNotEmpty) {
-                              widget.imagesUrl!.forEach(
-                                (element) {
-                                  final data = element as Map<String, dynamic>;
-                                  log(e.toJson().toString());
-                                  if (data.containsKey(e.id)) {
-                                    //check if id is same then get the data
-                                    filtered.add(data[e.id!.trim()]);
-                                  }
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: state.docs!.map((e) {
+                    return InkWell(
+                        onTap: () {
+                          var data = e.imageList!;
+                          List<String>? filtered = [];
+                          data.removeWhere((element) => element == null);
+                          if (data.isNotEmpty) {
+                            for (var element in widget.imagesUrl!) {
+                              final data = element as Map<String, dynamic>;
+                              log(e.toJson().toString());
+                              if (data.containsKey(e.id)) {
+                                //check if id is same then get the data
+                                filtered.add(data[e.id!.trim()]);
+                              }
+                            }
+
+                            //check if image is pdf
+                            if (e.attachment != null &&
+                                e.attachment!.contains('.doc')) {
+                              // file is document, not picture
+                              AutoRouter.of(context).push(DTIPdfViewerRoute(
+                                  imageUrl: filtered.single, isNetwork: true));
+                            } else {
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.white,
+                                    ),
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 100, vertical: 100),
+                                    width: ScreenUtil().screenWidth,
+                                    height: ScreenUtil().screenHeight,
+                                    child: PhotoViewPage(
+                                      images: filtered,
+                                      isNetwork: true,
+                                    ),
+                                  );
                                 },
                               );
-
-                              //check if image is pdf
-                              if (e.attachment != null &&
-                                  e.attachment!.contains('.doc')) {
-                                // file is document, not picture
-                                AutoRouter.of(context).push(DTIPdfViewerRoute(
-                                    imageUrl: filtered.single,
-                                    isNetwork: true));
-                              } else {
-                                AutoRouter.of(context).push(PhotoViewRoute(
-                                    images: filtered, isNetwork: true));
-                              }
-
-                              // showDialog(
-                              //     context: context,
-                              //     builder: (context) {
-                              //       return Container(
-                              //         color: Colors.green,
-                              //       );
-                              //     });
+                              // AutoRouter.of(context).push(PhotoViewRoute(
+                              //     images: filtered, isNetwork: true));
                             }
-                          },
-                          child: Container(
-                            padding: EdgeInsets.symmetric(vertical: 5),
-                            child: Text(
-                              e.header!,
-                              style: TextStyle(
-                                  fontSize: 18.sp,
-                                  color: AppColor.primaryColor),
+
+                            // showDialog(
+                            //     context: context,
+                            //     builder: (context) {
+                            //       return Container(
+                            //         color: Colors.green,
+                            //       );
+                            //     });
+                          }
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(vertical: 8),
+                          decoration: const BoxDecoration(
+                              border: Border(
+                            bottom: BorderSide(
+                              width: 1,
+                              color: AppColor.primaryColor,
                             ),
-                          ));
-                    }).toList());
+                          )),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const Icon(
+                                Icons.download_sharp,
+                                size: 30,
+                                color: AppColor.primaryColor,
+                              ),
+                              5.horizontalSpace,
+                              Text(
+                                e.header!,
+                                style: TextStyle(
+                                    fontSize: 20.sp,
+                                    color: AppColor.primaryColor),
+                              ),
+                            ],
+                          ),
+                        ));
+                  }).toList(),
+                );
               },
             ),
 
@@ -347,7 +390,7 @@ class _SuccessBodyState extends State<SuccessBody> {
                 Text(
                   "Reference Number",
                   style: TextStyle(
-                    fontSize: 20.sp,
+                    fontSize: 25.sp,
                     color: Colors.grey,
                     fontWeight: FontWeight.bold,
                   ),
@@ -356,7 +399,7 @@ class _SuccessBodyState extends State<SuccessBody> {
                 Text(
                   widget.visa.applicationID ?? "",
                   style: TextStyle(
-                    fontSize: 18.sp,
+                    fontSize: 22.sp,
                     color: AppColor.primaryColor,
                     fontWeight: FontWeight.bold,
                   ),
@@ -366,7 +409,7 @@ class _SuccessBodyState extends State<SuccessBody> {
             20.verticalSpace,
             Visibility(
               visible: widget.visa.status?.toLowerCase() == 'draft',
-              child: _termAndCondition(),
+              child: termAndCondition(getColor),
             ),
             // REFERENCE NUMBER
 
@@ -402,48 +445,51 @@ class _SuccessBodyState extends State<SuccessBody> {
               visible: widget.visa.status?.toLowerCase() == 'pending payment',
               child: Column(
                 children: [
-                  const SubtitleWidget(label: "SUMMARY"),
-                  40.verticalSpace,
                   Row(
                     children: [
-                      Expanded(
-                        flex: 2,
-                        child: Container(
-                          alignment: Alignment.centerRight,
-                          child: Text(
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
                             "Total Price (IDR)",
                             style: TextStyle(
-                                fontSize: 25.sp, fontWeight: FontWeight.bold),
+                              fontSize: 25.sp,
+                              color: Colors.grey,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
+                          10.verticalSpace,
+                          Text(
+                            "${widget.visa.currency == 'rp' ? "IDR" : widget.visa.currency!} ${Converter.convertStringToIDR(widget.visa.price ?? 0)}",
+                            style: TextStyle(
+                              fontSize: 30.sp,
+                              color: AppColor.primaryColor,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          20.verticalSpace,
+                        ],
+                      ),
+                      const Spacer(),
+                      Expanded(
+                        child: PrimaryButton(
+                          onClick: () {
+                            AutoRouter.of(context)
+                                .push(PaymentRoute(visa: widget.visa));
+                          },
+                          width: 300,
+                          label: "Pay",
+                          labelStyle: TextStyle(fontSize: 20.sp),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 10),
+                          height: 60,
                         ),
                       ),
-                      Expanded(
-                          child: Container(
-                              alignment: Alignment.topRight,
-                              child: Text(
-                                Converter.convertStringToIDR(
-                                    widget.visa.price ?? 0),
-                                style: TextStyle(
-                                    fontSize: 25.sp,
-                                    fontWeight: FontWeight.bold),
-                              ))),
                     ],
                   ),
-                  40.verticalSpace,
-                  Container(
-                    alignment: Alignment.bottomRight,
-                    child: PrimaryButton(
-                      onClick: () {
-                        AutoRouter.of(context)
-                            .push(PaymentRoute(visa: widget.visa));
-                      },
-                      width: 300,
-                      label: "Pay",
-                      labelStyle: TextStyle(fontSize: 20.sp),
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                      height: 60,
-                    ),
+                  30.verticalSpace,
+                  Image.asset(
+                    'assets/images/payment_example.png',
                   ),
                 ],
               ),
@@ -453,7 +499,7 @@ class _SuccessBodyState extends State<SuccessBody> {
             Visibility(
               visible: widget.visa.status!.toLowerCase() == 'paid' ||
                   widget.visa.status!.toLowerCase() == 'completed' ||
-                  widget.visa.status!.toLowerCase() == 'submitted', 
+                  widget.visa.status!.toLowerCase() == 'submitted',
               child: Container(
                 width: double.infinity,
                 height: 50,
@@ -477,43 +523,181 @@ class _SuccessBodyState extends State<SuccessBody> {
     );
   }
 
-  Column _termAndCondition() {
+  Column termAndCondition(Color Function(Set<MaterialState> states) getColor) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Column(
+        Text(
+          "Before you confirm, you understand that:",
+          style: TextStyle(
+            color: Colors.grey[700],
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const SizedBox(height: 20),
+        Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Transform.scale(
+                scale: 1.2,
+                child: Checkbox(
+                  checkColor: Colors.white,
+                  fillColor: MaterialStateProperty.resolveWith(getColor),
+                  value: isCheckedA,
+                  onChanged: (bool? value) {
+                    setState(() {
+                      isCheckedA = value!;
+                    });
+                  },
+                ),
+              ),
+              Expanded(
+                  child: RichText(
+                text: TextSpan(
+                  text:
+                      "You are understand that, while sponsored, employed or volunteering in any position that requires Door To Indonesia background screening as a condition of guaranteed.",
+                  style: TextStyle(
+                    color: Colors.grey[700],
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              )),
+            ]),
+        const SizedBox(height: 8),
+        Row(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Text(
-              "Before you confirm, you understand that :",
-              style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18.sp),
-            ),
-            20.verticalSpace,
-            Text(
-              "(a) You attest that you have read Moral Character Requirments carefully and state that your attestation here is true and correct, and ",
-              style: TextStyle(color: Colors.black, fontSize: 16.sp),
-            ),
-            8.verticalSpace,
-            Text(
-              "(b) You are understand that, while sponsored, employed or volunteering in any position that requires Door To Indonesia background screening as a condition of guaranteed",
-              style: TextStyle(color: Colors.black, fontSize: 16.sp),
+            Transform.scale(
+                scale: 1.2,
+                child: Checkbox(
+                  checkColor: Colors.white,
+                  fillColor: MaterialStateProperty.resolveWith(getColor),
+                  value: isCheckedB,
+                  onChanged: (bool? value) {
+                    setState(() {
+                      isCheckedB = value!;
+                    });
+                  },
+                )),
+            Expanded(
+              child: RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: 'You attest that You have read ',
+                      style: TextStyle(
+                        color: Colors.grey[700],
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    TextSpan(
+                      text: 'Moral Character requirements',
+                      style: const TextStyle(
+                        color: AppColor.HYPERLINK_COLOR,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          launch(
+                              'https://doortoid.com/attestation-of-good-moral-character/');
+                        },
+                    ),
+                    TextSpan(
+                      text:
+                          'carefully and state that your attestation here is true and correct, and',
+                      style: TextStyle(
+                        color: Colors.grey[700],
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ],
         ),
-        10.verticalSpace,
-        CheckboxListTile(
-          contentPadding: EdgeInsets.zero,
-          controlAffinity: ListTileControlAffinity.leading,
-          value: onCheck,
-          title: Text("I Agree to the Term Of Use, and Privacy Policy."),
-          onChanged: (value) {
-            setState(() {
-              onCheck = value ?? false;
-            });
-          },
+        const SizedBox(height: 8),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Transform.scale(
+              scale: 1.2,
+              child: Checkbox(
+                checkColor: Colors.white,
+                fillColor: MaterialStateProperty.resolveWith(getColor),
+                value: isCheckedC,
+                onChanged: (bool? value) {
+                  setState(() {
+                    isCheckedC = value!;
+                  });
+                },
+              ),
+            ),
+            RichText(
+              text: TextSpan(
+                children: [
+                  TextSpan(
+                    text: "I agree to the",
+                    style: TextStyle(
+                      color: Colors.grey[700],
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  TextSpan(
+                    text: "Term of Use",
+                    style: const TextStyle(
+                      color: AppColor.HYPERLINK_COLOR,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        launch('https://doortoid.com/term-of-use/');
+                      },
+                  ),
+                  TextSpan(
+                    text: ', and',
+                    style: TextStyle(
+                      color: Colors.grey[700],
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  TextSpan(
+                    text: "Privacy Policy",
+                    style: const TextStyle(
+                      color: AppColor.HYPERLINK_COLOR,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        launch('https://doortoid.com/privacy-policy/');
+                      },
+                  ),
+                  TextSpan(
+                    text: '.',
+                    style: TextStyle(
+                      color: Colors.grey[700],
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
         20.verticalSpace,
         BlocProvider(
@@ -547,9 +731,11 @@ class _SuccessBodyState extends State<SuccessBody> {
             builder: (context, updateState) {
               return updateState.maybeMap(orElse: () {
                 return PrimaryButton(
-                  bgColor: onCheck ? AppColor.primaryColor : Colors.grey,
+                  bgColor: (isCheckedA && isCheckedB && isCheckedC)
+                      ? AppColor.primaryColor
+                      : Colors.grey,
                   onClick: () {
-                    if (onCheck) {
+                    if (isCheckedA && isCheckedB && isCheckedC) {
                       context
                           .read<UpdateApplicationCubit>()
                           .submitVisaApps(widget.visa.firebaseDocId!);
@@ -598,18 +784,18 @@ class DetailItemWidget extends StatelessWidget {
       children: [
         Text(
           label,
-          style: TextStyle(
+          style: const TextStyle(
               color: AppColor.primaryColor,
               fontStyle: FontStyle.italic,
-              fontSize: 15),
+              fontSize: 17),
         ),
         2.verticalSpace,
         Text(
           value,
-          style: TextStyle(
+          style: const TextStyle(
               color: AppColor.primaryColor,
               fontWeight: FontWeight.bold,
-              fontSize: 20),
+              fontSize: 22),
         ),
       ],
     );
@@ -632,7 +818,7 @@ class SubtitleWidget extends StatelessWidget {
       child: Text(
         label,
         style: TextStyle(
-            fontSize: 20.sp, color: Colors.white, fontWeight: FontWeight.bold),
+            fontSize: 23.sp, color: Colors.white, fontWeight: FontWeight.bold),
       ),
     );
   }

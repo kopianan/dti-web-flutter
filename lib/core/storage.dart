@@ -8,6 +8,10 @@ class Storage {
     await box.write(TOKEN, token);
   }
 
+  Future<void> deleteStorage() async {
+    await box.erase();
+  }
+
   String? getToken() {
     try {
       final token = box.read(TOKEN);

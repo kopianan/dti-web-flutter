@@ -13,7 +13,7 @@ import 'package:injectable/injectable.dart';
 part 'application_state.dart';
 part 'application_cubit.freezed.dart';
 
-@injectable
+@LazySingleton()
 class ApplicationCubit extends Cubit<ApplicationState> {
   ApplicationCubit() : super(ApplicationState.initial());
 
@@ -120,8 +120,9 @@ class ApplicationCubit extends Cubit<ApplicationState> {
   }
 
   void updatePersonalInformation4(String multiVisa) async {
-    print(multiVisa); 
-    emit(state.copyWith.visaApplicationModel!(multiVisaDuration: multiVisa));
+    final visa =
+        state.visaApplicationModel!.copyWith(multiVisaDuration: multiVisa);
+    emit(state.copyWith(visaApplicationModel: visa));
   }
 
   void updatePersonalInformation3({

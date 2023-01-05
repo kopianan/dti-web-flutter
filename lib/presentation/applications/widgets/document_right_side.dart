@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:dio/dio.dart';
 import 'package:dti_web/application/document/document_cubit.dart';
 import 'package:dti_web/application/other/other_cubit.dart';
 import 'package:dti_web/application/update_application/update_application_cubit.dart';
@@ -10,12 +9,14 @@ import 'package:dti_web/core/widgets/primary_button.dart';
 import 'package:dti_web/domain/core/document_data_model.dart';
 import 'package:dti_web/injection.dart';
 import 'package:dti_web/presentation/applications/widgets/image_widget.dart';
+import 'package:dti_web/presentation/questionnaire/photo_view_page.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
@@ -33,166 +34,202 @@ class RighSide extends StatefulWidget {
 class _RighSideState extends State<RighSide> {
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: BlocProvider(
-        create: (context) => getIt<UpdateApplicationCubit>(),
-        child: BlocBuilder<UpdateApplicationCubit, UpdateApplicationState>(
-          builder: (context, updateState) {
-            return BlocListener<UpdateApplicationCubit, UpdateApplicationState>(
-                listener: (context, state) {
-              state.maybeMap(
-                orElse: () {},
-                onLoading: (e) {
-                  showDialog(
-                    context: context,
-                    barrierDismissible: false,
-                    builder: (context) => AlertDialog(
-                      content: Container(
-                          height: 100,
-                          width: 100,
-                          child: Center(child: CircularProgressIndicator())),
-                    ),
-                  );
-                },
-                onUploadImageComplete: (e) {
-                  Navigator.pop(context);
-                  //UPDATE THE DOCUMENT
-                  widget.documentCubit.updateDocumentStatus();
-                },
+    return BlocProvider(
+      create: (context) => getIt<UpdateApplicationCubit>(),
+      child: BlocConsumer<UpdateApplicationCubit, UpdateApplicationState>(
+        listener: (context, state) {
+          state.maybeMap(
+            orElse: () {
+              EasyLoading.dismiss();
+            },
+            onLoading: (e) {
+              EasyLoading.show(
+                maskType: EasyLoadingMaskType.black,
               );
-            }, child: BlocBuilder<DocumentCubit, DocumentState>(
-              builder: (context, docState) {
-                return Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Color.fromARGB(255, 26, 55, 218).withAlpha(100),
-                  ),
-                  child: (docState.selectedIndex == null)
-                      ? Container()
-                      : ListView(
-                          children: [
-                            Container(
-                              height: 150,
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 20.w, vertical: 10.h),
-                              child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Expanded(
-                                        flex: 3,
-                                        child: Image.asset(docState
-                                            .selectedDocument!.previewImage!)),
-                                    Expanded(
-                                        flex: 6,
-                                        child: Text(
-                                          docState.selectedDocument!.body!,
-                                          style: TextStyle(
-                                              fontSize: 17.sp,
-                                              fontWeight: FontWeight.bold),
-                                        ))
-                                  ]),
-                            ),
-                            Divider(),
-                            Column(
+            },
+            onUploadImageComplete: (e) {
+              EasyLoading.dismiss();
+              //UPDATE THE DOCUMENT
+              widget.documentCubit.updateDocumentStatus(e.list);
+              setState(() {});
+            },
+          );
+        },
+        builder: (context, state) {
+          return BlocBuilder<DocumentCubit, DocumentState>(
+            builder: (context, docState) {
+              return Container(
+                child: (docState.selectedIndex == null)
+                    ? Container()
+                    : ListView(
+                        children: [
+                          Container(
+                            // height: 150,
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 20.w, vertical: 10.h),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Visibility(
-                                  visible:
-                                      docState.selectedDocument?.attachment !=
-                                          null,
-                                  child: SizedBox(
-                                    child: ToggleSwitch(
-                                      initialLabelIndex:
-                                          docState.selectedDataType,
-                                      cornerRadius: 10.0,
-                                      fontSize: 16.sp,
-                                      activeFgColor: Colors.white,
-                                      inactiveBgColor: Colors.grey.shade400,
-                                      inactiveFgColor: Colors.black,
-                                      totalSwitches: 2,
-                                      minWidth: 200.w,
-                                      labels: [
-                                        'Upload',
-                                        'Electronic Signature'
-                                      ],
-                                      activeBgColors: [
-                                        [AppColor.primaryColor],
-                                        [AppColor.primaryColor]
-                                      ],
-                                      onToggle: (index) {
-                                        context
-                                            .read<DocumentCubit>()
-                                            .setTypeDocument(index);
-                                      },
-                                    ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(20.0),
-                                  child: GridView.builder(
-                                    physics: NeverScrollableScrollPhysics(),
-                                    shrinkWrap: true,
-                                    itemCount:
-                                        docState.selectedDocument!.numberOfDocs,
-                                    gridDelegate:
-                                        const SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 2,
-                                      childAspectRatio: 2 / 1,
-                                      mainAxisSpacing: 10,
-                                      crossAxisSpacing: 10,
-                                    ),
-                                    itemBuilder: (context, index) {
-                                      var singleDoc =
-                                          docState.selectedDocument!;
-                                      return ImageWidget(
-                                        index: index,
-                                        image: singleDoc.imageList![index],
-                                        addNewImage: () async {
-                                          onTapImage(
-                                            context,
-                                            index,
-                                            docState,
-                                            singleDoc,
-                                          );
-                                        },
-                                        deleteImage: () {
-                                          onDeleteFile(
-                                            index,
-                                            docState,
+                                Expanded(
+                                  flex: 3,
+                                  child: InkWell(
+                                    onTap: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (context) {
+                                          return Container(
+                                            margin: const EdgeInsets.symmetric(
+                                                horizontal: 20, vertical: 20),
+                                            color: Colors.white,
+                                            width: ScreenUtil().screenWidth,
+                                            height: ScreenUtil().screenHeight,
+                                            child: PhotoViewPage(
+                                              images: [
+                                                docState.selectedDocument!
+                                                    .previewImage!,
+                                              ],
+                                              isNetwork: false,
+                                              isAsset: true,
+                                            ),
                                           );
                                         },
                                       );
                                     },
+                                    child: Card(
+                                      elevation: 5,
+                                      child: Image.asset(
+                                        docState
+                                            .selectedDocument!.previewImage!,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
                                   ),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.all(40),
-                                  child: PrimaryButton(
-                                    height: 45,
-                                    width: double.infinity,
-                                    onClick: () {
-                                      final docs = docState.selectedDocument!;
-                                      context
-                                          .read<UpdateApplicationCubit>()
-                                          .uploadImages(docState.visa!, docs,
-                                              docState.deletedImagesName!,
-                                              imageCollection: kIsWeb
-                                                  ? docState
-                                                      .selectedDataCollection
-                                                  : null);
-                                    },
-                                    label: "Update",
-                                    labelStyle: TextStyle(fontSize: 20),
+                                const SizedBox(width: 10),
+                                Expanded(
+                                  flex: 6,
+                                  child: Text(
+                                    docState.selectedDocument?.body ?? "",
+                                    style: TextStyle(
+                                      fontSize: 20.sp,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 )
                               ],
                             ),
-                          ],
-                        ),
-                );
-              },
-            ));
-          },
-        ),
+                          ),
+                          const Divider(),
+                          Column(
+                            children: [
+                              Visibility(
+                                visible:
+                                    docState.selectedDocument?.attachment !=
+                                        null,
+                                child: Column(
+                                  children: [
+                                    20.verticalSpace,
+                                    SizedBox(
+                                      child: ToggleSwitch(
+                                        initialLabelIndex:
+                                            docState.selectedDataType,
+                                        cornerRadius: 10.0,
+                                        fontSize: 16.sp,
+                                        activeFgColor: Colors.white,
+                                        inactiveBgColor: Colors.grey.shade400,
+                                        inactiveFgColor: Colors.black,
+                                        totalSwitches: 2,
+                                        minWidth: 200.w,
+                                        labels: const [
+                                          'Upload',
+                                          'Electronic Signature'
+                                        ],
+                                        activeBgColors: const [
+                                          [AppColor.primaryColor],
+                                          [AppColor.primaryColor]
+                                        ],
+                                        onToggle: (index) {
+                                          context
+                                              .read<DocumentCubit>()
+                                              .setTypeDocument(index);
+                                        },
+                                      ),
+                                    ),
+                                    20.verticalSpace,
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(20.0),
+                                child: GridView.builder(
+                                  padding:
+                                      EdgeInsets.symmetric(horizontal: 20.w),
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  shrinkWrap: true,
+                                  itemCount:
+                                      docState.selectedDocument!.numberOfDocs,
+                                  gridDelegate:
+                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2,
+                                    childAspectRatio: 2.sp / 2.1.sp,
+                                    mainAxisSpacing: 10,
+                                    crossAxisSpacing: 10,
+                                  ),
+                                  itemBuilder: (context, index) {
+                                    // var singleDoc = docState.selectedDocument!;
+                                    return ImageWidget(
+                                      index: index,
+                                      image: docState
+                                          .selectedDocument!.imageList![index],
+                                      addNewImage: () async {
+                                        onTapImage(
+                                          context,
+                                          index,
+                                          docState,
+                                          docState.selectedDocument!,
+                                        );
+                                      },
+                                      deleteImage: () {
+                                        onDeleteFile(
+                                          index,
+                                          docState,
+                                        );
+                                      },
+                                    );
+                                  },
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(40),
+                                child: PrimaryButton(
+                                  bgColor: Colors.green,
+                                  height: 45,
+                                  width: 300,
+                                  onClick: () {
+                                    final docs = docState.selectedDocument!;
+                                    context
+                                        .read<UpdateApplicationCubit>()
+                                        .uploadImages(docState.visa!, docs,
+                                            docState.deletedImagesName!,
+                                            imageCollection: kIsWeb
+                                                ? docState
+                                                    .selectedDataCollection
+                                                : null);
+                                  },
+                                  label: "UPDATE",
+                                  labelStyle: const TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+              );
+            },
+          );
+        },
       ),
     );
   }
@@ -284,7 +321,41 @@ class _RighSideState extends State<RighSide> {
     }
   }
 
-  void onDeleteFile(int index, DocumentState docState) {
+  void onDeleteFile(int index, DocumentState docState) async {
+    //check if image is from local or network
+    // final imageData = docState.selectedDocument!.imageList![index];
+
+    // if (!imageData!.contains('/')) {
+    //   //then image is from  network (!)
+    //   AwesomeDialog(
+    //           context: context,
+    //           dialogType: DialogType.warning,
+    //           body: const Text(
+    //             "Are you sure want to delete this image ? ",
+    //             style: TextStyle(fontSize: 17),
+    //           ),
+    //           btnCancelText: "Delete",
+    //           btnOkText: "Cancel",
+    //           btnOkOnPress: () {},
+    //           btnCancelOnPress: () {
+    //             context.read<UpdateApplicationCubit>().deleteSingleImage(
+    //                   imageData,
+    //                   docState.selectedDocument!.id!,
+    //                   docState.visa!.applicationID!,
+    //                 );
+    //             widget.documentCubit.removePhotoDocument(
+    //                 docState.selectedDocument!.imageList![index]!,
+    //                 docState.selectedIndex!);
+    //             setState(() {});
+    //           },
+    //           width: 500)
+    //       .show();
+    // } else {
+    //   widget.documentCubit.removePhotoDocument(
+    //       docState.selectedDocument!.imageList![index]!,
+    //       docState.selectedIndex!);
+    //   setState(() {});
+    // }
     widget.documentCubit.removePhotoDocument(
         docState.selectedDocument!.imageList![index]!, docState.selectedIndex!);
     setState(() {});

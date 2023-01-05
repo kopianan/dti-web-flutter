@@ -5,6 +5,7 @@ import 'package:bloc/bloc.dart';
 import 'package:dti_web/domain/core/document_data_model.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/domain/questionnaire/raw_data.dart';
+import 'package:dti_web/domain/update/image_upload_response.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -40,6 +41,8 @@ class DocumentCubit extends Cubit<DocumentState> {
     List<String?>? lists = [];
     List<String>? deletedImage = [];
     lists = state.selectedDocument!.imageList;
+    state.masterListData
+        .removeWhere((element) => element.values.contains(path));
     if (!path.contains('/')) {
       //get deleted images
       deletedImage = state.deletedImagesName;
@@ -50,16 +53,16 @@ class DocumentCubit extends Cubit<DocumentState> {
     lists!.removeWhere((element) => element == path);
     state.selectedDataCollection?.removeWhere((key, value) => key == path);
     lists.add(null);
+
     //update data
     state.copyWith(
-        selectedDocument: state.selectedDocument!.copyWith(imageList: lists),
-        deletedImagesName: deletedImage);
-
-    print(state.deletedImagesName);
+      selectedDocument: state.selectedDocument!.copyWith(imageList: lists),
+      deletedImagesName: deletedImage,
+    );
   }
 
   void updateMasterImageData(List<Map<String, dynamic>> images) {
-    emit(state.copyWith(masterListData: images));
+    emit(state.copyWith(masterListData: images.toList()));
   }
 
   void updateSelectedIndex(int index) {
@@ -68,7 +71,7 @@ class DocumentCubit extends Cubit<DocumentState> {
       List<String>? selectedImage;
       var selectedDocument = state.docs![index];
       if (state.masterListData != null) {
-        final data = state.masterListData!
+        final data = state.masterListData
             .where((element) => element.containsKey(selectedDocument.id));
         selectedImage =
             data.map((e) => e[selectedDocument.id].toString()).toList();
@@ -83,21 +86,75 @@ class DocumentCubit extends Cubit<DocumentState> {
         emit(state.copyWith(selectedDataType: null));
       }
 
-      emit(state.copyWith(
+      emit(
+        state.copyWith(
           selectedIndex: index,
           selectedDocument: selectedDocument,
-          selectedMasterListData: selectedImage));
+          selectedMasterListData: selectedImage,
+        ),
+      );
     } catch (e) {}
   }
 
-  void updateDocumentStatus() {
-    final docs = state.docs;
-    final doc = state.selectedDocument!.copyWith(isSubmited: true);
+  void updateDocumentStatus(List<ImageUploadResponse> list) {
+    // final docs = state.docs;
+    // var doc = state.selectedDocument!.copyWith(isSubmited: true);
+    // docs![docs.indexWhere(
+    //     (element) => element.id == state.selectedDocument!.id)] = doc;
+    //update url to local
+    for (var element in list) {
+      //add to master document
+      state.masterListData.add({element.docId!: element.downloadUrl});
+      //change the path
+      state.selectedDocument!.imageList!
+          .removeWhere((data) => data == element.oldFileName);
+      state.selectedDocument!.imageList!.add(element.fileName);
 
-    docs![docs.indexWhere(
-        (element) => element.id == state.selectedDocument!.id)] = doc;
+      //update List Of all image
+      state.selectedMasterListData!.add(element.downloadUrl);
+    }
+    bool isSubmitted = false;
 
-    emit(state.copyWith(docs: docs, selectedDocument: doc));
+    // update isSubmit
+    List<DocumentDataModel> tempDocs = [];
+    if (state.selectedDocument != null) {
+      if (state.selectedDocument!.imageList != null) {
+        //if no data here just update the isUpdate
+        tempDocs = state.docs ?? [];
+
+        try {
+          //check if any data without null value.
+          state.selectedDocument?.imageList!
+              .firstWhere((element) => element != null);
+          //if yes. then update isSubmitted to true
+
+          isSubmitted = true;
+        } catch (e) {
+          //set it to false. because there is at least 1 data
+          isSubmitted = false;
+        }
+
+        tempDocs[tempDocs.indexWhere(
+                (element) => element.id == state.selectedDocument!.id)] =
+            state.selectedDocument!.copyWith(isSubmited: isSubmitted);
+      }
+    }
+
+    //reset deleted image list and update data
+    if (state.deletedImagesName!.isNotEmpty) {
+      for (var singleImage in state.deletedImagesName!) {
+        //remove data from master list
+        state.selectedMasterListData!
+            .removeWhere((element) => element.contains(singleImage));
+      }
+    }
+    emit(state.copyWith(
+      //clear list image
+      deletedImagesName: [],
+      docs: tempDocs,
+      selectedDocument:
+          state.selectedDocument!.copyWith(isSubmited: isSubmitted),
+    ));
   }
 
   void setupApplication(VisaApplicationModel visa) {

@@ -68,149 +68,174 @@ class _QuestionnaireSummaryPageState extends State<QuestionnaireSummaryPage> {
                   width: ScreenUtil().screenWidth / 2.2,
                   height: ScreenUtil().screenHeight,
                   padding:
-                      REdgeInsets.symmetric(horizontal: 50.w, vertical: 20.h),
-                  margin: EdgeInsets.symmetric(vertical: 40.h),
+                      REdgeInsets.only(left: 50.w, top: 20.h, bottom: 20.h),
+                  margin: EdgeInsets.only(top: 40.h, bottom: 40.h, right: 10.w),
                   decoration: BoxDecoration(
                     color: Colors.white.withAlpha(230),
                     borderRadius:
                         BorderRadius.horizontal(right: Radius.circular(10)),
                   ),
                   child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          widget.resultModel!.visaTitle!,
-                          style: TextStyle(
-                              fontSize: 30.sp,
-                              color: AppColor.primaryColor,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        20.verticalSpace,
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Description",
-                              style: TextStyle(
+                    child: Padding(
+                      padding: EdgeInsets.only(right: 10.w),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            widget.resultModel!.visaTitle!,
+                            style: TextStyle(
+                                fontSize: 30.sp,
+                                color: AppColor.primaryColor,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          20.verticalSpace,
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Description",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18.sp,
+                                    color: AppColor.primaryColor),
+                              ),
+                              10.verticalSpace,
+                              Text(
+                                "Indonesia immigration law details business visitor activities as the following (non-exhaustive): ",
+                                style: TextStyle(
                                   fontSize: 16.sp,
-                                  color: AppColor.primaryColor),
-                            ),
-                            10.verticalSpace,
-                            Text(
-                                "Indonesia immigration law details business visitor activities as the following (non-exhaustive): "),
-                            5.verticalSpace,
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
-                              children: qState.description!
-                                  .map((e) => Text("- " + e))
-                                  .toList(),
-                            ),
-                            5.verticalSpace,
-                            Text(
-                                "The activities being performed on a Short Term Visit Pass should not involve a contract of service or a contract for service"),
-                          ],
-                        ),
-                        20.verticalSpace,
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Document Required",
-                              style: TextStyle(
+                                ),
+                              ),
+                              10.verticalSpace,
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.min,
+                                children: qState.description!
+                                    .map((e) => Text(
+                                          "- " + e,
+                                          style: TextStyle(
+                                              fontSize: 16.sp,
+                                              fontWeight: FontWeight.bold),
+                                        ))
+                                    .toList(),
+                              ),
+                              10.verticalSpace,
+                              Text(
+                                "The activities being performed on a Short Term Visit Pass should not involve a contract of service or a contract for service",
+                                style: TextStyle(
                                   fontSize: 16.sp,
-                                  color: AppColor.primaryColor),
-                            ),
-                            10.verticalSpace,
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
-                              children: listData
-                                  .map((e) => Text("- " + e.header!))
-                                  .toList(),
-                            ),
-                          ],
-                        ),
-                        20.verticalSpace,
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Important Notes",
-                              style: TextStyle(
-                                  fontSize: 16.sp,
-                                  color: AppColor.primaryColor),
-                            ),
-                            10.verticalSpace,
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisSize: MainAxisSize.min,
-                              children: qState.importantNotes!
-                                  .map((e) => Text("- " + e))
-                                  .toList(),
-                            ),
-                          ],
-                        ),
-                        20.verticalSpace,
-                        MultiBlocListener(
-                          listeners: [
-                            BlocListener<ApplicationCubit, ApplicationState>(
-                              listener: (context, state) {
-                                // TODO: implement listener
-                              },
-                            ),
-                            BlocListener<UpdateApplicationCubit,
-                                UpdateApplicationState>(
-                              listener: (context, state) {
-                                state.maybeMap(
-                                    orElse: () {},
-                                    onCreateApplication: (value) {
+                                ),
+                              ),
+                            ],
+                          ),
+                          20.verticalSpace,
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Document Required",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 18.sp,
+                                    color: AppColor.primaryColor),
+                              ),
+                              10.verticalSpace,
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.min,
+                                children: listData
+                                    .map((e) => Text(
+                                          "- " + e.header!,
+                                          style: TextStyle(fontSize: 16.sp),
+                                        ))
+                                    .toList(),
+                              ),
+                            ],
+                          ),
+                          20.verticalSpace,
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Important Notes",
+                                style: TextStyle(
+                                    fontSize: 18.sp,
+                                    fontWeight: FontWeight.bold,
+                                    color: AppColor.primaryColor),
+                              ),
+                              10.verticalSpace,
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.min,
+                                children: qState.importantNotes!
+                                    .map((e) => Text(
+                                          "- " + e,
+                                          style: TextStyle(fontSize: 16.sp),
+                                        ))
+                                    .toList(),
+                              ),
+                            ],
+                          ),
+                          20.verticalSpace,
+                          MultiBlocListener(
+                            listeners: [
+                              BlocListener<ApplicationCubit, ApplicationState>(
+                                listener: (context, state) {
+                                  // TODO: implement listener
+                                },
+                              ),
+                              BlocListener<UpdateApplicationCubit,
+                                  UpdateApplicationState>(
+                                listener: (context, state) {
+                                  state.maybeMap(
+                                      orElse: () {},
+                                      onCreateApplication: (value) {
+                                        context
+                                            .read<ApplicationCubit>()
+                                            .setupApplication(value.visaApps);
+
+                                        AutoRouter.of(context).replaceAll([
+                                          DashboardRoute(),
+                                          PersonalInformation1Route(
+                                              firebaseDocId:
+                                                  value.visaApps.firebaseDocId!)
+                                        ]);
+                                      });
+                                },
+                              ),
+                            ],
+                            child: Container(),
+                          ),
+                          SizedBox(
+                            width: double.infinity,
+                            height: 45.h,
+                            child: upState.maybeMap(
+                              orElse: () {
+                                return PrimaryButton(
+                                    label: "Next",
+                                    labelStyle: TextStyle(fontSize: 15.sp),
+                                    onClick: () {
                                       context
                                           .read<ApplicationCubit>()
-                                          .setupApplication(value.visaApps);
-
-                                      AutoRouter.of(context).replaceAll([
-                                        DashboardRoute(),
-                                        PersonalInformation1Route(
-                                            firebaseDocId:
-                                                value.visaApps.firebaseDocId!)
-                                      ]);
+                                          .updateData(listData);
+                                      context
+                                          .read<UpdateApplicationCubit>()
+                                          .createUserApplication(
+                                              qState.listQuestionnaire!.last);
                                     });
                               },
-                            ),
-                          ],
-                          child: Container(),
-                        ),
-                        SizedBox(
-                          width: double.infinity,
-                          height: 45.h,
-                          child: upState.maybeMap(
-                            orElse: () {
-                              return PrimaryButton(
-                                  label: "Next",
+                              onLoading: (e) {
+                                return PrimaryButton(
                                   labelStyle: TextStyle(fontSize: 15.sp),
-                                  onClick: () {
-                                    context
-                                        .read<ApplicationCubit>()
-                                        .updateData(listData);
-                                    context
-                                        .read<UpdateApplicationCubit>()
-                                        .createUserApplication(
-                                            qState.listQuestionnaire!.last);
-                                  });
-                            },
-                            onLoading: (e) {
-                              return PrimaryButton(
-                                labelStyle: TextStyle(fontSize: 15.sp),
-                                height: 45.h,
-                                onClick: () {},
-                                label: "Loading . . .",
-                              );
-                            },
-                          ),
-                        )
-                      ],
+                                  height: 45.h,
+                                  onClick: () {},
+                                  label: "Loading . . .",
+                                );
+                              },
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 )

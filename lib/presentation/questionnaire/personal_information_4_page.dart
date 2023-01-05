@@ -93,10 +93,9 @@ class _PersonalInformation4PageState extends State<PersonalInformation4Page> {
                                         ),
                                       )
                                       .toList(),
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     labelText: "Multiple Entry Duration",
-                                    hintStyle:
-                                        const TextStyle(color: Colors.grey),
+                                    hintStyle: TextStyle(color: Colors.grey),
                                     hintText: "Multiple Entry Duration",
                                     fillColor: Colors.white70,
                                   ),
@@ -114,7 +113,8 @@ class _PersonalInformation4PageState extends State<PersonalInformation4Page> {
                                         final formData =
                                             _formKey.currentState!.value;
                                         final _current =
-                                            formData["MultiVisaDurationField"].toString();
+                                            formData["MultiVisaDurationField"]
+                                                .toString();
                                         context
                                             .read<ApplicationCubit>()
                                             .updatePersonalInformation4(

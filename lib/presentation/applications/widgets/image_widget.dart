@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ImageWidget extends StatefulWidget {
+class ImageWidget extends StatelessWidget {
   const ImageWidget(
       {super.key,
       this.image,
@@ -18,17 +18,6 @@ class ImageWidget extends StatefulWidget {
   final Function addNewImage;
 
   @override
-  State<ImageWidget> createState() => _ImageWidgetState();
-}
-
-class _ImageWidgetState extends State<ImageWidget> {
-  @override
-  void initState() {
-    print("INIT STATE");
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return BlocBuilder<DocumentCubit, DocumentState>(
       builder: (context, docState) {
@@ -37,41 +26,43 @@ class _ImageWidgetState extends State<ImageWidget> {
             (docState.selectedDocument!.attachment != null)
                 ? InkWell(
                     onTap: () async {
-                      widget.addNewImage();
+                      addNewImage();
                     },
                     child: Card(
+                      elevation: 5,
                       clipBehavior: Clip.hardEdge,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20)),
+                          borderRadius: BorderRadius.circular(10)),
                       // color: Colors.black,
                       child: ShowPdf(
-                        name: widget.image,
+                        name: image,
                         state: docState,
                       ),
                     ),
                   )
                 : InkWell(
                     onTap: () async {
-                      widget.addNewImage();
+                      addNewImage();
                     },
                     child: Card(
+                      elevation: 5,
                       clipBehavior: Clip.hardEdge,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20)),
+                          borderRadius: BorderRadius.circular(10)),
                       // color: Colors.black,
                       child: ShowImage(
-                        name: widget.image,
+                        name: image,
                         state: docState,
                       ),
                     ),
                   ),
-            (widget.image == null)
+            (image == null)
                 ? const SizedBox()
                 : Container(
                     margin: const EdgeInsets.all(10),
                     child: InkWell(
                       onTap: () {
-                        widget.deleteImage();
+                        deleteImage();
                       },
                       child: const CircleAvatar(
                         radius: 15,
@@ -91,24 +82,25 @@ class _ImageWidgetState extends State<ImageWidget> {
   }
 }
 
-class ShowImage extends StatefulWidget {
+class ShowImage extends StatelessWidget {
   const ShowImage({super.key, required this.state, required this.name});
   final DocumentState state;
   final String? name;
 
-  @override
-  State<ShowImage> createState() => _ShowImageState();
-}
-
-class _ShowImageState extends State<ShowImage> {
   InkWell imageFromFile(String imageUrl) {
     return InkWell(
       onTap: () {},
       child: kIsWeb
-          ? Image.memory(widget.state.selectedDataCollection![imageUrl])
+          ? Image.memory(
+              state.selectedDataCollection![imageUrl],
+              fit: BoxFit.cover,
+              width: double.infinity,
+              height: double.infinity,
+            )
           : Image.file(
               File(imageUrl),
               width: double.infinity,
+              height: double.infinity,
               fit: BoxFit.cover,
             ),
     );
@@ -116,19 +108,19 @@ class _ShowImageState extends State<ShowImage> {
 
   @override
   Widget build(BuildContext context) {
-    if (widget.name == null) {
+    if (name == null) {
       return Image.asset(
         'assets/imgs/documentpage/upload.png',
         fit: BoxFit.cover,
         width: double.infinity,
         height: double.infinity,
       );
-    } else if (widget.name!.contains('/')) {
-      return imageFromFile(widget.name!);
+    } else if (name!.contains('/')) {
+      return imageFromFile(name!);
     } else {
       return Image.network(
-        widget.state.selectedMasterListData!.firstWhere(
-          (element) => element.contains(widget.name!),
+        state.selectedMasterListData!.firstWhere(
+          (element) => element.contains(name!),
         ),
         fit: BoxFit.cover,
         width: double.infinity,
@@ -160,6 +152,7 @@ class _ShowPdfState extends State<ShowPdf> {
         child: Image.file(
           File(imageUrl),
           width: double.infinity,
+          height: double.infinity,
           fit: BoxFit.cover,
         ));
   }
