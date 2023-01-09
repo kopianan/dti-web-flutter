@@ -12,6 +12,8 @@ class UpdateApplicationState with _$UpdateApplicationState {
       String firebaseDocId) = _OnSubmitApplication;
   const factory UpdateApplicationState.onUpdateApplication() =
       _OnUpdateApplication;
+  const factory UpdateApplicationState.onUpdateMultiVisa(String message) =
+      _OnUpdateMultiVisa;
   const factory UpdateApplicationState.onUpdateGuarantor() = _OnUpdateGuarantor;
   const factory UpdateApplicationState.onDeleteSingleImage(String message) =
       _OnDeleteSingleImage;

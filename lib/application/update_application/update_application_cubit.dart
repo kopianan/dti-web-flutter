@@ -98,8 +98,14 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
     //update result
   }
 
-  void updateMultiVisaDuration(String value) async {
+  void updateMultiVisaDuration(String duration, String firebaseDocId) async {
     emit(const UpdateApplicationState.onLoading());
+    final result =
+        await iUpdateApplication.updateMultiVisa(duration, firebaseDocId);
+    result.fold(
+      (l) => emit(UpdateApplicationState.onError(l)),
+      (r) => emit(UpdateApplicationState.onUpdateMultiVisa(r)),
+    );
   }
 
   void updateGuaranotr(VisaApplicationModel visa) async {

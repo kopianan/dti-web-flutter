@@ -28,6 +28,7 @@ mixin _$DocumentState {
   Map<String, dynamic>? get selectedDataCollection =>
       throw _privateConstructorUsedError;
   int? get selectedDataType => throw _privateConstructorUsedError;
+  bool get isAllRead => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DocumentStateCopyWith<DocumentState> get copyWith =>
@@ -48,7 +49,8 @@ abstract class $DocumentStateCopyWith<$Res> {
       List<String>? deletedImagesName,
       DocumentDataModel? selectedDocument,
       Map<String, dynamic>? selectedDataCollection,
-      int? selectedDataType});
+      int? selectedDataType,
+      bool isAllRead});
 
   $VisaApplicationModelCopyWith<$Res>? get visa;
   $DocumentDataModelCopyWith<$Res>? get selectedDocument;
@@ -74,6 +76,7 @@ class _$DocumentStateCopyWithImpl<$Res>
     Object? selectedDocument = freezed,
     Object? selectedDataCollection = freezed,
     Object? selectedDataType = freezed,
+    Object? isAllRead = freezed,
   }) {
     return _then(_value.copyWith(
       visa: visa == freezed
@@ -112,6 +115,10 @@ class _$DocumentStateCopyWithImpl<$Res>
           ? _value.selectedDataType
           : selectedDataType // ignore: cast_nullable_to_non_nullable
               as int?,
+      isAllRead: isAllRead == freezed
+          ? _value.isAllRead
+          : isAllRead // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 
@@ -154,7 +161,8 @@ abstract class _$$_DocumentStateCopyWith<$Res>
       List<String>? deletedImagesName,
       DocumentDataModel? selectedDocument,
       Map<String, dynamic>? selectedDataCollection,
-      int? selectedDataType});
+      int? selectedDataType,
+      bool isAllRead});
 
   @override
   $VisaApplicationModelCopyWith<$Res>? get visa;
@@ -184,6 +192,7 @@ class __$$_DocumentStateCopyWithImpl<$Res>
     Object? selectedDocument = freezed,
     Object? selectedDataCollection = freezed,
     Object? selectedDataType = freezed,
+    Object? isAllRead = freezed,
   }) {
     return _then(_$_DocumentState(
       visa: visa == freezed
@@ -222,6 +231,10 @@ class __$$_DocumentStateCopyWithImpl<$Res>
           ? _value.selectedDataType
           : selectedDataType // ignore: cast_nullable_to_non_nullable
               as int?,
+      isAllRead: isAllRead == freezed
+          ? _value.isAllRead
+          : isAllRead // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -238,7 +251,8 @@ class _$_DocumentState implements _DocumentState {
       this.deletedImagesName,
       this.selectedDocument,
       this.selectedDataCollection,
-      this.selectedDataType});
+      this.selectedDataType,
+      this.isAllRead = false});
 
   @override
   final VisaApplicationModel? visa;
@@ -259,10 +273,13 @@ class _$_DocumentState implements _DocumentState {
   final Map<String, dynamic>? selectedDataCollection;
   @override
   final int? selectedDataType;
+  @override
+  @JsonKey()
+  final bool isAllRead;
 
   @override
   String toString() {
-    return 'DocumentState(visa: $visa, docs: $docs, selectedIndex: $selectedIndex, masterListData: $masterListData, selectedMasterListData: $selectedMasterListData, deletedImagesName: $deletedImagesName, selectedDocument: $selectedDocument, selectedDataCollection: $selectedDataCollection, selectedDataType: $selectedDataType)';
+    return 'DocumentState(visa: $visa, docs: $docs, selectedIndex: $selectedIndex, masterListData: $masterListData, selectedMasterListData: $selectedMasterListData, deletedImagesName: $deletedImagesName, selectedDocument: $selectedDocument, selectedDataCollection: $selectedDataCollection, selectedDataType: $selectedDataType, isAllRead: $isAllRead)';
   }
 
   @override
@@ -285,7 +302,8 @@ class _$_DocumentState implements _DocumentState {
             const DeepCollectionEquality()
                 .equals(other.selectedDataCollection, selectedDataCollection) &&
             const DeepCollectionEquality()
-                .equals(other.selectedDataType, selectedDataType));
+                .equals(other.selectedDataType, selectedDataType) &&
+            const DeepCollectionEquality().equals(other.isAllRead, isAllRead));
   }
 
   @override
@@ -299,7 +317,8 @@ class _$_DocumentState implements _DocumentState {
       const DeepCollectionEquality().hash(deletedImagesName),
       const DeepCollectionEquality().hash(selectedDocument),
       const DeepCollectionEquality().hash(selectedDataCollection),
-      const DeepCollectionEquality().hash(selectedDataType));
+      const DeepCollectionEquality().hash(selectedDataType),
+      const DeepCollectionEquality().hash(isAllRead));
 
   @JsonKey(ignore: true)
   @override
@@ -317,7 +336,8 @@ abstract class _DocumentState implements DocumentState {
       final List<String>? deletedImagesName,
       final DocumentDataModel? selectedDocument,
       final Map<String, dynamic>? selectedDataCollection,
-      final int? selectedDataType}) = _$_DocumentState;
+      final int? selectedDataType,
+      final bool isAllRead}) = _$_DocumentState;
 
   @override
   VisaApplicationModel? get visa;
@@ -337,6 +357,8 @@ abstract class _DocumentState implements DocumentState {
   Map<String, dynamic>? get selectedDataCollection;
   @override
   int? get selectedDataType;
+  @override
+  bool get isAllRead;
   @override
   @JsonKey(ignore: true)
   _$$_DocumentStateCopyWith<_$_DocumentState> get copyWith =>

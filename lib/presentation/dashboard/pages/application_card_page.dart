@@ -24,39 +24,75 @@ class _ApplicationCardPageState extends State<ApplicationCardPage> {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: Container(
-        width: ScreenUtil().screenWidth / 3,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        foregroundColor: Colors.black,
+        title: Text("Application List"),
+      ),
+      body: SizedBox(
+        width: ScreenUtil().screenWidth,
         child: BlocConsumer<AppListCubit, AppListState>(
-          listener: (context, state) {
-            // TODO: implement listener
-            print(state);
-          },
+          listener: (context, state) {},
           builder: (context, state) {
             return state.maybeMap(
               orElse: () {
-                return Container(
-                  child: Text("TE"),
-                );
+                return Container();
               },
               onGetUsersApplication: (e) {
-                return ListView.builder(
-                  itemCount: e.apps.length,
-                  itemBuilder: (context, index) {
-                    return Container(
-                        child: VisaApplicationCard(
-                      visaApps: e.apps[index],
-                      onCardClick: () {
-                        
-                        // context
-                        //     .read<ApplicationCubit>()
-                        //     .setupApplication(e.apps[index]);
-                        AutoRouter.of(context).push(PersonalInformation1Route(
-                            firebaseDocId: e.apps[index].firebaseDocId!));
-                      },
-                    ));
-                  },
+                return SingleChildScrollView(
+                  child: Container(
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.symmetric(vertical: 10),
+                    child: Wrap(
+                        verticalDirection: VerticalDirection.down,
+                        crossAxisAlignment: WrapCrossAlignment.center,
+                        alignment: WrapAlignment.start,
+                        children: e.apps
+                            .map((element) => Container(
+                                  width: 500,
+                                  child: VisaApplicationCard(
+                                    visaApps: element,
+                                    onCardClick: () {
+                                      // context
+                                      //     .read<ApplicationCubit>()
+                                      //     .setupApplication(element);
+                                      AutoRouter.of(context).push(
+                                          PersonalInformation1Route(
+                                              firebaseDocId:
+                                                  element.firebaseDocId!));
+                                    },
+                                  ),
+                                ))
+                            .toList()),
+                  ),
                 );
+
+                // GridView.builder(
+                //   padding: const EdgeInsets.symmetric(horizontal: 30),
+                //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                //     crossAxisCount: 2,
+                //     mainAxisSpacing: 10.h,
+                //     crossAxisSpacing: 10.h,
+                //     childAspectRatio: 2
+                //   ),
+                //   itemCount: e.apps.length,
+                //   itemBuilder: (context, index) {
+                //     return VisaApplicationCard(
+                //       visaApps: e.apps[index],
+                //       onCardClick: () {
+                //         // context
+                //         //     .read<ApplicationCubit>()
+                //         //     .setupApplication(e.apps[index]);
+                //         AutoRouter.of(context).push(PersonalInformation1Route(
+                //             firebaseDocId: e.apps[index].firebaseDocId!));
+                //       },
+                //     );
+                //   },
+                // );
               },
             );
           },

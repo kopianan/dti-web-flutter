@@ -18,9 +18,6 @@ class VisaApplicationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // if (visaApplication.subTitle!.length < 35) {
-    //   _subtitle = visaApplication.subTitle! + '\n';
-    // }
     return GestureDetector(
       onTap: () {
         onCardClick!();
@@ -33,6 +30,7 @@ class VisaApplicationCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
         ),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Container(
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),

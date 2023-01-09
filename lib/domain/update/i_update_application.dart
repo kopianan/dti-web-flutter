@@ -14,7 +14,8 @@ abstract class IUpdateApplication {
   Future<Either<String, String>> deleteSingleImage(
       String imageName, String docId, String appId);
   Future<Either<String, String>> updateGuarantor(VisaApplicationModel visa);
-  Future<Either<String, String>> updateMultiVisa(String duration);
+  Future<Either<String, String>> updateMultiVisa(
+      String duration, String firebaseDocId);
   Future<Either<Failures, List<ImageUploadResponse>>> uploadImagesAndUpdateData(
       VisaApplicationModel visa,
       DocumentDataModel doc,

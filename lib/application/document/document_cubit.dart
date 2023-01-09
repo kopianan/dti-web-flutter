@@ -1,6 +1,3 @@
-import 'dart:collection';
-import 'dart:developer';
-
 import 'package:bloc/bloc.dart';
 import 'package:dti_web/domain/core/document_data_model.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
@@ -34,7 +31,9 @@ class DocumentCubit extends Cubit<DocumentState> {
       list![index] = path;
     }
 
-    emit(state.copyWith.selectedDocument!(imageList: list));
+    emit(state.copyWith.selectedDocument!(
+      imageList: list,
+    ));
   }
 
   void removePhotoDocument(String path, int index) {
@@ -91,9 +90,28 @@ class DocumentCubit extends Cubit<DocumentState> {
           selectedIndex: index,
           selectedDocument: selectedDocument,
           selectedMasterListData: selectedImage,
+          isAllRead: checkIfCanSubmit(),
         ),
       );
     } catch (e) {}
+  }
+
+  ///check if all data complete
+  ///if anyFalse return -1, then all data is updated
+  bool checkIfCanSubmit({List<DocumentDataModel>? models}) {
+    late int anyFalse;
+    if (models == null) {
+      anyFalse =
+          state.docs!.indexWhere((element) => element.isSubmited == false);
+    } else {
+      anyFalse = models.indexWhere((element) => element.isSubmited == false);
+    }
+
+    if (anyFalse == -1) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   void updateDocumentStatus(List<ImageUploadResponse> list) {
@@ -152,6 +170,7 @@ class DocumentCubit extends Cubit<DocumentState> {
       //clear list image
       deletedImagesName: [],
       docs: tempDocs,
+      isAllRead: checkIfCanSubmit(models: tempDocs),
       selectedDocument:
           state.selectedDocument!.copyWith(isSubmited: isSubmitted),
     ));
@@ -181,7 +200,7 @@ class DocumentCubit extends Cubit<DocumentState> {
         imageList: images,
       ));
     }
-    print(visa.applicationID);
+
     if (visa.documentsData != null) {
       for (var documentFromVisa in visa.documentsData!) {
         try {
@@ -207,6 +226,11 @@ class DocumentCubit extends Cubit<DocumentState> {
         }
       }
     }
-    emit(state.copyWith(visa: visa, docs: modelsDocument));
+
+    emit(state.copyWith(
+      visa: visa,
+      docs: modelsDocument,
+      isAllRead: checkIfCanSubmit(models: modelsDocument),
+    ));
   }
 }

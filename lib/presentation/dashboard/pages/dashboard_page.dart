@@ -9,6 +9,7 @@ import 'package:dti_web/domain/questionnaire/questionnaire_data_model.dart';
 
 import 'package:dti_web/domain/questionnaire/raw_data.dart';
 import 'package:dti_web/injection.dart';
+import 'package:dti_web/presentation/dashboard/pages/application_card_page.dart';
 import 'package:dti_web/routes/app_router.dart';
 
 import 'package:dti_web/utils/app_color.dart';
@@ -30,6 +31,8 @@ class _DashboardPageState extends State<DashboardPage> {
   VisaApplicationModel? lasVisa;
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return BlocProvider(
       create: (context) => dashboardCubit..getLastData(),
       child: BlocListener<DashboardCubit, DashboardState>(
@@ -269,7 +272,23 @@ class _DashboardPageState extends State<DashboardPage> {
                             20.verticalSpace,
                             InkWell(
                               onTap: () {
-                                context.router.push(ApplicationCardRoute());
+                                // context.router.push(ApplicationCardRoute());
+                                showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: Colors.white,
+                                      ),
+                                      margin: const EdgeInsets.symmetric(
+                                          horizontal: 100, vertical: 100),
+                                      width: width,
+                                      height: height,
+                                      child: const ApplicationCardPage(),
+                                    );
+                                  },
+                                );
                               },
                               child: Container(
                                 margin: EdgeInsets.symmetric(horizontal: 20),

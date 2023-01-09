@@ -32,7 +32,7 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   void loginWithEmailAndPassword(String email, String password) async {
-    emit(AuthState.loading());
+    emit(const AuthState.loading());
 
     final result =
         await iAuth.loginAndGetToken(email: email, password: password);
@@ -77,7 +77,7 @@ class AuthCubit extends Cubit<AuthState> {
     String password,
     String confirmPassword,
   ) async {
-    emit(AuthState.loading());
+    emit(const AuthState.loading());
 
     final result = await iAuth.registerNewUser(
         email: email, password: password, confirmPassword: confirmPassword);

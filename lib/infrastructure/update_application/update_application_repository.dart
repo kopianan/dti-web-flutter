@@ -339,29 +339,29 @@ class IUpdateApplicationRepository extends IUpdateApplication {
   }
 
   @override
-  Future<Either<String, String>> updateMultiVisa(String duration) async {
-    //   dio = Dio();
-    //   final storage = Storage();
+  Future<Either<String, String>> updateMultiVisa(
+      String duration, String firebaseDocId) async {
+    dio = Dio();
+    final storage = Storage();
 
-    //   try {
-    //     final result = await dio!.post(
-    //         "${Constant.baseUrl}/application/guarantor/${visa.firebaseDocId}/",
-    //         options: Options(
-    //           headers: {
-    //             "Authorization": "Bearer ${storage.getToken()}",
-    //           },
-    //         ),
-    //         data: {"guarantorDTI": visa.guarantorDTI});
+    try {
+      final result = await dio!.post(
+          "${Constant.baseUrl}/application/multiVisaDuration/${firebaseDocId}",
+          options: Options(
+            headers: {
+              "Authorization": "Bearer ${storage.getToken()}",
+            },
+          ),
+          data: {"multiVisaDuration": duration});
 
-    //     if (result.data['data'] == null) {
-    //       //ERROR
-    //       return Left(result.data['error']);
-    //     } else {
-    //       return Right(result.data['data']['message']);
-    //     }
-    //   } on Exception catch (e) {
-    //     return Left("");
-    //   }
-    throw Exception();
+      if (result.data['data'] == null) {
+        //ERROR
+        return Left(result.data['error']);
+      } else {
+        return Right(result.data['data']['message']);
+      }
+    } on Exception catch (e) {
+      return Left("");
+    }
   }
 }

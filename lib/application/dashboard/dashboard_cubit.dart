@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:dti_web/domain/core/simple_visa_model.dart';
-import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/domain/dashboard/i_dashboard.dart';
 import 'package:dti_web/domain/global/failures.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -22,7 +21,7 @@ class DashboardCubit extends Cubit<DashboardState> {
         (l) => emit(DashboardState.error(l)),
         (r) => emit(DashboardState.onGetSingleData(r)),
       );
-    } on Exception catch (e) {
+    } on Exception {
       emit(DashboardState.error(Failures.serverError()));
     }
   }

@@ -95,19 +95,31 @@ class LeftSide extends StatelessWidget {
                     .toList(),
               ),
               40.verticalSpace,
-              Container(
-                  width: double.infinity,
-                  height: 45,
-                  margin: EdgeInsets.symmetric(vertical: 20),
-                  child: PrimaryButton(
-                    onClick: () {
-                      AutoRouter.of(context).push(ApplicationDetailRoute(
-                        firebaseDocId: docState.visa!.firebaseDocId!,
-                      ));
-                    },
-                    label: "Submit",
-                    labelStyle: TextStyle(fontSize: 20),
-                  ))
+              BlocBuilder<DocumentCubit, DocumentState>(
+                builder: (context, state) {
+                  return Container(
+                      width: double.infinity,
+                      height: 45,
+                      margin: const EdgeInsets.symmetric(vertical: 20),
+                      child: state.isAllRead
+                          ? PrimaryButton(
+                              onClick: () {
+                                AutoRouter.of(context)
+                                    .push(ApplicationDetailRoute(
+                                  firebaseDocId: docState.visa!.firebaseDocId!,
+                                ));
+                              },
+                              label: "Submit",
+                              labelStyle: const TextStyle(fontSize: 20),
+                            )
+                          : PrimaryButton(
+                              onClick: () {},
+                              bgColor: Colors.grey,
+                              label: "Submit",
+                              labelStyle: const TextStyle(fontSize: 20),
+                            ));
+                },
+              )
             ],
           ),
         );
