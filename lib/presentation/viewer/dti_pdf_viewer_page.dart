@@ -1,10 +1,9 @@
 import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
+import 'package:dti_web/routes/app_router.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class DTIPdfViewerPage extends StatelessWidget {
@@ -12,11 +11,13 @@ class DTIPdfViewerPage extends StatelessWidget {
   final String imageUrl;
   final bool isNetwork;
 
-  const DTIPdfViewerPage({
-    super.key,
-    required this.imageUrl,
-    this.isNetwork = false,
-  });
+  ///Null if no bytes from web
+  final Uint8List? bytesImage;
+  const DTIPdfViewerPage(
+      {super.key,
+      required this.imageUrl,
+      this.isNetwork = false,
+      this.bytesImage});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,8 @@ class DTIPdfViewerPage extends StatelessWidget {
         appBar: AppBar(
           leading: IconButton(
               onPressed: () {
-                AutoRouter.of(context).pop();
+                AutoRouter.of(context)
+                    .popUntilRouteWithName(ApplicationDetailRoute.name);
               },
               icon: Icon(Icons.close)),
           backgroundColor: Colors.white,
@@ -34,7 +36,8 @@ class DTIPdfViewerPage extends StatelessWidget {
             ? SfPdfViewer.network(
                 imageUrl,
               )
-            : SfPdfViewer.file(File(imageUrl)));
+            : (kIsWeb)
+                ? SfPdfViewer.memory(bytesImage!)
+                : SfPdfViewer.file(File(imageUrl)));
   }
 }
-  

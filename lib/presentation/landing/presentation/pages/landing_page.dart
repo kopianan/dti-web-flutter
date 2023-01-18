@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class LandingPage extends StatefulWidget {
   static const String routeName = '/landing-page';
@@ -519,9 +520,17 @@ class _LandingPageState extends State<LandingPage> {
                       Text("Copyright © 2022 DoorToID. All Rights Reserved."),
                       Row(
                         children: [
-                          InkWell(onTap: () {}, child: Text("Terms of Use")),
+                          InkWell(
+                              onTap: () {
+                                launch("https://doortoid.com/term-of-use/");
+                              },
+                              child: Text("Terms of Use")),
                           30.horizontalSpace,
-                          InkWell(onTap: () {}, child: Text("Privacy Policy")),
+                          InkWell(
+                              onTap: () {
+                                launch("https://doortoid.com/privacy-policy/");
+                              },
+                              child: Text("Privacy Policy")),
                         ],
                       )
                     ],

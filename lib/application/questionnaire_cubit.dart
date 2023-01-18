@@ -8,7 +8,7 @@ import 'package:injectable/injectable.dart';
 part 'questionnaire_state.dart';
 part 'questionnaire_cubit.freezed.dart';
 
-@injectable
+@lazySingleton
 class QuestionnaireCubit extends Cubit<QuestionnaireState> {
   QuestionnaireCubit() : super(QuestionnaireState.initial());
 

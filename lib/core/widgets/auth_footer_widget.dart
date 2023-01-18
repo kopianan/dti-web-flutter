@@ -2,6 +2,7 @@ import 'package:dti_web/core/widgets/social_button_widget.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AuthFooterWidget extends StatelessWidget {
   const AuthFooterWidget({
@@ -32,9 +33,18 @@ class AuthFooterWidget extends StatelessWidget {
             Text("Copyright © 2022 DoorToID. All Rights Reserved."),
             Row(
               children: [
-                InkWell(onTap: () {}, child: Text("Terms of Use")),
+                InkWell(
+                    onTap: () {
+                      launch("https://doortoid.com/term-of-use/");
+                    },
+                    child: Text("Terms of Use")),
                 30.horizontalSpace,
-                InkWell(onTap: () {}, child: Text("Privacy Policy")),
+                InkWell(
+                  onTap: () {
+                    launch("https://doortoid.com/privacy-policy/");
+                  },
+                  child: Text("Privacy Policy"),
+                ),
               ],
             )
           ],

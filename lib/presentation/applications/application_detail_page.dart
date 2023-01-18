@@ -20,10 +20,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ApplicationDetailPage extends StatefulWidget {
-  static const String routeName = '/application-detail';
+  static const String routeName = '/application-detail/:id';
   const ApplicationDetailPage({
     super.key,
-    required this.firebaseDocId,
+    @PathParam('id') required this.firebaseDocId,
   });
   final String firebaseDocId;
 
@@ -33,7 +33,7 @@ class ApplicationDetailPage extends StatefulWidget {
 
 class _ApplicationDetailPageState extends State<ApplicationDetailPage> {
   @override
-  void initState() {
+  void initState() { 
     super.initState();
   }
 
@@ -316,8 +316,12 @@ class _SuccessBodyState extends State<SuccessBody> {
                             if (e.attachment != null &&
                                 e.attachment!.contains('.doc')) {
                               // file is document, not picture
-                              AutoRouter.of(context).push(DTIPdfViewerRoute(
-                                  imageUrl: filtered.single, isNetwork: true));
+                              AutoRouter.of(context).navigate(
+                                DTIPdfViewerRoute(
+                                  imageUrl: filtered.single,
+                                  isNetwork: true,
+                                ),
+                              );
                             } else {
                               showDialog(
                                 context: context,
@@ -427,7 +431,7 @@ class _SuccessBodyState extends State<SuccessBody> {
                                     as Map<String, dynamic>)
                                 .containsKey('EVISA')) as Map<String, dynamic>;
                         if (data['EVISA'].toString().contains('.pdf')) {
-                          AutoRouter.of(context).push(DTIPdfViewerRoute(
+                          AutoRouter.of(context).navigate(DTIPdfViewerRoute(
                               imageUrl: data['EVISA'].toString(),
                               isNetwork: true));
                         } else {

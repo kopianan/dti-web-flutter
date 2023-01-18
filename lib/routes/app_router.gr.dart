@@ -30,7 +30,10 @@ class _$AppRouter extends RootStackRouter {
       );
     },
     ApplicationDetailRoute.name: (routeData) {
-      final args = routeData.argsAs<ApplicationDetailRouteArgs>();
+      final pathParams = routeData.inheritedPathParams;
+      final args = routeData.argsAs<ApplicationDetailRouteArgs>(
+          orElse: () => ApplicationDetailRouteArgs(
+              firebaseDocId: pathParams.getString('id')));
       return MaterialPageX<dynamic>(
         routeData: routeData,
         child: ApplicationDetailPage(
@@ -144,6 +147,14 @@ class _$AppRouter extends RootStackRouter {
         child: const UploadDocumentPage(),
       );
     },
+    NumberRegistrationRoute.name: (routeData) {
+      final args = routeData.argsAs<NumberRegistrationRouteArgs>(
+          orElse: () => const NumberRegistrationRouteArgs());
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: NumberRegistrationPage(key: args.key),
+      );
+    },
     DTIPdfViewerRoute.name: (routeData) {
       final args = routeData.argsAs<DTIPdfViewerRouteArgs>();
       return MaterialPageX<dynamic>(
@@ -152,8 +163,8 @@ class _$AppRouter extends RootStackRouter {
           key: args.key,
           imageUrl: args.imageUrl,
           isNetwork: args.isNetwork,
+          bytesImage: args.bytesImage,
         ),
-        fullscreenDialog: true,
       );
     },
     PhotoViewRoute.name: (routeData) {
@@ -165,6 +176,7 @@ class _$AppRouter extends RootStackRouter {
           images: args.images,
           isNetwork: args.isNetwork,
           isAsset: args.isAsset,
+          imagesBytes: args.imagesBytes,
         ),
         fullscreenDialog: true,
       );
@@ -210,9 +222,14 @@ class _$AppRouter extends RootStackRouter {
       );
     },
     OTPRoute.name: (routeData) {
+      final args = routeData.argsAs<OTPRouteArgs>();
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const OTPPage(),
+        child: OTPPage(
+          key: args.key,
+          code: args.code,
+          number: args.number,
+        ),
       );
     },
     LandingRoute.name: (routeData) {
@@ -239,7 +256,7 @@ class _$AppRouter extends RootStackRouter {
   List<RouteConfig> get routes => [
         RouteConfig(
           SplashScreenRoute.name,
-          path: '/splash-screen-page',
+          path: '/',
         ),
         RouteConfig(
           DashboardRoute.name,
@@ -247,7 +264,7 @@ class _$AppRouter extends RootStackRouter {
         ),
         RouteConfig(
           ApplicationDetailRoute.name,
-          path: '/application-detail',
+          path: '/application-detail/:id',
         ),
         RouteConfig(
           SignatureRoute.name,
@@ -287,11 +304,15 @@ class _$AppRouter extends RootStackRouter {
         ),
         RouteConfig(
           SignInRoute.name,
-          path: '/',
+          path: '/login',
         ),
         RouteConfig(
           UploadDocumentRoute.name,
           path: '/upload-document',
+        ),
+        RouteConfig(
+          NumberRegistrationRoute.name,
+          path: '/number-registration',
         ),
         RouteConfig(
           DTIPdfViewerRoute.name,
@@ -342,7 +363,7 @@ class SplashScreenRoute extends PageRouteInfo<void> {
   const SplashScreenRoute()
       : super(
           SplashScreenRoute.name,
-          path: '/splash-screen-page',
+          path: '/',
         );
 
   static const String name = 'SplashScreenRoute';
@@ -368,11 +389,12 @@ class ApplicationDetailRoute extends PageRouteInfo<ApplicationDetailRouteArgs> {
     required String firebaseDocId,
   }) : super(
           ApplicationDetailRoute.name,
-          path: '/application-detail',
+          path: '/application-detail/:id',
           args: ApplicationDetailRouteArgs(
             key: key,
             firebaseDocId: firebaseDocId,
           ),
+          rawPathParams: {'id': firebaseDocId},
         );
 
   static const String name = 'ApplicationDetailRoute';
@@ -698,7 +720,7 @@ class SignInRoute extends PageRouteInfo<void> {
   const SignInRoute()
       : super(
           SignInRoute.name,
-          path: '/',
+          path: '/login',
         );
 
   static const String name = 'SignInRoute';
@@ -717,12 +739,38 @@ class UploadDocumentRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [NumberRegistrationPage]
+class NumberRegistrationRoute
+    extends PageRouteInfo<NumberRegistrationRouteArgs> {
+  NumberRegistrationRoute({Key? key})
+      : super(
+          NumberRegistrationRoute.name,
+          path: '/number-registration',
+          args: NumberRegistrationRouteArgs(key: key),
+        );
+
+  static const String name = 'NumberRegistrationRoute';
+}
+
+class NumberRegistrationRouteArgs {
+  const NumberRegistrationRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'NumberRegistrationRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for
 /// [DTIPdfViewerPage]
 class DTIPdfViewerRoute extends PageRouteInfo<DTIPdfViewerRouteArgs> {
   DTIPdfViewerRoute({
     Key? key,
     required String imageUrl,
     bool isNetwork = false,
+    Uint8List? bytesImage,
   }) : super(
           DTIPdfViewerRoute.name,
           path: '/dti-pdf-viewer',
@@ -730,6 +778,7 @@ class DTIPdfViewerRoute extends PageRouteInfo<DTIPdfViewerRouteArgs> {
             key: key,
             imageUrl: imageUrl,
             isNetwork: isNetwork,
+            bytesImage: bytesImage,
           ),
         );
 
@@ -741,6 +790,7 @@ class DTIPdfViewerRouteArgs {
     this.key,
     required this.imageUrl,
     this.isNetwork = false,
+    this.bytesImage,
   });
 
   final Key? key;
@@ -749,9 +799,11 @@ class DTIPdfViewerRouteArgs {
 
   final bool isNetwork;
 
+  final Uint8List? bytesImage;
+
   @override
   String toString() {
-    return 'DTIPdfViewerRouteArgs{key: $key, imageUrl: $imageUrl, isNetwork: $isNetwork}';
+    return 'DTIPdfViewerRouteArgs{key: $key, imageUrl: $imageUrl, isNetwork: $isNetwork, bytesImage: $bytesImage}';
   }
 }
 
@@ -763,6 +815,7 @@ class PhotoViewRoute extends PageRouteInfo<PhotoViewRouteArgs> {
     required List<String> images,
     bool isNetwork = true,
     bool isAsset = false,
+    List<Uint8List>? imagesBytes,
   }) : super(
           PhotoViewRoute.name,
           path: '/photo-view',
@@ -771,6 +824,7 @@ class PhotoViewRoute extends PageRouteInfo<PhotoViewRouteArgs> {
             images: images,
             isNetwork: isNetwork,
             isAsset: isAsset,
+            imagesBytes: imagesBytes,
           ),
         );
 
@@ -783,6 +837,7 @@ class PhotoViewRouteArgs {
     required this.images,
     this.isNetwork = true,
     this.isAsset = false,
+    this.imagesBytes,
   });
 
   final Key? key;
@@ -793,9 +848,11 @@ class PhotoViewRouteArgs {
 
   final bool isAsset;
 
+  final List<Uint8List>? imagesBytes;
+
   @override
   String toString() {
-    return 'PhotoViewRouteArgs{key: $key, images: $images, isNetwork: $isNetwork, isAsset: $isAsset}';
+    return 'PhotoViewRouteArgs{key: $key, images: $images, isNetwork: $isNetwork, isAsset: $isAsset, imagesBytes: $imagesBytes}';
   }
 }
 
@@ -933,14 +990,41 @@ class ResetRouteArgs {
 
 /// generated route for
 /// [OTPPage]
-class OTPRoute extends PageRouteInfo<void> {
-  const OTPRoute()
-      : super(
+class OTPRoute extends PageRouteInfo<OTPRouteArgs> {
+  OTPRoute({
+    Key? key,
+    required CountryCode code,
+    required String number,
+  }) : super(
           OTPRoute.name,
           path: '/otp-page',
+          args: OTPRouteArgs(
+            key: key,
+            code: code,
+            number: number,
+          ),
         );
 
   static const String name = 'OTPRoute';
+}
+
+class OTPRouteArgs {
+  const OTPRouteArgs({
+    this.key,
+    required this.code,
+    required this.number,
+  });
+
+  final Key? key;
+
+  final CountryCode code;
+
+  final String number;
+
+  @override
+  String toString() {
+    return 'OTPRouteArgs{key: $key, code: $code, number: $number}';
+  }
 }
 
 /// generated route for

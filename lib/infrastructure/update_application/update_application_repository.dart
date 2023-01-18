@@ -10,6 +10,7 @@ import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/domain/global/failures.dart';
 import 'package:dti_web/domain/update/i_update_application.dart';
 import 'package:dti_web/domain/update/image_upload_response.dart';
+import 'package:dti_web/env/env.dart';
 import 'package:dti_web/infrastructure/core/error_response.dart';
 import 'package:dti_web/utils/constant.dart';
 import 'package:flutter/foundation.dart';
@@ -53,7 +54,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
                     )
             });
             var dataImage = await dio!.post(
-                '${Constant.baseUrl}/application/file/upload',
+                '${Env.baseUrl}/application/file/upload',
                 options: Options(headers: {'Authorization': 'Bearer $token'}),
                 data: formData);
             //prepare data
@@ -89,7 +90,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
         //             )
         //     });
         //     var result =
-        //         dio!.post('${Constant.baseUrl}/application/file/upload',
+        //         dio!.post('${Env.baseUrl}/application/file/upload',
         //             options: Options(
         //               headers: {
         //                 'Authorization': 'Bearer $token'
@@ -107,7 +108,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
       if (deletedImages.isNotEmpty) {
         await Future.delayed(Duration(seconds: 3));
         var result = dio!.post(
-          '${Constant.baseUrl}/application/file/delete',
+          '${Env.baseUrl}/application/file/delete',
           options: Options(
             headers: {'Authorization': 'Bearer ${storage.getToken()}'},
           ),
@@ -133,7 +134,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
       VisaApplicationModel visaApplicationModel) async {
     dio = Dio();
     final storage = Storage();
-    final result = await dio!.post('${Constant.baseUrl}/application',
+    final result = await dio!.post('${Env.baseUrl}/application',
         options: Options(
           headers: {'Authorization': 'Bearer ${storage.getToken()}'},
         ),
@@ -173,7 +174,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
     log(jsonParams.toString(), name: "JSON PARAMS");
     try {
       final result = await dio!.post(
-          "${Constant.baseUrl}/application/${visaApplicationModel.firebaseDocId}/",
+          "${Env.baseUrl}/application/${visaApplicationModel.firebaseDocId}/",
           options: Options(
             headers: {
               "Authorization": "Bearer ${storage.getToken()}",
@@ -201,7 +202,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
 
     try {
       final result = await dio!.get(
-          "${Constant.baseUrl}/application/$firebaseDocId",
+          "${Env.baseUrl}/application/$firebaseDocId",
           options: Options(
               headers: {"Authorization": "Bearer ${storage.getToken()}"}));
       print(result);
@@ -224,7 +225,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
 
     try {
       final result = await dio!.post(
-          "${Constant.baseUrl}/application/guarantor/${visa.firebaseDocId}/",
+          "${Env.baseUrl}/application/guarantor/${visa.firebaseDocId}/",
           options: Options(
             headers: {
               "Authorization": "Bearer ${storage.getToken()}",
@@ -250,7 +251,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
 
     try {
       final result = await dio!.get(
-          "${Constant.baseUrl}/application/$firebaseDocId/submit",
+          "${Env.baseUrl}/application/$firebaseDocId/submit",
           options: Options(
               headers: {"Authorization": "Bearer ${storage.getToken()}"}));
 
@@ -293,7 +294,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
     print(firebaseDocId);
     try {
       final result = await dio!.get(
-        "${Constant.baseUrl}/application/$firebaseDocId",
+        "${Env.baseUrl}/application/$firebaseDocId",
         options: Options(
           headers: {
             "Authorization": "Bearer ${storage.getToken()}",
@@ -317,7 +318,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
     final storage = Storage();
     try {
       var result = await dio!.post(
-        '${Constant.baseUrl}/application/file/delete',
+        '${Env.baseUrl}/application/file/delete',
         options: Options(
           headers: {
             'Authorization': 'Bearer ${storage.getToken()}',
@@ -346,7 +347,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
 
     try {
       final result = await dio!.post(
-          "${Constant.baseUrl}/application/multiVisaDuration/${firebaseDocId}",
+          "${Env.baseUrl}/application/multiVisaDuration/${firebaseDocId}",
           options: Options(
             headers: {
               "Authorization": "Bearer ${storage.getToken()}",

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dti_web/domain/core/visa_application_model.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
@@ -21,13 +22,33 @@ class PdfApi {
     return saveFile(documentPdf);
   }
 
+  static Future<List<int>> generatePdfByte(
+      {required ByteData signature,
+      required VisaApplicationModel visaApplication,
+      required String documentType}) async {
+    final documentPdf = PdfDocument();
+    final page = documentPdf.pages.add();
+    drawSignature(page, signature);
+    drawText(page, documentType, visaApplication);
+    return await documentPdf.save();
+  }
+
   static Future<File> generatePdfWithoutSignature(
       {required VisaApplicationModel visaApplication,
       required String documentType}) async {
     final documentPdf = PdfDocument();
     final page = documentPdf.pages.add();
     drawText(page, documentType, visaApplication);
-    return saveFile(documentPdf);
+    return await saveFile(documentPdf);
+  }
+
+  static Future<List<int>> generatePdfWithoutSignatureBytes(
+      {required VisaApplicationModel visaApplication,
+      required String documentType}) async {
+    final documentPdf = PdfDocument();
+    final page = documentPdf.pages.add();
+    drawText(page, documentType, visaApplication);
+    return documentPdf.save();
   }
 
   static Future<File> loadPdfNetwork(String url) async {

@@ -9,13 +9,16 @@ import 'package:url_launcher/url_launcher.dart';
 
 class PhotoViewPage extends StatefulWidget {
   static const String routeName = '/photo-view';
-  const PhotoViewPage(
-      {super.key,
-      required this.images,
-      this.isNetwork = true,
-      this.isAsset = false});
+  const PhotoViewPage({
+    super.key,
+    required this.images,
+    this.isNetwork = true,
+    this.isAsset = false,
+    this.imagesBytes,
+  });
   final List<String> images;
   final bool isNetwork;
+  final List<Uint8List>? imagesBytes;
   final bool isAsset;
 
   @override
@@ -25,12 +28,25 @@ class PhotoViewPage extends StatefulWidget {
 class _PhotoViewPageState extends State<PhotoViewPage> {
   final CarouselController carouselController = CarouselController();
   List<Widget> setupImages() {
-    return widget.images
-        .map((item) => Container(
-              child: Container(
-                margin: EdgeInsets.all(5.0),
+    if (kIsWeb && widget.imagesBytes != null) {
+      return widget.imagesBytes!
+          .map((item) => Container(
+                margin: const EdgeInsets.all(5.0),
                 child: ClipRRect(
-                    borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                    borderRadius: const BorderRadius.all(Radius.circular(5.0)),
+                    child: Stack(
+                      children: <Widget>[
+                        Image.memory(item, fit: BoxFit.contain, width: 1000.0)
+                      ],
+                    )),
+              ))
+          .toList();
+    } else {
+      return widget.images
+          .map((item) => Container(
+                margin: const EdgeInsets.all(5.0),
+                child: ClipRRect(
+                    borderRadius: const BorderRadius.all(Radius.circular(5.0)),
                     child: Stack(
                       children: <Widget>[
                         widget.isNetwork
@@ -46,38 +62,11 @@ class _PhotoViewPageState extends State<PhotoViewPage> {
                                         fit: BoxFit.contain, width: 1000.0)
                                     : Image.file(File(item),
                                         fit: BoxFit.contain, width: 1000.0)
-                        // Positioned(
-                        //   bottom: 0.0,
-                        //   left: 0.0,
-                        //   right: 0.0,
-                        //   child: Container(
-                        //     decoration: BoxDecoration(
-                        //       gradient: LinearGradient(
-                        //         colors: [
-                        //           Color.fromARGB(200, 0, 0, 0),
-                        //           Color.fromARGB(0, 0, 0, 0)
-                        //         ],
-                        //         begin: Alignment.bottomCenter,
-                        //         end: Alignment.topCenter,
-                        //       ),
-                        //     ),
-                        //     padding: EdgeInsets.symmetric(
-                        //         vertical: 10.0, horizontal: 20.0),
-                        //     child: Text(
-                        //       'No. ${widget.images.indexOf(item)} image',
-                        //       style: TextStyle(
-                        //         color: Colors.white,
-                        //         fontSize: 20.0,
-                        //         fontWeight: FontWeight.bold,
-                        //       ),
-                        //     ),
-                        //   ),
-                        // ),
                       ],
                     )),
-              ),
-            ))
-        .toList();
+              ))
+          .toList();
+    }
   }
 
   int _current = 0;

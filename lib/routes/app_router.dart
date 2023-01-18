@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:auto_route/annotations.dart';
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:dti_web/application/document/document_cubit.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/domain/core/document_data_model.dart';
@@ -7,6 +8,7 @@ import 'package:dti_web/domain/questionnaire/result_model.dart';
 import 'package:dti_web/presentation/applications/application_detail_page.dart';
 import 'package:dti_web/presentation/applications/upload_document_page.dart';
 import 'package:dti_web/presentation/applications/widgets/signature_page.dart';
+import 'package:dti_web/presentation/auth/pages/phone/number_registration_page.dart';
 import 'package:dti_web/presentation/auth/pages/splash_screen_page.dart';
 import 'package:dti_web/presentation/dashboard/pages/application_card_page.dart';
 import 'package:dti_web/presentation/payment/payment_page.dart';
@@ -22,10 +24,11 @@ import 'package:dti_web/presentation/questionnaire/user_domicile_page.dart';
 import 'package:dti_web/presentation/viewer/dti_pdf_viewer_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dti_web/domain/questionnaire/questionnaire_model.dart';
+import 'package:flutter/services.dart';
 
 import '../presentation/auth/pages/check_email_page.dart';
 import '../presentation/auth/pages/create_new_password_page.dart';
-import '../presentation/auth/pages/otp_page.dart';
+import '../presentation/auth/pages/phone/otp_page.dart';
 import '../presentation/auth/pages/reset_page.dart';
 import '../presentation/auth/pages/sign_in/sign_in_page.dart';
 import '../presentation/auth/pages/sign_up_page.dart';
@@ -40,6 +43,9 @@ part "app_router.gr.dart";
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
     AutoRoute(
+      initial: true,
+      path: '/',
+      
       page: SplashScreenPage,
     ),
     AutoRoute(
@@ -73,10 +79,7 @@ part "app_router.gr.dart";
         page: PersonalInformation4Page,
         path: PersonalInformation4Page.routeName),
     AutoRoute(page: ApplicationCardPage, path: ApplicationCardPage.routeName),
-    AutoRoute(
-      page: PaymentPage,
-      path: PaymentPage.routeName
-    ),
+    AutoRoute(page: PaymentPage, path: PaymentPage.routeName),
     AutoRoute(
       page: PersonalInformation3Page,
       path: PersonalInformation3Page.routeName,
@@ -85,9 +88,8 @@ part "app_router.gr.dart";
       page: PersonalInformation1Page,
     ),
     AutoRoute(
+      path: SignInPage.routeName,
       page: SignInPage,
-      path: '/',
-      initial: true,
     ),
 
     AutoRoute(
@@ -95,9 +97,13 @@ part "app_router.gr.dart";
       page: UploadDocumentPage,
     ),
     AutoRoute(
-        path: DTIPdfViewerPage.routeName,
-        page: DTIPdfViewerPage,
-        fullscreenDialog: true),
+      path: NumberRegistrationPage.routeName,
+      page: NumberRegistrationPage,
+    ),
+    AutoRoute(
+      path: DTIPdfViewerPage.routeName,
+      page: DTIPdfViewerPage,
+    ),
     AutoRoute(
         page: PhotoViewPage,
         path: PhotoViewPage.routeName,

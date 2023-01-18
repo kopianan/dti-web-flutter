@@ -9,6 +9,7 @@ import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/presentation/applications/core/pdf_api.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -39,6 +40,14 @@ class _SignaturePageState extends State<SignaturePage> {
   @override
   void initState() {
     super.initState();
+  }
+
+  Future<List<int>> generatePdfIfWeb() async {
+    final file = await PdfApi.generatePdfWithoutSignatureBytes(
+      visaApplication: widget.visaApplication,
+      documentType: widget.appDocument.id!.trim(),
+    );
+    return file;
   }
 
   Future<File> generatePDFPreview() async {
@@ -123,12 +132,19 @@ class _SignaturePageState extends State<SignaturePage> {
                                 await _signaturePadKey.currentState!.toImage();
                             final imageSignature = await image.toByteData(
                                 format: ImageByteFormat.png);
+                            late dynamic file;
+                            if (kIsWeb) {
+                              file = await PdfApi.generatePdfByte(
+                                  signature: imageSignature!,
+                                  visaApplication: widget.visaApplication,
+                                  documentType: widget.appDocument.id!.trim());
+                            } else {
+                              file = await PdfApi.generatePdf(
+                                  signature: imageSignature!,
+                                  visaApplication: widget.visaApplication,
+                                  documentType: widget.appDocument.id!.trim());
+                            }
 
-                            final file = await PdfApi.generatePdf(
-                                signature: imageSignature!,
-                                visaApplication: widget.visaApplication,
-                                documentType: widget.appDocument.id!.trim());
-                            // await OpenFile.open(file.path);
                             if (isSignatureDrawed == false) {
                               print(isSignatureDrawed);
                               Get.showSnackbar(
@@ -142,7 +158,8 @@ class _SignaturePageState extends State<SignaturePage> {
                               );
                             } else {
                               await AutoRouter.of(context).pop();
-                              await AutoRouter.of(context).pop(file);
+                              await AutoRouter.of(context).pop(
+                                  (kIsWeb) ? file as List<int> : file as File);
                             }
                           },
                           height: 45,
@@ -179,26 +196,47 @@ class _SignaturePageState extends State<SignaturePage> {
                 // ),
                 SizedBox(
                   height: ScreenUtil().screenWidth * 2 / 3,
-                  child: FutureBuilder<File>(
-                    future: generatePDFPreview(),
-                    builder: (context, snp) {
-                      if (snp.connectionState == ConnectionState.done) {
-                        return SfPdfViewer.file(
-                          snp.data!,
-                          enableDoubleTapZooming: true,
-                          pageLayoutMode: PdfPageLayoutMode.single,
-                          scrollDirection: PdfScrollDirection.vertical,
-                        );
-                      } else if (snp.connectionState ==
-                          ConnectionState.waiting) {
-                        return const Center(
-                          child: CircularProgressIndicator(),
-                        );
-                      } else {
-                        return const SizedBox();
-                      }
-                    },
-                  ),
+                  child: kIsWeb
+                      ? FutureBuilder<List<int>>(
+                          future: generatePdfIfWeb(),
+                          builder: (context, snp) {
+                            if (snp.connectionState == ConnectionState.done) {
+                              return SfPdfViewer.memory(
+                                Uint8List.fromList(snp.data!),
+                                enableDoubleTapZooming: true,
+                                pageLayoutMode: PdfPageLayoutMode.single,
+                                scrollDirection: PdfScrollDirection.vertical,
+                              );
+                            } else if (snp.connectionState ==
+                                ConnectionState.waiting) {
+                              return const Center(
+                                child: CircularProgressIndicator(),
+                              );
+                            } else {
+                              return const SizedBox();
+                            }
+                          },
+                        )
+                      : FutureBuilder<File>(
+                          future: generatePDFPreview(),
+                          builder: (context, snp) {
+                            if (snp.connectionState == ConnectionState.done) {
+                              return SfPdfViewer.file(
+                                snp.data!,
+                                enableDoubleTapZooming: true,
+                                pageLayoutMode: PdfPageLayoutMode.single,
+                                scrollDirection: PdfScrollDirection.vertical,
+                              );
+                            } else if (snp.connectionState ==
+                                ConnectionState.waiting) {
+                              return const Center(
+                                child: CircularProgressIndicator(),
+                              );
+                            } else {
+                              return const SizedBox();
+                            }
+                          },
+                        ),
                 ),
               ],
             ),

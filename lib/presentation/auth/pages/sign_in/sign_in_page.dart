@@ -42,6 +42,25 @@ class _SignInPageState extends State<SignInPage> {
         listener: (context, state) {
           state.maybeMap(
             orElse: () {},
+            onError: (e) {
+              e.error.maybeMap(
+                orElse: () {},
+                authError: (e) {
+                  AwesomeDialog(
+                          width: ScreenUtil().screenWidth / 2,
+                          padding: REdgeInsets.symmetric(horizontal: 20),
+                          context: context,
+                          dialogType: DialogType.warning,
+                          title: "Warning",
+                          desc: e.message,
+                          btnCancelOnPress: () {
+                            AutoRouter.of(context).pop();
+                          },
+                          btnCancelText: "Try again")
+                      .show();
+                },
+              );
+            },
             error: (e) {
               AwesomeDialog(
                       width: ScreenUtil().screenWidth / 2,
@@ -102,16 +121,20 @@ class _SignInPageState extends State<SignInPage> {
                                   icon: 'assets/icons/ic_gg.png',
                                   label: "Login with Google",
                                   onTap: () {
-                                    // context
-                                    //     .read<AuthCubit>()
-                                    //     .loginUsingGoogle();
+                                    context
+                                        .read<AuthCubit>()
+                                        .loginUsingGoogle();
                                   },
                                 ),
                                 20.verticalSpace,
                                 MediaSocialButton(
                                   icon: 'assets/icons/ic_fb.png',
                                   label: "Login with Facebook",
-                                  onTap: () {},
+                                  onTap: () {
+                                    context
+                                        .read<AuthCubit>()
+                                        .loginUsingFacebook();
+                                  },
                                 ),
                                 30.verticalSpace,
                                 _loginWithEmail(),
@@ -226,11 +249,11 @@ class _SignInPageState extends State<SignInPage> {
   }
 
   void loginUser(BuildContext context, String email, String password) {
-    // if (formKey.currentState!.validate()) {
-    context
-        .read<AuthCubit>()
-        .loginWithEmailAndPassword('kopianandev@gmail.com', '123456');
-    // context.read<AuthCubit>().loginWithEmailAndPassword(email, password);
-    // }
+    if (formKey.currentState!.validate()) {
+      // context
+      //     .read<AuthCubit>()
+      //     .loginWithEmailAndPassword('kopianandev@gmail.com', '123456');
+      context.read<AuthCubit>().loginWithEmailAndPassword(email, password);
+    }
   }
 }

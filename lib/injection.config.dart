@@ -55,7 +55,7 @@ _i1.GetIt $initGetIt(
       () => _i16.IUpdateApplicationRepository());
   gh.factory<_i17.OtherCubit>(() => _i17.OtherCubit(get<_i11.IOther>()));
   gh.factory<_i18.PaymentCubit>(() => _i18.PaymentCubit(get<_i13.IPayment>()));
-  gh.factory<_i19.QuestionnaireCubit>(() => _i19.QuestionnaireCubit());
+  gh.lazySingleton<_i19.QuestionnaireCubit>(() => _i19.QuestionnaireCubit());
   gh.factory<_i20.StartupCubit>(() => _i20.StartupCubit());
   gh.factory<_i21.UpdateApplicationCubit>(
       () => _i21.UpdateApplicationCubit(get<_i15.IUpdateApplication>()));

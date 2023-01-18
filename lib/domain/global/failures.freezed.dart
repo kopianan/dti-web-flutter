@@ -23,6 +23,7 @@ mixin _$Failures {
     required TResult Function(String err) generalError,
     required TResult Function(String err) noData,
     required TResult Function(String err) timeOut,
+    required TResult Function(String message) authError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +33,7 @@ mixin _$Failures {
     TResult Function(String err)? generalError,
     TResult Function(String err)? noData,
     TResult Function(String err)? timeOut,
+    TResult Function(String message)? authError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +43,7 @@ mixin _$Failures {
     TResult Function(String err)? generalError,
     TResult Function(String err)? noData,
     TResult Function(String err)? timeOut,
+    TResult Function(String message)? authError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,6 +54,7 @@ mixin _$Failures {
     required TResult Function(_GeneralError value) generalError,
     required TResult Function(_NoData value) noData,
     required TResult Function(_TimeOut value) timeOut,
+    required TResult Function(_AuthError value) authError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +64,7 @@ mixin _$Failures {
     TResult Function(_GeneralError value)? generalError,
     TResult Function(_NoData value)? noData,
     TResult Function(_TimeOut value)? timeOut,
+    TResult Function(_AuthError value)? authError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +74,7 @@ mixin _$Failures {
     TResult Function(_GeneralError value)? generalError,
     TResult Function(_NoData value)? noData,
     TResult Function(_TimeOut value)? timeOut,
+    TResult Function(_AuthError value)? authError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -134,6 +140,7 @@ class _$_ServerError implements _ServerError {
     required TResult Function(String err) generalError,
     required TResult Function(String err) noData,
     required TResult Function(String err) timeOut,
+    required TResult Function(String message) authError,
   }) {
     return serverError();
   }
@@ -146,6 +153,7 @@ class _$_ServerError implements _ServerError {
     TResult Function(String err)? generalError,
     TResult Function(String err)? noData,
     TResult Function(String err)? timeOut,
+    TResult Function(String message)? authError,
   }) {
     return serverError?.call();
   }
@@ -158,6 +166,7 @@ class _$_ServerError implements _ServerError {
     TResult Function(String err)? generalError,
     TResult Function(String err)? noData,
     TResult Function(String err)? timeOut,
+    TResult Function(String message)? authError,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -174,6 +183,7 @@ class _$_ServerError implements _ServerError {
     required TResult Function(_GeneralError value) generalError,
     required TResult Function(_NoData value) noData,
     required TResult Function(_TimeOut value) timeOut,
+    required TResult Function(_AuthError value) authError,
   }) {
     return serverError(this);
   }
@@ -186,6 +196,7 @@ class _$_ServerError implements _ServerError {
     TResult Function(_GeneralError value)? generalError,
     TResult Function(_NoData value)? noData,
     TResult Function(_TimeOut value)? timeOut,
+    TResult Function(_AuthError value)? authError,
   }) {
     return serverError?.call(this);
   }
@@ -198,6 +209,7 @@ class _$_ServerError implements _ServerError {
     TResult Function(_GeneralError value)? generalError,
     TResult Function(_NoData value)? noData,
     TResult Function(_TimeOut value)? timeOut,
+    TResult Function(_AuthError value)? authError,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -256,6 +268,7 @@ class _$_ApiExpired implements _ApiExpired {
     required TResult Function(String err) generalError,
     required TResult Function(String err) noData,
     required TResult Function(String err) timeOut,
+    required TResult Function(String message) authError,
   }) {
     return apiExpired();
   }
@@ -268,6 +281,7 @@ class _$_ApiExpired implements _ApiExpired {
     TResult Function(String err)? generalError,
     TResult Function(String err)? noData,
     TResult Function(String err)? timeOut,
+    TResult Function(String message)? authError,
   }) {
     return apiExpired?.call();
   }
@@ -280,6 +294,7 @@ class _$_ApiExpired implements _ApiExpired {
     TResult Function(String err)? generalError,
     TResult Function(String err)? noData,
     TResult Function(String err)? timeOut,
+    TResult Function(String message)? authError,
     required TResult orElse(),
   }) {
     if (apiExpired != null) {
@@ -296,6 +311,7 @@ class _$_ApiExpired implements _ApiExpired {
     required TResult Function(_GeneralError value) generalError,
     required TResult Function(_NoData value) noData,
     required TResult Function(_TimeOut value) timeOut,
+    required TResult Function(_AuthError value) authError,
   }) {
     return apiExpired(this);
   }
@@ -308,6 +324,7 @@ class _$_ApiExpired implements _ApiExpired {
     TResult Function(_GeneralError value)? generalError,
     TResult Function(_NoData value)? noData,
     TResult Function(_TimeOut value)? timeOut,
+    TResult Function(_AuthError value)? authError,
   }) {
     return apiExpired?.call(this);
   }
@@ -320,6 +337,7 @@ class _$_ApiExpired implements _ApiExpired {
     TResult Function(_GeneralError value)? generalError,
     TResult Function(_NoData value)? noData,
     TResult Function(_TimeOut value)? timeOut,
+    TResult Function(_AuthError value)? authError,
     required TResult orElse(),
   }) {
     if (apiExpired != null) {
@@ -402,6 +420,7 @@ class _$_GeneralError implements _GeneralError {
     required TResult Function(String err) generalError,
     required TResult Function(String err) noData,
     required TResult Function(String err) timeOut,
+    required TResult Function(String message) authError,
   }) {
     return generalError(err);
   }
@@ -414,6 +433,7 @@ class _$_GeneralError implements _GeneralError {
     TResult Function(String err)? generalError,
     TResult Function(String err)? noData,
     TResult Function(String err)? timeOut,
+    TResult Function(String message)? authError,
   }) {
     return generalError?.call(err);
   }
@@ -426,6 +446,7 @@ class _$_GeneralError implements _GeneralError {
     TResult Function(String err)? generalError,
     TResult Function(String err)? noData,
     TResult Function(String err)? timeOut,
+    TResult Function(String message)? authError,
     required TResult orElse(),
   }) {
     if (generalError != null) {
@@ -442,6 +463,7 @@ class _$_GeneralError implements _GeneralError {
     required TResult Function(_GeneralError value) generalError,
     required TResult Function(_NoData value) noData,
     required TResult Function(_TimeOut value) timeOut,
+    required TResult Function(_AuthError value) authError,
   }) {
     return generalError(this);
   }
@@ -454,6 +476,7 @@ class _$_GeneralError implements _GeneralError {
     TResult Function(_GeneralError value)? generalError,
     TResult Function(_NoData value)? noData,
     TResult Function(_TimeOut value)? timeOut,
+    TResult Function(_AuthError value)? authError,
   }) {
     return generalError?.call(this);
   }
@@ -466,6 +489,7 @@ class _$_GeneralError implements _GeneralError {
     TResult Function(_GeneralError value)? generalError,
     TResult Function(_NoData value)? noData,
     TResult Function(_TimeOut value)? timeOut,
+    TResult Function(_AuthError value)? authError,
     required TResult orElse(),
   }) {
     if (generalError != null) {
@@ -551,6 +575,7 @@ class _$_NoData implements _NoData {
     required TResult Function(String err) generalError,
     required TResult Function(String err) noData,
     required TResult Function(String err) timeOut,
+    required TResult Function(String message) authError,
   }) {
     return noData(err);
   }
@@ -563,6 +588,7 @@ class _$_NoData implements _NoData {
     TResult Function(String err)? generalError,
     TResult Function(String err)? noData,
     TResult Function(String err)? timeOut,
+    TResult Function(String message)? authError,
   }) {
     return noData?.call(err);
   }
@@ -575,6 +601,7 @@ class _$_NoData implements _NoData {
     TResult Function(String err)? generalError,
     TResult Function(String err)? noData,
     TResult Function(String err)? timeOut,
+    TResult Function(String message)? authError,
     required TResult orElse(),
   }) {
     if (noData != null) {
@@ -591,6 +618,7 @@ class _$_NoData implements _NoData {
     required TResult Function(_GeneralError value) generalError,
     required TResult Function(_NoData value) noData,
     required TResult Function(_TimeOut value) timeOut,
+    required TResult Function(_AuthError value) authError,
   }) {
     return noData(this);
   }
@@ -603,6 +631,7 @@ class _$_NoData implements _NoData {
     TResult Function(_GeneralError value)? generalError,
     TResult Function(_NoData value)? noData,
     TResult Function(_TimeOut value)? timeOut,
+    TResult Function(_AuthError value)? authError,
   }) {
     return noData?.call(this);
   }
@@ -615,6 +644,7 @@ class _$_NoData implements _NoData {
     TResult Function(_GeneralError value)? generalError,
     TResult Function(_NoData value)? noData,
     TResult Function(_TimeOut value)? timeOut,
+    TResult Function(_AuthError value)? authError,
     required TResult orElse(),
   }) {
     if (noData != null) {
@@ -701,6 +731,7 @@ class _$_TimeOut implements _TimeOut {
     required TResult Function(String err) generalError,
     required TResult Function(String err) noData,
     required TResult Function(String err) timeOut,
+    required TResult Function(String message) authError,
   }) {
     return timeOut(err);
   }
@@ -713,6 +744,7 @@ class _$_TimeOut implements _TimeOut {
     TResult Function(String err)? generalError,
     TResult Function(String err)? noData,
     TResult Function(String err)? timeOut,
+    TResult Function(String message)? authError,
   }) {
     return timeOut?.call(err);
   }
@@ -725,6 +757,7 @@ class _$_TimeOut implements _TimeOut {
     TResult Function(String err)? generalError,
     TResult Function(String err)? noData,
     TResult Function(String err)? timeOut,
+    TResult Function(String message)? authError,
     required TResult orElse(),
   }) {
     if (timeOut != null) {
@@ -741,6 +774,7 @@ class _$_TimeOut implements _TimeOut {
     required TResult Function(_GeneralError value) generalError,
     required TResult Function(_NoData value) noData,
     required TResult Function(_TimeOut value) timeOut,
+    required TResult Function(_AuthError value) authError,
   }) {
     return timeOut(this);
   }
@@ -753,6 +787,7 @@ class _$_TimeOut implements _TimeOut {
     TResult Function(_GeneralError value)? generalError,
     TResult Function(_NoData value)? noData,
     TResult Function(_TimeOut value)? timeOut,
+    TResult Function(_AuthError value)? authError,
   }) {
     return timeOut?.call(this);
   }
@@ -765,6 +800,7 @@ class _$_TimeOut implements _TimeOut {
     TResult Function(_GeneralError value)? generalError,
     TResult Function(_NoData value)? noData,
     TResult Function(_TimeOut value)? timeOut,
+    TResult Function(_AuthError value)? authError,
     required TResult orElse(),
   }) {
     if (timeOut != null) {
@@ -780,5 +816,162 @@ abstract class _TimeOut implements Failures {
   String get err;
   @JsonKey(ignore: true)
   _$$_TimeOutCopyWith<_$_TimeOut> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_AuthErrorCopyWith<$Res> {
+  factory _$$_AuthErrorCopyWith(
+          _$_AuthError value, $Res Function(_$_AuthError) then) =
+      __$$_AuthErrorCopyWithImpl<$Res>;
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$_AuthErrorCopyWithImpl<$Res> extends _$FailuresCopyWithImpl<$Res>
+    implements _$$_AuthErrorCopyWith<$Res> {
+  __$$_AuthErrorCopyWithImpl(
+      _$_AuthError _value, $Res Function(_$_AuthError) _then)
+      : super(_value, (v) => _then(v as _$_AuthError));
+
+  @override
+  _$_AuthError get _value => super._value as _$_AuthError;
+
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_$_AuthError(
+      message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_AuthError implements _AuthError {
+  _$_AuthError(this.message);
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'Failures.authError(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_AuthError &&
+            const DeepCollectionEquality().equals(other.message, message));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(message));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_AuthErrorCopyWith<_$_AuthError> get copyWith =>
+      __$$_AuthErrorCopyWithImpl<_$_AuthError>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() serverError,
+    required TResult Function() apiExpired,
+    required TResult Function(String err) generalError,
+    required TResult Function(String err) noData,
+    required TResult Function(String err) timeOut,
+    required TResult Function(String message) authError,
+  }) {
+    return authError(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function()? apiExpired,
+    TResult Function(String err)? generalError,
+    TResult Function(String err)? noData,
+    TResult Function(String err)? timeOut,
+    TResult Function(String message)? authError,
+  }) {
+    return authError?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function()? apiExpired,
+    TResult Function(String err)? generalError,
+    TResult Function(String err)? noData,
+    TResult Function(String err)? timeOut,
+    TResult Function(String message)? authError,
+    required TResult orElse(),
+  }) {
+    if (authError != null) {
+      return authError(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ServerError value) serverError,
+    required TResult Function(_ApiExpired value) apiExpired,
+    required TResult Function(_GeneralError value) generalError,
+    required TResult Function(_NoData value) noData,
+    required TResult Function(_TimeOut value) timeOut,
+    required TResult Function(_AuthError value) authError,
+  }) {
+    return authError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_ApiExpired value)? apiExpired,
+    TResult Function(_GeneralError value)? generalError,
+    TResult Function(_NoData value)? noData,
+    TResult Function(_TimeOut value)? timeOut,
+    TResult Function(_AuthError value)? authError,
+  }) {
+    return authError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_ApiExpired value)? apiExpired,
+    TResult Function(_GeneralError value)? generalError,
+    TResult Function(_NoData value)? noData,
+    TResult Function(_TimeOut value)? timeOut,
+    TResult Function(_AuthError value)? authError,
+    required TResult orElse(),
+  }) {
+    if (authError != null) {
+      return authError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AuthError implements Failures {
+  factory _AuthError(final String message) = _$_AuthError;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$$_AuthErrorCopyWith<_$_AuthError> get copyWith =>
       throw _privateConstructorUsedError;
 }

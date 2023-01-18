@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:dti_web/domain/global/failures.dart';
 import 'package:dti_web/domain/other/i_other.dart';
 import 'package:dti_web/domain/questionnaire/questionnaire_data_model.dart';
@@ -14,6 +15,29 @@ class OtherCubit extends Cubit<OtherState> {
   OtherCubit(this.iOther) : super(const OtherState.initial());
 
   IOther iOther;
+  void generateOtp(
+      CountryCode countryCode, String number, String channel) async {
+    emit(const OtherState.loading());
+    final data = await iOther.generateOtp(countryCode, number, channel);
+    data.fold(
+      (l) => emit(OtherState.errorState(l)),
+      (r) => emit(OtherState.onOTPGenerated(r)),
+    );
+  }
+
+  void verifyOtp(CountryCode countryCode, String number, String otpCode) async {
+    emit(const OtherState.loading());
+    final data = await iOther.verifyOtp(
+      countryCode: countryCode,
+      phoneNumber: number,
+      code: otpCode,
+    );
+    data.fold(
+      (l) => emit(OtherState.error()),
+      (r) => emit(OtherState.onOTPVerified(r)),
+    );
+  }
+
   void getQuestionnaireList() async {
     emit(const OtherState.loading());
     final data = await iOther.getQuestionnaireList();

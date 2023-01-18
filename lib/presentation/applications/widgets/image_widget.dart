@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:dti_web/application/document/document_cubit.dart';
@@ -87,23 +88,20 @@ class ShowImage extends StatelessWidget {
   final DocumentState state;
   final String? name;
 
-  InkWell imageFromFile(String imageUrl) {
-    return InkWell(
-      onTap: () {},
-      child: kIsWeb
-          ? Image.memory(
-              state.selectedDataCollection![imageUrl],
-              fit: BoxFit.cover,
-              width: double.infinity,
-              height: double.infinity,
-            )
-          : Image.file(
-              File(imageUrl),
-              width: double.infinity,
-              height: double.infinity,
-              fit: BoxFit.cover,
-            ),
-    );
+  Image imageFromFile(String imageUrl) {
+    return kIsWeb
+        ? Image.memory(
+            state.selectedDataCollection![imageUrl],
+            fit: BoxFit.cover,
+            width: double.infinity,
+            height: double.infinity,
+          )
+        : Image.file(
+            File(imageUrl),
+            width: double.infinity,
+            height: double.infinity,
+            fit: BoxFit.cover,
+          );
   }
 
   @override
@@ -245,7 +243,7 @@ class _ShowPdfState extends State<ShowPdf> {
 //   String baseName,
 // ) async {
 //   Storage storage = Storage();
-//   final result = await Dio().post('${Constant.baseUrl}/downloadURL',
+//   final result = await Dio().post('${Env.baseUrl}/downloadURL',
 //       data: {
 //         "appId": appId,
 //         "docId": documentId,

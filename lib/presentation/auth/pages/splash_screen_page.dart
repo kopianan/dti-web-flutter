@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:dti_web/application/auth/auth_cubit.dart';
+import 'package:dti_web/injection.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:dti_web/presentation/auth/pages/sign_up_page.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SplashScreenPage extends StatefulWidget {
   const SplashScreenPage({super.key});
@@ -15,62 +15,40 @@ class SplashScreenPage extends StatefulWidget {
 class _SplashScreenPageState extends State<SplashScreenPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("TEST")),
-      body: Center(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          ElevatedButton(
-            onPressed: () {
-              AutoRouter.of(context).push(SignInRoute());
+    return BlocProvider(
+      create: (context) => getIt<AuthCubit>()..checkSession(),
+      child: Scaffold(
+        body: BlocListener<AuthCubit, AuthState>(
+          listener: (context, state) {
+            state.maybeMap(
+                orElse: () {},
+                authorized: (e) {
+                  AutoRouter.of(context).replaceAll([DashboardRoute()]);
+                },
+                unAuthorized: (e) {
+                  AutoRouter.of(context).replaceAll([SignInRoute()]);
+                });
+          },
+          child: BlocBuilder<AuthCubit, AuthState>(
+            builder: (context, state) {
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/images/dti_bottom_icon.png',
+                    width: 100,
+                    fit: BoxFit.cover,
+                  ),
+                  SizedBox(height: 30),
+                  Center(
+                    child: CircularProgressIndicator(),
+                  )
+                ],
+              );
             },
-            child: Text("GO TO LOGIN PAGE"),
           ),
-          ElevatedButton(
-            onPressed: () {
-              AutoRouter.of(context).push(ResetRoute());
-            },
-            child: Text("GO TO Reset"),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              AutoRouter.of(context).push(CheckEmailRoute());
-            },
-            child: Text("GO TO Check Email"),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              AutoRouter.of(context).push(CreateNewPasswordRoute());
-            },
-            child: Text("GO TO Create New Password"),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              AutoRouter.of(context).push(OTPRoute());
-            },
-            child: Text("GO TO Otp Page"),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              AutoRouter.of(context).push(LandingRoute());
-            },
-            child: Text("GO TO Landing"),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              AutoRouter.of(context).push(DashboardRoute());
-            },
-            child: Text("GO TO Dashboard"),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              AutoRouter.of(context).push(UploadDocumentRoute());
-            },
-            child: Text("GO TO UpLOAD DOCUMENT"),
-          ),
-        ],
-      )),
+        ),
+      ),
     );
   }
 }

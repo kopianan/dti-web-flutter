@@ -1,4 +1,5 @@
 import 'dart:developer';
+// import 'dart:html' as html;
 
 import 'package:auto_route/auto_route.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
@@ -33,6 +34,7 @@ class QuestionnairePage extends StatefulWidget {
 class _QuestionnairePageState extends State<QuestionnairePage> {
   final otherCubit = getIt<OtherCubit>();
   late List<QuestionnaireModel>? question;
+
   @override
   void initState() {
     super.initState();
@@ -46,6 +48,15 @@ class _QuestionnairePageState extends State<QuestionnairePage> {
 
   late String title;
   late String subTitle;
+  // @override
+  // void didChangeDependencies() {
+  //   html.window.onBeforeUnload.listen((event) async {
+  //     log("Page is reloaded");
+  //     AutoRouter.of(context).navigate(DashboardRoute());
+  //   });
+  //   super.didChangeDependencies();
+  // }
+
   @override
   Widget build(BuildContext context) {
     title = widget.title ?? "Do You Have Stay Permit In Indonesia";

@@ -10,7 +10,8 @@ abstract class IAuth {
   Future<Either<Failures, String>> resetPassword({
     required String email,
   });
-  // Future<Either<Failures, String>> loginWithGoogle();
+  Future<Either<Failures, String>> signinUsingFacebook();
+  Future<Either<Failures, String>> loginWithGoogle(); 
   Future<Either<Failures, UserData>> getUserData();
   Future<Either<Failures, String>> registerNewUser(
       {required String email,

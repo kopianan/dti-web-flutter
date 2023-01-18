@@ -1,3 +1,4 @@
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dti_web/domain/global/failures.dart';
 import 'package:dti_web/domain/questionnaire/questionnaire_data_model.dart';
@@ -8,5 +9,11 @@ abstract class IOther {
       {required String applicationId,
       required String documentId,
       required String fileName});
-  Future<Either<Failures,QuestionnaireDataModel>> getQuestionnaireList();
+  Future<Either<Failures, QuestionnaireDataModel>> getQuestionnaireList();
+  Future<Either<Failures, String>> verifyOtp(
+      {required String phoneNumber,
+      required String code,
+      required CountryCode countryCode});
+  Future<Either<Failures, String>> generateOtp(
+      CountryCode countryCode, String phoneNumber, String channel);
 }

@@ -24,6 +24,8 @@ mixin _$OtherState {
     required TResult Function(Failures failures) errorState,
     required TResult Function() nullImage,
     required TResult Function(String url) imageLocal,
+    required TResult Function(String message) onOTPGenerated,
+    required TResult Function(String message) onOTPVerified,
     required TResult Function(String url) onGetImageUrl,
     required TResult Function(QuestionnaireDataModel questionnaire)
         getAllQuestionnaire,
@@ -37,6 +39,8 @@ mixin _$OtherState {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onOTPGenerated,
+    TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
   }) =>
@@ -49,6 +53,8 @@ mixin _$OtherState {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onOTPGenerated,
+    TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
     required TResult orElse(),
@@ -62,6 +68,8 @@ mixin _$OtherState {
     required TResult Function(_ErrorState value) errorState,
     required TResult Function(_NullImage value) nullImage,
     required TResult Function(_ImageLocal value) imageLocal,
+    required TResult Function(_OnOTPGenerated value) onOTPGenerated,
+    required TResult Function(_OnOTPVerified value) onOTPVerified,
     required TResult Function(_OnGetImageUrl value) onGetImageUrl,
     required TResult Function(_GetAllQuestionnaire value) getAllQuestionnaire,
   }) =>
@@ -74,6 +82,8 @@ mixin _$OtherState {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnOTPGenerated value)? onOTPGenerated,
+    TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
   }) =>
@@ -86,6 +96,8 @@ mixin _$OtherState {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnOTPGenerated value)? onOTPGenerated,
+    TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
     required TResult orElse(),
@@ -154,6 +166,8 @@ class _$_Initial implements _Initial {
     required TResult Function(Failures failures) errorState,
     required TResult Function() nullImage,
     required TResult Function(String url) imageLocal,
+    required TResult Function(String message) onOTPGenerated,
+    required TResult Function(String message) onOTPVerified,
     required TResult Function(String url) onGetImageUrl,
     required TResult Function(QuestionnaireDataModel questionnaire)
         getAllQuestionnaire,
@@ -170,6 +184,8 @@ class _$_Initial implements _Initial {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onOTPGenerated,
+    TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
   }) {
@@ -185,6 +201,8 @@ class _$_Initial implements _Initial {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onOTPGenerated,
+    TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
     required TResult orElse(),
@@ -204,6 +222,8 @@ class _$_Initial implements _Initial {
     required TResult Function(_ErrorState value) errorState,
     required TResult Function(_NullImage value) nullImage,
     required TResult Function(_ImageLocal value) imageLocal,
+    required TResult Function(_OnOTPGenerated value) onOTPGenerated,
+    required TResult Function(_OnOTPVerified value) onOTPVerified,
     required TResult Function(_OnGetImageUrl value) onGetImageUrl,
     required TResult Function(_GetAllQuestionnaire value) getAllQuestionnaire,
   }) {
@@ -219,6 +239,8 @@ class _$_Initial implements _Initial {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnOTPGenerated value)? onOTPGenerated,
+    TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
   }) {
@@ -234,6 +256,8 @@ class _$_Initial implements _Initial {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnOTPGenerated value)? onOTPGenerated,
+    TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
     required TResult orElse(),
@@ -294,6 +318,8 @@ class _$_Loading implements _Loading {
     required TResult Function(Failures failures) errorState,
     required TResult Function() nullImage,
     required TResult Function(String url) imageLocal,
+    required TResult Function(String message) onOTPGenerated,
+    required TResult Function(String message) onOTPVerified,
     required TResult Function(String url) onGetImageUrl,
     required TResult Function(QuestionnaireDataModel questionnaire)
         getAllQuestionnaire,
@@ -310,6 +336,8 @@ class _$_Loading implements _Loading {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onOTPGenerated,
+    TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
   }) {
@@ -325,6 +353,8 @@ class _$_Loading implements _Loading {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onOTPGenerated,
+    TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
     required TResult orElse(),
@@ -344,6 +374,8 @@ class _$_Loading implements _Loading {
     required TResult Function(_ErrorState value) errorState,
     required TResult Function(_NullImage value) nullImage,
     required TResult Function(_ImageLocal value) imageLocal,
+    required TResult Function(_OnOTPGenerated value) onOTPGenerated,
+    required TResult Function(_OnOTPVerified value) onOTPVerified,
     required TResult Function(_OnGetImageUrl value) onGetImageUrl,
     required TResult Function(_GetAllQuestionnaire value) getAllQuestionnaire,
   }) {
@@ -359,6 +391,8 @@ class _$_Loading implements _Loading {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnOTPGenerated value)? onOTPGenerated,
+    TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
   }) {
@@ -374,6 +408,8 @@ class _$_Loading implements _Loading {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnOTPGenerated value)? onOTPGenerated,
+    TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
     required TResult orElse(),
@@ -433,6 +469,8 @@ class _$_Error implements _Error {
     required TResult Function(Failures failures) errorState,
     required TResult Function() nullImage,
     required TResult Function(String url) imageLocal,
+    required TResult Function(String message) onOTPGenerated,
+    required TResult Function(String message) onOTPVerified,
     required TResult Function(String url) onGetImageUrl,
     required TResult Function(QuestionnaireDataModel questionnaire)
         getAllQuestionnaire,
@@ -449,6 +487,8 @@ class _$_Error implements _Error {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onOTPGenerated,
+    TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
   }) {
@@ -464,6 +504,8 @@ class _$_Error implements _Error {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onOTPGenerated,
+    TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
     required TResult orElse(),
@@ -483,6 +525,8 @@ class _$_Error implements _Error {
     required TResult Function(_ErrorState value) errorState,
     required TResult Function(_NullImage value) nullImage,
     required TResult Function(_ImageLocal value) imageLocal,
+    required TResult Function(_OnOTPGenerated value) onOTPGenerated,
+    required TResult Function(_OnOTPVerified value) onOTPVerified,
     required TResult Function(_OnGetImageUrl value) onGetImageUrl,
     required TResult Function(_GetAllQuestionnaire value) getAllQuestionnaire,
   }) {
@@ -498,6 +542,8 @@ class _$_Error implements _Error {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnOTPGenerated value)? onOTPGenerated,
+    TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
   }) {
@@ -513,6 +559,8 @@ class _$_Error implements _Error {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnOTPGenerated value)? onOTPGenerated,
+    TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
     required TResult orElse(),
@@ -607,6 +655,8 @@ class _$_ErrorState implements _ErrorState {
     required TResult Function(Failures failures) errorState,
     required TResult Function() nullImage,
     required TResult Function(String url) imageLocal,
+    required TResult Function(String message) onOTPGenerated,
+    required TResult Function(String message) onOTPVerified,
     required TResult Function(String url) onGetImageUrl,
     required TResult Function(QuestionnaireDataModel questionnaire)
         getAllQuestionnaire,
@@ -623,6 +673,8 @@ class _$_ErrorState implements _ErrorState {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onOTPGenerated,
+    TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
   }) {
@@ -638,6 +690,8 @@ class _$_ErrorState implements _ErrorState {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onOTPGenerated,
+    TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
     required TResult orElse(),
@@ -657,6 +711,8 @@ class _$_ErrorState implements _ErrorState {
     required TResult Function(_ErrorState value) errorState,
     required TResult Function(_NullImage value) nullImage,
     required TResult Function(_ImageLocal value) imageLocal,
+    required TResult Function(_OnOTPGenerated value) onOTPGenerated,
+    required TResult Function(_OnOTPVerified value) onOTPVerified,
     required TResult Function(_OnGetImageUrl value) onGetImageUrl,
     required TResult Function(_GetAllQuestionnaire value) getAllQuestionnaire,
   }) {
@@ -672,6 +728,8 @@ class _$_ErrorState implements _ErrorState {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnOTPGenerated value)? onOTPGenerated,
+    TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
   }) {
@@ -687,6 +745,8 @@ class _$_ErrorState implements _ErrorState {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnOTPGenerated value)? onOTPGenerated,
+    TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
     required TResult orElse(),
@@ -753,6 +813,8 @@ class _$_NullImage implements _NullImage {
     required TResult Function(Failures failures) errorState,
     required TResult Function() nullImage,
     required TResult Function(String url) imageLocal,
+    required TResult Function(String message) onOTPGenerated,
+    required TResult Function(String message) onOTPVerified,
     required TResult Function(String url) onGetImageUrl,
     required TResult Function(QuestionnaireDataModel questionnaire)
         getAllQuestionnaire,
@@ -769,6 +831,8 @@ class _$_NullImage implements _NullImage {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onOTPGenerated,
+    TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
   }) {
@@ -784,6 +848,8 @@ class _$_NullImage implements _NullImage {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onOTPGenerated,
+    TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
     required TResult orElse(),
@@ -803,6 +869,8 @@ class _$_NullImage implements _NullImage {
     required TResult Function(_ErrorState value) errorState,
     required TResult Function(_NullImage value) nullImage,
     required TResult Function(_ImageLocal value) imageLocal,
+    required TResult Function(_OnOTPGenerated value) onOTPGenerated,
+    required TResult Function(_OnOTPVerified value) onOTPVerified,
     required TResult Function(_OnGetImageUrl value) onGetImageUrl,
     required TResult Function(_GetAllQuestionnaire value) getAllQuestionnaire,
   }) {
@@ -818,6 +886,8 @@ class _$_NullImage implements _NullImage {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnOTPGenerated value)? onOTPGenerated,
+    TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
   }) {
@@ -833,6 +903,8 @@ class _$_NullImage implements _NullImage {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnOTPGenerated value)? onOTPGenerated,
+    TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
     required TResult orElse(),
@@ -918,6 +990,8 @@ class _$_ImageLocal implements _ImageLocal {
     required TResult Function(Failures failures) errorState,
     required TResult Function() nullImage,
     required TResult Function(String url) imageLocal,
+    required TResult Function(String message) onOTPGenerated,
+    required TResult Function(String message) onOTPVerified,
     required TResult Function(String url) onGetImageUrl,
     required TResult Function(QuestionnaireDataModel questionnaire)
         getAllQuestionnaire,
@@ -934,6 +1008,8 @@ class _$_ImageLocal implements _ImageLocal {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onOTPGenerated,
+    TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
   }) {
@@ -949,6 +1025,8 @@ class _$_ImageLocal implements _ImageLocal {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onOTPGenerated,
+    TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
     required TResult orElse(),
@@ -968,6 +1046,8 @@ class _$_ImageLocal implements _ImageLocal {
     required TResult Function(_ErrorState value) errorState,
     required TResult Function(_NullImage value) nullImage,
     required TResult Function(_ImageLocal value) imageLocal,
+    required TResult Function(_OnOTPGenerated value) onOTPGenerated,
+    required TResult Function(_OnOTPVerified value) onOTPVerified,
     required TResult Function(_OnGetImageUrl value) onGetImageUrl,
     required TResult Function(_GetAllQuestionnaire value) getAllQuestionnaire,
   }) {
@@ -983,6 +1063,8 @@ class _$_ImageLocal implements _ImageLocal {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnOTPGenerated value)? onOTPGenerated,
+    TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
   }) {
@@ -998,6 +1080,8 @@ class _$_ImageLocal implements _ImageLocal {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnOTPGenerated value)? onOTPGenerated,
+    TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
     required TResult orElse(),
@@ -1015,6 +1099,372 @@ abstract class _ImageLocal implements OtherState {
   String get url;
   @JsonKey(ignore: true)
   _$$_ImageLocalCopyWith<_$_ImageLocal> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_OnOTPGeneratedCopyWith<$Res> {
+  factory _$$_OnOTPGeneratedCopyWith(
+          _$_OnOTPGenerated value, $Res Function(_$_OnOTPGenerated) then) =
+      __$$_OnOTPGeneratedCopyWithImpl<$Res>;
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$_OnOTPGeneratedCopyWithImpl<$Res>
+    extends _$OtherStateCopyWithImpl<$Res>
+    implements _$$_OnOTPGeneratedCopyWith<$Res> {
+  __$$_OnOTPGeneratedCopyWithImpl(
+      _$_OnOTPGenerated _value, $Res Function(_$_OnOTPGenerated) _then)
+      : super(_value, (v) => _then(v as _$_OnOTPGenerated));
+
+  @override
+  _$_OnOTPGenerated get _value => super._value as _$_OnOTPGenerated;
+
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_$_OnOTPGenerated(
+      message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_OnOTPGenerated implements _OnOTPGenerated {
+  const _$_OnOTPGenerated(this.message);
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'OtherState.onOTPGenerated(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_OnOTPGenerated &&
+            const DeepCollectionEquality().equals(other.message, message));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(message));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_OnOTPGeneratedCopyWith<_$_OnOTPGenerated> get copyWith =>
+      __$$_OnOTPGeneratedCopyWithImpl<_$_OnOTPGenerated>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() error,
+    required TResult Function(Failures failures) errorState,
+    required TResult Function() nullImage,
+    required TResult Function(String url) imageLocal,
+    required TResult Function(String message) onOTPGenerated,
+    required TResult Function(String message) onOTPVerified,
+    required TResult Function(String url) onGetImageUrl,
+    required TResult Function(QuestionnaireDataModel questionnaire)
+        getAllQuestionnaire,
+  }) {
+    return onOTPGenerated(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? error,
+    TResult Function(Failures failures)? errorState,
+    TResult Function()? nullImage,
+    TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onOTPGenerated,
+    TResult Function(String message)? onOTPVerified,
+    TResult Function(String url)? onGetImageUrl,
+    TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
+  }) {
+    return onOTPGenerated?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? error,
+    TResult Function(Failures failures)? errorState,
+    TResult Function()? nullImage,
+    TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onOTPGenerated,
+    TResult Function(String message)? onOTPVerified,
+    TResult Function(String url)? onGetImageUrl,
+    TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
+    required TResult orElse(),
+  }) {
+    if (onOTPGenerated != null) {
+      return onOTPGenerated(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Error value) error,
+    required TResult Function(_ErrorState value) errorState,
+    required TResult Function(_NullImage value) nullImage,
+    required TResult Function(_ImageLocal value) imageLocal,
+    required TResult Function(_OnOTPGenerated value) onOTPGenerated,
+    required TResult Function(_OnOTPVerified value) onOTPVerified,
+    required TResult Function(_OnGetImageUrl value) onGetImageUrl,
+    required TResult Function(_GetAllQuestionnaire value) getAllQuestionnaire,
+  }) {
+    return onOTPGenerated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_ErrorState value)? errorState,
+    TResult Function(_NullImage value)? nullImage,
+    TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnOTPGenerated value)? onOTPGenerated,
+    TResult Function(_OnOTPVerified value)? onOTPVerified,
+    TResult Function(_OnGetImageUrl value)? onGetImageUrl,
+    TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
+  }) {
+    return onOTPGenerated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_ErrorState value)? errorState,
+    TResult Function(_NullImage value)? nullImage,
+    TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnOTPGenerated value)? onOTPGenerated,
+    TResult Function(_OnOTPVerified value)? onOTPVerified,
+    TResult Function(_OnGetImageUrl value)? onGetImageUrl,
+    TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
+    required TResult orElse(),
+  }) {
+    if (onOTPGenerated != null) {
+      return onOTPGenerated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnOTPGenerated implements OtherState {
+  const factory _OnOTPGenerated(final String message) = _$_OnOTPGenerated;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$$_OnOTPGeneratedCopyWith<_$_OnOTPGenerated> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_OnOTPVerifiedCopyWith<$Res> {
+  factory _$$_OnOTPVerifiedCopyWith(
+          _$_OnOTPVerified value, $Res Function(_$_OnOTPVerified) then) =
+      __$$_OnOTPVerifiedCopyWithImpl<$Res>;
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$_OnOTPVerifiedCopyWithImpl<$Res>
+    extends _$OtherStateCopyWithImpl<$Res>
+    implements _$$_OnOTPVerifiedCopyWith<$Res> {
+  __$$_OnOTPVerifiedCopyWithImpl(
+      _$_OnOTPVerified _value, $Res Function(_$_OnOTPVerified) _then)
+      : super(_value, (v) => _then(v as _$_OnOTPVerified));
+
+  @override
+  _$_OnOTPVerified get _value => super._value as _$_OnOTPVerified;
+
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_$_OnOTPVerified(
+      message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_OnOTPVerified implements _OnOTPVerified {
+  const _$_OnOTPVerified(this.message);
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'OtherState.onOTPVerified(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_OnOTPVerified &&
+            const DeepCollectionEquality().equals(other.message, message));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(message));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_OnOTPVerifiedCopyWith<_$_OnOTPVerified> get copyWith =>
+      __$$_OnOTPVerifiedCopyWithImpl<_$_OnOTPVerified>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() error,
+    required TResult Function(Failures failures) errorState,
+    required TResult Function() nullImage,
+    required TResult Function(String url) imageLocal,
+    required TResult Function(String message) onOTPGenerated,
+    required TResult Function(String message) onOTPVerified,
+    required TResult Function(String url) onGetImageUrl,
+    required TResult Function(QuestionnaireDataModel questionnaire)
+        getAllQuestionnaire,
+  }) {
+    return onOTPVerified(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? error,
+    TResult Function(Failures failures)? errorState,
+    TResult Function()? nullImage,
+    TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onOTPGenerated,
+    TResult Function(String message)? onOTPVerified,
+    TResult Function(String url)? onGetImageUrl,
+    TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
+  }) {
+    return onOTPVerified?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? error,
+    TResult Function(Failures failures)? errorState,
+    TResult Function()? nullImage,
+    TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onOTPGenerated,
+    TResult Function(String message)? onOTPVerified,
+    TResult Function(String url)? onGetImageUrl,
+    TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
+    required TResult orElse(),
+  }) {
+    if (onOTPVerified != null) {
+      return onOTPVerified(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Error value) error,
+    required TResult Function(_ErrorState value) errorState,
+    required TResult Function(_NullImage value) nullImage,
+    required TResult Function(_ImageLocal value) imageLocal,
+    required TResult Function(_OnOTPGenerated value) onOTPGenerated,
+    required TResult Function(_OnOTPVerified value) onOTPVerified,
+    required TResult Function(_OnGetImageUrl value) onGetImageUrl,
+    required TResult Function(_GetAllQuestionnaire value) getAllQuestionnaire,
+  }) {
+    return onOTPVerified(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_ErrorState value)? errorState,
+    TResult Function(_NullImage value)? nullImage,
+    TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnOTPGenerated value)? onOTPGenerated,
+    TResult Function(_OnOTPVerified value)? onOTPVerified,
+    TResult Function(_OnGetImageUrl value)? onGetImageUrl,
+    TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
+  }) {
+    return onOTPVerified?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_ErrorState value)? errorState,
+    TResult Function(_NullImage value)? nullImage,
+    TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnOTPGenerated value)? onOTPGenerated,
+    TResult Function(_OnOTPVerified value)? onOTPVerified,
+    TResult Function(_OnGetImageUrl value)? onGetImageUrl,
+    TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
+    required TResult orElse(),
+  }) {
+    if (onOTPVerified != null) {
+      return onOTPVerified(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnOTPVerified implements OtherState {
+  const factory _OnOTPVerified(final String message) = _$_OnOTPVerified;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$$_OnOTPVerifiedCopyWith<_$_OnOTPVerified> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1089,6 +1539,8 @@ class _$_OnGetImageUrl implements _OnGetImageUrl {
     required TResult Function(Failures failures) errorState,
     required TResult Function() nullImage,
     required TResult Function(String url) imageLocal,
+    required TResult Function(String message) onOTPGenerated,
+    required TResult Function(String message) onOTPVerified,
     required TResult Function(String url) onGetImageUrl,
     required TResult Function(QuestionnaireDataModel questionnaire)
         getAllQuestionnaire,
@@ -1105,6 +1557,8 @@ class _$_OnGetImageUrl implements _OnGetImageUrl {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onOTPGenerated,
+    TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
   }) {
@@ -1120,6 +1574,8 @@ class _$_OnGetImageUrl implements _OnGetImageUrl {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onOTPGenerated,
+    TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
     required TResult orElse(),
@@ -1139,6 +1595,8 @@ class _$_OnGetImageUrl implements _OnGetImageUrl {
     required TResult Function(_ErrorState value) errorState,
     required TResult Function(_NullImage value) nullImage,
     required TResult Function(_ImageLocal value) imageLocal,
+    required TResult Function(_OnOTPGenerated value) onOTPGenerated,
+    required TResult Function(_OnOTPVerified value) onOTPVerified,
     required TResult Function(_OnGetImageUrl value) onGetImageUrl,
     required TResult Function(_GetAllQuestionnaire value) getAllQuestionnaire,
   }) {
@@ -1154,6 +1612,8 @@ class _$_OnGetImageUrl implements _OnGetImageUrl {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnOTPGenerated value)? onOTPGenerated,
+    TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
   }) {
@@ -1169,6 +1629,8 @@ class _$_OnGetImageUrl implements _OnGetImageUrl {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnOTPGenerated value)? onOTPGenerated,
+    TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
     required TResult orElse(),
@@ -1271,6 +1733,8 @@ class _$_GetAllQuestionnaire implements _GetAllQuestionnaire {
     required TResult Function(Failures failures) errorState,
     required TResult Function() nullImage,
     required TResult Function(String url) imageLocal,
+    required TResult Function(String message) onOTPGenerated,
+    required TResult Function(String message) onOTPVerified,
     required TResult Function(String url) onGetImageUrl,
     required TResult Function(QuestionnaireDataModel questionnaire)
         getAllQuestionnaire,
@@ -1287,6 +1751,8 @@ class _$_GetAllQuestionnaire implements _GetAllQuestionnaire {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onOTPGenerated,
+    TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
   }) {
@@ -1302,6 +1768,8 @@ class _$_GetAllQuestionnaire implements _GetAllQuestionnaire {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onOTPGenerated,
+    TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
     required TResult orElse(),
@@ -1321,6 +1789,8 @@ class _$_GetAllQuestionnaire implements _GetAllQuestionnaire {
     required TResult Function(_ErrorState value) errorState,
     required TResult Function(_NullImage value) nullImage,
     required TResult Function(_ImageLocal value) imageLocal,
+    required TResult Function(_OnOTPGenerated value) onOTPGenerated,
+    required TResult Function(_OnOTPVerified value) onOTPVerified,
     required TResult Function(_OnGetImageUrl value) onGetImageUrl,
     required TResult Function(_GetAllQuestionnaire value) getAllQuestionnaire,
   }) {
@@ -1336,6 +1806,8 @@ class _$_GetAllQuestionnaire implements _GetAllQuestionnaire {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnOTPGenerated value)? onOTPGenerated,
+    TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
   }) {
@@ -1351,6 +1823,8 @@ class _$_GetAllQuestionnaire implements _GetAllQuestionnaire {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnOTPGenerated value)? onOTPGenerated,
+    TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
     required TResult orElse(),

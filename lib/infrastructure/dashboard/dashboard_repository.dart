@@ -5,6 +5,7 @@ import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dti_web/domain/dashboard/i_dashboard.dart';
 import 'package:dti_web/domain/global/failures.dart';
+import 'package:dti_web/env/env.dart';
 import 'package:dti_web/infrastructure/core/error_response.dart';
 import 'package:dti_web/utils/constant.dart';
 import 'package:get/state_manager.dart';
@@ -17,7 +18,7 @@ class DashboardRepository extends IDashboard {
     final dio = Dio();
     final storage = Storage();
     try {
-      final result = await dio.get(Constant.baseUrl + "/applicationsByUser/1",
+      final result = await dio.get(Env.baseUrl + "/applicationsByUser/1",
           options: Options(
             headers: {'Authorization': 'Bearer ${storage.getToken()}'},
           ));
@@ -45,7 +46,7 @@ class DashboardRepository extends IDashboard {
 
     try {
       final result = await dio.get(
-          Constant.baseUrl + "/application/$firebaseDocId/delete",
+          Env.baseUrl + "/application/$firebaseDocId/delete",
           options: Options(
               headers: {'Authorization': 'Bearer ${storage.getToken()}'}));
       if (result.data['message'] != null) {

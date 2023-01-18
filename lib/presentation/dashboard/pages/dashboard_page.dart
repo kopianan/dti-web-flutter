@@ -17,6 +17,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DashboardPage extends StatefulWidget {
   static const String routeName = '/dashboard-page';
@@ -82,29 +83,42 @@ class _DashboardPageState extends State<DashboardPage> {
             actions: [
               BlocProvider(
                 create: (context) => getIt<AuthCubit>()..getUserData(),
-                child: BlocBuilder<AuthCubit, AuthState>(
-                  builder: (context, state) {
-                    return state.maybeMap(orElse: () {
-                      return Shimmer.fromColors(
-                          baseColor: Colors.grey,
-                          highlightColor: Colors.white70,
-                          child: Container(
-                            margin: EdgeInsets.symmetric(vertical: 30),
-                            width: 200.0,
-                            height: 10.0,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Colors.white),
-                          ));
-                    }, onGetUserData: (e) {
-                      return Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(e.userData.email ?? ""),
-                        ],
-                      );
-                    });
+                child: BlocListener<AuthCubit, AuthState>(
+                  listener: (context, state) {
+                    state.maybeMap(
+                        orElse: () {},
+                        onGetUserData: (e) {
+                          if (e.userData.mobileNumber == null) {
+                            //user must verify the number.
+                            AutoRouter.of(context)
+                                .navigate(NumberRegistrationRoute());
+                          }
+                        });
                   },
+                  child: BlocBuilder<AuthCubit, AuthState>(
+                    builder: (context, state) {
+                      return state.maybeMap(orElse: () {
+                        return Shimmer.fromColors(
+                            baseColor: Colors.grey,
+                            highlightColor: Colors.white70,
+                            child: Container(
+                              margin: EdgeInsets.symmetric(vertical: 30),
+                              width: 200.0,
+                              height: 10.0,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.white),
+                            ));
+                      }, onGetUserData: (e) {
+                        return Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(e.userData.email ?? ""),
+                          ],
+                        );
+                      });
+                    },
+                  ),
                 ),
               ),
               10.horizontalSpace,
@@ -365,7 +379,7 @@ class _DashboardPageState extends State<DashboardPage> {
                                           //     QuestionnaireDataModel.fromJson(
                                           //         rawData);
 
-                                          AutoRouter.of(context).push(
+                                          AutoRouter.of(context).navigate(
                                             ApplicationDetailRoute(
                                               firebaseDocId:
                                                   e.visa.firebaseDocId!,
@@ -471,9 +485,17 @@ class _DashboardFooter extends StatelessWidget {
             Text("Copyright © 2022 DoorToID. All Rights Reserved."),
             Row(
               children: [
-                InkWell(onTap: () {}, child: Text("Terms of Use")),
+                InkWell(
+                    onTap: () {
+                      launch("https://doortoid.com/term-of-use/");
+                    },
+                    child: Text("Terms of Use")),
                 30.horizontalSpace,
-                InkWell(onTap: () {}, child: Text("Privacy Policy")),
+                InkWell(
+                    onTap: () {
+                      launch("https://doortoid.com/privacy-policy/");
+                    },
+                    child: Text("Privacy Policy")),
               ],
             )
           ],

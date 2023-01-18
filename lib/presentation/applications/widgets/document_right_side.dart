@@ -288,9 +288,20 @@ class _RighSideState extends State<RighSide> {
         //check pdf from url or file
 
         if (selectedFile.contains('/')) {
-          //this is come from local file
-          AutoRouter.of(context).navigate(
-              DTIPdfViewerRoute(imageUrl: selectedFile, isNetwork: false));
+          //check again if it from file or bytes ;
+          print(docState.selectedDataCollection);
+          if (kIsWeb) {
+            final bytesData = docState.selectedDataCollection![selectedFile];
+
+            AutoRouter.of(context).navigate(DTIPdfViewerRoute(
+                imageUrl: selectedFile,
+                isNetwork: false,
+                bytesImage: bytesData));
+          } else {
+            //this is come from local file
+            AutoRouter.of(context).navigate(
+                DTIPdfViewerRoute(imageUrl: selectedFile, isNetwork: false));
+          }
         } else {
           //come from url.
           //get url from master data.
@@ -304,10 +315,18 @@ class _RighSideState extends State<RighSide> {
       } else {
         //check image from url or file
         if (selectedFile.contains('/')) {
+          // if from file, check if it is web or no
           //this is come from local file
-          AutoRouter.of(context).push(PhotoViewRoute(
-            images: [selectedFile],
-          ));
+          final bytesData = docState.selectedDataCollection![selectedFile];
+          if (kIsWeb) {
+            AutoRouter.of(context).push(PhotoViewRoute(
+                images: ["noDataHere"],
+                isNetwork: false,
+                imagesBytes: [bytesData]));
+          } else {
+            AutoRouter.of(context)
+                .push(PhotoViewRoute(images: [selectedFile], isNetwork: false));
+          }
         } else {
           //come from url.
           final cek = docState.selectedMasterListData!.firstWhere(
@@ -371,11 +390,22 @@ class _RighSideState extends State<RighSide> {
         visaApplication: docState.visa!,
         appDocument: docState.selectedDocument!));
     if (pdfFile != null) {
-      setState(() {
-        context
-            .read<DocumentCubit>()
-            .addNewPhotoDocument((pdfFile as File).path, index);
-      });
+      //check if file is byte or file
+      if (kIsWeb) {
+        setState(() {
+          context.read<DocumentCubit>().addNewPhotoDocument(
+                "/${DateTime.now().millisecondsSinceEpoch.toString()}.pdf",
+                index,
+                fileBytes: Uint8List.fromList(pdfFile as List<int>),
+              );
+        });
+      } else {
+        setState(() {
+          context
+              .read<DocumentCubit>()
+              .addNewPhotoDocument((pdfFile as File).path, index);
+        });
+      }
     }
   }
 
@@ -528,7 +558,7 @@ class _RighSideState extends State<RighSide> {
 //     String documentId,
 //   ) async {
 //     Storage storage = Storage();
-//     final result = await Dio().post('${Constant.baseUrl}/downloadURL',
+//     final result = await Dio().post('${Env.baseUrl}/downloadURL',
 //         data: {"appId": appId, "docId": documentId, "nameFile": baseName},
 //         options: Options(
 //           headers: {'Authorization': 'Bearer ${storage.getToken()}'},

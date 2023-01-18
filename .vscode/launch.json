@@ -1,11 +1,13 @@
 {
     "configurations": [
+
         {
             "name": "Flutter (Chrome)",
             "program": "lib/main.dart",
             "deviceId": "chrome",
             "request": "launch",
-            "type": "dart"
+            "type": "dart", 
+            "args":["-d", "chrome","--web-port", "54283"]
         }
     ]
 }

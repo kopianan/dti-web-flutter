@@ -241,7 +241,7 @@ class __$$_DocumentStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_DocumentState implements _DocumentState {
+class _$_DocumentState with DiagnosticableTreeMixin implements _DocumentState {
   _$_DocumentState(
       {this.visa,
       this.docs,
@@ -278,8 +278,27 @@ class _$_DocumentState implements _DocumentState {
   final bool isAllRead;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'DocumentState(visa: $visa, docs: $docs, selectedIndex: $selectedIndex, masterListData: $masterListData, selectedMasterListData: $selectedMasterListData, deletedImagesName: $deletedImagesName, selectedDocument: $selectedDocument, selectedDataCollection: $selectedDataCollection, selectedDataType: $selectedDataType, isAllRead: $isAllRead)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'DocumentState'))
+      ..add(DiagnosticsProperty('visa', visa))
+      ..add(DiagnosticsProperty('docs', docs))
+      ..add(DiagnosticsProperty('selectedIndex', selectedIndex))
+      ..add(DiagnosticsProperty('masterListData', masterListData))
+      ..add(
+          DiagnosticsProperty('selectedMasterListData', selectedMasterListData))
+      ..add(DiagnosticsProperty('deletedImagesName', deletedImagesName))
+      ..add(DiagnosticsProperty('selectedDocument', selectedDocument))
+      ..add(
+          DiagnosticsProperty('selectedDataCollection', selectedDataCollection))
+      ..add(DiagnosticsProperty('selectedDataType', selectedDataType))
+      ..add(DiagnosticsProperty('isAllRead', isAllRead));
   }
 
   @override
