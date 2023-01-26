@@ -3,17 +3,17 @@ import 'package:dti_web/domain/core/country_nationality.dart';
 class Constant {
   static String header =
       "eyJhbGciOiJSUzI1NiIsImtpZCI6ImRjMzdkNTkzNjVjNjIyOGI4Y2NkYWNhNTM2MGFjMjRkMDQxNWMxZWEiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiRG9vclRvSUQgRGV2ZWxvcG1lbnQiLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vZG9vcnRvaWQtbW9iaWxlIiwiYXVkIjoiZG9vcnRvaWQtbW9iaWxlIiwiYXV0aF90aW1lIjoxNjY3Mjg4MzE1LCJ1c2VyX2lkIjoiTTJnNTFhN0xBVGFBcUV2ekhZU0JPdmREZ1BFMiIsInN1YiI6Ik0yZzUxYTdMQVRhQXFFdnpIWVNCT3ZkRGdQRTIiLCJpYXQiOjE2NjcyODgzMTUsImV4cCI6MTY2NzI5MTkxNSwiZW1haWwiOiJkdGlAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImR0aUBnbWFpbC5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.Cr6JwhoMH4_kkTzRJAJYnFm4eU_NQaUuwrqIh32Ik-2cuZveas-x8OTwQ2Xo8pt3MCxsRCtYwPJuwzFF5f-uixjBNpiqFxgbeVSlK7CUK_7fLyBsBjL-txpIYIcuP7ZVgsZABFSDxasiVqZ-zmlop31q9frVo-hwi08takMvue-hyxxLgvrnCcTLw-hHKnP8t0YG2C6zpkILSBZIXoozclrV5HyxnOCZp7FPdtC4IOdp1YGOtnb8HG_IOjmsdj5nNN-LO34_dDN73YGUtLcn3ILF1_WXXiHPavl-eXwG6MLvoiZhgBSxM-YZox68Na3WsuyrTwsGp6zN25tEQZwSqA";
-  static String get baseUrl =>
-      'http://127.0.0.1:5002/doortoid-mobile/us-central1/api';
-  static String get baseUploadUrl =>
-      'http://127.0.0.1:5002/doortoid-mobile/us-central1';
+  // static String get baseUrl =>
+  //     'http://127.0.0.1:5002/doortoid-mobile/us-central1/api';
+  // static String get baseUploadUrl =>
+  //     'http://127.0.0.1:5002/doortoid-mobile/us-central1';
 
   static List<String> getMultipleVisaDuration() {
     return ['6 Months', '1 Year', '2 Years', '3 Years', '4 Years', '5 Years'];
   }
 
   static List<CountryNationality> getCountries() {
-    final countries = <CountryNationality>[
+    final countries = <CountryNationality> [
       CountryNationality(name: 'Afghanistan', code: 'AF'),
       CountryNationality(name: 'Åland Islands', code: 'AX'),
       CountryNationality(name: 'Albania', code: 'AL'),

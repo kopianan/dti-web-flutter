@@ -19,8 +19,7 @@ class AppListRepository extends IAppList {
     final result = await dio!.get('${Env.baseUrl}/applicationsByUser',
         options: Options(
           headers: {'Authorization': 'Bearer ${storage.getToken()}'},
-        ));
-    print(result);
+        )); 
     final listData = (result.data['data'] as List)
         .map((e) => SimpleVisaModel.fromJson(e))
         .toList();

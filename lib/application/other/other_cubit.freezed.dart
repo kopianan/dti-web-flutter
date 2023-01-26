@@ -29,6 +29,8 @@ mixin _$OtherState {
     required TResult Function(String url) onGetImageUrl,
     required TResult Function(QuestionnaireDataModel questionnaire)
         getAllQuestionnaire,
+    required TResult Function(List<DocumentDataModel> documents)
+        getAllDocumentData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -43,6 +45,7 @@ mixin _$OtherState {
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
+    TResult Function(List<DocumentDataModel> documents)? getAllDocumentData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +60,7 @@ mixin _$OtherState {
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
+    TResult Function(List<DocumentDataModel> documents)? getAllDocumentData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -72,6 +76,7 @@ mixin _$OtherState {
     required TResult Function(_OnOTPVerified value) onOTPVerified,
     required TResult Function(_OnGetImageUrl value) onGetImageUrl,
     required TResult Function(_GetAllQuestionnaire value) getAllQuestionnaire,
+    required TResult Function(_GetAllDocumentData value) getAllDocumentData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -86,6 +91,7 @@ mixin _$OtherState {
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
+    TResult Function(_GetAllDocumentData value)? getAllDocumentData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -100,6 +106,7 @@ mixin _$OtherState {
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
+    TResult Function(_GetAllDocumentData value)? getAllDocumentData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -171,6 +178,8 @@ class _$_Initial implements _Initial {
     required TResult Function(String url) onGetImageUrl,
     required TResult Function(QuestionnaireDataModel questionnaire)
         getAllQuestionnaire,
+    required TResult Function(List<DocumentDataModel> documents)
+        getAllDocumentData,
   }) {
     return initial();
   }
@@ -188,6 +197,7 @@ class _$_Initial implements _Initial {
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
+    TResult Function(List<DocumentDataModel> documents)? getAllDocumentData,
   }) {
     return initial?.call();
   }
@@ -205,6 +215,7 @@ class _$_Initial implements _Initial {
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
+    TResult Function(List<DocumentDataModel> documents)? getAllDocumentData,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -226,6 +237,7 @@ class _$_Initial implements _Initial {
     required TResult Function(_OnOTPVerified value) onOTPVerified,
     required TResult Function(_OnGetImageUrl value) onGetImageUrl,
     required TResult Function(_GetAllQuestionnaire value) getAllQuestionnaire,
+    required TResult Function(_GetAllDocumentData value) getAllDocumentData,
   }) {
     return initial(this);
   }
@@ -243,6 +255,7 @@ class _$_Initial implements _Initial {
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
+    TResult Function(_GetAllDocumentData value)? getAllDocumentData,
   }) {
     return initial?.call(this);
   }
@@ -260,6 +273,7 @@ class _$_Initial implements _Initial {
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
+    TResult Function(_GetAllDocumentData value)? getAllDocumentData,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -323,6 +337,8 @@ class _$_Loading implements _Loading {
     required TResult Function(String url) onGetImageUrl,
     required TResult Function(QuestionnaireDataModel questionnaire)
         getAllQuestionnaire,
+    required TResult Function(List<DocumentDataModel> documents)
+        getAllDocumentData,
   }) {
     return loading();
   }
@@ -340,6 +356,7 @@ class _$_Loading implements _Loading {
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
+    TResult Function(List<DocumentDataModel> documents)? getAllDocumentData,
   }) {
     return loading?.call();
   }
@@ -357,6 +374,7 @@ class _$_Loading implements _Loading {
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
+    TResult Function(List<DocumentDataModel> documents)? getAllDocumentData,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -378,6 +396,7 @@ class _$_Loading implements _Loading {
     required TResult Function(_OnOTPVerified value) onOTPVerified,
     required TResult Function(_OnGetImageUrl value) onGetImageUrl,
     required TResult Function(_GetAllQuestionnaire value) getAllQuestionnaire,
+    required TResult Function(_GetAllDocumentData value) getAllDocumentData,
   }) {
     return loading(this);
   }
@@ -395,6 +414,7 @@ class _$_Loading implements _Loading {
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
+    TResult Function(_GetAllDocumentData value)? getAllDocumentData,
   }) {
     return loading?.call(this);
   }
@@ -412,6 +432,7 @@ class _$_Loading implements _Loading {
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
+    TResult Function(_GetAllDocumentData value)? getAllDocumentData,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -474,6 +495,8 @@ class _$_Error implements _Error {
     required TResult Function(String url) onGetImageUrl,
     required TResult Function(QuestionnaireDataModel questionnaire)
         getAllQuestionnaire,
+    required TResult Function(List<DocumentDataModel> documents)
+        getAllDocumentData,
   }) {
     return error();
   }
@@ -491,6 +514,7 @@ class _$_Error implements _Error {
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
+    TResult Function(List<DocumentDataModel> documents)? getAllDocumentData,
   }) {
     return error?.call();
   }
@@ -508,6 +532,7 @@ class _$_Error implements _Error {
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
+    TResult Function(List<DocumentDataModel> documents)? getAllDocumentData,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -529,6 +554,7 @@ class _$_Error implements _Error {
     required TResult Function(_OnOTPVerified value) onOTPVerified,
     required TResult Function(_OnGetImageUrl value) onGetImageUrl,
     required TResult Function(_GetAllQuestionnaire value) getAllQuestionnaire,
+    required TResult Function(_GetAllDocumentData value) getAllDocumentData,
   }) {
     return error(this);
   }
@@ -546,6 +572,7 @@ class _$_Error implements _Error {
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
+    TResult Function(_GetAllDocumentData value)? getAllDocumentData,
   }) {
     return error?.call(this);
   }
@@ -563,6 +590,7 @@ class _$_Error implements _Error {
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
+    TResult Function(_GetAllDocumentData value)? getAllDocumentData,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -660,6 +688,8 @@ class _$_ErrorState implements _ErrorState {
     required TResult Function(String url) onGetImageUrl,
     required TResult Function(QuestionnaireDataModel questionnaire)
         getAllQuestionnaire,
+    required TResult Function(List<DocumentDataModel> documents)
+        getAllDocumentData,
   }) {
     return errorState(failures);
   }
@@ -677,6 +707,7 @@ class _$_ErrorState implements _ErrorState {
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
+    TResult Function(List<DocumentDataModel> documents)? getAllDocumentData,
   }) {
     return errorState?.call(failures);
   }
@@ -694,6 +725,7 @@ class _$_ErrorState implements _ErrorState {
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
+    TResult Function(List<DocumentDataModel> documents)? getAllDocumentData,
     required TResult orElse(),
   }) {
     if (errorState != null) {
@@ -715,6 +747,7 @@ class _$_ErrorState implements _ErrorState {
     required TResult Function(_OnOTPVerified value) onOTPVerified,
     required TResult Function(_OnGetImageUrl value) onGetImageUrl,
     required TResult Function(_GetAllQuestionnaire value) getAllQuestionnaire,
+    required TResult Function(_GetAllDocumentData value) getAllDocumentData,
   }) {
     return errorState(this);
   }
@@ -732,6 +765,7 @@ class _$_ErrorState implements _ErrorState {
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
+    TResult Function(_GetAllDocumentData value)? getAllDocumentData,
   }) {
     return errorState?.call(this);
   }
@@ -749,6 +783,7 @@ class _$_ErrorState implements _ErrorState {
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
+    TResult Function(_GetAllDocumentData value)? getAllDocumentData,
     required TResult orElse(),
   }) {
     if (errorState != null) {
@@ -818,6 +853,8 @@ class _$_NullImage implements _NullImage {
     required TResult Function(String url) onGetImageUrl,
     required TResult Function(QuestionnaireDataModel questionnaire)
         getAllQuestionnaire,
+    required TResult Function(List<DocumentDataModel> documents)
+        getAllDocumentData,
   }) {
     return nullImage();
   }
@@ -835,6 +872,7 @@ class _$_NullImage implements _NullImage {
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
+    TResult Function(List<DocumentDataModel> documents)? getAllDocumentData,
   }) {
     return nullImage?.call();
   }
@@ -852,6 +890,7 @@ class _$_NullImage implements _NullImage {
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
+    TResult Function(List<DocumentDataModel> documents)? getAllDocumentData,
     required TResult orElse(),
   }) {
     if (nullImage != null) {
@@ -873,6 +912,7 @@ class _$_NullImage implements _NullImage {
     required TResult Function(_OnOTPVerified value) onOTPVerified,
     required TResult Function(_OnGetImageUrl value) onGetImageUrl,
     required TResult Function(_GetAllQuestionnaire value) getAllQuestionnaire,
+    required TResult Function(_GetAllDocumentData value) getAllDocumentData,
   }) {
     return nullImage(this);
   }
@@ -890,6 +930,7 @@ class _$_NullImage implements _NullImage {
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
+    TResult Function(_GetAllDocumentData value)? getAllDocumentData,
   }) {
     return nullImage?.call(this);
   }
@@ -907,6 +948,7 @@ class _$_NullImage implements _NullImage {
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
+    TResult Function(_GetAllDocumentData value)? getAllDocumentData,
     required TResult orElse(),
   }) {
     if (nullImage != null) {
@@ -995,6 +1037,8 @@ class _$_ImageLocal implements _ImageLocal {
     required TResult Function(String url) onGetImageUrl,
     required TResult Function(QuestionnaireDataModel questionnaire)
         getAllQuestionnaire,
+    required TResult Function(List<DocumentDataModel> documents)
+        getAllDocumentData,
   }) {
     return imageLocal(url);
   }
@@ -1012,6 +1056,7 @@ class _$_ImageLocal implements _ImageLocal {
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
+    TResult Function(List<DocumentDataModel> documents)? getAllDocumentData,
   }) {
     return imageLocal?.call(url);
   }
@@ -1029,6 +1074,7 @@ class _$_ImageLocal implements _ImageLocal {
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
+    TResult Function(List<DocumentDataModel> documents)? getAllDocumentData,
     required TResult orElse(),
   }) {
     if (imageLocal != null) {
@@ -1050,6 +1096,7 @@ class _$_ImageLocal implements _ImageLocal {
     required TResult Function(_OnOTPVerified value) onOTPVerified,
     required TResult Function(_OnGetImageUrl value) onGetImageUrl,
     required TResult Function(_GetAllQuestionnaire value) getAllQuestionnaire,
+    required TResult Function(_GetAllDocumentData value) getAllDocumentData,
   }) {
     return imageLocal(this);
   }
@@ -1067,6 +1114,7 @@ class _$_ImageLocal implements _ImageLocal {
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
+    TResult Function(_GetAllDocumentData value)? getAllDocumentData,
   }) {
     return imageLocal?.call(this);
   }
@@ -1084,6 +1132,7 @@ class _$_ImageLocal implements _ImageLocal {
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
+    TResult Function(_GetAllDocumentData value)? getAllDocumentData,
     required TResult orElse(),
   }) {
     if (imageLocal != null) {
@@ -1178,6 +1227,8 @@ class _$_OnOTPGenerated implements _OnOTPGenerated {
     required TResult Function(String url) onGetImageUrl,
     required TResult Function(QuestionnaireDataModel questionnaire)
         getAllQuestionnaire,
+    required TResult Function(List<DocumentDataModel> documents)
+        getAllDocumentData,
   }) {
     return onOTPGenerated(message);
   }
@@ -1195,6 +1246,7 @@ class _$_OnOTPGenerated implements _OnOTPGenerated {
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
+    TResult Function(List<DocumentDataModel> documents)? getAllDocumentData,
   }) {
     return onOTPGenerated?.call(message);
   }
@@ -1212,6 +1264,7 @@ class _$_OnOTPGenerated implements _OnOTPGenerated {
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
+    TResult Function(List<DocumentDataModel> documents)? getAllDocumentData,
     required TResult orElse(),
   }) {
     if (onOTPGenerated != null) {
@@ -1233,6 +1286,7 @@ class _$_OnOTPGenerated implements _OnOTPGenerated {
     required TResult Function(_OnOTPVerified value) onOTPVerified,
     required TResult Function(_OnGetImageUrl value) onGetImageUrl,
     required TResult Function(_GetAllQuestionnaire value) getAllQuestionnaire,
+    required TResult Function(_GetAllDocumentData value) getAllDocumentData,
   }) {
     return onOTPGenerated(this);
   }
@@ -1250,6 +1304,7 @@ class _$_OnOTPGenerated implements _OnOTPGenerated {
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
+    TResult Function(_GetAllDocumentData value)? getAllDocumentData,
   }) {
     return onOTPGenerated?.call(this);
   }
@@ -1267,6 +1322,7 @@ class _$_OnOTPGenerated implements _OnOTPGenerated {
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
+    TResult Function(_GetAllDocumentData value)? getAllDocumentData,
     required TResult orElse(),
   }) {
     if (onOTPGenerated != null) {
@@ -1361,6 +1417,8 @@ class _$_OnOTPVerified implements _OnOTPVerified {
     required TResult Function(String url) onGetImageUrl,
     required TResult Function(QuestionnaireDataModel questionnaire)
         getAllQuestionnaire,
+    required TResult Function(List<DocumentDataModel> documents)
+        getAllDocumentData,
   }) {
     return onOTPVerified(message);
   }
@@ -1378,6 +1436,7 @@ class _$_OnOTPVerified implements _OnOTPVerified {
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
+    TResult Function(List<DocumentDataModel> documents)? getAllDocumentData,
   }) {
     return onOTPVerified?.call(message);
   }
@@ -1395,6 +1454,7 @@ class _$_OnOTPVerified implements _OnOTPVerified {
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
+    TResult Function(List<DocumentDataModel> documents)? getAllDocumentData,
     required TResult orElse(),
   }) {
     if (onOTPVerified != null) {
@@ -1416,6 +1476,7 @@ class _$_OnOTPVerified implements _OnOTPVerified {
     required TResult Function(_OnOTPVerified value) onOTPVerified,
     required TResult Function(_OnGetImageUrl value) onGetImageUrl,
     required TResult Function(_GetAllQuestionnaire value) getAllQuestionnaire,
+    required TResult Function(_GetAllDocumentData value) getAllDocumentData,
   }) {
     return onOTPVerified(this);
   }
@@ -1433,6 +1494,7 @@ class _$_OnOTPVerified implements _OnOTPVerified {
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
+    TResult Function(_GetAllDocumentData value)? getAllDocumentData,
   }) {
     return onOTPVerified?.call(this);
   }
@@ -1450,6 +1512,7 @@ class _$_OnOTPVerified implements _OnOTPVerified {
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
+    TResult Function(_GetAllDocumentData value)? getAllDocumentData,
     required TResult orElse(),
   }) {
     if (onOTPVerified != null) {
@@ -1544,6 +1607,8 @@ class _$_OnGetImageUrl implements _OnGetImageUrl {
     required TResult Function(String url) onGetImageUrl,
     required TResult Function(QuestionnaireDataModel questionnaire)
         getAllQuestionnaire,
+    required TResult Function(List<DocumentDataModel> documents)
+        getAllDocumentData,
   }) {
     return onGetImageUrl(url);
   }
@@ -1561,6 +1626,7 @@ class _$_OnGetImageUrl implements _OnGetImageUrl {
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
+    TResult Function(List<DocumentDataModel> documents)? getAllDocumentData,
   }) {
     return onGetImageUrl?.call(url);
   }
@@ -1578,6 +1644,7 @@ class _$_OnGetImageUrl implements _OnGetImageUrl {
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
+    TResult Function(List<DocumentDataModel> documents)? getAllDocumentData,
     required TResult orElse(),
   }) {
     if (onGetImageUrl != null) {
@@ -1599,6 +1666,7 @@ class _$_OnGetImageUrl implements _OnGetImageUrl {
     required TResult Function(_OnOTPVerified value) onOTPVerified,
     required TResult Function(_OnGetImageUrl value) onGetImageUrl,
     required TResult Function(_GetAllQuestionnaire value) getAllQuestionnaire,
+    required TResult Function(_GetAllDocumentData value) getAllDocumentData,
   }) {
     return onGetImageUrl(this);
   }
@@ -1616,6 +1684,7 @@ class _$_OnGetImageUrl implements _OnGetImageUrl {
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
+    TResult Function(_GetAllDocumentData value)? getAllDocumentData,
   }) {
     return onGetImageUrl?.call(this);
   }
@@ -1633,6 +1702,7 @@ class _$_OnGetImageUrl implements _OnGetImageUrl {
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
+    TResult Function(_GetAllDocumentData value)? getAllDocumentData,
     required TResult orElse(),
   }) {
     if (onGetImageUrl != null) {
@@ -1738,6 +1808,8 @@ class _$_GetAllQuestionnaire implements _GetAllQuestionnaire {
     required TResult Function(String url) onGetImageUrl,
     required TResult Function(QuestionnaireDataModel questionnaire)
         getAllQuestionnaire,
+    required TResult Function(List<DocumentDataModel> documents)
+        getAllDocumentData,
   }) {
     return getAllQuestionnaire(questionnaire);
   }
@@ -1755,6 +1827,7 @@ class _$_GetAllQuestionnaire implements _GetAllQuestionnaire {
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
+    TResult Function(List<DocumentDataModel> documents)? getAllDocumentData,
   }) {
     return getAllQuestionnaire?.call(questionnaire);
   }
@@ -1772,6 +1845,7 @@ class _$_GetAllQuestionnaire implements _GetAllQuestionnaire {
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
     TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
+    TResult Function(List<DocumentDataModel> documents)? getAllDocumentData,
     required TResult orElse(),
   }) {
     if (getAllQuestionnaire != null) {
@@ -1793,6 +1867,7 @@ class _$_GetAllQuestionnaire implements _GetAllQuestionnaire {
     required TResult Function(_OnOTPVerified value) onOTPVerified,
     required TResult Function(_OnGetImageUrl value) onGetImageUrl,
     required TResult Function(_GetAllQuestionnaire value) getAllQuestionnaire,
+    required TResult Function(_GetAllDocumentData value) getAllDocumentData,
   }) {
     return getAllQuestionnaire(this);
   }
@@ -1810,6 +1885,7 @@ class _$_GetAllQuestionnaire implements _GetAllQuestionnaire {
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
+    TResult Function(_GetAllDocumentData value)? getAllDocumentData,
   }) {
     return getAllQuestionnaire?.call(this);
   }
@@ -1827,6 +1903,7 @@ class _$_GetAllQuestionnaire implements _GetAllQuestionnaire {
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
     TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
+    TResult Function(_GetAllDocumentData value)? getAllDocumentData,
     required TResult orElse(),
   }) {
     if (getAllQuestionnaire != null) {
@@ -1843,5 +1920,203 @@ abstract class _GetAllQuestionnaire implements OtherState {
   QuestionnaireDataModel get questionnaire;
   @JsonKey(ignore: true)
   _$$_GetAllQuestionnaireCopyWith<_$_GetAllQuestionnaire> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_GetAllDocumentDataCopyWith<$Res> {
+  factory _$$_GetAllDocumentDataCopyWith(_$_GetAllDocumentData value,
+          $Res Function(_$_GetAllDocumentData) then) =
+      __$$_GetAllDocumentDataCopyWithImpl<$Res>;
+  $Res call({List<DocumentDataModel> documents});
+}
+
+/// @nodoc
+class __$$_GetAllDocumentDataCopyWithImpl<$Res>
+    extends _$OtherStateCopyWithImpl<$Res>
+    implements _$$_GetAllDocumentDataCopyWith<$Res> {
+  __$$_GetAllDocumentDataCopyWithImpl(
+      _$_GetAllDocumentData _value, $Res Function(_$_GetAllDocumentData) _then)
+      : super(_value, (v) => _then(v as _$_GetAllDocumentData));
+
+  @override
+  _$_GetAllDocumentData get _value => super._value as _$_GetAllDocumentData;
+
+  @override
+  $Res call({
+    Object? documents = freezed,
+  }) {
+    return _then(_$_GetAllDocumentData(
+      documents == freezed
+          ? _value._documents
+          : documents // ignore: cast_nullable_to_non_nullable
+              as List<DocumentDataModel>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_GetAllDocumentData implements _GetAllDocumentData {
+  const _$_GetAllDocumentData(final List<DocumentDataModel> documents)
+      : _documents = documents;
+
+  final List<DocumentDataModel> _documents;
+  @override
+  List<DocumentDataModel> get documents {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_documents);
+  }
+
+  @override
+  String toString() {
+    return 'OtherState.getAllDocumentData(documents: $documents)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_GetAllDocumentData &&
+            const DeepCollectionEquality()
+                .equals(other._documents, _documents));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_documents));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_GetAllDocumentDataCopyWith<_$_GetAllDocumentData> get copyWith =>
+      __$$_GetAllDocumentDataCopyWithImpl<_$_GetAllDocumentData>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() error,
+    required TResult Function(Failures failures) errorState,
+    required TResult Function() nullImage,
+    required TResult Function(String url) imageLocal,
+    required TResult Function(String message) onOTPGenerated,
+    required TResult Function(String message) onOTPVerified,
+    required TResult Function(String url) onGetImageUrl,
+    required TResult Function(QuestionnaireDataModel questionnaire)
+        getAllQuestionnaire,
+    required TResult Function(List<DocumentDataModel> documents)
+        getAllDocumentData,
+  }) {
+    return getAllDocumentData(documents);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? error,
+    TResult Function(Failures failures)? errorState,
+    TResult Function()? nullImage,
+    TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onOTPGenerated,
+    TResult Function(String message)? onOTPVerified,
+    TResult Function(String url)? onGetImageUrl,
+    TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
+    TResult Function(List<DocumentDataModel> documents)? getAllDocumentData,
+  }) {
+    return getAllDocumentData?.call(documents);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? error,
+    TResult Function(Failures failures)? errorState,
+    TResult Function()? nullImage,
+    TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onOTPGenerated,
+    TResult Function(String message)? onOTPVerified,
+    TResult Function(String url)? onGetImageUrl,
+    TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
+    TResult Function(List<DocumentDataModel> documents)? getAllDocumentData,
+    required TResult orElse(),
+  }) {
+    if (getAllDocumentData != null) {
+      return getAllDocumentData(documents);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Error value) error,
+    required TResult Function(_ErrorState value) errorState,
+    required TResult Function(_NullImage value) nullImage,
+    required TResult Function(_ImageLocal value) imageLocal,
+    required TResult Function(_OnOTPGenerated value) onOTPGenerated,
+    required TResult Function(_OnOTPVerified value) onOTPVerified,
+    required TResult Function(_OnGetImageUrl value) onGetImageUrl,
+    required TResult Function(_GetAllQuestionnaire value) getAllQuestionnaire,
+    required TResult Function(_GetAllDocumentData value) getAllDocumentData,
+  }) {
+    return getAllDocumentData(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_ErrorState value)? errorState,
+    TResult Function(_NullImage value)? nullImage,
+    TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnOTPGenerated value)? onOTPGenerated,
+    TResult Function(_OnOTPVerified value)? onOTPVerified,
+    TResult Function(_OnGetImageUrl value)? onGetImageUrl,
+    TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
+    TResult Function(_GetAllDocumentData value)? getAllDocumentData,
+  }) {
+    return getAllDocumentData?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_ErrorState value)? errorState,
+    TResult Function(_NullImage value)? nullImage,
+    TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnOTPGenerated value)? onOTPGenerated,
+    TResult Function(_OnOTPVerified value)? onOTPVerified,
+    TResult Function(_OnGetImageUrl value)? onGetImageUrl,
+    TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
+    TResult Function(_GetAllDocumentData value)? getAllDocumentData,
+    required TResult orElse(),
+  }) {
+    if (getAllDocumentData != null) {
+      return getAllDocumentData(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetAllDocumentData implements OtherState {
+  const factory _GetAllDocumentData(final List<DocumentDataModel> documents) =
+      _$_GetAllDocumentData;
+
+  List<DocumentDataModel> get documents;
+  @JsonKey(ignore: true)
+  _$$_GetAllDocumentDataCopyWith<_$_GetAllDocumentData> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:dti_web/presentation/questionnaire/widget/custom_second_header.dart';
 import 'package:dti_web/utils/date_time_child.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
@@ -43,6 +44,8 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
   final _formKey = GlobalKey<FormBuilderState>();
   var initialDateOfBirth = "";
 
+  final scrollController = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     final AppRouter router = AppRouter();
@@ -54,7 +57,6 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
           updateState.maybeMap(
             orElse: () {},
             onLoading: (e) {
-              log("LOADING");
               EasyLoading.show(
                 dismissOnTap: false,
                 maskType: EasyLoadingMaskType.black,
@@ -65,7 +67,6 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
               EasyLoading.dismiss();
             },
             onGetSingleApplicationWithImage: (e) {
-              log("Success");
               //close loading dialog
               EasyLoading.dismiss();
               context
@@ -95,397 +96,508 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                           )),
                       Container(
                           width: ScreenUtil().screenWidth / 2.2,
-                          // height: ScreenUtil().screenHeight,
-                          padding: REdgeInsets.symmetric(
-                              horizontal: 50.w, vertical: 20.h),
                           margin: EdgeInsets.symmetric(vertical: 40.h),
                           decoration: BoxDecoration(
                             color: Colors.white.withAlpha(250),
-                            borderRadius: BorderRadius.horizontal(
+                            borderRadius: const BorderRadius.horizontal(
                                 right: Radius.circular(10)),
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                "Personal Particular",
-                                style: TextStyle(
-                                    fontSize: 30.sp,
-                                    color: AppColor.primaryColor,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              20.verticalSpace,
-                              Expanded(
-                                child: SingleChildScrollView(
-                                  child: FormBuilder(
-                                    key: _formKey,
-                                    onChanged: () => {
-                                      //print("Form has been changed")
-                                    },
-                                    initialValue: const {'textfield': ''},
-                                    skipDisabled: true,
-                                    child: Column(
-                                      children: [
-                                        //First Name
-                                        Row(children: [
-                                          Expanded(
-                                            child: FormBuilderTextField(
-                                              name: 'firstName',
-                                              initialValue:
-                                                  state.visaApplicationModel ==
-                                                          null
-                                                      ? ''
-                                                      : state
-                                                          .visaApplicationModel!
-                                                          .firstName,
-                                              enableSuggestions: false,
-                                              decoration: const InputDecoration(
-                                                  hintText: "First Name",
-                                                  labelText: "First Name"),
-                                              autocorrect: false,
-                                              validator: FormBuilderValidators
-                                                  .required(
-                                                      errorText:
-                                                          "First name can not be empty"),
-                                              autovalidateMode: AutovalidateMode
-                                                  .onUserInteraction,
-                                              enabled: true,
-                                            ),
-                                          ),
-                                          20.horizontalSpace,
-                                          Expanded(
-                                            child: FormBuilderTextField(
-                                              name: 'lastName',
-                                              initialValue:
-                                                  state.visaApplicationModel ==
-                                                          null
-                                                      ? ''
-                                                      : state
-                                                          .visaApplicationModel!
-                                                          .lastName,
-                                              enableSuggestions: false,
-                                              decoration: const InputDecoration(
-                                                  hintText: "Last Name",
-                                                  labelText: "Last Name"),
-                                              autocorrect: false,
-                                              validator: FormBuilderValidators
-                                                  .required(
-                                                      errorText:
-                                                          "Last name can not be empty"),
-                                              autovalidateMode: AutovalidateMode
-                                                  .onUserInteraction,
-                                              enabled: true,
-                                            ),
-                                          ),
-                                        ]),
-                                        20.verticalSpace,
-
-                                        FormBuilderTextField(
-                                          name: 'placeBirthDate',
-                                          initialValue:
-                                              state.visaApplicationModel == null
-                                                  ? ''
-                                                  : state.visaApplicationModel!
-                                                      .placeOfBirth,
-                                          enableSuggestions: false,
-                                          decoration: InputDecoration(
-                                              hintText: "Place Of Birth",
-                                              labelText: "Place Of Birth"),
-                                          autocorrect: false,
-                                          validator: FormBuilderValidators.required(
-                                              errorText:
-                                                  "Place of birth can not be empty"),
-                                          autovalidateMode: AutovalidateMode
-                                              .onUserInteraction,
-                                          enabled: true,
-                                        ),
-                                        20.verticalSpace,
-                                        FormBuilderTextField(
-                                          onTap: () async {
-                                            final nowDate = DateTime.now();
-
-                                            final selectedDate =
-                                                await showDatePicker(
-                                              context: context,
-                                              initialDate: DateTime.now(),
-                                              firstDate: DateTime(1800),
-                                              lastDate: nowDate,
-                                              builder: dateTimThemeChild,
-                                            );
-
-                                            _formKey.currentState!
-                                                .fields['dateOfBirthDate']!
-                                                .didChange(
-                                                    DateFormat('MM/dd/yyyy')
-                                                        .format(selectedDate!));
-                                          },
-                                          readOnly: true,
-                                          name: 'dateOfBirthDate',
-                                          initialValue:
-                                              state.visaApplicationModel == null
-                                                  ? ''
-                                                  : DateConverter
-                                                      .convertDateDefault(state
-                                                          .visaApplicationModel!
-                                                          .dateOfBirth),
-                                          validator:
-                                              FormBuilderValidators.required(
-                                                  errorText:
-                                                      "Date can not be empty"),
-                                          autovalidateMode: AutovalidateMode
-                                              .onUserInteraction,
-                                          decoration: const InputDecoration(
-                                            labelText: "Date Of Birth",
-                                            hintText: "Date Of Birth",
-                                          ),
-                                        ),
-                                        // //Date of Birth
-                                        20.verticalSpace,
-                                        FormBuilderRadioGroup(
-                                            initialValue: state
-                                                        .visaApplicationModel ==
-                                                    null
-                                                ? ''
-                                                : state.visaApplicationModel!
-                                                            .gender ==
-                                                        null
-                                                    ? 'male'
-                                                    : state
-                                                        .visaApplicationModel!
-                                                        .gender!
-                                                        .toLowerCase(),
-                                            decoration: const InputDecoration(
-                                                labelText: "Gender",
-                                                border: UnderlineInputBorder(
-                                                    borderSide:
-                                                        BorderSide.none)),
-                                            name: 'gender',
-                                            validator: FormBuilderValidators
-                                                .required(),
-                                            autovalidateMode: AutovalidateMode
-                                                .onUserInteraction,
-                                            activeColor: AppColor.primaryColor,
-                                            options: const [
-                                              FormBuilderFieldOption(
-                                                value: 'male',
-                                                child: Text("Male"),
-                                              ),
-                                              FormBuilderFieldOption(
-                                                value: 'female',
-                                                child: Text("Female"),
-                                              )
-                                            ]),
-                                        20.verticalSpace,
-
-                                        // //Nationality
-                                        FormBuilderTextField(
-                                          onTap: () => showMaterialScrollPicker<
-                                              CountryNationality>(
-                                            context: context,
-                                            title: "Nationality",
-                                            showDivider: false,
-                                            items: Constant.getCountries(),
-                                            selectedItem:
-                                                Constant.getCountries().first,
-                                            onChanged: (value) {
-                                              context
-                                                  .read<ApplicationCubit>()
-                                                  .updateNationality(
-                                                      value.name.toUpperCase());
-                                              _formKey.currentState!
-                                                  .fields['nationality']!
-                                                  .didChange(
-                                                      value.name.toString());
-                                            },
-                                          ),
-                                          readOnly: true,
-                                          name: 'nationality',
-                                          initialValue:
-                                              state.visaApplicationModel == null
-                                                  ? ''
-                                                  : state.visaApplicationModel!
-                                                          .nationality ??
-                                                      '',
-                                          validator:
-                                              FormBuilderValidators.required(),
-                                          autovalidateMode: AutovalidateMode
-                                              .onUserInteraction,
-                                          decoration: const InputDecoration(
-                                            labelText: "Nationality",
-                                            hintText: "Nationality",
-                                            fillColor: Colors.white70,
-                                          ),
-                                        ),
-                                        20.verticalSpace,
-                                        //Relationship Status
-                                        FormBuilderDropdown(
-                                          name: 'relation',
-                                          validator:
-                                              FormBuilderValidators.required(),
-                                          initialValue:
-                                              state.visaApplicationModel == null
-                                                  ? ''
-                                                  : state.visaApplicationModel!
-                                                      .relationshipStatus,
-                                          autovalidateMode: AutovalidateMode
-                                              .onUserInteraction,
-                                          items: [
-                                            'Single',
-                                            'Married',
-                                            'Divorced',
-                                            'Widowed'
-                                          ]
-                                              .map(
-                                                (relationship) =>
-                                                    DropdownMenuItem(
-                                                  value: relationship,
-                                                  child: Text(relationship),
-                                                ),
-                                              )
-                                              .toList(),
-                                          decoration: const InputDecoration(
-                                              labelText: "Relation",
-                                              hintStyle: const TextStyle(
-                                                  color: Colors.grey),
-                                              hintText: "Relation"),
-                                        ),
-                                        20.verticalSpace,
-
-                                        //Mobile Number
-                                        FormBuilderTextField(
-                                          name: 'MobileNumberField',
-                                          initialValue:
-                                              state.visaApplicationModel == null
-                                                  ? ''
-                                                  : state.visaApplicationModel!
-                                                          .mobileNumber ??
-                                                      '',
-                                          enableSuggestions: false,
-                                          autocorrect: false,
-                                          enabled: true,
-                                          validator:
-                                              FormBuilderValidators.compose([
-                                            FormBuilderValidators.numeric()
-                                          ]),
-                                          // autovalidateMode:
-                                          //     AutovalidateMode.onUserInteraction,
-                                          decoration: InputDecoration(
-                                            prefixIcon: CountryCodePicker(
-                                              initialSelection: state
-                                                          .visaApplicationModel ==
-                                                      null
-                                                  ? "US"
-                                                  : state.visaApplicationModel!
-                                                          .mobileCountryCode ??
-                                                      "US",
-                                              onChanged: (value) {
-                                                context
-                                                    .read<ApplicationCubit>()
-                                                    .updatePhoneDialCode(value);
-                                              },
-                                              boxDecoration:
-                                                  const BoxDecoration(
-                                                      border: Border(
-                                                          bottom: BorderSide(
-                                                              width: 1,
-                                                              color: Colors
-                                                                  .black))),
-                                              showCountryOnly: false,
-                                              showOnlyCountryWhenClosed: false,
-                                              alignLeft: false,
-                                            ),
-                                            labelText: "Mobile Number",
-                                            hintStyle: const TextStyle(
-                                              color: Colors.grey,
-                                            ),
-                                            hintText: "Mobile Number",
-                                            fillColor: Colors.white70,
-                                          ),
-                                        ),
-                                        // //Deported
-                                        20.verticalSpace,
-
-                                        FormBuilderRadioGroup(
-                                          decoration: const InputDecoration(
-                                              labelText:
-                                                  "Have you been deported from Indonesia before ?"),
-                                          name: 'deported',
-                                          validator:
-                                              FormBuilderValidators.required(),
-                                          initialValue:
-                                              state.visaApplicationModel == null
-                                                  ? false
-                                                  : state.visaApplicationModel!
-                                                          .deportedFlag ??
-                                                      false,
-                                          autovalidateMode: AutovalidateMode
-                                              .onUserInteraction,
-                                          separator: 10.horizontalSpace,
-                                          activeColor: AppColor.primaryColor,
-                                          options: const [
-                                            FormBuilderFieldOption(
-                                              value: false,
-                                              child: Text("NO"),
-                                            ),
-                                            FormBuilderFieldOption(
-                                              value: true,
-                                              child: Text("YES"),
-                                            ),
-                                          ],
-                                        ),
-                                        // //Overstayed
-                                        20.verticalSpace,
-
-                                        FormBuilderRadioGroup(
-                                          decoration: const InputDecoration(
-                                            labelText:
-                                                "Have you been overstayed in Indonesia before ?",
-                                          ),
-                                          name: 'overstay',
-                                          validator:
-                                              FormBuilderValidators.required(),
-                                          autovalidateMode: AutovalidateMode
-                                              .onUserInteraction,
-                                          initialValue:
-                                              state.visaApplicationModel == null
-                                                  ? false
-                                                  : state.visaApplicationModel!
-                                                          .overstayedFlag ??
-                                                      false,
-                                          separator: 10.horizontalSpace,
-                                          activeColor: AppColor.primaryColor,
-                                          options: const [
-                                            FormBuilderFieldOption(
-                                              value: false,
-                                              child: Text('NO'),
-                                            ),
-                                            FormBuilderFieldOption(
-                                              value: true,
-                                              child: Text("YES"),
-                                            ),
-                                          ],
-                                        ),
-                                        20.verticalSpace,
-                                        SizedBox(
-                                          width: double.infinity,
-                                          height: 45.h,
-                                          child: PrimaryButton(
-                                            labelStyle:
-                                                TextStyle(fontSize: 15.sp),
-                                            onClick: () async {
-                                              await updateData(context, state);
-                                            },
-                                            label: "SUBMIT",
-                                          ),
-                                        ),
-                                        20.verticalSpace,
-                                      ],
-                                    ),
+                              CustomSecondHeader(
+                                header: Center(
+                                  child: Text(
+                                    '${state.visaApplicationModel?.title ?? ""} / ${state.visaApplicationModel?.subTitle ?? ""} / ${state.visaApplicationModel?.entry ?? ""}',
+                                    style: TextStyle(
+                                        fontSize: 18.sp,
+                                        color: AppColor.primaryColor,
+                                        fontWeight: FontWeight.bold),
                                   ),
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 30),
+                                child: Text(
+                                  "Personal Particular",
+                                  style: TextStyle(
+                                      fontSize: 30.sp,
+                                      color: AppColor.primaryColor,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                              Expanded(
+                                child: Stack(
+                                  children: [
+                                    Scrollbar(
+                                      controller: scrollController, // Here
+
+                                      thumbVisibility: true,
+                                      child: SingleChildScrollView(
+                                        controller: scrollController,
+                                        child: Container(
+                                          padding: REdgeInsets.symmetric(
+                                            horizontal: 30.w,
+                                            vertical: 20.h,
+                                          ),
+                                          child: FormBuilder(
+                                            key: _formKey,
+                                            onChanged: () => {
+                                              //print("Form has been changed")
+                                            },
+                                            initialValue: const {
+                                              'textfield': ''
+                                            },
+                                            skipDisabled: true,
+                                            child: Column(
+                                              children: [
+                                                //First Name
+                                                Row(children: [
+                                                  Expanded(
+                                                    child: FormBuilderTextField(
+                                                      name: 'firstName',
+                                                      initialValue: state
+                                                                  .visaApplicationModel ==
+                                                              null
+                                                          ? ''
+                                                          : state
+                                                              .visaApplicationModel!
+                                                              .firstName,
+                                                      enableSuggestions: false,
+                                                      decoration:
+                                                          const InputDecoration(
+                                                              hintText:
+                                                                  "First Name",
+                                                              labelText:
+                                                                  "First Name"),
+                                                      autocorrect: false,
+                                                      validator:
+                                                          FormBuilderValidators
+                                                              .required(
+                                                                  errorText:
+                                                                      "First name can not be empty"),
+                                                      autovalidateMode:
+                                                          AutovalidateMode
+                                                              .onUserInteraction,
+                                                      enabled: true,
+                                                    ),
+                                                  ),
+                                                  20.horizontalSpace,
+                                                  Expanded(
+                                                    child: FormBuilderTextField(
+                                                      name: 'lastName',
+                                                      initialValue: state
+                                                                  .visaApplicationModel ==
+                                                              null
+                                                          ? ''
+                                                          : state
+                                                              .visaApplicationModel!
+                                                              .lastName,
+                                                      enableSuggestions: false,
+                                                      decoration:
+                                                          const InputDecoration(
+                                                              hintText:
+                                                                  "Last Name",
+                                                              labelText:
+                                                                  "Last Name"),
+                                                      autocorrect: false,
+                                                      validator:
+                                                          FormBuilderValidators
+                                                              .required(
+                                                                  errorText:
+                                                                      "Last name can not be empty"),
+                                                      autovalidateMode:
+                                                          AutovalidateMode
+                                                              .onUserInteraction,
+                                                      enabled: true,
+                                                    ),
+                                                  ),
+                                                ]),
+                                                20.verticalSpace,
+
+                                                FormBuilderTextField(
+                                                  name: 'placeBirthDate',
+                                                  initialValue: state
+                                                              .visaApplicationModel ==
+                                                          null
+                                                      ? ''
+                                                      : state
+                                                          .visaApplicationModel!
+                                                          .placeOfBirth,
+                                                  enableSuggestions: false,
+                                                  decoration:
+                                                      const InputDecoration(
+                                                          hintText:
+                                                              "Place Of Birth",
+                                                          labelText:
+                                                              "Place Of Birth"),
+                                                  autocorrect: false,
+                                                  validator: FormBuilderValidators
+                                                      .required(
+                                                          errorText:
+                                                              "Place of birth can not be empty"),
+                                                  autovalidateMode:
+                                                      AutovalidateMode
+                                                          .onUserInteraction,
+                                                  enabled: true,
+                                                ),
+                                                20.verticalSpace,
+                                                FormBuilderTextField(
+                                                  onTap: () async {
+                                                    final nowDate =
+                                                        DateTime.now();
+
+                                                    final selectedDate =
+                                                        await showDatePicker(
+                                                      context: context,
+                                                      initialDate:
+                                                          DateTime.now(),
+                                                      firstDate: DateTime(1800),
+                                                      lastDate: nowDate,
+                                                      builder:
+                                                          dateTimThemeChild,
+                                                    );
+
+                                                    _formKey
+                                                        .currentState!
+                                                        .fields[
+                                                            'dateOfBirthDate']!
+                                                        .didChange(DateFormat(
+                                                                'dd MMM yyy')
+                                                            .format(
+                                                                selectedDate!));
+                                                  },
+                                                  readOnly: true,
+                                                  name: 'dateOfBirthDate',
+                                                  initialValue: state
+                                                              .visaApplicationModel ==
+                                                          null
+                                                      ? ''
+                                                      : DateConverter
+                                                          .convertDateDefault(state
+                                                              .visaApplicationModel!
+                                                              .dateOfBirth),
+                                                  validator: FormBuilderValidators
+                                                      .required(
+                                                          errorText:
+                                                              "Date can not be empty"),
+                                                  autovalidateMode:
+                                                      AutovalidateMode
+                                                          .onUserInteraction,
+                                                  decoration:
+                                                      const InputDecoration(
+                                                    prefixIcon:
+                                                        Icon(Icons.date_range),
+                                                    labelText: "Date Of Birth",
+                                                    hintText: "Date Of Birth",
+                                                  ),
+                                                ),
+                                                // //Date of Birth
+                                                20.verticalSpace,
+                                                FormBuilderRadioGroup(
+                                                    initialValue: state.visaApplicationModel ==
+                                                            null
+                                                        ? ''
+                                                        : state.visaApplicationModel!
+                                                                    .gender ==
+                                                                null
+                                                            ? 'male'
+                                                            : state
+                                                                .visaApplicationModel!
+                                                                .gender!
+                                                                .toLowerCase(),
+                                                    decoration: const InputDecoration(
+                                                        labelText: "Gender",
+                                                        border: UnderlineInputBorder(
+                                                            borderSide: BorderSide
+                                                                .none)),
+                                                    name: 'gender',
+                                                    validator: FormBuilderValidators
+                                                        .required(),
+                                                    autovalidateMode:
+                                                        AutovalidateMode
+                                                            .onUserInteraction,
+                                                    activeColor:
+                                                        AppColor.primaryColor,
+                                                    options: const [
+                                                      FormBuilderFieldOption(
+                                                        value: 'male',
+                                                        child: Text("Male"),
+                                                      ),
+                                                      FormBuilderFieldOption(
+                                                        value: 'female',
+                                                        child: Text("Female"),
+                                                      )
+                                                    ]),
+                                                20.verticalSpace,
+
+                                                // //Nationality
+                                                FormBuilderTextField(
+                                                  onTap: () =>
+                                                      showMaterialScrollPicker<
+                                                          CountryNationality>(
+                                                    context: context,
+                                                    title: "Nationality",
+                                                    showDivider: false,
+                                                    items:
+                                                        Constant.getCountries(),
+                                                    selectedItem:
+                                                        Constant.getCountries()
+                                                            .first,
+                                                    onChanged: (value) {
+                                                      context
+                                                          .read<
+                                                              ApplicationCubit>()
+                                                          .updateNationality(value
+                                                              .name
+                                                              .toUpperCase());
+                                                      _formKey
+                                                          .currentState!
+                                                          .fields[
+                                                              'nationality']!
+                                                          .didChange(value.name
+                                                              .toString());
+                                                    },
+                                                  ),
+                                                  readOnly: true,
+                                                  name: 'nationality',
+                                                  initialValue: state
+                                                              .visaApplicationModel ==
+                                                          null
+                                                      ? ''
+                                                      : state.visaApplicationModel!
+                                                              .nationality ??
+                                                          '',
+                                                  validator:
+                                                      FormBuilderValidators
+                                                          .required(),
+                                                  autovalidateMode:
+                                                      AutovalidateMode
+                                                          .onUserInteraction,
+                                                  decoration:
+                                                      const InputDecoration(
+                                                    labelText: "Nationality",
+                                                    hintText: "Nationality",
+                                                    fillColor: Colors.white70,
+                                                  ),
+                                                ),
+                                                20.verticalSpace,
+                                                //Relationship Status
+                                                FormBuilderDropdown(
+                                                  name: 'relation',
+                                                  validator:
+                                                      FormBuilderValidators
+                                                          .required(),
+                                                  initialValue: state
+                                                              .visaApplicationModel ==
+                                                          null
+                                                      ? ''
+                                                      : state
+                                                          .visaApplicationModel!
+                                                          .relationshipStatus,
+                                                  autovalidateMode:
+                                                      AutovalidateMode
+                                                          .onUserInteraction,
+                                                  items: [
+                                                    'Single',
+                                                    'Married',
+                                                    'Divorced',
+                                                    'Widowed'
+                                                  ]
+                                                      .map(
+                                                        (relationship) =>
+                                                            DropdownMenuItem(
+                                                          value: relationship,
+                                                          child: Text(
+                                                              relationship),
+                                                        ),
+                                                      )
+                                                      .toList(),
+                                                  decoration: const InputDecoration(
+                                                      labelText:
+                                                          "Relationshop Status",
+                                                      hintStyle:
+                                                          const TextStyle(
+                                                              color:
+                                                                  Colors.grey),
+                                                      hintText:
+                                                          "Relationshop Status"),
+                                                ),
+                                                20.verticalSpace,
+
+                                                //Mobile Number
+                                                FormBuilderTextField(
+                                                  name: 'MobileNumberField',
+                                                  initialValue: state
+                                                              .visaApplicationModel ==
+                                                          null
+                                                      ? ''
+                                                      : state.visaApplicationModel!
+                                                              .mobileNumber ??
+                                                          '',
+                                                  enableSuggestions: false,
+                                                  autocorrect: false,
+                                                  enabled: true,
+                                                  validator:
+                                                      FormBuilderValidators
+                                                          .compose([
+                                                    FormBuilderValidators
+                                                        .numeric()
+                                                  ]),
+                                                  // autovalidateMode:
+                                                  //     AutovalidateMode.onUserInteraction,
+                                                  decoration: InputDecoration(
+                                                    prefixIcon:
+                                                        CountryCodePicker(
+                                                      initialSelection: state
+                                                                  .visaApplicationModel ==
+                                                              null
+                                                          ? "US"
+                                                          : state.visaApplicationModel!
+                                                                  .mobileCountryCode ??
+                                                              "US",
+                                                      onChanged: (value) {
+                                                        context
+                                                            .read<
+                                                                ApplicationCubit>()
+                                                            .updatePhoneDialCode(
+                                                                value);
+                                                      },
+                                                      boxDecoration: const BoxDecoration(
+                                                          border: Border(
+                                                              bottom: BorderSide(
+                                                                  width: 1,
+                                                                  color: Colors
+                                                                      .black))),
+                                                      showCountryOnly: false,
+                                                      showOnlyCountryWhenClosed:
+                                                          false,
+                                                      alignLeft: false,
+                                                    ),
+                                                    labelText: "Mobile Number",
+                                                    hintStyle: const TextStyle(
+                                                      color: Colors.grey,
+                                                    ),
+                                                    hintText: "Mobile Number",
+                                                    fillColor: Colors.white70,
+                                                  ),
+                                                ),
+                                                // //Deported
+                                                20.verticalSpace,
+
+                                                FormBuilderRadioGroup(
+                                                  decoration: const InputDecoration(
+                                                      labelText:
+                                                          "Have you been deported from Indonesia before ?"),
+                                                  name: 'deported',
+                                                  validator:
+                                                      FormBuilderValidators
+                                                          .required(),
+                                                  initialValue: state
+                                                              .visaApplicationModel ==
+                                                          null
+                                                      ? false
+                                                      : state.visaApplicationModel!
+                                                              .deportedFlag ??
+                                                          false,
+                                                  autovalidateMode:
+                                                      AutovalidateMode
+                                                          .onUserInteraction,
+                                                  separator: 10.horizontalSpace,
+                                                  activeColor:
+                                                      AppColor.primaryColor,
+                                                  options: const [
+                                                    FormBuilderFieldOption(
+                                                      value: false,
+                                                      child: Text("NO"),
+                                                    ),
+                                                    FormBuilderFieldOption(
+                                                      value: true,
+                                                      child: Text("YES"),
+                                                    ),
+                                                  ],
+                                                ),
+                                                // //Overstayed
+                                                20.verticalSpace,
+
+                                                FormBuilderRadioGroup(
+                                                  decoration:
+                                                      const InputDecoration(
+                                                    labelText:
+                                                        "Have you been overstayed in Indonesia before ?",
+                                                  ),
+                                                  name: 'overstay',
+                                                  validator:
+                                                      FormBuilderValidators
+                                                          .required(),
+                                                  autovalidateMode:
+                                                      AutovalidateMode
+                                                          .onUserInteraction,
+                                                  initialValue: state
+                                                              .visaApplicationModel ==
+                                                          null
+                                                      ? false
+                                                      : state.visaApplicationModel!
+                                                              .overstayedFlag ??
+                                                          false,
+                                                  separator: 10.horizontalSpace,
+                                                  activeColor:
+                                                      AppColor.primaryColor,
+                                                  options: const [
+                                                    FormBuilderFieldOption(
+                                                      value: false,
+                                                      child: Text('NO'),
+                                                    ),
+                                                    FormBuilderFieldOption(
+                                                      value: true,
+                                                      child: Text("YES"),
+                                                    ),
+                                                  ],
+                                                ),
+                                                20.verticalSpace,
+                                                SizedBox(
+                                                  width: double.infinity,
+                                                  height: 45.h,
+                                                  child: PrimaryButton(
+                                                    labelStyle: TextStyle(
+                                                        fontSize: 15.sp),
+                                                    onClick: () async {
+                                                      await updateData(
+                                                          context, state);
+                                                    },
+                                                    label: "Continue",
+                                                  ),
+                                                ),
+                                                20.verticalSpace,
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    // Positioned(
+                                    //   bottom: 20,
+                                    //   right: 30,
+                                    //   left: 30,
+                                    //   child: SizedBox(
+                                    //     width: double.infinity,
+                                    //     height: 45.h,
+                                    //     child: PrimaryButton(
+                                    //       labelStyle:
+                                    //           TextStyle(fontSize: 15.sp),
+                                    //       onClick: () async {
+                                    //         await updateData(context, state);
+                                    //       },
+                                    //       label: "Continue",
+                                    //     ),
+                                    // ),
+                                    // ),
+                                  ],
                                 ),
                               )
                             ],
-                          ))
+                          )),
                     ],
                   ));
                 },

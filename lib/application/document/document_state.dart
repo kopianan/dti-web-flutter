@@ -7,6 +7,7 @@ class DocumentState with _$DocumentState {
   factory DocumentState(
       {VisaApplicationModel? visa,
       List<DocumentDataModel>? docs,
+      @Default([]) List<DocumentDataModel> initialDocs,
       int? selectedIndex,
       @Default([]) List<Map<String, dynamic>> masterListData,
       List<String>? selectedMasterListData,

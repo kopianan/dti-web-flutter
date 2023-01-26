@@ -13,6 +13,7 @@ import 'package:dti_web/presentation/questionnaire/photo_view_page.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:flash/flash.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -49,9 +50,35 @@ class _RighSideState extends State<RighSide> {
             },
             onUploadImageComplete: (e) {
               EasyLoading.dismiss();
+
               //UPDATE THE DOCUMENT
               widget.documentCubit.updateDocumentStatus(e.list);
               setState(() {});
+              showFlash(
+                context: context,
+                duration: Duration(seconds: 4),
+                builder: (context, controller) {
+                  return Flash(
+                    controller: controller,
+                    behavior: FlashBehavior.floating,
+                    position: FlashPosition.top,
+                    backgroundColor: Colors.green,
+                    boxShadows: kElevationToShadow[4],
+                    horizontalDismissDirection:
+                        HorizontalDismissDirection.horizontal,
+                    child: FlashBar(
+                      indicatorColor: AppColor.primaryColor,
+                      content: Text(
+                        'Document has been updated',
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                    ),
+                  );
+                },
+              );
             },
           );
         },
@@ -282,14 +309,12 @@ class _RighSideState extends State<RighSide> {
       }
     } else {
       //VIEW DOCUMENT
-      //Document is exist.
-      print(selectedFile);
+      //Document is exist. 
       if (selectedFile!.contains('pdf')) {
         //check pdf from url or file
 
         if (selectedFile.contains('/')) {
-          //check again if it from file or bytes ;
-          print(docState.selectedDataCollection);
+          //check again if it from file or bytes ; 
           if (kIsWeb) {
             final bytesData = docState.selectedDataCollection![selectedFile];
 
@@ -416,8 +441,7 @@ class _RighSideState extends State<RighSide> {
       type: isImage ? FileType.image : FileType.custom,
       allowCompression: true,
       allowedExtensions: isImage ? null : ['pdf'],
-    );
-    print(result);
+    ); 
     if (result != null) {
       context.read<DocumentCubit>().addNewPhotoDocument(
             //because on web path is always then i add this.
@@ -583,8 +607,7 @@ class ImageFromUrl extends StatelessWidget {
       create: (context) =>
           getIt<OtherCubit>()..getImageUrl(appId, docId, imagePath),
       child: BlocBuilder<OtherCubit, OtherState>(
-        builder: (context, state) {
-          print(state);
+        builder: (context, state) { 
           return state.maybeMap(
             orElse: () {
               return SizedBox();

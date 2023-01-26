@@ -49,14 +49,14 @@ class DashboardRepository extends IDashboard {
           Env.baseUrl + "/application/$firebaseDocId/delete",
           options: Options(
               headers: {'Authorization': 'Bearer ${storage.getToken()}'}));
-      if (result.data['message'] != null) {
+      if (result.data['data'] != null) {
         //SUCCESS
-        return Right(result.data['message']);
+        return Right(result.data['data']['message']);
       }
-      if (result.data['error'] != null) {
-        //ERROR
-        return Left(result.data['error']);
-      }
+      
+      
+      
+      
       return Left(Failures.generalError(result.toString()));
     } on DioError catch (e) {
       ErrorResponse err = ErrorResponse();

@@ -29,8 +29,7 @@ class PaymentRepository extends IPayment {
     double finalPrice = visaApplication.price!;
     if (discount != null) {
       finalPrice = finalPrice - discount;
-    }
-    log(finalPrice.toString(), name: 'Final Price');
+    } 
     var _requst = {
       "externalID": visaApplication.applicationID,
       "description":

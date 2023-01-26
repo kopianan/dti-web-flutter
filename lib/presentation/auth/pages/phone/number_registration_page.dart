@@ -11,6 +11,7 @@ import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
@@ -41,8 +42,14 @@ class _NumberRegistrationPageState extends State<NumberRegistrationPage> {
         child: BlocConsumer<OtherCubit, OtherState>(
           listener: (context, state) {
             state.maybeMap(
-              orElse: () {},
+              orElse: () {
+                EasyLoading.dismiss();
+              },
+              loading: (e) {
+                EasyLoading.show(maskType: EasyLoadingMaskType.black);
+              },
               onOTPGenerated: (value) {
+                EasyLoading.dismiss();
                 AutoRouter.of(context).navigate(OTPRoute(
                   code: countryCode,
                   number: phoneNumber!,
@@ -51,142 +58,155 @@ class _NumberRegistrationPageState extends State<NumberRegistrationPage> {
             );
           },
           builder: (context, state) {
-            return Container(
-              margin: EdgeInsets.symmetric(horizontal: 0.1.sw),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const AuthHeaderWidget(label: "Register Your Number Phone"),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Container(
-                          child: Image.asset(
-                              'assets/images/dti_auth_register.png'),
+            return SingleChildScrollView(
+              child: Container(
+                margin: EdgeInsets.symmetric(horizontal: 0.1.sw),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const AuthHeaderWidget(label: "Register Your Number Phone"),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            child: Image.asset(
+                                'assets/images/dti_auth_register.png'),
+                          ),
                         ),
-                      ),
-                      100.horizontalSpace,
-                      Expanded(
-                        child: Container(
-                          alignment: Alignment.center,
-                          padding: REdgeInsets.symmetric(horizontal: 40),
-                          child: FormBuilder(
-                            key: formKey,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'Your Phone Number',
-                                  style: TextStyle(
-                                    fontSize: 20.sp,
+                        100.horizontalSpace,
+                        Expanded(
+                          child: Container(
+                            alignment: Alignment.center,
+                            padding: REdgeInsets.symmetric(horizontal: 40),
+                            child: FormBuilder(
+                              key: formKey,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Your Phone Number',
+                                    style: TextStyle(
+                                      fontSize: 20.sp,
+                                      fontWeight: FontWeight.bold
+                                    ),
                                   ),
-                                ),
-                                20.verticalSpace,
-                                FormBuilderTextField(
-                                  name: 'MobileNumberField',
-                                  enableSuggestions: false,
-                                  autocorrect: false,
-                                  enabled: true,
-                                  validator: FormBuilderValidators.compose([
-                                    FormBuilderValidators.numeric(),
-                                  ]),
-                                  autovalidateMode:
-                                      AutovalidateMode.onUserInteraction,
-                                  decoration: InputDecoration(
-                                    prefixIcon: CountryCodePicker(
-                                      initialSelection: countryCode.dialCode,
-                                      onChanged: (value) {
-                                        countryCode = value;
-                                      },
-                                      boxDecoration: const BoxDecoration(
-                                          border: Border(
-                                              bottom: BorderSide(
-                                                  width: 1,
-                                                  color: Colors.black))),
-                                      showCountryOnly: false,
-                                      showOnlyCountryWhenClosed: false,
-                                      alignLeft: false,
+                                  10.verticalSpace,
+                                  Text(
+                                    'Register your mobile number with us, so you are notified of your account activities',
+                                    style: TextStyle(
+                                      fontSize: 16.sp,
                                     ),
-                                    labelText: "Mobile Number",
-                                    hintStyle: const TextStyle(
-                                      color: Colors.grey,
-                                    ),
-                                    hintText: "Mobile Number",
-                                    fillColor: Colors.white70,
                                   ),
-                                ),
-                                20.verticalSpace,
-                                FormBuilderRadioGroup(
-                                  decoration: InputDecoration(
-                                      labelStyle: TextStyle(
-                                        fontSize: 20.sp,
+                                  20.verticalSpace,
+                                  FormBuilderTextField(
+                                    name: 'MobileNumberField',
+                                    enableSuggestions: false,
+                                    autocorrect: false,
+                                    enabled: true,
+                                    validator: FormBuilderValidators.compose([
+                                      FormBuilderValidators.required(),
+                                      FormBuilderValidators.numeric(),
+                                    ]),
+                                    autovalidateMode:
+                                        AutovalidateMode.onUserInteraction,
+                                    decoration: InputDecoration(
+                                      prefixIcon: CountryCodePicker(
+                                        initialSelection: countryCode.dialCode,
+                                        onChanged: (value) {
+                                          countryCode = value;
+                                        },
+                                        boxDecoration: const BoxDecoration(
+                                            border: Border(
+                                                bottom: BorderSide(
+                                                    width: 1,
+                                                    color: Colors.black))),
+                                        showCountryOnly: false,
+                                        showOnlyCountryWhenClosed: false,
+                                        alignLeft: false,
                                       ),
-                                      labelText:
-                                          "Have you been deported from Indonesia before ?"),
-                                  name: 'otpSendTo',
-                                  validator: FormBuilderValidators.required(),
-                                  initialValue: false,
-                                  autovalidateMode:
-                                      AutovalidateMode.onUserInteraction,
-                                  separator: 10.horizontalSpace,
-                                  activeColor: AppColor.primaryColor,
-                                  options: [
-                                    FormBuilderFieldOption(
-                                      value: false,
-                                      child: Text(
-                                        "Whatsapp",
-                                        style: TextStyle(fontSize: 17.sp),
+                                      labelText: "Mobile Number",
+                                      hintStyle: const TextStyle(
+                                        color: Colors.grey,
                                       ),
+                                      hintText: "Mobile Number",
+                                      fillColor: Colors.white70,
                                     ),
-                                    FormBuilderFieldOption(
-                                      value: true,
-                                      child: Text(
-                                        "SMS",
-                                        style: TextStyle(fontSize: 17.sp),
+                                  ),
+                                  20.verticalSpace,
+                                  FormBuilderRadioGroup(
+                                    decoration: InputDecoration(
+                                        labelStyle: TextStyle(
+                                          fontSize: 20.sp,
+                                        ),
+                                        labelText:
+                                            "Where do you want to receive verification code ?"),
+                                    name: 'otpSendTo',
+                                    validator: FormBuilderValidators.required(),
+                                    initialValue: false,
+                                    autovalidateMode:
+                                        AutovalidateMode.onUserInteraction,
+                                    separator: 10.horizontalSpace,
+                                    activeColor: AppColor.primaryColor,
+                                    options: [
+                                      FormBuilderFieldOption(
+                                        value: false,
+                                        child: Text(
+                                          "Whatsapp",
+                                          style: TextStyle(fontSize: 17.sp),
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                                40.verticalSpace,
-                                SizedBox(
-                                    height: 45.h,
-                                    child: PrimaryButton(
-                                      onClick: () {
-                                        if (formKey.currentState!.validate()) {
-                                          formKey.currentState!.save();
-                                          final formData =
-                                              formKey.currentState!.value;
-                                          late String channel;
-                                          if (formData['otpSendTo'] == false) {
-                                            channel = 'whatsapp';
-                                          } else {
-                                            channel = 'sms';
+                                      FormBuilderFieldOption(
+                                        value: true,
+                                        child: Text(
+                                          "SMS",
+                                          style: TextStyle(fontSize: 17.sp),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  40.verticalSpace,
+                                  SizedBox(
+                                      height: 45.h,
+                                      child: PrimaryButton(
+                                        onClick: () {
+                                          if (formKey.currentState!
+                                              .validate()) {
+                                            formKey.currentState!.save();
+                                            final formData =
+                                                formKey.currentState!.value;
+                                            late String channel;
+                                            if (formData['otpSendTo'] ==
+                                                false) {
+                                              channel = 'whatsapp';
+                                            } else {
+                                              channel = 'sms';
+                                            }
+                                            phoneNumber =
+                                                formData['MobileNumberField'];
+                                            context
+                                                .read<OtherCubit>()
+                                                .generateOtp(
+                                                  countryCode,
+                                                  phoneNumber!,
+                                                  channel,
+                                                );
                                           }
-                                          phoneNumber =
-                                              formData['MobileNumberField'];
-                                          context
-                                              .read<OtherCubit>()
-                                              .generateOtp(
-                                                countryCode,
-                                                phoneNumber!,
-                                                channel,
-                                              );
-                                        }
-                                      },
-                                      labelStyle: TextStyle(fontSize: 16.sp),
-                                      label: 'Generate OTP',
-                                    )),
-                              ],
+                                        },
+                                        labelStyle: TextStyle(fontSize: 16.sp),
+                                        label: 'Generate OTP',
+                                      )),
+                                ],
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                  AuthFooterWidget()
-                ],
+                      ],
+                    ),
+                    AuthFooterWidget()
+                  ],
+                ),
               ),
             );
           },

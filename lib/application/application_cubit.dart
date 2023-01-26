@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:country_code_picker/country_code_picker.dart';
+import 'package:dti_web/core/storage.dart';
 import 'package:dti_web/domain/core/document_data_model.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/domain/questionnaire/raw_data.dart';
@@ -24,9 +25,8 @@ class ApplicationCubit extends Cubit<ApplicationState> {
   void setupApplication(VisaApplicationModel visa) {
     //SETUP DOCUMENTS
     final docs = visa.documents!.split(',');
-    final documents = (documentRaw['document_list'] as List);
-    final documentModel =
-        documents.map((e) => DocumentDataModel.fromJson(e)).toList();
+    var documentModel = Storage().loadDocument().toList();
+
     List<DocumentDataModel> modelsDocument = [];
 
     for (var element in docs) {
@@ -100,7 +100,6 @@ class ApplicationCubit extends Cubit<ApplicationState> {
     emit(state.copyWith(
       visaApplicationModel: visa,
     ));
-    log(visa.toJson().toString());
   }
 
   void updatePersonalInformation2({
@@ -116,7 +115,6 @@ class ApplicationCubit extends Cubit<ApplicationState> {
         issuingCountry: issuingCountry);
 
     emit(state.copyWith(visaApplicationModel: visa));
-    log(visa.toJson().toString());
   }
 
   void updatePersonalInformation4(String multiVisa) async {

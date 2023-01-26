@@ -1,5 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:country_code_picker/country_code_picker.dart';
+import 'package:dti_web/core/storage.dart';
+import 'package:dti_web/domain/core/document_data_model.dart';
 import 'package:dti_web/domain/global/failures.dart';
 import 'package:dti_web/domain/other/i_other.dart';
 import 'package:dti_web/domain/questionnaire/questionnaire_data_model.dart';
@@ -44,6 +46,20 @@ class OtherCubit extends Cubit<OtherState> {
     data.fold(
       (l) => emit(OtherState.errorState(l)),
       (r) => emit(OtherState.getAllQuestionnaire(r)),
+    );
+  }
+
+  void getDocumentsData() async {
+    emit(const OtherState.loading());
+    final data = await iOther.getApplicationMasterData();
+
+    data.fold(
+      (l) => emit(OtherState.errorState(l)),
+      (r) {
+        //save to local
+        Storage().saveListDocument(r);
+        emit(OtherState.getAllDocumentData(r));
+      },
     );
   }
 

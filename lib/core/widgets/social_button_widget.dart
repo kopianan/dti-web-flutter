@@ -1,6 +1,7 @@
 import 'package:dti_web/utils/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SocialButtonWidget extends StatelessWidget {
   const SocialButtonWidget({
@@ -12,35 +13,41 @@ class SocialButtonWidget extends StatelessWidget {
     return Row(
       children: [
         InkWell(
-            onTap: () {},
+            onTap: () {
+              launch('https://www.facebook.com/doortoindonesia');
+            },
             child: CircleAvatar(
                 backgroundColor: AppColor.primaryColor,
                 child: Padding(
-                    padding: REdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     child: Image.asset(
                       'assets/icons/facebook.png',
                       color: Colors.white,
                     )))),
         10.horizontalSpace,
         InkWell(
-            onTap: () {},
+            onTap: () {
+              launch('https://www.instagram.com/doortoid/');
+            },
             child: CircleAvatar(
                 backgroundColor: AppColor.primaryColor,
                 child: Padding(
-                    padding: REdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     child: Image.asset(
                       'assets/icons/instagram.png',
                       color: Colors.white,
                     )))),
         10.horizontalSpace,
         InkWell(
-            onTap: () {},
+            onTap: () {
+              launch('https://t.me/DoorToIDBot');
+            },
             child: CircleAvatar(
                 backgroundColor: AppColor.primaryColor,
                 child: Padding(
-                    padding: REdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     child: Image.asset(
-                      'assets/icons/twitter.png',
+                      'assets/icons/telegram.png',
                       color: Colors.white,
                     )))),
       ],

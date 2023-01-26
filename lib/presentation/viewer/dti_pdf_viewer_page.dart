@@ -25,8 +25,7 @@ class DTIPdfViewerPage extends StatelessWidget {
         appBar: AppBar(
           leading: IconButton(
               onPressed: () {
-                AutoRouter.of(context)
-                    .popUntilRouteWithName(ApplicationDetailRoute.name);
+                AutoRouter.of(context).pop();
               },
               icon: Icon(Icons.close)),
           backgroundColor: Colors.white,

@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:auto_route/annotations.dart';
 import 'package:country_code_picker/country_code_picker.dart';
+import 'package:dti_web/application/dashboard/dashboard_cubit.dart';
 import 'package:dti_web/application/document/document_cubit.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/domain/core/document_data_model.dart';
@@ -45,7 +46,7 @@ part "app_router.gr.dart";
     AutoRoute(
       initial: true,
       path: '/',
-      
+
       page: SplashScreenPage,
     ),
     AutoRoute(
@@ -96,8 +97,8 @@ part "app_router.gr.dart";
       path: UploadDocumentPage.routeName,
       page: UploadDocumentPage,
     ),
-    AutoRoute(
-      path: NumberRegistrationPage.routeName,
+    AutoRoute( 
+      path: NumberRegistrationPage.routeName, 
       page: NumberRegistrationPage,
     ),
     AutoRoute(

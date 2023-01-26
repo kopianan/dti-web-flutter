@@ -145,8 +145,7 @@ class _SignaturePageState extends State<SignaturePage> {
                                   documentType: widget.appDocument.id!.trim());
                             }
 
-                            if (isSignatureDrawed == false) {
-                              print(isSignatureDrawed);
+                            if (isSignatureDrawed == false) { 
                               Get.showSnackbar(
                                 const GetSnackBar(
                                   message: "Please draw your signature",

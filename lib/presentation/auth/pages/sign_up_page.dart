@@ -46,7 +46,6 @@ class _SignUpPageState extends State<SignUpPage> {
       create: (context) => getIt<AuthCubit>(),
       child: BlocListener<AuthCubit, AuthState>(
         listener: (context, state) {
-          print(state);
           state.maybeMap(
             orElse: () {},
             loading: (e) {
@@ -57,13 +56,20 @@ class _SignUpPageState extends State<SignUpPage> {
             },
             onError: (e) {
               EasyLoading.dismiss();
+              String message = "Something wrong";
+              e.error.maybeMap(
+                orElse: () {},
+                generalError: (e) {
+                  message = e.err;
+                },
+              );
               AwesomeDialog(
                       width: ScreenUtil().screenWidth / 3,
                       padding: REdgeInsets.symmetric(horizontal: 20),
                       context: context,
                       dialogType: DialogType.error,
                       title: "Error",
-                      desc: e.toString(),
+                      desc: message,
                       btnOkOnPress: () {},
                       btnOkText: "Try Again")
                   .show();
@@ -77,9 +83,10 @@ class _SignUpPageState extends State<SignUpPage> {
 
               //loginuser
 
-              context
-                  .read<AuthCubit>()
-                  .loginWithEmailAndPassword(email.text, password.text);
+              AutoRouter.of(context).replaceAll([NumberRegistrationRoute()]);
+              // context
+              //     .read<AuthCubit>()
+              //     .loginWithEmailAndPassword(email.text, password.text);
 
               // AwesomeDialog(
               //         width: ScreenUtil().screenWidth / 3,

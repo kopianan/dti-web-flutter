@@ -7,15 +7,10 @@ import 'package:dti_web/core/widgets/auth_footer_widget.dart';
 import 'package:dti_web/core/widgets/auth_header_widget.dart';
 import 'package:dti_web/core/widgets/loading_primary_button.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
-import 'package:dti_web/domain/auth/i_auth.dart';
-import 'package:dti_web/injection.dart';
-import 'package:dti_web/presentation/auth/pages/reset_page.dart';
 import 'package:dti_web/presentation/auth/widgets/password_text_field.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -75,10 +70,16 @@ class _SignInPageState extends State<SignInPage> {
                       btnCancelText: "Try again")
                   .show();
             },
+            onRegisterSuccess: (e) {
+              context.router.replaceAll([NumberRegistrationRoute()]);
+            },
             onLoginSuccess: (e) {
-              //Save data to shared preferences
+              //get user data first.
 
-              context.router.replace(DashboardRoute());
+              context.router.replaceAll([const DashboardRoute()]);
+            },
+            onLoginSuccessWithoutPhoneNumber: (e) {
+              context.router.replaceAll([NumberRegistrationRoute()]);
             },
           );
         },
@@ -144,6 +145,10 @@ class _SignInPageState extends State<SignInPage> {
                                 PasswordTextField(
                                   controller: password,
                                   obSecure: obsecureText,
+                                  onFinish: (e) {
+                                    loginUser(
+                                        context, email.text, password.text);
+                                  },
                                   onObsecure: (e) {
                                     setState(() {
                                       obsecureText = e;

@@ -7,6 +7,7 @@ import 'package:dti_web/application/other/other_cubit.dart';
 import 'package:dti_web/application/questionnaire_cubit.dart';
 import 'package:dti_web/domain/questionnaire/questionnaire_model.dart';
 import 'package:dti_web/injection.dart';
+import 'package:dti_web/presentation/questionnaire/widget/custom_second_header.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:flutter/material.dart';
@@ -97,7 +98,8 @@ class _QuestionnairePageState extends State<QuestionnairePage> {
                         width: ScreenUtil().screenWidth / 2.2,
                         height: ScreenUtil().screenHeight,
                         padding: REdgeInsets.symmetric(
-                            horizontal: 50.w, vertical: 20.h),
+                          horizontal: 30.w,
+                        ),
                         margin: EdgeInsets.symmetric(vertical: 40.h),
                         decoration: BoxDecoration(
                           color: Colors.white.withAlpha(180),
@@ -107,6 +109,16 @@ class _QuestionnairePageState extends State<QuestionnairePage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            CustomSecondHeader(
+                              onBack: () {
+                                //remove the last item
+                                context
+                                    .read<QuestionnaireCubit>()
+                                    .removeLastQuestionnaire();
+                                AutoRouter.of(context).pop();
+                              },
+                            ),
+                            10.verticalSpace,
                             Text(
                               title,
                               style: TextStyle(

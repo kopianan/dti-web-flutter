@@ -1,6 +1,6 @@
 {
-    "name": "dti_web",
-    "short_name": "dti_web",
+    "name": "DoorToID",
+    "short_name": "DoorToID",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

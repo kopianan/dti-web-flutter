@@ -13,4 +13,6 @@ class OtherState with _$OtherState {
   const factory OtherState.onGetImageUrl(String url) = _OnGetImageUrl;
   const factory OtherState.getAllQuestionnaire(
       QuestionnaireDataModel questionnaire) = _GetAllQuestionnaire;
+  const factory OtherState.getAllDocumentData(
+      List<DocumentDataModel> documents) = _GetAllDocumentData;
 }

@@ -2,12 +2,11 @@ import 'package:country_code_picker/country_code_picker.dart';
 import 'package:dio/dio.dart';
 import 'package:dti_web/core/storage.dart';
 import 'package:dartz/dartz.dart';
+import 'package:dti_web/domain/core/document_data_model.dart';
 import 'package:dti_web/domain/global/failures.dart';
 import 'package:dti_web/domain/other/i_other.dart';
 import 'package:dti_web/domain/questionnaire/questionnaire_data_model.dart';
-import 'package:dti_web/domain/questionnaire/questionnaire_model.dart';
 import 'package:dti_web/env/env.dart';
-import 'package:dti_web/utils/constant.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: IOther)
@@ -32,8 +31,7 @@ class OtherRepository extends IOther {
 
       return Right(result.data['downloadUrl']);
     } catch (e) {
-      print(e);
-      return Left("Can not get download url");
+      return const Left("Can not get download url");
     }
   }
 
@@ -75,28 +73,27 @@ class OtherRepository extends IOther {
     String phoneNumber,
     String channel,
   ) async {
-    final _dio = Dio();
+    final dio = Dio();
     Storage storage = Storage();
-    var _newNumber = phoneNumber;
+    var newNumber = phoneNumber;
 
-    if (_newNumber.startsWith('0') && (countryCode.dialCode == "+62")) {
-      _newNumber = _newNumber.replaceFirst('0', countryCode.dialCode!);
+    if (newNumber.startsWith('0') && (countryCode.dialCode == "+62")) {
+      newNumber = newNumber.replaceFirst('0', countryCode.dialCode!);
     } else {
-      _newNumber = countryCode.dialCode! + _newNumber;
+      newNumber = countryCode.dialCode! + newNumber;
     }
-    var _requst = {
-      "to": _newNumber,
+    var requst = {
+      "to": newNumber,
       "channel": channel,
     };
-    print(_requst); 
     try {
-      var _result = await _dio.post(
+      var result = await dio.post(
           "https://us-central1-doortoid-mobile.cloudfunctions.net/api/generateOTP",
-          data: _requst,
+          data: requst,
           options: Options(
             headers: {'Authorization': 'Bearer ${storage.getToken()}'},
           ));
-      var status = _result.data['status'];
+      var status = result.data['status'];
       if (status == "success") {
         return right(status);
       }
@@ -111,35 +108,33 @@ class OtherRepository extends IOther {
       {required String phoneNumber,
       required String code,
       required CountryCode countryCode}) async {
-    Dio _dio = Dio();
+    Dio dio = Dio();
     Storage storage = Storage();
 
-    var _newNumber = phoneNumber;
+    var newNumber = phoneNumber;
     //remove the first
 
-    if (_newNumber.startsWith('0')) {
-      _newNumber = _newNumber.replaceFirst('0', '');
-    } else if (_newNumber.contains('+')) {
-      _newNumber = _newNumber.replaceFirst(countryCode.dialCode!, '');
+    if (newNumber.startsWith('0')) {
+      newNumber = newNumber.replaceFirst('0', '');
+    } else if (newNumber.contains('+')) {
+      newNumber = newNumber.replaceFirst(countryCode.dialCode!, '');
     } else {
-      _newNumber = _newNumber;
+      newNumber = newNumber;
     }
 
     var requst = {
       "countryCode": countryCode.dialCode,
-      "mobileNumber": _newNumber.trim(),
+      "mobileNumber": newNumber.trim(),
       "codeOtp": code,
     };
-    print(requst);
     try {
-      var _result = await _dio.post(
-          "http://127.0.0.1:5002/doortoid-mobile/us-central1/api/verifyOTP",
+      var result = await dio.post(Env.baseUrl + '/verifyOTP',
           data: requst,
           options: Options(
             headers: {'Authorization': 'Bearer ${storage.getToken()}'},
           ));
       try {
-        var status = _result.data['status'];
+        var status = result.data['status'];
         if (status == "approved") {
           return right(status);
         }
@@ -150,6 +145,43 @@ class OtherRepository extends IOther {
       return Left(Failures.generalError("Failed"));
     } on Exception catch (e) {
       return left(Failures.serverError());
+    }
+  }
+
+  @override
+  Future<Either<Failures, List<DocumentDataModel>>>
+      getApplicationMasterData() async {
+    Dio dio = Dio();
+    Storage storage = Storage();
+    try {
+      final data = await dio.get('${Env.baseUrl}/master/application',
+          options: Options(
+            headers: {'Authorization': 'Bearer ${storage.getToken()}'},
+          ));
+
+      if (data.data['data'] != null) {
+        List rawData = data.data['data']['document_list'];
+        return Right(rawData
+            .map(
+              (e) => DocumentDataModel.fromJson(e),
+            )
+            .toList());
+      }
+      return Left(Failures.generalError("Something Wrong"));
+    } on DioError catch (e) {
+      if (e.type ==
+       DioErrorType.response) {
+        if (e.response!.statusCode! == 404) {
+          if (e.response!.data['error'] != null) {
+            return Left(Failures.generalError(e.response!.data['error']));
+          }
+          return Left(Failures.generalError("Something wrong"));
+        } else if (e.response?.statusCode! == 403) {
+          //authorization
+          return Left(Failures.apiExpired());
+        }
+      }
+      return Left(Failures.serverError());
     }
   }
 }

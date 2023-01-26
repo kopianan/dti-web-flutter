@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:dti_web/core/storage.dart';
 import 'package:dti_web/domain/core/document_data_model.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/domain/questionnaire/raw_data.dart';
@@ -178,11 +179,17 @@ class DocumentCubit extends Cubit<DocumentState> {
 
   void setupApplication(VisaApplicationModel visa) {
     //SETUP DOCUMENTS
-    final docs = visa.documents!.split(',').map((e) => e.trim()).toList();
+    var docs = visa.documents!.split(',').map((e) => e.trim()).toList();
+    //check the guarantor
+    if (visa.guarantorDTI == false) {
+      docs.removeWhere((element) => element == 'A1' || element == 'A5');
+    } else {
+      docs.addAll(['A1', 'A5']);
+    }
 
-    final documents = (documentRaw['document_list'] as List);
-    var documentModel =
-        documents.map((e) => DocumentDataModel.fromJson(e)).toList();
+    var documentModel = Storage().loadDocument().toList();
+    // var documentModel =
+    //     documents.map((e) => DocumentDataModel.fromJson(e)).toList();
 
     List<DocumentDataModel>? modelsDocument = [];
 

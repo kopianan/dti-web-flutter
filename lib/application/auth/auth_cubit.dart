@@ -29,17 +29,17 @@ class AuthCubit extends Cubit<AuthState> {
 
   void checkSession() async {
     emit(const AuthState.loading());
-    await Future.delayed(Duration(seconds: 0));
+    await Future.delayed(const Duration(seconds: 0));
     final token = storage.getToken();
 
-    await Future.delayed(Duration(seconds: 0));
+    await Future.delayed(const Duration(seconds: 0));
 
     if (token != null) {
       //check token expiration
       bool isExpired = JwtDecoder.isExpired(token);
       if (isExpired) {
         emit(const AuthState.unAuthorized());
-      }else{
+      } else {
         emit(const AuthState.authorized());
       }
     } else {
@@ -81,8 +81,24 @@ class AuthCubit extends Cubit<AuthState> {
     result.fold(
       (l) => emit(AuthState.onError(l)),
       (r) async {
-        await storage.saveToken(r);
-        emit(AuthState.onLoginSuccess(r));
+        await storage.saveToken(r.token);
+
+        if (r.isNewUser) {
+          emit(AuthState.onRegisterSuccess(r.token));
+        } else {
+          //get user data
+          final result = await iAuth.getUserData();
+          result.fold(
+            (l) => null,
+            (userData) {
+              if (userData.mobileNumber != null) {
+                emit(AuthState.onLoginSuccess(r.token));
+              }else{
+                emit(AuthState.onLoginSuccessWithoutPhoneNumber(r.token));
+              }
+            },
+          );
+        }
       },
     );
   }

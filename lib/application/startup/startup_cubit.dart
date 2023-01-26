@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:dti_web/domain/core/city.dart';
 import 'package:dti_web/domain/core/distict.dart';
@@ -13,7 +15,7 @@ part 'startup_cubit.freezed.dart';
 class StartupCubit extends Cubit<StartupState> {
   StartupCubit() : super(StartupState.initial());
 
-  void setupStartupData() async {
+  Future<void> setupStartupData() async {
     emit(state.copyWith(isLoading: true));
     final provinces = await DataUtils.getProvince();
     final cities = await DataUtils.getCity();
@@ -27,15 +29,32 @@ class StartupCubit extends Cubit<StartupState> {
     ));
   }
 
+  void setUpInitialProvince(String name) async {
+    //update list of
+    await setupStartupData();
+    final province =
+        state.provinces!.firstWhere((element) => element.name == name);
+
+    emit(
+      state.copyWith(selectedProvince: province),
+    );
+
+    final city = state.cities!
+        .firstWhere((element) => element.proviceCode == province.proviceCode);
+    chooseProvince(province);
+    chooseCity(city);
+  }
+
   void chooseProvince(Province province) async {
     //update list of
     final listCityByProvince = state.cities!
         .where((element) => element.proviceCode == province.proviceCode)
         .toList();
     emit(state.copyWith(
-        selectedProvince: province,
-        citiesByProvince: listCityByProvince,
-        selectedCity: listCityByProvince.first));
+      selectedProvince: province,
+      citiesByProvince: listCityByProvince,
+      selectedCity: listCityByProvince.first,
+    ));
   }
 
   void chooseCity(City city) async {

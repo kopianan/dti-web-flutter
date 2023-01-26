@@ -5,12 +5,9 @@ import 'package:dti_web/core/widgets/auth_footer_widget.dart';
 import 'package:dti_web/core/widgets/auth_header_widget.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
 import 'package:dti_web/injection.dart';
-import 'package:dti_web/presentation/auth/pages/sign_up_page.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -33,7 +30,7 @@ class OTPPage extends StatelessWidget {
               EasyLoading.dismiss();
             },
             loading: (e) {
-              EasyLoading.show();
+              EasyLoading.show(maskType: EasyLoadingMaskType.black);
             },
             onOTPVerified: (e) {
               EasyLoading.dismiss();
@@ -43,96 +40,98 @@ class OTPPage extends StatelessWidget {
         },
         builder: (context, state) {
           return Scaffold(
-            body: Container(
-              margin: EdgeInsets.symmetric(horizontal: 0.1.sw),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const AuthHeaderWidget(label: "Verify OTP"),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Container(
-                          color: Colors.green,
-                          child: Image.asset(
-                              'assets/images/dti_auth_register.png'),
-                        ),
-                      ),
-                      100.horizontalSpace,
-                      Expanded(
-                        child: Container(
-                          alignment: Alignment.center,
-                          padding: REdgeInsets.symmetric(horizontal: 40),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'An email with a verification code has been sent to your email',
-                                style: TextStyle(
-                                  fontSize: 20.sp,
-                                ),
-                              ),
-                              20.verticalSpace,
-                              Pinput(
-                                controller: otpController,
-                                length: 6,
-                                defaultPinTheme: PinTheme(
-                                  width: 60.w,
-                                  height: 60.h,
-                                  decoration: BoxDecoration(
-                                      color: Colors.blueGrey[200],
-                                      borderRadius: BorderRadius.circular(10)),
-                                  textStyle: TextStyle(fontSize: 20.sp),
-                                ),
-                                // focusedPinTheme: PinTheme(
-                                //   decoration: BoxDecoration(color: Colors.grey),
-                                //   textStyle: TextStyle(fontSize: 20.sp),
-                                // ),
-                              ),
-                              20.verticalSpace,
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Didn’t receive a code? ",
-                                    style: TextStyle(fontSize: 14.sp),
-                                  ),
-                                  InkWell(
-                                      onTap: () {
-                                        AutoRouter.of(context).navigateBack();
-                                      },
-                                      child: Text(
-                                        "Request again",
-                                        style: TextStyle(
-                                            fontSize: 14.sp,
-                                            color: AppColor.primaryColor,
-                                            fontWeight: FontWeight.bold),
-                                      )),
-                                ],
-                              ),
-                              20.verticalSpace,
-                              SizedBox(
-                                  height: 45.h,
-                                  child: PrimaryButton(
-                                    onClick: () {
-                                      if (otpController.text.isNotEmpty) {
-                                        context.read<OtherCubit>().verifyOtp(
-                                            code, number, otpController.text);
-                                      }
-                                    },
-                                    labelStyle: TextStyle(fontSize: 16.sp),
-                                    label: 'Verify OTP',
-                                  )),
-                            ],
+            body: SingleChildScrollView(
+              child: Container(
+                margin: EdgeInsets.symmetric(horizontal: 0.1.sw),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const AuthHeaderWidget(label: "Verify OTP"),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            child: Image.asset(
+                                'assets/images/dti_auth_register.png'),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                  AuthFooterWidget()
-                ],
+                        100.horizontalSpace,
+                        Expanded(
+                          child: Container(
+                            alignment: Alignment.center,
+                            padding: REdgeInsets.symmetric(horizontal: 40),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Enter 6 digit code sent to your whatsapp / sms',
+                                  style: TextStyle(
+                                    fontSize: 20.sp,
+                                  ),
+                                ),
+                                20.verticalSpace,
+                                Pinput(
+                                  controller: otpController,
+                                  length: 6,
+                                  defaultPinTheme: PinTheme(
+                                    width: 60,
+                                    height: 60,
+                                    decoration: BoxDecoration(
+                                        color: Colors.blueGrey[200],
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    textStyle: TextStyle(fontSize: 20.sp),
+                                  ),
+                                  // focusedPinTheme: PinTheme(
+                                  //   decoration: BoxDecoration(color: Colors.grey),
+                                  //   textStyle: TextStyle(fontSize: 20.sp),
+                                  // ),
+                                ),
+                                20.verticalSpace,
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Didn’t receive a code? ",
+                                      style: TextStyle(fontSize: 14.sp),
+                                    ),
+                                    InkWell(
+                                        onTap: () {
+                                          AutoRouter.of(context).navigateBack();
+                                        },
+                                        child: Text(
+                                          "Request again",
+                                          style: TextStyle(
+                                              fontSize: 14.sp,
+                                              color: AppColor.primaryColor,
+                                              fontWeight: FontWeight.bold),
+                                        )),
+                                  ],
+                                ),
+                                20.verticalSpace,
+                                SizedBox(
+                                    height: 45.h,
+                                    child: PrimaryButton(
+                                      onClick: () {
+                                        if (otpController.text.isNotEmpty) {
+                                          context.read<OtherCubit>().verifyOtp(
+                                              code, number, otpController.text);
+                                        }
+                                      },
+                                      labelStyle: TextStyle(fontSize: 16.sp),
+                                      label: 'Verify OTP',
+                                    )),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    AuthFooterWidget()
+                  ],
+                ),
               ),
             ),
           );

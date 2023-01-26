@@ -6,12 +6,13 @@ class PasswordTextField extends StatelessWidget {
       required this.controller,
       required this.obSecure,
       required this.onObsecure,
+      this.onFinish,
       this.hint});
   final TextEditingController controller;
   final Function(bool) onObsecure;
   final bool obSecure;
   final String? hint;
-
+  final ValueChanged<String>? onFinish;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -26,6 +27,7 @@ class PasswordTextField extends StatelessWidget {
         return null;
       },
       obscureText: obSecure,
+      onFieldSubmitted: onFinish,
       decoration: InputDecoration(
         prefixIcon: const Icon(Icons.lock),
         suffixIcon: InkWell(

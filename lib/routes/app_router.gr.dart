@@ -99,9 +99,13 @@ class _$AppRouter extends RootStackRouter {
       );
     },
     ApplicationCardRoute.name: (routeData) {
+      final args = routeData.argsAs<ApplicationCardRouteArgs>();
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const ApplicationCardPage(),
+        child: ApplicationCardPage(
+          key: args.key,
+          dashboardCubit: args.dashboardCubit,
+        ),
       );
     },
     PaymentRoute.name: (routeData) {
@@ -600,14 +604,36 @@ class PersonalInformation4RouteArgs {
 
 /// generated route for
 /// [ApplicationCardPage]
-class ApplicationCardRoute extends PageRouteInfo<void> {
-  const ApplicationCardRoute()
-      : super(
+class ApplicationCardRoute extends PageRouteInfo<ApplicationCardRouteArgs> {
+  ApplicationCardRoute({
+    Key? key,
+    required DashboardCubit dashboardCubit,
+  }) : super(
           ApplicationCardRoute.name,
           path: '/application-card',
+          args: ApplicationCardRouteArgs(
+            key: key,
+            dashboardCubit: dashboardCubit,
+          ),
         );
 
   static const String name = 'ApplicationCardRoute';
+}
+
+class ApplicationCardRouteArgs {
+  const ApplicationCardRouteArgs({
+    this.key,
+    required this.dashboardCubit,
+  });
+
+  final Key? key;
+
+  final DashboardCubit dashboardCubit;
+
+  @override
+  String toString() {
+    return 'ApplicationCardRouteArgs{key: $key, dashboardCubit: $dashboardCubit}';
+  }
 }
 
 /// generated route for

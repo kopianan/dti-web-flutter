@@ -33,7 +33,7 @@ class ApplicationDetailPage extends StatefulWidget {
 
 class _ApplicationDetailPageState extends State<ApplicationDetailPage> {
   @override
-  void initState() { 
+  void initState() {
     super.initState();
   }
 
@@ -148,15 +148,16 @@ class _SuccessBodyState extends State<SuccessBody> {
                   fontWeight: FontWeight.bold),
             ),
             30.verticalSpace,
-            const SubtitleWidget(label: "VISIT VISA TOUR"),
+            SubtitleWidget(
+                label: '${widget.visa.title} - ${widget.visa.subTitle} - ${widget.visa.entry}'),
             20.verticalSpace,
             Row(
               children: [
-                DetailItemWidget(
-                  label: "Estimated",
-                  value: Converter.convertStringToIDR(widget.visa.price ?? 0),
-                ),
-                100.horizontalSpace,
+                // DetailItemWidget(
+                //   label: "Estimated",
+                //   value: Converter.convertStringToIDR(widget.visa.price ?? 0),
+                // ),
+                // 100.horizontalSpace,
                 DetailItemWidget(
                   label: "Guarantor",
                   value: widget.visa.guarantorDTI!
@@ -166,7 +167,7 @@ class _SuccessBodyState extends State<SuccessBody> {
               ],
             ),
             20.verticalSpace,
-            const SubtitleWidget(label: " VISIT INFORMATION"),
+            const SubtitleWidget(label: " VISA INFORMATION"),
             20.verticalSpace,
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -192,7 +193,7 @@ class _SuccessBodyState extends State<SuccessBody> {
               ],
             ),
             20.verticalSpace,
-            const SubtitleWidget(label: "VISIT INFORMATION"),
+            const SubtitleWidget(label: "PERSONAL PARTICULAR"),
             20.verticalSpace,
             //VISIT INFORMATION 2
             Table(
@@ -265,6 +266,38 @@ class _SuccessBodyState extends State<SuccessBody> {
               children: [
                 TableRow(children: [
                   DetailItemWidget(
+                    label: "Passport No",
+                    value: widget.visa.passportNumber!,
+                  ),
+                  DetailItemWidget(
+                    label: "Issuing Country",
+                    value: widget.visa.issuingCountry!,
+                  ),
+                ]),
+                vertDistance,
+                TableRow(children: [
+                  DetailItemWidget(
+                    label: "Date of Issue",
+                    value: DateConverter.convertDateDefault2(
+                        DateTime.parse(widget.visa.dateOfIssue!)),
+                  ),
+                  DetailItemWidget(
+                    label: "Date of expiration",
+                    value: DateConverter.convertDateDefault2(
+                        DateTime.parse(widget.visa.dateOfExpiration!)),
+                  ),
+                ]),
+              ],
+            ),
+            20.verticalSpace,
+            //IN INDONESIA
+            const SubtitleWidget(label: "INDONESIA'S RESIDENTIAL"),
+            20.verticalSpace,
+            Table(
+              defaultColumnWidth: FixedColumnWidth(400.w),
+              children: [
+                TableRow(children: [
+                  DetailItemWidget(
                     label: "Address",
                     value: widget.visa.address!,
                   ),
@@ -287,7 +320,6 @@ class _SuccessBodyState extends State<SuccessBody> {
               ],
             ),
             20.verticalSpace,
-
             //    SUPPORTING DOCUMENT
             const SubtitleWidget(label: "SUPPORTING DOCUMENT  "),
             20.verticalSpace,
@@ -305,7 +337,6 @@ class _SuccessBodyState extends State<SuccessBody> {
                           if (data.isNotEmpty) {
                             for (var element in widget.imagesUrl!) {
                               final data = element as Map<String, dynamic>;
-                              log(e.toJson().toString());
                               if (data.containsKey(e.id)) {
                                 //check if id is same then get the data
                                 filtered.add(data[e.id!.trim()]);

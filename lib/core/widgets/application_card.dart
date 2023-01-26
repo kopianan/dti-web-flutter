@@ -4,6 +4,7 @@ import 'package:dti_web/domain/core/simple_visa_model.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/utils/date_converter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 
 // ignore: must_be_immutable
@@ -33,15 +34,18 @@ class VisaApplicationCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Container(
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+              padding: REdgeInsets.symmetric(
+                vertical: 10,
+                horizontal: 10,
+              ),
               color: Colors.grey[300],
               child: Row(
                 children: [
                   Expanded(
                     child: Text(
-                      "Application Reference Number${visaApps.applicationID!}",
-                      style: const TextStyle(
-                        fontSize: 12,
+                      "Application Reference Number ${visaApps.applicationID!}",
+                      style: TextStyle(
+                        fontSize: 12.sp,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -56,7 +60,7 @@ class VisaApplicationCard extends StatelessWidget {
                       Text(
                         visaApps.status!,
                         style: TextStyle(
-                          fontSize: 12,
+                          fontSize: 12.sp,
                           fontWeight: FontWeight.bold,
                           color: checkStatusColor(visaApps.status!),
                         ),
@@ -67,18 +71,18 @@ class VisaApplicationCard extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: REdgeInsets.all(10.0),
               child: Row(
                 children: [
                   SizedBox(
-                    width: 100,
+                    width: 100.w,
                     child: Image.asset(
                       'assets/images/application.webp',
                       scale: 0.8,
                       fit: BoxFit.cover,
                     ),
                   ),
-                  const SizedBox(width: 10),
+                  SizedBox(width: 10.sp),
                   Expanded(
                     child: Column(
                       children: [
@@ -86,21 +90,21 @@ class VisaApplicationCard extends StatelessWidget {
                           children: [
                             Expanded(
                                 child: SizedBox(
-                              height: 60,
+                              height: 60.h,
                               child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       visaApps.title ?? "Title",
-                                      style: const TextStyle(
-                                        fontSize: 16,
+                                      style: TextStyle(
+                                        fontSize: 16.sp,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
                                     Text(
                                       visaApps.subTitle ?? "Subtitle",
-                                      style: const TextStyle(
-                                        fontSize: 12,
+                                      style: TextStyle(
+                                        fontSize: 12.sp,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -116,8 +120,8 @@ class VisaApplicationCard extends StatelessWidget {
                               children: [
                                 Text(
                                   "Estimated",
-                                  style: const TextStyle(
-                                    fontSize: 16,
+                                  style: TextStyle(
+                                    fontSize: 16.sp,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -144,15 +148,15 @@ class VisaApplicationCard extends StatelessWidget {
                                       children: [
                                         Text(
                                           "Used By",
-                                          style: const TextStyle(
-                                            fontSize: 10,
+                                          style: TextStyle(
+                                            fontSize: 10.sp,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
                                         Text(
                                           "Length of Stay",
-                                          style: const TextStyle(
-                                            fontSize: 10,
+                                          style: TextStyle(
+                                            fontSize: 10.sp,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
@@ -162,8 +166,8 @@ class VisaApplicationCard extends StatelessWidget {
                                 ),
                                 Text(
                                   "Created Date",
-                                  style: const TextStyle(
-                                    fontSize: 10,
+                                  style: TextStyle(
+                                    fontSize: 10.sp,
                                     fontWeight: FontWeight.bold,
                                   ),
                                   textAlign: TextAlign.end,
@@ -187,15 +191,15 @@ class VisaApplicationCard extends StatelessWidget {
                                         Text(
                                           DateConverter.convertDateDefault(
                                               visaApps.usedByDate),
-                                          style: const TextStyle(
-                                            fontSize: 12,
+                                          style: TextStyle(
+                                            fontSize: 12.sp,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
                                         Text(
-                                          visaApps.lengthOfStay.toString(),
-                                          style: const TextStyle(
-                                            fontSize: 12,
+                                          "${visaApps.lengthOfStay} Days",
+                                          style: TextStyle(
+                                            fontSize: 12.sp,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
@@ -207,8 +211,8 @@ class VisaApplicationCard extends StatelessWidget {
                                   DateConverter.convertDateDefault(
                                       visaApps.createdDate),
                                   maxLines: 1,
-                                  style: const TextStyle(
-                                    fontSize: 12,
+                                  style:   TextStyle(
+                                    fontSize: 12.sp,
                                     fontWeight: FontWeight.bold,
                                   ),
                                   textAlign: TextAlign.end,

@@ -41,7 +41,6 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
     // var imageList = document.imageList!;
     // imageList.removeWhere((element) => element == null);
     //=====Null is gone ======
-    print(document.imageList);
 
     try {
       final data = await iUpdateApplication.uploadImagesAndUpdateData(
@@ -50,7 +49,6 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
         deletedImageName,
         imageCollection: imageCollection,
       );
-      print(data);
       data.fold(
         (l) => emit(UpdateApplicationState.onError(l.toString())),
         (r) => emit(UpdateApplicationState.onUploadImageComplete(r)),
@@ -61,8 +59,6 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
   }
 
   void createUserApplication(QuestionnaireModel lastQuestionnaire) async {
-    log(lastQuestionnaire.results.toString(), name: "RESULTS");
-
     emit(const UpdateApplicationState.onLoading());
     final result = lastQuestionnaire.results;
     final newVisa = VisaApplicationModel(
@@ -78,6 +74,7 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
     try {
       final data =
           await iUpdateApplication.createNewApplicationDocument(newVisa);
+      log(data.toString());
       data.fold(
         (l) {
           emit(UpdateApplicationState.onError(l));
@@ -122,7 +119,6 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
 
     final jsonData = visaApps.toJson();
     jsonData.removeWhere((key, value) => value == null);
-    log(jsonData.toString(), name: "REMOVED NULL");
     emit(const UpdateApplicationState.onLoading());
     final result = await iUpdateApplication.updateParticularData(visaApps);
     result.fold(

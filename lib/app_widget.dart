@@ -58,7 +58,7 @@ class AppWidget extends StatelessWidget {
           localizationsDelegates: const [
             FormBuilderLocalizations.delegate,
           ],
-          title: 'DTI WEB',
+          title: 'DoorToID',
           builder: EasyLoading.init(),
           theme: ThemeData(
               textTheme: GoogleFonts.latoTextTheme(),

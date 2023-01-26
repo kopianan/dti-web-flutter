@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$DocumentState {
   VisaApplicationModel? get visa => throw _privateConstructorUsedError;
   List<DocumentDataModel>? get docs => throw _privateConstructorUsedError;
+  List<DocumentDataModel> get initialDocs => throw _privateConstructorUsedError;
   int? get selectedIndex => throw _privateConstructorUsedError;
   List<Map<String, dynamic>> get masterListData =>
       throw _privateConstructorUsedError;
@@ -43,6 +44,7 @@ abstract class $DocumentStateCopyWith<$Res> {
   $Res call(
       {VisaApplicationModel? visa,
       List<DocumentDataModel>? docs,
+      List<DocumentDataModel> initialDocs,
       int? selectedIndex,
       List<Map<String, dynamic>> masterListData,
       List<String>? selectedMasterListData,
@@ -69,6 +71,7 @@ class _$DocumentStateCopyWithImpl<$Res>
   $Res call({
     Object? visa = freezed,
     Object? docs = freezed,
+    Object? initialDocs = freezed,
     Object? selectedIndex = freezed,
     Object? masterListData = freezed,
     Object? selectedMasterListData = freezed,
@@ -87,6 +90,10 @@ class _$DocumentStateCopyWithImpl<$Res>
           ? _value.docs
           : docs // ignore: cast_nullable_to_non_nullable
               as List<DocumentDataModel>?,
+      initialDocs: initialDocs == freezed
+          ? _value.initialDocs
+          : initialDocs // ignore: cast_nullable_to_non_nullable
+              as List<DocumentDataModel>,
       selectedIndex: selectedIndex == freezed
           ? _value.selectedIndex
           : selectedIndex // ignore: cast_nullable_to_non_nullable
@@ -155,6 +162,7 @@ abstract class _$$_DocumentStateCopyWith<$Res>
   $Res call(
       {VisaApplicationModel? visa,
       List<DocumentDataModel>? docs,
+      List<DocumentDataModel> initialDocs,
       int? selectedIndex,
       List<Map<String, dynamic>> masterListData,
       List<String>? selectedMasterListData,
@@ -185,6 +193,7 @@ class __$$_DocumentStateCopyWithImpl<$Res>
   $Res call({
     Object? visa = freezed,
     Object? docs = freezed,
+    Object? initialDocs = freezed,
     Object? selectedIndex = freezed,
     Object? masterListData = freezed,
     Object? selectedMasterListData = freezed,
@@ -203,6 +212,10 @@ class __$$_DocumentStateCopyWithImpl<$Res>
           ? _value.docs
           : docs // ignore: cast_nullable_to_non_nullable
               as List<DocumentDataModel>?,
+      initialDocs: initialDocs == freezed
+          ? _value.initialDocs
+          : initialDocs // ignore: cast_nullable_to_non_nullable
+              as List<DocumentDataModel>,
       selectedIndex: selectedIndex == freezed
           ? _value.selectedIndex
           : selectedIndex // ignore: cast_nullable_to_non_nullable
@@ -245,6 +258,7 @@ class _$_DocumentState with DiagnosticableTreeMixin implements _DocumentState {
   _$_DocumentState(
       {this.visa,
       this.docs,
+      this.initialDocs = const [],
       this.selectedIndex,
       this.masterListData = const [],
       this.selectedMasterListData,
@@ -258,6 +272,9 @@ class _$_DocumentState with DiagnosticableTreeMixin implements _DocumentState {
   final VisaApplicationModel? visa;
   @override
   final List<DocumentDataModel>? docs;
+  @override
+  @JsonKey()
+  final List<DocumentDataModel> initialDocs;
   @override
   final int? selectedIndex;
   @override
@@ -279,7 +296,7 @@ class _$_DocumentState with DiagnosticableTreeMixin implements _DocumentState {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'DocumentState(visa: $visa, docs: $docs, selectedIndex: $selectedIndex, masterListData: $masterListData, selectedMasterListData: $selectedMasterListData, deletedImagesName: $deletedImagesName, selectedDocument: $selectedDocument, selectedDataCollection: $selectedDataCollection, selectedDataType: $selectedDataType, isAllRead: $isAllRead)';
+    return 'DocumentState(visa: $visa, docs: $docs, initialDocs: $initialDocs, selectedIndex: $selectedIndex, masterListData: $masterListData, selectedMasterListData: $selectedMasterListData, deletedImagesName: $deletedImagesName, selectedDocument: $selectedDocument, selectedDataCollection: $selectedDataCollection, selectedDataType: $selectedDataType, isAllRead: $isAllRead)';
   }
 
   @override
@@ -289,6 +306,7 @@ class _$_DocumentState with DiagnosticableTreeMixin implements _DocumentState {
       ..add(DiagnosticsProperty('type', 'DocumentState'))
       ..add(DiagnosticsProperty('visa', visa))
       ..add(DiagnosticsProperty('docs', docs))
+      ..add(DiagnosticsProperty('initialDocs', initialDocs))
       ..add(DiagnosticsProperty('selectedIndex', selectedIndex))
       ..add(DiagnosticsProperty('masterListData', masterListData))
       ..add(
@@ -308,6 +326,8 @@ class _$_DocumentState with DiagnosticableTreeMixin implements _DocumentState {
             other is _$_DocumentState &&
             const DeepCollectionEquality().equals(other.visa, visa) &&
             const DeepCollectionEquality().equals(other.docs, docs) &&
+            const DeepCollectionEquality()
+                .equals(other.initialDocs, initialDocs) &&
             const DeepCollectionEquality()
                 .equals(other.selectedIndex, selectedIndex) &&
             const DeepCollectionEquality()
@@ -330,6 +350,7 @@ class _$_DocumentState with DiagnosticableTreeMixin implements _DocumentState {
       runtimeType,
       const DeepCollectionEquality().hash(visa),
       const DeepCollectionEquality().hash(docs),
+      const DeepCollectionEquality().hash(initialDocs),
       const DeepCollectionEquality().hash(selectedIndex),
       const DeepCollectionEquality().hash(masterListData),
       const DeepCollectionEquality().hash(selectedMasterListData),
@@ -349,6 +370,7 @@ abstract class _DocumentState implements DocumentState {
   factory _DocumentState(
       {final VisaApplicationModel? visa,
       final List<DocumentDataModel>? docs,
+      final List<DocumentDataModel> initialDocs,
       final int? selectedIndex,
       final List<Map<String, dynamic>> masterListData,
       final List<String>? selectedMasterListData,
@@ -362,6 +384,8 @@ abstract class _DocumentState implements DocumentState {
   VisaApplicationModel? get visa;
   @override
   List<DocumentDataModel>? get docs;
+  @override
+  List<DocumentDataModel> get initialDocs;
   @override
   int? get selectedIndex;
   @override

@@ -134,11 +134,23 @@ class IUpdateApplicationRepository extends IUpdateApplication {
       VisaApplicationModel visaApplicationModel) async {
     dio = Dio();
     final storage = Storage();
-    final result = await dio!.post('${Env.baseUrl}/application',
-        options: Options(
-          headers: {'Authorization': 'Bearer ${storage.getToken()}'},
-        ),
-        data: visaApplicationModel.toJson());
+    final result = await dio!.post(
+      '${Env.baseUrl}/application',
+      options: Options(
+        headers: {'Authorization': 'Bearer ${storage.getToken()}'},
+      ),
+      data: {
+        "title": visaApplicationModel.title,
+        "subTitle": visaApplicationModel.subTitle,
+        "entry": visaApplicationModel.entry,
+        "price": 0,
+        "currency": "Rp",
+        "documents": visaApplicationModel.documents,
+        "status": "Draft",
+        "inIndonesia": visaApplicationModel.inIndonesia
+      },
+    );
+    print(visaApplicationModel.toJson());
     return Right(result.data['data']['firebaseDocId']);
   }
 
@@ -171,7 +183,6 @@ class IUpdateApplicationRepository extends IUpdateApplication {
       "inIndonesia": visaApplicationModel.inIndonesia,
       "issuingCountry": visaApplicationModel.issuingCountry
     };
-    log(jsonParams.toString(), name: "JSON PARAMS");
     try {
       final result = await dio!.post(
           "${Env.baseUrl}/application/${visaApplicationModel.firebaseDocId}/",
@@ -181,15 +192,13 @@ class IUpdateApplicationRepository extends IUpdateApplication {
             },
           ),
           data: jsonParams);
-      log(result.toString(), name: "RESULT UPDATE");
-      if (result.data['code'] != null) {
+      if (result.data['data'] == null) {
         //ERROR
-        return Left(result.data['message']);
+        return Left(result.data['data']['message']);
       } else {
-        return Right(result.data['message']);
+        return Right(result.data['data']['message']);
       }
     } on Exception catch (e) {
-      print(e);
       return Left("");
     }
   }
@@ -201,11 +210,9 @@ class IUpdateApplicationRepository extends IUpdateApplication {
     final storage = Storage();
 
     try {
-      final result = await dio!.get(
-          "${Env.baseUrl}/application/$firebaseDocId",
+      final result = await dio!.get("${Env.baseUrl}/application/$firebaseDocId",
           options: Options(
               headers: {"Authorization": "Bearer ${storage.getToken()}"}));
-      print(result);
       if (result.data['data'] != null) {
         dynamic data = result.data['data'];
         final visaApps = VisaApplicationModel.fromJson(data);
@@ -224,14 +231,14 @@ class IUpdateApplicationRepository extends IUpdateApplication {
     final storage = Storage();
 
     try {
-      final result = await dio!.post(
-          "${Env.baseUrl}/application/guarantor/${visa.firebaseDocId}/",
-          options: Options(
-            headers: {
-              "Authorization": "Bearer ${storage.getToken()}",
-            },
-          ),
-          data: {"guarantorDTI": visa.guarantorDTI});
+      final result = await dio!
+          .post("${Env.baseUrl}/application/guarantor/${visa.firebaseDocId}/",
+              options: Options(
+                headers: {
+                  "Authorization": "Bearer ${storage.getToken()}",
+                },
+              ),
+              data: {"guarantorDTI": visa.guarantorDTI});
 
       if (result.data['data'] == null) {
         //ERROR
@@ -291,7 +298,6 @@ class IUpdateApplicationRepository extends IUpdateApplication {
       String firebaseDocId) async {
     dio = Dio();
     final storage = Storage();
-    print(firebaseDocId);
     try {
       final result = await dio!.get(
         "${Env.baseUrl}/application/$firebaseDocId",
@@ -346,14 +352,14 @@ class IUpdateApplicationRepository extends IUpdateApplication {
     final storage = Storage();
 
     try {
-      final result = await dio!.post(
-          "${Env.baseUrl}/application/multiVisaDuration/${firebaseDocId}",
-          options: Options(
-            headers: {
-              "Authorization": "Bearer ${storage.getToken()}",
-            },
-          ),
-          data: {"multiVisaDuration": duration});
+      final result = await dio!
+          .post("${Env.baseUrl}/application/multiVisaDuration/${firebaseDocId}",
+              options: Options(
+                headers: {
+                  "Authorization": "Bearer ${storage.getToken()}",
+                },
+              ),
+              data: {"multiVisaDuration": duration});
 
       if (result.data['data'] == null) {
         //ERROR
