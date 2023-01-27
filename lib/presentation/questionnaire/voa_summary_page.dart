@@ -4,48 +4,72 @@ import 'package:dti_web/application/questionnaire_cubit.dart';
 import 'package:dti_web/application/update_application/update_application_cubit.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
 import 'package:dti_web/domain/core/document_data_model.dart';
-import 'package:dti_web/domain/questionnaire/raw_data.dart';
-import 'package:dti_web/domain/questionnaire/result_model.dart';
+import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/injection.dart';
-import 'package:dti_web/presentation/dashboard/pages/dashboard_page.dart';
 import 'package:dti_web/presentation/questionnaire/widget/custom_second_header.dart';
 import 'package:dti_web/routes/app_router.dart';
 
 import 'package:dti_web/utils/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class QuestionnaireSummaryPage extends StatefulWidget {
-  const QuestionnaireSummaryPage({super.key, required this.resultModel});
-  static const String routeName = '/questionnaire-summary';
-  final ResultModel? resultModel;
+class VOASummaryPage extends StatefulWidget {
+  const VOASummaryPage({super.key});
+  static const String routeName = '/voa-summary';
 
   @override
-  State<QuestionnaireSummaryPage> createState() =>
-      _QuestionnaireSummaryPageState();
+  State<VOASummaryPage> createState() => _VOASummaryPageState();
 }
 
-class _QuestionnaireSummaryPageState extends State<QuestionnaireSummaryPage> {
+class _VOASummaryPageState extends State<VOASummaryPage> {
   var listData = <DocumentDataModel>[];
-
+  String description = "";
+  List<String> finalImportantNotes = [];
+  String important = "";
+  String documentRequired = "";
+  List<String> documnets = ['A3', 'A4', 'A6'];
+  late VisaApplicationModel visa;
   @override
   void initState() {
 // "documents": "A2, A3, A6, C3, D1, D2, D7",
+//get list data from storage.
 
-    final documents = widget.resultModel!.documents!.split(',');
+    visa = VisaApplicationModel(
+        title: "Visit Visa",
+        subTitle: "Visa On Arrival",
+        entry: "Single Entry Visa",
+        price: 0,
+        currency: "Rp",
+        documents: "A3,A4,A6",
+        status: "Draft",
+        inIndonesia: false,
+        userName: "username");
+    description =
+        "This application is used for the issuance of e-VOA for foreigners who will enter Indonesia. Make sure to apply for a Visa in accordance with the intent of the Foreigner's activities in Indonesia. Foreigners who abuse their Visas and those who provide opportunities for Foreigners to misuse their Visas are subject to criminal sanctions as stipulated in Article 122 letters A and B of Law no. 6 of 2011 concerning Immigration.";
 
-    List rawDocuments = documentRaw['document_list'];
-    final fullData =
-        rawDocuments.map((e) => DocumentDataModel.fromJson(e)).toList();
+    finalImportantNotes.addAll([
+      "The Visa on Arrival provides the traveller with an initial 30 day visa to enter Indonesia and is extendable (optional) for a further 30 days, limiting the maximum stay to 60 days within the country.",
+      "The validity period is 90 days after the visa is issued.",
+      "Your passport must be valid for at least 6 months from the day you enter Indonesia for a e-VOA with a 60-day stay duration",
+      "Click [here](https://doortoid.com/visa-on-arrival-is-now-acceptable-to-enter-indonesia/) for list of countries that are eligible to apply",
+    ]);
 
-    for (var idDocument in documents) {
-      try {
-        listData.add(fullData
-            .firstWhere((element) => element.id!.trim() == idDocument.trim()));
-      } catch (e) {}
+    for (var element in [
+      "Cover Photo",
+      "Passport",
+      "Return ticket",
+    ]) {
+      documentRequired += '- $element\n';
     }
 
+    for (var element in finalImportantNotes) {
+      if (element.isNotEmpty || element != "") {
+        important += '- $element\n';
+      }
+    }
     super.initState();
   }
 
@@ -56,15 +80,16 @@ class _QuestionnaireSummaryPageState extends State<QuestionnaireSummaryPage> {
         child: BlocListener<UpdateApplicationCubit, UpdateApplicationState>(
           listener: (context, state) {
             state.maybeMap(
-                orElse: () {},
-                onCreateApplication: (value) {
-                  context
-                      .read<ApplicationCubit>()
-                      .setupApplication(value.visaApps);
+              orElse: () {},
+              onCreateApplication: (value) {
+                context
+                    .read<ApplicationCubit>()
+                    .setupApplication(value.visaApps);
 
-                  AutoRouter.of(context).navigate(PersonalInformation1Route(
-                      firebaseDocId: value.visaApps.firebaseDocId!));
-                });
+                AutoRouter.of(context).navigate(PersonalInformation1Route(
+                    firebaseDocId: value.visaApps.firebaseDocId!));
+              },
+            );
           },
           child: BlocBuilder<UpdateApplicationCubit, UpdateApplicationState>(
             builder: (context, upState) {
@@ -98,9 +123,6 @@ class _QuestionnaireSummaryPageState extends State<QuestionnaireSummaryPage> {
                           children: [
                             CustomSecondHeader(
                               onBack: () {
-                                context
-                                    .read<QuestionnaireCubit>()
-                                    .removeLastQuestionnaire();
                                 AutoRouter.of(context).pop();
                               },
                             ),
@@ -111,14 +133,14 @@ class _QuestionnaireSummaryPageState extends State<QuestionnaireSummaryPage> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    widget.resultModel?.visaTitle ?? "",
+                                    visa.title ?? "",
                                     style: TextStyle(
                                         fontSize: 30.sp,
                                         color: AppColor.primaryColor,
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Text(
-                                    widget.resultModel?.visaSubTitle ?? "",
+                                    visa.subTitle ?? "",
                                     style: TextStyle(
                                         fontSize: 20.sp,
                                         color: AppColor.primaryColor,
@@ -153,37 +175,7 @@ class _QuestionnaireSummaryPageState extends State<QuestionnaireSummaryPage> {
                                                         AppColor.primaryColor),
                                               ),
                                               10.verticalSpace,
-                                              Text(
-                                                "Indonesia immigration law details business visitor activities as the following (non-exhaustive): ",
-                                                style: TextStyle(
-                                                  fontSize: 16.sp,
-                                                ),
-                                              ),
-                                              10.verticalSpace,
-                                              Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: context
-                                                    .read<QuestionnaireCubit>()
-                                                    .getDescriptions()
-                                                    .map((e) => Text(
-                                                          "- " + e,
-                                                          style: TextStyle(
-                                                              fontSize: 16.sp,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold),
-                                                        ))
-                                                    .toList(),
-                                              ),
-                                              10.verticalSpace,
-                                              Text(
-                                                "The activities being performed on a Short Term Visit Pass should not involve a contract of service or a contract for service",
-                                                style: TextStyle(
-                                                  fontSize: 16.sp,
-                                                ),
-                                              ),
+                                              _MyMarkdown(data: description)
                                             ],
                                           ),
                                           20.verticalSpace,
@@ -200,18 +192,8 @@ class _QuestionnaireSummaryPageState extends State<QuestionnaireSummaryPage> {
                                                         AppColor.primaryColor),
                                               ),
                                               10.verticalSpace,
-                                              Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: listData
-                                                    .map((e) => Text(
-                                                          "- " + e.header!,
-                                                          style: TextStyle(
-                                                              fontSize: 16.sp),
-                                                        ))
-                                                    .toList(),
-                                              ),
+                                              _MyMarkdown(
+                                                  data: documentRequired)
                                             ],
                                           ),
                                           20.verticalSpace,
@@ -228,20 +210,19 @@ class _QuestionnaireSummaryPageState extends State<QuestionnaireSummaryPage> {
                                                         AppColor.primaryColor),
                                               ),
                                               10.verticalSpace,
-                                              Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: context
-                                                    .read<QuestionnaireCubit>()
-                                                    .getImportant()
-                                                    .map((e) => Text(
-                                                          "- " + e,
-                                                          style: TextStyle(
-                                                              fontSize: 16.sp),
-                                                        ))
-                                                    .toList(),
-                                              ),
+                                              _MyMarkdown(data: important)
+                                              // Column(
+                                              //   crossAxisAlignment:
+                                              //       CrossAxisAlignment.start,
+                                              //   mainAxisSize: MainAxisSize.min,
+                                              //   children: finalImportantNotes
+                                              //       .map((e) => Text(
+                                              //             "- " + e,
+                                              //             style: TextStyle(
+                                              //                 fontSize: 16.sp),
+                                              //           ))
+                                              //       .toList(),
+                                              // ),
                                             ],
                                           ),
                                           20.verticalSpace,
@@ -250,7 +231,10 @@ class _QuestionnaireSummaryPageState extends State<QuestionnaireSummaryPage> {
                                     ),
                                   ),
                                   ContinuerButton(
-                                      listData: listData, qState: qState)
+                                    listDocument: documnets,
+                                    qState: qState,
+                                    visa: visa,
+                                  )
                                 ],
                               ),
                             ),
@@ -268,14 +252,16 @@ class _QuestionnaireSummaryPageState extends State<QuestionnaireSummaryPage> {
 }
 
 class ContinuerButton extends StatelessWidget {
-  const ContinuerButton({
-    Key? key,
-    required this.listData,
-    required this.qState,
-  }) : super(key: key);
+  const ContinuerButton(
+      {Key? key,
+      required this.listDocument,
+      required this.qState,
+      required this.visa})
+      : super(key: key);
 
-  final List<DocumentDataModel> listData;
+  final List<String> listDocument;
   final QuestionnaireState qState;
+  final VisaApplicationModel visa;
   @override
   Widget build(BuildContext context) {
     return Positioned(
@@ -294,11 +280,12 @@ class ContinuerButton extends StatelessWidget {
                       label: "Continue",
                       labelStyle: TextStyle(fontSize: 15.sp),
                       onClick: () {
-                        context.read<ApplicationCubit>().updateData(listData);
+                        context
+                            .read<ApplicationCubit>()
+                            .updateData([], list: listDocument);
                         context
                             .read<UpdateApplicationCubit>()
-                            .createUserApplication(
-                                qState.listQuestionnaire!.last);
+                            .createUserApplicationVOA(visa);
                       });
                 },
                 onLoading: (e) {
@@ -312,6 +299,31 @@ class ContinuerButton extends StatelessWidget {
               );
             },
           )),
+    );
+  }
+}
+
+class _MyMarkdown extends StatelessWidget {
+  const _MyMarkdown({
+    Key? key,
+    required this.data,
+  }) : super(key: key);
+  final String data;
+  @override
+  Widget build(BuildContext context) {
+    return Markdown(
+      onTapLink: ((text, href, title) {
+        launch(href ?? '');
+      }),
+      physics: const NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      padding: EdgeInsets.zero,
+      styleSheet: MarkdownStyleSheet(
+        listBulletPadding: EdgeInsets.zero,
+        blockSpacing: 0,
+        listBullet: TextStyle(fontSize: 20.sp),
+      ),
+      data: data,
     );
   }
 }

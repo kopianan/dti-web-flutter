@@ -26,6 +26,8 @@ mixin _$VisaApplicationModel {
   String? get entry => throw _privateConstructorUsedError;
   @JsonKey(name: 'lastName')
   String? get lastName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'userName')
+  String? get userName => throw _privateConstructorUsedError;
   @JsonKey(name: 'nationality')
   String? get nationality => throw _privateConstructorUsedError;
   @JsonKey(name: 'guarantorDTI')
@@ -44,6 +46,9 @@ mixin _$VisaApplicationModel {
   String? get address => throw _privateConstructorUsedError;
   @JsonKey(name: 'city')
   String? get city => throw _privateConstructorUsedError;
+  String? get modeOfTransportation => throw _privateConstructorUsedError;
+  String? get flightNumber => throw _privateConstructorUsedError;
+  String? get arrivalDate => throw _privateConstructorUsedError;
   @JsonKey(name: 'xenditPaymentStatus')
   String? get xenditPaymentStatus => throw _privateConstructorUsedError;
   @JsonKey(name: 'xenditPaymentGateway')
@@ -145,6 +150,8 @@ abstract class $VisaApplicationModelCopyWith<$Res> {
           String? entry,
       @JsonKey(name: 'lastName')
           String? lastName,
+      @JsonKey(name: 'userName')
+          String? userName,
       @JsonKey(name: 'nationality')
           String? nationality,
       @JsonKey(name: 'guarantorDTI')
@@ -163,6 +170,9 @@ abstract class $VisaApplicationModelCopyWith<$Res> {
           String? address,
       @JsonKey(name: 'city')
           String? city,
+      String? modeOfTransportation,
+      String? flightNumber,
+      String? arrivalDate,
       @JsonKey(name: 'xenditPaymentStatus')
           String? xenditPaymentStatus,
       @JsonKey(name: 'xenditPaymentGateway')
@@ -261,6 +271,7 @@ class _$VisaApplicationModelCopyWithImpl<$Res>
     Object? rejectionNote = freezed,
     Object? entry = freezed,
     Object? lastName = freezed,
+    Object? userName = freezed,
     Object? nationality = freezed,
     Object? guarantorDTI = freezed,
     Object? passportNumber = freezed,
@@ -270,6 +281,9 @@ class _$VisaApplicationModelCopyWithImpl<$Res>
     Object? xenditPaymentMethod = freezed,
     Object? address = freezed,
     Object? city = freezed,
+    Object? modeOfTransportation = freezed,
+    Object? flightNumber = freezed,
+    Object? arrivalDate = freezed,
     Object? xenditPaymentStatus = freezed,
     Object? xenditPaymentGateway = freezed,
     Object? xenditPaymentId = freezed,
@@ -324,6 +338,10 @@ class _$VisaApplicationModelCopyWithImpl<$Res>
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
               as String?,
+      userName: userName == freezed
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String?,
       nationality: nationality == freezed
           ? _value.nationality
           : nationality // ignore: cast_nullable_to_non_nullable
@@ -359,6 +377,18 @@ class _$VisaApplicationModelCopyWithImpl<$Res>
       city: city == freezed
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
+              as String?,
+      modeOfTransportation: modeOfTransportation == freezed
+          ? _value.modeOfTransportation
+          : modeOfTransportation // ignore: cast_nullable_to_non_nullable
+              as String?,
+      flightNumber: flightNumber == freezed
+          ? _value.flightNumber
+          : flightNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      arrivalDate: arrivalDate == freezed
+          ? _value.arrivalDate
+          : arrivalDate // ignore: cast_nullable_to_non_nullable
               as String?,
       xenditPaymentStatus: xenditPaymentStatus == freezed
           ? _value.xenditPaymentStatus
@@ -550,6 +580,8 @@ abstract class _$$_VisaApplicationModelCopyWith<$Res>
           String? entry,
       @JsonKey(name: 'lastName')
           String? lastName,
+      @JsonKey(name: 'userName')
+          String? userName,
       @JsonKey(name: 'nationality')
           String? nationality,
       @JsonKey(name: 'guarantorDTI')
@@ -568,6 +600,9 @@ abstract class _$$_VisaApplicationModelCopyWith<$Res>
           String? address,
       @JsonKey(name: 'city')
           String? city,
+      String? modeOfTransportation,
+      String? flightNumber,
+      String? arrivalDate,
       @JsonKey(name: 'xenditPaymentStatus')
           String? xenditPaymentStatus,
       @JsonKey(name: 'xenditPaymentGateway')
@@ -669,6 +704,7 @@ class __$$_VisaApplicationModelCopyWithImpl<$Res>
     Object? rejectionNote = freezed,
     Object? entry = freezed,
     Object? lastName = freezed,
+    Object? userName = freezed,
     Object? nationality = freezed,
     Object? guarantorDTI = freezed,
     Object? passportNumber = freezed,
@@ -678,6 +714,9 @@ class __$$_VisaApplicationModelCopyWithImpl<$Res>
     Object? xenditPaymentMethod = freezed,
     Object? address = freezed,
     Object? city = freezed,
+    Object? modeOfTransportation = freezed,
+    Object? flightNumber = freezed,
+    Object? arrivalDate = freezed,
     Object? xenditPaymentStatus = freezed,
     Object? xenditPaymentGateway = freezed,
     Object? xenditPaymentId = freezed,
@@ -732,6 +771,10 @@ class __$$_VisaApplicationModelCopyWithImpl<$Res>
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
               as String?,
+      userName: userName == freezed
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String?,
       nationality: nationality == freezed
           ? _value.nationality
           : nationality // ignore: cast_nullable_to_non_nullable
@@ -767,6 +810,18 @@ class __$$_VisaApplicationModelCopyWithImpl<$Res>
       city: city == freezed
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
+              as String?,
+      modeOfTransportation: modeOfTransportation == freezed
+          ? _value.modeOfTransportation
+          : modeOfTransportation // ignore: cast_nullable_to_non_nullable
+              as String?,
+      flightNumber: flightNumber == freezed
+          ? _value.flightNumber
+          : flightNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      arrivalDate: arrivalDate == freezed
+          ? _value.arrivalDate
+          : arrivalDate // ignore: cast_nullable_to_non_nullable
               as String?,
       xenditPaymentStatus: xenditPaymentStatus == freezed
           ? _value.xenditPaymentStatus
@@ -943,6 +998,8 @@ class _$_VisaApplicationModel implements _VisaApplicationModel {
           this.entry,
       @JsonKey(name: 'lastName')
           this.lastName,
+      @JsonKey(name: 'userName')
+          this.userName,
       @JsonKey(name: 'nationality')
           this.nationality,
       @JsonKey(name: 'guarantorDTI')
@@ -961,6 +1018,9 @@ class _$_VisaApplicationModel implements _VisaApplicationModel {
           this.address,
       @JsonKey(name: 'city')
           this.city,
+      this.modeOfTransportation,
+      this.flightNumber,
+      this.arrivalDate,
       @JsonKey(name: 'xenditPaymentStatus')
           this.xenditPaymentStatus,
       @JsonKey(name: 'xenditPaymentGateway')
@@ -1056,6 +1116,9 @@ class _$_VisaApplicationModel implements _VisaApplicationModel {
   @JsonKey(name: 'lastName')
   final String? lastName;
   @override
+  @JsonKey(name: 'userName')
+  final String? userName;
+  @override
   @JsonKey(name: 'nationality')
   final String? nationality;
   @override
@@ -1082,6 +1145,12 @@ class _$_VisaApplicationModel implements _VisaApplicationModel {
   @override
   @JsonKey(name: 'city')
   final String? city;
+  @override
+  final String? modeOfTransportation;
+  @override
+  final String? flightNumber;
+  @override
+  final String? arrivalDate;
   @override
   @JsonKey(name: 'xenditPaymentStatus')
   final String? xenditPaymentStatus;
@@ -1212,7 +1281,7 @@ class _$_VisaApplicationModel implements _VisaApplicationModel {
 
   @override
   String toString() {
-    return 'VisaApplicationModel(rejectionNote: $rejectionNote, entry: $entry, lastName: $lastName, nationality: $nationality, guarantorDTI: $guarantorDTI, passportNumber: $passportNumber, district: $district, overstayedFlag: $overstayedFlag, createdBy: $createdBy, xenditPaymentMethod: $xenditPaymentMethod, address: $address, city: $city, xenditPaymentStatus: $xenditPaymentStatus, xenditPaymentGateway: $xenditPaymentGateway, xenditPaymentId: $xenditPaymentId, mobileNumber: $mobileNumber, status: $status, xenditPaymentDescription: $xenditPaymentDescription, submittedDate: $submittedDate, subTitle: $subTitle, documentsData: $documentsData, title: $title, lastUpdatedDate: $lastUpdatedDate, errorMessage: $errorMessage, firebaseDocId: $firebaseDocId, relationshipStatus: $relationshipStatus, dateOfExpiration: $dateOfExpiration, cityDomicile: $cityDomicile, applicationID: $applicationID, createdDate: $createdDate, xenditPaymentInvoiceUrl: $xenditPaymentInvoiceUrl, xenditPaymentCurrency: $xenditPaymentCurrency, placeOfBirth: $placeOfBirth, mobileDialCode: $mobileDialCode, currency: $currency, inIndonesia: $inIndonesia, xenditPaymentPaidAmount: $xenditPaymentPaidAmount, dateOfIssue: $dateOfIssue, lastUpdatedBy: $lastUpdatedBy, documents: $documents, firstName: $firstName, assistanceForPermit: $assistanceForPermit, issuingCountry: $issuingCountry, province: $province, xenditPaymentAmount: $xenditPaymentAmount, mobileCountryCode: $mobileCountryCode, gender: $gender, deportedFlag: $deportedFlag, xenditPaymentPaidAt: $xenditPaymentPaidAt, dateOfBirth: $dateOfBirth, price: $price, multiVisaDuration: $multiVisaDuration)';
+    return 'VisaApplicationModel(rejectionNote: $rejectionNote, entry: $entry, lastName: $lastName, userName: $userName, nationality: $nationality, guarantorDTI: $guarantorDTI, passportNumber: $passportNumber, district: $district, overstayedFlag: $overstayedFlag, createdBy: $createdBy, xenditPaymentMethod: $xenditPaymentMethod, address: $address, city: $city, modeOfTransportation: $modeOfTransportation, flightNumber: $flightNumber, arrivalDate: $arrivalDate, xenditPaymentStatus: $xenditPaymentStatus, xenditPaymentGateway: $xenditPaymentGateway, xenditPaymentId: $xenditPaymentId, mobileNumber: $mobileNumber, status: $status, xenditPaymentDescription: $xenditPaymentDescription, submittedDate: $submittedDate, subTitle: $subTitle, documentsData: $documentsData, title: $title, lastUpdatedDate: $lastUpdatedDate, errorMessage: $errorMessage, firebaseDocId: $firebaseDocId, relationshipStatus: $relationshipStatus, dateOfExpiration: $dateOfExpiration, cityDomicile: $cityDomicile, applicationID: $applicationID, createdDate: $createdDate, xenditPaymentInvoiceUrl: $xenditPaymentInvoiceUrl, xenditPaymentCurrency: $xenditPaymentCurrency, placeOfBirth: $placeOfBirth, mobileDialCode: $mobileDialCode, currency: $currency, inIndonesia: $inIndonesia, xenditPaymentPaidAmount: $xenditPaymentPaidAmount, dateOfIssue: $dateOfIssue, lastUpdatedBy: $lastUpdatedBy, documents: $documents, firstName: $firstName, assistanceForPermit: $assistanceForPermit, issuingCountry: $issuingCountry, province: $province, xenditPaymentAmount: $xenditPaymentAmount, mobileCountryCode: $mobileCountryCode, gender: $gender, deportedFlag: $deportedFlag, xenditPaymentPaidAt: $xenditPaymentPaidAt, dateOfBirth: $dateOfBirth, price: $price, multiVisaDuration: $multiVisaDuration)';
   }
 
   @override
@@ -1224,6 +1293,7 @@ class _$_VisaApplicationModel implements _VisaApplicationModel {
                 .equals(other.rejectionNote, rejectionNote) &&
             const DeepCollectionEquality().equals(other.entry, entry) &&
             const DeepCollectionEquality().equals(other.lastName, lastName) &&
+            const DeepCollectionEquality().equals(other.userName, userName) &&
             const DeepCollectionEquality()
                 .equals(other.nationality, nationality) &&
             const DeepCollectionEquality()
@@ -1238,6 +1308,12 @@ class _$_VisaApplicationModel implements _VisaApplicationModel {
                 .equals(other.xenditPaymentMethod, xenditPaymentMethod) &&
             const DeepCollectionEquality().equals(other.address, address) &&
             const DeepCollectionEquality().equals(other.city, city) &&
+            const DeepCollectionEquality()
+                .equals(other.modeOfTransportation, modeOfTransportation) &&
+            const DeepCollectionEquality()
+                .equals(other.flightNumber, flightNumber) &&
+            const DeepCollectionEquality()
+                .equals(other.arrivalDate, arrivalDate) &&
             const DeepCollectionEquality()
                 .equals(other.xenditPaymentStatus, xenditPaymentStatus) &&
             const DeepCollectionEquality()
@@ -1318,6 +1394,7 @@ class _$_VisaApplicationModel implements _VisaApplicationModel {
         const DeepCollectionEquality().hash(rejectionNote),
         const DeepCollectionEquality().hash(entry),
         const DeepCollectionEquality().hash(lastName),
+        const DeepCollectionEquality().hash(userName),
         const DeepCollectionEquality().hash(nationality),
         const DeepCollectionEquality().hash(guarantorDTI),
         const DeepCollectionEquality().hash(passportNumber),
@@ -1327,6 +1404,9 @@ class _$_VisaApplicationModel implements _VisaApplicationModel {
         const DeepCollectionEquality().hash(xenditPaymentMethod),
         const DeepCollectionEquality().hash(address),
         const DeepCollectionEquality().hash(city),
+        const DeepCollectionEquality().hash(modeOfTransportation),
+        const DeepCollectionEquality().hash(flightNumber),
+        const DeepCollectionEquality().hash(arrivalDate),
         const DeepCollectionEquality().hash(xenditPaymentStatus),
         const DeepCollectionEquality().hash(xenditPaymentGateway),
         const DeepCollectionEquality().hash(xenditPaymentId),
@@ -1391,6 +1471,8 @@ abstract class _VisaApplicationModel implements VisaApplicationModel {
           final String? entry,
       @JsonKey(name: 'lastName')
           final String? lastName,
+      @JsonKey(name: 'userName')
+          final String? userName,
       @JsonKey(name: 'nationality')
           final String? nationality,
       @JsonKey(name: 'guarantorDTI')
@@ -1409,6 +1491,9 @@ abstract class _VisaApplicationModel implements VisaApplicationModel {
           final String? address,
       @JsonKey(name: 'city')
           final String? city,
+      final String? modeOfTransportation,
+      final String? flightNumber,
+      final String? arrivalDate,
       @JsonKey(name: 'xenditPaymentStatus')
           final String? xenditPaymentStatus,
       @JsonKey(name: 'xenditPaymentGateway')
@@ -1503,6 +1588,9 @@ abstract class _VisaApplicationModel implements VisaApplicationModel {
   @JsonKey(name: 'lastName')
   String? get lastName;
   @override
+  @JsonKey(name: 'userName')
+  String? get userName;
+  @override
   @JsonKey(name: 'nationality')
   String? get nationality;
   @override
@@ -1529,6 +1617,12 @@ abstract class _VisaApplicationModel implements VisaApplicationModel {
   @override
   @JsonKey(name: 'city')
   String? get city;
+  @override
+  String? get modeOfTransportation;
+  @override
+  String? get flightNumber;
+  @override
+  String? get arrivalDate;
   @override
   @JsonKey(name: 'xenditPaymentStatus')
   String? get xenditPaymentStatus;

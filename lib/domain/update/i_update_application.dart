@@ -11,6 +11,8 @@ abstract class IUpdateApplication {
       VisaApplicationModel visaApplicationModel);
   Future<Either<String, String>> updateParticularData(
       VisaApplicationModel visaApplicationModel);
+  Future<Either<String, String>> updateVoaData(
+      VisaApplicationModel visaApplicationModel);
   Future<Either<String, String>> deleteSingleImage(
       String imageName, String docId, String appId);
   Future<Either<String, String>> updateGuarantor(VisaApplicationModel visa);

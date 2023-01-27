@@ -44,8 +44,24 @@ class ApplicationCubit extends Cubit<ApplicationState> {
     emit(state.copyWith(visaApplicationModel: newVisa));
   }
 
-  void updateData(List<DocumentDataModel> documents) async {
-    emit(state.copyWith(documnets: documents));
+  void updateData(List<DocumentDataModel> documents,
+      {List<String>? list}) async {
+    List<DocumentDataModel> newList = [];
+    if (list != null) {
+      final listData = Storage().loadDocument();
+      for (var idDocument in list) {
+        try {
+          newList.add(listData.firstWhere(
+              (element) => element.id!.trim() == idDocument.trim()));
+        } catch (e) {
+          //test
+        }
+      }
+    } else {
+      newList = documents;
+    }
+
+    emit(state.copyWith(documnets: newList));
   }
 
   void updateDocument(DocumentDataModel document, Uint8List fileBytes) {
@@ -113,6 +129,20 @@ class ApplicationCubit extends Cubit<ApplicationState> {
         dateOfIssue: dateOfIssue,
         dateOfExpiration: dateOfExpire,
         issuingCountry: issuingCountry);
+
+    emit(state.copyWith(visaApplicationModel: visa));
+  }
+
+  Future<void> updatePersonalInformation4B({
+    required String modeOfTransportation,
+    required String flightNumber,
+    required String arrivalDate,
+  }) async {
+    final visa = state.visaApplicationModel!.copyWith(
+      flightNumber: flightNumber,
+      modeOfTransportation: modeOfTransportation,
+      arrivalDate: arrivalDate,
+    );
 
     emit(state.copyWith(visaApplicationModel: visa));
   }

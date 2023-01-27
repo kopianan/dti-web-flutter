@@ -17,11 +17,13 @@ import 'package:dti_web/presentation/questionnaire/guarantor_page.dart';
 import 'package:dti_web/presentation/questionnaire/personal_information_1_page.dart';
 import 'package:dti_web/presentation/questionnaire/personal_information_3_page.dart';
 import 'package:dti_web/presentation/questionnaire/personal_information_4_page.dart';
+import 'package:dti_web/presentation/questionnaire/personal_information_4b_page.dart';
 import 'package:dti_web/presentation/questionnaire/photo_view_page.dart';
 import 'package:dti_web/presentation/questionnaire/questionnaire_page.dart';
 import 'package:dti_web/presentation/questionnaire/questionnaire_summary_page.dart';
 import 'package:dti_web/presentation/questionnaire/submit_screen_page.dart';
 import 'package:dti_web/presentation/questionnaire/user_domicile_page.dart';
+import 'package:dti_web/presentation/questionnaire/voa_summary_page.dart';
 import 'package:dti_web/presentation/viewer/dti_pdf_viewer_page.dart';
 import 'package:flutter/material.dart';
 import 'package:dti_web/domain/questionnaire/questionnaire_model.dart';
@@ -46,12 +48,15 @@ part "app_router.gr.dart";
     AutoRoute(
       initial: true,
       path: '/',
-
       page: SplashScreenPage,
     ),
     AutoRoute(
       path: DashboardPage.routeName,
       page: DashboardPage,
+    ),
+    AutoRoute(
+      path: VOASummaryPage.routeName,
+      page: VOASummaryPage,
     ),
     AutoRoute(
       page: ApplicationDetailPage,
@@ -79,6 +84,9 @@ part "app_router.gr.dart";
     AutoRoute(
         page: PersonalInformation4Page,
         path: PersonalInformation4Page.routeName),
+    AutoRoute(
+        page: PersonalInformation4bPage,
+        path: PersonalInformation4bPage.routeName),
     AutoRoute(page: ApplicationCardPage, path: ApplicationCardPage.routeName),
     AutoRoute(page: PaymentPage, path: PaymentPage.routeName),
     AutoRoute(
@@ -97,8 +105,8 @@ part "app_router.gr.dart";
       path: UploadDocumentPage.routeName,
       page: UploadDocumentPage,
     ),
-    AutoRoute( 
-      path: NumberRegistrationPage.routeName, 
+    AutoRoute(
+      path: NumberRegistrationPage.routeName,
       page: NumberRegistrationPage,
     ),
     AutoRoute(

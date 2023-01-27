@@ -95,6 +95,32 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
     //update result
   }
 
+  void createUserApplicationVOA(VisaApplicationModel visa) async {
+    emit(const UpdateApplicationState.onLoading());
+
+    try {
+      final data = await iUpdateApplication.createNewApplicationDocument(visa);
+      log(data.toString());
+      data.fold(
+        (l) {
+          emit(UpdateApplicationState.onError(l));
+        },
+        (r) async {
+          try {
+            final data = await _getUserApplicationById(r);
+            emit(UpdateApplicationState.onCreateApplication(data));
+          } on Exception catch (e) {
+            emit(UpdateApplicationState.onError(e.toString()));
+          }
+        },
+      );
+    } on Exception catch (e) {
+      emit(UpdateApplicationState.onError(e.toString()));
+    }
+
+    //update result
+  }
+
   void updateMultiVisaDuration(String duration, String firebaseDocId) async {
     emit(const UpdateApplicationState.onLoading());
     final result =
@@ -121,6 +147,19 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
     jsonData.removeWhere((key, value) => value == null);
     emit(const UpdateApplicationState.onLoading());
     final result = await iUpdateApplication.updateParticularData(visaApps);
+    result.fold(
+      (l) => emit(UpdateApplicationState.onError(l)),
+      (r) => emit(const UpdateApplicationState.onUpdateApplication()),
+    );
+  }
+
+  void updateVOAData(VisaApplicationModel visaApps) async {
+    //remove null
+
+    final jsonData = visaApps.toJson();
+    jsonData.removeWhere((key, value) => value == null);
+    emit(const UpdateApplicationState.onLoading());
+    final result = await iUpdateApplication.updateVoaData(visaApps);
     result.fold(
       (l) => emit(UpdateApplicationState.onError(l)),
       (r) => emit(const UpdateApplicationState.onUpdateApplication()),

@@ -19,10 +19,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
 class PersonalInformation4Page extends StatefulWidget {
-  const PersonalInformation4Page({super.key, this.question});
+  const PersonalInformation4Page({
+    super.key,
+  });
   static const String routeName = '/personal-information4';
-
-  final List<QuestionnaireModel>? question;
 
   @override
   State<PersonalInformation4Page> createState() =>

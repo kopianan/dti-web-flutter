@@ -134,24 +134,77 @@ class IUpdateApplicationRepository extends IUpdateApplication {
       VisaApplicationModel visaApplicationModel) async {
     dio = Dio();
     final storage = Storage();
-    final result = await dio!.post(
-      '${Env.baseUrl}/application',
-      options: Options(
-        headers: {'Authorization': 'Bearer ${storage.getToken()}'},
-      ),
-      data: {
-        "title": visaApplicationModel.title,
-        "subTitle": visaApplicationModel.subTitle,
-        "entry": visaApplicationModel.entry,
-        "price": 0,
-        "currency": "Rp",
-        "documents": visaApplicationModel.documents,
-        "status": "Draft",
-        "inIndonesia": visaApplicationModel.inIndonesia
-      },
-    );
+    final result = await dio!.post('${Env.baseUrl}/application',
+        options: Options(
+          headers: {'Authorization': 'Bearer ${storage.getToken()}'},
+        ),
+        data: visaApplicationModel.toJson()
+        // data: {
+        //   "title": visaApplicationModel.title,
+        //   "subTitle": visaApplicationModel.subTitle,
+        //   "entry": visaApplicationModel.entry,
+        //   "price": 0,
+        //   "currency": "Rp",
+        //   "documents": visaApplicationModel.documents,
+        //   "status": "Draft",
+        //   "inIndonesia": visaApplicationModel.inIndonesia
+        // },
+        );
     print(visaApplicationModel.toJson());
     return Right(result.data['data']['firebaseDocId']);
+  }
+
+  @override
+  Future<Either<String, String>> updateVoaData(
+      VisaApplicationModel visaApplicationModel) async {
+    dio = Dio();
+    final storage = Storage();
+    final jsonParams = {
+      "firstName": visaApplicationModel.firstName,
+      "lastName": visaApplicationModel.lastName,
+      "placeOfBirth": visaApplicationModel.placeOfBirth,
+      "dateOfBirth": visaApplicationModel.dateOfBirth,
+      "gender": visaApplicationModel.gender,
+      "nationality": visaApplicationModel.nationality!.toUpperCase(),
+      "relationshipStatus": visaApplicationModel.relationshipStatus,
+      "mobileCountryCode": visaApplicationModel.mobileCountryCode,
+      "mobileDialCode": visaApplicationModel.mobileDialCode,
+      "mobileNumber": visaApplicationModel.mobileNumber,
+      "deportedFlag": visaApplicationModel.deportedFlag,
+      "overstayedFlag": visaApplicationModel.overstayedFlag,
+      "passportNumber": visaApplicationModel.passportNumber,
+      "dateOfIssue": visaApplicationModel.dateOfIssue,
+      "dateOfExpiration": visaApplicationModel.dateOfExpiration,
+      "address": visaApplicationModel.address,
+      "province": visaApplicationModel.province,
+      "city": visaApplicationModel.city,
+      "cityDomicile": null,
+      "district": visaApplicationModel.district,
+      "inIndonesia": visaApplicationModel.inIndonesia,
+      "issuingCountry": visaApplicationModel.issuingCountry,
+      "modeOfTransportation": visaApplicationModel.modeOfTransportation,
+      "flightNumber": visaApplicationModel.flightNumber,
+      "arrivalDate": visaApplicationModel.arrivalDate,
+      "guarantorDTI": true
+    };
+    try {
+      final result = await dio!.post(
+          "${Env.baseUrl}/application/${visaApplicationModel.firebaseDocId}/",
+          options: Options(
+            headers: {
+              "Authorization": "Bearer ${storage.getToken()}",
+            },
+          ),
+          data: jsonParams);
+      if (result.data['data'] == null) {
+        //ERROR
+        return Left(result.data['data']['message']);
+      } else {
+        return Right(result.data['data']['message']);
+      }
+    } on Exception catch (e) {
+      return Left("");
+    }
   }
 
   @override

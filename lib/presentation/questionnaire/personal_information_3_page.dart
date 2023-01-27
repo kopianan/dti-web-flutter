@@ -156,230 +156,228 @@ class _PersonalInformation3PageState extends State<PersonalInformation3Page> {
                                       horizontal: 30.w,
                                       vertical: 20.h,
                                     ),
-                                    child: FormBuilder(
-                                      child: Column(
-                                        children: [
-                                          FormBuilder(
-                                            key: _formKey,
-                                            onChanged: () => {},
-                                            initialValue: const {
-                                              'textfield': ''
-                                            },
-                                            skipDisabled: true,
-                                            child: Column(
-                                              children: [
-                                                //Address
-                                                FormBuilderTextField(
-                                                  name: 'AddressField',
-                                                  enableSuggestions: false,
-                                                  autocorrect: false,
-                                                  maxLines: 5,
-                                                  initialValue: appState
-                                                              .visaApplicationModel ==
-                                                          null
-                                                      ? ''
-                                                      : appState
-                                                              .visaApplicationModel!
-                                                              .address ??
-                                                          '',
-                                                  validator:
-                                                      FormBuilderValidators
-                                                          .required(),
-                                                  autovalidateMode:
-                                                      AutovalidateMode
-                                                          .onUserInteraction,
-                                                  enabled: true,
-                                                  decoration:
-                                                      const InputDecoration(
-                                                    labelText: "Address",
-                                                    hintStyle: TextStyle(
-                                                        color: Colors.grey),
-                                                    hintText: "Address",
-                                                  ),
+                                    child: Column(
+                                      children: [
+                                        FormBuilder(
+                                          key: _formKey,
+                                          onChanged: () => {},
+                                          initialValue: const {
+                                            'textfield': ''
+                                          },
+                                          skipDisabled: true,
+                                          child: Column(
+                                            children: [
+                                              //Address
+                                              FormBuilderTextField(
+                                                name: 'AddressField',
+                                                enableSuggestions: false,
+                                                autocorrect: false,
+                                                maxLines: 5,
+                                                initialValue: appState
+                                                            .visaApplicationModel ==
+                                                        null
+                                                    ? ''
+                                                    : appState
+                                                            .visaApplicationModel!
+                                                            .address ??
+                                                        '',
+                                                validator:
+                                                    FormBuilderValidators
+                                                        .required(),
+                                                autovalidateMode:
+                                                    AutovalidateMode
+                                                        .onUserInteraction,
+                                                enabled: true,
+                                                decoration:
+                                                    const InputDecoration(
+                                                  labelText: "Address",
+                                                  hintStyle: TextStyle(
+                                                      color: Colors.grey),
+                                                  hintText: "Address",
                                                 ),
-                                                20.verticalSpace,
+                                              ),
+                                              20.verticalSpace,
 
-                                                //Province
-                                                FormBuilderTextField(
-                                                  onTap: () =>
-                                                      showMaterialScrollPicker<
-                                                              Province>(
-                                                          context: context,
-                                                          title:
-                                                              "Pick Your Province",
-                                                          showDivider: false,
-                                                          items:
-                                                              state.provinces!,
-                                                          headerColor: AppColor
-                                                              .primaryColor,
-                                                          selectedItem: state
-                                                              .selectedProvince,
-                                                          onChanged: (value) {
-                                                            //change selected province
-                                                            context
-                                                                .read<
-                                                                    StartupCubit>()
-                                                                .chooseProvince(
-                                                                    value);
-                                                            //update field data
-                                                            _formKey
-                                                                .currentState!
-                                                                .fields[
-                                                                    'ProvinceField']!
-                                                                .didChange(
-                                                                    value.name);
-                                                            _formKey
-                                                                .currentState!
-                                                                .fields[
-                                                                    'cityField']!
-                                                                .didChange(
-                                                                    null);
-                                                          }),
-                                                  readOnly: true,
-                                                  name: 'ProvinceField',
-                                                  initialValue: state
-                                                      .selectedProvince.name,
-                                                  validator:
-                                                      FormBuilderValidators
-                                                          .required(),
-                                                  autovalidateMode:
-                                                      AutovalidateMode
-                                                          .onUserInteraction,
-                                                  decoration:
-                                                      const InputDecoration(
-                                                    labelText: "Province",
-                                                    hintStyle: TextStyle(
-                                                        color: Colors.grey),
-                                                    hintText: "Province",
-                                                  ),
+                                              //Province
+                                              FormBuilderTextField(
+                                                onTap: () =>
+                                                    showMaterialScrollPicker<
+                                                            Province>(
+                                                        context: context,
+                                                        title:
+                                                            "Pick Your Province",
+                                                        showDivider: false,
+                                                        items:
+                                                            state.provinces!,
+                                                        headerColor: AppColor
+                                                            .primaryColor,
+                                                        selectedItem: state
+                                                            .selectedProvince,
+                                                        onChanged: (value) {
+                                                          //change selected province
+                                                          context
+                                                              .read<
+                                                                  StartupCubit>()
+                                                              .chooseProvince(
+                                                                  value);
+                                                          //update field data
+                                                          _formKey
+                                                              .currentState!
+                                                              .fields[
+                                                                  'ProvinceField']!
+                                                              .didChange(
+                                                                  value.name);
+                                                          _formKey
+                                                              .currentState!
+                                                              .fields[
+                                                                  'cityField']!
+                                                              .didChange(
+                                                                  null);
+                                                        }),
+                                                readOnly: true,
+                                                name: 'ProvinceField',
+                                                initialValue: state
+                                                    .selectedProvince.name,
+                                                validator:
+                                                    FormBuilderValidators
+                                                        .required(),
+                                                autovalidateMode:
+                                                    AutovalidateMode
+                                                        .onUserInteraction,
+                                                decoration:
+                                                    const InputDecoration(
+                                                  labelText: "Province",
+                                                  hintStyle: TextStyle(
+                                                      color: Colors.grey),
+                                                  hintText: "Province",
                                                 ),
-                                                20.verticalSpace,
+                                              ),
+                                              20.verticalSpace,
 
-                                                //City
-                                                FormBuilderTextField(
-                                                  onTap: () =>
-                                                      showMaterialScrollPicker<
-                                                              City>(
-                                                          context: context,
-                                                          title:
-                                                              "Pick Your City",
-                                                          showDivider: false,
-                                                          items: state
-                                                                  .citiesByProvince ??
-                                                              [],
-                                                          headerColor: AppColor
-                                                              .primaryColor,
-                                                          selectedItem: state
-                                                              .selectedCity!,
-                                                          onChanged: (value) {
-                                                            _formKey
-                                                                .currentState!
-                                                                .fields[
-                                                                    'cityField']!
-                                                                .didChange(
-                                                                    value.name);
-
-                                                            context
-                                                                .read<
-                                                                    StartupCubit>()
-                                                                .chooseCity(
-                                                                    value);
-                                                            //update field data
-                                                            _formKey
-                                                                .currentState!
-                                                                .fields[
-                                                                    'cityField']!
-                                                                .didChange(
-                                                                    value.name);
-                                                            _formKey
-                                                                .currentState!
-                                                                .fields[
-                                                                    'districtField']!
-                                                                .didChange(
-                                                                    null);
-                                                          }),
-                                                  readOnly: true,
-                                                  name: 'cityField',
-                                                  initialValue: appState
-                                                              .visaApplicationModel ==
-                                                          null
-                                                      ? ''
-                                                      : appState
-                                                              .visaApplicationModel!
-                                                              .city ??
-                                                          '',
-                                                  validator:
-                                                      FormBuilderValidators
-                                                          .required(),
-                                                  autovalidateMode:
-                                                      AutovalidateMode
-                                                          .onUserInteraction,
-                                                  decoration: InputDecoration(
-                                                    labelText: "City",
-                                                    hintStyle: const TextStyle(
-                                                        color: Colors.grey),
-                                                    hintText: "City",
-                                                  ),
-                                                ),
-                                                20.verticalSpace,
-
-                                                //District
-                                                FormBuilderTextField(
-                                                  onTap: () =>
-                                                      showMaterialScrollPicker<
-                                                          District?>(
-                                                    context: context,
-                                                    title: "Pick Your District",
-                                                    showDivider: false,
-                                                    items:
-                                                        state.districtsByCity ??
+                                              //City
+                                              FormBuilderTextField(
+                                                onTap: () =>
+                                                    showMaterialScrollPicker<
+                                                            City>(
+                                                        context: context,
+                                                        title:
+                                                            "Pick Your City",
+                                                        showDivider: false,
+                                                        items: state
+                                                                .citiesByProvince ??
                                                             [],
-                                                    headerColor:
-                                                        AppColor.primaryColor,
-                                                    selectedItem:
-                                                        state.selectedDistrict,
-                                                    onChanged: (value) {
-                                                      context
-                                                          .read<StartupCubit>()
-                                                          .chooseDistrict(
-                                                              value!);
-                                                      _formKey
-                                                          .currentState!
-                                                          .fields[
-                                                              'districtField']!
-                                                          .didChange(
-                                                              value.name);
-                                                    },
-                                                  ),
-                                                  readOnly: true,
-                                                  name: 'districtField',
-                                                  initialValue: appState
-                                                              .visaApplicationModel ==
-                                                          null
-                                                      ? ''
-                                                      : appState
-                                                              .visaApplicationModel!
-                                                              .district ??
-                                                          '',
-                                                  validator:
-                                                      FormBuilderValidators
-                                                          .required(),
-                                                  autovalidateMode:
-                                                      AutovalidateMode
-                                                          .onUserInteraction,
-                                                  decoration: InputDecoration(
-                                                    labelText: "District",
-                                                    hintStyle: const TextStyle(
-                                                        color: Colors.grey),
-                                                    hintText: "District",
-                                                  ),
+                                                        headerColor: AppColor
+                                                            .primaryColor,
+                                                        selectedItem: state
+                                                            .selectedCity!,
+                                                        onChanged: (value) {
+                                                          _formKey
+                                                              .currentState!
+                                                              .fields[
+                                                                  'cityField']!
+                                                              .didChange(
+                                                                  value.name);
+
+                                                          context
+                                                              .read<
+                                                                  StartupCubit>()
+                                                              .chooseCity(
+                                                                  value);
+                                                          //update field data
+                                                          _formKey
+                                                              .currentState!
+                                                              .fields[
+                                                                  'cityField']!
+                                                              .didChange(
+                                                                  value.name);
+                                                          _formKey
+                                                              .currentState!
+                                                              .fields[
+                                                                  'districtField']!
+                                                              .didChange(
+                                                                  null);
+                                                        }),
+                                                readOnly: true,
+                                                name: 'cityField',
+                                                initialValue: appState
+                                                            .visaApplicationModel ==
+                                                        null
+                                                    ? ''
+                                                    : appState
+                                                            .visaApplicationModel!
+                                                            .city ??
+                                                        '',
+                                                validator:
+                                                    FormBuilderValidators
+                                                        .required(),
+                                                autovalidateMode:
+                                                    AutovalidateMode
+                                                        .onUserInteraction,
+                                                decoration: InputDecoration(
+                                                  labelText: "City",
+                                                  hintStyle: const TextStyle(
+                                                      color: Colors.grey),
+                                                  hintText: "City",
                                                 ),
-                                                20.verticalSpace,
-                                              ],
-                                            ),
+                                              ),
+                                              20.verticalSpace,
+
+                                              //District
+                                              FormBuilderTextField(
+                                                onTap: () =>
+                                                    showMaterialScrollPicker<
+                                                        District?>(
+                                                  context: context,
+                                                  title: "Pick Your District",
+                                                  showDivider: false,
+                                                  items:
+                                                      state.districtsByCity ??
+                                                          [],
+                                                  headerColor:
+                                                      AppColor.primaryColor,
+                                                  selectedItem:
+                                                      state.selectedDistrict,
+                                                  onChanged: (value) {
+                                                    context
+                                                        .read<StartupCubit>()
+                                                        .chooseDistrict(
+                                                            value!);
+                                                    _formKey
+                                                        .currentState!
+                                                        .fields[
+                                                            'districtField']!
+                                                        .didChange(
+                                                            value.name);
+                                                  },
+                                                ),
+                                                readOnly: true,
+                                                name: 'districtField',
+                                                initialValue: appState
+                                                            .visaApplicationModel ==
+                                                        null
+                                                    ? ''
+                                                    : appState
+                                                            .visaApplicationModel!
+                                                            .district ??
+                                                        '',
+                                                validator:
+                                                    FormBuilderValidators
+                                                        .required(),
+                                                autovalidateMode:
+                                                    AutovalidateMode
+                                                        .onUserInteraction,
+                                                decoration: InputDecoration(
+                                                  labelText: "District",
+                                                  hintStyle: const TextStyle(
+                                                      color: Colors.grey),
+                                                  hintText: "District",
+                                                ),
+                                              ),
+                                              20.verticalSpace,
+                                            ],
                                           ),
-                                        ],
-                                      ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),
@@ -429,7 +427,11 @@ class _PersonalInformation3PageState extends State<PersonalInformation3Page> {
       if (appState.visaApplicationModel!.entry == "Multiple Entry Visa") {
         AutoRouter.of(context).push(PersonalInformation4Route());
       } else {
-        AutoRouter.of(context).push(UserDomicileRoute());
+        if (appState.visaApplicationModel!.subTitle == "Visa On Arrival") {
+          AutoRouter.of(context).push(PersonalInformation4bRoute());
+        } else {
+          AutoRouter.of(context).push(UserDomicileRoute());
+        }
       }
     }
   }

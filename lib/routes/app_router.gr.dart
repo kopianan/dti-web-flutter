@@ -29,6 +29,12 @@ class _$AppRouter extends RootStackRouter {
         child: const DashboardPage(),
       );
     },
+    VOASummaryRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const VOASummaryPage(),
+      );
+    },
     ApplicationDetailRoute.name: (routeData) {
       final pathParams = routeData.inheritedPathParams;
       final args = routeData.argsAs<ApplicationDetailRouteArgs>(
@@ -88,14 +94,15 @@ class _$AppRouter extends RootStackRouter {
       );
     },
     PersonalInformation4Route.name: (routeData) {
-      final args = routeData.argsAs<PersonalInformation4RouteArgs>(
-          orElse: () => const PersonalInformation4RouteArgs());
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: PersonalInformation4Page(
-          key: args.key,
-          question: args.question,
-        ),
+        child: const PersonalInformation4Page(),
+      );
+    },
+    PersonalInformation4bRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const PersonalInformation4bPage(),
       );
     },
     ApplicationCardRoute.name: (routeData) {
@@ -267,6 +274,10 @@ class _$AppRouter extends RootStackRouter {
           path: '/dashboard-page',
         ),
         RouteConfig(
+          VOASummaryRoute.name,
+          path: '/voa-summary',
+        ),
+        RouteConfig(
           ApplicationDetailRoute.name,
           path: '/application-detail/:id',
         ),
@@ -289,6 +300,10 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           PersonalInformation4Route.name,
           path: '/personal-information4',
+        ),
+        RouteConfig(
+          PersonalInformation4bRoute.name,
+          path: '/personal-information4b',
         ),
         RouteConfig(
           ApplicationCardRoute.name,
@@ -383,6 +398,18 @@ class DashboardRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'DashboardRoute';
+}
+
+/// generated route for
+/// [VOASummaryPage]
+class VOASummaryRoute extends PageRouteInfo<void> {
+  const VOASummaryRoute()
+      : super(
+          VOASummaryRoute.name,
+          path: '/voa-summary',
+        );
+
+  static const String name = 'VOASummaryRoute';
 }
 
 /// generated route for
@@ -569,37 +596,26 @@ class PersonalInformation2RouteArgs {
 
 /// generated route for
 /// [PersonalInformation4Page]
-class PersonalInformation4Route
-    extends PageRouteInfo<PersonalInformation4RouteArgs> {
-  PersonalInformation4Route({
-    Key? key,
-    List<QuestionnaireModel>? question,
-  }) : super(
+class PersonalInformation4Route extends PageRouteInfo<void> {
+  const PersonalInformation4Route()
+      : super(
           PersonalInformation4Route.name,
           path: '/personal-information4',
-          args: PersonalInformation4RouteArgs(
-            key: key,
-            question: question,
-          ),
         );
 
   static const String name = 'PersonalInformation4Route';
 }
 
-class PersonalInformation4RouteArgs {
-  const PersonalInformation4RouteArgs({
-    this.key,
-    this.question,
-  });
+/// generated route for
+/// [PersonalInformation4bPage]
+class PersonalInformation4bRoute extends PageRouteInfo<void> {
+  const PersonalInformation4bRoute()
+      : super(
+          PersonalInformation4bRoute.name,
+          path: '/personal-information4b',
+        );
 
-  final Key? key;
-
-  final List<QuestionnaireModel>? question;
-
-  @override
-  String toString() {
-    return 'PersonalInformation4RouteArgs{key: $key, question: $question}';
-  }
+  static const String name = 'PersonalInformation4bRoute';
 }
 
 /// generated route for
