@@ -15,6 +15,7 @@ class UserData with _$UserData {
     String? lastUpdatedDate,
     String? lastUpdatedBy,
     String? email,
+    String? name, 
     int? selfReferralCodeTotal,
     String? createdAt,
     String? usedReferralCode,

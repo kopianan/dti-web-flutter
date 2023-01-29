@@ -125,7 +125,7 @@ class _ApplicationCardPageState extends State<ApplicationCardPage> {
                                             await AutoRouter.of(context).pop();
                                             widget.dashboardCubit
                                                 .deleteSingleData(
-                                                    element.firebaseDocId!);
+                                                    element, null);
                                           },
                                         ).show();
                                       } else {

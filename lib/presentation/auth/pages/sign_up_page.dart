@@ -30,7 +30,7 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   final email = TextEditingController();
-
+  final name = TextEditingController();
   final password = TextEditingController();
 
   final confirmPassword = TextEditingController();
@@ -144,6 +144,20 @@ class _SignUpPageState extends State<SignUpPage> {
                                           color: AppColor.primaryColor),
                                     ),
                                     30.verticalSpace,
+                                    TextFormField(
+                                        controller: name,
+                                        validator: (value) {
+                                          if (value == null || value.isEmpty) {
+                                            return "Fullname can not be empty";
+                                          }
+                                          return null;
+                                        },
+                                        decoration: const InputDecoration(
+                                            hintText: "Fullname",
+                                            prefixIcon: Icon(
+                                              Icons.person,
+                                            ))),
+                                    30.verticalSpace,
                                     EmailTextField(email: email),
                                     30.verticalSpace,
                                     PasswordTextField(
@@ -208,10 +222,10 @@ class _SignUpPageState extends State<SignUpPage> {
                                               context
                                                   .read<AuthCubit>()
                                                   .registerWithEmailAndPassword(
-                                                    email.text,
-                                                    password.text,
-                                                    confirmPassword.text,
-                                                  );
+                                                      email.text,
+                                                      password.text,
+                                                      confirmPassword.text,
+                                                      name.text);
                                             }
                                           },
                                           labelStyle:

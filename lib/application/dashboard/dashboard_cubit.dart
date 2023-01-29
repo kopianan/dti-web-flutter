@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:dti_web/domain/core/simple_visa_model.dart';
+import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/domain/dashboard/i_dashboard.dart';
 import 'package:dti_web/domain/global/failures.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -26,13 +27,13 @@ class DashboardCubit extends Cubit<DashboardState> {
     }
   }
 
-  void deleteSingleData(String firebaseDocId) async {
+  void deleteSingleData(SimpleVisaModel visa, bool? isOnArrival) async {
     emit(const DashboardState.loading());
     try {
-      final data = await iDashboard.deleteApplication(firebaseDocId);
+      final data = await iDashboard.deleteApplication(visa.firebaseDocId!);
       data.fold(
         (l) => emit(DashboardState.error(l)),
-        (r) => emit(DashboardState.onDeleteSingleData(r)),
+        (r) => emit(DashboardState.onDeleteSingleData(visa, isOnArrival)),
       );
     } on Exception catch (e) {
       emit(DashboardState.error(Failures.serverError()));

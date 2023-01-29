@@ -1,14 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:dti_web/core/storage.dart';
 import 'package:dti_web/domain/core/simple_visa_model.dart';
-import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dti_web/domain/dashboard/i_dashboard.dart';
 import 'package:dti_web/domain/global/failures.dart';
 import 'package:dti_web/env/env.dart';
 import 'package:dti_web/infrastructure/core/error_response.dart';
-import 'package:dti_web/utils/constant.dart';
-import 'package:get/state_manager.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: IDashboard)
@@ -51,12 +48,10 @@ class DashboardRepository extends IDashboard {
               headers: {'Authorization': 'Bearer ${storage.getToken()}'}));
       if (result.data['data'] != null) {
         //SUCCESS
+        print(result); 
         return Right(result.data['data']['message']);
       }
-      
-      
-      
-      
+
       return Left(Failures.generalError(result.toString()));
     } on DioError catch (e) {
       ErrorResponse err = ErrorResponse();

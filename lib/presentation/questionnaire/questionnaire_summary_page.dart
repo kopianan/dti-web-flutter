@@ -2,12 +2,12 @@ import 'package:auto_route/auto_route.dart';
 import 'package:dti_web/application/application_cubit.dart';
 import 'package:dti_web/application/questionnaire_cubit.dart';
 import 'package:dti_web/application/update_application/update_application_cubit.dart';
+import 'package:dti_web/core/storage.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
 import 'package:dti_web/domain/core/document_data_model.dart';
 import 'package:dti_web/domain/questionnaire/raw_data.dart';
 import 'package:dti_web/domain/questionnaire/result_model.dart';
 import 'package:dti_web/injection.dart';
-import 'package:dti_web/presentation/dashboard/pages/dashboard_page.dart';
 import 'package:dti_web/presentation/questionnaire/widget/custom_second_header.dart';
 import 'package:dti_web/routes/app_router.dart';
 
@@ -71,194 +71,213 @@ class _QuestionnaireSummaryPageState extends State<QuestionnaireSummaryPage> {
               return BlocBuilder<QuestionnaireCubit, QuestionnaireState>(
                 builder: (context, qState) {
                   return Scaffold(
+                      floatingActionButton:
+                          FloatingActionButton(onPressed: () {
+                            print(Storage().getLocalUserData()); 
+                          }),
                       body: Stack(
-                    children: [
-                      Container(
-                          width: ScreenUtil().screenWidth,
-                          height: ScreenUtil().screenHeight,
-                          child: Image.asset(
-                            'assets/images/bg/bg_visa1.png',
-                            fit: BoxFit.cover,
-                          )),
-                      Container(
-                        width: ScreenUtil().screenWidth / 2.2,
-                        height: ScreenUtil().screenHeight,
-                        margin: EdgeInsets.only(
-                          top: 40.h,
-                          bottom: 40.h,
-                          right: 10.w,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Colors.white.withAlpha(230),
-                          borderRadius: BorderRadius.horizontal(
-                              right: Radius.circular(10)),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            CustomSecondHeader(
-                              onBack: () {
-                                context
-                                    .read<QuestionnaireCubit>()
-                                    .removeLastQuestionnaire();
-                                AutoRouter.of(context).pop();
-                              },
+                        children: [
+                          Container(
+                              width: ScreenUtil().screenWidth,
+                              height: ScreenUtil().screenHeight,
+                              child: Image.asset(
+                                'assets/images/bg/bg_visa1.png',
+                                fit: BoxFit.cover,
+                              )),
+                          Container(
+                            width: ScreenUtil().screenWidth / 2.2,
+                            height: ScreenUtil().screenHeight,
+                            margin: EdgeInsets.only(
+                              top: 40.h,
+                              bottom: 40.h,
+                              right: 10.w,
                             ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 20),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    widget.resultModel?.visaTitle ?? "",
-                                    style: TextStyle(
-                                        fontSize: 30.sp,
-                                        color: AppColor.primaryColor,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  Text(
-                                    widget.resultModel?.visaSubTitle ?? "",
-                                    style: TextStyle(
-                                        fontSize: 20.sp,
-                                        color: AppColor.primaryColor,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ],
-                              ),
+                            decoration: BoxDecoration(
+                              color: Colors.white.withAlpha(230),
+                              borderRadius: BorderRadius.horizontal(
+                                  right: Radius.circular(10)),
                             ),
-                            Expanded(
-                              child: Stack(
-                                children: [
-                                  SingleChildScrollView(
-                                    child: Container(
-                                      margin: EdgeInsets.only(
-                                          right: 30.w, left: 30.w),
-                                      padding: EdgeInsets.only(bottom: 50),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          20.verticalSpace,
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                "Description",
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 18.sp,
-                                                    color:
-                                                        AppColor.primaryColor),
-                                              ),
-                                              10.verticalSpace,
-                                              Text(
-                                                "Indonesia immigration law details business visitor activities as the following (non-exhaustive): ",
-                                                style: TextStyle(
-                                                  fontSize: 16.sp,
-                                                ),
-                                              ),
-                                              10.verticalSpace,
-                                              Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: context
-                                                    .read<QuestionnaireCubit>()
-                                                    .getDescriptions()
-                                                    .map((e) => Text(
-                                                          "- " + e,
-                                                          style: TextStyle(
-                                                              fontSize: 16.sp,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold),
-                                                        ))
-                                                    .toList(),
-                                              ),
-                                              10.verticalSpace,
-                                              Text(
-                                                "The activities being performed on a Short Term Visit Pass should not involve a contract of service or a contract for service",
-                                                style: TextStyle(
-                                                  fontSize: 16.sp,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                          20.verticalSpace,
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                "Document Required",
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 18.sp,
-                                                    color:
-                                                        AppColor.primaryColor),
-                                              ),
-                                              10.verticalSpace,
-                                              Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: listData
-                                                    .map((e) => Text(
-                                                          "- " + e.header!,
-                                                          style: TextStyle(
-                                                              fontSize: 16.sp),
-                                                        ))
-                                                    .toList(),
-                                              ),
-                                            ],
-                                          ),
-                                          20.verticalSpace,
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                "Important Notes",
-                                                style: TextStyle(
-                                                    fontSize: 18.sp,
-                                                    fontWeight: FontWeight.bold,
-                                                    color:
-                                                        AppColor.primaryColor),
-                                              ),
-                                              10.verticalSpace,
-                                              Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: context
-                                                    .read<QuestionnaireCubit>()
-                                                    .getImportant()
-                                                    .map((e) => Text(
-                                                          "- " + e,
-                                                          style: TextStyle(
-                                                              fontSize: 16.sp),
-                                                        ))
-                                                    .toList(),
-                                              ),
-                                            ],
-                                          ),
-                                          20.verticalSpace,
-                                        ],
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                CustomSecondHeader(
+                                  onBack: () {
+                                    context
+                                        .read<QuestionnaireCubit>()
+                                        .removeLastQuestionnaire();
+                                    AutoRouter.of(context).pop();
+                                  },
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 20),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        widget.resultModel?.visaTitle ?? "",
+                                        style: TextStyle(
+                                            fontSize: 30.sp,
+                                            color: AppColor.primaryColor,
+                                            fontWeight: FontWeight.bold),
                                       ),
-                                    ),
+                                      Text(
+                                        widget.resultModel?.visaSubTitle ?? "",
+                                        style: TextStyle(
+                                            fontSize: 20.sp,
+                                            color: AppColor.primaryColor,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
                                   ),
-                                  ContinuerButton(
-                                      listData: listData, qState: qState)
-                                ],
-                              ),
+                                ),
+                                Expanded(
+                                  child: Stack(
+                                    children: [
+                                      SingleChildScrollView(
+                                        child: Container(
+                                          margin: EdgeInsets.only(
+                                              right: 30.w, left: 30.w),
+                                          padding: EdgeInsets.only(bottom: 50),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              20.verticalSpace,
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    "Description",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 18.sp,
+                                                        color: AppColor
+                                                            .primaryColor),
+                                                  ),
+                                                  10.verticalSpace,
+                                                  Text(
+                                                    "Indonesia immigration law details business visitor activities as the following (non-exhaustive): ",
+                                                    style: TextStyle(
+                                                      fontSize: 16.sp,
+                                                    ),
+                                                  ),
+                                                  10.verticalSpace,
+                                                  Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    children: context
+                                                        .read<
+                                                            QuestionnaireCubit>()
+                                                        .getDescriptions()
+                                                        .map((e) => Text(
+                                                              "- " + e,
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      16.sp,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold),
+                                                            ))
+                                                        .toList(),
+                                                  ),
+                                                  10.verticalSpace,
+                                                  Text(
+                                                    "The activities being performed on a Short Term Visit Pass should not involve a contract of service or a contract for service",
+                                                    style: TextStyle(
+                                                      fontSize: 16.sp,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              20.verticalSpace,
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    "Document Required",
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 18.sp,
+                                                        color: AppColor
+                                                            .primaryColor),
+                                                  ),
+                                                  10.verticalSpace,
+                                                  Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    children: listData
+                                                        .map((e) => Text(
+                                                              "- " + e.header!,
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      16.sp),
+                                                            ))
+                                                        .toList(),
+                                                  ),
+                                                ],
+                                              ),
+                                              20.verticalSpace,
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    "Important Notes",
+                                                    style: TextStyle(
+                                                        fontSize: 18.sp,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color: AppColor
+                                                            .primaryColor),
+                                                  ),
+                                                  10.verticalSpace,
+                                                  Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    children: context
+                                                        .read<
+                                                            QuestionnaireCubit>()
+                                                        .getImportant()
+                                                        .map((e) => Text(
+                                                              "- " + e,
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      16.sp),
+                                                            ))
+                                                        .toList(),
+                                                  ),
+                                                ],
+                                              ),
+                                              20.verticalSpace,
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      ContinuerButton(
+                                          listData: listData, qState: qState)
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ));
+                          )
+                        ],
+                      ));
                 },
               );
             },

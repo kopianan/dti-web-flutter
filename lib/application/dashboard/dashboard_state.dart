@@ -7,6 +7,6 @@ class DashboardState with _$DashboardState {
   const factory DashboardState.error(Failures err) = _Error;
   const factory DashboardState.onGetSingleData(SimpleVisaModel visa) =
       _OnGetSingleData;
-  const factory DashboardState.onDeleteSingleData(String message) =
-      _OnDeleteSingleData;
+  const factory DashboardState.onDeleteSingleData(
+      SimpleVisaModel deletedVisa, bool? isOnArrival) = _OnDeleteSingleData;
 }

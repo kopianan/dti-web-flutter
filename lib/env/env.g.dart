@@ -8,5 +8,5 @@ part of 'env.dart';
 
 class _Env {
   static const baseUrl =
-      'http://localhost:5002/doortoid-mobile/us-central1/api';
+      'https://us-central1-doortoid-mobile.cloudfunctions.net/api';
 }

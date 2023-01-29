@@ -1,7 +1,3 @@
-// ignore_for_file: unnecessary_null_comparison, void_checks
-
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:dti_web/core/storage.dart';
@@ -10,8 +6,6 @@ import 'package:dti_web/domain/auth/i_auth.dart';
 import 'package:dti_web/domain/auth/user_data.dart';
 import 'package:dti_web/domain/global/failures.dart';
 import 'package:dti_web/env/env.dart';
-import 'package:dti_web/infrastructure/core/error_response.dart';
-import 'package:dti_web/utils/constant.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
@@ -49,6 +43,7 @@ class AuthRepository extends IAuth {
     GoogleSignIn googleSignIn = GoogleSignIn();
     FirebaseAuth firebaseAuth = FirebaseAuth.instance;
     bool isNewUser = false;
+    await googleSignIn.disconnect();
 
     GoogleSignInAccount? googleUser;
     try {
@@ -137,16 +132,19 @@ class AuthRepository extends IAuth {
   }
 
   @override
-  Future<Either<Failures, String>> registerNewUser(
-      {required String email,
-      required String password,
-      required String confirmPassword}) async {
+  Future<Either<Failures, String>> registerNewUser({
+    required String email,
+    required String password,
+    required String name,
+    required String confirmPassword,
+  }) async {
     dio = Dio();
     try {
       final result = await dio!.post("${Env.baseUrl}/signUp", data: {
         'email': email,
         'password': password,
-        'confirmPassword': confirmPassword
+        'confirmPassword': confirmPassword,
+        'name': name
       });
       if (result.data['data']['token'] != null) {
         return Right(result.data['data']['token'].toString());

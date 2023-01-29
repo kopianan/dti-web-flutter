@@ -6,9 +6,6 @@ import 'package:dti_web/application/other/other_cubit.dart';
 import 'package:dti_web/core/widgets/application_card.dart';
 import 'package:dti_web/core/widgets/social_button_widget.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
-import 'package:dti_web/domain/questionnaire/questionnaire_data_model.dart';
-
-import 'package:dti_web/domain/questionnaire/raw_data.dart';
 import 'package:dti_web/injection.dart';
 import 'package:dti_web/presentation/dashboard/pages/application_card_page.dart';
 import 'package:dti_web/routes/app_router.dart';
@@ -48,7 +45,6 @@ class _DashboardPageState extends State<DashboardPage> {
         builder: (context, state) {
           return BlocListener<DashboardCubit, DashboardState>(
             listener: (context, state) {
-              print(state);
               state.maybeMap(
                 orElse: () {},
                 error: (value) {
@@ -62,22 +58,28 @@ class _DashboardPageState extends State<DashboardPage> {
                 onDeleteSingleData: (e) {
                   //get another data
 
-                  e.maybeMap(
-                    orElse: () {},
-                    error: (e) {
-                      e.err.maybeMap(
-                        orElse: () {},
-                        apiExpired: (e) {
-                          AutoRouter.of(context).replaceAll([SignInRoute()]);
-                        },
-                      );
-                    },
-                    onDeleteSingleData: (e) {
-                      dashboardCubit.getLastData();
+                  dashboardCubit.getLastData();
+
+                  if (e.deletedVisa.subTitle == "Visa On Arrival") {
+                    if (e.isOnArrival == null) {
+                      AutoRouter.of(context).push(VOASummaryRoute());
+                    } else if (e.isOnArrival == true) {
+                      AutoRouter.of(context).push(VOASummaryRoute());
+                    } else {
                       AutoRouter.of(context)
                           .push(QuestionnaireRoute(boolIsInit: true));
-                    },
-                  );
+                    }
+                  } else {
+                    if (e.isOnArrival == null) {
+                      AutoRouter.of(context)
+                          .push(QuestionnaireRoute(boolIsInit: true));
+                    } else if (e.isOnArrival == true) {
+                      AutoRouter.of(context).push(VOASummaryRoute());
+                    } else {
+                      AutoRouter.of(context)
+                          .push(QuestionnaireRoute(boolIsInit: true));
+                    }
+                  }
                 },
               );
             },
@@ -97,6 +99,7 @@ class _DashboardPageState extends State<DashboardPage> {
                         state.maybeMap(
                             orElse: () {},
                             onGetUserData: (e) {
+                              print(e);
                               if (e.userData.mobileNumber == null) {
                                 //user must verify the number.
                                 AutoRouter.of(context)
@@ -265,7 +268,7 @@ class _DashboardPageState extends State<DashboardPage> {
                                                 Expanded(
                                                   child: InkWell(
                                                     onTap: () {
-                                                      onCreateVOA();
+                                                      onCreateVOA(state);
                                                     },
                                                     child: Card(
                                                       clipBehavior:
@@ -313,18 +316,22 @@ class _DashboardPageState extends State<DashboardPage> {
                                             ),
                                         loading: (e) {
                                           return Shimmer.fromColors(
-                                              child: Card(
-                                                clipBehavior: Clip.hardEdge,
-                                                elevation: 6,
-                                                child: Container(
-                                                  width: 200.w,
-                                                  height: 100.h,
-                                                  color: Colors.grey,
-                                                ),
-                                              ),
-                                              baseColor: Colors.grey,
+                                              baseColor:
+                                                  Colors.grey.withAlpha(100),
                                               highlightColor:
-                                                  Colors.grey.withAlpha(300));
+                                                  Colors.grey.withAlpha(300),
+                                              child: SizedBox(
+                                                width: double.infinity,
+                                                child: Card(
+                                                  clipBehavior: Clip.hardEdge,
+                                                  elevation: 6,
+                                                  child: Container(
+                                                    width: 200.w,
+                                                    height: 100.h,
+                                                    color: Colors.grey,
+                                                  ),
+                                                ),
+                                              ));
                                         });
                                   },
                                 ),
@@ -353,8 +360,8 @@ class _DashboardPageState extends State<DashboardPage> {
                                     );
                                   },
                                   child: Container(
-                                    margin:
-                                        EdgeInsets.symmetric(horizontal: 20),
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 20),
                                     alignment: Alignment.centerLeft,
                                     child: Text(
                                       "See All",
@@ -387,7 +394,17 @@ class _DashboardPageState extends State<DashboardPage> {
                                         );
                                       },
                                       error: (e) {
-                                        return Container();
+                                        return Container(
+                                          height: 200,
+                                          alignment: Alignment.center,
+                                          child: Text(
+                                            "No Application. Make Your First Application",
+                                            style: TextStyle(
+                                                fontSize: 20.sp,
+                                                fontWeight: FontWeight.bold,
+                                                color: AppColor.primaryColor),
+                                          ),
+                                        );
                                       },
                                       onGetSingleData: (e) {
                                         return VisaApplicationCard(
@@ -425,8 +442,8 @@ class _DashboardPageState extends State<DashboardPage> {
                                                   },
                                                   btnCancelOnPress: () {
                                                     dashboardCubit
-                                                        .deleteSingleData(e.visa
-                                                            .firebaseDocId!);
+                                                        .deleteSingleData(
+                                                            e.visa, null);
                                                   }).show();
                                             } else {
                                               // final data =
@@ -471,41 +488,85 @@ class _DashboardPageState extends State<DashboardPage> {
     );
   }
 
-  void onCreateVOA() {
-    AutoRouter.of(context).push(VOASummaryRoute());
+  void onCreateVOA(DashboardState state) {
+    //
+    state.maybeMap(
+      orElse: () {
+        AutoRouter.of(context).push(VOASummaryRoute());
+      },
+      onGetSingleData: (e) {
+        if (e.visa.status!.toLowerCase() == 'draft') {
+          AwesomeDialog(
+              context: context,
+              width: ScreenUtil().screenWidth / 4,
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              title: "Draft Application",
+              desc: e.visa.subTitle == "Visa On Arrival"
+                  ? "You have Incomplete Visa On Arrival Application. Do you want to continue from your latest draft?"
+                  : "You have Incomplete Visa Application. Do you want to start Visa On Arrival Application?",
+              btnOkText:
+                  e.visa.subTitle == "Visa On Arrival" ? "Continue" : "Yes",
+              btnCancelText:
+                  e.visa.subTitle == "Visa On Arrival" ? "Create New" : "No",
+              btnOkOnPress: () {
+                if (e.visa.subTitle != "Visa On Arrival") {
+                  dashboardCubit.deleteSingleData(e.visa, true);
+                } else {
+                  AutoRouter.of(context).popAndPush(PersonalInformation1Route(
+                      firebaseDocId: e.visa.firebaseDocId!));
+                }
+              },
+              btnCancelOnPress: () {
+                if (e.visa.subTitle != "Visa On Arrival") {
+                } else {
+                  dashboardCubit.deleteSingleData(e.visa, true);
+                }
+              }).show();
+        } else {
+          AutoRouter.of(context).push(QuestionnaireRoute(boolIsInit: true));
+        }
+      },
+    );
   }
 
   void onCreateVisaApps(DashboardState state) {
-    state.maybeMap(orElse: () {
-      AutoRouter.of(context).push(QuestionnaireRoute(boolIsInit: true));
-    }, onGetSingleData: (e) {
-      if (e.visa.status!.toLowerCase() == 'draft') {
-        AwesomeDialog(
-            context: context,
-            width: ScreenUtil().screenWidth / 4,
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            title: "Draft Application",
-            body: const Center(
-              child: Text(
-                "You have Incomplete Visa Application.\nDo you want to continue from your latest draft? ",
-                textAlign: TextAlign.center,
-              ),
-            ),
-            btnOkText: "Continue",
-            btnCancelText: "Delete",
-            btnOkOnPress: () {
-              AutoRouter.of(context).popAndPush(PersonalInformation1Route(
-                  firebaseDocId: e.visa.firebaseDocId!));
-            },
-            btnCancelOnPress: () {
-              dashboardCubit.deleteSingleData(e.visa.firebaseDocId!);
-            }).show();
-      } else {
-        final data = QuestionnaireDataModel.fromJson(rawData);
-
+    state.maybeMap(
+      orElse: () {
         AutoRouter.of(context).push(QuestionnaireRoute(boolIsInit: true));
-      }
-    });
+      },
+      onGetSingleData: (e) {
+        if (e.visa.status!.toLowerCase() == 'draft') {
+          AwesomeDialog(
+              context: context,
+              width: ScreenUtil().screenWidth / 4,
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              title: "Draft Application",
+              desc: e.visa.subTitle == "Visa On Arrival"
+                  ? "You have Incomplete Visa On Arrival Application. Do you want to start Visa Application?"
+                  : "You have Incomplete Visa Application. Do you want to continue from your latest draft?",
+              btnOkText:
+                  e.visa.subTitle == "Visa On Arrival" ? "Yes" : "Continue",
+              btnCancelText:
+                  e.visa.subTitle == "Visa On Arrival" ? "No" : "Create New",
+              btnOkOnPress: () {
+                if (e.visa.subTitle == "Visa On Arrival") {
+                  dashboardCubit.deleteSingleData(e.visa, false);
+                } else {
+                  AutoRouter.of(context).popAndPush(PersonalInformation1Route(
+                      firebaseDocId: e.visa.firebaseDocId!));
+                }
+              },
+              btnCancelOnPress: () {
+                if (e.visa.subTitle == "Visa On Arrival") {
+                } else {
+                  dashboardCubit.deleteSingleData(e.visa, false);
+                }
+              }).show();
+        } else {
+          AutoRouter.of(context).push(QuestionnaireRoute(boolIsInit: true));
+        }
+      },
+    );
   }
 }
 

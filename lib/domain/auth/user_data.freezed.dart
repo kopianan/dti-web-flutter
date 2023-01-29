@@ -29,6 +29,7 @@ mixin _$UserData {
   String? get lastUpdatedDate => throw _privateConstructorUsedError;
   String? get lastUpdatedBy => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
   int? get selfReferralCodeTotal => throw _privateConstructorUsedError;
   String? get createdAt => throw _privateConstructorUsedError;
   String? get usedReferralCode => throw _privateConstructorUsedError;
@@ -56,6 +57,7 @@ abstract class $UserDataCopyWith<$Res> {
       String? lastUpdatedDate,
       String? lastUpdatedBy,
       String? email,
+      String? name,
       int? selfReferralCodeTotal,
       String? createdAt,
       String? usedReferralCode,
@@ -83,6 +85,7 @@ class _$UserDataCopyWithImpl<$Res> implements $UserDataCopyWith<$Res> {
     Object? lastUpdatedDate = freezed,
     Object? lastUpdatedBy = freezed,
     Object? email = freezed,
+    Object? name = freezed,
     Object? selfReferralCodeTotal = freezed,
     Object? createdAt = freezed,
     Object? usedReferralCode = freezed,
@@ -126,6 +129,10 @@ class _$UserDataCopyWithImpl<$Res> implements $UserDataCopyWith<$Res> {
       email: email == freezed
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String?,
       selfReferralCodeTotal: selfReferralCodeTotal == freezed
           ? _value.selfReferralCodeTotal
@@ -171,6 +178,7 @@ abstract class _$$_UserDataCopyWith<$Res> implements $UserDataCopyWith<$Res> {
       String? lastUpdatedDate,
       String? lastUpdatedBy,
       String? email,
+      String? name,
       int? selfReferralCodeTotal,
       String? createdAt,
       String? usedReferralCode,
@@ -200,6 +208,7 @@ class __$$_UserDataCopyWithImpl<$Res> extends _$UserDataCopyWithImpl<$Res>
     Object? lastUpdatedDate = freezed,
     Object? lastUpdatedBy = freezed,
     Object? email = freezed,
+    Object? name = freezed,
     Object? selfReferralCodeTotal = freezed,
     Object? createdAt = freezed,
     Object? usedReferralCode = freezed,
@@ -244,6 +253,10 @@ class __$$_UserDataCopyWithImpl<$Res> extends _$UserDataCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
       selfReferralCodeTotal: selfReferralCodeTotal == freezed
           ? _value.selfReferralCodeTotal
           : selfReferralCodeTotal // ignore: cast_nullable_to_non_nullable
@@ -285,6 +298,7 @@ class _$_UserData implements _UserData {
       this.lastUpdatedDate,
       this.lastUpdatedBy,
       this.email,
+      this.name,
       this.selfReferralCodeTotal,
       this.createdAt,
       this.usedReferralCode,
@@ -314,6 +328,8 @@ class _$_UserData implements _UserData {
   @override
   final String? email;
   @override
+  final String? name;
+  @override
   final int? selfReferralCodeTotal;
   @override
   final String? createdAt;
@@ -328,7 +344,7 @@ class _$_UserData implements _UserData {
 
   @override
   String toString() {
-    return 'UserData(usedReferralCodeFlag: $usedReferralCodeFlag, selfReferralCode: $selfReferralCode, userId: $userId, mobileNumber: $mobileNumber, outstandingAction: $outstandingAction, token: $token, lastUpdatedDate: $lastUpdatedDate, lastUpdatedBy: $lastUpdatedBy, email: $email, selfReferralCodeTotal: $selfReferralCodeTotal, createdAt: $createdAt, usedReferralCode: $usedReferralCode, totalVisa: $totalVisa, countryCode: $countryCode, userReferral: $userReferral)';
+    return 'UserData(usedReferralCodeFlag: $usedReferralCodeFlag, selfReferralCode: $selfReferralCode, userId: $userId, mobileNumber: $mobileNumber, outstandingAction: $outstandingAction, token: $token, lastUpdatedDate: $lastUpdatedDate, lastUpdatedBy: $lastUpdatedBy, email: $email, name: $name, selfReferralCodeTotal: $selfReferralCodeTotal, createdAt: $createdAt, usedReferralCode: $usedReferralCode, totalVisa: $totalVisa, countryCode: $countryCode, userReferral: $userReferral)';
   }
 
   @override
@@ -351,6 +367,7 @@ class _$_UserData implements _UserData {
             const DeepCollectionEquality()
                 .equals(other.lastUpdatedBy, lastUpdatedBy) &&
             const DeepCollectionEquality().equals(other.email, email) &&
+            const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality()
                 .equals(other.selfReferralCodeTotal, selfReferralCodeTotal) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
@@ -376,6 +393,7 @@ class _$_UserData implements _UserData {
       const DeepCollectionEquality().hash(lastUpdatedDate),
       const DeepCollectionEquality().hash(lastUpdatedBy),
       const DeepCollectionEquality().hash(email),
+      const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(selfReferralCodeTotal),
       const DeepCollectionEquality().hash(createdAt),
       const DeepCollectionEquality().hash(usedReferralCode),
@@ -407,6 +425,7 @@ abstract class _UserData implements UserData {
       final String? lastUpdatedDate,
       final String? lastUpdatedBy,
       final String? email,
+      final String? name,
       final int? selfReferralCodeTotal,
       final String? createdAt,
       final String? usedReferralCode,
@@ -434,6 +453,8 @@ abstract class _UserData implements UserData {
   String? get lastUpdatedBy;
   @override
   String? get email;
+  @override
+  String? get name;
   @override
   int? get selfReferralCodeTotal;
   @override

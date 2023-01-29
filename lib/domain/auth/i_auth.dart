@@ -12,10 +12,12 @@ abstract class IAuth {
     required String email,
   });
   Future<Either<Failures, String>> signinUsingFacebook();
-  Future<Either<Failures, AuthResponse>> loginWithGoogle(); 
+  Future<Either<Failures, AuthResponse>> loginWithGoogle();
   Future<Either<Failures, UserData>> getUserData();
-  Future<Either<Failures, String>> registerNewUser(
-      {required String email,
-      required String password,
-      required String confirmPassword});
+  Future<Either<Failures, String>> registerNewUser({
+    required String email,
+    required String password,
+    required String confirmPassword,
+    required String name,
+  });
 }

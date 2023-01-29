@@ -52,7 +52,10 @@ class AuthCubit extends Cubit<AuthState> {
     final result = await iAuth.getUserData();
     result.fold(
       (l) => emit(AuthState.onError(l)),
-      (r) => emit(AuthState.onGetUserData(r)),
+      (r) async {
+        await Storage().saveUser(r);
+        emit(AuthState.onGetUserData(r));
+      },
     );
   }
 
@@ -93,7 +96,7 @@ class AuthCubit extends Cubit<AuthState> {
             (userData) {
               if (userData.mobileNumber != null) {
                 emit(AuthState.onLoginSuccess(r.token));
-              }else{
+              } else {
                 emit(AuthState.onLoginSuccessWithoutPhoneNumber(r.token));
               }
             },
@@ -128,15 +131,15 @@ class AuthCubit extends Cubit<AuthState> {
     );
   }
 
-  void registerWithEmailAndPassword(
-    String email,
-    String password,
-    String confirmPassword,
-  ) async {
+  void registerWithEmailAndPassword(String email, String password,
+      String confirmPassword, String name) async {
     emit(const AuthState.loading());
 
     final result = await iAuth.registerNewUser(
-        email: email, password: password, confirmPassword: confirmPassword);
+        email: email,
+        password: password,
+        confirmPassword: confirmPassword,
+        name: name);
     //SAVE DATA TO LOCALE
     result.fold(
       (l) => emit(AuthState.onError(l)),

@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
+import 'package:dti_web/core/storage.dart';
 import 'package:dti_web/domain/core/document_data_model.dart';
 import 'package:dti_web/domain/core/single_visa_response.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
@@ -60,8 +61,10 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
 
   void createUserApplication(QuestionnaireModel lastQuestionnaire) async {
     emit(const UpdateApplicationState.onLoading());
-    final result = lastQuestionnaire.results;
-    final newVisa = VisaApplicationModel(
+    final user = Storage().getLocalUserData();
+    if (user != null) {
+      final result = lastQuestionnaire.results;
+      final newVisa = VisaApplicationModel(
         title: result!.visaTitle,
         subTitle: result.visaSubTitle,
         entry: result.visaEntry,
@@ -69,28 +72,31 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
         currency: 'Rp',
         documents: result.documents,
         status: 'Draft',
-        inIndonesia: true);
-
-    try {
-      final data =
-          await iUpdateApplication.createNewApplicationDocument(newVisa);
-      log(data.toString());
-      data.fold(
-        (l) {
-          emit(UpdateApplicationState.onError(l));
-        },
-        (r) async {
-          try {
-            final data = await _getUserApplicationById(r);
-            emit(UpdateApplicationState.onCreateApplication(data));
-          } on Exception catch (e) {
-            emit(UpdateApplicationState.onError(e.toString()));
-          }
-        },
+        userName: user.name ?? user.email,
+        inIndonesia: true,
       );
-    } on Exception catch (e) {
-      emit(UpdateApplicationState.onError(e.toString()));
-    }
+
+      try {
+        final data =
+            await iUpdateApplication.createNewApplicationDocument(newVisa);
+        log(data.toString());
+        data.fold(
+          (l) {
+            emit(UpdateApplicationState.onError(l));
+          },
+          (r) async {
+            try {
+              final data = await _getUserApplicationById(r);
+              emit(UpdateApplicationState.onCreateApplication(data));
+            } on Exception catch (e) {
+              emit(UpdateApplicationState.onError(e.toString()));
+            }
+          },
+        );
+      } on Exception catch (e) {
+        emit(UpdateApplicationState.onError(e.toString()));
+      }
+    } else {}
 
     //update result
   }
@@ -98,24 +104,28 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
   void createUserApplicationVOA(VisaApplicationModel visa) async {
     emit(const UpdateApplicationState.onLoading());
 
-    try {
-      final data = await iUpdateApplication.createNewApplicationDocument(visa);
-      log(data.toString());
-      data.fold(
-        (l) {
-          emit(UpdateApplicationState.onError(l));
-        },
-        (r) async {
-          try {
-            final data = await _getUserApplicationById(r);
-            emit(UpdateApplicationState.onCreateApplication(data));
-          } on Exception catch (e) {
-            emit(UpdateApplicationState.onError(e.toString()));
-          }
-        },
-      );
-    } on Exception catch (e) {
-      emit(UpdateApplicationState.onError(e.toString()));
+    final user = Storage().getLocalUserData();
+    if (user != null) {
+      try {
+        final data = await iUpdateApplication.createNewApplicationDocument(
+            visa.copyWith(userName: user.name ?? user.email));
+        log(data.toString());
+        data.fold(
+          (l) {
+            emit(UpdateApplicationState.onError(l));
+          },
+          (r) async {
+            try {
+              final data = await _getUserApplicationById(r);
+              emit(UpdateApplicationState.onCreateApplication(data));
+            } on Exception catch (e) {
+              emit(UpdateApplicationState.onError(e.toString()));
+            }
+          },
+        );
+      } on Exception catch (e) {
+        emit(UpdateApplicationState.onError(e.toString()));
+      }
     }
 
     //update result
