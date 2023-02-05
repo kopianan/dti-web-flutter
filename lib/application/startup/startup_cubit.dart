@@ -29,6 +29,22 @@ class StartupCubit extends Cubit<StartupState> {
     ));
   }
 
+  void setUpInitialExistProvince(String name) async {
+    //update list of
+    await setupStartupData();
+    final province =
+        state.provinces!.firstWhere((element) => element.name == name);
+
+    emit(
+      state.copyWith(selectedProvince: province),
+    );
+
+    final city = state.cities!
+        .firstWhere((element) => element.proviceCode == province.proviceCode);
+    chooseProvince(province);
+    chooseCity(city);
+  }
+
   void setUpInitialProvince(String name) async {
     //update list of
     await setupStartupData();

@@ -11,6 +11,7 @@ abstract class IOther {
       required String documentId,
       required String fileName});
   Future<Either<Failures, QuestionnaireDataModel>> getQuestionnaireList();
+  Future<Either<Failures, dynamic>> getLocation();
   Future<Either<Failures, List<DocumentDataModel>>> getApplicationMasterData();
   Future<Either<Failures, String>> verifyOtp(
       {required String phoneNumber,

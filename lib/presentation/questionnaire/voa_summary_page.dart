@@ -54,7 +54,7 @@ class _VOASummaryPageState extends State<VOASummaryPage> {
       "The Visa on Arrival provides the traveller with an initial 30 day visa to enter Indonesia and is extendable (optional) for a further 30 days, limiting the maximum stay to 60 days within the country.",
       "The validity period is 90 days after the visa is issued.",
       "Your passport must be valid for at least 6 months from the day you enter Indonesia for a e-VOA with a 60-day stay duration",
-      "Click [here](https://doortoid.com/visa-on-arrival-is-now-acceptable-to-enter-indonesia/) for list of countries that are eligible to apply",
+      "Click [here](https://doortoid.com/news/visa-on-arrival-is-now-acceptable/) for list of countries that are eligible to apply",
     ]);
 
     for (var element in [
@@ -81,7 +81,7 @@ class _VOASummaryPageState extends State<VOASummaryPage> {
           listener: (context, state) {
             state.maybeMap(
               orElse: () {},
-              onCreateApplication: (value) {
+              onCreateApplication: (value) { 
                 context
                     .read<ApplicationCubit>()
                     .setupApplication(value.visaApps);
@@ -96,149 +96,153 @@ class _VOASummaryPageState extends State<VOASummaryPage> {
               return BlocBuilder<QuestionnaireCubit, QuestionnaireState>(
                 builder: (context, qState) {
                   return Scaffold(
-                      body: Stack(
+                      body: Row(
                     children: [
-                      Container(
-                          width: ScreenUtil().screenWidth,
+                      Expanded(
+                        child: Container(
                           height: ScreenUtil().screenHeight,
-                          child: Image.asset(
-                            'assets/images/bg/bg_visa1.png',
-                            fit: BoxFit.cover,
-                          )),
-                      Container(
-                        width: ScreenUtil().screenWidth / 2.2,
-                        height: ScreenUtil().screenHeight,
-                        margin: EdgeInsets.only(
-                          top: 40.h,
-                          bottom: 40.h,
-                          right: 10.w,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Colors.white.withAlpha(230),
-                          borderRadius: BorderRadius.horizontal(
-                              right: Radius.circular(10)),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            CustomSecondHeader(
-                              onBack: () {
-                                AutoRouter.of(context).pop();
-                              },
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 20),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    visa.title ?? "",
-                                    style: TextStyle(
-                                        fontSize: 30.sp,
-                                        color: AppColor.primaryColor,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  Text(
-                                    visa.subTitle ?? "",
-                                    style: TextStyle(
-                                        fontSize: 20.sp,
-                                        color: AppColor.primaryColor,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ],
+                          margin: EdgeInsets.only(
+                            top: 40.h,
+                            bottom: 40.h,
+                            right: 10.w,
+                          ),
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.horizontal(
+                                right: Radius.circular(10)),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              CustomSecondHeader(
+                                onBack: () {
+                                  AutoRouter.of(context).pop();
+                                },
                               ),
-                            ),
-                            Expanded(
-                              child: Stack(
-                                children: [
-                                  SingleChildScrollView(
-                                    child: Container(
-                                      margin: EdgeInsets.only(
-                                          right: 30.w, left: 30.w),
-                                      padding: EdgeInsets.only(bottom: 50),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          20.verticalSpace,
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                "Description",
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 18.sp,
-                                                    color:
-                                                        AppColor.primaryColor),
-                                              ),
-                                              10.verticalSpace,
-                                              _MyMarkdown(data: description)
-                                            ],
-                                          ),
-                                          20.verticalSpace,
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                "Document Required",
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 18.sp,
-                                                    color:
-                                                        AppColor.primaryColor),
-                                              ),
-                                              10.verticalSpace,
-                                              _MyMarkdown(
-                                                  data: documentRequired)
-                                            ],
-                                          ),
-                                          20.verticalSpace,
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                "Important Notes",
-                                                style: TextStyle(
-                                                    fontSize: 18.sp,
-                                                    fontWeight: FontWeight.bold,
-                                                    color:
-                                                        AppColor.primaryColor),
-                                              ),
-                                              10.verticalSpace,
-                                              _MyMarkdown(data: important)
-                                              // Column(
-                                              //   crossAxisAlignment:
-                                              //       CrossAxisAlignment.start,
-                                              //   mainAxisSize: MainAxisSize.min,
-                                              //   children: finalImportantNotes
-                                              //       .map((e) => Text(
-                                              //             "- " + e,
-                                              //             style: TextStyle(
-                                              //                 fontSize: 16.sp),
-                                              //           ))
-                                              //       .toList(),
-                                              // ),
-                                            ],
-                                          ),
-                                          20.verticalSpace,
-                                        ],
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 20),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      visa.title ?? "",
+                                      style: TextStyle(
+                                          fontSize: 30.sp,
+                                          color: AppColor.primaryColor,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Text(
+                                      visa.subTitle ?? "",
+                                      style: TextStyle(
+                                          fontSize: 20.sp,
+                                          color: AppColor.primaryColor,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Expanded(
+                                child: Stack(
+                                  children: [
+                                    SingleChildScrollView(
+                                      child: Container(
+                                        margin: EdgeInsets.only(
+                                            right: 30.w, left: 30.w),
+                                        padding: EdgeInsets.only(bottom: 50),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            20.verticalSpace,
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  "Description",
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 18.sp,
+                                                      color: AppColor
+                                                          .primaryColor),
+                                                ),
+                                                10.verticalSpace,
+                                                _MyMarkdown(data: description)
+                                              ],
+                                            ),
+                                            20.verticalSpace,
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  "Document Required",
+                                                  style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 18.sp,
+                                                      color: AppColor
+                                                          .primaryColor),
+                                                ),
+                                                10.verticalSpace,
+                                                _MyMarkdown(
+                                                    data: documentRequired)
+                                              ],
+                                            ),
+                                            20.verticalSpace,
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  "Important Notes",
+                                                  style: TextStyle(
+                                                      fontSize: 18.sp,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: AppColor
+                                                          .primaryColor),
+                                                ),
+                                                10.verticalSpace,
+                                                _MyMarkdown(data: important)
+                                                // Column(
+                                                //   crossAxisAlignment:
+                                                //       CrossAxisAlignment.start,
+                                                //   mainAxisSize: MainAxisSize.min,
+                                                //   children: finalImportantNotes
+                                                //       .map((e) => Text(
+                                                //             "- " + e,
+                                                //             style: TextStyle(
+                                                //                 fontSize: 16.sp),
+                                                //           ))
+                                                //       .toList(),
+                                                // ),
+                                              ],
+                                            ),
+                                            20.verticalSpace,
+                                          ],
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  ContinuerButton(
-                                    listDocument: documnets,
-                                    qState: qState,
-                                    visa: visa,
-                                  )
-                                ],
+                                    ContinuerButton(
+                                      listDocument: documnets,
+                                      qState: qState,
+                                      visa: visa,
+                                    )
+                                  ],
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: Container(
+                          margin: EdgeInsets.all(100.sp),
+                          child: Image.asset(
+                            'assets/images/bg/bg_visa1.webp',
+                          ),
                         ),
                       )
                     ],

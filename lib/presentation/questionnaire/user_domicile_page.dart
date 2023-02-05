@@ -38,27 +38,20 @@ class _UserDomicilePageState extends State<UserDomicilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Stack(children: [
-      Container(
-          width: ScreenUtil().screenWidth,
-          height: ScreenUtil().screenHeight,
-          child: Image.asset(
-            'assets/images/bg/bg_visa4.png',
-            fit: BoxFit.cover,
-          )),
+        body: Row(children: [
       Container(
         width: ScreenUtil().screenWidth / 2.2,
         // height: ScreenUtil().screenHeight,
 
         margin: EdgeInsets.symmetric(vertical: 40.h),
-        decoration: BoxDecoration(
-          color: Colors.white.withAlpha(250),
+        decoration: const BoxDecoration(
           borderRadius: BorderRadius.horizontal(right: Radius.circular(10)),
         ),
         child: BlocProvider(
           create: (context) => getIt<UpdateApplicationCubit>(),
           child: BlocListener<UpdateApplicationCubit, UpdateApplicationState>(
             listener: (context, state) {
+              print(state);
               state.maybeMap(orElse: () {
                 EasyLoading.dismiss();
               }, onUpdateApplication: (e) {
@@ -204,6 +197,14 @@ class _UserDomicilePageState extends State<UserDomicilePage> {
             ),
           ),
         ),
+      ),
+      Expanded(
+        child: Container(
+          margin: EdgeInsets.all(100.sp),
+          child: Image.asset(
+            'assets/images/bg/residential.webp',
+          ),
+        ),
       )
     ]));
   }
@@ -216,9 +217,8 @@ class _UserDomicilePageState extends State<UserDomicilePage> {
           .read<ApplicationCubit>()
           .updateUserDomicile(formData["inIndonesia"], formData["city"]);
 
-      context
-          .read<UpdateApplicationCubit>()
-          .uploadParticularData(appState.visaApplicationModel!);
+      context.read<UpdateApplicationCubit>().uploadParticularData(
+          context.read<ApplicationCubit>().state.visaApplicationModel!);
     }
   }
 }

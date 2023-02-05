@@ -112,8 +112,26 @@ class _RighSideState extends State<RighSide> {
                                             height: ScreenUtil().screenHeight,
                                             child: PhotoViewPage(
                                               images: [
-                                                docState.selectedDocument!
-                                                    .previewImage!,
+                                                (docState.selectedDocument!
+                                                        .previewImage!
+                                                        .contains(','))
+                                                    ? (docState.selectedDataType ==
+                                                            0)
+                                                        ? docState
+                                                            .selectedDocument!
+                                                            .previewImage!
+                                                            .split(',')
+                                                            .first
+                                                        : docState
+                                                            .selectedDocument!
+                                                            .previewImage!
+                                                            .split(',')
+                                                            .last
+                                                    : docState.selectedDocument!
+                                                        .previewImage!,
+
+                                                // docState.selectedDocument!
+                                                //     .previewImage!,
                                               ],
                                               isNetwork: false,
                                               isAsset: true,
@@ -125,8 +143,22 @@ class _RighSideState extends State<RighSide> {
                                     child: Card(
                                       elevation: 5,
                                       child: Image.asset(
-                                        docState
-                                            .selectedDocument!.previewImage!,
+                                        (docState
+                                                .selectedDocument!.previewImage!
+                                                .contains(','))
+                                            ? (docState.selectedDataType == 0)
+                                                ? docState.selectedDocument!
+                                                    .previewImage!
+                                                    .split(',')
+                                                    .first
+                                                : docState.selectedDocument!
+                                                    .previewImage!
+                                                    .split(',')
+                                                    .last
+                                            : docState.selectedDocument!
+                                                .previewImage!,
+                                        // docState
+                                        //     .selectedDocument!.previewImage!,
                                         fit: BoxFit.cover,
                                       ),
                                     ),
@@ -150,9 +182,9 @@ class _RighSideState extends State<RighSide> {
                           Column(
                             children: [
                               Visibility(
-                                visible:
-                                    docState.selectedDocument?.attachment !=
-                                        null,
+                                visible: docState
+                                            .selectedDocument?.attachment !=
+                                        null ,
                                 child: Column(
                                   children: [
                                     20.verticalSpace,
@@ -309,12 +341,12 @@ class _RighSideState extends State<RighSide> {
       }
     } else {
       //VIEW DOCUMENT
-      //Document is exist. 
+      //Document is exist.
       if (selectedFile!.contains('pdf')) {
         //check pdf from url or file
 
         if (selectedFile.contains('/')) {
-          //check again if it from file or bytes ; 
+          //check again if it from file or bytes ;
           if (kIsWeb) {
             final bytesData = docState.selectedDataCollection![selectedFile];
 
@@ -441,7 +473,7 @@ class _RighSideState extends State<RighSide> {
       type: isImage ? FileType.image : FileType.custom,
       allowCompression: true,
       allowedExtensions: isImage ? null : ['pdf'],
-    ); 
+    );
     if (result != null) {
       context.read<DocumentCubit>().addNewPhotoDocument(
             //because on web path is always then i add this.
@@ -582,7 +614,7 @@ class _RighSideState extends State<RighSide> {
 //     String documentId,
 //   ) async {
 //     Storage storage = Storage();
-//     final result = await Dio().post('${Env.baseUrl}/downloadURL',
+//     final result = await Dio().post('${dotenv.env['BASE_URL']}/downloadURL',
 //         data: {"appId": appId, "docId": documentId, "nameFile": baseName},
 //         options: Options(
 //           headers: {'Authorization': 'Bearer ${storage.getToken()}'},
@@ -607,7 +639,7 @@ class ImageFromUrl extends StatelessWidget {
       create: (context) =>
           getIt<OtherCubit>()..getImageUrl(appId, docId, imagePath),
       child: BlocBuilder<OtherCubit, OtherState>(
-        builder: (context, state) { 
+        builder: (context, state) {
           return state.maybeMap(
             orElse: () {
               return SizedBox();

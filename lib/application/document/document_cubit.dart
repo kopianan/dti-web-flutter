@@ -13,6 +13,11 @@ part 'document_cubit.freezed.dart';
 @LazySingleton()
 class DocumentCubit extends Cubit<DocumentState> {
   DocumentCubit() : super(DocumentState.initial());
+
+  void cleanState() {
+    emit(DocumentState.initial());
+  }
+
   void setTypeDocument(int? type) {
     emit(state.copyWith(selectedDataType: type));
   }
@@ -87,6 +92,7 @@ class DocumentCubit extends Cubit<DocumentState> {
 
       emit(
         state.copyWith(
+          deletedImagesName: [],
           selectedIndex: index,
           selectedDocument: selectedDocument,
           selectedMasterListData: selectedImage,
@@ -181,7 +187,10 @@ class DocumentCubit extends Cubit<DocumentState> {
     var docs = visa.documents!.split(',').map((e) => e.trim()).toList();
     //check the guarantor
     if (visa.guarantorDTI == false) {
-      docs.addAll(['A1', 'A5']);
+      if (docs.contains('A1') && docs.contains('A5')) {
+      } else {
+        docs.addAll(['A1', 'A5']);
+      }
     } else {
       docs.removeWhere((element) => element == 'A1' || element == 'A5');
     }

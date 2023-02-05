@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:dti_web/domain/auth/user_data.dart';
+import 'package:dti_web/domain/core/country_nationality.dart';
 import 'package:dti_web/domain/core/document_data_model.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -8,6 +9,7 @@ class Storage {
   String TOKEN = 'token-data';
   String DOCUMENTS = 'document-list-data';
   String USER = 'user-data';
+  String NATIONALITY = 'nationality';
   final box = GetStorage();
 
   Future<void> saveToken(String token) async {
@@ -56,5 +58,25 @@ class Storage {
     }
 
     return [];
+  }
+
+  List<CountryNationality>? getNationality() {
+    try {
+      var _stringData = box.read(NATIONALITY);
+      if (_stringData == null) return null;
+
+      List object = json.decode(_stringData);
+      final list = object.map((e) => CountryNationality.fromJson(e)).toList();
+      list.sort((a, b) => a.name.compareTo(b.name));
+      return list;
+    } on Exception catch (e) {
+      return null;
+    }
+  }
+
+  Future<void> setNationality(dynamic nationality) async {
+    try {
+      await box.write(NATIONALITY, nationality);
+    } on Exception catch (e) {}
   }
 }

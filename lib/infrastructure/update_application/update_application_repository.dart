@@ -10,10 +10,11 @@ import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/domain/global/failures.dart';
 import 'package:dti_web/domain/update/i_update_application.dart';
 import 'package:dti_web/domain/update/image_upload_response.dart';
-import 'package:dti_web/env/env.dart';
+
 import 'package:dti_web/infrastructure/core/error_response.dart';
 import 'package:dti_web/utils/constant.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: IUpdateApplication)
@@ -54,7 +55,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
                     )
             });
             var dataImage = await dio!.post(
-                '${Env.baseUrl}/application/file/upload',
+                '${dotenv.env['BASE_URL']}/application/file/upload',
                 options: Options(headers: {'Authorization': 'Bearer $token'}),
                 data: formData);
             //prepare data
@@ -90,7 +91,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
         //             )
         //     });
         //     var result =
-        //         dio!.post('${Env.baseUrl}/application/file/upload',
+        //         dio!.post('${dotenv.env['BASE_URL']}/application/file/upload',
         //             options: Options(
         //               headers: {
         //                 'Authorization': 'Bearer $token'
@@ -108,7 +109,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
       if (deletedImages.isNotEmpty) {
         await Future.delayed(Duration(seconds: 3));
         var result = dio!.post(
-          '${Env.baseUrl}/application/file/delete',
+          '${dotenv.env['BASE_URL']}/application/file/delete',
           options: Options(
             headers: {'Authorization': 'Bearer ${storage.getToken()}'},
           ),
@@ -134,7 +135,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
       VisaApplicationModel visaApplicationModel) async {
     dio = Dio();
     final storage = Storage();
-    final result = await dio!.post('${Env.baseUrl}/application',
+    final result = await dio!.post('${dotenv.env['BASE_URL']}/application',
         options: Options(
           headers: {'Authorization': 'Bearer ${storage.getToken()}'},
         ),
@@ -189,7 +190,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
     };
     try {
       final result = await dio!.post(
-          "${Env.baseUrl}/application/${visaApplicationModel.firebaseDocId}/",
+          "${dotenv.env['BASE_URL']}/application/${visaApplicationModel.firebaseDocId}/",
           options: Options(
             headers: {
               "Authorization": "Bearer ${storage.getToken()}",
@@ -238,7 +239,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
     };
     try {
       final result = await dio!.post(
-          "${Env.baseUrl}/application/${visaApplicationModel.firebaseDocId}/",
+          "${dotenv.env['BASE_URL']}/application/${visaApplicationModel.firebaseDocId}/",
           options: Options(
             headers: {
               "Authorization": "Bearer ${storage.getToken()}",
@@ -263,7 +264,8 @@ class IUpdateApplicationRepository extends IUpdateApplication {
     final storage = Storage();
 
     try {
-      final result = await dio!.get("${Env.baseUrl}/application/$firebaseDocId",
+      final result = await dio!.get(
+          "${dotenv.env['BASE_URL']}/application/$firebaseDocId",
           options: Options(
               headers: {"Authorization": "Bearer ${storage.getToken()}"}));
       if (result.data['data'] != null) {
@@ -284,14 +286,14 @@ class IUpdateApplicationRepository extends IUpdateApplication {
     final storage = Storage();
 
     try {
-      final result = await dio!
-          .post("${Env.baseUrl}/application/guarantor/${visa.firebaseDocId}/",
-              options: Options(
-                headers: {
-                  "Authorization": "Bearer ${storage.getToken()}",
-                },
-              ),
-              data: {"guarantorDTI": visa.guarantorDTI});
+      final result = await dio!.post(
+          "${dotenv.env['BASE_URL']}/application/guarantor/${visa.firebaseDocId}/",
+          options: Options(
+            headers: {
+              "Authorization": "Bearer ${storage.getToken()}",
+            },
+          ),
+          data: {"guarantorDTI": visa.guarantorDTI});
 
       if (result.data['data'] == null) {
         //ERROR
@@ -311,7 +313,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
 
     try {
       final result = await dio!.get(
-          "${Env.baseUrl}/application/$firebaseDocId/submit",
+          "${dotenv.env['BASE_URL']}/application/$firebaseDocId/submit",
           options: Options(
               headers: {"Authorization": "Bearer ${storage.getToken()}"}));
 
@@ -353,7 +355,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
     final storage = Storage();
     try {
       final result = await dio!.get(
-        "${Env.baseUrl}/application/$firebaseDocId",
+        "${dotenv.env['BASE_URL']}/application/$firebaseDocId",
         options: Options(
           headers: {
             "Authorization": "Bearer ${storage.getToken()}",
@@ -377,7 +379,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
     final storage = Storage();
     try {
       var result = await dio!.post(
-        '${Env.baseUrl}/application/file/delete',
+        '${dotenv.env['BASE_URL']}/application/file/delete',
         options: Options(
           headers: {
             'Authorization': 'Bearer ${storage.getToken()}',
@@ -405,14 +407,14 @@ class IUpdateApplicationRepository extends IUpdateApplication {
     final storage = Storage();
 
     try {
-      final result = await dio!
-          .post("${Env.baseUrl}/application/multiVisaDuration/${firebaseDocId}",
-              options: Options(
-                headers: {
-                  "Authorization": "Bearer ${storage.getToken()}",
-                },
-              ),
-              data: {"multiVisaDuration": duration});
+      final result = await dio!.post(
+          "${dotenv.env['BASE_URL']}/application/multiVisaDuration/${firebaseDocId}",
+          options: Options(
+            headers: {
+              "Authorization": "Bearer ${storage.getToken()}",
+            },
+          ),
+          data: {"multiVisaDuration": duration});
 
       if (result.data['data'] == null) {
         //ERROR

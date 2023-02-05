@@ -1,6 +1,3 @@
-import 'dart:developer';
-// import 'dart:html' as html;
-
 import 'package:auto_route/auto_route.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dti_web/application/other/other_cubit.dart';
@@ -83,98 +80,111 @@ class _QuestionnairePageState extends State<QuestionnairePage> {
                 return BlocBuilder<QuestionnaireCubit, QuestionnaireState>(
                   builder: (context, state) {
                     return Scaffold(
-                        body: Stack(
+                        body: Row(
                       children: [
-                        Container(
-                            width: ScreenUtil().screenWidth,
+                        Expanded(
+                          child: Container(
                             height: ScreenUtil().screenHeight,
-                            child: Image.asset(
-                              'assets/images/bg/bg_visa1.png',
-                              fit: BoxFit.cover,
-                            )),
-                        Container(
-                          width: ScreenUtil().screenWidth / 2.2,
-                          height: ScreenUtil().screenHeight,
-                          padding: REdgeInsets.symmetric(
-                            horizontal: 30.w,
-                          ),
-                          margin: EdgeInsets.symmetric(vertical: 40.h),
-                          decoration: BoxDecoration(
-                            color: Colors.white.withAlpha(180),
-                            borderRadius: const BorderRadius.horizontal(
-                                right: Radius.circular(10)),
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              CustomSecondHeader(
-                                onBack: () {
-                                  //remove the last item
-                                  context
-                                      .read<QuestionnaireCubit>()
-                                      .removeLastQuestionnaire();
-                                  AutoRouter.of(context).pop();
-                                },
-                              ),
-                              10.verticalSpace,
-                              Text(
-                                title,
-                                style: TextStyle(
-                                    fontSize: 30.sp,
-                                    color: AppColor.primaryColor,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              Text(
-                                subTitle,
-                                style: TextStyle(
-                                    fontSize: 30.sp,
-                                    color: AppColor.primaryColor,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              20.verticalSpace,
-                              Expanded(
-                                child: ListView(
-                                  shrinkWrap: true,
-                                  children: question!
-                                      .map((e) => Column(
-                                            children: [
-                                              InkWell(
-                                                onTap: () async {
-                                                  if (e.subQuestionnaire ==
-                                                          null ||
-                                                      e.subQuestionnaire!
-                                                          .isEmpty) {
-                                                    if (e.results!.contactUs ==
-                                                        true) {
-                                                      //SHOW CONTACT
-                                                      await AwesomeDialog(
-                                                              context: context,
-                                                              width: ScreenUtil()
-                                                                      .screenWidth /
-                                                                  4,
-                                                              dialogType:
-                                                                  DialogType
-                                                                      .info,
-                                                              animType: AnimType
-                                                                  .scale,
-                                                              headerAnimationLoop:
-                                                                  true,
-                                                              title: e.header,
-                                                              desc:
-                                                                  "Our team need to contact you and understand further of your needs.",
-                                                              btnOkOnPress:
-                                                                  () {},
-                                                              btnOkColor:
-                                                                  Colors.green,
-                                                              btnOkText:
-                                                                  "Contact Me",
-                                                              btnCancelOnPress:
-                                                                  () {},
-                                                              btnCancelColor:
-                                                                  Colors.red,
-                                                              btnCancelText:
-                                                                  "Cancel")
-                                                          .show();
+                            padding: REdgeInsets.symmetric(
+                              horizontal: 30.w,
+                            ),
+                            margin: EdgeInsets.symmetric(vertical: 40.h),
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.horizontal(
+                                  right: Radius.circular(10)),
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                CustomSecondHeader(
+                                  onBack: () {
+                                    //remove the last item
+                                    context
+                                        .read<QuestionnaireCubit>()
+                                        .removeLastQuestionnaire();
+                                    AutoRouter.of(context).pop();
+                                  },
+                                ),
+                                10.verticalSpace,
+                                Text(
+                                  title,
+                                  style: TextStyle(
+                                      fontSize: 30.sp,
+                                      color: AppColor.primaryColor,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  subTitle,
+                                  style: TextStyle(
+                                      fontSize: 30.sp,
+                                      color: AppColor.primaryColor,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                20.verticalSpace,
+                                Expanded(
+                                  child: ListView(
+                                    shrinkWrap: true,
+                                    children: question!
+                                        .map((e) => Column(
+                                              children: [
+                                                InkWell(
+                                                  onTap: () async {
+                                                    if (e.subQuestionnaire ==
+                                                            null ||
+                                                        e.subQuestionnaire!
+                                                            .isEmpty) {
+                                                      if (e.results!
+                                                              .contactUs ==
+                                                          true) {
+                                                        //SHOW CONTACT
+                                                        await AwesomeDialog(
+                                                                context:
+                                                                    context,
+                                                                width: ScreenUtil()
+                                                                        .screenWidth /
+                                                                    4,
+                                                                dialogType:
+                                                                    DialogType
+                                                                        .info,
+                                                                animType:
+                                                                    AnimType
+                                                                        .scale,
+                                                                headerAnimationLoop:
+                                                                    true,
+                                                                title: e.header,
+                                                                desc:
+                                                                    "Our team need to contact you and understand further of your needs.",
+                                                                btnOkOnPress:
+                                                                    () {},
+                                                                btnOkColor:
+                                                                    Colors
+                                                                        .green,
+                                                                btnOkText:
+                                                                    "Contact Me",
+                                                                btnCancelOnPress:
+                                                                    () {},
+                                                                btnCancelColor:
+                                                                    Colors.red,
+                                                                btnCancelText:
+                                                                    "Cancel")
+                                                            .show();
+                                                      } else {
+                                                        context
+                                                            .read<
+                                                                QuestionnaireCubit>()
+                                                            .addQuestionnaireToList(
+                                                                e);
+                                                        context
+                                                            .read<
+                                                                QuestionnaireCubit>()
+                                                            .updateStateNotesAndDescription();
+
+                                                        AutoRouter.of(context).push(
+                                                            QuestionnaireSummaryRoute(
+                                                          resultModel:
+                                                              e.results,
+                                                        ));
+                                                      }
                                                     } else {
                                                       context
                                                           .read<
@@ -186,128 +196,116 @@ class _QuestionnairePageState extends State<QuestionnairePage> {
                                                               QuestionnaireCubit>()
                                                           .updateStateNotesAndDescription();
 
-                                                      AutoRouter.of(context).push(
-                                                          QuestionnaireSummaryRoute(
-                                                        resultModel: e.results,
-                                                      ));
-                                                      //"results": {
-                                                      //     "visaPrice": {
-                                                      //         "usd": 0
-                                                      //     },
-                                                      //     "documents": "A2, A3, A6, C2, C3, D7",
-                                                      //     "visaEntry": "Multiple Entry Visa",
-                                                      //     "visaSubTitle": "Double Position",
-                                                      //     "visaTitle": "Permanent Stay Permit / ITAP"
-
-                                                      // },
+                                                      AutoRouter.of(context)
+                                                          .push(
+                                                        QuestionnaireRoute(
+                                                          subtitle:
+                                                              "Stay Permit You Need",
+                                                          title: "Type Of Visa",
+                                                          question: e
+                                                              .subQuestionnaire,
+                                                        ),
+                                                      );
                                                     }
-                                                  } else {
-                                                    context
-                                                        .read<
-                                                            QuestionnaireCubit>()
-                                                        .addQuestionnaireToList(
-                                                            e);
-                                                    context
-                                                        .read<
-                                                            QuestionnaireCubit>()
-                                                        .updateStateNotesAndDescription();
-
-                                                    AutoRouter.of(context).push(
-                                                      QuestionnaireRoute(
-                                                        subtitle:
-                                                            "Stay Permit You Need",
-                                                        title: "Type Of Visa",
-                                                        question:
-                                                            e.subQuestionnaire,
-                                                      ),
-                                                    );
-                                                  }
-                                                },
-                                                child: Container(
-                                                    clipBehavior: Clip.hardEdge,
-                                                    margin: REdgeInsets.only(
-                                                        bottom: 15),
-                                                    width: double.infinity,
-                                                    decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(10),
-                                                        color: Colors.white,
-                                                        boxShadow: const [
-                                                          BoxShadow(
-                                                              offset:
-                                                                  Offset(2, -2),
-                                                              blurRadius: 10,
-                                                              spreadRadius: 1,
-                                                              color:
-                                                                  Colors.grey)
-                                                        ]),
-                                                    child: Column(
-                                                      children: [
-                                                        Container(
-                                                            alignment: Alignment
-                                                                .center,
-                                                            width:
-                                                                double.infinity,
-                                                            color: AppColor
-                                                                .primaryColor,
-                                                            padding:
-                                                                EdgeInsets.all(
-                                                                    10),
-                                                            child: Text(
-                                                              e.header!,
-                                                              style: TextStyle(
-                                                                  fontSize:
-                                                                      17.sp,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                  color: Colors
-                                                                      .white),
-                                                            )),
-                                                        Container(
-                                                            padding: EdgeInsets
-                                                                .symmetric(
-                                                                    vertical:
-                                                                        20.h,
-                                                                    horizontal:
-                                                                        10.w),
-                                                            child: Text(
-                                                              e.body!,
-                                                              style: TextStyle(
-                                                                  fontSize:
-                                                                      15.sp),
-                                                            )),
-                                                        Container(
-                                                            alignment: Alignment
-                                                                .center,
-                                                            width:
-                                                                double.infinity,
-                                                            color: Colors
-                                                                .grey[300],
-                                                            padding:
-                                                                EdgeInsets.all(
-                                                                    10),
-                                                            child: Text(
-                                                              e.footer!,
-                                                              style: TextStyle(
-                                                                  fontSize:
-                                                                      16.sp,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                  color: Colors
-                                                                      .black),
-                                                            )),
-                                                      ],
-                                                    )),
-                                              ),
-                                            ],
-                                          ))
-                                      .toList(),
+                                                  },
+                                                  child: Container(
+                                                      clipBehavior:
+                                                          Clip.hardEdge,
+                                                      margin: REdgeInsets.only(
+                                                          bottom: 15),
+                                                      width: double.infinity,
+                                                      decoration: BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(10),
+                                                          color: Colors.white,
+                                                          boxShadow: const [
+                                                            BoxShadow(
+                                                                offset: Offset(
+                                                                    2, -2),
+                                                                blurRadius: 10,
+                                                                spreadRadius: 1,
+                                                                color:
+                                                                    Colors.grey)
+                                                          ]),
+                                                      child: Column(
+                                                        children: [
+                                                          Container(
+                                                              alignment:
+                                                                  Alignment
+                                                                      .center,
+                                                              width: double
+                                                                  .infinity,
+                                                              color: AppColor
+                                                                  .primaryColor,
+                                                              padding:
+                                                                  EdgeInsets
+                                                                      .all(10),
+                                                              child: Text(
+                                                                e.header!,
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        17.sp,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    color: Colors
+                                                                        .white),
+                                                              )),
+                                                          Container(
+                                                              padding: EdgeInsets
+                                                                  .symmetric(
+                                                                      vertical:
+                                                                          20.h,
+                                                                      horizontal:
+                                                                          10.w),
+                                                              child: Text(
+                                                                e.body!,
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        15.sp),
+                                                              )),
+                                                          Container(
+                                                              alignment:
+                                                                  Alignment
+                                                                      .center,
+                                                              width: double
+                                                                  .infinity,
+                                                              color: Colors
+                                                                  .grey[300],
+                                                              padding:
+                                                                  EdgeInsets
+                                                                      .all(10),
+                                                              child: Text(
+                                                                e.footer!,
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        16.sp,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    color: Colors
+                                                                        .black),
+                                                              )),
+                                                        ],
+                                                      )),
+                                                ),
+                                              ],
+                                            ))
+                                        .toList(),
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 50.w),
+                        Expanded(
+                          child: Container(
+                            margin: EdgeInsets.all(100.sp),
+                            child: Image.asset(
+                              'assets/images/bg/bg_visa1.webp',
+                            ),
                           ),
                         )
                       ],

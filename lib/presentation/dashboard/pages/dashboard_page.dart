@@ -38,7 +38,7 @@ class _DashboardPageState extends State<DashboardPage> {
           create: (context) => dashboardCubit..getLastData(),
         ),
         BlocProvider(
-          create: (context) => getIt<OtherCubit>()..getDocumentsData(),
+          create: (context) => getIt<OtherCubit>()..getLocation()..getDocumentsData(),
         ),
       ],
       child: BlocBuilder<OtherCubit, OtherState>(
@@ -126,7 +126,9 @@ class _DashboardPageState extends State<DashboardPage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  e.userData.email ?? "",
+                                  e.userData.name == null
+                                      ? e.userData.email!.toString()
+                                      : e.userData.name!.toString(),
                                   style: TextStyle(
                                       fontSize: 20.sp,
                                       fontWeight: FontWeight.bold),

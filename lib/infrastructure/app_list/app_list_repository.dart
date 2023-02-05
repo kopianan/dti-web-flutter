@@ -2,11 +2,8 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:dti_web/core/storage.dart';
 import 'package:dti_web/domain/app_list/i_app_list.dart';
-import 'package:dti_web/domain/application/i_application.dart';
 import 'package:dti_web/domain/core/simple_visa_model.dart';
-import 'package:dti_web/domain/core/visa_application_model.dart';
-import 'package:dti_web/env/env.dart';
-import 'package:dti_web/utils/constant.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: IAppList)
@@ -16,10 +13,12 @@ class AppListRepository extends IAppList {
   @override
   Future<Either<String, List<SimpleVisaModel>>> getUserVisaApplication() async {
     dio = Dio();
-    final result = await dio!.get('${Env.baseUrl}/applicationsByUser',
-        options: Options(
-          headers: {'Authorization': 'Bearer ${storage.getToken()}'},
-        )); 
+
+    final result =
+        await dio!.get('${dotenv.env['BASE_URL']}/applicationsByUser',
+            options: Options(
+              headers: {'Authorization': 'Bearer ${storage.getToken()}'},
+            ));
     final listData = (result.data['data'] as List)
         .map((e) => SimpleVisaModel.fromJson(e))
         .toList();
@@ -30,7 +29,7 @@ class AppListRepository extends IAppList {
 //   Future<Either<String, String>> createNewApplicationDocument(
 //       VisaApplicationModel visaApplicationModel) async {
 //     dio = Dio();
-//     final result = await dio!.post('${Env.baseUrl}/application',
+//     final result = await dio!.post('${dotenv.env['BASE_URL']}/application',
 //         options: Options(
 //           headers: {'Authorization': 'Bearer ${Constant.header}'},
 //         ),

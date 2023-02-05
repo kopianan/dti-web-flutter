@@ -27,11 +27,15 @@ class DateConverter {
 
   //VALUE IS DATE NOW
   static DateTime stringToDate(String? stringDate) {
-    if (stringDate == null) {
+    try {
+      if (stringDate == null) {
+        return DateTime.now();
+      } else {
+        final format = DateFormat('dd MMM yyyy');
+        return format.parse(stringDate);
+      }
+    } on Exception catch (e) {
       return DateTime.now();
-    } else {
-      final format = DateFormat('dd MMM yyyy');
-      return format.parse(stringDate);
     }
   }
 }

@@ -178,7 +178,13 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
 
   Future<VisaApplicationModel> _getUserApplicationById(String id) async {
     final result = await iUpdateApplication.getUserApplicationById(id);
-    return result.fold((l) => throw (Exception(l)), (r) => r);
+    return result.fold((l) {
+      print(l);
+      throw (Exception(l));
+    }, (r) {
+      print(r);
+      return r;
+    });
   }
 
   void getUserApplication(String firebaseDocId) async {

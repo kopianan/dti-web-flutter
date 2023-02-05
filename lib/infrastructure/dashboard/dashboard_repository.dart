@@ -4,8 +4,9 @@ import 'package:dti_web/domain/core/simple_visa_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dti_web/domain/dashboard/i_dashboard.dart';
 import 'package:dti_web/domain/global/failures.dart';
-import 'package:dti_web/env/env.dart';
+
 import 'package:dti_web/infrastructure/core/error_response.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: IDashboard)
@@ -15,7 +16,7 @@ class DashboardRepository extends IDashboard {
     final dio = Dio();
     final storage = Storage();
     try {
-      final result = await dio.get(Env.baseUrl + "/applicationsByUser/1",
+      final result = await dio.get("${dotenv.env['BASE_URL']}/applicationsByUser/1",
           options: Options(
             headers: {'Authorization': 'Bearer ${storage.getToken()}'},
           ));
@@ -43,7 +44,7 @@ class DashboardRepository extends IDashboard {
 
     try {
       final result = await dio.get(
-          Env.baseUrl + "/application/$firebaseDocId/delete",
+          "${dotenv.env['BASE_URL']}/application/$firebaseDocId/delete",
           options: Options(
               headers: {'Authorization': 'Bearer ${storage.getToken()}'}));
       if (result.data['data'] != null) {

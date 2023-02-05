@@ -133,480 +133,506 @@ class _SuccessBodyState extends State<SuccessBody> {
       return AppColor.primaryColor;
     }
 
-    return SingleChildScrollView(
-      child: Container(
-        width: ScreenUtil().screenWidth / 2,
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.w),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Visa Detail Summary',
-                style: TextStyle(
-                    fontSize: 33.sp,
-                    color: AppColor.primaryColor,
-                    fontWeight: FontWeight.bold),
-              ),
-              30.verticalSpace,
-              SubtitleWidget(
-                  label:
-                      '${widget.visa.title} - ${widget.visa.subTitle} - ${widget.visa.entry}'),
-              20.verticalSpace,
-              Row(
-                children: [
-                  // DetailItemWidget(
-                  //   label: "Estimated",
-                  //   value: Converter.convertStringToIDR(widget.visa.price ?? 0),
-                  // ),
-                  // 100.horizontalSpace,
-                  DetailItemWidget(
-                    label: "Guarantor",
-                    value: widget.visa.guarantorDTI!
-                        ? "Door To Indonesia"
-                        : "Non Door To Indonesia",
-                  )
-                ],
-              ),
-              20.verticalSpace,
-              const SubtitleWidget(label: " VISA INFORMATION"),
-              20.verticalSpace,
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  DetailItemWidget(
-                    label: "Type of Visa",
-                    value: widget.visa.entry!,
-                  ),
-                  10.verticalSpace,
-                  DetailItemWidget(
-                    label: "Length of Stay in Indonesia",
-                    value: widget.visa.entry == "Single Entry Visa"
-                        ? widget.visa.subTitle == "Visa On Arrival"
-                            ? "30 Days after entering Indonesia."
-                            : "60 Days after entering Indonesia"
-                        : '${widget.visa.multiVisaDuration ?? ""} after entering Indonesia',
-                  ),
-                  10.verticalSpace,
-                  DetailItemWidget(
-                    label: "Visa must used by",
-                    value: widget.visa.entry == "Single Entry Visa"
-                        ? widget.visa.subTitle == "Visa On Arrival"
-                            ? "90 days after issuance date."
-                            : "90 Days after issuance date"
-                        : '${widget.visa.multiVisaDuration ?? ""} after issuance date',
-                  ),
-                ],
-              ),
-              20.verticalSpace,
-              const SubtitleWidget(label: "PERSONAL PARTICULAR"),
-              20.verticalSpace,
-              //VISIT INFORMATION 2
-              Table(
-                defaultColumnWidth: FixedColumnWidth(400.w),
-                children: [
-                  TableRow(children: [
-                    DetailItemWidget(
-                      label: "First Name",
-                      value: widget.visa.firstName!,
-                    ),
-                    DetailItemWidget(
-                      label: "Last Name",
-                      value: widget.visa.lastName!,
-                    ),
-                  ]),
-                  vertDistance,
-                  TableRow(children: [
-                    DetailItemWidget(
-                      label: "Gender",
-                      value: widget.visa.gender!.capitalize(),
-                    ),
-                    DetailItemWidget(
-                      label: "Nationality",
-                      value: widget.visa.nationality!.capitalize(),
-                    ),
-                  ]),
-                  vertDistance,
-                  TableRow(children: [
-                    DetailItemWidget(
-                      label: "Relationship Status",
-                      value: widget.visa.status!.capitalize(),
-                    ),
-                    DetailItemWidget(
-                      label: "Mobile Number",
-                      value:
-                          "${widget.visa.mobileDialCode}-${widget.visa.mobileNumber} ",
-                    ),
-                  ]),
-                  vertDistance,
-                  TableRow(children: [
-                    DetailItemWidget(
-                      label: "Place Of Birth",
-                      value: widget.visa.placeOfBirth!,
-                    ),
-                    DetailItemWidget(
-                      label: "Date of Birth",
-                      value: DateConverter.convertDateDefault(
-                          widget.visa.dateOfBirth!),
-                    ),
-                  ]),
-                  vertDistance,
-                  TableRow(children: [
-                    DetailItemWidget(
-                      label: "Deported",
-                      value: widget.visa.deportedFlag == true ? "YES" : "NO",
-                    ),
-                    DetailItemWidget(
-                      label: "Overstayed",
-                      value: widget.visa.overstayedFlag == true ? "YES" : "NO",
-                    ),
-                  ]),
-                ],
-              ),
-              20.verticalSpace,
-              //    PASSPORT INFORMATION
-              const SubtitleWidget(label: "PASSPORT INFORMATION"),
-              20.verticalSpace,
-              Table(
-                defaultColumnWidth: FixedColumnWidth(400.w),
-                children: [
-                  TableRow(children: [
-                    DetailItemWidget(
-                      label: "Passport No",
-                      value: widget.visa.passportNumber!,
-                    ),
-                    DetailItemWidget(
-                      label: "Issuing Country",
-                      value: widget.visa.issuingCountry!,
-                    ),
-                  ]),
-                  vertDistance,
-                  TableRow(children: [
-                    DetailItemWidget(
-                      label: "Date of Issue",
-                      value: DateConverter.convertDateDefault2(
-                          DateTime.parse(widget.visa.dateOfIssue!)),
-                    ),
-                    DetailItemWidget(
-                      label: "Date of expiration",
-                      value: DateConverter.convertDateDefault2(
-                          DateTime.parse(widget.visa.dateOfExpiration!)),
-                    ),
-                  ]),
-                ],
-              ),
-              20.verticalSpace,
-              //IN INDONESIA
-              const SubtitleWidget(label: "INDONESIA'S RESIDENTIAL"),
-              20.verticalSpace,
-              Table(
-                defaultColumnWidth: FixedColumnWidth(400.w),
-                children: [
-                  TableRow(children: [
-                    DetailItemWidget(
-                      label: "Address",
-                      value: widget.visa.address!,
-                    ),
-                    DetailItemWidget(
-                      label: "Province",
-                      value: widget.visa.province!,
-                    ),
-                  ]),
-                  vertDistance,
-                  TableRow(children: [
-                    DetailItemWidget(
-                      label: "City",
-                      value: widget.visa.city!,
-                    ),
-                    DetailItemWidget(
-                      label: "District",
-                      value: widget.visa.district!,
-                    ),
-                  ]),
-                ],
-              ),
-              20.verticalSpace,
-              Visibility(
-                visible:
-                    widget.visa.subTitle == "Visa On Arrival" ? true : false,
+    return Row(
+      children: [
+        Expanded(
+          child: SingleChildScrollView(
+            child: Container(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    //Arrival Information
-                    const SubtitleWidget(label: "ARRIVAL INFORMATION"),
+                    Text(
+                      'Visa Detail Summary',
+                      style: TextStyle(
+                          fontSize: 33.sp,
+                          color: AppColor.primaryColor,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    30.verticalSpace,
+                    SubtitleWidget(
+                        label:
+                            '${widget.visa.title} - ${widget.visa.subTitle} - ${widget.visa.entry}'),
+                    20.verticalSpace,
+                    Row(
+                      children: [
+                        // DetailItemWidget(
+                        //   label: "Estimated",
+                        //   value: Converter.convertStringToIDR(widget.visa.price ?? 0),
+                        // ),
+                        // 100.horizontalSpace,
+                        DetailItemWidget(
+                          label: "Guarantor",
+                          value: widget.visa.guarantorDTI!
+                              ? "Door To Indonesia"
+                              : "Non Door To Indonesia",
+                        )
+                      ],
+                    ),
+                    20.verticalSpace,
+                    const SubtitleWidget(label: " VISA INFORMATION"),
+                    20.verticalSpace,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        DetailItemWidget(
+                          label: "Type of Visa",
+                          value: widget.visa.entry!,
+                        ),
+                        10.verticalSpace,
+                        DetailItemWidget(
+                          label: "Length of Stay in Indonesia",
+                          value: widget.visa.entry == "Single Entry Visa"
+                              ? widget.visa.subTitle == "Visa On Arrival"
+                                  ? "30 Days after entering Indonesia."
+                                  : "60 Days after entering Indonesia"
+                              : '${widget.visa.multiVisaDuration ?? ""} after entering Indonesia',
+                        ),
+                        10.verticalSpace,
+                        DetailItemWidget(
+                          label: "Visa must used by",
+                          value: widget.visa.entry == "Single Entry Visa"
+                              ? widget.visa.subTitle == "Visa On Arrival"
+                                  ? "90 days after issuance date."
+                                  : "90 Days after issuance date"
+                              : '${widget.visa.multiVisaDuration ?? ""} after issuance date',
+                        ),
+                      ],
+                    ),
+                    20.verticalSpace,
+                    const SubtitleWidget(label: "PERSONAL PARTICULAR"),
+                    20.verticalSpace,
+                    //VISIT INFORMATION 2
+                    Table(
+                      defaultColumnWidth: FixedColumnWidth(400.w),
+                      children: [
+                        TableRow(children: [
+                          DetailItemWidget(
+                            label: "First Name",
+                            value: widget.visa.firstName!,
+                          ),
+                          DetailItemWidget(
+                            label: "Last Name",
+                            value: widget.visa.lastName!,
+                          ),
+                        ]),
+                        vertDistance,
+                        TableRow(children: [
+                          DetailItemWidget(
+                            label: "Gender",
+                            value: widget.visa.gender!.capitalize(),
+                          ),
+                          DetailItemWidget(
+                            label: "Nationality",
+                            value: widget.visa.nationality!.capitalize(),
+                          ),
+                        ]),
+                        vertDistance,
+                        TableRow(children: [
+                          DetailItemWidget(
+                            label: "Relationship Status",
+                            value: widget.visa.status!.capitalize(),
+                          ),
+                          DetailItemWidget(
+                            label: "Mobile Number",
+                            value:
+                                "${widget.visa.mobileDialCode}-${widget.visa.mobileNumber} ",
+                          ),
+                        ]),
+                        vertDistance,
+                        TableRow(children: [
+                          DetailItemWidget(
+                            label: "Place Of Birth",
+                            value: widget.visa.placeOfBirth!,
+                          ),
+                          DetailItemWidget(
+                            label: "Date of Birth",
+                            value: DateConverter.convertDateDefault(
+                                widget.visa.dateOfBirth!),
+                          ),
+                        ]),
+                        vertDistance,
+                        TableRow(children: [
+                          DetailItemWidget(
+                            label: "Deported",
+                            value:
+                                widget.visa.deportedFlag == true ? "YES" : "NO",
+                          ),
+                          DetailItemWidget(
+                            label: "Overstayed",
+                            value: widget.visa.overstayedFlag == true
+                                ? "YES"
+                                : "NO",
+                          ),
+                        ]),
+                      ],
+                    ),
+                    20.verticalSpace,
+                    //    PASSPORT INFORMATION
+                    const SubtitleWidget(label: "PASSPORT INFORMATION"),
                     20.verticalSpace,
                     Table(
                       defaultColumnWidth: FixedColumnWidth(400.w),
                       children: [
                         TableRow(children: [
                           DetailItemWidget(
-                            label: "Flight Number",
-                            value: widget.visa.flightNumber ?? "",
+                            label: "Passport No",
+                            value: widget.visa.passportNumber!,
                           ),
                           DetailItemWidget(
-                            label: "Mode Of Transportation",
-                            value: widget.visa.modeOfTransportation ?? "",
+                            label: "Issuing Country",
+                            value: widget.visa.issuingCountry!,
                           ),
                         ]),
                         vertDistance,
                         TableRow(children: [
                           DetailItemWidget(
-                            label: "Arrival Date",
-                            value: widget.visa.arrivalDate == null
-                                ? ""
-                                : DateConverter.convertDateDefault2(
-                                    DateTime.parse(widget.visa.arrivalDate!)),
+                            label: "Date of Issue",
+                            value: DateConverter.convertDateDefault2(
+                                DateTime.parse(widget.visa.dateOfIssue!)),
                           ),
-                          const DetailItemWidget(
-                            label: "",
-                            value: '',
+                          DetailItemWidget(
+                            label: "Date of expiration",
+                            value: DateConverter.convertDateDefault2(
+                                DateTime.parse(widget.visa.dateOfExpiration!)),
                           ),
                         ]),
                       ],
                     ),
-                  ],
-                ),
-              ),
-
-              20.verticalSpace,
-              //    SUPPORTING DOCUMENT
-              const SubtitleWidget(label: "SUPPORTING DOCUMENT  "),
-              20.verticalSpace,
-              BlocBuilder<DocumentCubit, DocumentState>(
-                bloc: getIt<DocumentCubit>(),
-                builder: (context, state) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: state.docs!.map((e) {
-                      return InkWell(
-                          onTap: () {
-                            var data = e.imageList!;
-                            List<String>? filtered = [];
-                            data.removeWhere((element) => element == null);
-                            if (data.isNotEmpty) {
-                              for (var element in widget.imagesUrl!) {
-                                final data = element as Map<String, dynamic>;
-                                if (data.containsKey(e.id)) {
-                                  //check if id is same then get the data
-                                  filtered.add(data[e.id!.trim()]);
-                                }
-                              }
-
-                              //check if image is pdf
-                              if (e.attachment != null &&
-                                  e.attachment!.contains('.doc')) {
-                                // file is document, not picture
-                                AutoRouter.of(context).navigate(
-                                  DTIPdfViewerRoute(
-                                    imageUrl: filtered.single,
-                                    isNetwork: true,
-                                  ),
-                                );
-                              } else {
-                                showDialog(
-                                  context: context,
-                                  builder: (context) {
-                                    return Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        color: Colors.white,
-                                      ),
-                                      margin: const EdgeInsets.symmetric(
-                                          horizontal: 100, vertical: 100),
-                                      width: ScreenUtil().screenWidth,
-                                      height: ScreenUtil().screenHeight,
-                                      child: PhotoViewPage(
-                                        images: filtered,
-                                        isNetwork: true,
-                                      ),
-                                    );
-                                  },
-                                );
-                                // AutoRouter.of(context).push(PhotoViewRoute(
-                                //     images: filtered, isNetwork: true));
-                              }
-
-                              // showDialog(
-                              //     context: context,
-                              //     builder: (context) {
-                              //       return Container(
-                              //         color: Colors.green,
-                              //       );
-                              //     });
-                            }
-                          },
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(vertical: 8),
-                            decoration: const BoxDecoration(
-                                border: Border(
-                              bottom: BorderSide(
-                                width: 1,
-                                color: AppColor.primaryColor,
-                              ),
-                            )),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                const Icon(
-                                  Icons.download_sharp,
-                                  size: 30,
-                                  color: AppColor.primaryColor,
-                                ),
-                                5.horizontalSpace,
-                                Expanded(
-                                  child: Text(
-                                    e.header!,
-                                    style: TextStyle(
-                                        fontSize: 20.sp,
-                                        color: AppColor.primaryColor),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ));
-                    }).toList(),
-                  );
-                },
-              ),
-
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  30.verticalSpace,
-                  Text(
-                    "Reference Number",
-                    style: TextStyle(
-                      fontSize: 25.sp,
-                      color: Colors.grey,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  10.verticalSpace,
-                  Text(
-                    widget.visa.applicationID ?? "",
-                    style: TextStyle(
-                      fontSize: 22.sp,
-                      color: AppColor.primaryColor,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  )
-                ],
-              ),
-              20.verticalSpace,
-              Visibility(
-                visible: widget.visa.status?.toLowerCase() == 'draft',
-                child: termAndCondition(getColor),
-              ),
-              // REFERENCE NUMBER
-
-              20.verticalSpace,
-              Visibility(
-                  visible: widget.visa.status!.toLowerCase() == 'completed',
-                  child: Container(
-                    width: double.infinity,
-                    height: 50,
-                    child: PrimaryButton(
-                      onClick: () {
-                        try {
-                          final data = widget.imagesUrl!.firstWhere(
-                                  (dynamic element) =>
-                                      (element as Map<String, dynamic>)
-                                          .containsKey('EVISA'))
-                              as Map<String, dynamic>;
-                          if (data['EVISA'].toString().contains('.pdf')) {
-                            AutoRouter.of(context).navigate(DTIPdfViewerRoute(
-                                imageUrl: data['EVISA'].toString(),
-                                isNetwork: true));
-                          } else {
-                            AutoRouter.of(context).push(PhotoViewRoute(
-                                images: [data['EVISA'].toString()],
-                                isNetwork: true));
-                          }
-                        } catch (e) {}
-                      },
-                      label: "Download EVISA",
-                      labelStyle: TextStyle(fontSize: 17.sp),
-                    ),
-                  )),
-              Visibility(
-                visible: widget.visa.status?.toLowerCase() == 'pending payment',
-                child: Column(
-                  children: [
-                    Row(
+                    20.verticalSpace,
+                    //IN INDONESIA
+                    const SubtitleWidget(label: "INDONESIA'S RESIDENTIAL"),
+                    20.verticalSpace,
+                    Table(
+                      defaultColumnWidth: FixedColumnWidth(400.w),
                       children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Total Price (IDR)",
-                              style: TextStyle(
-                                fontSize: 25.sp,
-                                color: Colors.grey,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            10.verticalSpace,
-                            Text(
-                              "${widget.visa.currency == 'rp' ? "IDR" : widget.visa.currency!} ${Converter.convertStringToIDR(widget.visa.price ?? 0)}",
-                              style: TextStyle(
-                                fontSize: 30.sp,
-                                color: AppColor.primaryColor,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            20.verticalSpace,
-                          ],
-                        ),
-                        const Spacer(),
-                        Expanded(
-                          child: PrimaryButton(
-                            onClick: () {
-                              AutoRouter.of(context)
-                                  .push(PaymentRoute(visa: widget.visa));
-                            },
-                            width: 300,
-                            label: "Pay",
-                            labelStyle: TextStyle(fontSize: 20.sp),
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 10),
-                            height: 60,
+                        TableRow(children: [
+                          DetailItemWidget(
+                            label: "Address",
+                            value: widget.visa.address!,
                           ),
-                        ),
+                          DetailItemWidget(
+                            label: "Province",
+                            value: widget.visa.province!,
+                          ),
+                        ]),
+                        vertDistance,
+                        TableRow(children: [
+                          DetailItemWidget(
+                            label: "City",
+                            value: widget.visa.city!,
+                          ),
+                          DetailItemWidget(
+                            label: "District",
+                            value: widget.visa.district!,
+                          ),
+                        ]),
                       ],
                     ),
-                    30.verticalSpace,
-                    Image.asset(
-                      'assets/images/payment_example.png',
+                    20.verticalSpace,
+                    Visibility(
+                      visible: widget.visa.subTitle == "Visa On Arrival"
+                          ? true
+                          : false,
+                      child: Column(
+                        children: [
+                          //Arrival Information
+                          const SubtitleWidget(label: "ARRIVAL INFORMATION"),
+                          20.verticalSpace,
+                          Table(
+                            defaultColumnWidth: FixedColumnWidth(400.w),
+                            children: [
+                              TableRow(children: [
+                                DetailItemWidget(
+                                  label: "Flight Number",
+                                  value: widget.visa.flightNumber ?? "",
+                                ),
+                                DetailItemWidget(
+                                  label: "Mode Of Transportation",
+                                  value: widget.visa.modeOfTransportation ?? "",
+                                ),
+                              ]),
+                              vertDistance,
+                              TableRow(children: [
+                                DetailItemWidget(
+                                  label: "Arrival Date",
+                                  value: widget.visa.arrivalDate == null
+                                      ? ""
+                                      : DateConverter.convertDateDefault2(
+                                          DateTime.parse(
+                                              widget.visa.arrivalDate!)),
+                                ),
+                                const DetailItemWidget(
+                                  label: "",
+                                  value: '',
+                                ),
+                              ]),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
+
+                    20.verticalSpace,
+                    //    SUPPORTING DOCUMENT
+                    const SubtitleWidget(label: "SUPPORTING DOCUMENT  "),
+                    20.verticalSpace,
+                    BlocBuilder<DocumentCubit, DocumentState>(
+                      bloc: getIt<DocumentCubit>(),
+                      builder: (context, state) {
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: state.docs!.map((e) {
+                            return InkWell(
+                                onTap: () {
+                                  var data = e.imageList!;
+                                  List<String>? filtered = [];
+                                  data.removeWhere(
+                                      (element) => element == null);
+                                  if (data.isNotEmpty) {
+                                    for (var element in widget.imagesUrl!) {
+                                      final data =
+                                          element as Map<String, dynamic>;
+                                      if (data.containsKey(e.id)) {
+                                        //check if id is same then get the data
+                                        filtered.add(data[e.id!.trim()]);
+                                      }
+                                    }
+
+                                    //check if image is pdf
+                                    if (e.attachment != null &&
+                                        e.attachment!.contains('.doc')) {
+                                      // file is document, not picture
+                                      AutoRouter.of(context).navigate(
+                                        DTIPdfViewerRoute(
+                                          imageUrl: filtered.single,
+                                          isNetwork: true,
+                                        ),
+                                      );
+                                    } else {
+                                      showDialog(
+                                        context: context,
+                                        builder: (context) {
+                                          return Container(
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              color: Colors.white,
+                                            ),
+                                            margin: const EdgeInsets.symmetric(
+                                                horizontal: 100, vertical: 100),
+                                            width: ScreenUtil().screenWidth,
+                                            height: ScreenUtil().screenHeight,
+                                            child: PhotoViewPage(
+                                              images: filtered,
+                                              isNetwork: true,
+                                            ),
+                                          );
+                                        },
+                                      );
+                                      // AutoRouter.of(context).push(PhotoViewRoute(
+                                      //     images: filtered, isNetwork: true));
+                                    }
+
+                                    // showDialog(
+                                    //     context: context,
+                                    //     builder: (context) {
+                                    //       return Container(
+                                    //         color: Colors.green,
+                                    //       );
+                                    //     });
+                                  }
+                                },
+                                child: Container(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 8),
+                                  decoration: const BoxDecoration(
+                                      border: Border(
+                                    bottom: BorderSide(
+                                      width: 1,
+                                      color: AppColor.primaryColor,
+                                    ),
+                                  )),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      const Icon(
+                                        Icons.download_sharp,
+                                        size: 30,
+                                        color: AppColor.primaryColor,
+                                      ),
+                                      5.horizontalSpace,
+                                      Expanded(
+                                        child: Text(
+                                          e.header!,
+                                          style: TextStyle(
+                                              fontSize: 20.sp,
+                                              color: AppColor.primaryColor),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ));
+                          }).toList(),
+                        );
+                      },
+                    ),
+
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        30.verticalSpace,
+                        Text(
+                          "Reference Number",
+                          style: TextStyle(
+                            fontSize: 25.sp,
+                            color: Colors.grey,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        10.verticalSpace,
+                        Text(
+                          widget.visa.applicationID ?? "",
+                          style: TextStyle(
+                            fontSize: 22.sp,
+                            color: AppColor.primaryColor,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        )
+                      ],
+                    ),
+                    20.verticalSpace,
+                    Visibility(
+                      visible: widget.visa.status?.toLowerCase() == 'draft',
+                      child: termAndCondition(getColor),
+                    ),
+                    // REFERENCE NUMBER
+
+                    20.verticalSpace,
+                    Visibility(
+                        visible:
+                            widget.visa.status!.toLowerCase() == 'completed',
+                        child: Container(
+                          width: double.infinity,
+                          height: 50,
+                          child: PrimaryButton(
+                            onClick: () {
+                              try {
+                                final data = widget.imagesUrl!.firstWhere(
+                                        (dynamic element) =>
+                                            (element as Map<String, dynamic>)
+                                                .containsKey('EVISA'))
+                                    as Map<String, dynamic>;
+                                if (data['EVISA'].toString().contains('.pdf')) {
+                                  AutoRouter.of(context).navigate(
+                                      DTIPdfViewerRoute(
+                                          imageUrl: data['EVISA'].toString(),
+                                          isNetwork: true));
+                                } else {
+                                  AutoRouter.of(context).push(PhotoViewRoute(
+                                      images: [data['EVISA'].toString()],
+                                      isNetwork: true));
+                                }
+                              } catch (e) {}
+                            },
+                            label: "Download EVISA",
+                            labelStyle: TextStyle(fontSize: 17.sp),
+                          ),
+                        )),
+                    Visibility(
+                      visible: widget.visa.status?.toLowerCase() ==
+                          'pending payment',
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Total Price (IDR)",
+                                    style: TextStyle(
+                                      fontSize: 25.sp,
+                                      color: Colors.grey,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  10.verticalSpace,
+                                  Text(
+                                    "${widget.visa.currency == 'rp' ? "IDR" : widget.visa.currency!} ${Converter.convertStringToIDR(widget.visa.price ?? 0)}",
+                                    style: TextStyle(
+                                      fontSize: 30.sp,
+                                      color: AppColor.primaryColor,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  20.verticalSpace,
+                                ],
+                              ),
+                              const Spacer(),
+                              Expanded(
+                                child: PrimaryButton(
+                                  onClick: () {
+                                    AutoRouter.of(context)
+                                        .push(PaymentRoute(visa: widget.visa));
+                                  },
+                                  width: 300,
+                                  label: "Pay",
+                                  labelStyle: TextStyle(fontSize: 20.sp),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 20, vertical: 10),
+                                  height: 60,
+                                ),
+                              ),
+                            ],
+                          ),
+                          30.verticalSpace,
+                          Image.asset(
+                            'assets/images/payment_example.png',
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    50.verticalSpace,
+                    Visibility(
+                      visible: widget.visa.status!.toLowerCase() == 'paid' ||
+                          widget.visa.status!.toLowerCase() == 'completed' ||
+                          widget.visa.status!.toLowerCase() == 'submitted',
+                      child: Container(
+                        width: double.infinity,
+                        height: 50,
+                        child: PrimaryButton(
+                          onClick: () {
+                            AutoRouter.of(context).pushAndPopUntil(
+                                DashboardRoute(),
+                                predicate:
+                                    ModalRoute.withName(DashboardRoute.name));
+                          },
+                          label: "Back to dashboard",
+                          labelStyle: TextStyle(
+                            fontSize: 17.sp,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                    50.verticalSpace,
                   ],
                 ),
               ),
-
-              50.verticalSpace,
-              Visibility(
-                visible: widget.visa.status!.toLowerCase() == 'paid' ||
-                    widget.visa.status!.toLowerCase() == 'completed' ||
-                    widget.visa.status!.toLowerCase() == 'submitted',
-                child: Container(
-                  width: double.infinity,
-                  height: 50,
-                  child: PrimaryButton(
-                    onClick: () {
-                      AutoRouter.of(context).pushAndPopUntil(DashboardRoute(),
-                          predicate: ModalRoute.withName(DashboardRoute.name));
-                    },
-                    label: "Back to dashboard",
-                    labelStyle: TextStyle(
-                      fontSize: 17.sp,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-              50.verticalSpace,
-            ],
+            ),
           ),
         ),
-      ),
+        Expanded(
+          child: Container(
+            child: Image.asset(
+              'assets/images/bg/detail.webp',
+            ),
+          ),
+        )
+      ],
     );
   }
 
@@ -684,7 +710,7 @@ class _SuccessBodyState extends State<SuccessBody> {
                       ),
                     ),
                     TextSpan(
-                      text: 'Moral Character requirements',
+                      text: 'Moral Character requirements ',
                       style: const TextStyle(
                         color: AppColor.HYPERLINK_COLOR,
                         fontSize: 20,
@@ -734,7 +760,7 @@ class _SuccessBodyState extends State<SuccessBody> {
               text: TextSpan(
                 children: [
                   TextSpan(
-                    text: "I agree to the",
+                    text: "I agree to the ",
                     style: TextStyle(
                       color: Colors.grey[700],
                       fontSize: 20,
@@ -754,7 +780,7 @@ class _SuccessBodyState extends State<SuccessBody> {
                       },
                   ),
                   TextSpan(
-                    text: ', and',
+                    text: ', and ',
                     style: TextStyle(
                       color: Colors.grey[700],
                       fontSize: 20,

@@ -1,4 +1,3 @@
- 
 import 'package:dti_web/application/application_cubit.dart';
 import 'package:dti_web/application/document/document_cubit.dart';
 import 'package:dti_web/application/other/other_cubit.dart';
@@ -27,11 +26,18 @@ class _UploadDocumentPageState extends State<UploadDocumentPage> {
   @override
   void initState() {
     super.initState();
+    //clean state first
+    cleanState();
     initData();
+  }
+
+  void cleanState() {
+    getIt<DocumentCubit>().cleanState();
   }
 
   void initData() {
     //get data from state
+
     final visa = context.read<ApplicationCubit>().state.visaApplicationModel;
     final masterData = context.read<ApplicationCubit>().state.masterListData;
     getIt<DocumentCubit>().setupApplication(visa!);
@@ -101,35 +107,34 @@ class _UploadDocumentPageState extends State<UploadDocumentPage> {
                               ),
                             )),
                         Expanded(
-                            flex: 3,
-                            child: Stack(
-                              children: [
-                                Container(
-                                  child: Image.asset(
-                                    'assets/images/bg/bg_upload.png',
-                                    fit: BoxFit.cover,
-                                    width: ScreenUtil().screenWidth,
-                                  ),
+                          flex: 3,
+                          child: Stack(
+                            children: [
+                              Container(
+                                child: Image.asset(
+                                  'assets/images/bg/bg_upload.png',
+                                  fit: BoxFit.cover,
+                                  width: ScreenUtil().screenWidth,
                                 ),
-                                Positioned(
-                                  right: 100.w,
-                                  left: 100.w,
-                                  top: 20,
-                                  bottom: 20,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: Colors.white,
-                                    ),
-                                    // padding: EdgeInsets.symmetric(horizontal: 30.w),
-                                    child: RighSide(
-                                        documentCubit: getIt<DocumentCubit>()),
+                              ),
+                              Positioned(
+                                right: 100.w,
+                                left: 100.w,
+                                top: 20,
+                                bottom: 20,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: Colors.white,
                                   ),
-                                )
-                              ],
-                            )),
-                        // LeftSide(documentCubit:  getIt<DocumentCubit>()),
-                        // RighSide(documentCubit:  getIt<DocumentCubit>())
+                                  // padding: EdgeInsets.symmetric(horizontal: 30.w),
+                                  child: RighSide(
+                                      documentCubit: getIt<DocumentCubit>()),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
                       ],
                     );
                   },

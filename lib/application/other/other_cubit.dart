@@ -63,6 +63,16 @@ class OtherCubit extends Cubit<OtherState> {
     );
   }
 
+  void getLocation() async {
+    emit(const OtherState.loading());
+    final data = await iOther.getLocation();
+
+    data.fold(
+      (l) => emit(OtherState.errorState(l)),
+      (r) {},
+    );
+  }
+
   void getImageUrl(
     String appId,
     String docId,

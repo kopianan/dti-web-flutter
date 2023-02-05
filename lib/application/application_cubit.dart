@@ -17,6 +17,10 @@ part 'application_cubit.freezed.dart';
 @LazySingleton()
 class ApplicationCubit extends Cubit<ApplicationState> {
   ApplicationCubit() : super(ApplicationState.initial());
+  //clean first
+  void cleanAll() {
+    emit(ApplicationState.initial());
+  }
 
   void setupDocumentsMasterData(List<Map<String, dynamic>> list) {
     emit(state.copyWith(masterListData: list));
@@ -24,6 +28,7 @@ class ApplicationCubit extends Cubit<ApplicationState> {
 
   void setupApplication(VisaApplicationModel visa) {
     //SETUP DOCUMENTS
+    cleanAll();
     final docs = visa.documents!.split(',');
     var documentModel = Storage().loadDocument().toList();
 

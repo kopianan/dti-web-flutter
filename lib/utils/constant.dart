@@ -13,7 +13,7 @@ class Constant {
   }
 
   static List<CountryNationality> getCountries() {
-    final countries = <CountryNationality> [
+    final countries = <CountryNationality>[
       CountryNationality(name: 'Afghanistan', code: 'AF'),
       CountryNationality(name: 'Åland Islands', code: 'AX'),
       CountryNationality(name: 'Albania', code: 'AL'),

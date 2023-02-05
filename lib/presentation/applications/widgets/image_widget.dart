@@ -243,7 +243,7 @@ class _ShowPdfState extends State<ShowPdf> {
 //   String baseName,
 // ) async {
 //   Storage storage = Storage();
-//   final result = await Dio().post('${Env.baseUrl}/downloadURL',
+//   final result = await Dio().post('${dotenv.env['BASE_URL']}/downloadURL',
 //       data: {
 //         "appId": appId,
 //         "docId": documentId,

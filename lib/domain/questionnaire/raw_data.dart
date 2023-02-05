@@ -6,7 +6,7 @@ dynamic documentRaw = {
       "isSubmited": false,
       "body":
           "Visa Request Letter (Signed By Director/Commisionnaire/Leader) With Stamp",
-      "attachment": "/files/A1.docx",
+      "attachment": null,
       "numberOfDocs": 1,
       "header": "Visa Request Letter",
       "imageList": []

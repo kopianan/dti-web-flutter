@@ -1,12 +1,16 @@
+import 'dart:convert';
+
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:dio/dio.dart';
 import 'package:dti_web/core/storage.dart';
 import 'package:dartz/dartz.dart';
+import 'package:dti_web/domain/core/country_nationality.dart';
 import 'package:dti_web/domain/core/document_data_model.dart';
 import 'package:dti_web/domain/global/failures.dart';
 import 'package:dti_web/domain/other/i_other.dart';
 import 'package:dti_web/domain/questionnaire/questionnaire_data_model.dart';
-import 'package:dti_web/env/env.dart';
+
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: IOther)
@@ -19,7 +23,7 @@ class OtherRepository extends IOther {
     Dio dio = Dio();
     Storage storage = Storage();
     try {
-      final result = await dio.post('${Env.baseUrl}/downloadURL',
+      final result = await dio.post('${dotenv.env['BASE_URL']}/downloadURL',
           data: {
             "appId": applicationId,
             "docId": documentId,
@@ -41,10 +45,11 @@ class OtherRepository extends IOther {
     Dio dio = Dio();
     Storage storage = Storage();
     try {
-      final data = await dio.get('${Env.baseUrl}/master/questionnaire',
-          options: Options(
-            headers: {'Authorization': 'Bearer ${storage.getToken()}'},
-          ));
+      final data =
+          await dio.get('${dotenv.env['BASE_URL']}/master/questionnaire',
+              options: Options(
+                headers: {'Authorization': 'Bearer ${storage.getToken()}'},
+              ));
 
       if (data.data['data'] != null) {
         final rawData = data.data['data'];
@@ -128,7 +133,7 @@ class OtherRepository extends IOther {
       "codeOtp": code,
     };
     try {
-      var result = await dio.post(Env.baseUrl + '/verifyOTP',
+      var result = await dio.post('${dotenv.env['BASE_URL']}/verifyOTP',
           data: requst,
           options: Options(
             headers: {'Authorization': 'Bearer ${storage.getToken()}'},
@@ -154,7 +159,7 @@ class OtherRepository extends IOther {
     Dio dio = Dio();
     Storage storage = Storage();
     try {
-      final data = await dio.get('${Env.baseUrl}/master/application',
+      final data = await dio.get('${dotenv.env['BASE_URL']}/master/application',
           options: Options(
             headers: {'Authorization': 'Bearer ${storage.getToken()}'},
           ));
@@ -169,8 +174,49 @@ class OtherRepository extends IOther {
       }
       return Left(Failures.generalError("Something Wrong"));
     } on DioError catch (e) {
-      if (e.type ==
-       DioErrorType.response) {
+      if (e.type == DioErrorType.response) {
+        if (e.response!.statusCode! == 404) {
+          if (e.response!.data['error'] != null) {
+            return Left(Failures.generalError(e.response!.data['error']));
+          }
+          return Left(Failures.generalError("Something wrong"));
+        } else if (e.response?.statusCode! == 403) {
+          //authorization
+          return Left(Failures.apiExpired());
+        }
+      }
+      return Left(Failures.serverError());
+    }
+  }
+
+  @override
+  Future<Either<Failures, dynamic>> getLocation() async {
+    Dio dio = Dio();
+    Storage storage = Storage();
+    try {
+      final data = await dio.get('${dotenv.env['BASE_URL']}/master/location',
+          options: Options(
+            headers: {'Authorization': 'Bearer ${storage.getToken()}'},
+          ));
+
+      if (data.data['data'] != null) {
+        final _nationality =
+            data.data['data']['nationality'] as Map<String, dynamic>;
+        var _nationalityList = _nationality.entries.map((element) {
+          var _newNationality = CountryNationality(
+            code: element.key,
+            name: element.value,
+          );
+          return _newNationality;
+        }).toList();
+        Storage().setNationality(json.encode(_nationalityList));
+
+        print(_nationality.length);
+        return Right("");
+      }
+      return Left(Failures.generalError("Something Wrong"));
+    } on DioError catch (e) {
+      if (e.type == DioErrorType.response) {
         if (e.response!.statusCode! == 404) {
           if (e.response!.data['error'] != null) {
             return Left(Failures.generalError(e.response!.data['error']));

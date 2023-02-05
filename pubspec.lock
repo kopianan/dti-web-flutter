@@ -260,13 +260,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.6"
-  dotenv:
-    dependency: transitive
-    description:
-      name: dotenv
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.0.0"
   dropdown_search:
     dependency: "direct main"
     description:
@@ -391,6 +384,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.5.1"
+  flutter_dotenv:
+    dependency: "direct main"
+    description:
+      name: flutter_dotenv
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.0.2"
   flutter_easyloading:
     dependency: "direct main"
     description:
@@ -398,20 +398,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.5"
-  flutter_envify:
-    dependency: "direct main"
-    description:
-      name: flutter_envify
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.0.1"
-  flutter_envify_generator:
-    dependency: "direct dev"
-    description:
-      name: flutter_envify_generator
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.0.1"
   flutter_facebook_auth:
     dependency: "direct main"
     description:

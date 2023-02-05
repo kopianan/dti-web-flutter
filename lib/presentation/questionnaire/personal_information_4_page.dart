@@ -2,10 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:dti_web/application/application_cubit.dart';
 import 'package:dti_web/application/update_application/update_application_cubit.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
-import 'package:dti_web/domain/core/city.dart';
-import 'package:dti_web/domain/core/distict.dart';
-import 'package:dti_web/domain/core/province.dart';
-import 'package:dti_web/domain/questionnaire/questionnaire_model.dart';
 import 'package:dti_web/injection.dart';
 import 'package:dti_web/presentation/questionnaire/widget/custom_second_header.dart';
 import 'package:dti_web/routes/app_router.dart';
@@ -60,21 +56,13 @@ class _PersonalInformation4PageState extends State<PersonalInformation4Page> {
           return BlocBuilder<ApplicationCubit, ApplicationState>(
             builder: (context, state) {
               return Scaffold(
-                  body: Stack(children: [
-                Container(
-                    width: ScreenUtil().screenWidth,
-                    height: ScreenUtil().screenHeight,
-                    child: Image.asset(
-                      'assets/images/bg/bg_visa4.png',
-                      fit: BoxFit.cover,
-                    )),
+                  body: Row(children: [
                 Container(
                     width: ScreenUtil().screenWidth / 2.2,
                     padding:
                         REdgeInsets.symmetric(horizontal: 50.w, vertical: 20.h),
                     margin: EdgeInsets.symmetric(vertical: 40.h),
-                    decoration: BoxDecoration(
-                      color: Colors.white.withAlpha(250),
+                    decoration: const BoxDecoration(
                       borderRadius:
                           BorderRadius.horizontal(right: Radius.circular(10)),
                     ),
@@ -232,6 +220,14 @@ class _PersonalInformation4PageState extends State<PersonalInformation4Page> {
                                         ],
                                       )),
                                 ),
+                                Expanded(
+                                  child: Container(
+                                    margin: EdgeInsets.all(100.sp),
+                                    child: Image.asset(
+                                      'assets/images/bg/residential.webp',
+                                    ),
+                                  ),
+                                )
                               ],
                             )
                           ]),

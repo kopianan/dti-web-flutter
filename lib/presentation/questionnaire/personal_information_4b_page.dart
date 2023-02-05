@@ -57,255 +57,257 @@ class _PersonalInformation4bPageState extends State<PersonalInformation4bPage> {
           return BlocBuilder<ApplicationCubit, ApplicationState>(
             builder: (context, state) {
               return Scaffold(
-                  body: Stack(children: [
-                Container(
-                    width: ScreenUtil().screenWidth,
-                    height: ScreenUtil().screenHeight,
-                    child: Image.asset(
-                      'assets/images/bg/bg_visa4.png',
-                      fit: BoxFit.cover,
-                    )),
-                Container(
-                    width: ScreenUtil().screenWidth / 2.2,
-                    padding:
-                        REdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
-                    margin: EdgeInsets.symmetric(vertical: 40.h),
-                    decoration: BoxDecoration(
-                      color: Colors.white.withAlpha(250),
-                      borderRadius:
-                          BorderRadius.horizontal(right: Radius.circular(10)),
-                    ),
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          CustomSecondHeader(
-                            header: Center(
+                  body: Row(children: [
+                Expanded(
+                  child: Container(
+                      padding: REdgeInsets.symmetric(
+                          horizontal: 10.w, vertical: 20.h),
+                      margin: EdgeInsets.symmetric(vertical: 40.h),
+                      decoration: const BoxDecoration(
+                        borderRadius:
+                            BorderRadius.horizontal(right: Radius.circular(10)),
+                      ),
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            CustomSecondHeader(
+                              header: Center(
+                                child: Text(
+                                  '${state.visaApplicationModel?.title ?? ""} / ${state.visaApplicationModel?.subTitle ?? ""} / ${state.visaApplicationModel?.entry ?? ""}',
+                                  style: TextStyle(
+                                      fontSize: 18.sp,
+                                      color: AppColor.primaryColor,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 30),
                               child: Text(
-                                '${state.visaApplicationModel?.title ?? ""} / ${state.visaApplicationModel?.subTitle ?? ""} / ${state.visaApplicationModel?.entry ?? ""}',
+                                "Arrival Information",
                                 style: TextStyle(
-                                    fontSize: 18.sp,
+                                    fontSize: 30.sp,
                                     color: AppColor.primaryColor,
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 30),
-                            child: Text(
-                              "Arrival Information",
-                              style: TextStyle(
-                                  fontSize: 30.sp,
-                                  color: AppColor.primaryColor,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          Expanded(
-                            child: Stack(
-                              children: [
-                                SingleChildScrollView(
-                                  child: Container(
-                                    padding: REdgeInsets.symmetric(
-                                      horizontal: 30.w,
-                                      vertical: 20.h,
-                                    ),
-                                    child: FormBuilder(
-                                      key: _formKey,
-                                      onChanged: () => {},
-                                      initialValue: const {'textfield': ''},
-                                      skipDisabled: true,
-                                      child: Column(
-                                        children: [
-                                          Column(
-                                            children: [
-                                              FormBuilderDropdown(
-                                                name: 'ModeOfTransportation',
-                                                initialValue: state
-                                                    .visaApplicationModel!
-                                                    .modeOfTransportation,
-                                                validator: FormBuilderValidators
-                                                    .required(),
-                                                autovalidateMode:
-                                                    AutovalidateMode
-                                                        .onUserInteraction,
-                                                items: ["Air", "Sea", "Land"]
-                                                    .map(
-                                                      (transport) =>
-                                                          DropdownMenuItem(
-                                                        value: transport,
-                                                        child: Text(transport),
+                            Expanded(
+                              child: Stack(
+                                children: [
+                                  SingleChildScrollView(
+                                    child: Container(
+                                      padding: REdgeInsets.symmetric(
+                                        horizontal: 30.w,
+                                        vertical: 20.h,
+                                      ),
+                                      child: FormBuilder(
+                                        key: _formKey,
+                                        onChanged: () => {},
+                                        initialValue: const {'textfield': ''},
+                                        skipDisabled: true,
+                                        child: Column(
+                                          children: [
+                                            Column(
+                                              children: [
+                                                FormBuilderDropdown(
+                                                  name: 'ModeOfTransportation',
+                                                  initialValue: state
+                                                      .visaApplicationModel!
+                                                      .modeOfTransportation,
+                                                  validator:
+                                                      FormBuilderValidators
+                                                          .required(),
+                                                  autovalidateMode:
+                                                      AutovalidateMode
+                                                          .onUserInteraction,
+                                                  items: ["Air", "Sea", "Land"]
+                                                      .map(
+                                                        (transport) =>
+                                                            DropdownMenuItem(
+                                                          value: transport,
+                                                          child:
+                                                              Text(transport),
+                                                        ),
+                                                      )
+                                                      .toList(),
+                                                  decoration:
+                                                      const InputDecoration(
+                                                    labelText:
+                                                        "Mode Of Transportation",
+                                                    border: OutlineInputBorder(
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                        Radius.circular(10.0),
                                                       ),
-                                                    )
-                                                    .toList(),
-                                                decoration:
-                                                    const InputDecoration(
-                                                  labelText:
-                                                      "Mode Of Transportation",
-                                                  border: OutlineInputBorder(
-                                                    borderRadius:
-                                                        BorderRadius.all(
-                                                      Radius.circular(10.0),
                                                     ),
+                                                    filled: true,
+                                                    hintStyle: TextStyle(
+                                                        color: Colors.grey),
+                                                    hintText:
+                                                        "Mode Of Transportation",
+                                                    fillColor: Colors.white70,
                                                   ),
-                                                  filled: true,
-                                                  hintStyle: TextStyle(
-                                                      color: Colors.grey),
-                                                  hintText:
-                                                      "Mode Of Transportation",
-                                                  fillColor: Colors.white70,
                                                 ),
-                                              ),
-                                              const SizedBox(
-                                                height: 20,
-                                              ),
-                                              FormBuilderTextField(
-                                                name: 'FligtVesselNumber',
-                                                enableSuggestions: false,
-                                                autocorrect: false,
-                                                initialValue: state
-                                                    .visaApplicationModel!
-                                                    .flightNumber,
-                                                validator: FormBuilderValidators
-                                                    .required(),
-                                                autovalidateMode:
-                                                    AutovalidateMode
-                                                        .onUserInteraction,
-                                                enabled: true,
-                                                decoration:
-                                                    const InputDecoration(
-                                                  labelText:
-                                                      "Fligt / Vessel Number",
-                                                  border: OutlineInputBorder(
-                                                    borderRadius:
-                                                        BorderRadius.all(
-                                                      Radius.circular(10.0),
+                                                const SizedBox(
+                                                  height: 20,
+                                                ),
+                                                FormBuilderTextField(
+                                                  name: 'FligtVesselNumber',
+                                                  enableSuggestions: false,
+                                                  autocorrect: false,
+                                                  initialValue: state
+                                                      .visaApplicationModel!
+                                                      .flightNumber,
+                                                  validator:
+                                                      FormBuilderValidators
+                                                          .required(),
+                                                  autovalidateMode:
+                                                      AutovalidateMode
+                                                          .onUserInteraction,
+                                                  enabled: true,
+                                                  decoration:
+                                                      const InputDecoration(
+                                                    labelText:
+                                                        "Fligt / Vessel Number",
+                                                    border: OutlineInputBorder(
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                        Radius.circular(10.0),
+                                                      ),
                                                     ),
+                                                    filled: true,
+                                                    hintStyle: TextStyle(
+                                                      color: Colors.grey,
+                                                    ),
+                                                    hintText:
+                                                        "Fligt / Vessel Number",
+                                                    fillColor: Colors.white70,
                                                   ),
-                                                  filled: true,
-                                                  hintStyle: TextStyle(
-                                                    color: Colors.grey,
-                                                  ),
-                                                  hintText:
-                                                      "Fligt / Vessel Number",
-                                                  fillColor: Colors.white70,
                                                 ),
-                                              ),
-                                              const SizedBox(height: 20),
-                                              FormBuilderTextField(
-                                                onTap: () async {
-                                                  var initial = curretDate;
-                                                  if (state.visaApplicationModel
-                                                          ?.arrivalDate !=
-                                                      null) {
-                                                    try {
-                                                      initial = DateConverter
-                                                          .stringToDate(state
-                                                              .visaApplicationModel!
-                                                              .arrivalDate!);
-                                                    } on Exception catch (e) {
-                                                      initial = DateTime.parse(state
-                                                          .visaApplicationModel!
-                                                          .arrivalDate!);
-                                                    }
-                                                  }
-
-                                                  final nowDate =
-                                                      DateTime.now();
-                                                  final selectedDate =
-                                                      await showDatePicker(
-                                                          context: context,
-                                                          initialDate: initial,
-                                                          firstDate:
-                                                              DateTime(1800),
-                                                          builder:
-                                                              dateTimThemeChild,
-                                                          lastDate: DateTime(
-                                                              nowDate.year +
-                                                                  100000));
-                                                  if (selectedDate != null) {
-                                                    _formKey.currentState!
-                                                        .fields['arrivalDate']!
-                                                        .didChange(DateConverter
-                                                            .convertDateDefault2(
-                                                                selectedDate));
-                                                  }
-                                                },
-                                                readOnly: true,
-                                                initialValue: state
-                                                            .visaApplicationModel ==
-                                                        null
-                                                    ? ''
-                                                    : DateConverter
-                                                        .convertDateDefault(state
-                                                            .visaApplicationModel!
-                                                            .arrivalDate),
-                                                name: 'arrivalDate',
-                                                validator: FormBuilderValidators
-                                                    .compose(
-                                                  [
-                                                    (value) {
-                                                      if (value != "" &&
-                                                          value != null) {
-                                                        var x = DateFormat(
-                                                                "dd MMM yyyy")
-                                                            .parse(value);
-                                                        //maximum today
-                                                        if (x.isBefore(
-                                                            curretDate)) {
-                                                          return "Date of Birth cannot be smaller than today";
-                                                        }
+                                                const SizedBox(height: 20),
+                                                FormBuilderTextField(
+                                                  onTap: () async {
+                                                    var initial = curretDate;
+                                                    if (state
+                                                            .visaApplicationModel
+                                                            ?.arrivalDate !=
+                                                        null) {
+                                                      try {
+                                                        initial = DateConverter
+                                                            .stringToDate(state
+                                                                .visaApplicationModel!
+                                                                .arrivalDate!);
+                                                      } on Exception catch (e) {
+                                                        initial =
+                                                            DateTime.parse(state
+                                                                .visaApplicationModel!
+                                                                .arrivalDate!);
                                                       }
-                                                      return null;
-                                                    },
-                                                    FormBuilderValidators
-                                                        .required()
-                                                  ],
-                                                ),
-                                                autovalidateMode:
-                                                    AutovalidateMode
-                                                        .onUserInteraction,
-                                                decoration:
-                                                    const InputDecoration(
-                                                  labelText: "Arrival Date",
-                                                  prefixIcon:
-                                                      Icon(Icons.date_range),
-                                                  hintStyle: TextStyle(
-                                                      color: Colors.grey),
-                                                  hintText: "Arrival Date",
-                                                ),
-                                              ),
-                                              const SizedBox(height: 20),
-                                              //validate button
-                                              SizedBox(
-                                                  height: 45.h,
-                                                  width: double.infinity,
-                                                  child: PrimaryButton(
-                                                      labelStyle: TextStyle(
-                                                          fontSize: 15.sp),
-                                                      onClick: () async {
-                                                        await updateData(
-                                                            context);
+                                                    }
 
-                                                        context
-                                                            .read<
-                                                                UpdateApplicationCubit>()
-                                                            .updateVOAData(context
-                                                                .read<
-                                                                    ApplicationCubit>()
-                                                                .state
-                                                                .visaApplicationModel!);
+                                                    final nowDate =
+                                                        DateTime.now();
+                                                    final selectedDate =
+                                                        await showDatePicker(
+                                                            context: context,
+                                                            initialDate:
+                                                                initial,
+                                                            firstDate:
+                                                                DateTime(1800),
+                                                            builder:
+                                                                dateTimThemeChild,
+                                                            lastDate: DateTime(
+                                                                nowDate.year +
+                                                                    100000));
+                                                    if (selectedDate != null) {
+                                                      _formKey
+                                                          .currentState!
+                                                          .fields[
+                                                              'arrivalDate']!
+                                                          .didChange(DateConverter
+                                                              .convertDateDefault2(
+                                                                  selectedDate));
+                                                    }
+                                                  },
+                                                  readOnly: true,
+                                                  initialValue: state
+                                                              .visaApplicationModel ==
+                                                          null
+                                                      ? ''
+                                                      : DateConverter
+                                                          .convertDateDefault(state
+                                                              .visaApplicationModel!
+                                                              .arrivalDate),
+                                                  name: 'arrivalDate',
+                                                  validator:
+                                                      FormBuilderValidators
+                                                          .compose(
+                                                    [
+                                                      (value) {
+                                                        if (value != "" &&
+                                                            value != null) {
+                                                          var x = DateFormat(
+                                                                  "dd MMM yyyy")
+                                                              .parse(value);
+                                                          //maximum today
+                                                          if (x.isBefore(
+                                                              curretDate)) {
+                                                            return "Date of Birth cannot be smaller than today";
+                                                          }
+                                                        }
+                                                        return null;
                                                       },
-                                                      label: "Continue"))
-                                            ],
-                                          ),
-                                        ],
+                                                      FormBuilderValidators
+                                                          .required()
+                                                    ],
+                                                  ),
+                                                  autovalidateMode:
+                                                      AutovalidateMode
+                                                          .onUserInteraction,
+                                                  decoration:
+                                                      const InputDecoration(
+                                                    labelText: "Arrival Date",
+                                                    prefixIcon:
+                                                        Icon(Icons.date_range),
+                                                    hintStyle: TextStyle(
+                                                        color: Colors.grey),
+                                                    hintText: "Arrival Date",
+                                                  ),
+                                                ),
+                                                const SizedBox(height: 20),
+                                                //validate button
+                                                SizedBox(
+                                                    height: 45.h,
+                                                    width: double.infinity,
+                                                    child: PrimaryButton(
+                                                        labelStyle: TextStyle(
+                                                            fontSize: 15.sp),
+                                                        onClick: () async {
+                                                          await updateData(
+                                                              context);
+                                                        },
+                                                        label: "Continue"))
+                                              ],
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          )
-                        ]))
+                          ])),
+                ),
+                Expanded(
+                  child: Container(
+                    margin: EdgeInsets.all(100.sp),
+                    child: Image.asset(
+                      'assets/images/bg/residential.webp',
+                    ),
+                  ),
+                )
               ]));
             },
           );
@@ -323,6 +325,8 @@ class _PersonalInformation4bPageState extends State<PersonalInformation4bPage> {
             flightNumber: formData['FligtVesselNumber'],
             arrivalDate: formData['arrivalDate'],
           );
+      context.read<UpdateApplicationCubit>().updateVOAData(
+          context.read<ApplicationCubit>().state.visaApplicationModel!);
 //update data to cloud
     }
   }

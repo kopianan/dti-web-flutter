@@ -5,7 +5,8 @@ import 'package:dti_web/domain/auth/auth_response.dart';
 import 'package:dti_web/domain/auth/i_auth.dart';
 import 'package:dti_web/domain/auth/user_data.dart';
 import 'package:dti_web/domain/global/failures.dart';
-import 'package:dti_web/env/env.dart';
+
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
@@ -23,7 +24,7 @@ class AuthRepository extends IAuth {
     final storage = Storage();
     dio = Dio();
 
-    final result = await dio!.get("${Env.baseUrl}/user",
+    final result = await dio!.get("${dotenv.env['BASE_URL']}/user",
         options: Options(
           headers: {'Authorization': 'Bearer ${storage.getToken()}'},
         ));
@@ -46,6 +47,7 @@ class AuthRepository extends IAuth {
     await googleSignIn.disconnect();
 
     GoogleSignInAccount? googleUser;
+    
     try {
       googleUser = await googleSignIn.signIn();
     } on PlatformException catch (e) {
@@ -105,7 +107,7 @@ class AuthRepository extends IAuth {
     dio = Dio();
 
     try {
-      final result = await dio!.post(Env.baseUrl + "/login", data: {
+      final result = await dio!.post("${dotenv.env['BASE_URL']}/login", data: {
         'email': email,
         'password': password,
       });
@@ -140,7 +142,7 @@ class AuthRepository extends IAuth {
   }) async {
     dio = Dio();
     try {
-      final result = await dio!.post("${Env.baseUrl}/signUp", data: {
+      final result = await dio!.post("${dotenv.env['BASE_URL']}/signUp", data: {
         'email': email,
         'password': password,
         'confirmPassword': confirmPassword,
@@ -182,7 +184,8 @@ class AuthRepository extends IAuth {
       {required String email}) async {
     dio = Dio();
     try {
-      final result = await dio!.post("${Env.baseUrl}/resetPassword", data: {
+      final result =
+          await dio!.post("${dotenv.env['BASE_URL']}/resetPassword", data: {
         'email': email,
       });
       if (result.data['data']['message'] != null) {
