@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:dti_web/core/storage.dart';
@@ -13,6 +15,7 @@ import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
+import 'package:web_browser_detect/web_browser_detect.dart';
 
 @LazySingleton(as: IAuth)
 class AuthRepository extends IAuth {
@@ -41,13 +44,25 @@ class AuthRepository extends IAuth {
   @override
   Future<Either<Failures, AuthResponse>> loginWithGoogle() async {
     //Trigger Authentication Flow
-    GoogleSignIn googleSignIn = GoogleSignIn();
+    var googleSignIn = GoogleSignIn(
+      scopes: <String>[
+        'email',
+        'https://www.googleapis.com/auth/contacts.readonly',
+      ],
+    );
+
     FirebaseAuth firebaseAuth = FirebaseAuth.instance;
     bool isNewUser = false;
     await googleSignIn.disconnect();
 
     GoogleSignInAccount? googleUser;
-    
+    final browser = Browser.detectOrNull();
+    if (browser?.browser == BrowserAgent.Safari.name) {
+      log(browser.toString());
+      // await googleSignIn.signInSilently();
+      // await googleSignIn.signIn();
+    }
+    log(browser.toString());
     try {
       googleUser = await googleSignIn.signIn();
     } on PlatformException catch (e) {

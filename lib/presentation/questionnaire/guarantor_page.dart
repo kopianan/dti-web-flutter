@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:dti_web/application/application_cubit.dart';
 import 'package:dti_web/application/update_application/update_application_cubit.dart';
@@ -47,120 +49,111 @@ class _GuarantorPageState extends State<GuarantorPage> {
           },
         );
       },
-      child: BlocListener<ApplicationCubit, ApplicationState>(
-        listener: (context, state) {
-          context
-              .read<UpdateApplicationCubit>()
-              .updateGuaranotr(state.visaApplicationModel!);
-        },
-        child: BlocBuilder<UpdateApplicationCubit, UpdateApplicationState>(
-          builder: (context, upState) {
-            return BlocBuilder<ApplicationCubit, ApplicationState>(
-              builder: (context, state) {
-                return Scaffold(
-                    body: Row(
-                  children: [
-                    Expanded(
-                      child: Container(
-                        height: ScreenUtil().screenHeight,
-                        padding: REdgeInsets.symmetric(
-                            vertical: 10.h, horizontal: 10.w),
-                        margin: EdgeInsets.symmetric(vertical: 40.h),
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.horizontal(
-                              right: Radius.circular(10)),
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            CustomSecondHeader(
-                              header: Center(
-                                child: Text(
-                                  '${state.visaApplicationModel?.title ?? ""} / ${state.visaApplicationModel?.subTitle ?? ""} / ${state.visaApplicationModel?.entry ?? ""}',
-                                  style: TextStyle(
-                                      fontSize: 18.sp,
-                                      color: AppColor.primaryColor,
-                                      fontWeight: FontWeight.bold),
-                                ),
+      child: BlocBuilder<UpdateApplicationCubit, UpdateApplicationState>(
+        builder: (context, upState) {
+          return BlocBuilder<ApplicationCubit, ApplicationState>(
+            builder: (context, state) {
+              return Scaffold(
+                  body: Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: ScreenUtil().screenHeight,
+                      padding: REdgeInsets.symmetric(
+                          vertical: 10.h, horizontal: 10.w),
+                      margin: EdgeInsets.symmetric(vertical: 40.h),
+                      decoration: const BoxDecoration(
+                        borderRadius:
+                            BorderRadius.horizontal(right: Radius.circular(10)),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          CustomSecondHeader(
+                            header: Center(
+                              child: Text(
+                                '${state.visaApplicationModel?.title ?? ""} / ${state.visaApplicationModel?.subTitle ?? ""} / ${state.visaApplicationModel?.entry ?? ""}',
+                                style: TextStyle(
+                                    fontSize: 18.sp,
+                                    color: AppColor.primaryColor,
+                                    fontWeight: FontWeight.bold),
                               ),
                             ),
-                            Expanded(
-                              child: Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 50.w, vertical: 20.h),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "THE GUARANTOR ? ",
-                                      style: TextStyle(
-                                          fontSize: 30.sp,
-                                          color: AppColor.primaryColor,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    20.verticalSpace,
-                                    Expanded(
-                                        child: Column(
-                                      children: [
-                                        QuestionnaireCard(
-                                            onTap: () {
-                                              context
-                                                  .read<ApplicationCubit>()
-                                                  .updateGuarantor(true);
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 50.w, vertical: 20.h),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "THE GUARANTOR ? ",
+                                    style: TextStyle(
+                                        fontSize: 30.sp,
+                                        color: AppColor.primaryColor,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  20.verticalSpace,
+                                  Expanded(
+                                      child: Column(
+                                    children: [
+                                      QuestionnaireCard(
+                                          onTap: () {
+                                            context
+                                                .read<ApplicationCubit>()
+                                                .updateGuarantor(true);
 
-                                              context
-                                                  .read<
-                                                      UpdateApplicationCubit>()
-                                                  .updateGuaranotr(state
-                                                      .visaApplicationModel!
-                                                      .copyWith(
-                                                          guarantorDTI: true));
-                                            },
-                                            body:
-                                                "I affirm and attest that I meet the Moral Character requirements for sponsorship as required by Door To Indonesia in the country of Republic of Indonesia.",
-                                            footer: "",
-                                            header: "Door To Indonesia"),
-                                        QuestionnaireCard(
-                                            onTap: () {
-                                              context
-                                                  .read<ApplicationCubit>()
-                                                  .updateGuarantor(false);
-                                              context
-                                                  .read<
-                                                      UpdateApplicationCubit>()
-                                                  .updateGuaranotr(state
-                                                      .visaApplicationModel!
-                                                      .copyWith(
-                                                          guarantorDTI: false));
-                                            },
-                                            body:
-                                                "I have my personal guarantor. Door To Indonesia will help to apply my Visa Application to the head of the Indonesia embassy / consulate.",
-                                            footer: "",
-                                            header: "Non Door To Indonesia"),
-                                      ],
-                                    ))
-                                  ],
-                                ),
+                                            context
+                                                .read<UpdateApplicationCubit>()
+                                                .updateGuaranotr(state
+                                                    .visaApplicationModel!
+                                                    .copyWith(
+                                                        guarantorDTI: true));
+                                          },
+                                          body:
+                                              "I affirm and attest that I meet the Moral Character requirements for sponsorship as required by Door To Indonesia in the country of Republic of Indonesia.",
+                                          footer: "",
+                                          header: "Door To Indonesia"),
+                                      QuestionnaireCard(
+                                          onTap: () {
+                                            context
+                                                .read<ApplicationCubit>()
+                                                .updateGuarantor(false);
+                                            context
+                                                .read<UpdateApplicationCubit>()
+                                                .updateGuaranotr(state
+                                                    .visaApplicationModel!
+                                                    .copyWith(
+                                                        guarantorDTI: false));
+                                          },
+                                          body:
+                                              "I have my personal guarantor. Door To Indonesia will help to apply my Visa Application to the head of the Indonesia embassy / consulate.",
+                                          footer: "",
+                                          header: "Non Door To Indonesia"),
+                                    ],
+                                  ))
+                                ],
                               ),
-                            )
-                          ],
-                        ),
+                            ),
+                          )
+                        ],
                       ),
                     ),
-                    Expanded(
-                      child: Container(
-                        margin: EdgeInsets.all(100.sp),
-                        child: Image.asset(
-                          'assets/images/bg/guarantor.webp',
-                        ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      margin: EdgeInsets.all(100.sp),
+                      child: Image.asset(
+                        'assets/images/bg/guarantor.webp',
                       ),
-                    )
-                  ],
-                ));
-              },
-            );
-          },
-        ),
+                    ),
+                  )
+                ],
+              ));
+            },
+          );
+        },
       ),
     );
   }

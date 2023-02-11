@@ -73,7 +73,8 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                   .read<ApplicationCubit>()
                   .setupApplication(e.singleResponse.visaApplicationModel!);
               context.read<ApplicationCubit>().setupDocumentsMasterData(
-                  e.singleResponse.documentUserApplicationUrl!);
+                    e.singleResponse.documentUserApplicationUrl!,
+                  );
             },
           );
         }, builder: (context, updateState) {

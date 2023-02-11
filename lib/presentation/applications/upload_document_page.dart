@@ -1,6 +1,7 @@
 import 'package:dti_web/application/application_cubit.dart';
 import 'package:dti_web/application/document/document_cubit.dart';
 import 'package:dti_web/application/other/other_cubit.dart';
+import 'package:dti_web/application/update_application/update_application_cubit.dart';
 import 'package:dti_web/injection.dart';
 import 'package:dti_web/presentation/applications/widgets/document_left_side.dart';
 import 'package:dti_web/presentation/applications/widgets/document_right_side.dart';
@@ -47,99 +48,131 @@ class _UploadDocumentPageState extends State<UploadDocumentPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocProvider(
-        create: (context) => getIt<OtherCubit>(),
+      body: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => getIt<OtherCubit>(),
+          ),
+          BlocProvider(
+            create: (context) => getIt<UpdateApplicationCubit>()
+              ..getUserApplicationWithImages(getIt<ApplicationCubit>()
+                  .state
+                  .visaApplicationModel!
+                  .firebaseDocId!),
+          ),
+        ],
         child: BlocConsumer<ApplicationCubit, ApplicationState>(
           listener: (context, state) {},
           builder: (context, state) {
-            return BlocConsumer<OtherCubit, OtherState>(
-              listener: (context, otherState) {
-                otherState.maybeMap(
+            return BlocListener<UpdateApplicationCubit, UpdateApplicationState>(
+              listener: (context, updateAppState) {
+                updateAppState.maybeMap(
+                  onLoading: (e) {
+                    EasyLoading.show();
+                  },
                   orElse: () {
                     EasyLoading.dismiss();
                   },
-                  loading: (e) {
-                    EasyLoading.show(maskType: EasyLoadingMaskType.black);
-                  },
-                  getAllDocumentData: (e) {
-                    context
-                        .read<DocumentCubit>()
-                        .setupApplication(state.visaApplicationModel!);
+                  onGetSingleApplicationWithImage: (value) {
                     EasyLoading.dismiss();
+                    context.read<ApplicationCubit>().setupApplication(
+                        value.singleResponse.visaApplicationModel!);
+                    context.read<ApplicationCubit>().setupDocumentsMasterData(
+                          value.singleResponse.documentUserApplicationUrl!,
+                        );
                   },
                 );
               },
-              builder: (context, state) {
-                return BlocBuilder<DocumentCubit, DocumentState>(
-                  builder: (context, docState) {
-                    return Row(
-                      children: [
-                        Expanded(
-                            flex: 2,
-                            child: SingleChildScrollView(
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 15),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const CustomSecondHeader(),
-                                    Text(
-                                      docState.visa?.title ?? "",
-                                      style: TextStyle(
-                                          fontSize: 30.sp,
-                                          color: AppColor.primaryColor,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Text(
-                                      docState.visa?.subTitle ?? "",
-                                      maxLines: 1,
-                                      style: TextStyle(
-                                          fontSize: 25.sp,
-                                          color: AppColor.primaryColor,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    30.verticalSpace,
-                                    LeftSide(
-                                        documentCubit: getIt<DocumentCubit>())
-                                  ],
-                                ),
-                              ),
-                            )),
-                        Expanded(
-                          flex: 3,
-                          child: Stack(
-                            children: [
-                              Container(
-                                child: Image.asset(
-                                  'assets/images/bg/bg_upload.png',
-                                  fit: BoxFit.cover,
-                                  width: ScreenUtil().screenWidth,
-                                ),
-                              ),
-                              Positioned(
-                                right: 100.w,
-                                left: 100.w,
-                                top: 20,
-                                bottom: 20,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: Colors.white,
+              child: BlocConsumer<OtherCubit, OtherState>(
+                listener: (context, otherState) {
+                  otherState.maybeMap(
+                    orElse: () {
+                      EasyLoading.dismiss();
+                    },
+                    loading: (e) {
+                      EasyLoading.show(maskType: EasyLoadingMaskType.black);
+                    },
+                    getAllDocumentData: (e) {
+                      context
+                          .read<DocumentCubit>()
+                          .setupApplication(state.visaApplicationModel!);
+                      EasyLoading.dismiss();
+                    },
+                  );
+                },
+                builder: (context, state) {
+                  return BlocBuilder<DocumentCubit, DocumentState>(
+                    builder: (context, docState) {
+                      return Row(
+                        children: [
+                          Expanded(
+                              flex: 2,
+                              child: SingleChildScrollView(
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 15),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const CustomSecondHeader(),
+                                      Text(
+                                        docState.visa?.title ?? "",
+                                        style: TextStyle(
+                                            fontSize: 30.sp,
+                                            color: AppColor.primaryColor,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      Text(
+                                        docState.visa?.subTitle ?? "",
+                                        maxLines: 1,
+                                        style: TextStyle(
+                                            fontSize: 25.sp,
+                                            color: AppColor.primaryColor,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      30.verticalSpace,
+                                      LeftSide(
+                                          documentCubit: getIt<DocumentCubit>())
+                                    ],
                                   ),
-                                  // padding: EdgeInsets.symmetric(horizontal: 30.w),
-                                  child: RighSide(
-                                      documentCubit: getIt<DocumentCubit>()),
                                 ),
-                              )
-                            ],
+                              )),
+                          Expanded(
+                            flex: 3,
+                            child: Stack(
+                              children: [
+                                Container(
+                                  child: Image.asset(
+                                    'assets/images/bg/bg_upload.png',
+                                    fit: BoxFit.cover,
+                                    width: ScreenUtil().screenWidth,
+                                  ),
+                                ),
+                                Positioned(
+                                  right: 100.w,
+                                  left: 100.w,
+                                  top: 20,
+                                  bottom: 20,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.white,
+                                    ),
+                                    // padding: EdgeInsets.symmetric(horizontal: 30.w),
+                                    child: RighSide(
+                                        documentCubit: getIt<DocumentCubit>()),
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
-                    );
-                  },
-                );
-              },
+                        ],
+                      );
+                    },
+                  );
+                },
+              ),
             );
           },
         ),

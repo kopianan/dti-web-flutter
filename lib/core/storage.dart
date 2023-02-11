@@ -9,8 +9,26 @@ class Storage {
   String TOKEN = 'token-data';
   String DOCUMENTS = 'document-list-data';
   String USER = 'user-data';
+  String BROWSER = 'browser';
   String NATIONALITY = 'nationality';
   final box = GetStorage();
+
+  Future fillBrowser() async {
+    await box.write(BROWSER, "true");
+  }
+
+  bool getBrowser() {
+    final data = box.read(BROWSER);
+    if (data == null) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  removeBrowser() async {
+    await box.remove(BROWSER);
+  }
 
   Future<void> saveToken(String token) async {
     await box.write(TOKEN, token);

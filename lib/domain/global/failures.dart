@@ -10,4 +10,5 @@ class Failures with _$Failures {
   factory Failures.noData(String err) = _NoData;
   factory Failures.timeOut(String err) = _TimeOut;
   factory Failures.authError(String message) = _AuthError;
+  factory Failures.browserIsSafari() = _BrowserIsSafari;
 }

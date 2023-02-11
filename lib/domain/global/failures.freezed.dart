@@ -24,6 +24,7 @@ mixin _$Failures {
     required TResult Function(String err) noData,
     required TResult Function(String err) timeOut,
     required TResult Function(String message) authError,
+    required TResult Function() browserIsSafari,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,6 +35,7 @@ mixin _$Failures {
     TResult Function(String err)? noData,
     TResult Function(String err)? timeOut,
     TResult Function(String message)? authError,
+    TResult Function()? browserIsSafari,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,6 +46,7 @@ mixin _$Failures {
     TResult Function(String err)? noData,
     TResult Function(String err)? timeOut,
     TResult Function(String message)? authError,
+    TResult Function()? browserIsSafari,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -55,6 +58,7 @@ mixin _$Failures {
     required TResult Function(_NoData value) noData,
     required TResult Function(_TimeOut value) timeOut,
     required TResult Function(_AuthError value) authError,
+    required TResult Function(_BrowserIsSafari value) browserIsSafari,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +69,7 @@ mixin _$Failures {
     TResult Function(_NoData value)? noData,
     TResult Function(_TimeOut value)? timeOut,
     TResult Function(_AuthError value)? authError,
+    TResult Function(_BrowserIsSafari value)? browserIsSafari,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,6 +80,7 @@ mixin _$Failures {
     TResult Function(_NoData value)? noData,
     TResult Function(_TimeOut value)? timeOut,
     TResult Function(_AuthError value)? authError,
+    TResult Function(_BrowserIsSafari value)? browserIsSafari,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -141,6 +147,7 @@ class _$_ServerError implements _ServerError {
     required TResult Function(String err) noData,
     required TResult Function(String err) timeOut,
     required TResult Function(String message) authError,
+    required TResult Function() browserIsSafari,
   }) {
     return serverError();
   }
@@ -154,6 +161,7 @@ class _$_ServerError implements _ServerError {
     TResult Function(String err)? noData,
     TResult Function(String err)? timeOut,
     TResult Function(String message)? authError,
+    TResult Function()? browserIsSafari,
   }) {
     return serverError?.call();
   }
@@ -167,6 +175,7 @@ class _$_ServerError implements _ServerError {
     TResult Function(String err)? noData,
     TResult Function(String err)? timeOut,
     TResult Function(String message)? authError,
+    TResult Function()? browserIsSafari,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -184,6 +193,7 @@ class _$_ServerError implements _ServerError {
     required TResult Function(_NoData value) noData,
     required TResult Function(_TimeOut value) timeOut,
     required TResult Function(_AuthError value) authError,
+    required TResult Function(_BrowserIsSafari value) browserIsSafari,
   }) {
     return serverError(this);
   }
@@ -197,6 +207,7 @@ class _$_ServerError implements _ServerError {
     TResult Function(_NoData value)? noData,
     TResult Function(_TimeOut value)? timeOut,
     TResult Function(_AuthError value)? authError,
+    TResult Function(_BrowserIsSafari value)? browserIsSafari,
   }) {
     return serverError?.call(this);
   }
@@ -210,6 +221,7 @@ class _$_ServerError implements _ServerError {
     TResult Function(_NoData value)? noData,
     TResult Function(_TimeOut value)? timeOut,
     TResult Function(_AuthError value)? authError,
+    TResult Function(_BrowserIsSafari value)? browserIsSafari,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -269,6 +281,7 @@ class _$_ApiExpired implements _ApiExpired {
     required TResult Function(String err) noData,
     required TResult Function(String err) timeOut,
     required TResult Function(String message) authError,
+    required TResult Function() browserIsSafari,
   }) {
     return apiExpired();
   }
@@ -282,6 +295,7 @@ class _$_ApiExpired implements _ApiExpired {
     TResult Function(String err)? noData,
     TResult Function(String err)? timeOut,
     TResult Function(String message)? authError,
+    TResult Function()? browserIsSafari,
   }) {
     return apiExpired?.call();
   }
@@ -295,6 +309,7 @@ class _$_ApiExpired implements _ApiExpired {
     TResult Function(String err)? noData,
     TResult Function(String err)? timeOut,
     TResult Function(String message)? authError,
+    TResult Function()? browserIsSafari,
     required TResult orElse(),
   }) {
     if (apiExpired != null) {
@@ -312,6 +327,7 @@ class _$_ApiExpired implements _ApiExpired {
     required TResult Function(_NoData value) noData,
     required TResult Function(_TimeOut value) timeOut,
     required TResult Function(_AuthError value) authError,
+    required TResult Function(_BrowserIsSafari value) browserIsSafari,
   }) {
     return apiExpired(this);
   }
@@ -325,6 +341,7 @@ class _$_ApiExpired implements _ApiExpired {
     TResult Function(_NoData value)? noData,
     TResult Function(_TimeOut value)? timeOut,
     TResult Function(_AuthError value)? authError,
+    TResult Function(_BrowserIsSafari value)? browserIsSafari,
   }) {
     return apiExpired?.call(this);
   }
@@ -338,6 +355,7 @@ class _$_ApiExpired implements _ApiExpired {
     TResult Function(_NoData value)? noData,
     TResult Function(_TimeOut value)? timeOut,
     TResult Function(_AuthError value)? authError,
+    TResult Function(_BrowserIsSafari value)? browserIsSafari,
     required TResult orElse(),
   }) {
     if (apiExpired != null) {
@@ -421,6 +439,7 @@ class _$_GeneralError implements _GeneralError {
     required TResult Function(String err) noData,
     required TResult Function(String err) timeOut,
     required TResult Function(String message) authError,
+    required TResult Function() browserIsSafari,
   }) {
     return generalError(err);
   }
@@ -434,6 +453,7 @@ class _$_GeneralError implements _GeneralError {
     TResult Function(String err)? noData,
     TResult Function(String err)? timeOut,
     TResult Function(String message)? authError,
+    TResult Function()? browserIsSafari,
   }) {
     return generalError?.call(err);
   }
@@ -447,6 +467,7 @@ class _$_GeneralError implements _GeneralError {
     TResult Function(String err)? noData,
     TResult Function(String err)? timeOut,
     TResult Function(String message)? authError,
+    TResult Function()? browserIsSafari,
     required TResult orElse(),
   }) {
     if (generalError != null) {
@@ -464,6 +485,7 @@ class _$_GeneralError implements _GeneralError {
     required TResult Function(_NoData value) noData,
     required TResult Function(_TimeOut value) timeOut,
     required TResult Function(_AuthError value) authError,
+    required TResult Function(_BrowserIsSafari value) browserIsSafari,
   }) {
     return generalError(this);
   }
@@ -477,6 +499,7 @@ class _$_GeneralError implements _GeneralError {
     TResult Function(_NoData value)? noData,
     TResult Function(_TimeOut value)? timeOut,
     TResult Function(_AuthError value)? authError,
+    TResult Function(_BrowserIsSafari value)? browserIsSafari,
   }) {
     return generalError?.call(this);
   }
@@ -490,6 +513,7 @@ class _$_GeneralError implements _GeneralError {
     TResult Function(_NoData value)? noData,
     TResult Function(_TimeOut value)? timeOut,
     TResult Function(_AuthError value)? authError,
+    TResult Function(_BrowserIsSafari value)? browserIsSafari,
     required TResult orElse(),
   }) {
     if (generalError != null) {
@@ -576,6 +600,7 @@ class _$_NoData implements _NoData {
     required TResult Function(String err) noData,
     required TResult Function(String err) timeOut,
     required TResult Function(String message) authError,
+    required TResult Function() browserIsSafari,
   }) {
     return noData(err);
   }
@@ -589,6 +614,7 @@ class _$_NoData implements _NoData {
     TResult Function(String err)? noData,
     TResult Function(String err)? timeOut,
     TResult Function(String message)? authError,
+    TResult Function()? browserIsSafari,
   }) {
     return noData?.call(err);
   }
@@ -602,6 +628,7 @@ class _$_NoData implements _NoData {
     TResult Function(String err)? noData,
     TResult Function(String err)? timeOut,
     TResult Function(String message)? authError,
+    TResult Function()? browserIsSafari,
     required TResult orElse(),
   }) {
     if (noData != null) {
@@ -619,6 +646,7 @@ class _$_NoData implements _NoData {
     required TResult Function(_NoData value) noData,
     required TResult Function(_TimeOut value) timeOut,
     required TResult Function(_AuthError value) authError,
+    required TResult Function(_BrowserIsSafari value) browserIsSafari,
   }) {
     return noData(this);
   }
@@ -632,6 +660,7 @@ class _$_NoData implements _NoData {
     TResult Function(_NoData value)? noData,
     TResult Function(_TimeOut value)? timeOut,
     TResult Function(_AuthError value)? authError,
+    TResult Function(_BrowserIsSafari value)? browserIsSafari,
   }) {
     return noData?.call(this);
   }
@@ -645,6 +674,7 @@ class _$_NoData implements _NoData {
     TResult Function(_NoData value)? noData,
     TResult Function(_TimeOut value)? timeOut,
     TResult Function(_AuthError value)? authError,
+    TResult Function(_BrowserIsSafari value)? browserIsSafari,
     required TResult orElse(),
   }) {
     if (noData != null) {
@@ -732,6 +762,7 @@ class _$_TimeOut implements _TimeOut {
     required TResult Function(String err) noData,
     required TResult Function(String err) timeOut,
     required TResult Function(String message) authError,
+    required TResult Function() browserIsSafari,
   }) {
     return timeOut(err);
   }
@@ -745,6 +776,7 @@ class _$_TimeOut implements _TimeOut {
     TResult Function(String err)? noData,
     TResult Function(String err)? timeOut,
     TResult Function(String message)? authError,
+    TResult Function()? browserIsSafari,
   }) {
     return timeOut?.call(err);
   }
@@ -758,6 +790,7 @@ class _$_TimeOut implements _TimeOut {
     TResult Function(String err)? noData,
     TResult Function(String err)? timeOut,
     TResult Function(String message)? authError,
+    TResult Function()? browserIsSafari,
     required TResult orElse(),
   }) {
     if (timeOut != null) {
@@ -775,6 +808,7 @@ class _$_TimeOut implements _TimeOut {
     required TResult Function(_NoData value) noData,
     required TResult Function(_TimeOut value) timeOut,
     required TResult Function(_AuthError value) authError,
+    required TResult Function(_BrowserIsSafari value) browserIsSafari,
   }) {
     return timeOut(this);
   }
@@ -788,6 +822,7 @@ class _$_TimeOut implements _TimeOut {
     TResult Function(_NoData value)? noData,
     TResult Function(_TimeOut value)? timeOut,
     TResult Function(_AuthError value)? authError,
+    TResult Function(_BrowserIsSafari value)? browserIsSafari,
   }) {
     return timeOut?.call(this);
   }
@@ -801,6 +836,7 @@ class _$_TimeOut implements _TimeOut {
     TResult Function(_NoData value)? noData,
     TResult Function(_TimeOut value)? timeOut,
     TResult Function(_AuthError value)? authError,
+    TResult Function(_BrowserIsSafari value)? browserIsSafari,
     required TResult orElse(),
   }) {
     if (timeOut != null) {
@@ -889,6 +925,7 @@ class _$_AuthError implements _AuthError {
     required TResult Function(String err) noData,
     required TResult Function(String err) timeOut,
     required TResult Function(String message) authError,
+    required TResult Function() browserIsSafari,
   }) {
     return authError(message);
   }
@@ -902,6 +939,7 @@ class _$_AuthError implements _AuthError {
     TResult Function(String err)? noData,
     TResult Function(String err)? timeOut,
     TResult Function(String message)? authError,
+    TResult Function()? browserIsSafari,
   }) {
     return authError?.call(message);
   }
@@ -915,6 +953,7 @@ class _$_AuthError implements _AuthError {
     TResult Function(String err)? noData,
     TResult Function(String err)? timeOut,
     TResult Function(String message)? authError,
+    TResult Function()? browserIsSafari,
     required TResult orElse(),
   }) {
     if (authError != null) {
@@ -932,6 +971,7 @@ class _$_AuthError implements _AuthError {
     required TResult Function(_NoData value) noData,
     required TResult Function(_TimeOut value) timeOut,
     required TResult Function(_AuthError value) authError,
+    required TResult Function(_BrowserIsSafari value) browserIsSafari,
   }) {
     return authError(this);
   }
@@ -945,6 +985,7 @@ class _$_AuthError implements _AuthError {
     TResult Function(_NoData value)? noData,
     TResult Function(_TimeOut value)? timeOut,
     TResult Function(_AuthError value)? authError,
+    TResult Function(_BrowserIsSafari value)? browserIsSafari,
   }) {
     return authError?.call(this);
   }
@@ -958,6 +999,7 @@ class _$_AuthError implements _AuthError {
     TResult Function(_NoData value)? noData,
     TResult Function(_TimeOut value)? timeOut,
     TResult Function(_AuthError value)? authError,
+    TResult Function(_BrowserIsSafari value)? browserIsSafari,
     required TResult orElse(),
   }) {
     if (authError != null) {
@@ -974,4 +1016,139 @@ abstract class _AuthError implements Failures {
   @JsonKey(ignore: true)
   _$$_AuthErrorCopyWith<_$_AuthError> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_BrowserIsSafariCopyWith<$Res> {
+  factory _$$_BrowserIsSafariCopyWith(
+          _$_BrowserIsSafari value, $Res Function(_$_BrowserIsSafari) then) =
+      __$$_BrowserIsSafariCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_BrowserIsSafariCopyWithImpl<$Res>
+    extends _$FailuresCopyWithImpl<$Res>
+    implements _$$_BrowserIsSafariCopyWith<$Res> {
+  __$$_BrowserIsSafariCopyWithImpl(
+      _$_BrowserIsSafari _value, $Res Function(_$_BrowserIsSafari) _then)
+      : super(_value, (v) => _then(v as _$_BrowserIsSafari));
+
+  @override
+  _$_BrowserIsSafari get _value => super._value as _$_BrowserIsSafari;
+}
+
+/// @nodoc
+
+class _$_BrowserIsSafari implements _BrowserIsSafari {
+  _$_BrowserIsSafari();
+
+  @override
+  String toString() {
+    return 'Failures.browserIsSafari()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_BrowserIsSafari);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() serverError,
+    required TResult Function() apiExpired,
+    required TResult Function(String err) generalError,
+    required TResult Function(String err) noData,
+    required TResult Function(String err) timeOut,
+    required TResult Function(String message) authError,
+    required TResult Function() browserIsSafari,
+  }) {
+    return browserIsSafari();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function()? apiExpired,
+    TResult Function(String err)? generalError,
+    TResult Function(String err)? noData,
+    TResult Function(String err)? timeOut,
+    TResult Function(String message)? authError,
+    TResult Function()? browserIsSafari,
+  }) {
+    return browserIsSafari?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function()? apiExpired,
+    TResult Function(String err)? generalError,
+    TResult Function(String err)? noData,
+    TResult Function(String err)? timeOut,
+    TResult Function(String message)? authError,
+    TResult Function()? browserIsSafari,
+    required TResult orElse(),
+  }) {
+    if (browserIsSafari != null) {
+      return browserIsSafari();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ServerError value) serverError,
+    required TResult Function(_ApiExpired value) apiExpired,
+    required TResult Function(_GeneralError value) generalError,
+    required TResult Function(_NoData value) noData,
+    required TResult Function(_TimeOut value) timeOut,
+    required TResult Function(_AuthError value) authError,
+    required TResult Function(_BrowserIsSafari value) browserIsSafari,
+  }) {
+    return browserIsSafari(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_ApiExpired value)? apiExpired,
+    TResult Function(_GeneralError value)? generalError,
+    TResult Function(_NoData value)? noData,
+    TResult Function(_TimeOut value)? timeOut,
+    TResult Function(_AuthError value)? authError,
+    TResult Function(_BrowserIsSafari value)? browserIsSafari,
+  }) {
+    return browserIsSafari?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_ApiExpired value)? apiExpired,
+    TResult Function(_GeneralError value)? generalError,
+    TResult Function(_NoData value)? noData,
+    TResult Function(_TimeOut value)? timeOut,
+    TResult Function(_AuthError value)? authError,
+    TResult Function(_BrowserIsSafari value)? browserIsSafari,
+    required TResult orElse(),
+  }) {
+    if (browserIsSafari != null) {
+      return browserIsSafari(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _BrowserIsSafari implements Failures {
+  factory _BrowserIsSafari() = _$_BrowserIsSafari;
 }

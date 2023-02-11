@@ -76,6 +76,7 @@ dependencies:
   syncfusion_flutter_signaturepad: ^20.3.56
   toggle_switch: ^2.0.1
   url_launcher: ^6.1.6
+  web_browser_detect: ^2.0.3
 
 dev_dependencies:
   auto_route_generator: ^5.0.2

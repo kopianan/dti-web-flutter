@@ -6,6 +6,7 @@ import 'package:dti_web/domain/auth/i_auth.dart';
 import 'package:dti_web/domain/auth/user_data.dart';
 import 'package:dti_web/domain/global/failures.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 
@@ -18,17 +19,21 @@ class AuthCubit extends Cubit<AuthState> {
   final IAuth iAuth;
 
   final Storage storage = Storage();
+  void clean() {
+    emit(AuthState.initial());
+  }
 
   void signOut() async {
     emit(const AuthState.loading());
 
     await storage.deleteStorage();
-
+    storage.removeBrowser();
     emit(const AuthState.onSignOut());
   }
 
   void checkSession() async {
     emit(const AuthState.loading());
+
     await Future.delayed(const Duration(seconds: 0));
     final token = storage.getToken();
 
@@ -77,7 +82,6 @@ class AuthCubit extends Cubit<AuthState> {
 
   void loginUsingGoogle() async {
     emit(AuthState.loading());
-
     final result = await iAuth.loginWithGoogle();
 
     //SAVE DATA TO LOCALE

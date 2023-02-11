@@ -4,6 +4,7 @@ import 'package:dti_web/injection.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class SplashScreenPage extends StatefulWidget {
   const SplashScreenPage({super.key});
@@ -13,6 +14,11 @@ class SplashScreenPage extends StatefulWidget {
 }
 
 class _SplashScreenPageState extends State<SplashScreenPage> {
+  @override
+  void initState() { 
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
