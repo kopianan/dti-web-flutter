@@ -24,6 +24,7 @@ mixin _$OtherState {
     required TResult Function(Failures failures) errorState,
     required TResult Function() nullImage,
     required TResult Function(String url) imageLocal,
+    required TResult Function(String message) onContactUs,
     required TResult Function(String message) onOTPGenerated,
     required TResult Function(String message) onOTPVerified,
     required TResult Function(String url) onGetImageUrl,
@@ -41,6 +42,7 @@ mixin _$OtherState {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onContactUs,
     TResult Function(String message)? onOTPGenerated,
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
@@ -56,6 +58,7 @@ mixin _$OtherState {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onContactUs,
     TResult Function(String message)? onOTPGenerated,
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
@@ -72,6 +75,7 @@ mixin _$OtherState {
     required TResult Function(_ErrorState value) errorState,
     required TResult Function(_NullImage value) nullImage,
     required TResult Function(_ImageLocal value) imageLocal,
+    required TResult Function(_OnContactUs value) onContactUs,
     required TResult Function(_OnOTPGenerated value) onOTPGenerated,
     required TResult Function(_OnOTPVerified value) onOTPVerified,
     required TResult Function(_OnGetImageUrl value) onGetImageUrl,
@@ -87,6 +91,7 @@ mixin _$OtherState {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnContactUs value)? onContactUs,
     TResult Function(_OnOTPGenerated value)? onOTPGenerated,
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
@@ -102,6 +107,7 @@ mixin _$OtherState {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnContactUs value)? onContactUs,
     TResult Function(_OnOTPGenerated value)? onOTPGenerated,
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
@@ -173,6 +179,7 @@ class _$_Initial implements _Initial {
     required TResult Function(Failures failures) errorState,
     required TResult Function() nullImage,
     required TResult Function(String url) imageLocal,
+    required TResult Function(String message) onContactUs,
     required TResult Function(String message) onOTPGenerated,
     required TResult Function(String message) onOTPVerified,
     required TResult Function(String url) onGetImageUrl,
@@ -193,6 +200,7 @@ class _$_Initial implements _Initial {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onContactUs,
     TResult Function(String message)? onOTPGenerated,
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
@@ -211,6 +219,7 @@ class _$_Initial implements _Initial {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onContactUs,
     TResult Function(String message)? onOTPGenerated,
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
@@ -233,6 +242,7 @@ class _$_Initial implements _Initial {
     required TResult Function(_ErrorState value) errorState,
     required TResult Function(_NullImage value) nullImage,
     required TResult Function(_ImageLocal value) imageLocal,
+    required TResult Function(_OnContactUs value) onContactUs,
     required TResult Function(_OnOTPGenerated value) onOTPGenerated,
     required TResult Function(_OnOTPVerified value) onOTPVerified,
     required TResult Function(_OnGetImageUrl value) onGetImageUrl,
@@ -251,6 +261,7 @@ class _$_Initial implements _Initial {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnContactUs value)? onContactUs,
     TResult Function(_OnOTPGenerated value)? onOTPGenerated,
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
@@ -269,6 +280,7 @@ class _$_Initial implements _Initial {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnContactUs value)? onContactUs,
     TResult Function(_OnOTPGenerated value)? onOTPGenerated,
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
@@ -332,6 +344,7 @@ class _$_Loading implements _Loading {
     required TResult Function(Failures failures) errorState,
     required TResult Function() nullImage,
     required TResult Function(String url) imageLocal,
+    required TResult Function(String message) onContactUs,
     required TResult Function(String message) onOTPGenerated,
     required TResult Function(String message) onOTPVerified,
     required TResult Function(String url) onGetImageUrl,
@@ -352,6 +365,7 @@ class _$_Loading implements _Loading {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onContactUs,
     TResult Function(String message)? onOTPGenerated,
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
@@ -370,6 +384,7 @@ class _$_Loading implements _Loading {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onContactUs,
     TResult Function(String message)? onOTPGenerated,
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
@@ -392,6 +407,7 @@ class _$_Loading implements _Loading {
     required TResult Function(_ErrorState value) errorState,
     required TResult Function(_NullImage value) nullImage,
     required TResult Function(_ImageLocal value) imageLocal,
+    required TResult Function(_OnContactUs value) onContactUs,
     required TResult Function(_OnOTPGenerated value) onOTPGenerated,
     required TResult Function(_OnOTPVerified value) onOTPVerified,
     required TResult Function(_OnGetImageUrl value) onGetImageUrl,
@@ -410,6 +426,7 @@ class _$_Loading implements _Loading {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnContactUs value)? onContactUs,
     TResult Function(_OnOTPGenerated value)? onOTPGenerated,
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
@@ -428,6 +445,7 @@ class _$_Loading implements _Loading {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnContactUs value)? onContactUs,
     TResult Function(_OnOTPGenerated value)? onOTPGenerated,
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
@@ -490,6 +508,7 @@ class _$_Error implements _Error {
     required TResult Function(Failures failures) errorState,
     required TResult Function() nullImage,
     required TResult Function(String url) imageLocal,
+    required TResult Function(String message) onContactUs,
     required TResult Function(String message) onOTPGenerated,
     required TResult Function(String message) onOTPVerified,
     required TResult Function(String url) onGetImageUrl,
@@ -510,6 +529,7 @@ class _$_Error implements _Error {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onContactUs,
     TResult Function(String message)? onOTPGenerated,
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
@@ -528,6 +548,7 @@ class _$_Error implements _Error {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onContactUs,
     TResult Function(String message)? onOTPGenerated,
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
@@ -550,6 +571,7 @@ class _$_Error implements _Error {
     required TResult Function(_ErrorState value) errorState,
     required TResult Function(_NullImage value) nullImage,
     required TResult Function(_ImageLocal value) imageLocal,
+    required TResult Function(_OnContactUs value) onContactUs,
     required TResult Function(_OnOTPGenerated value) onOTPGenerated,
     required TResult Function(_OnOTPVerified value) onOTPVerified,
     required TResult Function(_OnGetImageUrl value) onGetImageUrl,
@@ -568,6 +590,7 @@ class _$_Error implements _Error {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnContactUs value)? onContactUs,
     TResult Function(_OnOTPGenerated value)? onOTPGenerated,
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
@@ -586,6 +609,7 @@ class _$_Error implements _Error {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnContactUs value)? onContactUs,
     TResult Function(_OnOTPGenerated value)? onOTPGenerated,
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
@@ -683,6 +707,7 @@ class _$_ErrorState implements _ErrorState {
     required TResult Function(Failures failures) errorState,
     required TResult Function() nullImage,
     required TResult Function(String url) imageLocal,
+    required TResult Function(String message) onContactUs,
     required TResult Function(String message) onOTPGenerated,
     required TResult Function(String message) onOTPVerified,
     required TResult Function(String url) onGetImageUrl,
@@ -703,6 +728,7 @@ class _$_ErrorState implements _ErrorState {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onContactUs,
     TResult Function(String message)? onOTPGenerated,
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
@@ -721,6 +747,7 @@ class _$_ErrorState implements _ErrorState {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onContactUs,
     TResult Function(String message)? onOTPGenerated,
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
@@ -743,6 +770,7 @@ class _$_ErrorState implements _ErrorState {
     required TResult Function(_ErrorState value) errorState,
     required TResult Function(_NullImage value) nullImage,
     required TResult Function(_ImageLocal value) imageLocal,
+    required TResult Function(_OnContactUs value) onContactUs,
     required TResult Function(_OnOTPGenerated value) onOTPGenerated,
     required TResult Function(_OnOTPVerified value) onOTPVerified,
     required TResult Function(_OnGetImageUrl value) onGetImageUrl,
@@ -761,6 +789,7 @@ class _$_ErrorState implements _ErrorState {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnContactUs value)? onContactUs,
     TResult Function(_OnOTPGenerated value)? onOTPGenerated,
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
@@ -779,6 +808,7 @@ class _$_ErrorState implements _ErrorState {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnContactUs value)? onContactUs,
     TResult Function(_OnOTPGenerated value)? onOTPGenerated,
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
@@ -848,6 +878,7 @@ class _$_NullImage implements _NullImage {
     required TResult Function(Failures failures) errorState,
     required TResult Function() nullImage,
     required TResult Function(String url) imageLocal,
+    required TResult Function(String message) onContactUs,
     required TResult Function(String message) onOTPGenerated,
     required TResult Function(String message) onOTPVerified,
     required TResult Function(String url) onGetImageUrl,
@@ -868,6 +899,7 @@ class _$_NullImage implements _NullImage {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onContactUs,
     TResult Function(String message)? onOTPGenerated,
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
@@ -886,6 +918,7 @@ class _$_NullImage implements _NullImage {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onContactUs,
     TResult Function(String message)? onOTPGenerated,
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
@@ -908,6 +941,7 @@ class _$_NullImage implements _NullImage {
     required TResult Function(_ErrorState value) errorState,
     required TResult Function(_NullImage value) nullImage,
     required TResult Function(_ImageLocal value) imageLocal,
+    required TResult Function(_OnContactUs value) onContactUs,
     required TResult Function(_OnOTPGenerated value) onOTPGenerated,
     required TResult Function(_OnOTPVerified value) onOTPVerified,
     required TResult Function(_OnGetImageUrl value) onGetImageUrl,
@@ -926,6 +960,7 @@ class _$_NullImage implements _NullImage {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnContactUs value)? onContactUs,
     TResult Function(_OnOTPGenerated value)? onOTPGenerated,
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
@@ -944,6 +979,7 @@ class _$_NullImage implements _NullImage {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnContactUs value)? onContactUs,
     TResult Function(_OnOTPGenerated value)? onOTPGenerated,
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
@@ -1032,6 +1068,7 @@ class _$_ImageLocal implements _ImageLocal {
     required TResult Function(Failures failures) errorState,
     required TResult Function() nullImage,
     required TResult Function(String url) imageLocal,
+    required TResult Function(String message) onContactUs,
     required TResult Function(String message) onOTPGenerated,
     required TResult Function(String message) onOTPVerified,
     required TResult Function(String url) onGetImageUrl,
@@ -1052,6 +1089,7 @@ class _$_ImageLocal implements _ImageLocal {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onContactUs,
     TResult Function(String message)? onOTPGenerated,
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
@@ -1070,6 +1108,7 @@ class _$_ImageLocal implements _ImageLocal {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onContactUs,
     TResult Function(String message)? onOTPGenerated,
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
@@ -1092,6 +1131,7 @@ class _$_ImageLocal implements _ImageLocal {
     required TResult Function(_ErrorState value) errorState,
     required TResult Function(_NullImage value) nullImage,
     required TResult Function(_ImageLocal value) imageLocal,
+    required TResult Function(_OnContactUs value) onContactUs,
     required TResult Function(_OnOTPGenerated value) onOTPGenerated,
     required TResult Function(_OnOTPVerified value) onOTPVerified,
     required TResult Function(_OnGetImageUrl value) onGetImageUrl,
@@ -1110,6 +1150,7 @@ class _$_ImageLocal implements _ImageLocal {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnContactUs value)? onContactUs,
     TResult Function(_OnOTPGenerated value)? onOTPGenerated,
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
@@ -1128,6 +1169,7 @@ class _$_ImageLocal implements _ImageLocal {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnContactUs value)? onContactUs,
     TResult Function(_OnOTPGenerated value)? onOTPGenerated,
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
@@ -1148,6 +1190,201 @@ abstract class _ImageLocal implements OtherState {
   String get url;
   @JsonKey(ignore: true)
   _$$_ImageLocalCopyWith<_$_ImageLocal> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_OnContactUsCopyWith<$Res> {
+  factory _$$_OnContactUsCopyWith(
+          _$_OnContactUs value, $Res Function(_$_OnContactUs) then) =
+      __$$_OnContactUsCopyWithImpl<$Res>;
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$_OnContactUsCopyWithImpl<$Res> extends _$OtherStateCopyWithImpl<$Res>
+    implements _$$_OnContactUsCopyWith<$Res> {
+  __$$_OnContactUsCopyWithImpl(
+      _$_OnContactUs _value, $Res Function(_$_OnContactUs) _then)
+      : super(_value, (v) => _then(v as _$_OnContactUs));
+
+  @override
+  _$_OnContactUs get _value => super._value as _$_OnContactUs;
+
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_$_OnContactUs(
+      message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_OnContactUs implements _OnContactUs {
+  const _$_OnContactUs(this.message);
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'OtherState.onContactUs(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_OnContactUs &&
+            const DeepCollectionEquality().equals(other.message, message));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(message));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_OnContactUsCopyWith<_$_OnContactUs> get copyWith =>
+      __$$_OnContactUsCopyWithImpl<_$_OnContactUs>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() error,
+    required TResult Function(Failures failures) errorState,
+    required TResult Function() nullImage,
+    required TResult Function(String url) imageLocal,
+    required TResult Function(String message) onContactUs,
+    required TResult Function(String message) onOTPGenerated,
+    required TResult Function(String message) onOTPVerified,
+    required TResult Function(String url) onGetImageUrl,
+    required TResult Function(QuestionnaireDataModel questionnaire)
+        getAllQuestionnaire,
+    required TResult Function(List<DocumentDataModel> documents)
+        getAllDocumentData,
+  }) {
+    return onContactUs(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? error,
+    TResult Function(Failures failures)? errorState,
+    TResult Function()? nullImage,
+    TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onContactUs,
+    TResult Function(String message)? onOTPGenerated,
+    TResult Function(String message)? onOTPVerified,
+    TResult Function(String url)? onGetImageUrl,
+    TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
+    TResult Function(List<DocumentDataModel> documents)? getAllDocumentData,
+  }) {
+    return onContactUs?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? error,
+    TResult Function(Failures failures)? errorState,
+    TResult Function()? nullImage,
+    TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onContactUs,
+    TResult Function(String message)? onOTPGenerated,
+    TResult Function(String message)? onOTPVerified,
+    TResult Function(String url)? onGetImageUrl,
+    TResult Function(QuestionnaireDataModel questionnaire)? getAllQuestionnaire,
+    TResult Function(List<DocumentDataModel> documents)? getAllDocumentData,
+    required TResult orElse(),
+  }) {
+    if (onContactUs != null) {
+      return onContactUs(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Error value) error,
+    required TResult Function(_ErrorState value) errorState,
+    required TResult Function(_NullImage value) nullImage,
+    required TResult Function(_ImageLocal value) imageLocal,
+    required TResult Function(_OnContactUs value) onContactUs,
+    required TResult Function(_OnOTPGenerated value) onOTPGenerated,
+    required TResult Function(_OnOTPVerified value) onOTPVerified,
+    required TResult Function(_OnGetImageUrl value) onGetImageUrl,
+    required TResult Function(_GetAllQuestionnaire value) getAllQuestionnaire,
+    required TResult Function(_GetAllDocumentData value) getAllDocumentData,
+  }) {
+    return onContactUs(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_ErrorState value)? errorState,
+    TResult Function(_NullImage value)? nullImage,
+    TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnContactUs value)? onContactUs,
+    TResult Function(_OnOTPGenerated value)? onOTPGenerated,
+    TResult Function(_OnOTPVerified value)? onOTPVerified,
+    TResult Function(_OnGetImageUrl value)? onGetImageUrl,
+    TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
+    TResult Function(_GetAllDocumentData value)? getAllDocumentData,
+  }) {
+    return onContactUs?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_ErrorState value)? errorState,
+    TResult Function(_NullImage value)? nullImage,
+    TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnContactUs value)? onContactUs,
+    TResult Function(_OnOTPGenerated value)? onOTPGenerated,
+    TResult Function(_OnOTPVerified value)? onOTPVerified,
+    TResult Function(_OnGetImageUrl value)? onGetImageUrl,
+    TResult Function(_GetAllQuestionnaire value)? getAllQuestionnaire,
+    TResult Function(_GetAllDocumentData value)? getAllDocumentData,
+    required TResult orElse(),
+  }) {
+    if (onContactUs != null) {
+      return onContactUs(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnContactUs implements OtherState {
+  const factory _OnContactUs(final String message) = _$_OnContactUs;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$$_OnContactUsCopyWith<_$_OnContactUs> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1222,6 +1459,7 @@ class _$_OnOTPGenerated implements _OnOTPGenerated {
     required TResult Function(Failures failures) errorState,
     required TResult Function() nullImage,
     required TResult Function(String url) imageLocal,
+    required TResult Function(String message) onContactUs,
     required TResult Function(String message) onOTPGenerated,
     required TResult Function(String message) onOTPVerified,
     required TResult Function(String url) onGetImageUrl,
@@ -1242,6 +1480,7 @@ class _$_OnOTPGenerated implements _OnOTPGenerated {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onContactUs,
     TResult Function(String message)? onOTPGenerated,
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
@@ -1260,6 +1499,7 @@ class _$_OnOTPGenerated implements _OnOTPGenerated {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onContactUs,
     TResult Function(String message)? onOTPGenerated,
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
@@ -1282,6 +1522,7 @@ class _$_OnOTPGenerated implements _OnOTPGenerated {
     required TResult Function(_ErrorState value) errorState,
     required TResult Function(_NullImage value) nullImage,
     required TResult Function(_ImageLocal value) imageLocal,
+    required TResult Function(_OnContactUs value) onContactUs,
     required TResult Function(_OnOTPGenerated value) onOTPGenerated,
     required TResult Function(_OnOTPVerified value) onOTPVerified,
     required TResult Function(_OnGetImageUrl value) onGetImageUrl,
@@ -1300,6 +1541,7 @@ class _$_OnOTPGenerated implements _OnOTPGenerated {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnContactUs value)? onContactUs,
     TResult Function(_OnOTPGenerated value)? onOTPGenerated,
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
@@ -1318,6 +1560,7 @@ class _$_OnOTPGenerated implements _OnOTPGenerated {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnContactUs value)? onContactUs,
     TResult Function(_OnOTPGenerated value)? onOTPGenerated,
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
@@ -1412,6 +1655,7 @@ class _$_OnOTPVerified implements _OnOTPVerified {
     required TResult Function(Failures failures) errorState,
     required TResult Function() nullImage,
     required TResult Function(String url) imageLocal,
+    required TResult Function(String message) onContactUs,
     required TResult Function(String message) onOTPGenerated,
     required TResult Function(String message) onOTPVerified,
     required TResult Function(String url) onGetImageUrl,
@@ -1432,6 +1676,7 @@ class _$_OnOTPVerified implements _OnOTPVerified {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onContactUs,
     TResult Function(String message)? onOTPGenerated,
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
@@ -1450,6 +1695,7 @@ class _$_OnOTPVerified implements _OnOTPVerified {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onContactUs,
     TResult Function(String message)? onOTPGenerated,
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
@@ -1472,6 +1718,7 @@ class _$_OnOTPVerified implements _OnOTPVerified {
     required TResult Function(_ErrorState value) errorState,
     required TResult Function(_NullImage value) nullImage,
     required TResult Function(_ImageLocal value) imageLocal,
+    required TResult Function(_OnContactUs value) onContactUs,
     required TResult Function(_OnOTPGenerated value) onOTPGenerated,
     required TResult Function(_OnOTPVerified value) onOTPVerified,
     required TResult Function(_OnGetImageUrl value) onGetImageUrl,
@@ -1490,6 +1737,7 @@ class _$_OnOTPVerified implements _OnOTPVerified {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnContactUs value)? onContactUs,
     TResult Function(_OnOTPGenerated value)? onOTPGenerated,
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
@@ -1508,6 +1756,7 @@ class _$_OnOTPVerified implements _OnOTPVerified {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnContactUs value)? onContactUs,
     TResult Function(_OnOTPGenerated value)? onOTPGenerated,
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
@@ -1602,6 +1851,7 @@ class _$_OnGetImageUrl implements _OnGetImageUrl {
     required TResult Function(Failures failures) errorState,
     required TResult Function() nullImage,
     required TResult Function(String url) imageLocal,
+    required TResult Function(String message) onContactUs,
     required TResult Function(String message) onOTPGenerated,
     required TResult Function(String message) onOTPVerified,
     required TResult Function(String url) onGetImageUrl,
@@ -1622,6 +1872,7 @@ class _$_OnGetImageUrl implements _OnGetImageUrl {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onContactUs,
     TResult Function(String message)? onOTPGenerated,
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
@@ -1640,6 +1891,7 @@ class _$_OnGetImageUrl implements _OnGetImageUrl {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onContactUs,
     TResult Function(String message)? onOTPGenerated,
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
@@ -1662,6 +1914,7 @@ class _$_OnGetImageUrl implements _OnGetImageUrl {
     required TResult Function(_ErrorState value) errorState,
     required TResult Function(_NullImage value) nullImage,
     required TResult Function(_ImageLocal value) imageLocal,
+    required TResult Function(_OnContactUs value) onContactUs,
     required TResult Function(_OnOTPGenerated value) onOTPGenerated,
     required TResult Function(_OnOTPVerified value) onOTPVerified,
     required TResult Function(_OnGetImageUrl value) onGetImageUrl,
@@ -1680,6 +1933,7 @@ class _$_OnGetImageUrl implements _OnGetImageUrl {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnContactUs value)? onContactUs,
     TResult Function(_OnOTPGenerated value)? onOTPGenerated,
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
@@ -1698,6 +1952,7 @@ class _$_OnGetImageUrl implements _OnGetImageUrl {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnContactUs value)? onContactUs,
     TResult Function(_OnOTPGenerated value)? onOTPGenerated,
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
@@ -1803,6 +2058,7 @@ class _$_GetAllQuestionnaire implements _GetAllQuestionnaire {
     required TResult Function(Failures failures) errorState,
     required TResult Function() nullImage,
     required TResult Function(String url) imageLocal,
+    required TResult Function(String message) onContactUs,
     required TResult Function(String message) onOTPGenerated,
     required TResult Function(String message) onOTPVerified,
     required TResult Function(String url) onGetImageUrl,
@@ -1823,6 +2079,7 @@ class _$_GetAllQuestionnaire implements _GetAllQuestionnaire {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onContactUs,
     TResult Function(String message)? onOTPGenerated,
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
@@ -1841,6 +2098,7 @@ class _$_GetAllQuestionnaire implements _GetAllQuestionnaire {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onContactUs,
     TResult Function(String message)? onOTPGenerated,
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
@@ -1863,6 +2121,7 @@ class _$_GetAllQuestionnaire implements _GetAllQuestionnaire {
     required TResult Function(_ErrorState value) errorState,
     required TResult Function(_NullImage value) nullImage,
     required TResult Function(_ImageLocal value) imageLocal,
+    required TResult Function(_OnContactUs value) onContactUs,
     required TResult Function(_OnOTPGenerated value) onOTPGenerated,
     required TResult Function(_OnOTPVerified value) onOTPVerified,
     required TResult Function(_OnGetImageUrl value) onGetImageUrl,
@@ -1881,6 +2140,7 @@ class _$_GetAllQuestionnaire implements _GetAllQuestionnaire {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnContactUs value)? onContactUs,
     TResult Function(_OnOTPGenerated value)? onOTPGenerated,
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
@@ -1899,6 +2159,7 @@ class _$_GetAllQuestionnaire implements _GetAllQuestionnaire {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnContactUs value)? onContactUs,
     TResult Function(_OnOTPGenerated value)? onOTPGenerated,
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
@@ -2001,6 +2262,7 @@ class _$_GetAllDocumentData implements _GetAllDocumentData {
     required TResult Function(Failures failures) errorState,
     required TResult Function() nullImage,
     required TResult Function(String url) imageLocal,
+    required TResult Function(String message) onContactUs,
     required TResult Function(String message) onOTPGenerated,
     required TResult Function(String message) onOTPVerified,
     required TResult Function(String url) onGetImageUrl,
@@ -2021,6 +2283,7 @@ class _$_GetAllDocumentData implements _GetAllDocumentData {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onContactUs,
     TResult Function(String message)? onOTPGenerated,
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
@@ -2039,6 +2302,7 @@ class _$_GetAllDocumentData implements _GetAllDocumentData {
     TResult Function(Failures failures)? errorState,
     TResult Function()? nullImage,
     TResult Function(String url)? imageLocal,
+    TResult Function(String message)? onContactUs,
     TResult Function(String message)? onOTPGenerated,
     TResult Function(String message)? onOTPVerified,
     TResult Function(String url)? onGetImageUrl,
@@ -2061,6 +2325,7 @@ class _$_GetAllDocumentData implements _GetAllDocumentData {
     required TResult Function(_ErrorState value) errorState,
     required TResult Function(_NullImage value) nullImage,
     required TResult Function(_ImageLocal value) imageLocal,
+    required TResult Function(_OnContactUs value) onContactUs,
     required TResult Function(_OnOTPGenerated value) onOTPGenerated,
     required TResult Function(_OnOTPVerified value) onOTPVerified,
     required TResult Function(_OnGetImageUrl value) onGetImageUrl,
@@ -2079,6 +2344,7 @@ class _$_GetAllDocumentData implements _GetAllDocumentData {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnContactUs value)? onContactUs,
     TResult Function(_OnOTPGenerated value)? onOTPGenerated,
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,
@@ -2097,6 +2363,7 @@ class _$_GetAllDocumentData implements _GetAllDocumentData {
     TResult Function(_ErrorState value)? errorState,
     TResult Function(_NullImage value)? nullImage,
     TResult Function(_ImageLocal value)? imageLocal,
+    TResult Function(_OnContactUs value)? onContactUs,
     TResult Function(_OnOTPGenerated value)? onOTPGenerated,
     TResult Function(_OnOTPVerified value)? onOTPVerified,
     TResult Function(_OnGetImageUrl value)? onGetImageUrl,

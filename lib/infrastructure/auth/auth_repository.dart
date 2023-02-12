@@ -222,6 +222,9 @@ class AuthRepository extends IAuth {
           if (e.response!.statusCode == 400) {
             return Left(Failures.generalError(e.response!.data.toString()));
           }
+          if (e.response!.statusCode == 404) {
+            return Left(Failures.generalError(e.response!.data['error']));
+          }
           break;
         case DioErrorType.cancel:
           // TODO: Handle this case.

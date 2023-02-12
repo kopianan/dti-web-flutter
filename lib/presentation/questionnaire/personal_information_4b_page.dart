@@ -153,7 +153,7 @@ class _PersonalInformation4bPageState extends State<PersonalInformation4bPage> {
                                                   height: 20,
                                                 ),
                                                 FormBuilderTextField(
-                                                  name: 'FligtVesselNumber',
+                                                  name: 'FlightVesselNumber',
                                                   enableSuggestions: false,
                                                   autocorrect: false,
                                                   initialValue: state
@@ -169,7 +169,7 @@ class _PersonalInformation4bPageState extends State<PersonalInformation4bPage> {
                                                   decoration:
                                                       const InputDecoration(
                                                     labelText:
-                                                        "Fligt / Vessel Number",
+                                                        "Flight / Vessel Number",
                                                     border: OutlineInputBorder(
                                                       borderRadius:
                                                           BorderRadius.all(
@@ -181,7 +181,7 @@ class _PersonalInformation4bPageState extends State<PersonalInformation4bPage> {
                                                       color: Colors.grey,
                                                     ),
                                                     hintText:
-                                                        "Fligt / Vessel Number",
+                                                        "Flight / Vessel Number",
                                                     fillColor: Colors.white70,
                                                   ),
                                                 ),
@@ -322,7 +322,7 @@ class _PersonalInformation4bPageState extends State<PersonalInformation4bPage> {
       final formData = _formKey.currentState!.value;
       await context.read<ApplicationCubit>().updatePersonalInformation4B(
             modeOfTransportation: formData['ModeOfTransportation'],
-            flightNumber: formData['FligtVesselNumber'],
+            flightNumber: formData['FlightVesselNumber'],
             arrivalDate: formData['arrivalDate'],
           );
       context.read<UpdateApplicationCubit>().updateVOAData(

@@ -24,9 +24,7 @@ import 'package:toggle_switch/toggle_switch.dart';
 class RighSide extends StatefulWidget {
   const RighSide({
     Key? key,
-    required this.documentCubit,
   }) : super(key: key);
-  final DocumentCubit documentCubit;
 
   @override
   State<RighSide> createState() => _RighSideState();
@@ -52,7 +50,7 @@ class _RighSideState extends State<RighSide> {
               EasyLoading.dismiss();
 
               //UPDATE THE DOCUMENT
-              widget.documentCubit.updateDocumentStatus(e.list);
+              context.read<DocumentCubit>().updateDocumentStatus(e.list);
               setState(() {});
               showFlash(
                 context: context,
@@ -182,9 +180,9 @@ class _RighSideState extends State<RighSide> {
                           Column(
                             children: [
                               Visibility(
-                                visible: docState
-                                            .selectedDocument?.attachment !=
-                                        null ,
+                                visible:
+                                    docState.selectedDocument?.attachment !=
+                                        null,
                                 child: Column(
                                   children: [
                                     20.verticalSpace,
@@ -432,8 +430,11 @@ class _RighSideState extends State<RighSide> {
     //       docState.selectedIndex!);
     //   setState(() {});
     // }
-    widget.documentCubit.removePhotoDocument(
-        docState.selectedDocument!.imageList![index]!, docState.selectedIndex!);
+
+    context.read<DocumentCubit>().removePhotoDocument(
+          docState.selectedDocument!.imageList![index]!,
+          docState.selectedIndex!,
+        );
     setState(() {});
   }
 

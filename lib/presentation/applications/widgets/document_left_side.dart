@@ -13,13 +13,11 @@ import '../../../injection.dart';
 class LeftSide extends StatelessWidget {
   const LeftSide({
     Key? key,
-    required this.documentCubit,
   }) : super(key: key);
-  final DocumentCubit documentCubit;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<DocumentCubit, DocumentState>(
-      // bloc: documentCubit,
+      bloc: getIt<DocumentCubit>(),
       builder: (context, docState) {
         return Container(
           width: double.infinity,
@@ -30,7 +28,7 @@ class LeftSide extends StatelessWidget {
                 children: docState.docs!
                     .map((e) => InkWell(
                           onTap: () {
-                           getIt<DocumentCubit>()
+                            getIt<DocumentCubit>()
                                 .updateSelectedIndex(docState.docs!.indexOf(e));
                           },
                           child: Container(

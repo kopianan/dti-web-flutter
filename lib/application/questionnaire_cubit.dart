@@ -15,7 +15,8 @@ class QuestionnaireCubit extends Cubit<QuestionnaireState> {
   List<String> getDescriptions() {
     var desc = state.description?.toList();
     desc?.removeWhere((element) => element.isEmpty);
-    return desc!;
+
+    return desc!.toSet().toList();
   }
 
   List<String> getImportant() {
@@ -26,7 +27,7 @@ class QuestionnaireCubit extends Cubit<QuestionnaireState> {
       "We need at least 5 working days to process your application to get an entry / stay / working permit. We wills tart to process it once payment has been made. "
     ]);
 
-    return imp!;
+    return imp!.toSet().toList();
   }
 
   void addQuestionnaireToList(QuestionnaireModel questionnaireModel) {

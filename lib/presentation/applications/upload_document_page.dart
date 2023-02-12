@@ -2,6 +2,7 @@ import 'package:dti_web/application/application_cubit.dart';
 import 'package:dti_web/application/document/document_cubit.dart';
 import 'package:dti_web/application/other/other_cubit.dart';
 import 'package:dti_web/application/update_application/update_application_cubit.dart';
+import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/injection.dart';
 import 'package:dti_web/presentation/applications/widgets/document_left_side.dart';
 import 'package:dti_web/presentation/applications/widgets/document_right_side.dart';
@@ -29,14 +30,15 @@ class _UploadDocumentPageState extends State<UploadDocumentPage> {
     super.initState();
     //clean state first
     cleanState();
-    initData();
+    // initData();
   }
 
   void cleanState() {
     getIt<DocumentCubit>().cleanState();
   }
 
-  void initData() {
+  void initData(
+      VisaApplicationModel visa, List<Map<String, dynamic>> masterData) {
     //get data from state
 
     final visa = context.read<ApplicationCubit>().state.visaApplicationModel;
@@ -48,21 +50,13 @@ class _UploadDocumentPageState extends State<UploadDocumentPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: MultiBlocProvider(
-        providers: [
-          BlocProvider(
-            create: (context) => getIt<OtherCubit>(),
-          ),
-          BlocProvider(
-            create: (context) => getIt<UpdateApplicationCubit>()
-              ..getUserApplicationWithImages(getIt<ApplicationCubit>()
-                  .state
-                  .visaApplicationModel!
-                  .firebaseDocId!),
-          ),
-        ],
-        child: BlocConsumer<ApplicationCubit, ApplicationState>(
-          listener: (context, state) {},
+      body: BlocProvider(
+        create: (context) => getIt<UpdateApplicationCubit>()
+          ..getUserApplicationWithImages(getIt<ApplicationCubit>()
+              .state
+              .visaApplicationModel!
+              .firebaseDocId!),
+        child: BlocBuilder<ApplicationCubit, ApplicationState>(
           builder: (context, state) {
             return BlocListener<UpdateApplicationCubit, UpdateApplicationState>(
               listener: (context, updateAppState) {
@@ -75,99 +69,95 @@ class _UploadDocumentPageState extends State<UploadDocumentPage> {
                   },
                   onGetSingleApplicationWithImage: (value) {
                     EasyLoading.dismiss();
-                    context.read<ApplicationCubit>().setupApplication(
+                    getIt<ApplicationCubit>().setupApplication(
                         value.singleResponse.visaApplicationModel!);
-                    context.read<ApplicationCubit>().setupDocumentsMasterData(
-                          value.singleResponse.documentUserApplicationUrl!,
-                        );
+                    getIt<ApplicationCubit>().setupDocumentsMasterData(
+                      value.singleResponse.documentUserApplicationUrl!,
+                    );
+
+                    initData(
+                      getIt<ApplicationCubit>().state.visaApplicationModel!,
+                      getIt<ApplicationCubit>().state.masterListData!,
+                    );
                   },
                 );
               },
-              child: BlocConsumer<OtherCubit, OtherState>(
-                listener: (context, otherState) {
-                  otherState.maybeMap(
-                    orElse: () {
-                      EasyLoading.dismiss();
-                    },
-                    loading: (e) {
-                      EasyLoading.show(maskType: EasyLoadingMaskType.black);
-                    },
-                    getAllDocumentData: (e) {
-                      context
-                          .read<DocumentCubit>()
-                          .setupApplication(state.visaApplicationModel!);
-                      EasyLoading.dismiss();
-                    },
-                  );
-                },
+              child:
+                  BlocBuilder<UpdateApplicationCubit, UpdateApplicationState>(
                 builder: (context, state) {
-                  return BlocBuilder<DocumentCubit, DocumentState>(
-                    builder: (context, docState) {
-                      return Row(
-                        children: [
-                          Expanded(
-                              flex: 2,
-                              child: SingleChildScrollView(
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 15),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      const CustomSecondHeader(),
-                                      Text(
-                                        docState.visa?.title ?? "",
-                                        style: TextStyle(
-                                            fontSize: 30.sp,
-                                            color: AppColor.primaryColor,
-                                            fontWeight: FontWeight.bold),
+                  return state.maybeMap(
+                    orElse: () {
+                      return Container();
+                    },
+                    onGetSingleApplicationWithImage: (e) {
+                      return BlocBuilder<DocumentCubit, DocumentState>(
+                        builder: (context, docState) {
+                          return Row(
+                            children: [
+                              Expanded(
+                                  flex: 2,
+                                  child: SingleChildScrollView(
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 15),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          const CustomSecondHeader(),
+                                          Text(
+                                            docState.visa?.title ?? "",
+                                            style: TextStyle(
+                                                fontSize: 30.sp,
+                                                color: AppColor.primaryColor,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          Text(
+                                            docState.visa?.subTitle ?? "",
+                                            maxLines: 1,
+                                            style: TextStyle(
+                                                fontSize: 25.sp,
+                                                color: AppColor.primaryColor,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          30.verticalSpace,
+                                          LeftSide()
+                                        ],
                                       ),
-                                      Text(
-                                        docState.visa?.subTitle ?? "",
-                                        maxLines: 1,
-                                        style: TextStyle(
-                                            fontSize: 25.sp,
-                                            color: AppColor.primaryColor,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      30.verticalSpace,
-                                      LeftSide(
-                                          documentCubit: getIt<DocumentCubit>())
-                                    ],
-                                  ),
-                                ),
-                              )),
-                          Expanded(
-                            flex: 3,
-                            child: Stack(
-                              children: [
-                                Container(
-                                  child: Image.asset(
-                                    'assets/images/bg/bg_upload.png',
-                                    fit: BoxFit.cover,
-                                    width: ScreenUtil().screenWidth,
-                                  ),
-                                ),
-                                Positioned(
-                                  right: 100.w,
-                                  left: 100.w,
-                                  top: 20,
-                                  bottom: 20,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: Colors.white,
                                     ),
-                                    // padding: EdgeInsets.symmetric(horizontal: 30.w),
-                                    child: RighSide(
-                                        documentCubit: getIt<DocumentCubit>()),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ],
+                                  )),
+                              Expanded(
+                                flex: 3,
+                                child: Stack(
+                                  children: [
+                                    Container(
+                                      child: Image.asset(
+                                        'assets/images/bg/bg_upload.png',
+                                        fit: BoxFit.cover,
+                                        width: ScreenUtil().screenWidth,
+                                      ),
+                                    ),
+                                    Positioned(
+                                      right: 100.w,
+                                      left: 100.w,
+                                      top: 20,
+                                      bottom: 20,
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          color: Colors.white,
+                                        ),
+                                        // padding: EdgeInsets.symmetric(horizontal: 30.w),
+                                        child: RighSide(),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ],
+                          );
+                        },
                       );
                     },
                   );

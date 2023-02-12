@@ -14,6 +14,7 @@ class ApplicationState with _$ApplicationState {
         onError: null,
         onLoading: false,
         onSuccess: null,
+        masterListData: [],
         visaApplicationModel: null,
         documnets: (documentRaw['document_list'] as List)
             .map((e) => DocumentDataModel.fromJson(e))

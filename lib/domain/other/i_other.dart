@@ -12,6 +12,7 @@ abstract class IOther {
       required String fileName});
   Future<Either<Failures, QuestionnaireDataModel>> getQuestionnaireList();
   Future<Either<Failures, dynamic>> getLocation();
+  Future<Either<Failures, String>> contactUs(String name, String title);
   Future<Either<Failures, List<DocumentDataModel>>> getApplicationMasterData();
   Future<Either<Failures, String>> verifyOtp(
       {required String phoneNumber,

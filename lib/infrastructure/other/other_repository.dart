@@ -230,4 +230,28 @@ class OtherRepository extends IOther {
       return Left(Failures.serverError());
     }
   }
+
+  @override
+  Future<Either<Failures, String>> contactUs(String name, String title) async {
+    final dio = Dio();
+    Storage storage = Storage();
+
+    try {
+      var result = await dio.post('${dotenv.env['BASE_URL']}/userContactUs',
+          data: {
+            'name': name,
+            'title': title,
+          },
+          options: Options(
+            headers: {'Authorization': 'Bearer ${storage.getToken()}'},
+          ));
+      var data = result.data['data'];
+      if (data != null) {
+        return right(data['message']);
+      }
+      return left(Failures.generalError("something wrong"));
+    } on Exception catch (e) {
+      return left(Failures.serverError());
+    }
+  }
 }

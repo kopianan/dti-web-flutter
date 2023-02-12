@@ -38,7 +38,9 @@ class _DashboardPageState extends State<DashboardPage> {
           create: (context) => dashboardCubit..getLastData(),
         ),
         BlocProvider(
-          create: (context) => getIt<OtherCubit>()..getLocation()..getDocumentsData(),
+          create: (context) => getIt<OtherCubit>()
+            ..getLocation()
+            ..getDocumentsData(),
         ),
       ],
       child: BlocBuilder<OtherCubit, OtherState>(
@@ -318,22 +320,23 @@ class _DashboardPageState extends State<DashboardPage> {
                                             ),
                                         loading: (e) {
                                           return Shimmer.fromColors(
-                                              baseColor:
-                                                  Colors.grey.withAlpha(100),
-                                              highlightColor:
-                                                  Colors.grey.withAlpha(300),
-                                              child: SizedBox(
-                                                width: double.infinity,
-                                                child: Card(
-                                                  clipBehavior: Clip.hardEdge,
-                                                  elevation: 6,
-                                                  child: Container(
-                                                    width: 200.w,
-                                                    height: 100.h,
-                                                    color: Colors.grey,
-                                                  ),
+                                            baseColor:
+                                                Colors.grey.withAlpha(100),
+                                            highlightColor:
+                                                Colors.grey.withAlpha(300),
+                                            child: SizedBox(
+                                              width: double.infinity,
+                                              child: Card(
+                                                clipBehavior: Clip.hardEdge,
+                                                elevation: 6,
+                                                child: Container(
+                                                  width: 200.w,
+                                                  height: 100.h,
+                                                  color: Colors.grey,
                                                 ),
-                                              ));
+                                              ),
+                                            ),
+                                          );
                                         });
                                   },
                                 ),
@@ -525,7 +528,7 @@ class _DashboardPageState extends State<DashboardPage> {
                 }
               }).show();
         } else {
-          AutoRouter.of(context).push(QuestionnaireRoute(boolIsInit: true));
+          AutoRouter.of(context).push(VOASummaryRoute());
         }
       },
     );
