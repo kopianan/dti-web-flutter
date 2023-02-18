@@ -92,8 +92,7 @@ class OtherRepository extends IOther {
       "channel": channel,
     };
     try {
-      var result = await dio.post(
-          "https://us-central1-doortoid-mobile.cloudfunctions.net/api/generateOTP",
+      var result = await dio.post("${dotenv.env['BASE_URL']}/generateOTP",
           data: requst,
           options: Options(
             headers: {'Authorization': 'Bearer ${storage.getToken()}'},
@@ -272,7 +271,7 @@ class OtherRepository extends IOther {
           options: Options(
             headers: {'Authorization': 'Bearer ${storage.getToken()}'},
           ));
-      var data = result.  data['data'];
+      var data = result.data['data'];
       if (data != null) {
         return right(data['message']);
       }
