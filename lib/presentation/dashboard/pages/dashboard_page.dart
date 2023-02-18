@@ -12,6 +12,7 @@ import 'package:dti_web/presentation/dashboard/pages/section/feedback_section.da
 import 'package:dti_web/routes/app_router.dart';
 
 import 'package:dti_web/utils/app_color.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -87,106 +88,112 @@ class _DashboardPageState extends State<DashboardPage> {
               );
             },
             child: Scaffold(
-              appBar: AppBar(
-                toolbarHeight: 80.h,
-                backgroundColor: Color(0xff000649),
-                title: Container(
-                  width: 100,
-                  height: 100,
-                  padding: const EdgeInsets.only(left: 10),
-                  child: Image.asset(
-                    'assets/imgs/me.png',
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                actions: [
-                  BlocProvider(
-                    create: (context) => getIt<AuthCubit>()..getUserData(),
-                    child: BlocListener<AuthCubit, AuthState>(
-                      listener: (context, state) {
-                        state.maybeMap(
-                            orElse: () {},
-                            onGetUserData: (e) {
-                              print(e);
-                              if (e.userData.mobileNumber == null) {
-                                //user must verify the number.
-                                AutoRouter.of(context)
-                                    .navigate(NumberRegistrationRoute());
-                              }
-                            });
-                      },
-                      child: BlocBuilder<AuthCubit, AuthState>(
-                        builder: (context, state) {
-                          return state.maybeMap(orElse: () {
-                            return Shimmer.fromColors(
-                                baseColor: Colors.grey,
-                                highlightColor: Colors.white70,
-                                child: Container(
-                                  margin: EdgeInsets.symmetric(vertical: 30),
-                                  width: 200.0,
-                                  height: 10.0,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: Colors.white),
-                                ));
-                          }, onGetUserData: (e) {
-                            return Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  e.userData.name == null
-                                      ? e.userData.email!.toString()
-                                      : e.userData.name!.toString(),
-                                  style: TextStyle(
-                                      fontSize: 20.sp,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ],
-                            );
-                          });
-                        },
+              appBar: kDebugMode
+                  ? AppBar(
+                      toolbarHeight: 80.h,
+                      backgroundColor: Color(0xff000649),
+                      title: Container(
+                        width: 100,
+                        height: 100,
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Image.asset(
+                          'assets/imgs/me.png',
+                          fit: BoxFit.cover,
+                        ),
                       ),
-                    ),
-                  ),
-                  10.horizontalSpace,
-                  BlocProvider(
-                    create: (context) => getIt<AuthCubit>(),
-                    child: BlocConsumer<AuthCubit, AuthState>(
-                      listener: (context, state) {
-                        state.maybeMap(
-                          orElse: () {},
-                          onSignOut: (e) {
-                            AutoRouter.of(context).replaceAll([SignInRoute()]);
-                          },
-                        );
-                      },
-                      builder: (context, state) {
-                        return PopupMenuButton(
-                          itemBuilder: (context) {
-                            return [
-                              PopupMenuItem(
-                                child: Text("Log Out"),
-                                onTap: () {
-                                  context.read<AuthCubit>().signOut();
-                                },
-                              ),
-                            ];
-                          },
-                          child: Container(
-                            margin: EdgeInsets.symmetric(vertical: 15.h),
-                            width: 50.w,
-                            height: 50.h,
-                            child: const Icon(
-                              Icons.menu,
-                              color: Colors.white,
+                      actions: [
+                        BlocProvider(
+                          create: (context) =>
+                              getIt<AuthCubit>()..getUserData(),
+                          child: BlocListener<AuthCubit, AuthState>(
+                            listener: (context, state) {
+                              state.maybeMap(
+                                  orElse: () {},
+                                  onGetUserData: (e) {
+                                    print(e);
+                                    if (e.userData.mobileNumber == null) {
+                                      //user must verify the number.
+                                      AutoRouter.of(context)
+                                          .navigate(NumberRegistrationRoute());
+                                    }
+                                  });
+                            },
+                            child: BlocBuilder<AuthCubit, AuthState>(
+                              builder: (context, state) {
+                                return state.maybeMap(orElse: () {
+                                  return Shimmer.fromColors(
+                                      baseColor: Colors.grey,
+                                      highlightColor: Colors.white70,
+                                      child: Container(
+                                        margin:
+                                            EdgeInsets.symmetric(vertical: 30),
+                                        width: 200.0,
+                                        height: 10.0,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            color: Colors.white),
+                                      ));
+                                }, onGetUserData: (e) {
+                                  return Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        e.userData.name == null
+                                            ? e.userData.email!.toString()
+                                            : e.userData.name!.toString(),
+                                        style: TextStyle(
+                                            fontSize: 20.sp,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  );
+                                });
+                              },
                             ),
                           ),
-                        );
-                      },
-                    ),
-                  )
-                ],
-              ),
+                        ),
+                        10.horizontalSpace,
+                        BlocProvider(
+                          create: (context) => getIt<AuthCubit>(),
+                          child: BlocConsumer<AuthCubit, AuthState>(
+                            listener: (context, state) {
+                              state.maybeMap(
+                                orElse: () {},
+                                onSignOut: (e) {
+                                  AutoRouter.of(context)
+                                      .replaceAll([SignInRoute()]);
+                                },
+                              );
+                            },
+                            builder: (context, state) {
+                              return PopupMenuButton(
+                                itemBuilder: (context) {
+                                  return [
+                                    PopupMenuItem(
+                                      child: Text("Log Out"),
+                                      onTap: () {
+                                        context.read<AuthCubit>().signOut();
+                                      },
+                                    ),
+                                  ];
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.symmetric(vertical: 15.h),
+                                  width: 50.w,
+                                  height: 50.h,
+                                  child: const Icon(
+                                    Icons.menu,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        )
+                      ],
+                    )
+                  : null,
               body: Container(
                 height: ScreenUtil().screenHeight - kToolbarHeight,
                 child: Column(
@@ -206,7 +213,7 @@ class _DashboardPageState extends State<DashboardPage> {
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    40.verticalSpace,
+                                    20.verticalSpace,
                                     Text(
                                       "Services",
                                       style: TextStyle(
@@ -493,7 +500,7 @@ class _DashboardPageState extends State<DashboardPage> {
                                     );
                                   },
                                 ),
-                                20.verticalSpace,
+                                
                               ],
                             ),
                           ),
@@ -504,7 +511,9 @@ class _DashboardPageState extends State<DashboardPage> {
                         )),
                       ],
                     )),
-                    SizedBox(height: 20,),
+                    SizedBox(
+                      height: 20,
+                    ),
                     Container(
                         padding: EdgeInsets.symmetric(horizontal: 40.w),
                         child: FeedbackSection()),

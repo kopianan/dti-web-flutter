@@ -11,6 +11,7 @@ import 'package:dti_web/injection.dart';
 import 'package:dti_web/presentation/auth/widgets/password_text_field.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -33,18 +34,20 @@ class _SignInPageState extends State<SignInPage> {
   final email = TextEditingController();
   final password = TextEditingController();
   final formKey = GlobalKey<FormState>();
-@override
+  @override
   void initState() {
-    
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.red,
-        title: Text("TESTING NOW V.2.1"),
-      ),
+      appBar: kDebugMode
+          ? AppBar(
+              backgroundColor: Colors.red,
+              title: Text("TESTING NOW V.2.1"),
+            )
+          : null,
       body: BlocProvider(
         create: (context) => authCubit,
         child: BlocConsumer<AuthCubit, AuthState>(
