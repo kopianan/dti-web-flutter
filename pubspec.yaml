@@ -70,6 +70,7 @@ dependencies:
   json_annotation: ^4.7.0
   jwt_decoder: ^2.0.1
   pinput: ^2.2.13
+  rating_dialog: ^2.0.4
   shimmer: ^2.0.0
   syncfusion_flutter_pdf: ^20.3.56
   syncfusion_flutter_pdfviewer: ^20.3.57
@@ -105,6 +106,8 @@ flutter:
     - assets/images/
     - assets/app-store.png
     - assets/google-play.png
+    - assets/bubble_chat.webp
+    - assets/star.webp
     - assets/images/bg/
     - assets/imgs/
     - assets/imgs/documentpage/

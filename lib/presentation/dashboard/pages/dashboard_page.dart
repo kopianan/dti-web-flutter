@@ -8,6 +8,7 @@ import 'package:dti_web/core/widgets/social_button_widget.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/injection.dart';
 import 'package:dti_web/presentation/dashboard/pages/application_card_page.dart';
+import 'package:dti_web/presentation/dashboard/pages/section/feedback_section.dart';
 import 'package:dti_web/routes/app_router.dart';
 
 import 'package:dti_web/utils/app_color.dart';
@@ -89,9 +90,14 @@ class _DashboardPageState extends State<DashboardPage> {
               appBar: AppBar(
                 toolbarHeight: 80.h,
                 backgroundColor: Color(0xff000649),
-                leading: Padding(
+                title: Container(
+                  width: 100,
+                  height: 100,
                   padding: const EdgeInsets.only(left: 10),
-                  child: Image.asset('assets/imgs/me.png'),
+                  child: Image.asset(
+                    'assets/imgs/me.png',
+                    fit: BoxFit.cover,
+                  ),
                 ),
                 actions: [
                   BlocProvider(
@@ -451,16 +457,35 @@ class _DashboardPageState extends State<DashboardPage> {
                                                             e.visa, null);
                                                   }).show();
                                             } else {
-                                              // final data =
-                                              //     QuestionnaireDataModel.fromJson(
-                                              //         rawData);
-
-                                              AutoRouter.of(context).navigate(
-                                                ApplicationDetailRoute(
-                                                  firebaseDocId:
-                                                      e.visa.firebaseDocId!,
-                                                ),
+                                              showDialog(
+                                                context: context,
+                                                builder: (context) {
+                                                  return Container(
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10),
+                                                      color: Colors.white,
+                                                    ),
+                                                    margin: const EdgeInsets
+                                                            .symmetric(
+                                                        horizontal: 100,
+                                                        vertical: 100),
+                                                    width: width,
+                                                    height: height,
+                                                    child: ApplicationCardPage(
+                                                      dashboardCubit:
+                                                          dashboardCubit,
+                                                    ),
+                                                  );
+                                                },
                                               );
+                                              // AutoRouter.of(context).navigate(
+                                              //   ApplicationDetailRoute(
+                                              //     firebaseDocId:
+                                              //         e.visa.firebaseDocId!,
+                                              //   ),
+                                              // );
                                             }
                                           },
                                         );
@@ -476,9 +501,13 @@ class _DashboardPageState extends State<DashboardPage> {
                         Expanded(
                             child: Container(
                           child: Image.asset('assets/images/koper.png'),
-                        ))
+                        )),
                       ],
                     )),
+                    SizedBox(height: 20,),
+                    Container(
+                        padding: EdgeInsets.symmetric(horizontal: 40.w),
+                        child: FeedbackSection()),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 50.h),
                       child: _DashboardFooter(),

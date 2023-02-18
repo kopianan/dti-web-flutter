@@ -9,6 +9,7 @@ class OtherState with _$OtherState {
   const factory OtherState.nullImage() = _NullImage;
   const factory OtherState.imageLocal(String url) = _ImageLocal;
   const factory OtherState.onContactUs(String message) = _OnContactUs;
+  const factory OtherState.onFeedbackSent(String message) = _OnFeedbackSent;
   const factory OtherState.onOTPGenerated(String message) = _OnOTPGenerated;
   const factory OtherState.onOTPVerified(String message) = _OnOTPVerified;
   const factory OtherState.onGetImageUrl(String url) = _OnGetImageUrl;

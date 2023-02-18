@@ -36,7 +36,10 @@ class AuthCubit extends Cubit<AuthState> {
   String? _isFromPhone() {
     String userAgent = html.window.navigator.userAgent.toString().toLowerCase();
     log(userAgent);
-    if (userAgent.contains("iphone")) {
+    if (userAgent.contains("iphone") ||
+        userAgent.contains("ipad") ||
+        html.window.navigator.platform!.toLowerCase().contains("macintel") &&
+            html.window.navigator.maxTouchPoints! > 0) {
       return 'iphone';
     } else if (userAgent.contains("android")) {
       return 'android';

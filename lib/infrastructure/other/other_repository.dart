@@ -254,4 +254,31 @@ class OtherRepository extends IOther {
       return left(Failures.serverError());
     }
   }
+
+  @override
+  Future<Either<Failures, dynamic>> sendFeedback(
+      int rating, String comment) async {
+    final dio = Dio();
+    Storage storage = Storage();
+
+    try {
+      var user = storage.getLocalUserData();
+      var result = await dio.post('${dotenv.env['BASE_URL']}/userFeedback',
+          data: {
+            "name": user?.name ?? user?.email ?? "no name",
+            "rating": rating,
+            "comment": comment,
+          },
+          options: Options(
+            headers: {'Authorization': 'Bearer ${storage.getToken()}'},
+          ));
+      var data = result.  data['data'];
+      if (data != null) {
+        return right(data['message']);
+      }
+      return left(Failures.generalError("something wrong"));
+    } on Exception catch (e) {
+      return left(Failures.serverError());
+    }
+  }
 }

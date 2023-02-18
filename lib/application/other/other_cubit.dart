@@ -36,6 +36,15 @@ class OtherCubit extends Cubit<OtherState> {
     );
   }
 
+  void sendFeedback(String comment, int rating) async {
+    emit(const OtherState.loading());
+    final data = await iOther.sendFeedback(rating, comment);
+    data.fold(
+      (l) => emit(OtherState.errorState(l)),
+      (r) => emit(OtherState.onFeedbackSent(r)),
+    );
+  }
+
   void verifyOtp(CountryCode countryCode, String number, String otpCode) async {
     emit(const OtherState.loading());
     final data = await iOther.verifyOtp(
