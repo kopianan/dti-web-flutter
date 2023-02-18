@@ -18,7 +18,7 @@ import 'package:intl/date_symbol_data_local.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(
-    fileName: "dotenv", 
+    fileName: "dotenv",
   );
   log(dotenv.env['BASE_URL'].toString());
 
@@ -26,14 +26,13 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   if (kIsWeb) {
-    // initialiaze the facebook javascript SDK
+    // initialiaze the facebook javascript SDK 
     await FacebookAuth.i.webAndDesktopInitialize(
       appId: "1224414981412498",
       cookie: true,
       xfbml: true,
       version: "v14.0",
     );
-
   }
   initializeDateFormatting();
 

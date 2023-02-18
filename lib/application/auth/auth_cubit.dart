@@ -5,11 +5,13 @@ import 'package:dti_web/core/storage.dart';
 import 'package:dti_web/domain/auth/i_auth.dart';
 import 'package:dti_web/domain/auth/user_data.dart';
 import 'package:dti_web/domain/global/failures.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 
+import 'package:universal_html/html.dart' as html;
 part 'auth_state.dart';
 part 'auth_cubit.freezed.dart';
 
@@ -31,24 +33,43 @@ class AuthCubit extends Cubit<AuthState> {
     emit(const AuthState.onSignOut());
   }
 
+  String? _isFromPhone() {
+    String userAgent = html.window.navigator.userAgent.toString().toLowerCase();
+    log(userAgent);
+    if (userAgent.contains("iphone")) {
+      return 'iphone';
+    } else if (userAgent.contains("android")) {
+      return 'android';
+    } else {
+      return null;
+    }
+  }
+
   void checkSession() async {
     emit(const AuthState.loading());
 
-    await Future.delayed(const Duration(seconds: 0));
-    final token = storage.getToken();
+    var userAgent = _isFromPhone();
+    if (userAgent != null) {
+      await Future.delayed(const Duration(seconds: 0));
 
-    await Future.delayed(const Duration(seconds: 0));
-
-    if (token != null) {
-      //check token expiration
-      bool isExpired = JwtDecoder.isExpired(token);
-      if (isExpired) {
-        emit(const AuthState.unAuthorized());
-      } else {
-        emit(const AuthState.authorized());
-      }
+      emit(AuthState.isOpenFromPhone(userAgent));
     } else {
-      emit(const AuthState.unAuthorized());
+      await Future.delayed(const Duration(seconds: 0));
+      final token = storage.getToken();
+
+      await Future.delayed(const Duration(seconds: 0));
+
+      if (token != null) {
+        //check token expiration
+        bool isExpired = JwtDecoder.isExpired(token);
+        if (isExpired) {
+          emit(const AuthState.unAuthorized());
+        } else {
+          emit(const AuthState.authorized());
+        }
+      } else {
+        emit(const AuthState.unAuthorized());
+      }
     }
   }
 
@@ -80,9 +101,9 @@ class AuthCubit extends Cubit<AuthState> {
     );
   }
 
-  void loginUsingGoogle() async {
+  void loginUsingGoogle({GoogleSignInAccount? accountUser}) async {
     emit(AuthState.loading());
-    final result = await iAuth.loginWithGoogle();
+    final result = await iAuth.loginWithGoogle(accountUser: accountUser);
 
     //SAVE DATA TO LOCALE
     result.fold(

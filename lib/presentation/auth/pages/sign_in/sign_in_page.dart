@@ -1,10 +1,8 @@
 import 'dart:developer';
-// import 'dart:html' as html;
 
 import 'package:auto_route/auto_route.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dti_web/application/auth/auth_cubit.dart';
-import 'package:dti_web/core/storage.dart';
 import 'package:dti_web/core/widgets/auth_footer_widget.dart';
 import 'package:dti_web/core/widgets/auth_header_widget.dart';
 import 'package:dti_web/core/widgets/loading_primary_button.dart';
@@ -13,12 +11,10 @@ import 'package:dti_web/injection.dart';
 import 'package:dti_web/presentation/auth/widgets/password_text_field.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:web_browser_detect/web_browser_detect.dart';
 
 import '../../widgets/email_text_field.dart';
 import 'widget/media_social_button.dart';
@@ -38,47 +34,13 @@ class _SignInPageState extends State<SignInPage> {
   final password = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
-  GoogleSignIn _googleSignIn = GoogleSignIn(
-    // Optional clientId
-    // clientId: '479882132969-9i9aqik3jfjd7qhci1nqf0bm2g71rm1u.apps.googleusercontent.com',
-    scopes: <String>[
-      'email',
-      'https://www.googleapis.com/auth/contacts.readonly',
-    ],
-  );
-  @override
-  void initState() {
-    super.initState();
-    // if (kIsWeb) {
-    //   _googleSignIn.signInSilently();
-    //   final browser = Browser.detectOrNull();
-
-    //   if (browser?.browser == BrowserAgent.Safari.name) {
-    //     if (Storage().getBrowser() == false) {
-    //       authCubit.loginUsingGoogle();
-    //       Future.delayed(Duration(seconds: 2)).then((value) {
-    //         Storage().fillBrowser();
-    //         log("REFRESH");
-
-    //         html.window.location.reload();
-    //       });
-    //     }
-    //     log(Storage().getBrowser().toString());
-    //   }
-    // }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.red,
-        title: Text("TESTING NOW"),
+        title: Text("TESTING NOW V.2.1"),
       ),
-      // floatingActionButton: FloatingActionButton(onPressed: () {
-      //   context.read<AuthCubit>();
-      //   html.window.location.reload();
-      // }),
       body: BlocProvider(
         create: (context) => authCubit,
         child: BlocConsumer<AuthCubit, AuthState>(
@@ -170,9 +132,7 @@ class _SignInPageState extends State<SignInPage> {
                                     icon: 'assets/icons/ic_gg.png',
                                     label: "Login with Google",
                                     onTap: () {
-                                      context
-                                          .read<AuthCubit>()
-                                          .loginUsingGoogle();
+                                      authCubit.loginUsingGoogle();
                                     },
                                   ),
                                   20.verticalSpace,

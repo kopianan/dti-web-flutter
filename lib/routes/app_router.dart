@@ -10,6 +10,7 @@ import 'package:dti_web/presentation/applications/application_detail_page.dart';
 import 'package:dti_web/presentation/applications/upload_document_page.dart';
 import 'package:dti_web/presentation/applications/widgets/signature_page.dart';
 import 'package:dti_web/presentation/auth/pages/phone/number_registration_page.dart';
+import 'package:dti_web/presentation/auth/pages/platform/platform_page.dart';
 import 'package:dti_web/presentation/auth/pages/splash_screen_page.dart';
 import 'package:dti_web/presentation/dashboard/pages/application_card_page.dart';
 import 'package:dti_web/presentation/payment/payment_page.dart';
@@ -48,11 +49,18 @@ part "app_router.gr.dart";
     AutoRoute(
       initial: true,
       path: '/',
+      // path: '/asdf',
       page: SplashScreenPage,
     ),
     AutoRoute(
       path: DashboardPage.routeName,
       page: DashboardPage,
+    ),
+    AutoRoute(
+      // initial: true,
+      // path: '/',
+      path: PlatformPage.routeName,
+      page: PlatformPage,
     ),
     AutoRoute(
       path: VOASummaryPage.routeName,

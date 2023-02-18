@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:dti_web/application/auth/auth_cubit.dart';
 import 'package:dti_web/injection.dart';
@@ -5,6 +7,8 @@ import 'package:dti_web/routes/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+
+import 'package:url_launcher/url_launcher.dart';
 
 class SplashScreenPage extends StatefulWidget {
   const SplashScreenPage({super.key});
@@ -15,7 +19,7 @@ class SplashScreenPage extends StatefulWidget {
 
 class _SplashScreenPageState extends State<SplashScreenPage> {
   @override
-  void initState() { 
+  void initState() {
     super.initState();
   }
 
@@ -27,13 +31,17 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
         body: BlocListener<AuthCubit, AuthState>(
           listener: (context, state) {
             state.maybeMap(
-                orElse: () {},
-                authorized: (e) {
-                  AutoRouter.of(context).replaceAll([DashboardRoute()]);
-                },
-                unAuthorized: (e) {
-                  AutoRouter.of(context).replaceAll([SignInRoute()]);
-                });
+              orElse: () {},
+              authorized: (e) {
+                AutoRouter.of(context).replaceAll([DashboardRoute()]);
+              },
+              unAuthorized: (e) {
+                AutoRouter.of(context).replaceAll([SignInRoute()]);
+              },
+              isOpenFromPhone: (e) {
+                AutoRouter.of(context).replaceAll([PlatformRoute()]);
+              },
+            );
           },
           child: BlocBuilder<AuthCubit, AuthState>(
             builder: (context, state) {
@@ -45,10 +53,8 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
                     width: 100,
                     fit: BoxFit.cover,
                   ),
-                  SizedBox(height: 30),
-                  Center(
-                    child: CircularProgressIndicator(),
-                  )
+                  const SizedBox(height: 30),
+                  const Center(child: CircularProgressIndicator())
                 ],
               );
             },

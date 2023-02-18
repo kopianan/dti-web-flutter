@@ -29,6 +29,12 @@ class _$AppRouter extends RootStackRouter {
         child: const DashboardPage(),
       );
     },
+    PlatformRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const PlatformPage(),
+      );
+    },
     VOASummaryRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
@@ -274,6 +280,10 @@ class _$AppRouter extends RootStackRouter {
           path: '/dashboard-page',
         ),
         RouteConfig(
+          PlatformRoute.name,
+          path: '/platform',
+        ),
+        RouteConfig(
           VOASummaryRoute.name,
           path: '/voa-summary',
         ),
@@ -398,6 +408,18 @@ class DashboardRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'DashboardRoute';
+}
+
+/// generated route for
+/// [PlatformPage]
+class PlatformRoute extends PageRouteInfo<void> {
+  const PlatformRoute()
+      : super(
+          PlatformRoute.name,
+          path: '/platform',
+        );
+
+  static const String name = 'PlatformRoute';
 }
 
 /// generated route for

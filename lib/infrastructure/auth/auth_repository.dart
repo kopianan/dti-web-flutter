@@ -19,8 +19,10 @@ import 'package:web_browser_detect/web_browser_detect.dart';
 
 @LazySingleton(as: IAuth)
 class AuthRepository extends IAuth {
-  AuthRepository();
+  AuthRepository(this._googleSignIn, this._firebaseAuth);
   Dio? dio;
+  GoogleSignIn _googleSignIn;
+  FirebaseAuth _firebaseAuth;
 
   @override
   Future<Either<Failures, UserData>> getUserData() async {
@@ -42,29 +44,22 @@ class AuthRepository extends IAuth {
   }
 
   @override
-  Future<Either<Failures, AuthResponse>> loginWithGoogle() async {
+  Future<Either<Failures, AuthResponse>> loginWithGoogle(
+      {GoogleSignInAccount? accountUser}) async {
     //Trigger Authentication Flow
-    var googleSignIn = GoogleSignIn(
-      scopes: <String>[
-        'email',
-        'https://www.googleapis.com/auth/contacts.readonly',
-      ],
-    );
 
-    FirebaseAuth firebaseAuth = FirebaseAuth.instance;
     bool isNewUser = false;
-    await googleSignIn.disconnect();
 
     GoogleSignInAccount? googleUser;
-    final browser = Browser.detectOrNull();
-    if (browser?.browser == BrowserAgent.Safari.name) {
-      log(browser.toString());
-      // await googleSignIn.signInSilently();
-      // await googleSignIn.signIn();
-    }
-    log(browser.toString());
+
     try {
-      googleUser = await googleSignIn.signIn();
+      if (accountUser != null) {
+        googleUser = accountUser;
+      } else {
+        await _googleSignIn.disconnect();
+        await _googleSignIn.signOut();
+        googleUser = await _googleSignIn.signIn();
+      }
     } on PlatformException catch (e) {
       switch (e.code) {
         case "popup_closed_by_user":
@@ -75,6 +70,8 @@ class AuthRepository extends IAuth {
         case "immediate_failed":
           return left(Failures.authError("Unkown Error"));
       }
+    } catch (e) {
+      print(e);
     }
 
     if (googleUser == null) {
@@ -103,7 +100,7 @@ class AuthRepository extends IAuth {
 
       //Once Sign In, return the UserCredential
       UserCredential userCreds =
-          await firebaseAuth.signInWithCredential(credential);
+          await _firebaseAuth.signInWithCredential(credential);
 
       if (userCreds != null) {
         final token = await userCreds.user!.getIdToken();

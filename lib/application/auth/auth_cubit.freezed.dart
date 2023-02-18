@@ -25,6 +25,7 @@ mixin _$AuthState {
     required TResult Function() onSignOut,
     required TResult Function() authorized,
     required TResult Function() unAuthorized,
+    required TResult Function(String userAgent) isOpenFromPhone,
     required TResult Function(String token) onLoginSuccess,
     required TResult Function(String token) onLoginSuccessWithoutPhoneNumber,
     required TResult Function(String token) onRegisterSuccess,
@@ -41,6 +42,7 @@ mixin _$AuthState {
     TResult Function()? onSignOut,
     TResult Function()? authorized,
     TResult Function()? unAuthorized,
+    TResult Function(String userAgent)? isOpenFromPhone,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onLoginSuccessWithoutPhoneNumber,
     TResult Function(String token)? onRegisterSuccess,
@@ -57,6 +59,7 @@ mixin _$AuthState {
     TResult Function()? onSignOut,
     TResult Function()? authorized,
     TResult Function()? unAuthorized,
+    TResult Function(String userAgent)? isOpenFromPhone,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onLoginSuccessWithoutPhoneNumber,
     TResult Function(String token)? onRegisterSuccess,
@@ -74,6 +77,7 @@ mixin _$AuthState {
     required TResult Function(_OnSignOut value) onSignOut,
     required TResult Function(_Authorized value) authorized,
     required TResult Function(_UnAuthorized value) unAuthorized,
+    required TResult Function(_IsOpenFromPhone value) isOpenFromPhone,
     required TResult Function(_OnLoginSuccess value) onLoginSuccess,
     required TResult Function(_OnLoginSuccessWithoutPhoneNumber value)
         onLoginSuccessWithoutPhoneNumber,
@@ -91,6 +95,7 @@ mixin _$AuthState {
     TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_Authorized value)? authorized,
     TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
@@ -108,6 +113,7 @@ mixin _$AuthState {
     TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_Authorized value)? authorized,
     TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
@@ -180,6 +186,7 @@ class _$_Initial implements _Initial {
     required TResult Function() onSignOut,
     required TResult Function() authorized,
     required TResult Function() unAuthorized,
+    required TResult Function(String userAgent) isOpenFromPhone,
     required TResult Function(String token) onLoginSuccess,
     required TResult Function(String token) onLoginSuccessWithoutPhoneNumber,
     required TResult Function(String token) onRegisterSuccess,
@@ -199,6 +206,7 @@ class _$_Initial implements _Initial {
     TResult Function()? onSignOut,
     TResult Function()? authorized,
     TResult Function()? unAuthorized,
+    TResult Function(String userAgent)? isOpenFromPhone,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onLoginSuccessWithoutPhoneNumber,
     TResult Function(String token)? onRegisterSuccess,
@@ -218,6 +226,7 @@ class _$_Initial implements _Initial {
     TResult Function()? onSignOut,
     TResult Function()? authorized,
     TResult Function()? unAuthorized,
+    TResult Function(String userAgent)? isOpenFromPhone,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onLoginSuccessWithoutPhoneNumber,
     TResult Function(String token)? onRegisterSuccess,
@@ -241,6 +250,7 @@ class _$_Initial implements _Initial {
     required TResult Function(_OnSignOut value) onSignOut,
     required TResult Function(_Authorized value) authorized,
     required TResult Function(_UnAuthorized value) unAuthorized,
+    required TResult Function(_IsOpenFromPhone value) isOpenFromPhone,
     required TResult Function(_OnLoginSuccess value) onLoginSuccess,
     required TResult Function(_OnLoginSuccessWithoutPhoneNumber value)
         onLoginSuccessWithoutPhoneNumber,
@@ -261,6 +271,7 @@ class _$_Initial implements _Initial {
     TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_Authorized value)? authorized,
     TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
@@ -281,6 +292,7 @@ class _$_Initial implements _Initial {
     TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_Authorized value)? authorized,
     TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
@@ -346,6 +358,7 @@ class _$_Loading implements _Loading {
     required TResult Function() onSignOut,
     required TResult Function() authorized,
     required TResult Function() unAuthorized,
+    required TResult Function(String userAgent) isOpenFromPhone,
     required TResult Function(String token) onLoginSuccess,
     required TResult Function(String token) onLoginSuccessWithoutPhoneNumber,
     required TResult Function(String token) onRegisterSuccess,
@@ -365,6 +378,7 @@ class _$_Loading implements _Loading {
     TResult Function()? onSignOut,
     TResult Function()? authorized,
     TResult Function()? unAuthorized,
+    TResult Function(String userAgent)? isOpenFromPhone,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onLoginSuccessWithoutPhoneNumber,
     TResult Function(String token)? onRegisterSuccess,
@@ -384,6 +398,7 @@ class _$_Loading implements _Loading {
     TResult Function()? onSignOut,
     TResult Function()? authorized,
     TResult Function()? unAuthorized,
+    TResult Function(String userAgent)? isOpenFromPhone,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onLoginSuccessWithoutPhoneNumber,
     TResult Function(String token)? onRegisterSuccess,
@@ -407,6 +422,7 @@ class _$_Loading implements _Loading {
     required TResult Function(_OnSignOut value) onSignOut,
     required TResult Function(_Authorized value) authorized,
     required TResult Function(_UnAuthorized value) unAuthorized,
+    required TResult Function(_IsOpenFromPhone value) isOpenFromPhone,
     required TResult Function(_OnLoginSuccess value) onLoginSuccess,
     required TResult Function(_OnLoginSuccessWithoutPhoneNumber value)
         onLoginSuccessWithoutPhoneNumber,
@@ -427,6 +443,7 @@ class _$_Loading implements _Loading {
     TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_Authorized value)? authorized,
     TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
@@ -447,6 +464,7 @@ class _$_Loading implements _Loading {
     TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_Authorized value)? authorized,
     TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
@@ -535,6 +553,7 @@ class _$_Error implements _Error {
     required TResult Function() onSignOut,
     required TResult Function() authorized,
     required TResult Function() unAuthorized,
+    required TResult Function(String userAgent) isOpenFromPhone,
     required TResult Function(String token) onLoginSuccess,
     required TResult Function(String token) onLoginSuccessWithoutPhoneNumber,
     required TResult Function(String token) onRegisterSuccess,
@@ -554,6 +573,7 @@ class _$_Error implements _Error {
     TResult Function()? onSignOut,
     TResult Function()? authorized,
     TResult Function()? unAuthorized,
+    TResult Function(String userAgent)? isOpenFromPhone,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onLoginSuccessWithoutPhoneNumber,
     TResult Function(String token)? onRegisterSuccess,
@@ -573,6 +593,7 @@ class _$_Error implements _Error {
     TResult Function()? onSignOut,
     TResult Function()? authorized,
     TResult Function()? unAuthorized,
+    TResult Function(String userAgent)? isOpenFromPhone,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onLoginSuccessWithoutPhoneNumber,
     TResult Function(String token)? onRegisterSuccess,
@@ -596,6 +617,7 @@ class _$_Error implements _Error {
     required TResult Function(_OnSignOut value) onSignOut,
     required TResult Function(_Authorized value) authorized,
     required TResult Function(_UnAuthorized value) unAuthorized,
+    required TResult Function(_IsOpenFromPhone value) isOpenFromPhone,
     required TResult Function(_OnLoginSuccess value) onLoginSuccess,
     required TResult Function(_OnLoginSuccessWithoutPhoneNumber value)
         onLoginSuccessWithoutPhoneNumber,
@@ -616,6 +638,7 @@ class _$_Error implements _Error {
     TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_Authorized value)? authorized,
     TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
@@ -636,6 +659,7 @@ class _$_Error implements _Error {
     TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_Authorized value)? authorized,
     TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
@@ -739,6 +763,7 @@ class _$_OnError implements _OnError {
     required TResult Function() onSignOut,
     required TResult Function() authorized,
     required TResult Function() unAuthorized,
+    required TResult Function(String userAgent) isOpenFromPhone,
     required TResult Function(String token) onLoginSuccess,
     required TResult Function(String token) onLoginSuccessWithoutPhoneNumber,
     required TResult Function(String token) onRegisterSuccess,
@@ -758,6 +783,7 @@ class _$_OnError implements _OnError {
     TResult Function()? onSignOut,
     TResult Function()? authorized,
     TResult Function()? unAuthorized,
+    TResult Function(String userAgent)? isOpenFromPhone,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onLoginSuccessWithoutPhoneNumber,
     TResult Function(String token)? onRegisterSuccess,
@@ -777,6 +803,7 @@ class _$_OnError implements _OnError {
     TResult Function()? onSignOut,
     TResult Function()? authorized,
     TResult Function()? unAuthorized,
+    TResult Function(String userAgent)? isOpenFromPhone,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onLoginSuccessWithoutPhoneNumber,
     TResult Function(String token)? onRegisterSuccess,
@@ -800,6 +827,7 @@ class _$_OnError implements _OnError {
     required TResult Function(_OnSignOut value) onSignOut,
     required TResult Function(_Authorized value) authorized,
     required TResult Function(_UnAuthorized value) unAuthorized,
+    required TResult Function(_IsOpenFromPhone value) isOpenFromPhone,
     required TResult Function(_OnLoginSuccess value) onLoginSuccess,
     required TResult Function(_OnLoginSuccessWithoutPhoneNumber value)
         onLoginSuccessWithoutPhoneNumber,
@@ -820,6 +848,7 @@ class _$_OnError implements _OnError {
     TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_Authorized value)? authorized,
     TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
@@ -840,6 +869,7 @@ class _$_OnError implements _OnError {
     TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_Authorized value)? authorized,
     TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
@@ -911,6 +941,7 @@ class _$_OnSignOut implements _OnSignOut {
     required TResult Function() onSignOut,
     required TResult Function() authorized,
     required TResult Function() unAuthorized,
+    required TResult Function(String userAgent) isOpenFromPhone,
     required TResult Function(String token) onLoginSuccess,
     required TResult Function(String token) onLoginSuccessWithoutPhoneNumber,
     required TResult Function(String token) onRegisterSuccess,
@@ -930,6 +961,7 @@ class _$_OnSignOut implements _OnSignOut {
     TResult Function()? onSignOut,
     TResult Function()? authorized,
     TResult Function()? unAuthorized,
+    TResult Function(String userAgent)? isOpenFromPhone,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onLoginSuccessWithoutPhoneNumber,
     TResult Function(String token)? onRegisterSuccess,
@@ -949,6 +981,7 @@ class _$_OnSignOut implements _OnSignOut {
     TResult Function()? onSignOut,
     TResult Function()? authorized,
     TResult Function()? unAuthorized,
+    TResult Function(String userAgent)? isOpenFromPhone,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onLoginSuccessWithoutPhoneNumber,
     TResult Function(String token)? onRegisterSuccess,
@@ -972,6 +1005,7 @@ class _$_OnSignOut implements _OnSignOut {
     required TResult Function(_OnSignOut value) onSignOut,
     required TResult Function(_Authorized value) authorized,
     required TResult Function(_UnAuthorized value) unAuthorized,
+    required TResult Function(_IsOpenFromPhone value) isOpenFromPhone,
     required TResult Function(_OnLoginSuccess value) onLoginSuccess,
     required TResult Function(_OnLoginSuccessWithoutPhoneNumber value)
         onLoginSuccessWithoutPhoneNumber,
@@ -992,6 +1026,7 @@ class _$_OnSignOut implements _OnSignOut {
     TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_Authorized value)? authorized,
     TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
@@ -1012,6 +1047,7 @@ class _$_OnSignOut implements _OnSignOut {
     TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_Authorized value)? authorized,
     TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
@@ -1078,6 +1114,7 @@ class _$_Authorized implements _Authorized {
     required TResult Function() onSignOut,
     required TResult Function() authorized,
     required TResult Function() unAuthorized,
+    required TResult Function(String userAgent) isOpenFromPhone,
     required TResult Function(String token) onLoginSuccess,
     required TResult Function(String token) onLoginSuccessWithoutPhoneNumber,
     required TResult Function(String token) onRegisterSuccess,
@@ -1097,6 +1134,7 @@ class _$_Authorized implements _Authorized {
     TResult Function()? onSignOut,
     TResult Function()? authorized,
     TResult Function()? unAuthorized,
+    TResult Function(String userAgent)? isOpenFromPhone,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onLoginSuccessWithoutPhoneNumber,
     TResult Function(String token)? onRegisterSuccess,
@@ -1116,6 +1154,7 @@ class _$_Authorized implements _Authorized {
     TResult Function()? onSignOut,
     TResult Function()? authorized,
     TResult Function()? unAuthorized,
+    TResult Function(String userAgent)? isOpenFromPhone,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onLoginSuccessWithoutPhoneNumber,
     TResult Function(String token)? onRegisterSuccess,
@@ -1139,6 +1178,7 @@ class _$_Authorized implements _Authorized {
     required TResult Function(_OnSignOut value) onSignOut,
     required TResult Function(_Authorized value) authorized,
     required TResult Function(_UnAuthorized value) unAuthorized,
+    required TResult Function(_IsOpenFromPhone value) isOpenFromPhone,
     required TResult Function(_OnLoginSuccess value) onLoginSuccess,
     required TResult Function(_OnLoginSuccessWithoutPhoneNumber value)
         onLoginSuccessWithoutPhoneNumber,
@@ -1159,6 +1199,7 @@ class _$_Authorized implements _Authorized {
     TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_Authorized value)? authorized,
     TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
@@ -1179,6 +1220,7 @@ class _$_Authorized implements _Authorized {
     TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_Authorized value)? authorized,
     TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
@@ -1245,6 +1287,7 @@ class _$_UnAuthorized implements _UnAuthorized {
     required TResult Function() onSignOut,
     required TResult Function() authorized,
     required TResult Function() unAuthorized,
+    required TResult Function(String userAgent) isOpenFromPhone,
     required TResult Function(String token) onLoginSuccess,
     required TResult Function(String token) onLoginSuccessWithoutPhoneNumber,
     required TResult Function(String token) onRegisterSuccess,
@@ -1264,6 +1307,7 @@ class _$_UnAuthorized implements _UnAuthorized {
     TResult Function()? onSignOut,
     TResult Function()? authorized,
     TResult Function()? unAuthorized,
+    TResult Function(String userAgent)? isOpenFromPhone,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onLoginSuccessWithoutPhoneNumber,
     TResult Function(String token)? onRegisterSuccess,
@@ -1283,6 +1327,7 @@ class _$_UnAuthorized implements _UnAuthorized {
     TResult Function()? onSignOut,
     TResult Function()? authorized,
     TResult Function()? unAuthorized,
+    TResult Function(String userAgent)? isOpenFromPhone,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onLoginSuccessWithoutPhoneNumber,
     TResult Function(String token)? onRegisterSuccess,
@@ -1306,6 +1351,7 @@ class _$_UnAuthorized implements _UnAuthorized {
     required TResult Function(_OnSignOut value) onSignOut,
     required TResult Function(_Authorized value) authorized,
     required TResult Function(_UnAuthorized value) unAuthorized,
+    required TResult Function(_IsOpenFromPhone value) isOpenFromPhone,
     required TResult Function(_OnLoginSuccess value) onLoginSuccess,
     required TResult Function(_OnLoginSuccessWithoutPhoneNumber value)
         onLoginSuccessWithoutPhoneNumber,
@@ -1326,6 +1372,7 @@ class _$_UnAuthorized implements _UnAuthorized {
     TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_Authorized value)? authorized,
     TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
@@ -1346,6 +1393,7 @@ class _$_UnAuthorized implements _UnAuthorized {
     TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_Authorized value)? authorized,
     TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
@@ -1363,6 +1411,209 @@ class _$_UnAuthorized implements _UnAuthorized {
 
 abstract class _UnAuthorized implements AuthState {
   const factory _UnAuthorized() = _$_UnAuthorized;
+}
+
+/// @nodoc
+abstract class _$$_IsOpenFromPhoneCopyWith<$Res> {
+  factory _$$_IsOpenFromPhoneCopyWith(
+          _$_IsOpenFromPhone value, $Res Function(_$_IsOpenFromPhone) then) =
+      __$$_IsOpenFromPhoneCopyWithImpl<$Res>;
+  $Res call({String userAgent});
+}
+
+/// @nodoc
+class __$$_IsOpenFromPhoneCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res>
+    implements _$$_IsOpenFromPhoneCopyWith<$Res> {
+  __$$_IsOpenFromPhoneCopyWithImpl(
+      _$_IsOpenFromPhone _value, $Res Function(_$_IsOpenFromPhone) _then)
+      : super(_value, (v) => _then(v as _$_IsOpenFromPhone));
+
+  @override
+  _$_IsOpenFromPhone get _value => super._value as _$_IsOpenFromPhone;
+
+  @override
+  $Res call({
+    Object? userAgent = freezed,
+  }) {
+    return _then(_$_IsOpenFromPhone(
+      userAgent == freezed
+          ? _value.userAgent
+          : userAgent // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_IsOpenFromPhone implements _IsOpenFromPhone {
+  const _$_IsOpenFromPhone(this.userAgent);
+
+  @override
+  final String userAgent;
+
+  @override
+  String toString() {
+    return 'AuthState.isOpenFromPhone(userAgent: $userAgent)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_IsOpenFromPhone &&
+            const DeepCollectionEquality().equals(other.userAgent, userAgent));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(userAgent));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_IsOpenFromPhoneCopyWith<_$_IsOpenFromPhone> get copyWith =>
+      __$$_IsOpenFromPhoneCopyWithImpl<_$_IsOpenFromPhone>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String error) error,
+    required TResult Function(Failures error) onError,
+    required TResult Function() onSignOut,
+    required TResult Function() authorized,
+    required TResult Function() unAuthorized,
+    required TResult Function(String userAgent) isOpenFromPhone,
+    required TResult Function(String token) onLoginSuccess,
+    required TResult Function(String token) onLoginSuccessWithoutPhoneNumber,
+    required TResult Function(String token) onRegisterSuccess,
+    required TResult Function(String message) onResetPassword,
+    required TResult Function(UserData userData) onGetUserData,
+  }) {
+    return isOpenFromPhone(userAgent);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String error)? error,
+    TResult Function(Failures error)? onError,
+    TResult Function()? onSignOut,
+    TResult Function()? authorized,
+    TResult Function()? unAuthorized,
+    TResult Function(String userAgent)? isOpenFromPhone,
+    TResult Function(String token)? onLoginSuccess,
+    TResult Function(String token)? onLoginSuccessWithoutPhoneNumber,
+    TResult Function(String token)? onRegisterSuccess,
+    TResult Function(String message)? onResetPassword,
+    TResult Function(UserData userData)? onGetUserData,
+  }) {
+    return isOpenFromPhone?.call(userAgent);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String error)? error,
+    TResult Function(Failures error)? onError,
+    TResult Function()? onSignOut,
+    TResult Function()? authorized,
+    TResult Function()? unAuthorized,
+    TResult Function(String userAgent)? isOpenFromPhone,
+    TResult Function(String token)? onLoginSuccess,
+    TResult Function(String token)? onLoginSuccessWithoutPhoneNumber,
+    TResult Function(String token)? onRegisterSuccess,
+    TResult Function(String message)? onResetPassword,
+    TResult Function(UserData userData)? onGetUserData,
+    required TResult orElse(),
+  }) {
+    if (isOpenFromPhone != null) {
+      return isOpenFromPhone(userAgent);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Error value) error,
+    required TResult Function(_OnError value) onError,
+    required TResult Function(_OnSignOut value) onSignOut,
+    required TResult Function(_Authorized value) authorized,
+    required TResult Function(_UnAuthorized value) unAuthorized,
+    required TResult Function(_IsOpenFromPhone value) isOpenFromPhone,
+    required TResult Function(_OnLoginSuccess value) onLoginSuccess,
+    required TResult Function(_OnLoginSuccessWithoutPhoneNumber value)
+        onLoginSuccessWithoutPhoneNumber,
+    required TResult Function(_OnRegisterSuccess value) onRegisterSuccess,
+    required TResult Function(_OnResetPassword value) onResetPassword,
+    required TResult Function(_OnGetUserData value) onGetUserData,
+  }) {
+    return isOpenFromPhone(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_OnError value)? onError,
+    TResult Function(_OnSignOut value)? onSignOut,
+    TResult Function(_Authorized value)? authorized,
+    TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
+    TResult Function(_OnLoginSuccess value)? onLoginSuccess,
+    TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
+        onLoginSuccessWithoutPhoneNumber,
+    TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
+    TResult Function(_OnResetPassword value)? onResetPassword,
+    TResult Function(_OnGetUserData value)? onGetUserData,
+  }) {
+    return isOpenFromPhone?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_OnError value)? onError,
+    TResult Function(_OnSignOut value)? onSignOut,
+    TResult Function(_Authorized value)? authorized,
+    TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
+    TResult Function(_OnLoginSuccess value)? onLoginSuccess,
+    TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
+        onLoginSuccessWithoutPhoneNumber,
+    TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
+    TResult Function(_OnResetPassword value)? onResetPassword,
+    TResult Function(_OnGetUserData value)? onGetUserData,
+    required TResult orElse(),
+  }) {
+    if (isOpenFromPhone != null) {
+      return isOpenFromPhone(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _IsOpenFromPhone implements AuthState {
+  const factory _IsOpenFromPhone(final String userAgent) = _$_IsOpenFromPhone;
+
+  String get userAgent;
+  @JsonKey(ignore: true)
+  _$$_IsOpenFromPhoneCopyWith<_$_IsOpenFromPhone> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1437,6 +1688,7 @@ class _$_OnLoginSuccess implements _OnLoginSuccess {
     required TResult Function() onSignOut,
     required TResult Function() authorized,
     required TResult Function() unAuthorized,
+    required TResult Function(String userAgent) isOpenFromPhone,
     required TResult Function(String token) onLoginSuccess,
     required TResult Function(String token) onLoginSuccessWithoutPhoneNumber,
     required TResult Function(String token) onRegisterSuccess,
@@ -1456,6 +1708,7 @@ class _$_OnLoginSuccess implements _OnLoginSuccess {
     TResult Function()? onSignOut,
     TResult Function()? authorized,
     TResult Function()? unAuthorized,
+    TResult Function(String userAgent)? isOpenFromPhone,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onLoginSuccessWithoutPhoneNumber,
     TResult Function(String token)? onRegisterSuccess,
@@ -1475,6 +1728,7 @@ class _$_OnLoginSuccess implements _OnLoginSuccess {
     TResult Function()? onSignOut,
     TResult Function()? authorized,
     TResult Function()? unAuthorized,
+    TResult Function(String userAgent)? isOpenFromPhone,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onLoginSuccessWithoutPhoneNumber,
     TResult Function(String token)? onRegisterSuccess,
@@ -1498,6 +1752,7 @@ class _$_OnLoginSuccess implements _OnLoginSuccess {
     required TResult Function(_OnSignOut value) onSignOut,
     required TResult Function(_Authorized value) authorized,
     required TResult Function(_UnAuthorized value) unAuthorized,
+    required TResult Function(_IsOpenFromPhone value) isOpenFromPhone,
     required TResult Function(_OnLoginSuccess value) onLoginSuccess,
     required TResult Function(_OnLoginSuccessWithoutPhoneNumber value)
         onLoginSuccessWithoutPhoneNumber,
@@ -1518,6 +1773,7 @@ class _$_OnLoginSuccess implements _OnLoginSuccess {
     TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_Authorized value)? authorized,
     TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
@@ -1538,6 +1794,7 @@ class _$_OnLoginSuccess implements _OnLoginSuccess {
     TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_Authorized value)? authorized,
     TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
@@ -1640,6 +1897,7 @@ class _$_OnLoginSuccessWithoutPhoneNumber
     required TResult Function() onSignOut,
     required TResult Function() authorized,
     required TResult Function() unAuthorized,
+    required TResult Function(String userAgent) isOpenFromPhone,
     required TResult Function(String token) onLoginSuccess,
     required TResult Function(String token) onLoginSuccessWithoutPhoneNumber,
     required TResult Function(String token) onRegisterSuccess,
@@ -1659,6 +1917,7 @@ class _$_OnLoginSuccessWithoutPhoneNumber
     TResult Function()? onSignOut,
     TResult Function()? authorized,
     TResult Function()? unAuthorized,
+    TResult Function(String userAgent)? isOpenFromPhone,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onLoginSuccessWithoutPhoneNumber,
     TResult Function(String token)? onRegisterSuccess,
@@ -1678,6 +1937,7 @@ class _$_OnLoginSuccessWithoutPhoneNumber
     TResult Function()? onSignOut,
     TResult Function()? authorized,
     TResult Function()? unAuthorized,
+    TResult Function(String userAgent)? isOpenFromPhone,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onLoginSuccessWithoutPhoneNumber,
     TResult Function(String token)? onRegisterSuccess,
@@ -1701,6 +1961,7 @@ class _$_OnLoginSuccessWithoutPhoneNumber
     required TResult Function(_OnSignOut value) onSignOut,
     required TResult Function(_Authorized value) authorized,
     required TResult Function(_UnAuthorized value) unAuthorized,
+    required TResult Function(_IsOpenFromPhone value) isOpenFromPhone,
     required TResult Function(_OnLoginSuccess value) onLoginSuccess,
     required TResult Function(_OnLoginSuccessWithoutPhoneNumber value)
         onLoginSuccessWithoutPhoneNumber,
@@ -1721,6 +1982,7 @@ class _$_OnLoginSuccessWithoutPhoneNumber
     TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_Authorized value)? authorized,
     TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
@@ -1741,6 +2003,7 @@ class _$_OnLoginSuccessWithoutPhoneNumber
     TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_Authorized value)? authorized,
     TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
@@ -1840,6 +2103,7 @@ class _$_OnRegisterSuccess implements _OnRegisterSuccess {
     required TResult Function() onSignOut,
     required TResult Function() authorized,
     required TResult Function() unAuthorized,
+    required TResult Function(String userAgent) isOpenFromPhone,
     required TResult Function(String token) onLoginSuccess,
     required TResult Function(String token) onLoginSuccessWithoutPhoneNumber,
     required TResult Function(String token) onRegisterSuccess,
@@ -1859,6 +2123,7 @@ class _$_OnRegisterSuccess implements _OnRegisterSuccess {
     TResult Function()? onSignOut,
     TResult Function()? authorized,
     TResult Function()? unAuthorized,
+    TResult Function(String userAgent)? isOpenFromPhone,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onLoginSuccessWithoutPhoneNumber,
     TResult Function(String token)? onRegisterSuccess,
@@ -1878,6 +2143,7 @@ class _$_OnRegisterSuccess implements _OnRegisterSuccess {
     TResult Function()? onSignOut,
     TResult Function()? authorized,
     TResult Function()? unAuthorized,
+    TResult Function(String userAgent)? isOpenFromPhone,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onLoginSuccessWithoutPhoneNumber,
     TResult Function(String token)? onRegisterSuccess,
@@ -1901,6 +2167,7 @@ class _$_OnRegisterSuccess implements _OnRegisterSuccess {
     required TResult Function(_OnSignOut value) onSignOut,
     required TResult Function(_Authorized value) authorized,
     required TResult Function(_UnAuthorized value) unAuthorized,
+    required TResult Function(_IsOpenFromPhone value) isOpenFromPhone,
     required TResult Function(_OnLoginSuccess value) onLoginSuccess,
     required TResult Function(_OnLoginSuccessWithoutPhoneNumber value)
         onLoginSuccessWithoutPhoneNumber,
@@ -1921,6 +2188,7 @@ class _$_OnRegisterSuccess implements _OnRegisterSuccess {
     TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_Authorized value)? authorized,
     TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
@@ -1941,6 +2209,7 @@ class _$_OnRegisterSuccess implements _OnRegisterSuccess {
     TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_Authorized value)? authorized,
     TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
@@ -2037,6 +2306,7 @@ class _$_OnResetPassword implements _OnResetPassword {
     required TResult Function() onSignOut,
     required TResult Function() authorized,
     required TResult Function() unAuthorized,
+    required TResult Function(String userAgent) isOpenFromPhone,
     required TResult Function(String token) onLoginSuccess,
     required TResult Function(String token) onLoginSuccessWithoutPhoneNumber,
     required TResult Function(String token) onRegisterSuccess,
@@ -2056,6 +2326,7 @@ class _$_OnResetPassword implements _OnResetPassword {
     TResult Function()? onSignOut,
     TResult Function()? authorized,
     TResult Function()? unAuthorized,
+    TResult Function(String userAgent)? isOpenFromPhone,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onLoginSuccessWithoutPhoneNumber,
     TResult Function(String token)? onRegisterSuccess,
@@ -2075,6 +2346,7 @@ class _$_OnResetPassword implements _OnResetPassword {
     TResult Function()? onSignOut,
     TResult Function()? authorized,
     TResult Function()? unAuthorized,
+    TResult Function(String userAgent)? isOpenFromPhone,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onLoginSuccessWithoutPhoneNumber,
     TResult Function(String token)? onRegisterSuccess,
@@ -2098,6 +2370,7 @@ class _$_OnResetPassword implements _OnResetPassword {
     required TResult Function(_OnSignOut value) onSignOut,
     required TResult Function(_Authorized value) authorized,
     required TResult Function(_UnAuthorized value) unAuthorized,
+    required TResult Function(_IsOpenFromPhone value) isOpenFromPhone,
     required TResult Function(_OnLoginSuccess value) onLoginSuccess,
     required TResult Function(_OnLoginSuccessWithoutPhoneNumber value)
         onLoginSuccessWithoutPhoneNumber,
@@ -2118,6 +2391,7 @@ class _$_OnResetPassword implements _OnResetPassword {
     TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_Authorized value)? authorized,
     TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
@@ -2138,6 +2412,7 @@ class _$_OnResetPassword implements _OnResetPassword {
     TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_Authorized value)? authorized,
     TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
@@ -2242,6 +2517,7 @@ class _$_OnGetUserData implements _OnGetUserData {
     required TResult Function() onSignOut,
     required TResult Function() authorized,
     required TResult Function() unAuthorized,
+    required TResult Function(String userAgent) isOpenFromPhone,
     required TResult Function(String token) onLoginSuccess,
     required TResult Function(String token) onLoginSuccessWithoutPhoneNumber,
     required TResult Function(String token) onRegisterSuccess,
@@ -2261,6 +2537,7 @@ class _$_OnGetUserData implements _OnGetUserData {
     TResult Function()? onSignOut,
     TResult Function()? authorized,
     TResult Function()? unAuthorized,
+    TResult Function(String userAgent)? isOpenFromPhone,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onLoginSuccessWithoutPhoneNumber,
     TResult Function(String token)? onRegisterSuccess,
@@ -2280,6 +2557,7 @@ class _$_OnGetUserData implements _OnGetUserData {
     TResult Function()? onSignOut,
     TResult Function()? authorized,
     TResult Function()? unAuthorized,
+    TResult Function(String userAgent)? isOpenFromPhone,
     TResult Function(String token)? onLoginSuccess,
     TResult Function(String token)? onLoginSuccessWithoutPhoneNumber,
     TResult Function(String token)? onRegisterSuccess,
@@ -2303,6 +2581,7 @@ class _$_OnGetUserData implements _OnGetUserData {
     required TResult Function(_OnSignOut value) onSignOut,
     required TResult Function(_Authorized value) authorized,
     required TResult Function(_UnAuthorized value) unAuthorized,
+    required TResult Function(_IsOpenFromPhone value) isOpenFromPhone,
     required TResult Function(_OnLoginSuccess value) onLoginSuccess,
     required TResult Function(_OnLoginSuccessWithoutPhoneNumber value)
         onLoginSuccessWithoutPhoneNumber,
@@ -2323,6 +2602,7 @@ class _$_OnGetUserData implements _OnGetUserData {
     TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_Authorized value)? authorized,
     TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
@@ -2343,6 +2623,7 @@ class _$_OnGetUserData implements _OnGetUserData {
     TResult Function(_OnSignOut value)? onSignOut,
     TResult Function(_Authorized value)? authorized,
     TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
     TResult Function(_OnLoginSuccess value)? onLoginSuccess,
     TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
