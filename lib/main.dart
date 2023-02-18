@@ -26,7 +26,7 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   if (kIsWeb) {
-    // initialiaze the facebook javascript SDK 
+    // initialiaze the facebook javascript SDK
     await FacebookAuth.i.webAndDesktopInitialize(
       appId: "1224414981412498",
       cookie: true,
