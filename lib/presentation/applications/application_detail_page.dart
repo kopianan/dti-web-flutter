@@ -7,6 +7,7 @@ import 'package:dti_web/core/widgets/primary_button.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/injection.dart';
 import 'package:dti_web/presentation/questionnaire/photo_view_page.dart';
+import 'package:dti_web/presentation/questionnaire/widget/custom_second_header.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:dti_web/utils/converter.dart';
@@ -143,6 +144,13 @@ class _SuccessBodyState extends State<SuccessBody> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    CustomSecondHeader(
+                      onBack: () {
+                        //remove the last item
+
+                        AutoRouter.of(context).pop();
+                      },
+                    ),
                     Text(
                       'Visa Detail Summary',
                       style: TextStyle(
