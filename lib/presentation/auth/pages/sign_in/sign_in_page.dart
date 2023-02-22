@@ -243,7 +243,8 @@ class _SignInPageState extends State<SignInPage> {
                       ],
                     ),
                     40.verticalSpace,
-                    const AuthFooterWidget()
+                    const AuthFooterWidget(),
+                    Center(child: Text("V.2.1"))
                   ],
                 ),
               ),

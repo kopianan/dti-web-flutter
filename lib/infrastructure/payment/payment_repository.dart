@@ -4,6 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/domain/payment/i_payment.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: IPayment)
@@ -29,7 +30,7 @@ class PaymentRepository extends IPayment {
     double finalPrice = visaApplication.price!;
     if (discount != null) {
       finalPrice = finalPrice - discount;
-    } 
+    }
     var _requst = {
       "externalID": visaApplication.applicationID,
       "description":
@@ -38,8 +39,7 @@ class PaymentRepository extends IPayment {
       "documentID": visaApplication.firebaseDocId,
     };
     try {
-      var _result = await _dio.post(
-          "https://us-central1-doortoid-mobile.cloudfunctions.net/api/createInvoice",
+      var _result = await _dio.post('${dotenv.env['BASE_URL']}/createInvoice',
           data: _requst);
       //UPDATE PROMO CODE
       // var _collRef = _firebaseFirestore.userApplicationCollection();
