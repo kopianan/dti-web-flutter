@@ -132,7 +132,7 @@ class OtherRepository extends IOther {
       "codeOtp": code,
     };
     try {
-      var result = await dio.post('${dotenv.env['BASE_URL']}/verifyOTP',
+      var result = await dio.post('${dotenv.env['BASE_URL']}/verifyOTPNew',
           data: requst,
           options: Options(
             headers: {'Authorization': 'Bearer ${storage.getToken()}'},

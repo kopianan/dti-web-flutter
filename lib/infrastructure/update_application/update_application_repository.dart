@@ -47,8 +47,13 @@ class IUpdateApplicationRepository extends IUpdateApplication {
               'visaAppId': visa.applicationID,
               'userId': visa.createdBy,
               'file': kIsWeb
-                  ? MultipartFile.fromBytes(imageCollection![e],
-                      filename: fileName)
+                  // ? MultipartFile.fromBytes(imageCollection![e],
+                  // filename: fileName)
+                  ? MultipartFile.fromBytes(
+                      imageCollection![e],
+                      filename: fileName,
+                      // contentType:MediaType(type, subtype)
+                    )
                   : MultipartFile.fromFileSync(
                       e,
                       filename: fileName,
