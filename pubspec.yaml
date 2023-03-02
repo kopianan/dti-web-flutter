@@ -65,6 +65,7 @@ dependencies:
   google_fonts: ^3.0.1
   google_sign_in: ^5.4.4
   group_radio_button: ^1.2.0
+  http_parser: ^4.0.2
   injectable: ^1.5.3
   intl: ^0.17.0
   json_annotation: ^4.7.0

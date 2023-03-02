@@ -1,6 +1,7 @@
 import 'dart:developer';
+import 'dart:io';
 import 'dart:math' as math;
-
+import 'package:http_parser/http_parser.dart'; 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:dti_web/core/storage.dart';
@@ -47,8 +48,11 @@ class IUpdateApplicationRepository extends IUpdateApplication {
               'visaAppId': visa.applicationID,
               'userId': visa.createdBy,
               'file': kIsWeb
-                  ? MultipartFile.fromBytes(imageCollection![e],
-                      filename: fileName)
+                  ? MultipartFile.fromBytes(
+                      imageCollection![e],
+                      filename: fileName,
+                      // contentType:MediaType(type, subtype)
+                    )
                   : MultipartFile.fromFileSync(
                       e,
                       filename: fileName,
