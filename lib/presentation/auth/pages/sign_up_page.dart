@@ -114,7 +114,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const AuthHeaderWidget(label: "Register"),
+                    
                       Row(
                         children: [
                           Expanded(

@@ -72,12 +72,14 @@ class ResetPage extends StatelessWidget {
             return Scaffold(
               body: SingleChildScrollView(
                 child: Container(
+                  
+                  height: ScreenUtil().screenHeight,
                   margin: EdgeInsets.symmetric(horizontal: 0.1.sw),
                   child: Column(
+                    mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      const AuthHeaderWidget(label: "Reset Password"),
                       Row(
                         children: [
                           Expanded(
@@ -93,6 +95,14 @@ class ResetPage extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
+                                  Text(
+                                    "Reset Password",
+                                    style: TextStyle(
+                                        fontSize: 30.sp,
+                                        fontWeight: FontWeight.bold,
+                                        color: AppColor.primaryColor),
+                                  ),
+                                  20.verticalSpace,
                                   Text(
                                     'Enter the email the email associated with your account and we’ll send an email with instructions to reset yout password.',
                                     style: TextStyle(

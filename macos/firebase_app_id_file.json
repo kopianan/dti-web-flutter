@@ -1,7 +1,7 @@
 {
   "file_generated_by": "FlutterFire CLI",
   "purpose": "FirebaseAppID & ProjectID for this Firebase app in this directory",
-  "GOOGLE_APP_ID": "1:450417909901:ios:913e3b5c469a3e334802c4",
-  "FIREBASE_PROJECT_ID": "doortoid",
-  "GCM_SENDER_ID": "450417909901"
+  "GOOGLE_APP_ID": "1:58741229055:ios:b54572a46214a786f153ca",
+  "FIREBASE_PROJECT_ID": "doortoid-mobile",
+  "GCM_SENDER_ID": "58741229055"
 }
