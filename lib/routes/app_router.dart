@@ -7,6 +7,7 @@ import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/domain/core/document_data_model.dart';
 import 'package:dti_web/domain/questionnaire/result_model.dart';
 import 'package:dti_web/presentation/applications/application_detail_page.dart';
+import 'package:dti_web/presentation/applications/passport/choose_passport_page.dart';
 import 'package:dti_web/presentation/applications/upload_document_page.dart';
 import 'package:dti_web/presentation/applications/widgets/signature_page.dart';
 import 'package:dti_web/presentation/auth/pages/phone/number_registration_page.dart';
@@ -55,8 +56,12 @@ part "app_router.gr.dart";
     // ),
     AutoRoute(
       initial: true,
-      path: '/', 
+      path: '/',
       page: SplashScreenPage,
+    ),
+    AutoRoute(
+      path: ChoosePassportPage.routeName,
+      page: ChoosePassportPage,
     ),
     AutoRoute(
       path: DashboardPage.routeName,

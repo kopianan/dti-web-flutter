@@ -8,6 +8,8 @@ class UpdateApplicationState with _$UpdateApplicationState {
   const factory UpdateApplicationState.onError(String error) = _OnError;
   const factory UpdateApplicationState.onCreateApplication(
       VisaApplicationModel visaApps) = _OnCreateApplication;
+  const factory UpdateApplicationState.onCreatePassport(VisaApplicationModel visaApps) =
+      _OnCreatePassport;
   const factory UpdateApplicationState.onSubmitApplication(
       String firebaseDocId) = _OnSubmitApplication;
   const factory UpdateApplicationState.onUpdateApplication() =

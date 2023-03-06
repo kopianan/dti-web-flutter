@@ -431,4 +431,57 @@ class IUpdateApplicationRepository extends IUpdateApplication {
       return Left("");
     }
   }
+
+  @override
+  Future<Either<String, String>> createUserPassport(bool isNew) async {
+    final storage = Storage();
+    final dio = Dio();
+    var newVisaApps = VisaApplicationModel(
+      title: "Passport",
+      subTitle: isNew ? "New Passport" : "Renew Passport",
+      type: isNew ? "New" : "Renew",
+      price: 0,
+      status: "Draft",
+      documents: isNew ? "A6,P1,P2" : "A2,A3,A6,P1",
+      userName:
+          storage.getLocalUserData()?.name ?? storage.getLocalUserData()?.email,
+    );
+
+    final result = await dio.post(
+      "${dotenv.env['BASE_URL']}/passport",
+      options: Options(
+        headers: {
+          "Authorization": "Bearer ${storage.getToken()}",
+        },
+      ),
+      data: newVisaApps.toJson(),
+    );
+
+    if (result.data['data'] != null) {
+      return Right(result.data['data']['firebaseDocId'].toString());
+    }
+    return Left(result.data['message'].toString());
+  }
+
+  @override
+  Future<Either<String, VisaApplicationModel>> getPassportById(
+      String firebaseDocId) async {
+    dio = Dio();
+    final storage = Storage();
+
+    try {
+      final result = await dio!.get(
+          "${dotenv.env['BASE_URL']}/passport/$firebaseDocId",
+          options: Options(
+              headers: {"Authorization": "Bearer ${storage.getToken()}"}));
+      if (result.data['data'] != null) {
+        dynamic data = result.data['data'];
+        final visaApps = VisaApplicationModel.fromJson(data);
+        return Right(visaApps);
+      }
+      return Left(result.toString());
+    } on Exception catch (e) {
+      return Left(e.toString());
+    }
+  }
 }

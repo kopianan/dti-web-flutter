@@ -1,9 +1,6 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:dti_web/core/widgets/auth_footer_widget.dart';
 import 'package:dti_web/core/widgets/auth_header_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CheckEmailPage extends StatelessWidget {
@@ -23,7 +20,7 @@ class CheckEmailPage extends StatelessWidget {
             Row(
               children: [
                 Expanded(
-                  child: Container( 
+                  child: Container(
                     child: Image.asset('assets/images/dti_auth_register.png'),
                   ),
                 ),

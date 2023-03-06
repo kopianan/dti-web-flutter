@@ -347,6 +347,41 @@ class _DashboardPageState extends State<DashboardPage> {
                                         });
                                   },
                                 ),
+                                InkWell(
+                                  onTap: () {
+                                    AutoRouter.of(context)
+                                        .push(ChoosePassportRoute());
+                                  },
+                                  child: Card(
+                                    clipBehavior: Clip.hardEdge,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    child: Container(
+                                      width: double.infinity,
+                                      padding: REdgeInsets.only(
+                                          left: 20.w, top: 10.h, bottom: 10.h),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Image.asset(
+                                            'assets/images/bookimage.png',
+                                            width: 70,
+                                          ),
+                                          SizedBox(width: 20.w),
+                                          Column(children: [
+                                            Text(
+                                              "Create Passport",
+                                              style: TextStyle(
+                                                  fontSize: 18.sp,
+                                                  fontWeight: FontWeight.bold),
+                                            )
+                                          ]),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
                                 20.verticalSpace,
                                 InkWell(
                                   onTap: () {
@@ -504,9 +539,7 @@ class _DashboardPageState extends State<DashboardPage> {
                         )),
                       ],
                     )),
-                    SizedBox(
-                      height: 20,
-                    ),
+                    SizedBox(height: 20),
                     Container(
                         padding: EdgeInsets.symmetric(horizontal: 40.w),
                         child: FeedbackSection()),

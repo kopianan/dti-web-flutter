@@ -15,6 +15,7 @@ abstract class IUpdateApplication {
       VisaApplicationModel visaApplicationModel);
   Future<Either<String, String>> deleteSingleImage(
       String imageName, String docId, String appId);
+  Future<Either<String, String>> createUserPassport(bool isNew);
   Future<Either<String, String>> updateGuarantor(VisaApplicationModel visa);
   Future<Either<String, String>> updateMultiVisa(
       String duration, String firebaseDocId);
@@ -25,6 +26,8 @@ abstract class IUpdateApplication {
       {Map<String, dynamic>? imageCollection});
   Future<Either<Failures, String>> submitVisa(String firebaseDocId);
   Future<Either<String, VisaApplicationModel>> getUserApplicationById(
+      String firebaseDocId);
+  Future<Either<String, VisaApplicationModel>> getPassportById(
       String firebaseDocId);
   Future<Either<String, SingleVisaResponse>> getUserApplicationByIdWithImages(
       String firebaseDocId);

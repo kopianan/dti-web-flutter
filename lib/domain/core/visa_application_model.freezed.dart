@@ -20,6 +20,12 @@ VisaApplicationModel _$VisaApplicationModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$VisaApplicationModel {
+//Passport exclusive
+  String? get bookingCode => throw _privateConstructorUsedError;
+  String? get identityNumber => throw _privateConstructorUsedError;
+  String? get type => throw _privateConstructorUsedError;
+  String? get selfieImage => throw _privateConstructorUsedError;
+  String? get newPassport => throw _privateConstructorUsedError;
   @JsonKey(name: 'rejectionNote')
   String? get rejectionNote => throw _privateConstructorUsedError;
   @JsonKey(name: 'entry')
@@ -144,7 +150,12 @@ abstract class $VisaApplicationModelCopyWith<$Res> {
           $Res Function(VisaApplicationModel) then) =
       _$VisaApplicationModelCopyWithImpl<$Res>;
   $Res call(
-      {@JsonKey(name: 'rejectionNote')
+      {String? bookingCode,
+      String? identityNumber,
+      String? type,
+      String? selfieImage,
+      String? newPassport,
+      @JsonKey(name: 'rejectionNote')
           String? rejectionNote,
       @JsonKey(name: 'entry')
           String? entry,
@@ -268,6 +279,11 @@ class _$VisaApplicationModelCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? bookingCode = freezed,
+    Object? identityNumber = freezed,
+    Object? type = freezed,
+    Object? selfieImage = freezed,
+    Object? newPassport = freezed,
     Object? rejectionNote = freezed,
     Object? entry = freezed,
     Object? lastName = freezed,
@@ -326,6 +342,26 @@ class _$VisaApplicationModelCopyWithImpl<$Res>
     Object? multiVisaDuration = freezed,
   }) {
     return _then(_value.copyWith(
+      bookingCode: bookingCode == freezed
+          ? _value.bookingCode
+          : bookingCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      identityNumber: identityNumber == freezed
+          ? _value.identityNumber
+          : identityNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String?,
+      selfieImage: selfieImage == freezed
+          ? _value.selfieImage
+          : selfieImage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      newPassport: newPassport == freezed
+          ? _value.newPassport
+          : newPassport // ignore: cast_nullable_to_non_nullable
+              as String?,
       rejectionNote: rejectionNote == freezed
           ? _value.rejectionNote
           : rejectionNote // ignore: cast_nullable_to_non_nullable
@@ -574,7 +610,12 @@ abstract class _$$_VisaApplicationModelCopyWith<$Res>
       __$$_VisaApplicationModelCopyWithImpl<$Res>;
   @override
   $Res call(
-      {@JsonKey(name: 'rejectionNote')
+      {String? bookingCode,
+      String? identityNumber,
+      String? type,
+      String? selfieImage,
+      String? newPassport,
+      @JsonKey(name: 'rejectionNote')
           String? rejectionNote,
       @JsonKey(name: 'entry')
           String? entry,
@@ -701,6 +742,11 @@ class __$$_VisaApplicationModelCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object? bookingCode = freezed,
+    Object? identityNumber = freezed,
+    Object? type = freezed,
+    Object? selfieImage = freezed,
+    Object? newPassport = freezed,
     Object? rejectionNote = freezed,
     Object? entry = freezed,
     Object? lastName = freezed,
@@ -759,6 +805,26 @@ class __$$_VisaApplicationModelCopyWithImpl<$Res>
     Object? multiVisaDuration = freezed,
   }) {
     return _then(_$_VisaApplicationModel(
+      bookingCode: bookingCode == freezed
+          ? _value.bookingCode
+          : bookingCode // ignore: cast_nullable_to_non_nullable
+              as String?,
+      identityNumber: identityNumber == freezed
+          ? _value.identityNumber
+          : identityNumber // ignore: cast_nullable_to_non_nullable
+              as String?,
+      type: type == freezed
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String?,
+      selfieImage: selfieImage == freezed
+          ? _value.selfieImage
+          : selfieImage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      newPassport: newPassport == freezed
+          ? _value.newPassport
+          : newPassport // ignore: cast_nullable_to_non_nullable
+              as String?,
       rejectionNote: rejectionNote == freezed
           ? _value.rejectionNote
           : rejectionNote // ignore: cast_nullable_to_non_nullable
@@ -992,7 +1058,12 @@ class __$$_VisaApplicationModelCopyWithImpl<$Res>
 @JsonSerializable(explicitToJson: true)
 class _$_VisaApplicationModel implements _VisaApplicationModel {
   _$_VisaApplicationModel(
-      {@JsonKey(name: 'rejectionNote')
+      {this.bookingCode,
+      this.identityNumber,
+      this.type,
+      this.selfieImage,
+      this.newPassport,
+      @JsonKey(name: 'rejectionNote')
           this.rejectionNote,
       @JsonKey(name: 'entry')
           this.entry,
@@ -1106,6 +1177,17 @@ class _$_VisaApplicationModel implements _VisaApplicationModel {
   factory _$_VisaApplicationModel.fromJson(Map<String, dynamic> json) =>
       _$$_VisaApplicationModelFromJson(json);
 
+//Passport exclusive
+  @override
+  final String? bookingCode;
+  @override
+  final String? identityNumber;
+  @override
+  final String? type;
+  @override
+  final String? selfieImage;
+  @override
+  final String? newPassport;
   @override
   @JsonKey(name: 'rejectionNote')
   final String? rejectionNote;
@@ -1281,7 +1363,7 @@ class _$_VisaApplicationModel implements _VisaApplicationModel {
 
   @override
   String toString() {
-    return 'VisaApplicationModel(rejectionNote: $rejectionNote, entry: $entry, lastName: $lastName, userName: $userName, nationality: $nationality, guarantorDTI: $guarantorDTI, passportNumber: $passportNumber, district: $district, overstayedFlag: $overstayedFlag, createdBy: $createdBy, xenditPaymentMethod: $xenditPaymentMethod, address: $address, city: $city, modeOfTransportation: $modeOfTransportation, flightNumber: $flightNumber, arrivalDate: $arrivalDate, xenditPaymentStatus: $xenditPaymentStatus, xenditPaymentGateway: $xenditPaymentGateway, xenditPaymentId: $xenditPaymentId, mobileNumber: $mobileNumber, status: $status, xenditPaymentDescription: $xenditPaymentDescription, submittedDate: $submittedDate, subTitle: $subTitle, documentsData: $documentsData, title: $title, lastUpdatedDate: $lastUpdatedDate, errorMessage: $errorMessage, firebaseDocId: $firebaseDocId, relationshipStatus: $relationshipStatus, dateOfExpiration: $dateOfExpiration, cityDomicile: $cityDomicile, applicationID: $applicationID, createdDate: $createdDate, xenditPaymentInvoiceUrl: $xenditPaymentInvoiceUrl, xenditPaymentCurrency: $xenditPaymentCurrency, placeOfBirth: $placeOfBirth, mobileDialCode: $mobileDialCode, currency: $currency, inIndonesia: $inIndonesia, xenditPaymentPaidAmount: $xenditPaymentPaidAmount, dateOfIssue: $dateOfIssue, lastUpdatedBy: $lastUpdatedBy, documents: $documents, firstName: $firstName, assistanceForPermit: $assistanceForPermit, issuingCountry: $issuingCountry, province: $province, xenditPaymentAmount: $xenditPaymentAmount, mobileCountryCode: $mobileCountryCode, gender: $gender, deportedFlag: $deportedFlag, xenditPaymentPaidAt: $xenditPaymentPaidAt, dateOfBirth: $dateOfBirth, price: $price, multiVisaDuration: $multiVisaDuration)';
+    return 'VisaApplicationModel(bookingCode: $bookingCode, identityNumber: $identityNumber, type: $type, selfieImage: $selfieImage, newPassport: $newPassport, rejectionNote: $rejectionNote, entry: $entry, lastName: $lastName, userName: $userName, nationality: $nationality, guarantorDTI: $guarantorDTI, passportNumber: $passportNumber, district: $district, overstayedFlag: $overstayedFlag, createdBy: $createdBy, xenditPaymentMethod: $xenditPaymentMethod, address: $address, city: $city, modeOfTransportation: $modeOfTransportation, flightNumber: $flightNumber, arrivalDate: $arrivalDate, xenditPaymentStatus: $xenditPaymentStatus, xenditPaymentGateway: $xenditPaymentGateway, xenditPaymentId: $xenditPaymentId, mobileNumber: $mobileNumber, status: $status, xenditPaymentDescription: $xenditPaymentDescription, submittedDate: $submittedDate, subTitle: $subTitle, documentsData: $documentsData, title: $title, lastUpdatedDate: $lastUpdatedDate, errorMessage: $errorMessage, firebaseDocId: $firebaseDocId, relationshipStatus: $relationshipStatus, dateOfExpiration: $dateOfExpiration, cityDomicile: $cityDomicile, applicationID: $applicationID, createdDate: $createdDate, xenditPaymentInvoiceUrl: $xenditPaymentInvoiceUrl, xenditPaymentCurrency: $xenditPaymentCurrency, placeOfBirth: $placeOfBirth, mobileDialCode: $mobileDialCode, currency: $currency, inIndonesia: $inIndonesia, xenditPaymentPaidAmount: $xenditPaymentPaidAmount, dateOfIssue: $dateOfIssue, lastUpdatedBy: $lastUpdatedBy, documents: $documents, firstName: $firstName, assistanceForPermit: $assistanceForPermit, issuingCountry: $issuingCountry, province: $province, xenditPaymentAmount: $xenditPaymentAmount, mobileCountryCode: $mobileCountryCode, gender: $gender, deportedFlag: $deportedFlag, xenditPaymentPaidAt: $xenditPaymentPaidAt, dateOfBirth: $dateOfBirth, price: $price, multiVisaDuration: $multiVisaDuration)';
   }
 
   @override
@@ -1289,6 +1371,15 @@ class _$_VisaApplicationModel implements _VisaApplicationModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_VisaApplicationModel &&
+            const DeepCollectionEquality()
+                .equals(other.bookingCode, bookingCode) &&
+            const DeepCollectionEquality()
+                .equals(other.identityNumber, identityNumber) &&
+            const DeepCollectionEquality().equals(other.type, type) &&
+            const DeepCollectionEquality()
+                .equals(other.selfieImage, selfieImage) &&
+            const DeepCollectionEquality()
+                .equals(other.newPassport, newPassport) &&
             const DeepCollectionEquality()
                 .equals(other.rejectionNote, rejectionNote) &&
             const DeepCollectionEquality().equals(other.entry, entry) &&
@@ -1383,14 +1474,18 @@ class _$_VisaApplicationModel implements _VisaApplicationModel {
             const DeepCollectionEquality()
                 .equals(other.dateOfBirth, dateOfBirth) &&
             const DeepCollectionEquality().equals(other.price, price) &&
-            const DeepCollectionEquality()
-                .equals(other.multiVisaDuration, multiVisaDuration));
+            const DeepCollectionEquality().equals(other.multiVisaDuration, multiVisaDuration));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
+        const DeepCollectionEquality().hash(bookingCode),
+        const DeepCollectionEquality().hash(identityNumber),
+        const DeepCollectionEquality().hash(type),
+        const DeepCollectionEquality().hash(selfieImage),
+        const DeepCollectionEquality().hash(newPassport),
         const DeepCollectionEquality().hash(rejectionNote),
         const DeepCollectionEquality().hash(entry),
         const DeepCollectionEquality().hash(lastName),
@@ -1465,7 +1560,12 @@ class _$_VisaApplicationModel implements _VisaApplicationModel {
 
 abstract class _VisaApplicationModel implements VisaApplicationModel {
   factory _VisaApplicationModel(
-      {@JsonKey(name: 'rejectionNote')
+      {final String? bookingCode,
+      final String? identityNumber,
+      final String? type,
+      final String? selfieImage,
+      final String? newPassport,
+      @JsonKey(name: 'rejectionNote')
           final String? rejectionNote,
       @JsonKey(name: 'entry')
           final String? entry,
@@ -1578,6 +1678,16 @@ abstract class _VisaApplicationModel implements VisaApplicationModel {
   factory _VisaApplicationModel.fromJson(Map<String, dynamic> json) =
       _$_VisaApplicationModel.fromJson;
 
+  @override //Passport exclusive
+  String? get bookingCode;
+  @override
+  String? get identityNumber;
+  @override
+  String? get type;
+  @override
+  String? get selfieImage;
+  @override
+  String? get newPassport;
   @override
   @JsonKey(name: 'rejectionNote')
   String? get rejectionNote;

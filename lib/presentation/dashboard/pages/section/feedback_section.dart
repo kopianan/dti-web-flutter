@@ -9,6 +9,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rating_dialog/rating_dialog.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FeedbackSection extends StatefulWidget {
   const FeedbackSection({
@@ -34,7 +35,7 @@ class _FeedbackSectionState extends State<FeedbackSection> {
             EasyLoading.dismiss();
             AwesomeDialog(
               context: context,
-              width: ScreenUtil().screenWidth/3,
+              width: ScreenUtil().screenWidth / 3,
               dialogType: DialogType.SUCCES,
               animType: AnimType.SCALE,
               headerAnimationLoop: true,
@@ -59,7 +60,7 @@ class _FeedbackSectionState extends State<FeedbackSection> {
                   await onEmeailUsClicked();
                 },
               ),
-              const SizedBox(width: 60),
+              SizedBox(width: 60.w),
               FeedbackCard(
                 onTap: () async {
                   await onFeedbackClicked(context);

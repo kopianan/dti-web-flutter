@@ -9,6 +9,12 @@ part 'visa_application_model.g.dart';
 class VisaApplicationModel with _$VisaApplicationModel {
   @JsonSerializable(explicitToJson: true)
   factory VisaApplicationModel({
+    //Passport exclusive
+    String? bookingCode,
+    String? identityNumber, 
+    String? type,
+    String? selfieImage,
+    String? newPassport,
     @JsonKey(name: 'rejectionNote') String? rejectionNote,
     @JsonKey(name: 'entry') String? entry,
     @JsonKey(name: 'lastName') String? lastName,

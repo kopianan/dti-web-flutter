@@ -1,4 +1,6 @@
 import 'package:dti_web/domain/core/country_nationality.dart';
+import 'package:dti_web/domain/questionnaire/questionnaire_data_model.dart';
+import 'package:dti_web/domain/questionnaire/questionnaire_model.dart';
 
 class Constant {
   static String header =
@@ -10,6 +12,25 @@ class Constant {
 
   static List<String> getMultipleVisaDuration() {
     return ['6 Months', '1 Year', '2 Years', '3 Years', '4 Years', '5 Years'];
+  }
+
+  static List<QuestionnaireModel> getPassport() {
+    return [
+      QuestionnaireModel(
+        header: "New Passport",
+        body:
+            "issued for the first time to a person who has never had a passport before.",
+        footer: "PASSPORT APPROVAL 5 WORKING DAYS",
+        imgName: "questionnairepage/01Tourist",
+      ),
+      QuestionnaireModel(
+        header: "Renew Passport",
+        body:
+            "Issued to a person who has an existing passport that is about to expire or has already expired.",
+        footer: "PASSPORT APPROVAL 5 WORKING DAYS",
+        imgName: "questionnairepage/01Tourist",
+      ),
+    ];
   }
 
   static List<CountryNationality> getCountries() {

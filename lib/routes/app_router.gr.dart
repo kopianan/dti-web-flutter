@@ -23,6 +23,17 @@ class _$AppRouter extends RootStackRouter {
         child: const SplashScreenPage(),
       );
     },
+    ChoosePassportRoute.name: (routeData) {
+      final args = routeData.argsAs<ChoosePassportRouteArgs>(
+          orElse: () => const ChoosePassportRouteArgs());
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: ChoosePassportPage(
+          key: args.key,
+          question: args.question,
+        ),
+      );
+    },
     DashboardRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
@@ -276,6 +287,10 @@ class _$AppRouter extends RootStackRouter {
           path: '/',
         ),
         RouteConfig(
+          ChoosePassportRoute.name,
+          path: '/choose-passport',
+        ),
+        RouteConfig(
           DashboardRoute.name,
           path: '/dashboard-page',
         ),
@@ -396,6 +411,40 @@ class SplashScreenRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'SplashScreenRoute';
+}
+
+/// generated route for
+/// [ChoosePassportPage]
+class ChoosePassportRoute extends PageRouteInfo<ChoosePassportRouteArgs> {
+  ChoosePassportRoute({
+    Key? key,
+    List<QuestionnaireModel>? question,
+  }) : super(
+          ChoosePassportRoute.name,
+          path: '/choose-passport',
+          args: ChoosePassportRouteArgs(
+            key: key,
+            question: question,
+          ),
+        );
+
+  static const String name = 'ChoosePassportRoute';
+}
+
+class ChoosePassportRouteArgs {
+  const ChoosePassportRouteArgs({
+    this.key,
+    this.question,
+  });
+
+  final Key? key;
+
+  final List<QuestionnaireModel>? question;
+
+  @override
+  String toString() {
+    return 'ChoosePassportRouteArgs{key: $key, question: $question}';
+  }
 }
 
 /// generated route for

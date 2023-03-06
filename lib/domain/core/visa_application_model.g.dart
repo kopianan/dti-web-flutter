@@ -9,6 +9,11 @@ part of 'visa_application_model.dart';
 _$_VisaApplicationModel _$$_VisaApplicationModelFromJson(
         Map<String, dynamic> json) =>
     _$_VisaApplicationModel(
+      bookingCode: json['bookingCode'] as String?,
+      identityNumber: json['identityNumber'] as String?,
+      type: json['type'] as String?,
+      selfieImage: json['selfieImage'] as String?,
+      newPassport: json['newPassport'] as String?,
       rejectionNote: json['rejectionNote'] as String?,
       entry: json['entry'] as String?,
       lastName: json['lastName'] as String?,
@@ -75,6 +80,11 @@ _$_VisaApplicationModel _$$_VisaApplicationModelFromJson(
 Map<String, dynamic> _$$_VisaApplicationModelToJson(
         _$_VisaApplicationModel instance) =>
     <String, dynamic>{
+      'bookingCode': instance.bookingCode,
+      'identityNumber': instance.identityNumber,
+      'type': instance.type,
+      'selfieImage': instance.selfieImage,
+      'newPassport': instance.newPassport,
       'rejectionNote': instance.rejectionNote,
       'entry': instance.entry,
       'lastName': instance.lastName,

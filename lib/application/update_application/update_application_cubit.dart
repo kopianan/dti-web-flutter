@@ -59,6 +59,20 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
     }
   }
 
+  void createPassport(bool isNew) async {
+    emit(const UpdateApplicationState.onLoading());
+    final result = await iUpdateApplication.createUserPassport(isNew);
+    result.fold(
+      (l) {
+        emit(UpdateApplicationState.onError(l));
+      },
+      (r) async {
+        final data = await _getPassportById(r);
+        emit(UpdateApplicationState.onCreatePassport(data));
+      },
+    );
+  }
+
   void createUserApplication(QuestionnaireModel lastQuestionnaire) async {
     emit(const UpdateApplicationState.onLoading());
     final user = Storage().getLocalUserData();
@@ -179,10 +193,17 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
   Future<VisaApplicationModel> _getUserApplicationById(String id) async {
     final result = await iUpdateApplication.getUserApplicationById(id);
     return result.fold((l) {
-      print(l);
       throw (Exception(l));
     }, (r) {
-      print(r);
+      return r;
+    });
+  }
+
+  Future<VisaApplicationModel> _getPassportById(String id) async {
+    final result = await iUpdateApplication.getPassportById(id);
+    return result.fold((l) {
+      throw (Exception(l));
+    }, (r) {
       return r;
     });
   }
