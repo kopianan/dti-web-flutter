@@ -13,6 +13,26 @@ part 'document_cubit.freezed.dart';
 @LazySingleton()
 class DocumentCubit extends Cubit<DocumentState> {
   DocumentCubit() : super(DocumentState.initial());
+  //SELFIE
+  void updateSelfieImage(String path, {Uint8List? selfieBytes}) {
+    emit(state.copyWith(selfie: {path: selfieBytes}));
+  }
+
+  void setDeletedSelfiePhoto(String? photoName) {
+    emit(state.copyWith(deletedSelfiePhoto: photoName));
+  }
+
+  //get
+  String getSelfiImageUrlByName(String name) {
+    String data = '';
+
+    for (var element in state.masterListData) {
+      if (element.values.single.contains(name)) {
+        data = element.values.single;
+      }
+    }
+    return data;
+  }
 
   void cleanState() {
     emit(DocumentState.initial());
@@ -197,7 +217,7 @@ class DocumentCubit extends Cubit<DocumentState> {
 
     var documentModel = Storage().loadDocument().toList();
     // var documentModel =
-    //     documents.map((e) => DocumentDataModel.fromJson(e)).toList();
+    //     documents.map((e) => Docum entDataModel.fromJson(e)).toList();
 
     List<DocumentDataModel>? modelsDocument = [];
 

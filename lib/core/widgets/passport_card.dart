@@ -8,8 +8,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 
 // ignore: must_be_immutable
-class VisaApplicationCard extends StatelessWidget {
-  VisaApplicationCard({
+class PassportCard extends StatelessWidget {
+  PassportCard({
     Key? key,
     this.onCardClick,
     required this.visaApps,
@@ -139,81 +139,30 @@ class VisaApplicationCard extends StatelessWidget {
                             ),
                             TableRow(
                               children: [
-                                Table(
+                                const Text(""),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
-                                    TableRow(
-                                      children: [
-                                        Text(
-                                          "Used By",
-                                          style: TextStyle(
-                                            fontSize: 10.sp,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                        Text(
-                                          "Length of Stay",
-                                          style: TextStyle(
-                                            fontSize: 10.sp,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ],
+                                    Text(
+                                      "Created Date",
+                                      style: TextStyle(
+                                        fontSize: 10.sp,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      textAlign: TextAlign.end,
+                                    ),
+                                    Text(
+                                      DateConverter.convertDateDefault(
+                                          visaApps.createdDate),
+                                      maxLines: 1,
+                                      style: TextStyle(
+                                        fontSize: 12.sp,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      textAlign: TextAlign.end,
                                     ),
                                   ],
-                                ),
-                                Text(
-                                  "Created Date",
-                                  style: TextStyle(
-                                    fontSize: 10.sp,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  textAlign: TextAlign.end,
-                                ),
-                              ],
-                            ),
-                            TableRow(
-                              children: [
-                                Table(
-                                  children: [
-                                    TableRow(
-                                      children: [
-                                        // Text(
-                                        //   '${price!} USD',
-                                        //   style: const TextStyle(
-                                        //     color: Colors.white,
-                                        //     fontSize: 12,
-                                        //     fontWeight: FontWeight.bold,
-                                        //   ),
-                                        // ),
-                                        Text(
-                                          DateConverter.convertDateDefault(
-                                              visaApps.usedByDate),
-                                          style: TextStyle(
-                                            fontSize: 12.sp,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                        Text(
-                                          "${visaApps.lengthOfStay} Days",
-                                          style: TextStyle(
-                                            fontSize: 12.sp,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                Text(
-                                  DateConverter.convertDateDefault(
-                                      visaApps.createdDate),
-                                  maxLines: 1,
-                                  style: TextStyle(
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  textAlign: TextAlign.end,
-                                ),
+                                )
                               ],
                             ),
                           ],

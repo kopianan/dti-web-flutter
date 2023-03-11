@@ -20,7 +20,7 @@ class ApplicationCubit extends Cubit<ApplicationState> {
   //clean first
   void cleanAll() {
     emit(ApplicationState.initial());
-    print(state); 
+    print(state);
   }
 
   void setupDocumentsMasterData(List<Map<String, dynamic>> list) {
@@ -92,6 +92,10 @@ class ApplicationCubit extends Cubit<ApplicationState> {
     final newData = state.visaApplicationModel!
         .copyWith(mobileCountryCode: code.code, mobileDialCode: code.dialCode);
     emit(state.copyWith(visaApplicationModel: newData));
+  }
+
+  void updatePassportPersonalInformation(VisaApplicationModel visa) {
+    emit(state.copyWith(visaApplicationModel: visa));
   }
 
   void updatePersonalInformation1({

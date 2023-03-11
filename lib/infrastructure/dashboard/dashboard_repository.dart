@@ -16,10 +16,11 @@ class DashboardRepository extends IDashboard {
     final dio = Dio();
     final storage = Storage();
     try {
-      final result = await dio.get("${dotenv.env['BASE_URL']}/applicationsByUser/1",
-          options: Options(
-            headers: {'Authorization': 'Bearer ${storage.getToken()}'},
-          ));
+      final result =
+          await dio.get("${dotenv.env['BASE_URL']}/applicationsByUser/1",
+              options: Options(
+                headers: {'Authorization': 'Bearer ${storage.getToken()}'},
+              ));
       if (result.data['data'] != null) {
         List listData = result.data['data'];
         if (listData.isEmpty) {
@@ -29,6 +30,57 @@ class DashboardRepository extends IDashboard {
           return Right(modelData);
         }
       }
+      return Left(Failures.generalError(result.toString()));
+    } on DioError catch (e) {
+      ErrorResponse err = ErrorResponse();
+      return Left(err.dioErrorChecker(e));
+    }
+  }
+
+  @override
+  Future<Either<Failures, SimpleVisaModel>>
+      getLastPassportAndApplication() async {
+    final dio = Dio();
+    final storage = Storage();
+    try {
+      final result =
+          await dio.get("${dotenv.env['BASE_URL']}/overallApplicationsByUser/1",
+              options: Options(
+                headers: {'Authorization': 'Bearer ${storage.getToken()}'},
+              ));
+      if (result.data['data'] != null) {
+        List listData = result.data['data'];
+        if (listData.isEmpty) {
+          return Left(Failures.noData("EMPTY"));
+        } else {
+          final modelData = SimpleVisaModel.fromJson(listData.first);
+          return Right(modelData);
+        }
+      }
+      return Left(Failures.generalError(result.toString()));
+    } on DioError catch (e) {
+      ErrorResponse err = ErrorResponse();
+      return Left(err.dioErrorChecker(e));
+    }
+  }
+
+  @override
+  Future<Either<Failures, String>> deleteSinglePassport(
+      String firebaseDocId) async {
+    final dio = Dio();
+    final storage = Storage();
+
+    try {
+      final result = await dio.get(
+          "${dotenv.env['BASE_URL']}/passport/$firebaseDocId/delete",
+          options: Options(
+              headers: {'Authorization': 'Bearer ${storage.getToken()}'}));
+      if (result.data['data'] != null) {
+        //SUCCESS
+        print(result);
+        return Right(result.data['data']['message']);
+      }
+
       return Left(Failures.generalError(result.toString()));
     } on DioError catch (e) {
       ErrorResponse err = ErrorResponse();
@@ -49,10 +101,36 @@ class DashboardRepository extends IDashboard {
               headers: {'Authorization': 'Bearer ${storage.getToken()}'}));
       if (result.data['data'] != null) {
         //SUCCESS
-        print(result); 
+        print(result);
         return Right(result.data['data']['message']);
       }
 
+      return Left(Failures.generalError(result.toString()));
+    } on DioError catch (e) {
+      ErrorResponse err = ErrorResponse();
+      return Left(err.dioErrorChecker(e));
+    }
+  }
+
+  @override
+  Future<Either<Failures, SimpleVisaModel>> getSinglePassport() async {
+    final dio = Dio();
+    final storage = Storage();
+    try {
+      final result =
+          await dio.get("${dotenv.env['BASE_URL']}/passportsByUser/1",
+              options: Options(
+                headers: {'Authorization': 'Bearer ${storage.getToken()}'},
+              ));
+      if (result.data['data'] != null) {
+        List listData = result.data['data'];
+        if (listData.isEmpty) {
+          return Left(Failures.noData("EMPTY"));
+        } else {
+          final modelData = SimpleVisaModel.fromJson(listData.first);
+          return Right(modelData);
+        }
+      }
       return Left(Failures.generalError(result.toString()));
     } on DioError catch (e) {
       ErrorResponse err = ErrorResponse();

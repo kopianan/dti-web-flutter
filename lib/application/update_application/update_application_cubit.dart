@@ -59,6 +59,29 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
     }
   }
 
+  void uploadSelfie(VisaApplicationModel visa, List<String> deletedImages,
+      {Map<String, dynamic>? imageCollection}) async {
+    emit(const UpdateApplicationState.onLoading());
+    //Remove null data on list
+    // var imageList = document.imageList!;
+    // imageList.removeWhere((element) => element == null);
+    //=====Null is gone ======
+
+    try {
+      final data = await iUpdateApplication.uploadSelfie(
+        visa,
+        imageCollection,
+        deletedImages,
+      );
+      data.fold(
+        (l) => emit(UpdateApplicationState.onError(l.toString())),
+        (r) => emit(UpdateApplicationState.onSelfieImageComplete(r)),
+      );
+    } on Exception catch (e) {
+      emit(UpdateApplicationState.onError(e.toString()));
+    }
+  }
+
   void createPassport(bool isNew) async {
     emit(const UpdateApplicationState.onLoading());
     final result = await iUpdateApplication.createUserPassport(isNew);
@@ -177,6 +200,20 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
     );
   }
 
+  void updatePassportParticularData(VisaApplicationModel visaApps) async {
+    //remove null
+
+    final jsonData = visaApps.toJson();
+    jsonData.removeWhere((key, value) => value == null);
+    emit(const UpdateApplicationState.onLoading());
+    final result =
+        await iUpdateApplication.updatePassportParticularData(visaApps);
+    result.fold(
+      (l) => emit(UpdateApplicationState.onError(l)),
+      (r) => emit(const UpdateApplicationState.onUpdatePassport()),
+    );
+  }
+
   void updateVOAData(VisaApplicationModel visaApps) async {
     //remove null
 
@@ -230,6 +267,17 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
     );
   }
 
+  void getUserPassportWithImages(String firebaseDocId) async {
+    emit(const UpdateApplicationState.onLoading());
+
+    final result =
+        await iUpdateApplication.getUserPassportByIdWithImages(firebaseDocId);
+    result.fold(
+      (l) => emit(UpdateApplicationState.onError(l)),
+      (r) => emit(UpdateApplicationState.onGetSinglePassportWithImage(r)),
+    );
+  }
+
   void submitVisaApps(String firebaseDocId) async {
     emit(UpdateApplicationState.onLoading());
 
@@ -238,6 +286,20 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
       result.fold(
         (l) => emit(UpdateApplicationState.onError(l.toString())),
         (r) => emit(UpdateApplicationState.onSubmitApplication(r)),
+      );
+    } on Exception catch (e) {
+      emit(UpdateApplicationState.onError(e.toString()));
+    }
+  }
+
+  void submitPassportApps(String firebaseDocId) async {
+    emit(UpdateApplicationState.onLoading());
+
+    final result = await iUpdateApplication.submitPassport(firebaseDocId);
+    try {
+      result.fold(
+        (l) => emit(UpdateApplicationState.onError(l.toString())),
+        (r) => emit(UpdateApplicationState.onSubmitPassport(r)),
       );
     } on Exception catch (e) {
       emit(UpdateApplicationState.onError(e.toString()));

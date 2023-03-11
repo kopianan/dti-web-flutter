@@ -66,7 +66,7 @@ class _RighSideState extends State<RighSide> {
                         HorizontalDismissDirection.horizontal,
                     child: FlashBar(
                       indicatorColor: AppColor.primaryColor,
-                      content: Text(
+                      content: const Text(
                         'Document has been updated',
                         style: TextStyle(
                             fontSize: 20,

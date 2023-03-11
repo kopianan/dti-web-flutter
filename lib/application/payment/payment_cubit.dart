@@ -45,6 +45,17 @@ class PaymentCubit extends Cubit<PaymentState> {
     );
   }
 
+  void makePassportPayment(VisaApplicationModel visaApplication,
+      {double? discount}) async {
+    emit(const PaymentState.onLoading());
+    final _result = await iPayment.createPassportInvoice(visaApplication,
+        discount: discount);
+    _result.fold(
+      (left) => emit(const PaymentState.onError()),
+      (right) => emit(PaymentState.onGetPaymentUrl(right)),
+    );
+  }
+
   // void makePaymentPaypal(VisaApplication visaApplication) async {
   //   emit(const PaymentState.onLoading());
   //   final _result = await iPayment.createInvoicePaypal(visaApplication);

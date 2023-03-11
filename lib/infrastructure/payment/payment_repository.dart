@@ -55,6 +55,40 @@ class PaymentRepository extends IPayment {
     }
   }
 
+  @override
+  Future<Either<String, String>> createPassportInvoice(
+      VisaApplicationModel visaApplication,
+      {double? discount}) async {
+    final dio = Dio();
+    double finalPrice = visaApplication.price!;
+    if (discount != null) {
+      finalPrice = finalPrice - discount;
+    }
+    var requst = {
+      "externalID": visaApplication.applicationID,
+      "description":
+          "${visaApplication.title} - ${visaApplication.subTitle} - ${visaApplication.applicationID}",
+      "amount": finalPrice,
+      "documentID": visaApplication.firebaseDocId,
+      "type": "P"
+    };
+    try {
+      var result = await dio.post('${dotenv.env['BASE_URL']}/createInvoice',
+          data: requst);
+      //UPDATE PROMO CODE
+      // var _collRef = _firebaseFirestore.userApplicationCollection();
+
+      // await _collRef
+      //     .doc(visaApplication.firebaseDocId)
+      //     .update({'promoUsed': visaApplication.promoUsed});
+
+      var _url = result.data['paymentInvoiceUrl'];
+      return right(_url);
+    } on Exception catch (e) {
+      return left(e.toString());
+    }
+  }
+
   // @override
   // Future<Either<String, String>> createInvoicePaypal(
   //     VisaApplication visaApplication) async {

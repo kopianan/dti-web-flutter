@@ -12,15 +12,14 @@ _$_SingleVisaResponse _$$_SingleVisaResponseFromJson(
       visaApplicationModel: json['data'] == null
           ? null
           : VisaApplicationModel.fromJson(json['data'] as Map<String, dynamic>),
-      documentUserApplicationUrl:
-          (json['documentUserApplicationUrl'] as List<dynamic>?)
-              ?.map((e) => e as Map<String, dynamic>)
-              .toList(),
+      documentUserApplicationUrl: (json['documentUserUrl'] as List<dynamic>?)
+          ?.map((e) => e as Map<String, dynamic>)
+          .toList(),
     );
 
 Map<String, dynamic> _$$_SingleVisaResponseToJson(
         _$_SingleVisaResponse instance) =>
     <String, dynamic>{
       'data': instance.visaApplicationModel,
-      'documentUserApplicationUrl': instance.documentUserApplicationUrl,
+      'documentUserUrl': instance.documentUserApplicationUrl,
     };

@@ -30,6 +30,12 @@ class _UploadDocumentPageState extends State<UploadDocumentPage> {
     super.initState();
     //clean state first
     cleanState();
+    final tempVisaApps = getIt<ApplicationCubit>().state.visaApplicationModel!;
+    if (tempVisaApps.subTitle!.toLowerCase().contains('passport')) {
+      updateAppsCubit.getUserPassportWithImages(tempVisaApps.firebaseDocId!);
+    } else {
+      updateAppsCubit.getUserApplicationWithImages(tempVisaApps.firebaseDocId!);
+    }
     // initData();
   }
 
@@ -47,18 +53,17 @@ class _UploadDocumentPageState extends State<UploadDocumentPage> {
     getIt<DocumentCubit>().updateMasterImageData(masterData!);
   }
 
+  final updateAppsCubit = getIt<UpdateApplicationCubit>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocProvider(
-        create: (context) => getIt<UpdateApplicationCubit>()
-          ..getUserApplicationWithImages(getIt<ApplicationCubit>()
-              .state
-              .visaApplicationModel!
-              .firebaseDocId!),
+        create: (context) => updateAppsCubit,
         child: BlocBuilder<ApplicationCubit, ApplicationState>(
           builder: (context, state) {
             return BlocListener<UpdateApplicationCubit, UpdateApplicationState>(
+              bloc: updateAppsCubit,
               listener: (context, updateAppState) {
                 updateAppState.maybeMap(
                   onLoading: (e) {
@@ -66,6 +71,19 @@ class _UploadDocumentPageState extends State<UploadDocumentPage> {
                   },
                   orElse: () {
                     EasyLoading.dismiss();
+                  },
+                  onGetSinglePassportWithImage: (value) {
+                    EasyLoading.dismiss();
+                    getIt<ApplicationCubit>().setupApplication(
+                        value.singleResponse.visaApplicationModel!);
+                    getIt<ApplicationCubit>().setupDocumentsMasterData(
+                      value.singleResponse.documentUserApplicationUrl!,
+                    );
+
+                    initData(
+                      getIt<ApplicationCubit>().state.visaApplicationModel!,
+                      getIt<ApplicationCubit>().state.masterListData!,
+                    );
                   },
                   onGetSingleApplicationWithImage: (value) {
                     EasyLoading.dismiss();
@@ -84,81 +102,17 @@ class _UploadDocumentPageState extends State<UploadDocumentPage> {
               },
               child:
                   BlocBuilder<UpdateApplicationCubit, UpdateApplicationState>(
+                bloc: updateAppsCubit,
                 builder: (context, state) {
                   return state.maybeMap(
                     orElse: () {
                       return Container();
                     },
+                    onGetSinglePassportWithImage: (e) {
+                      return UploadDocumentCheckPage();
+                    },
                     onGetSingleApplicationWithImage: (e) {
-                      return BlocBuilder<DocumentCubit, DocumentState>(
-                        builder: (context, docState) {
-                          return Row(
-                            children: [
-                              Expanded(
-                                  flex: 2,
-                                  child: SingleChildScrollView(
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 15),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          const CustomSecondHeader(),
-                                          Text(
-                                            docState.visa?.title ?? "",
-                                            style: TextStyle(
-                                                fontSize: 30.sp,
-                                                color: AppColor.primaryColor,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          Text(
-                                            docState.visa?.subTitle ?? "",
-                                            maxLines: 1,
-                                            style: TextStyle(
-                                                fontSize: 25.sp,
-                                                color: AppColor.primaryColor,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          30.verticalSpace,
-                                          LeftSide()
-                                        ],
-                                      ),
-                                    ),
-                                  )),
-                              Expanded(
-                                flex: 3,
-                                child: Stack(
-                                  children: [
-                                    Container(
-                                      child: Image.asset(
-                                        'assets/images/bg/bg_upload.png',
-                                        fit: BoxFit.cover,
-                                        width: ScreenUtil().screenWidth,
-                                      ),
-                                    ),
-                                    Positioned(
-                                      right: 100.w,
-                                      left: 100.w,
-                                      top: 20,
-                                      bottom: 20,
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          color: Colors.white,
-                                        ),
-                                        // padding: EdgeInsets.symmetric(horizontal: 30.w),
-                                        child: RighSide(),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ],
-                          );
-                        },
-                      );
+                      return UploadDocumentCheckPage();
                     },
                   );
                 },
@@ -167,6 +121,82 @@ class _UploadDocumentPageState extends State<UploadDocumentPage> {
           },
         ),
       ),
+    );
+  }
+}
+
+class UploadDocumentCheckPage extends StatelessWidget {
+  const UploadDocumentCheckPage({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<DocumentCubit, DocumentState>(
+      builder: (context, docState) {
+        return Row(
+          children: [
+            Expanded(
+                flex: 2,
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const CustomSecondHeader(),
+                        Text(
+                          docState.visa?.title ?? "",
+                          style: TextStyle(
+                              fontSize: 30.sp,
+                              color: AppColor.primaryColor,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          docState.visa?.subTitle ?? "",
+                          maxLines: 1,
+                          style: TextStyle(
+                              fontSize: 25.sp,
+                              color: AppColor.primaryColor,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        30.verticalSpace,
+                        LeftSide()
+                      ],
+                    ),
+                  ),
+                )),
+            Expanded(
+              flex: 3,
+              child: Stack(
+                children: [
+                  Container(
+                    child: Image.asset(
+                      'assets/images/bg/bg_upload.png',
+                      fit: BoxFit.cover,
+                      width: ScreenUtil().screenWidth,
+                    ),
+                  ),
+                  Positioned(
+                    right: 100.w,
+                    left: 100.w,
+                    top: 20,
+                    bottom: 20,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.white,
+                      ),
+                      // padding: EdgeInsets.symmetric(horizontal: 30.w),
+                      child: RighSide(),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 }

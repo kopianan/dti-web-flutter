@@ -4,7 +4,9 @@ import 'package:dti_web/application/auth/auth_cubit.dart';
 import 'package:dti_web/application/dashboard/dashboard_cubit.dart';
 import 'package:dti_web/application/other/other_cubit.dart';
 import 'package:dti_web/core/widgets/application_card.dart';
+import 'package:dti_web/core/widgets/passport_card.dart';
 import 'package:dti_web/core/widgets/social_button_widget.dart';
+import 'package:dti_web/domain/core/simple_visa_model.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/injection.dart';
 import 'package:dti_web/presentation/dashboard/pages/application_card_page.dart';
@@ -12,7 +14,6 @@ import 'package:dti_web/presentation/dashboard/pages/section/feedback_section.da
 import 'package:dti_web/routes/app_router.dart';
 
 import 'package:dti_web/utils/app_color.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -37,7 +38,8 @@ class _DashboardPageState extends State<DashboardPage> {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => dashboardCubit..getLastData(),
+          create: (context) =>
+              dashboardCubit..getLastPassportAndApplicationData(),
         ),
         BlocProvider(
           create: (context) => getIt<OtherCubit>()
@@ -59,10 +61,13 @@ class _DashboardPageState extends State<DashboardPage> {
                     },
                   );
                 },
+                onDeletePassport: (e) {
+                  dashboardCubit.getLastPassportAndApplicationData();
+                },
                 onDeleteSingleData: (e) {
                   //get another data
 
-                  dashboardCubit.getLastData();
+                  dashboardCubit.getLastPassport();
 
                   if (e.deletedVisa.subTitle == "Visa On Arrival") {
                     if (e.isOnArrival == null) {
@@ -454,77 +459,29 @@ class _DashboardPageState extends State<DashboardPage> {
                                         );
                                       },
                                       onGetSingleData: (e) {
-                                        return VisaApplicationCard(
-                                          visaApps: e.visa,
-                                          onCardClick: () {
-                                            if (e.visa.status!.toLowerCase() ==
-                                                'draft') {
-                                              AwesomeDialog(
-                                                  context: context,
-                                                  width:
-                                                      ScreenUtil().screenWidth /
-                                                          4,
-                                                  title: "Draft Application",
-                                                  body: const Center(
-                                                    child: Text(
-                                                      "You have Incomplete Visa Application. Do you want to continue from your latest draft? ",
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                    ),
-                                                  ),
-                                                  btnOkText: "Continue",
-                                                  btnCancelText: "Delete",
-                                                  btnOkOnPress: () {
-                                                    // context
-                                                    //     .read<ApplicationCubit>()
-                                                    //     .setupApplication(e.visa);
-                                                    AutoRouter.of(context).push(
-                                                        PersonalInformation1Route(
-                                                            firebaseDocId: e
-                                                                .visa
-                                                                .firebaseDocId!));
-                                                    //TODO
-                                                    // AutoRouter.of(context)
-                                                    //     .push(UploadDocumentRoute());
-                                                  },
-                                                  btnCancelOnPress: () {
-                                                    dashboardCubit
-                                                        .deleteSingleData(
-                                                            e.visa, null);
-                                                  }).show();
-                                            } else {
-                                              showDialog(
-                                                context: context,
-                                                builder: (context) {
-                                                  return Container(
-                                                    decoration: BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10),
-                                                      color: Colors.white,
-                                                    ),
-                                                    margin: const EdgeInsets
-                                                            .symmetric(
-                                                        horizontal: 100,
-                                                        vertical: 100),
-                                                    width: width,
-                                                    height: height,
-                                                    child: ApplicationCardPage(
-                                                      dashboardCubit:
-                                                          dashboardCubit,
-                                                    ),
-                                                  );
-                                                },
+                                        if (e.visa.subTitle!
+                                            .toLowerCase()
+                                            .contains('passport')) {
+                                          return PassportCard(
+                                            visaApps: e.visa,
+                                            onCardClick: () {
+                                              onPassportCardClicked(context,
+                                                  e.visa, width, height);
+                                            },
+                                          );
+                                        } else {
+                                          return VisaApplicationCard(
+                                            visaApps: e.visa,
+                                            onCardClick: () {
+                                              onVisaCardApplicationClicked(
+                                                context,
+                                                e.visa,
+                                                width,
+                                                height,
                                               );
-                                              // AutoRouter.of(context).navigate(
-                                              //   ApplicationDetailRoute(
-                                              //     firebaseDocId:
-                                              //         e.visa.firebaseDocId!,
-                                              //   ),
-                                              // );
-                                            }
-                                          },
-                                        );
+                                            },
+                                          );
+                                        }
                                       },
                                     );
                                   },
@@ -533,19 +490,16 @@ class _DashboardPageState extends State<DashboardPage> {
                             ),
                           ),
                         )),
-                        Expanded(
-                            child: Container(
-                          child: Image.asset('assets/images/koper.png'),
-                        )),
+                        Expanded(child: Image.asset('assets/images/koper.png')),
                       ],
                     )),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Container(
                         padding: EdgeInsets.symmetric(horizontal: 40.w),
-                        child: FeedbackSection()),
+                        child: const FeedbackSection()),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 50.h),
-                      child: _DashboardFooter(),
+                      child: const _DashboardFooter(),
                     )
                   ],
                 ),
@@ -557,8 +511,113 @@ class _DashboardPageState extends State<DashboardPage> {
     );
   }
 
+  void onVisaCardApplicationClicked(
+    BuildContext context,
+    SimpleVisaModel visa,
+    double width,
+    double height,
+  ) {
+    if (visa.status!.toLowerCase() == 'draft') {
+      AwesomeDialog(
+          context: context,
+          width: ScreenUtil().screenWidth / 4,
+          title: "Draft Application",
+          body: const Center(
+            child: Text(
+              "You have Incomplete Visa Application. Do you want to continue from your latest draft? ",
+              textAlign: TextAlign.center,
+            ),
+          ),
+          btnOkText: "Continue",
+          btnCancelText: "Delete",
+          btnOkOnPress: () {
+            // context
+            //     .read<ApplicationCubit>()
+            //     .setupApplication(visa);
+            AutoRouter.of(context).push(
+                PersonalInformation1Route(firebaseDocId: visa.firebaseDocId!));
+            //TODO
+            // AutoRouter.of(context)
+            //     .push(UploadDocumentRoute());
+          },
+          btnCancelOnPress: () {
+            dashboardCubit.deleteSingleData(visa, null);
+          }).show();
+    } else {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.white,
+            ),
+            margin: const EdgeInsets.symmetric(horizontal: 100, vertical: 100),
+            width: width,
+            height: height,
+            child: ApplicationCardPage(
+              dashboardCubit: dashboardCubit,
+            ),
+          );
+        },
+      );
+    }
+  }
+
+  void onPassportCardClicked(
+    BuildContext context,
+    SimpleVisaModel visa,
+    double width,
+    double height,
+  ) {
+    if (visa.status!.toLowerCase() == 'draft') {
+      AwesomeDialog(
+          context: context,
+          width: ScreenUtil().screenWidth / 4,
+          title: "Draft Passport",
+          body: const Center(
+            child: Text(
+              "You have Incomplete Passport. Do you want to continue from your latest draft? ",
+              textAlign: TextAlign.center,
+            ),
+          ),
+          btnOkText: "Continue",
+          btnCancelText: "Delete",
+          btnOkOnPress: () {
+            // context
+            //     .read<ApplicationCubit>()
+            //     .setupApplication(visa);
+            AutoRouter.of(context).push(PassportPersonalParticularRoute(
+                firebaseDocId: visa.firebaseDocId!));
+            //TODO
+            // AutoRouter.of(context)
+            //     .push(UploadDocumentRoute());
+          },
+          btnCancelOnPress: () {
+            dashboardCubit.deleteSinglePassport(visa, null);
+          }).show();
+    } else {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.white,
+            ),
+            margin: const EdgeInsets.symmetric(horizontal: 100, vertical: 100),
+            width: width,
+            height: height,
+            child: ApplicationCardPage(
+              dashboardCubit: dashboardCubit,
+            ),
+          );
+        },
+      );
+    }
+  }
+
   void onCreateVOA(DashboardState state) {
-    //
     state.maybeMap(
       orElse: () {
         AutoRouter.of(context).push(VOASummaryRoute());

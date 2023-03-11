@@ -14,6 +14,8 @@ class DocumentState with _$DocumentState {
     List<String>? deletedImagesName,
     DocumentDataModel? selectedDocument,
     Map<String, dynamic>? selectedDataCollection,
+    Map<String, dynamic>? selfie,
+    String? deletedSelfiePhoto,
     int? selectedDataType,
     @Default(false) bool isAllRead,
   }) = _DocumentState;

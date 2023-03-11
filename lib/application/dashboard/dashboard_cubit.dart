@@ -14,10 +14,36 @@ class DashboardCubit extends Cubit<DashboardState> {
   DashboardCubit(this.iDashboard) : super(const DashboardState.initial());
   final IDashboard iDashboard;
 
-  void getLastData() async {
+  void getLastPassportAndApplicationData() async {
     emit(const DashboardState.loading());
     try {
-      final data = await iDashboard.getSingleData();
+      final data = await iDashboard.getLastPassportAndApplication();
+      data.fold(
+        (l) => emit(DashboardState.error(l)),
+        (r) => emit(DashboardState.onGetSingleData(r)),
+      );
+    } on Exception {
+      emit(DashboardState.error(Failures.serverError()));
+    }
+  }
+
+  // void getLastData() async {
+  //   emit(const DashboardState.loading());
+  //   try {
+  //     final data = await iDashboard.getSingleData();
+  //     data.fold(
+  //       (l) => emit(DashboardState.error(l)),
+  //       (r) => emit(DashboardState.onGetSingleData(r)),
+  //     );
+  //   } on Exception {
+  //     emit(DashboardState.error(Failures.serverError()));
+  //   }
+  // }
+
+  void getLastPassport() async {
+    emit(const DashboardState.loading());
+    try {
+      final data = await iDashboard.getSinglePassport();
       data.fold(
         (l) => emit(DashboardState.error(l)),
         (r) => emit(DashboardState.onGetSingleData(r)),
@@ -34,6 +60,19 @@ class DashboardCubit extends Cubit<DashboardState> {
       data.fold(
         (l) => emit(DashboardState.error(l)),
         (r) => emit(DashboardState.onDeleteSingleData(visa, isOnArrival)),
+      );
+    } on Exception catch (e) {
+      emit(DashboardState.error(Failures.serverError()));
+    }
+  }
+
+  void deleteSinglePassport(SimpleVisaModel visa, bool? isOnArrival) async {
+    emit(const DashboardState.loading());
+    try {
+      final data = await iDashboard.deleteApplication(visa.firebaseDocId!);
+      data.fold(
+        (l) => emit(DashboardState.error(l)),
+        (r) => emit(DashboardState.onDeletePassport(visa)),
       );
     } on Exception catch (e) {
       emit(DashboardState.error(Failures.serverError()));

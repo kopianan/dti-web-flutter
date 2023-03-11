@@ -24,6 +24,7 @@ mixin _$DashboardState {
     required TResult Function(SimpleVisaModel visa) onGetSingleData,
     required TResult Function(SimpleVisaModel deletedVisa, bool? isOnArrival)
         onDeleteSingleData,
+    required TResult Function(SimpleVisaModel deletedVisa) onDeletePassport,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,6 +35,7 @@ mixin _$DashboardState {
     TResult Function(SimpleVisaModel visa)? onGetSingleData,
     TResult Function(SimpleVisaModel deletedVisa, bool? isOnArrival)?
         onDeleteSingleData,
+    TResult Function(SimpleVisaModel deletedVisa)? onDeletePassport,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,6 +46,7 @@ mixin _$DashboardState {
     TResult Function(SimpleVisaModel visa)? onGetSingleData,
     TResult Function(SimpleVisaModel deletedVisa, bool? isOnArrival)?
         onDeleteSingleData,
+    TResult Function(SimpleVisaModel deletedVisa)? onDeletePassport,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -54,6 +57,7 @@ mixin _$DashboardState {
     required TResult Function(_Error value) error,
     required TResult Function(_OnGetSingleData value) onGetSingleData,
     required TResult Function(_OnDeleteSingleData value) onDeleteSingleData,
+    required TResult Function(_OnDeletePassport value) onDeletePassport,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +67,7 @@ mixin _$DashboardState {
     TResult Function(_Error value)? error,
     TResult Function(_OnGetSingleData value)? onGetSingleData,
     TResult Function(_OnDeleteSingleData value)? onDeleteSingleData,
+    TResult Function(_OnDeletePassport value)? onDeletePassport,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -72,6 +77,7 @@ mixin _$DashboardState {
     TResult Function(_Error value)? error,
     TResult Function(_OnGetSingleData value)? onGetSingleData,
     TResult Function(_OnDeleteSingleData value)? onDeleteSingleData,
+    TResult Function(_OnDeletePassport value)? onDeletePassport,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -139,6 +145,7 @@ class _$_Initial implements _Initial {
     required TResult Function(SimpleVisaModel visa) onGetSingleData,
     required TResult Function(SimpleVisaModel deletedVisa, bool? isOnArrival)
         onDeleteSingleData,
+    required TResult Function(SimpleVisaModel deletedVisa) onDeletePassport,
   }) {
     return initial();
   }
@@ -152,6 +159,7 @@ class _$_Initial implements _Initial {
     TResult Function(SimpleVisaModel visa)? onGetSingleData,
     TResult Function(SimpleVisaModel deletedVisa, bool? isOnArrival)?
         onDeleteSingleData,
+    TResult Function(SimpleVisaModel deletedVisa)? onDeletePassport,
   }) {
     return initial?.call();
   }
@@ -165,6 +173,7 @@ class _$_Initial implements _Initial {
     TResult Function(SimpleVisaModel visa)? onGetSingleData,
     TResult Function(SimpleVisaModel deletedVisa, bool? isOnArrival)?
         onDeleteSingleData,
+    TResult Function(SimpleVisaModel deletedVisa)? onDeletePassport,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -181,6 +190,7 @@ class _$_Initial implements _Initial {
     required TResult Function(_Error value) error,
     required TResult Function(_OnGetSingleData value) onGetSingleData,
     required TResult Function(_OnDeleteSingleData value) onDeleteSingleData,
+    required TResult Function(_OnDeletePassport value) onDeletePassport,
   }) {
     return initial(this);
   }
@@ -193,6 +203,7 @@ class _$_Initial implements _Initial {
     TResult Function(_Error value)? error,
     TResult Function(_OnGetSingleData value)? onGetSingleData,
     TResult Function(_OnDeleteSingleData value)? onDeleteSingleData,
+    TResult Function(_OnDeletePassport value)? onDeletePassport,
   }) {
     return initial?.call(this);
   }
@@ -205,6 +216,7 @@ class _$_Initial implements _Initial {
     TResult Function(_Error value)? error,
     TResult Function(_OnGetSingleData value)? onGetSingleData,
     TResult Function(_OnDeleteSingleData value)? onDeleteSingleData,
+    TResult Function(_OnDeletePassport value)? onDeletePassport,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -263,6 +275,7 @@ class _$_Loading implements _Loading {
     required TResult Function(SimpleVisaModel visa) onGetSingleData,
     required TResult Function(SimpleVisaModel deletedVisa, bool? isOnArrival)
         onDeleteSingleData,
+    required TResult Function(SimpleVisaModel deletedVisa) onDeletePassport,
   }) {
     return loading();
   }
@@ -276,6 +289,7 @@ class _$_Loading implements _Loading {
     TResult Function(SimpleVisaModel visa)? onGetSingleData,
     TResult Function(SimpleVisaModel deletedVisa, bool? isOnArrival)?
         onDeleteSingleData,
+    TResult Function(SimpleVisaModel deletedVisa)? onDeletePassport,
   }) {
     return loading?.call();
   }
@@ -289,6 +303,7 @@ class _$_Loading implements _Loading {
     TResult Function(SimpleVisaModel visa)? onGetSingleData,
     TResult Function(SimpleVisaModel deletedVisa, bool? isOnArrival)?
         onDeleteSingleData,
+    TResult Function(SimpleVisaModel deletedVisa)? onDeletePassport,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -305,6 +320,7 @@ class _$_Loading implements _Loading {
     required TResult Function(_Error value) error,
     required TResult Function(_OnGetSingleData value) onGetSingleData,
     required TResult Function(_OnDeleteSingleData value) onDeleteSingleData,
+    required TResult Function(_OnDeletePassport value) onDeletePassport,
   }) {
     return loading(this);
   }
@@ -317,6 +333,7 @@ class _$_Loading implements _Loading {
     TResult Function(_Error value)? error,
     TResult Function(_OnGetSingleData value)? onGetSingleData,
     TResult Function(_OnDeleteSingleData value)? onDeleteSingleData,
+    TResult Function(_OnDeletePassport value)? onDeletePassport,
   }) {
     return loading?.call(this);
   }
@@ -329,6 +346,7 @@ class _$_Loading implements _Loading {
     TResult Function(_Error value)? error,
     TResult Function(_OnGetSingleData value)? onGetSingleData,
     TResult Function(_OnDeleteSingleData value)? onDeleteSingleData,
+    TResult Function(_OnDeletePassport value)? onDeletePassport,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -419,6 +437,7 @@ class _$_Error implements _Error {
     required TResult Function(SimpleVisaModel visa) onGetSingleData,
     required TResult Function(SimpleVisaModel deletedVisa, bool? isOnArrival)
         onDeleteSingleData,
+    required TResult Function(SimpleVisaModel deletedVisa) onDeletePassport,
   }) {
     return error(err);
   }
@@ -432,6 +451,7 @@ class _$_Error implements _Error {
     TResult Function(SimpleVisaModel visa)? onGetSingleData,
     TResult Function(SimpleVisaModel deletedVisa, bool? isOnArrival)?
         onDeleteSingleData,
+    TResult Function(SimpleVisaModel deletedVisa)? onDeletePassport,
   }) {
     return error?.call(err);
   }
@@ -445,6 +465,7 @@ class _$_Error implements _Error {
     TResult Function(SimpleVisaModel visa)? onGetSingleData,
     TResult Function(SimpleVisaModel deletedVisa, bool? isOnArrival)?
         onDeleteSingleData,
+    TResult Function(SimpleVisaModel deletedVisa)? onDeletePassport,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -461,6 +482,7 @@ class _$_Error implements _Error {
     required TResult Function(_Error value) error,
     required TResult Function(_OnGetSingleData value) onGetSingleData,
     required TResult Function(_OnDeleteSingleData value) onDeleteSingleData,
+    required TResult Function(_OnDeletePassport value) onDeletePassport,
   }) {
     return error(this);
   }
@@ -473,6 +495,7 @@ class _$_Error implements _Error {
     TResult Function(_Error value)? error,
     TResult Function(_OnGetSingleData value)? onGetSingleData,
     TResult Function(_OnDeleteSingleData value)? onDeleteSingleData,
+    TResult Function(_OnDeletePassport value)? onDeletePassport,
   }) {
     return error?.call(this);
   }
@@ -485,6 +508,7 @@ class _$_Error implements _Error {
     TResult Function(_Error value)? error,
     TResult Function(_OnGetSingleData value)? onGetSingleData,
     TResult Function(_OnDeleteSingleData value)? onDeleteSingleData,
+    TResult Function(_OnDeletePassport value)? onDeletePassport,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -583,6 +607,7 @@ class _$_OnGetSingleData implements _OnGetSingleData {
     required TResult Function(SimpleVisaModel visa) onGetSingleData,
     required TResult Function(SimpleVisaModel deletedVisa, bool? isOnArrival)
         onDeleteSingleData,
+    required TResult Function(SimpleVisaModel deletedVisa) onDeletePassport,
   }) {
     return onGetSingleData(visa);
   }
@@ -596,6 +621,7 @@ class _$_OnGetSingleData implements _OnGetSingleData {
     TResult Function(SimpleVisaModel visa)? onGetSingleData,
     TResult Function(SimpleVisaModel deletedVisa, bool? isOnArrival)?
         onDeleteSingleData,
+    TResult Function(SimpleVisaModel deletedVisa)? onDeletePassport,
   }) {
     return onGetSingleData?.call(visa);
   }
@@ -609,6 +635,7 @@ class _$_OnGetSingleData implements _OnGetSingleData {
     TResult Function(SimpleVisaModel visa)? onGetSingleData,
     TResult Function(SimpleVisaModel deletedVisa, bool? isOnArrival)?
         onDeleteSingleData,
+    TResult Function(SimpleVisaModel deletedVisa)? onDeletePassport,
     required TResult orElse(),
   }) {
     if (onGetSingleData != null) {
@@ -625,6 +652,7 @@ class _$_OnGetSingleData implements _OnGetSingleData {
     required TResult Function(_Error value) error,
     required TResult Function(_OnGetSingleData value) onGetSingleData,
     required TResult Function(_OnDeleteSingleData value) onDeleteSingleData,
+    required TResult Function(_OnDeletePassport value) onDeletePassport,
   }) {
     return onGetSingleData(this);
   }
@@ -637,6 +665,7 @@ class _$_OnGetSingleData implements _OnGetSingleData {
     TResult Function(_Error value)? error,
     TResult Function(_OnGetSingleData value)? onGetSingleData,
     TResult Function(_OnDeleteSingleData value)? onDeleteSingleData,
+    TResult Function(_OnDeletePassport value)? onDeletePassport,
   }) {
     return onGetSingleData?.call(this);
   }
@@ -649,6 +678,7 @@ class _$_OnGetSingleData implements _OnGetSingleData {
     TResult Function(_Error value)? error,
     TResult Function(_OnGetSingleData value)? onGetSingleData,
     TResult Function(_OnDeleteSingleData value)? onDeleteSingleData,
+    TResult Function(_OnDeletePassport value)? onDeletePassport,
     required TResult orElse(),
   }) {
     if (onGetSingleData != null) {
@@ -761,6 +791,7 @@ class _$_OnDeleteSingleData implements _OnDeleteSingleData {
     required TResult Function(SimpleVisaModel visa) onGetSingleData,
     required TResult Function(SimpleVisaModel deletedVisa, bool? isOnArrival)
         onDeleteSingleData,
+    required TResult Function(SimpleVisaModel deletedVisa) onDeletePassport,
   }) {
     return onDeleteSingleData(deletedVisa, isOnArrival);
   }
@@ -774,6 +805,7 @@ class _$_OnDeleteSingleData implements _OnDeleteSingleData {
     TResult Function(SimpleVisaModel visa)? onGetSingleData,
     TResult Function(SimpleVisaModel deletedVisa, bool? isOnArrival)?
         onDeleteSingleData,
+    TResult Function(SimpleVisaModel deletedVisa)? onDeletePassport,
   }) {
     return onDeleteSingleData?.call(deletedVisa, isOnArrival);
   }
@@ -787,6 +819,7 @@ class _$_OnDeleteSingleData implements _OnDeleteSingleData {
     TResult Function(SimpleVisaModel visa)? onGetSingleData,
     TResult Function(SimpleVisaModel deletedVisa, bool? isOnArrival)?
         onDeleteSingleData,
+    TResult Function(SimpleVisaModel deletedVisa)? onDeletePassport,
     required TResult orElse(),
   }) {
     if (onDeleteSingleData != null) {
@@ -803,6 +836,7 @@ class _$_OnDeleteSingleData implements _OnDeleteSingleData {
     required TResult Function(_Error value) error,
     required TResult Function(_OnGetSingleData value) onGetSingleData,
     required TResult Function(_OnDeleteSingleData value) onDeleteSingleData,
+    required TResult Function(_OnDeletePassport value) onDeletePassport,
   }) {
     return onDeleteSingleData(this);
   }
@@ -815,6 +849,7 @@ class _$_OnDeleteSingleData implements _OnDeleteSingleData {
     TResult Function(_Error value)? error,
     TResult Function(_OnGetSingleData value)? onGetSingleData,
     TResult Function(_OnDeleteSingleData value)? onDeleteSingleData,
+    TResult Function(_OnDeletePassport value)? onDeletePassport,
   }) {
     return onDeleteSingleData?.call(this);
   }
@@ -827,6 +862,7 @@ class _$_OnDeleteSingleData implements _OnDeleteSingleData {
     TResult Function(_Error value)? error,
     TResult Function(_OnGetSingleData value)? onGetSingleData,
     TResult Function(_OnDeleteSingleData value)? onDeleteSingleData,
+    TResult Function(_OnDeletePassport value)? onDeletePassport,
     required TResult orElse(),
   }) {
     if (onDeleteSingleData != null) {
@@ -845,5 +881,177 @@ abstract class _OnDeleteSingleData implements DashboardState {
   bool? get isOnArrival;
   @JsonKey(ignore: true)
   _$$_OnDeleteSingleDataCopyWith<_$_OnDeleteSingleData> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_OnDeletePassportCopyWith<$Res> {
+  factory _$$_OnDeletePassportCopyWith(
+          _$_OnDeletePassport value, $Res Function(_$_OnDeletePassport) then) =
+      __$$_OnDeletePassportCopyWithImpl<$Res>;
+  $Res call({SimpleVisaModel deletedVisa});
+
+  $SimpleVisaModelCopyWith<$Res> get deletedVisa;
+}
+
+/// @nodoc
+class __$$_OnDeletePassportCopyWithImpl<$Res>
+    extends _$DashboardStateCopyWithImpl<$Res>
+    implements _$$_OnDeletePassportCopyWith<$Res> {
+  __$$_OnDeletePassportCopyWithImpl(
+      _$_OnDeletePassport _value, $Res Function(_$_OnDeletePassport) _then)
+      : super(_value, (v) => _then(v as _$_OnDeletePassport));
+
+  @override
+  _$_OnDeletePassport get _value => super._value as _$_OnDeletePassport;
+
+  @override
+  $Res call({
+    Object? deletedVisa = freezed,
+  }) {
+    return _then(_$_OnDeletePassport(
+      deletedVisa == freezed
+          ? _value.deletedVisa
+          : deletedVisa // ignore: cast_nullable_to_non_nullable
+              as SimpleVisaModel,
+    ));
+  }
+
+  @override
+  $SimpleVisaModelCopyWith<$Res> get deletedVisa {
+    return $SimpleVisaModelCopyWith<$Res>(_value.deletedVisa, (value) {
+      return _then(_value.copyWith(deletedVisa: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_OnDeletePassport implements _OnDeletePassport {
+  const _$_OnDeletePassport(this.deletedVisa);
+
+  @override
+  final SimpleVisaModel deletedVisa;
+
+  @override
+  String toString() {
+    return 'DashboardState.onDeletePassport(deletedVisa: $deletedVisa)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_OnDeletePassport &&
+            const DeepCollectionEquality()
+                .equals(other.deletedVisa, deletedVisa));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(deletedVisa));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_OnDeletePassportCopyWith<_$_OnDeletePassport> get copyWith =>
+      __$$_OnDeletePassportCopyWithImpl<_$_OnDeletePassport>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(Failures err) error,
+    required TResult Function(SimpleVisaModel visa) onGetSingleData,
+    required TResult Function(SimpleVisaModel deletedVisa, bool? isOnArrival)
+        onDeleteSingleData,
+    required TResult Function(SimpleVisaModel deletedVisa) onDeletePassport,
+  }) {
+    return onDeletePassport(deletedVisa);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(Failures err)? error,
+    TResult Function(SimpleVisaModel visa)? onGetSingleData,
+    TResult Function(SimpleVisaModel deletedVisa, bool? isOnArrival)?
+        onDeleteSingleData,
+    TResult Function(SimpleVisaModel deletedVisa)? onDeletePassport,
+  }) {
+    return onDeletePassport?.call(deletedVisa);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(Failures err)? error,
+    TResult Function(SimpleVisaModel visa)? onGetSingleData,
+    TResult Function(SimpleVisaModel deletedVisa, bool? isOnArrival)?
+        onDeleteSingleData,
+    TResult Function(SimpleVisaModel deletedVisa)? onDeletePassport,
+    required TResult orElse(),
+  }) {
+    if (onDeletePassport != null) {
+      return onDeletePassport(deletedVisa);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Error value) error,
+    required TResult Function(_OnGetSingleData value) onGetSingleData,
+    required TResult Function(_OnDeleteSingleData value) onDeleteSingleData,
+    required TResult Function(_OnDeletePassport value) onDeletePassport,
+  }) {
+    return onDeletePassport(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_OnGetSingleData value)? onGetSingleData,
+    TResult Function(_OnDeleteSingleData value)? onDeleteSingleData,
+    TResult Function(_OnDeletePassport value)? onDeletePassport,
+  }) {
+    return onDeletePassport?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_OnGetSingleData value)? onGetSingleData,
+    TResult Function(_OnDeleteSingleData value)? onDeleteSingleData,
+    TResult Function(_OnDeletePassport value)? onDeletePassport,
+    required TResult orElse(),
+  }) {
+    if (onDeletePassport != null) {
+      return onDeletePassport(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnDeletePassport implements DashboardState {
+  const factory _OnDeletePassport(final SimpleVisaModel deletedVisa) =
+      _$_OnDeletePassport;
+
+  SimpleVisaModel get deletedVisa;
+  @JsonKey(ignore: true)
+  _$$_OnDeletePassportCopyWith<_$_OnDeletePassport> get copyWith =>
       throw _privateConstructorUsedError;
 }

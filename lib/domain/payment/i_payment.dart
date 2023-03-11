@@ -7,6 +7,9 @@ abstract class IPayment {
   Future<Either<String, String>> createInvoice(
       VisaApplicationModel visaApplication,
       {double? discount});
+  Future<Either<String, String>> createPassportInvoice(
+      VisaApplicationModel visaApplication,
+      {double? discount});
   // Future<Either<String, String>> createInvoicePaypal(
   //     VisaApplication visaApplication);
 }

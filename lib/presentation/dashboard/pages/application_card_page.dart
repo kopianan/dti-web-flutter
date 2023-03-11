@@ -3,6 +3,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dti_web/application/app_list/app_list_cubit.dart';
 import 'package:dti_web/application/dashboard/dashboard_cubit.dart';
 import 'package:dti_web/core/widgets/application_card.dart';
+import 'package:dti_web/core/widgets/passport_card.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:flutter/material.dart';
@@ -97,48 +98,103 @@ class _ApplicationCardPageState extends State<ApplicationCardPage> {
                         children: e.apps
                             .map((element) => SizedBox(
                                   width: 500,
-                                  child: VisaApplicationCard(
-                                    visaApps: element,
-                                    onCardClick: () async {
-                                      if (element.status!.toLowerCase() ==
-                                          'draft') {
-                                        AwesomeDialog(
-                                          context: context,
-                                          width: ScreenUtil().screenWidth / 4,
-                                          title: "Draft Application",
-                                          body: const Center(
-                                            child: Text(
-                                              "You have Incomplete Visa Application. Do you want to continue from your latest draft? ",
-                                              textAlign: TextAlign.center,
-                                            ),
-                                          ),
-                                          btnOkText: "Continue",
-                                          btnCancelText: "Delete",
-                                          btnOkOnPress: () async {
-                                            await AutoRouter.of(context).pop();
-                                            AutoRouter.of(context).push(
-                                                PersonalInformation1Route(
-                                                    firebaseDocId: element
-                                                        .firebaseDocId!));
+                                  child: element.subTitle!
+                                          .toLowerCase()
+                                          .contains('passport')
+                                      ? PassportCard(
+                                          visaApps: element,
+                                          onCardClick: () async {
+                                            if (element.status!.toLowerCase() ==
+                                                'draft') {
+                                              AwesomeDialog(
+                                                context: context,
+                                                width:
+                                                    ScreenUtil().screenWidth /
+                                                        4,
+                                                title: "Draft Passport",
+                                                body: const Center(
+                                                  child: Text(
+                                                    "You have Incomplete Passport Application. Do you want to continue from your latest draft? ",
+                                                    textAlign: TextAlign.center,
+                                                  ),
+                                                ),
+                                                btnOkText: "Continue",
+                                                btnCancelText: "Delete",
+                                                btnOkOnPress: () async {
+                                                  await AutoRouter.of(context)
+                                                      .pop();
+                                                  AutoRouter.of(context).push(
+                                                      PassportPersonalParticularRoute(
+                                                          firebaseDocId: element
+                                                              .firebaseDocId!));
+                                                },
+                                                btnCancelOnPress: () async {
+                                                  await AutoRouter.of(context)
+                                                      .pop();
+                                                  widget.dashboardCubit
+                                                      .deleteSinglePassport(
+                                                          element, null);
+                                                },
+                                              ).show();
+                                            } else {
+                                              await AutoRouter.of(context)
+                                                  .pop();
+                                              AutoRouter.of(context).navigate(
+                                                PassportDetailRoute(
+                                                  firebaseDocId:
+                                                      element.firebaseDocId!,
+                                                ),
+                                              );
+                                            }
                                           },
-                                          btnCancelOnPress: () async {
-                                            await AutoRouter.of(context).pop();
-                                            widget.dashboardCubit
-                                                .deleteSingleData(
-                                                    element, null);
+                                        )
+                                      : VisaApplicationCard(
+                                          visaApps: element,
+                                          onCardClick: () async {
+                                            if (element.status!.toLowerCase() ==
+                                                'draft') {
+                                              AwesomeDialog(
+                                                context: context,
+                                                width:
+                                                    ScreenUtil().screenWidth /
+                                                        4,
+                                                title: "Draft Application",
+                                                body: const Center(
+                                                  child: Text(
+                                                    "You have Incomplete Visa Application. Do you want to continue from your latest draft? ",
+                                                    textAlign: TextAlign.center,
+                                                  ),
+                                                ),
+                                                btnOkText: "Continue",
+                                                btnCancelText: "Delete",
+                                                btnOkOnPress: () async {
+                                                  await AutoRouter.of(context)
+                                                      .pop();
+                                                  AutoRouter.of(context).push(
+                                                      PersonalInformation1Route(
+                                                          firebaseDocId: element
+                                                              .firebaseDocId!));
+                                                },
+                                                btnCancelOnPress: () async {
+                                                  await AutoRouter.of(context)
+                                                      .pop();
+                                                  widget.dashboardCubit
+                                                      .deleteSingleData(
+                                                          element, null);
+                                                },
+                                              ).show();
+                                            } else {
+                                              await AutoRouter.of(context)
+                                                  .pop();
+                                              AutoRouter.of(context).navigate(
+                                                ApplicationDetailRoute(
+                                                  firebaseDocId:
+                                                      element.firebaseDocId!,
+                                                ),
+                                              );
+                                            }
                                           },
-                                        ).show();
-                                      } else {
-                                        await AutoRouter.of(context).pop();
-                                        AutoRouter.of(context).navigate(
-                                          ApplicationDetailRoute(
-                                            firebaseDocId:
-                                                element.firebaseDocId!,
-                                          ),
-                                        );
-                                      }
-                                    },
-                                  ),
+                                        ),
                                 ))
                             .toList()),
                   ),

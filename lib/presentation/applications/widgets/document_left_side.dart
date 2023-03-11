@@ -112,11 +112,11 @@ class _LeftSideState extends State<LeftSide> {
                         ? PrimaryButton(
                             onClick: () {
                               EasyLoading.show(
-                                maskType: EasyLoadingMaskType.black,
-                              );
+                                  maskType: EasyLoadingMaskType.black);
                               Future.delayed(Duration(seconds: 4))
                                   .then((value) {
                                 EasyLoading.dismiss();
+                                //check if the apps type is passport
                                 AutoRouter.of(context)
                                     .push(ApplicationDetailRoute(
                                   firebaseDocId: docState.visa!.firebaseDocId!,
@@ -127,7 +127,10 @@ class _LeftSideState extends State<LeftSide> {
                             labelStyle: const TextStyle(fontSize: 20),
                           )
                         : PrimaryButton(
-                            onClick: () {},
+                            onClick: () {
+                              //TODO
+                              AutoRouter.of(context).push(SelfieRoute());
+                            },
                             bgColor: Colors.grey,
                             label: "Continue",
                             labelStyle: const TextStyle(fontSize: 20),

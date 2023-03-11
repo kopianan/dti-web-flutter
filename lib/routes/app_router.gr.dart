@@ -23,6 +23,35 @@ class _$AppRouter extends RootStackRouter {
         child: const SplashScreenPage(),
       );
     },
+    SelfieRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const SelfiePage(),
+      );
+    },
+    PassportPaymentRoute.name: (routeData) {
+      final args = routeData.argsAs<PassportPaymentRouteArgs>();
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: PassportPaymentPage(
+          key: args.key,
+          visa: args.visa,
+        ),
+      );
+    },
+    PassportDetailRoute.name: (routeData) {
+      final pathParams = routeData.inheritedPathParams;
+      final args = routeData.argsAs<PassportDetailRouteArgs>(
+          orElse: () => PassportDetailRouteArgs(
+              firebaseDocId: pathParams.getString('id')));
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: PassportDetailPage(
+          key: args.key,
+          firebaseDocId: args.firebaseDocId,
+        ),
+      );
+    },
     ChoosePassportRoute.name: (routeData) {
       final args = routeData.argsAs<ChoosePassportRouteArgs>(
           orElse: () => const ChoosePassportRouteArgs());
@@ -31,6 +60,16 @@ class _$AppRouter extends RootStackRouter {
         child: ChoosePassportPage(
           key: args.key,
           question: args.question,
+        ),
+      );
+    },
+    PassportPersonalParticularRoute.name: (routeData) {
+      final args = routeData.argsAs<PassportPersonalParticularRouteArgs>();
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: PassportPersonalParticularPage(
+          key: args.key,
+          firebaseDocId: args.firebaseDocId,
         ),
       );
     },
@@ -287,8 +326,24 @@ class _$AppRouter extends RootStackRouter {
           path: '/',
         ),
         RouteConfig(
+          SelfieRoute.name,
+          path: '/selfie-page',
+        ),
+        RouteConfig(
+          PassportPaymentRoute.name,
+          path: '/passport-payment',
+        ),
+        RouteConfig(
+          PassportDetailRoute.name,
+          path: '/passport-detail/:id',
+        ),
+        RouteConfig(
           ChoosePassportRoute.name,
           path: '/choose-passport',
+        ),
+        RouteConfig(
+          PassportPersonalParticularRoute.name,
+          path: '/passport-personal-particular',
         ),
         RouteConfig(
           DashboardRoute.name,
@@ -414,6 +469,87 @@ class SplashScreenRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [SelfiePage]
+class SelfieRoute extends PageRouteInfo<void> {
+  const SelfieRoute()
+      : super(
+          SelfieRoute.name,
+          path: '/selfie-page',
+        );
+
+  static const String name = 'SelfieRoute';
+}
+
+/// generated route for
+/// [PassportPaymentPage]
+class PassportPaymentRoute extends PageRouteInfo<PassportPaymentRouteArgs> {
+  PassportPaymentRoute({
+    Key? key,
+    required VisaApplicationModel visa,
+  }) : super(
+          PassportPaymentRoute.name,
+          path: '/passport-payment',
+          args: PassportPaymentRouteArgs(
+            key: key,
+            visa: visa,
+          ),
+        );
+
+  static const String name = 'PassportPaymentRoute';
+}
+
+class PassportPaymentRouteArgs {
+  const PassportPaymentRouteArgs({
+    this.key,
+    required this.visa,
+  });
+
+  final Key? key;
+
+  final VisaApplicationModel visa;
+
+  @override
+  String toString() {
+    return 'PassportPaymentRouteArgs{key: $key, visa: $visa}';
+  }
+}
+
+/// generated route for
+/// [PassportDetailPage]
+class PassportDetailRoute extends PageRouteInfo<PassportDetailRouteArgs> {
+  PassportDetailRoute({
+    Key? key,
+    required String firebaseDocId,
+  }) : super(
+          PassportDetailRoute.name,
+          path: '/passport-detail/:id',
+          args: PassportDetailRouteArgs(
+            key: key,
+            firebaseDocId: firebaseDocId,
+          ),
+          rawPathParams: {'id': firebaseDocId},
+        );
+
+  static const String name = 'PassportDetailRoute';
+}
+
+class PassportDetailRouteArgs {
+  const PassportDetailRouteArgs({
+    this.key,
+    required this.firebaseDocId,
+  });
+
+  final Key? key;
+
+  final String firebaseDocId;
+
+  @override
+  String toString() {
+    return 'PassportDetailRouteArgs{key: $key, firebaseDocId: $firebaseDocId}';
+  }
+}
+
+/// generated route for
 /// [ChoosePassportPage]
 class ChoosePassportRoute extends PageRouteInfo<ChoosePassportRouteArgs> {
   ChoosePassportRoute({
@@ -444,6 +580,41 @@ class ChoosePassportRouteArgs {
   @override
   String toString() {
     return 'ChoosePassportRouteArgs{key: $key, question: $question}';
+  }
+}
+
+/// generated route for
+/// [PassportPersonalParticularPage]
+class PassportPersonalParticularRoute
+    extends PageRouteInfo<PassportPersonalParticularRouteArgs> {
+  PassportPersonalParticularRoute({
+    Key? key,
+    required String firebaseDocId,
+  }) : super(
+          PassportPersonalParticularRoute.name,
+          path: '/passport-personal-particular',
+          args: PassportPersonalParticularRouteArgs(
+            key: key,
+            firebaseDocId: firebaseDocId,
+          ),
+        );
+
+  static const String name = 'PassportPersonalParticularRoute';
+}
+
+class PassportPersonalParticularRouteArgs {
+  const PassportPersonalParticularRouteArgs({
+    this.key,
+    required this.firebaseDocId,
+  });
+
+  final Key? key;
+
+  final String firebaseDocId;
+
+  @override
+  String toString() {
+    return 'PassportPersonalParticularRouteArgs{key: $key, firebaseDocId: $firebaseDocId}';
   }
 }
 

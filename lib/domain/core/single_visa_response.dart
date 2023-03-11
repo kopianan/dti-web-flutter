@@ -8,8 +8,8 @@ part 'single_visa_response.g.dart';
 class SingleVisaResponse with _$SingleVisaResponse {
   factory SingleVisaResponse({
     @JsonKey(name: 'data') VisaApplicationModel? visaApplicationModel,
-    @JsonKey(name: 'documentUserApplicationUrl')
-        List<Map<String,dynamic>>? documentUserApplicationUrl,
+    @JsonKey(name: 'documentUserUrl')
+        List<Map<String, dynamic>>? documentUserApplicationUrl, 
   }) = _SingleVisaResponse;
 
   factory SingleVisaResponse.fromJson(Map<String, dynamic> json) =>

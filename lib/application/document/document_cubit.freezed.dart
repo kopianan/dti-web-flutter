@@ -28,6 +28,8 @@ mixin _$DocumentState {
   DocumentDataModel? get selectedDocument => throw _privateConstructorUsedError;
   Map<String, dynamic>? get selectedDataCollection =>
       throw _privateConstructorUsedError;
+  Map<String, dynamic>? get selfie => throw _privateConstructorUsedError;
+  String? get deletedSelfiePhoto => throw _privateConstructorUsedError;
   int? get selectedDataType => throw _privateConstructorUsedError;
   bool get isAllRead => throw _privateConstructorUsedError;
 
@@ -51,6 +53,8 @@ abstract class $DocumentStateCopyWith<$Res> {
       List<String>? deletedImagesName,
       DocumentDataModel? selectedDocument,
       Map<String, dynamic>? selectedDataCollection,
+      Map<String, dynamic>? selfie,
+      String? deletedSelfiePhoto,
       int? selectedDataType,
       bool isAllRead});
 
@@ -78,6 +82,8 @@ class _$DocumentStateCopyWithImpl<$Res>
     Object? deletedImagesName = freezed,
     Object? selectedDocument = freezed,
     Object? selectedDataCollection = freezed,
+    Object? selfie = freezed,
+    Object? deletedSelfiePhoto = freezed,
     Object? selectedDataType = freezed,
     Object? isAllRead = freezed,
   }) {
@@ -118,6 +124,14 @@ class _$DocumentStateCopyWithImpl<$Res>
           ? _value.selectedDataCollection
           : selectedDataCollection // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>?,
+      selfie: selfie == freezed
+          ? _value.selfie
+          : selfie // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
+      deletedSelfiePhoto: deletedSelfiePhoto == freezed
+          ? _value.deletedSelfiePhoto
+          : deletedSelfiePhoto // ignore: cast_nullable_to_non_nullable
+              as String?,
       selectedDataType: selectedDataType == freezed
           ? _value.selectedDataType
           : selectedDataType // ignore: cast_nullable_to_non_nullable
@@ -169,6 +183,8 @@ abstract class _$$_DocumentStateCopyWith<$Res>
       List<String>? deletedImagesName,
       DocumentDataModel? selectedDocument,
       Map<String, dynamic>? selectedDataCollection,
+      Map<String, dynamic>? selfie,
+      String? deletedSelfiePhoto,
       int? selectedDataType,
       bool isAllRead});
 
@@ -200,6 +216,8 @@ class __$$_DocumentStateCopyWithImpl<$Res>
     Object? deletedImagesName = freezed,
     Object? selectedDocument = freezed,
     Object? selectedDataCollection = freezed,
+    Object? selfie = freezed,
+    Object? deletedSelfiePhoto = freezed,
     Object? selectedDataType = freezed,
     Object? isAllRead = freezed,
   }) {
@@ -240,6 +258,14 @@ class __$$_DocumentStateCopyWithImpl<$Res>
           ? _value.selectedDataCollection
           : selectedDataCollection // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>?,
+      selfie: selfie == freezed
+          ? _value.selfie
+          : selfie // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
+      deletedSelfiePhoto: deletedSelfiePhoto == freezed
+          ? _value.deletedSelfiePhoto
+          : deletedSelfiePhoto // ignore: cast_nullable_to_non_nullable
+              as String?,
       selectedDataType: selectedDataType == freezed
           ? _value.selectedDataType
           : selectedDataType // ignore: cast_nullable_to_non_nullable
@@ -265,6 +291,8 @@ class _$_DocumentState with DiagnosticableTreeMixin implements _DocumentState {
       this.deletedImagesName,
       this.selectedDocument,
       this.selectedDataCollection,
+      this.selfie,
+      this.deletedSelfiePhoto,
       this.selectedDataType,
       this.isAllRead = false});
 
@@ -289,6 +317,10 @@ class _$_DocumentState with DiagnosticableTreeMixin implements _DocumentState {
   @override
   final Map<String, dynamic>? selectedDataCollection;
   @override
+  final Map<String, dynamic>? selfie;
+  @override
+  final String? deletedSelfiePhoto;
+  @override
   final int? selectedDataType;
   @override
   @JsonKey()
@@ -296,7 +328,7 @@ class _$_DocumentState with DiagnosticableTreeMixin implements _DocumentState {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'DocumentState(visa: $visa, docs: $docs, initialDocs: $initialDocs, selectedIndex: $selectedIndex, masterListData: $masterListData, selectedMasterListData: $selectedMasterListData, deletedImagesName: $deletedImagesName, selectedDocument: $selectedDocument, selectedDataCollection: $selectedDataCollection, selectedDataType: $selectedDataType, isAllRead: $isAllRead)';
+    return 'DocumentState(visa: $visa, docs: $docs, initialDocs: $initialDocs, selectedIndex: $selectedIndex, masterListData: $masterListData, selectedMasterListData: $selectedMasterListData, deletedImagesName: $deletedImagesName, selectedDocument: $selectedDocument, selectedDataCollection: $selectedDataCollection, selfie: $selfie, deletedSelfiePhoto: $deletedSelfiePhoto, selectedDataType: $selectedDataType, isAllRead: $isAllRead)';
   }
 
   @override
@@ -315,6 +347,8 @@ class _$_DocumentState with DiagnosticableTreeMixin implements _DocumentState {
       ..add(DiagnosticsProperty('selectedDocument', selectedDocument))
       ..add(
           DiagnosticsProperty('selectedDataCollection', selectedDataCollection))
+      ..add(DiagnosticsProperty('selfie', selfie))
+      ..add(DiagnosticsProperty('deletedSelfiePhoto', deletedSelfiePhoto))
       ..add(DiagnosticsProperty('selectedDataType', selectedDataType))
       ..add(DiagnosticsProperty('isAllRead', isAllRead));
   }
@@ -340,6 +374,9 @@ class _$_DocumentState with DiagnosticableTreeMixin implements _DocumentState {
                 .equals(other.selectedDocument, selectedDocument) &&
             const DeepCollectionEquality()
                 .equals(other.selectedDataCollection, selectedDataCollection) &&
+            const DeepCollectionEquality().equals(other.selfie, selfie) &&
+            const DeepCollectionEquality()
+                .equals(other.deletedSelfiePhoto, deletedSelfiePhoto) &&
             const DeepCollectionEquality()
                 .equals(other.selectedDataType, selectedDataType) &&
             const DeepCollectionEquality().equals(other.isAllRead, isAllRead));
@@ -357,6 +394,8 @@ class _$_DocumentState with DiagnosticableTreeMixin implements _DocumentState {
       const DeepCollectionEquality().hash(deletedImagesName),
       const DeepCollectionEquality().hash(selectedDocument),
       const DeepCollectionEquality().hash(selectedDataCollection),
+      const DeepCollectionEquality().hash(selfie),
+      const DeepCollectionEquality().hash(deletedSelfiePhoto),
       const DeepCollectionEquality().hash(selectedDataType),
       const DeepCollectionEquality().hash(isAllRead));
 
@@ -377,6 +416,8 @@ abstract class _DocumentState implements DocumentState {
       final List<String>? deletedImagesName,
       final DocumentDataModel? selectedDocument,
       final Map<String, dynamic>? selectedDataCollection,
+      final Map<String, dynamic>? selfie,
+      final String? deletedSelfiePhoto,
       final int? selectedDataType,
       final bool isAllRead}) = _$_DocumentState;
 
@@ -398,6 +439,10 @@ abstract class _DocumentState implements DocumentState {
   DocumentDataModel? get selectedDocument;
   @override
   Map<String, dynamic>? get selectedDataCollection;
+  @override
+  Map<String, dynamic>? get selfie;
+  @override
+  String? get deletedSelfiePhoto;
   @override
   int? get selectedDataType;
   @override

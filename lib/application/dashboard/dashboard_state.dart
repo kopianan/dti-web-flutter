@@ -9,4 +9,6 @@ class DashboardState with _$DashboardState {
       _OnGetSingleData;
   const factory DashboardState.onDeleteSingleData(
       SimpleVisaModel deletedVisa, bool? isOnArrival) = _OnDeleteSingleData;
+  const factory DashboardState.onDeletePassport(SimpleVisaModel deletedVisa) =
+      _OnDeletePassport;
 }

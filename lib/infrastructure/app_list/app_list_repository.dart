@@ -14,8 +14,14 @@ class AppListRepository extends IAppList {
   Future<Either<String, List<SimpleVisaModel>>> getUserVisaApplication() async {
     dio = Dio();
 
+    //ONLY GET APPLICATION, NOT PASSPORT
+    // final result =
+    // await dio!.get('${dotenv.env['BASE_URL']}/applicationsByUser',
+    //     options: Options(
+    //       headers: {'Authorization': 'Bearer ${storage.getToken()}'},
+    //     ));
     final result =
-        await dio!.get('${dotenv.env['BASE_URL']}/applicationsByUser',
+        await dio!.get('${dotenv.env['BASE_URL']}/overallApplicationsByUser',
             options: Options(
               headers: {'Authorization': 'Bearer ${storage.getToken()}'},
             ));

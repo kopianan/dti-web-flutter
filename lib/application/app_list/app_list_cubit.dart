@@ -13,7 +13,7 @@ class AppListCubit extends Cubit<AppListState> {
   final IAppList iAppList;
 
   void getUserApplication() async {
-    emit(AppListState.onLoading()); 
+    emit(AppListState.onLoading());
     final result = await iAppList.getUserVisaApplication();
     result.fold(
       (l) => emit(AppListState.onError(l)),

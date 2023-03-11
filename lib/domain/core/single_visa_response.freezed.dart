@@ -23,7 +23,7 @@ mixin _$SingleVisaResponse {
   @JsonKey(name: 'data')
   VisaApplicationModel? get visaApplicationModel =>
       throw _privateConstructorUsedError;
-  @JsonKey(name: 'documentUserApplicationUrl')
+  @JsonKey(name: 'documentUserUrl')
   List<Map<String, dynamic>>? get documentUserApplicationUrl =>
       throw _privateConstructorUsedError;
 
@@ -41,7 +41,7 @@ abstract class $SingleVisaResponseCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'data')
           VisaApplicationModel? visaApplicationModel,
-      @JsonKey(name: 'documentUserApplicationUrl')
+      @JsonKey(name: 'documentUserUrl')
           List<Map<String, dynamic>>? documentUserApplicationUrl});
 
   $VisaApplicationModelCopyWith<$Res>? get visaApplicationModel;
@@ -96,7 +96,7 @@ abstract class _$$_SingleVisaResponseCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'data')
           VisaApplicationModel? visaApplicationModel,
-      @JsonKey(name: 'documentUserApplicationUrl')
+      @JsonKey(name: 'documentUserUrl')
           List<Map<String, dynamic>>? documentUserApplicationUrl});
 
   @override
@@ -138,7 +138,7 @@ class _$_SingleVisaResponse implements _SingleVisaResponse {
   _$_SingleVisaResponse(
       {@JsonKey(name: 'data')
           this.visaApplicationModel,
-      @JsonKey(name: 'documentUserApplicationUrl')
+      @JsonKey(name: 'documentUserUrl')
           final List<Map<String, dynamic>>? documentUserApplicationUrl})
       : _documentUserApplicationUrl = documentUserApplicationUrl;
 
@@ -150,7 +150,7 @@ class _$_SingleVisaResponse implements _SingleVisaResponse {
   final VisaApplicationModel? visaApplicationModel;
   final List<Map<String, dynamic>>? _documentUserApplicationUrl;
   @override
-  @JsonKey(name: 'documentUserApplicationUrl')
+  @JsonKey(name: 'documentUserUrl')
   List<Map<String, dynamic>>? get documentUserApplicationUrl {
     final value = _documentUserApplicationUrl;
     if (value == null) return null;
@@ -200,7 +200,7 @@ abstract class _SingleVisaResponse implements SingleVisaResponse {
   factory _SingleVisaResponse(
           {@JsonKey(name: 'data')
               final VisaApplicationModel? visaApplicationModel,
-          @JsonKey(name: 'documentUserApplicationUrl')
+          @JsonKey(name: 'documentUserUrl')
               final List<Map<String, dynamic>>? documentUserApplicationUrl}) =
       _$_SingleVisaResponse;
 
@@ -211,7 +211,7 @@ abstract class _SingleVisaResponse implements SingleVisaResponse {
   @JsonKey(name: 'data')
   VisaApplicationModel? get visaApplicationModel;
   @override
-  @JsonKey(name: 'documentUserApplicationUrl')
+  @JsonKey(name: 'documentUserUrl')
   List<Map<String, dynamic>>? get documentUserApplicationUrl;
   @override
   @JsonKey(ignore: true)

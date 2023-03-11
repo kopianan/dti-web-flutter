@@ -8,6 +8,10 @@ import 'package:dti_web/domain/core/document_data_model.dart';
 import 'package:dti_web/domain/questionnaire/result_model.dart';
 import 'package:dti_web/presentation/applications/application_detail_page.dart';
 import 'package:dti_web/presentation/applications/passport/choose_passport_page.dart';
+import 'package:dti_web/presentation/applications/passport/passport_detail_page.dart';
+import 'package:dti_web/presentation/applications/passport/passport_payment_page.dart';
+import 'package:dti_web/presentation/applications/passport/passport_personal_particular_page.dart';
+import 'package:dti_web/presentation/applications/passport/selfie_page.dart';
 import 'package:dti_web/presentation/applications/upload_document_page.dart';
 import 'package:dti_web/presentation/applications/widgets/signature_page.dart';
 import 'package:dti_web/presentation/auth/pages/phone/number_registration_page.dart';
@@ -60,8 +64,25 @@ part "app_router.gr.dart";
       page: SplashScreenPage,
     ),
     AutoRoute(
+      path: SelfiePage.routeName,
+      page: SelfiePage,
+    ),
+    AutoRoute(
+      path: PassportPaymentPage.routeName,
+      page: PassportPaymentPage,
+    ),
+    AutoRoute(
+      path: PassportDetailPage.routeName,
+      page: PassportDetailPage,
+    ),
+
+    AutoRoute(
       path: ChoosePassportPage.routeName,
       page: ChoosePassportPage,
+    ),
+    AutoRoute(
+      path: PassportPersonalParticularPage.routeName,
+      page: PassportPersonalParticularPage,
     ),
     AutoRoute(
       path: DashboardPage.routeName,

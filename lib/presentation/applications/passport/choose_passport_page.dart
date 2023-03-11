@@ -51,9 +51,10 @@ class ChoosePassportPageState extends State<ChoosePassportPage> {
               EasyLoading.dismiss();
             },
             onCreatePassport: (e) {
-              print(e); 
+              print(e);
               EasyLoading.dismiss();
-              // AutoRouter.of(context).navigate(UploadDocumentRoute());
+              AutoRouter.of(context).navigate(PassportPersonalParticularRoute(
+                  firebaseDocId: e.visaApps.firebaseDocId ?? ""));
             },
           );
         },

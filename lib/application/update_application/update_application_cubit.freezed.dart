@@ -25,16 +25,21 @@ mixin _$UpdateApplicationState {
         onCreateApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
     required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId) onSubmitPassport,
     required TResult Function() onUpdateApplication,
+    required TResult Function() onUpdatePassport,
     required TResult Function(String message) onUpdateMultiVisa,
     required TResult Function() onUpdateGuarantor,
     required TResult Function(String message) onDeleteSingleImage,
     required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
     required TResult Function(SingleVisaResponse singleResponse)
         onGetSingleApplicationWithImage,
+    required TResult Function(SingleVisaResponse singleResponse)
+        onGetSinglePassportWithImage,
     required TResult Function() deleteApplication,
     required TResult Function(List<ImageUploadResponse> list)
         onUploadImageComplete,
+    required TResult Function(ImageUploadResponse resp) onSelfieImageComplete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -45,15 +50,20 @@ mixin _$UpdateApplicationState {
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
     TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSinglePassportWithImage,
     TResult Function()? deleteApplication,
     TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult Function(ImageUploadResponse resp)? onSelfieImageComplete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -64,15 +74,20 @@ mixin _$UpdateApplicationState {
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
     TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSinglePassportWithImage,
     TResult Function()? deleteApplication,
     TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult Function(ImageUploadResponse resp)? onSelfieImageComplete,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -84,7 +99,9 @@ mixin _$UpdateApplicationState {
     required TResult Function(_OnCreateApplication value) onCreateApplication,
     required TResult Function(_OnCreatePassport value) onCreatePassport,
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitPassport value) onSubmitPassport,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
+    required TResult Function(_OnUpdatePassport value) onUpdatePassport,
     required TResult Function(_OnUpdateMultiVisa value) onUpdateMultiVisa,
     required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
     required TResult Function(_OnDeleteSingleImage value) onDeleteSingleImage,
@@ -92,9 +109,13 @@ mixin _$UpdateApplicationState {
         onGetSingleApplication,
     required TResult Function(_OnGetSingleApplicationWithImage value)
         onGetSingleApplicationWithImage,
+    required TResult Function(_OnGetSinglePassportWithImage value)
+        onGetSinglePassportWithImage,
     required TResult Function(_DeleteApplication value) deleteApplication,
     required TResult Function(_OnUploadImageComplete value)
         onUploadImageComplete,
+    required TResult Function(_OnSelfieImageComplete value)
+        onSelfieImageComplete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -105,15 +126,20 @@ mixin _$UpdateApplicationState {
     TResult Function(_OnCreateApplication value)? onCreateApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdatePassport value)? onUpdatePassport,
     TResult Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
+    TResult Function(_OnGetSinglePassportWithImage value)?
+        onGetSinglePassportWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -124,15 +150,20 @@ mixin _$UpdateApplicationState {
     TResult Function(_OnCreateApplication value)? onCreateApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdatePassport value)? onUpdatePassport,
     TResult Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
+    TResult Function(_OnGetSinglePassportWithImage value)?
+        onGetSinglePassportWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -202,16 +233,21 @@ class _$_Initial implements _Initial {
         onCreateApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
     required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId) onSubmitPassport,
     required TResult Function() onUpdateApplication,
+    required TResult Function() onUpdatePassport,
     required TResult Function(String message) onUpdateMultiVisa,
     required TResult Function() onUpdateGuarantor,
     required TResult Function(String message) onDeleteSingleImage,
     required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
     required TResult Function(SingleVisaResponse singleResponse)
         onGetSingleApplicationWithImage,
+    required TResult Function(SingleVisaResponse singleResponse)
+        onGetSinglePassportWithImage,
     required TResult Function() deleteApplication,
     required TResult Function(List<ImageUploadResponse> list)
         onUploadImageComplete,
+    required TResult Function(ImageUploadResponse resp) onSelfieImageComplete,
   }) {
     return initial();
   }
@@ -225,15 +261,20 @@ class _$_Initial implements _Initial {
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
     TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSinglePassportWithImage,
     TResult Function()? deleteApplication,
     TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult Function(ImageUploadResponse resp)? onSelfieImageComplete,
   }) {
     return initial?.call();
   }
@@ -247,15 +288,20 @@ class _$_Initial implements _Initial {
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
     TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSinglePassportWithImage,
     TResult Function()? deleteApplication,
     TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult Function(ImageUploadResponse resp)? onSelfieImageComplete,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -273,7 +319,9 @@ class _$_Initial implements _Initial {
     required TResult Function(_OnCreateApplication value) onCreateApplication,
     required TResult Function(_OnCreatePassport value) onCreatePassport,
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitPassport value) onSubmitPassport,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
+    required TResult Function(_OnUpdatePassport value) onUpdatePassport,
     required TResult Function(_OnUpdateMultiVisa value) onUpdateMultiVisa,
     required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
     required TResult Function(_OnDeleteSingleImage value) onDeleteSingleImage,
@@ -281,9 +329,13 @@ class _$_Initial implements _Initial {
         onGetSingleApplication,
     required TResult Function(_OnGetSingleApplicationWithImage value)
         onGetSingleApplicationWithImage,
+    required TResult Function(_OnGetSinglePassportWithImage value)
+        onGetSinglePassportWithImage,
     required TResult Function(_DeleteApplication value) deleteApplication,
     required TResult Function(_OnUploadImageComplete value)
         onUploadImageComplete,
+    required TResult Function(_OnSelfieImageComplete value)
+        onSelfieImageComplete,
   }) {
     return initial(this);
   }
@@ -297,15 +349,20 @@ class _$_Initial implements _Initial {
     TResult Function(_OnCreateApplication value)? onCreateApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdatePassport value)? onUpdatePassport,
     TResult Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
+    TResult Function(_OnGetSinglePassportWithImage value)?
+        onGetSinglePassportWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
   }) {
     return initial?.call(this);
   }
@@ -319,15 +376,20 @@ class _$_Initial implements _Initial {
     TResult Function(_OnCreateApplication value)? onCreateApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdatePassport value)? onUpdatePassport,
     TResult Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
+    TResult Function(_OnGetSinglePassportWithImage value)?
+        onGetSinglePassportWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -389,16 +451,21 @@ class _$_OnLoading implements _OnLoading {
         onCreateApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
     required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId) onSubmitPassport,
     required TResult Function() onUpdateApplication,
+    required TResult Function() onUpdatePassport,
     required TResult Function(String message) onUpdateMultiVisa,
     required TResult Function() onUpdateGuarantor,
     required TResult Function(String message) onDeleteSingleImage,
     required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
     required TResult Function(SingleVisaResponse singleResponse)
         onGetSingleApplicationWithImage,
+    required TResult Function(SingleVisaResponse singleResponse)
+        onGetSinglePassportWithImage,
     required TResult Function() deleteApplication,
     required TResult Function(List<ImageUploadResponse> list)
         onUploadImageComplete,
+    required TResult Function(ImageUploadResponse resp) onSelfieImageComplete,
   }) {
     return onLoading();
   }
@@ -412,15 +479,20 @@ class _$_OnLoading implements _OnLoading {
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
     TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSinglePassportWithImage,
     TResult Function()? deleteApplication,
     TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult Function(ImageUploadResponse resp)? onSelfieImageComplete,
   }) {
     return onLoading?.call();
   }
@@ -434,15 +506,20 @@ class _$_OnLoading implements _OnLoading {
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
     TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSinglePassportWithImage,
     TResult Function()? deleteApplication,
     TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult Function(ImageUploadResponse resp)? onSelfieImageComplete,
     required TResult orElse(),
   }) {
     if (onLoading != null) {
@@ -460,7 +537,9 @@ class _$_OnLoading implements _OnLoading {
     required TResult Function(_OnCreateApplication value) onCreateApplication,
     required TResult Function(_OnCreatePassport value) onCreatePassport,
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitPassport value) onSubmitPassport,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
+    required TResult Function(_OnUpdatePassport value) onUpdatePassport,
     required TResult Function(_OnUpdateMultiVisa value) onUpdateMultiVisa,
     required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
     required TResult Function(_OnDeleteSingleImage value) onDeleteSingleImage,
@@ -468,9 +547,13 @@ class _$_OnLoading implements _OnLoading {
         onGetSingleApplication,
     required TResult Function(_OnGetSingleApplicationWithImage value)
         onGetSingleApplicationWithImage,
+    required TResult Function(_OnGetSinglePassportWithImage value)
+        onGetSinglePassportWithImage,
     required TResult Function(_DeleteApplication value) deleteApplication,
     required TResult Function(_OnUploadImageComplete value)
         onUploadImageComplete,
+    required TResult Function(_OnSelfieImageComplete value)
+        onSelfieImageComplete,
   }) {
     return onLoading(this);
   }
@@ -484,15 +567,20 @@ class _$_OnLoading implements _OnLoading {
     TResult Function(_OnCreateApplication value)? onCreateApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdatePassport value)? onUpdatePassport,
     TResult Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
+    TResult Function(_OnGetSinglePassportWithImage value)?
+        onGetSinglePassportWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
   }) {
     return onLoading?.call(this);
   }
@@ -506,15 +594,20 @@ class _$_OnLoading implements _OnLoading {
     TResult Function(_OnCreateApplication value)? onCreateApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdatePassport value)? onUpdatePassport,
     TResult Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
+    TResult Function(_OnGetSinglePassportWithImage value)?
+        onGetSinglePassportWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
     required TResult orElse(),
   }) {
     if (onLoading != null) {
@@ -599,16 +692,21 @@ class _$_OnError implements _OnError {
         onCreateApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
     required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId) onSubmitPassport,
     required TResult Function() onUpdateApplication,
+    required TResult Function() onUpdatePassport,
     required TResult Function(String message) onUpdateMultiVisa,
     required TResult Function() onUpdateGuarantor,
     required TResult Function(String message) onDeleteSingleImage,
     required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
     required TResult Function(SingleVisaResponse singleResponse)
         onGetSingleApplicationWithImage,
+    required TResult Function(SingleVisaResponse singleResponse)
+        onGetSinglePassportWithImage,
     required TResult Function() deleteApplication,
     required TResult Function(List<ImageUploadResponse> list)
         onUploadImageComplete,
+    required TResult Function(ImageUploadResponse resp) onSelfieImageComplete,
   }) {
     return onError(error);
   }
@@ -622,15 +720,20 @@ class _$_OnError implements _OnError {
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
     TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSinglePassportWithImage,
     TResult Function()? deleteApplication,
     TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult Function(ImageUploadResponse resp)? onSelfieImageComplete,
   }) {
     return onError?.call(error);
   }
@@ -644,15 +747,20 @@ class _$_OnError implements _OnError {
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
     TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSinglePassportWithImage,
     TResult Function()? deleteApplication,
     TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult Function(ImageUploadResponse resp)? onSelfieImageComplete,
     required TResult orElse(),
   }) {
     if (onError != null) {
@@ -670,7 +778,9 @@ class _$_OnError implements _OnError {
     required TResult Function(_OnCreateApplication value) onCreateApplication,
     required TResult Function(_OnCreatePassport value) onCreatePassport,
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitPassport value) onSubmitPassport,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
+    required TResult Function(_OnUpdatePassport value) onUpdatePassport,
     required TResult Function(_OnUpdateMultiVisa value) onUpdateMultiVisa,
     required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
     required TResult Function(_OnDeleteSingleImage value) onDeleteSingleImage,
@@ -678,9 +788,13 @@ class _$_OnError implements _OnError {
         onGetSingleApplication,
     required TResult Function(_OnGetSingleApplicationWithImage value)
         onGetSingleApplicationWithImage,
+    required TResult Function(_OnGetSinglePassportWithImage value)
+        onGetSinglePassportWithImage,
     required TResult Function(_DeleteApplication value) deleteApplication,
     required TResult Function(_OnUploadImageComplete value)
         onUploadImageComplete,
+    required TResult Function(_OnSelfieImageComplete value)
+        onSelfieImageComplete,
   }) {
     return onError(this);
   }
@@ -694,15 +808,20 @@ class _$_OnError implements _OnError {
     TResult Function(_OnCreateApplication value)? onCreateApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdatePassport value)? onUpdatePassport,
     TResult Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
+    TResult Function(_OnGetSinglePassportWithImage value)?
+        onGetSinglePassportWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
   }) {
     return onError?.call(this);
   }
@@ -716,15 +835,20 @@ class _$_OnError implements _OnError {
     TResult Function(_OnCreateApplication value)? onCreateApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdatePassport value)? onUpdatePassport,
     TResult Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
+    TResult Function(_OnGetSinglePassportWithImage value)?
+        onGetSinglePassportWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
     required TResult orElse(),
   }) {
     if (onError != null) {
@@ -825,16 +949,21 @@ class _$_OnCreateApplication implements _OnCreateApplication {
         onCreateApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
     required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId) onSubmitPassport,
     required TResult Function() onUpdateApplication,
+    required TResult Function() onUpdatePassport,
     required TResult Function(String message) onUpdateMultiVisa,
     required TResult Function() onUpdateGuarantor,
     required TResult Function(String message) onDeleteSingleImage,
     required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
     required TResult Function(SingleVisaResponse singleResponse)
         onGetSingleApplicationWithImage,
+    required TResult Function(SingleVisaResponse singleResponse)
+        onGetSinglePassportWithImage,
     required TResult Function() deleteApplication,
     required TResult Function(List<ImageUploadResponse> list)
         onUploadImageComplete,
+    required TResult Function(ImageUploadResponse resp) onSelfieImageComplete,
   }) {
     return onCreateApplication(visaApps);
   }
@@ -848,15 +977,20 @@ class _$_OnCreateApplication implements _OnCreateApplication {
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
     TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSinglePassportWithImage,
     TResult Function()? deleteApplication,
     TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult Function(ImageUploadResponse resp)? onSelfieImageComplete,
   }) {
     return onCreateApplication?.call(visaApps);
   }
@@ -870,15 +1004,20 @@ class _$_OnCreateApplication implements _OnCreateApplication {
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
     TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSinglePassportWithImage,
     TResult Function()? deleteApplication,
     TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult Function(ImageUploadResponse resp)? onSelfieImageComplete,
     required TResult orElse(),
   }) {
     if (onCreateApplication != null) {
@@ -896,7 +1035,9 @@ class _$_OnCreateApplication implements _OnCreateApplication {
     required TResult Function(_OnCreateApplication value) onCreateApplication,
     required TResult Function(_OnCreatePassport value) onCreatePassport,
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitPassport value) onSubmitPassport,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
+    required TResult Function(_OnUpdatePassport value) onUpdatePassport,
     required TResult Function(_OnUpdateMultiVisa value) onUpdateMultiVisa,
     required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
     required TResult Function(_OnDeleteSingleImage value) onDeleteSingleImage,
@@ -904,9 +1045,13 @@ class _$_OnCreateApplication implements _OnCreateApplication {
         onGetSingleApplication,
     required TResult Function(_OnGetSingleApplicationWithImage value)
         onGetSingleApplicationWithImage,
+    required TResult Function(_OnGetSinglePassportWithImage value)
+        onGetSinglePassportWithImage,
     required TResult Function(_DeleteApplication value) deleteApplication,
     required TResult Function(_OnUploadImageComplete value)
         onUploadImageComplete,
+    required TResult Function(_OnSelfieImageComplete value)
+        onSelfieImageComplete,
   }) {
     return onCreateApplication(this);
   }
@@ -920,15 +1065,20 @@ class _$_OnCreateApplication implements _OnCreateApplication {
     TResult Function(_OnCreateApplication value)? onCreateApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdatePassport value)? onUpdatePassport,
     TResult Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
+    TResult Function(_OnGetSinglePassportWithImage value)?
+        onGetSinglePassportWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
   }) {
     return onCreateApplication?.call(this);
   }
@@ -942,15 +1092,20 @@ class _$_OnCreateApplication implements _OnCreateApplication {
     TResult Function(_OnCreateApplication value)? onCreateApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdatePassport value)? onUpdatePassport,
     TResult Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
+    TResult Function(_OnGetSinglePassportWithImage value)?
+        onGetSinglePassportWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
     required TResult orElse(),
   }) {
     if (onCreateApplication != null) {
@@ -1051,16 +1206,21 @@ class _$_OnCreatePassport implements _OnCreatePassport {
         onCreateApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
     required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId) onSubmitPassport,
     required TResult Function() onUpdateApplication,
+    required TResult Function() onUpdatePassport,
     required TResult Function(String message) onUpdateMultiVisa,
     required TResult Function() onUpdateGuarantor,
     required TResult Function(String message) onDeleteSingleImage,
     required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
     required TResult Function(SingleVisaResponse singleResponse)
         onGetSingleApplicationWithImage,
+    required TResult Function(SingleVisaResponse singleResponse)
+        onGetSinglePassportWithImage,
     required TResult Function() deleteApplication,
     required TResult Function(List<ImageUploadResponse> list)
         onUploadImageComplete,
+    required TResult Function(ImageUploadResponse resp) onSelfieImageComplete,
   }) {
     return onCreatePassport(visaApps);
   }
@@ -1074,15 +1234,20 @@ class _$_OnCreatePassport implements _OnCreatePassport {
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
     TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSinglePassportWithImage,
     TResult Function()? deleteApplication,
     TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult Function(ImageUploadResponse resp)? onSelfieImageComplete,
   }) {
     return onCreatePassport?.call(visaApps);
   }
@@ -1096,15 +1261,20 @@ class _$_OnCreatePassport implements _OnCreatePassport {
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
     TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSinglePassportWithImage,
     TResult Function()? deleteApplication,
     TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult Function(ImageUploadResponse resp)? onSelfieImageComplete,
     required TResult orElse(),
   }) {
     if (onCreatePassport != null) {
@@ -1122,7 +1292,9 @@ class _$_OnCreatePassport implements _OnCreatePassport {
     required TResult Function(_OnCreateApplication value) onCreateApplication,
     required TResult Function(_OnCreatePassport value) onCreatePassport,
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitPassport value) onSubmitPassport,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
+    required TResult Function(_OnUpdatePassport value) onUpdatePassport,
     required TResult Function(_OnUpdateMultiVisa value) onUpdateMultiVisa,
     required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
     required TResult Function(_OnDeleteSingleImage value) onDeleteSingleImage,
@@ -1130,9 +1302,13 @@ class _$_OnCreatePassport implements _OnCreatePassport {
         onGetSingleApplication,
     required TResult Function(_OnGetSingleApplicationWithImage value)
         onGetSingleApplicationWithImage,
+    required TResult Function(_OnGetSinglePassportWithImage value)
+        onGetSinglePassportWithImage,
     required TResult Function(_DeleteApplication value) deleteApplication,
     required TResult Function(_OnUploadImageComplete value)
         onUploadImageComplete,
+    required TResult Function(_OnSelfieImageComplete value)
+        onSelfieImageComplete,
   }) {
     return onCreatePassport(this);
   }
@@ -1146,15 +1322,20 @@ class _$_OnCreatePassport implements _OnCreatePassport {
     TResult Function(_OnCreateApplication value)? onCreateApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdatePassport value)? onUpdatePassport,
     TResult Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
+    TResult Function(_OnGetSinglePassportWithImage value)?
+        onGetSinglePassportWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
   }) {
     return onCreatePassport?.call(this);
   }
@@ -1168,15 +1349,20 @@ class _$_OnCreatePassport implements _OnCreatePassport {
     TResult Function(_OnCreateApplication value)? onCreateApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdatePassport value)? onUpdatePassport,
     TResult Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
+    TResult Function(_OnGetSinglePassportWithImage value)?
+        onGetSinglePassportWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
     required TResult orElse(),
   }) {
     if (onCreatePassport != null) {
@@ -1270,16 +1456,21 @@ class _$_OnSubmitApplication implements _OnSubmitApplication {
         onCreateApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
     required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId) onSubmitPassport,
     required TResult Function() onUpdateApplication,
+    required TResult Function() onUpdatePassport,
     required TResult Function(String message) onUpdateMultiVisa,
     required TResult Function() onUpdateGuarantor,
     required TResult Function(String message) onDeleteSingleImage,
     required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
     required TResult Function(SingleVisaResponse singleResponse)
         onGetSingleApplicationWithImage,
+    required TResult Function(SingleVisaResponse singleResponse)
+        onGetSinglePassportWithImage,
     required TResult Function() deleteApplication,
     required TResult Function(List<ImageUploadResponse> list)
         onUploadImageComplete,
+    required TResult Function(ImageUploadResponse resp) onSelfieImageComplete,
   }) {
     return onSubmitApplication(firebaseDocId);
   }
@@ -1293,15 +1484,20 @@ class _$_OnSubmitApplication implements _OnSubmitApplication {
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
     TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSinglePassportWithImage,
     TResult Function()? deleteApplication,
     TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult Function(ImageUploadResponse resp)? onSelfieImageComplete,
   }) {
     return onSubmitApplication?.call(firebaseDocId);
   }
@@ -1315,15 +1511,20 @@ class _$_OnSubmitApplication implements _OnSubmitApplication {
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
     TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSinglePassportWithImage,
     TResult Function()? deleteApplication,
     TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult Function(ImageUploadResponse resp)? onSelfieImageComplete,
     required TResult orElse(),
   }) {
     if (onSubmitApplication != null) {
@@ -1341,7 +1542,9 @@ class _$_OnSubmitApplication implements _OnSubmitApplication {
     required TResult Function(_OnCreateApplication value) onCreateApplication,
     required TResult Function(_OnCreatePassport value) onCreatePassport,
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitPassport value) onSubmitPassport,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
+    required TResult Function(_OnUpdatePassport value) onUpdatePassport,
     required TResult Function(_OnUpdateMultiVisa value) onUpdateMultiVisa,
     required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
     required TResult Function(_OnDeleteSingleImage value) onDeleteSingleImage,
@@ -1349,9 +1552,13 @@ class _$_OnSubmitApplication implements _OnSubmitApplication {
         onGetSingleApplication,
     required TResult Function(_OnGetSingleApplicationWithImage value)
         onGetSingleApplicationWithImage,
+    required TResult Function(_OnGetSinglePassportWithImage value)
+        onGetSinglePassportWithImage,
     required TResult Function(_DeleteApplication value) deleteApplication,
     required TResult Function(_OnUploadImageComplete value)
         onUploadImageComplete,
+    required TResult Function(_OnSelfieImageComplete value)
+        onSelfieImageComplete,
   }) {
     return onSubmitApplication(this);
   }
@@ -1365,15 +1572,20 @@ class _$_OnSubmitApplication implements _OnSubmitApplication {
     TResult Function(_OnCreateApplication value)? onCreateApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdatePassport value)? onUpdatePassport,
     TResult Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
+    TResult Function(_OnGetSinglePassportWithImage value)?
+        onGetSinglePassportWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
   }) {
     return onSubmitApplication?.call(this);
   }
@@ -1387,15 +1599,20 @@ class _$_OnSubmitApplication implements _OnSubmitApplication {
     TResult Function(_OnCreateApplication value)? onCreateApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdatePassport value)? onUpdatePassport,
     TResult Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
+    TResult Function(_OnGetSinglePassportWithImage value)?
+        onGetSinglePassportWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
     required TResult orElse(),
   }) {
     if (onSubmitApplication != null) {
@@ -1412,6 +1629,255 @@ abstract class _OnSubmitApplication implements UpdateApplicationState {
   String get firebaseDocId;
   @JsonKey(ignore: true)
   _$$_OnSubmitApplicationCopyWith<_$_OnSubmitApplication> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_OnSubmitPassportCopyWith<$Res> {
+  factory _$$_OnSubmitPassportCopyWith(
+          _$_OnSubmitPassport value, $Res Function(_$_OnSubmitPassport) then) =
+      __$$_OnSubmitPassportCopyWithImpl<$Res>;
+  $Res call({String firebaseDocId});
+}
+
+/// @nodoc
+class __$$_OnSubmitPassportCopyWithImpl<$Res>
+    extends _$UpdateApplicationStateCopyWithImpl<$Res>
+    implements _$$_OnSubmitPassportCopyWith<$Res> {
+  __$$_OnSubmitPassportCopyWithImpl(
+      _$_OnSubmitPassport _value, $Res Function(_$_OnSubmitPassport) _then)
+      : super(_value, (v) => _then(v as _$_OnSubmitPassport));
+
+  @override
+  _$_OnSubmitPassport get _value => super._value as _$_OnSubmitPassport;
+
+  @override
+  $Res call({
+    Object? firebaseDocId = freezed,
+  }) {
+    return _then(_$_OnSubmitPassport(
+      firebaseDocId == freezed
+          ? _value.firebaseDocId
+          : firebaseDocId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_OnSubmitPassport implements _OnSubmitPassport {
+  const _$_OnSubmitPassport(this.firebaseDocId);
+
+  @override
+  final String firebaseDocId;
+
+  @override
+  String toString() {
+    return 'UpdateApplicationState.onSubmitPassport(firebaseDocId: $firebaseDocId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_OnSubmitPassport &&
+            const DeepCollectionEquality()
+                .equals(other.firebaseDocId, firebaseDocId));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(firebaseDocId));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_OnSubmitPassportCopyWith<_$_OnSubmitPassport> get copyWith =>
+      __$$_OnSubmitPassportCopyWithImpl<_$_OnSubmitPassport>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() onLoading,
+    required TResult Function(String error) onError,
+    required TResult Function(VisaApplicationModel visaApps)
+        onCreateApplication,
+    required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
+    required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId) onSubmitPassport,
+    required TResult Function() onUpdateApplication,
+    required TResult Function() onUpdatePassport,
+    required TResult Function(String message) onUpdateMultiVisa,
+    required TResult Function() onUpdateGuarantor,
+    required TResult Function(String message) onDeleteSingleImage,
+    required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
+    required TResult Function(SingleVisaResponse singleResponse)
+        onGetSingleApplicationWithImage,
+    required TResult Function(SingleVisaResponse singleResponse)
+        onGetSinglePassportWithImage,
+    required TResult Function() deleteApplication,
+    required TResult Function(List<ImageUploadResponse> list)
+        onUploadImageComplete,
+    required TResult Function(ImageUploadResponse resp) onSelfieImageComplete,
+  }) {
+    return onSubmitPassport(firebaseDocId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? onLoading,
+    TResult Function(String error)? onError,
+    TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
+    TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
+    TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitPassport,
+    TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdatePassport,
+    TResult Function(String message)? onUpdateMultiVisa,
+    TResult Function()? onUpdateGuarantor,
+    TResult Function(String message)? onDeleteSingleImage,
+    TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSingleApplicationWithImage,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSinglePassportWithImage,
+    TResult Function()? deleteApplication,
+    TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult Function(ImageUploadResponse resp)? onSelfieImageComplete,
+  }) {
+    return onSubmitPassport?.call(firebaseDocId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? onLoading,
+    TResult Function(String error)? onError,
+    TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
+    TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
+    TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitPassport,
+    TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdatePassport,
+    TResult Function(String message)? onUpdateMultiVisa,
+    TResult Function()? onUpdateGuarantor,
+    TResult Function(String message)? onDeleteSingleImage,
+    TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSingleApplicationWithImage,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSinglePassportWithImage,
+    TResult Function()? deleteApplication,
+    TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult Function(ImageUploadResponse resp)? onSelfieImageComplete,
+    required TResult orElse(),
+  }) {
+    if (onSubmitPassport != null) {
+      return onSubmitPassport(firebaseDocId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_OnLoading value) onLoading,
+    required TResult Function(_OnError value) onError,
+    required TResult Function(_OnCreateApplication value) onCreateApplication,
+    required TResult Function(_OnCreatePassport value) onCreatePassport,
+    required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitPassport value) onSubmitPassport,
+    required TResult Function(_OnUpdateApplication value) onUpdateApplication,
+    required TResult Function(_OnUpdatePassport value) onUpdatePassport,
+    required TResult Function(_OnUpdateMultiVisa value) onUpdateMultiVisa,
+    required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
+    required TResult Function(_OnDeleteSingleImage value) onDeleteSingleImage,
+    required TResult Function(_OnGetSingleApplication value)
+        onGetSingleApplication,
+    required TResult Function(_OnGetSingleApplicationWithImage value)
+        onGetSingleApplicationWithImage,
+    required TResult Function(_OnGetSinglePassportWithImage value)
+        onGetSinglePassportWithImage,
+    required TResult Function(_DeleteApplication value) deleteApplication,
+    required TResult Function(_OnUploadImageComplete value)
+        onUploadImageComplete,
+    required TResult Function(_OnSelfieImageComplete value)
+        onSelfieImageComplete,
+  }) {
+    return onSubmitPassport(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OnLoading value)? onLoading,
+    TResult Function(_OnError value)? onError,
+    TResult Function(_OnCreateApplication value)? onCreateApplication,
+    TResult Function(_OnCreatePassport value)? onCreatePassport,
+    TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitPassport value)? onSubmitPassport,
+    TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdatePassport value)? onUpdatePassport,
+    TResult Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
+    TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
+    TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
+    TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
+    TResult Function(_OnGetSingleApplicationWithImage value)?
+        onGetSingleApplicationWithImage,
+    TResult Function(_OnGetSinglePassportWithImage value)?
+        onGetSinglePassportWithImage,
+    TResult Function(_DeleteApplication value)? deleteApplication,
+    TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
+  }) {
+    return onSubmitPassport?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OnLoading value)? onLoading,
+    TResult Function(_OnError value)? onError,
+    TResult Function(_OnCreateApplication value)? onCreateApplication,
+    TResult Function(_OnCreatePassport value)? onCreatePassport,
+    TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitPassport value)? onSubmitPassport,
+    TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdatePassport value)? onUpdatePassport,
+    TResult Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
+    TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
+    TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
+    TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
+    TResult Function(_OnGetSingleApplicationWithImage value)?
+        onGetSingleApplicationWithImage,
+    TResult Function(_OnGetSinglePassportWithImage value)?
+        onGetSinglePassportWithImage,
+    TResult Function(_DeleteApplication value)? deleteApplication,
+    TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
+    required TResult orElse(),
+  }) {
+    if (onSubmitPassport != null) {
+      return onSubmitPassport(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnSubmitPassport implements UpdateApplicationState {
+  const factory _OnSubmitPassport(final String firebaseDocId) =
+      _$_OnSubmitPassport;
+
+  String get firebaseDocId;
+  @JsonKey(ignore: true)
+  _$$_OnSubmitPassportCopyWith<_$_OnSubmitPassport> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1463,16 +1929,21 @@ class _$_OnUpdateApplication implements _OnUpdateApplication {
         onCreateApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
     required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId) onSubmitPassport,
     required TResult Function() onUpdateApplication,
+    required TResult Function() onUpdatePassport,
     required TResult Function(String message) onUpdateMultiVisa,
     required TResult Function() onUpdateGuarantor,
     required TResult Function(String message) onDeleteSingleImage,
     required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
     required TResult Function(SingleVisaResponse singleResponse)
         onGetSingleApplicationWithImage,
+    required TResult Function(SingleVisaResponse singleResponse)
+        onGetSinglePassportWithImage,
     required TResult Function() deleteApplication,
     required TResult Function(List<ImageUploadResponse> list)
         onUploadImageComplete,
+    required TResult Function(ImageUploadResponse resp) onSelfieImageComplete,
   }) {
     return onUpdateApplication();
   }
@@ -1486,15 +1957,20 @@ class _$_OnUpdateApplication implements _OnUpdateApplication {
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
     TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSinglePassportWithImage,
     TResult Function()? deleteApplication,
     TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult Function(ImageUploadResponse resp)? onSelfieImageComplete,
   }) {
     return onUpdateApplication?.call();
   }
@@ -1508,15 +1984,20 @@ class _$_OnUpdateApplication implements _OnUpdateApplication {
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
     TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSinglePassportWithImage,
     TResult Function()? deleteApplication,
     TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult Function(ImageUploadResponse resp)? onSelfieImageComplete,
     required TResult orElse(),
   }) {
     if (onUpdateApplication != null) {
@@ -1534,7 +2015,9 @@ class _$_OnUpdateApplication implements _OnUpdateApplication {
     required TResult Function(_OnCreateApplication value) onCreateApplication,
     required TResult Function(_OnCreatePassport value) onCreatePassport,
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitPassport value) onSubmitPassport,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
+    required TResult Function(_OnUpdatePassport value) onUpdatePassport,
     required TResult Function(_OnUpdateMultiVisa value) onUpdateMultiVisa,
     required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
     required TResult Function(_OnDeleteSingleImage value) onDeleteSingleImage,
@@ -1542,9 +2025,13 @@ class _$_OnUpdateApplication implements _OnUpdateApplication {
         onGetSingleApplication,
     required TResult Function(_OnGetSingleApplicationWithImage value)
         onGetSingleApplicationWithImage,
+    required TResult Function(_OnGetSinglePassportWithImage value)
+        onGetSinglePassportWithImage,
     required TResult Function(_DeleteApplication value) deleteApplication,
     required TResult Function(_OnUploadImageComplete value)
         onUploadImageComplete,
+    required TResult Function(_OnSelfieImageComplete value)
+        onSelfieImageComplete,
   }) {
     return onUpdateApplication(this);
   }
@@ -1558,15 +2045,20 @@ class _$_OnUpdateApplication implements _OnUpdateApplication {
     TResult Function(_OnCreateApplication value)? onCreateApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdatePassport value)? onUpdatePassport,
     TResult Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
+    TResult Function(_OnGetSinglePassportWithImage value)?
+        onGetSinglePassportWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
   }) {
     return onUpdateApplication?.call(this);
   }
@@ -1580,15 +2072,20 @@ class _$_OnUpdateApplication implements _OnUpdateApplication {
     TResult Function(_OnCreateApplication value)? onCreateApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdatePassport value)? onUpdatePassport,
     TResult Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
+    TResult Function(_OnGetSinglePassportWithImage value)?
+        onGetSinglePassportWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
     required TResult orElse(),
   }) {
     if (onUpdateApplication != null) {
@@ -1600,6 +2097,224 @@ class _$_OnUpdateApplication implements _OnUpdateApplication {
 
 abstract class _OnUpdateApplication implements UpdateApplicationState {
   const factory _OnUpdateApplication() = _$_OnUpdateApplication;
+}
+
+/// @nodoc
+abstract class _$$_OnUpdatePassportCopyWith<$Res> {
+  factory _$$_OnUpdatePassportCopyWith(
+          _$_OnUpdatePassport value, $Res Function(_$_OnUpdatePassport) then) =
+      __$$_OnUpdatePassportCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_OnUpdatePassportCopyWithImpl<$Res>
+    extends _$UpdateApplicationStateCopyWithImpl<$Res>
+    implements _$$_OnUpdatePassportCopyWith<$Res> {
+  __$$_OnUpdatePassportCopyWithImpl(
+      _$_OnUpdatePassport _value, $Res Function(_$_OnUpdatePassport) _then)
+      : super(_value, (v) => _then(v as _$_OnUpdatePassport));
+
+  @override
+  _$_OnUpdatePassport get _value => super._value as _$_OnUpdatePassport;
+}
+
+/// @nodoc
+
+class _$_OnUpdatePassport implements _OnUpdatePassport {
+  const _$_OnUpdatePassport();
+
+  @override
+  String toString() {
+    return 'UpdateApplicationState.onUpdatePassport()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_OnUpdatePassport);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() onLoading,
+    required TResult Function(String error) onError,
+    required TResult Function(VisaApplicationModel visaApps)
+        onCreateApplication,
+    required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
+    required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId) onSubmitPassport,
+    required TResult Function() onUpdateApplication,
+    required TResult Function() onUpdatePassport,
+    required TResult Function(String message) onUpdateMultiVisa,
+    required TResult Function() onUpdateGuarantor,
+    required TResult Function(String message) onDeleteSingleImage,
+    required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
+    required TResult Function(SingleVisaResponse singleResponse)
+        onGetSingleApplicationWithImage,
+    required TResult Function(SingleVisaResponse singleResponse)
+        onGetSinglePassportWithImage,
+    required TResult Function() deleteApplication,
+    required TResult Function(List<ImageUploadResponse> list)
+        onUploadImageComplete,
+    required TResult Function(ImageUploadResponse resp) onSelfieImageComplete,
+  }) {
+    return onUpdatePassport();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? onLoading,
+    TResult Function(String error)? onError,
+    TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
+    TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
+    TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitPassport,
+    TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdatePassport,
+    TResult Function(String message)? onUpdateMultiVisa,
+    TResult Function()? onUpdateGuarantor,
+    TResult Function(String message)? onDeleteSingleImage,
+    TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSingleApplicationWithImage,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSinglePassportWithImage,
+    TResult Function()? deleteApplication,
+    TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult Function(ImageUploadResponse resp)? onSelfieImageComplete,
+  }) {
+    return onUpdatePassport?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? onLoading,
+    TResult Function(String error)? onError,
+    TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
+    TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
+    TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitPassport,
+    TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdatePassport,
+    TResult Function(String message)? onUpdateMultiVisa,
+    TResult Function()? onUpdateGuarantor,
+    TResult Function(String message)? onDeleteSingleImage,
+    TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSingleApplicationWithImage,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSinglePassportWithImage,
+    TResult Function()? deleteApplication,
+    TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult Function(ImageUploadResponse resp)? onSelfieImageComplete,
+    required TResult orElse(),
+  }) {
+    if (onUpdatePassport != null) {
+      return onUpdatePassport();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_OnLoading value) onLoading,
+    required TResult Function(_OnError value) onError,
+    required TResult Function(_OnCreateApplication value) onCreateApplication,
+    required TResult Function(_OnCreatePassport value) onCreatePassport,
+    required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitPassport value) onSubmitPassport,
+    required TResult Function(_OnUpdateApplication value) onUpdateApplication,
+    required TResult Function(_OnUpdatePassport value) onUpdatePassport,
+    required TResult Function(_OnUpdateMultiVisa value) onUpdateMultiVisa,
+    required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
+    required TResult Function(_OnDeleteSingleImage value) onDeleteSingleImage,
+    required TResult Function(_OnGetSingleApplication value)
+        onGetSingleApplication,
+    required TResult Function(_OnGetSingleApplicationWithImage value)
+        onGetSingleApplicationWithImage,
+    required TResult Function(_OnGetSinglePassportWithImage value)
+        onGetSinglePassportWithImage,
+    required TResult Function(_DeleteApplication value) deleteApplication,
+    required TResult Function(_OnUploadImageComplete value)
+        onUploadImageComplete,
+    required TResult Function(_OnSelfieImageComplete value)
+        onSelfieImageComplete,
+  }) {
+    return onUpdatePassport(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OnLoading value)? onLoading,
+    TResult Function(_OnError value)? onError,
+    TResult Function(_OnCreateApplication value)? onCreateApplication,
+    TResult Function(_OnCreatePassport value)? onCreatePassport,
+    TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitPassport value)? onSubmitPassport,
+    TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdatePassport value)? onUpdatePassport,
+    TResult Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
+    TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
+    TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
+    TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
+    TResult Function(_OnGetSingleApplicationWithImage value)?
+        onGetSingleApplicationWithImage,
+    TResult Function(_OnGetSinglePassportWithImage value)?
+        onGetSinglePassportWithImage,
+    TResult Function(_DeleteApplication value)? deleteApplication,
+    TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
+  }) {
+    return onUpdatePassport?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OnLoading value)? onLoading,
+    TResult Function(_OnError value)? onError,
+    TResult Function(_OnCreateApplication value)? onCreateApplication,
+    TResult Function(_OnCreatePassport value)? onCreatePassport,
+    TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitPassport value)? onSubmitPassport,
+    TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdatePassport value)? onUpdatePassport,
+    TResult Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
+    TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
+    TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
+    TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
+    TResult Function(_OnGetSingleApplicationWithImage value)?
+        onGetSingleApplicationWithImage,
+    TResult Function(_OnGetSinglePassportWithImage value)?
+        onGetSinglePassportWithImage,
+    TResult Function(_DeleteApplication value)? deleteApplication,
+    TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
+    required TResult orElse(),
+  }) {
+    if (onUpdatePassport != null) {
+      return onUpdatePassport(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnUpdatePassport implements UpdateApplicationState {
+  const factory _OnUpdatePassport() = _$_OnUpdatePassport;
 }
 
 /// @nodoc
@@ -1675,16 +2390,21 @@ class _$_OnUpdateMultiVisa implements _OnUpdateMultiVisa {
         onCreateApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
     required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId) onSubmitPassport,
     required TResult Function() onUpdateApplication,
+    required TResult Function() onUpdatePassport,
     required TResult Function(String message) onUpdateMultiVisa,
     required TResult Function() onUpdateGuarantor,
     required TResult Function(String message) onDeleteSingleImage,
     required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
     required TResult Function(SingleVisaResponse singleResponse)
         onGetSingleApplicationWithImage,
+    required TResult Function(SingleVisaResponse singleResponse)
+        onGetSinglePassportWithImage,
     required TResult Function() deleteApplication,
     required TResult Function(List<ImageUploadResponse> list)
         onUploadImageComplete,
+    required TResult Function(ImageUploadResponse resp) onSelfieImageComplete,
   }) {
     return onUpdateMultiVisa(message);
   }
@@ -1698,15 +2418,20 @@ class _$_OnUpdateMultiVisa implements _OnUpdateMultiVisa {
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
     TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSinglePassportWithImage,
     TResult Function()? deleteApplication,
     TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult Function(ImageUploadResponse resp)? onSelfieImageComplete,
   }) {
     return onUpdateMultiVisa?.call(message);
   }
@@ -1720,15 +2445,20 @@ class _$_OnUpdateMultiVisa implements _OnUpdateMultiVisa {
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
     TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSinglePassportWithImage,
     TResult Function()? deleteApplication,
     TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult Function(ImageUploadResponse resp)? onSelfieImageComplete,
     required TResult orElse(),
   }) {
     if (onUpdateMultiVisa != null) {
@@ -1746,7 +2476,9 @@ class _$_OnUpdateMultiVisa implements _OnUpdateMultiVisa {
     required TResult Function(_OnCreateApplication value) onCreateApplication,
     required TResult Function(_OnCreatePassport value) onCreatePassport,
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitPassport value) onSubmitPassport,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
+    required TResult Function(_OnUpdatePassport value) onUpdatePassport,
     required TResult Function(_OnUpdateMultiVisa value) onUpdateMultiVisa,
     required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
     required TResult Function(_OnDeleteSingleImage value) onDeleteSingleImage,
@@ -1754,9 +2486,13 @@ class _$_OnUpdateMultiVisa implements _OnUpdateMultiVisa {
         onGetSingleApplication,
     required TResult Function(_OnGetSingleApplicationWithImage value)
         onGetSingleApplicationWithImage,
+    required TResult Function(_OnGetSinglePassportWithImage value)
+        onGetSinglePassportWithImage,
     required TResult Function(_DeleteApplication value) deleteApplication,
     required TResult Function(_OnUploadImageComplete value)
         onUploadImageComplete,
+    required TResult Function(_OnSelfieImageComplete value)
+        onSelfieImageComplete,
   }) {
     return onUpdateMultiVisa(this);
   }
@@ -1770,15 +2506,20 @@ class _$_OnUpdateMultiVisa implements _OnUpdateMultiVisa {
     TResult Function(_OnCreateApplication value)? onCreateApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdatePassport value)? onUpdatePassport,
     TResult Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
+    TResult Function(_OnGetSinglePassportWithImage value)?
+        onGetSinglePassportWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
   }) {
     return onUpdateMultiVisa?.call(this);
   }
@@ -1792,15 +2533,20 @@ class _$_OnUpdateMultiVisa implements _OnUpdateMultiVisa {
     TResult Function(_OnCreateApplication value)? onCreateApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdatePassport value)? onUpdatePassport,
     TResult Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
+    TResult Function(_OnGetSinglePassportWithImage value)?
+        onGetSinglePassportWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
     required TResult orElse(),
   }) {
     if (onUpdateMultiVisa != null) {
@@ -1867,16 +2613,21 @@ class _$_OnUpdateGuarantor implements _OnUpdateGuarantor {
         onCreateApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
     required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId) onSubmitPassport,
     required TResult Function() onUpdateApplication,
+    required TResult Function() onUpdatePassport,
     required TResult Function(String message) onUpdateMultiVisa,
     required TResult Function() onUpdateGuarantor,
     required TResult Function(String message) onDeleteSingleImage,
     required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
     required TResult Function(SingleVisaResponse singleResponse)
         onGetSingleApplicationWithImage,
+    required TResult Function(SingleVisaResponse singleResponse)
+        onGetSinglePassportWithImage,
     required TResult Function() deleteApplication,
     required TResult Function(List<ImageUploadResponse> list)
         onUploadImageComplete,
+    required TResult Function(ImageUploadResponse resp) onSelfieImageComplete,
   }) {
     return onUpdateGuarantor();
   }
@@ -1890,15 +2641,20 @@ class _$_OnUpdateGuarantor implements _OnUpdateGuarantor {
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
     TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSinglePassportWithImage,
     TResult Function()? deleteApplication,
     TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult Function(ImageUploadResponse resp)? onSelfieImageComplete,
   }) {
     return onUpdateGuarantor?.call();
   }
@@ -1912,15 +2668,20 @@ class _$_OnUpdateGuarantor implements _OnUpdateGuarantor {
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
     TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSinglePassportWithImage,
     TResult Function()? deleteApplication,
     TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult Function(ImageUploadResponse resp)? onSelfieImageComplete,
     required TResult orElse(),
   }) {
     if (onUpdateGuarantor != null) {
@@ -1938,7 +2699,9 @@ class _$_OnUpdateGuarantor implements _OnUpdateGuarantor {
     required TResult Function(_OnCreateApplication value) onCreateApplication,
     required TResult Function(_OnCreatePassport value) onCreatePassport,
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitPassport value) onSubmitPassport,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
+    required TResult Function(_OnUpdatePassport value) onUpdatePassport,
     required TResult Function(_OnUpdateMultiVisa value) onUpdateMultiVisa,
     required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
     required TResult Function(_OnDeleteSingleImage value) onDeleteSingleImage,
@@ -1946,9 +2709,13 @@ class _$_OnUpdateGuarantor implements _OnUpdateGuarantor {
         onGetSingleApplication,
     required TResult Function(_OnGetSingleApplicationWithImage value)
         onGetSingleApplicationWithImage,
+    required TResult Function(_OnGetSinglePassportWithImage value)
+        onGetSinglePassportWithImage,
     required TResult Function(_DeleteApplication value) deleteApplication,
     required TResult Function(_OnUploadImageComplete value)
         onUploadImageComplete,
+    required TResult Function(_OnSelfieImageComplete value)
+        onSelfieImageComplete,
   }) {
     return onUpdateGuarantor(this);
   }
@@ -1962,15 +2729,20 @@ class _$_OnUpdateGuarantor implements _OnUpdateGuarantor {
     TResult Function(_OnCreateApplication value)? onCreateApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdatePassport value)? onUpdatePassport,
     TResult Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
+    TResult Function(_OnGetSinglePassportWithImage value)?
+        onGetSinglePassportWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
   }) {
     return onUpdateGuarantor?.call(this);
   }
@@ -1984,15 +2756,20 @@ class _$_OnUpdateGuarantor implements _OnUpdateGuarantor {
     TResult Function(_OnCreateApplication value)? onCreateApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdatePassport value)? onUpdatePassport,
     TResult Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
+    TResult Function(_OnGetSinglePassportWithImage value)?
+        onGetSinglePassportWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
     required TResult orElse(),
   }) {
     if (onUpdateGuarantor != null) {
@@ -2079,16 +2856,21 @@ class _$_OnDeleteSingleImage implements _OnDeleteSingleImage {
         onCreateApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
     required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId) onSubmitPassport,
     required TResult Function() onUpdateApplication,
+    required TResult Function() onUpdatePassport,
     required TResult Function(String message) onUpdateMultiVisa,
     required TResult Function() onUpdateGuarantor,
     required TResult Function(String message) onDeleteSingleImage,
     required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
     required TResult Function(SingleVisaResponse singleResponse)
         onGetSingleApplicationWithImage,
+    required TResult Function(SingleVisaResponse singleResponse)
+        onGetSinglePassportWithImage,
     required TResult Function() deleteApplication,
     required TResult Function(List<ImageUploadResponse> list)
         onUploadImageComplete,
+    required TResult Function(ImageUploadResponse resp) onSelfieImageComplete,
   }) {
     return onDeleteSingleImage(message);
   }
@@ -2102,15 +2884,20 @@ class _$_OnDeleteSingleImage implements _OnDeleteSingleImage {
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
     TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSinglePassportWithImage,
     TResult Function()? deleteApplication,
     TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult Function(ImageUploadResponse resp)? onSelfieImageComplete,
   }) {
     return onDeleteSingleImage?.call(message);
   }
@@ -2124,15 +2911,20 @@ class _$_OnDeleteSingleImage implements _OnDeleteSingleImage {
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
     TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSinglePassportWithImage,
     TResult Function()? deleteApplication,
     TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult Function(ImageUploadResponse resp)? onSelfieImageComplete,
     required TResult orElse(),
   }) {
     if (onDeleteSingleImage != null) {
@@ -2150,7 +2942,9 @@ class _$_OnDeleteSingleImage implements _OnDeleteSingleImage {
     required TResult Function(_OnCreateApplication value) onCreateApplication,
     required TResult Function(_OnCreatePassport value) onCreatePassport,
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitPassport value) onSubmitPassport,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
+    required TResult Function(_OnUpdatePassport value) onUpdatePassport,
     required TResult Function(_OnUpdateMultiVisa value) onUpdateMultiVisa,
     required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
     required TResult Function(_OnDeleteSingleImage value) onDeleteSingleImage,
@@ -2158,9 +2952,13 @@ class _$_OnDeleteSingleImage implements _OnDeleteSingleImage {
         onGetSingleApplication,
     required TResult Function(_OnGetSingleApplicationWithImage value)
         onGetSingleApplicationWithImage,
+    required TResult Function(_OnGetSinglePassportWithImage value)
+        onGetSinglePassportWithImage,
     required TResult Function(_DeleteApplication value) deleteApplication,
     required TResult Function(_OnUploadImageComplete value)
         onUploadImageComplete,
+    required TResult Function(_OnSelfieImageComplete value)
+        onSelfieImageComplete,
   }) {
     return onDeleteSingleImage(this);
   }
@@ -2174,15 +2972,20 @@ class _$_OnDeleteSingleImage implements _OnDeleteSingleImage {
     TResult Function(_OnCreateApplication value)? onCreateApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdatePassport value)? onUpdatePassport,
     TResult Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
+    TResult Function(_OnGetSinglePassportWithImage value)?
+        onGetSinglePassportWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
   }) {
     return onDeleteSingleImage?.call(this);
   }
@@ -2196,15 +2999,20 @@ class _$_OnDeleteSingleImage implements _OnDeleteSingleImage {
     TResult Function(_OnCreateApplication value)? onCreateApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdatePassport value)? onUpdatePassport,
     TResult Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
+    TResult Function(_OnGetSinglePassportWithImage value)?
+        onGetSinglePassportWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
     required TResult orElse(),
   }) {
     if (onDeleteSingleImage != null) {
@@ -2307,16 +3115,21 @@ class _$_OnGetSingleApplication implements _OnGetSingleApplication {
         onCreateApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
     required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId) onSubmitPassport,
     required TResult Function() onUpdateApplication,
+    required TResult Function() onUpdatePassport,
     required TResult Function(String message) onUpdateMultiVisa,
     required TResult Function() onUpdateGuarantor,
     required TResult Function(String message) onDeleteSingleImage,
     required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
     required TResult Function(SingleVisaResponse singleResponse)
         onGetSingleApplicationWithImage,
+    required TResult Function(SingleVisaResponse singleResponse)
+        onGetSinglePassportWithImage,
     required TResult Function() deleteApplication,
     required TResult Function(List<ImageUploadResponse> list)
         onUploadImageComplete,
+    required TResult Function(ImageUploadResponse resp) onSelfieImageComplete,
   }) {
     return onGetSingleApplication(visa);
   }
@@ -2330,15 +3143,20 @@ class _$_OnGetSingleApplication implements _OnGetSingleApplication {
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
     TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSinglePassportWithImage,
     TResult Function()? deleteApplication,
     TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult Function(ImageUploadResponse resp)? onSelfieImageComplete,
   }) {
     return onGetSingleApplication?.call(visa);
   }
@@ -2352,15 +3170,20 @@ class _$_OnGetSingleApplication implements _OnGetSingleApplication {
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
     TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSinglePassportWithImage,
     TResult Function()? deleteApplication,
     TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult Function(ImageUploadResponse resp)? onSelfieImageComplete,
     required TResult orElse(),
   }) {
     if (onGetSingleApplication != null) {
@@ -2378,7 +3201,9 @@ class _$_OnGetSingleApplication implements _OnGetSingleApplication {
     required TResult Function(_OnCreateApplication value) onCreateApplication,
     required TResult Function(_OnCreatePassport value) onCreatePassport,
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitPassport value) onSubmitPassport,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
+    required TResult Function(_OnUpdatePassport value) onUpdatePassport,
     required TResult Function(_OnUpdateMultiVisa value) onUpdateMultiVisa,
     required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
     required TResult Function(_OnDeleteSingleImage value) onDeleteSingleImage,
@@ -2386,9 +3211,13 @@ class _$_OnGetSingleApplication implements _OnGetSingleApplication {
         onGetSingleApplication,
     required TResult Function(_OnGetSingleApplicationWithImage value)
         onGetSingleApplicationWithImage,
+    required TResult Function(_OnGetSinglePassportWithImage value)
+        onGetSinglePassportWithImage,
     required TResult Function(_DeleteApplication value) deleteApplication,
     required TResult Function(_OnUploadImageComplete value)
         onUploadImageComplete,
+    required TResult Function(_OnSelfieImageComplete value)
+        onSelfieImageComplete,
   }) {
     return onGetSingleApplication(this);
   }
@@ -2402,15 +3231,20 @@ class _$_OnGetSingleApplication implements _OnGetSingleApplication {
     TResult Function(_OnCreateApplication value)? onCreateApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdatePassport value)? onUpdatePassport,
     TResult Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
+    TResult Function(_OnGetSinglePassportWithImage value)?
+        onGetSinglePassportWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
   }) {
     return onGetSingleApplication?.call(this);
   }
@@ -2424,15 +3258,20 @@ class _$_OnGetSingleApplication implements _OnGetSingleApplication {
     TResult Function(_OnCreateApplication value)? onCreateApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdatePassport value)? onUpdatePassport,
     TResult Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
+    TResult Function(_OnGetSinglePassportWithImage value)?
+        onGetSinglePassportWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
     required TResult orElse(),
   }) {
     if (onGetSingleApplication != null) {
@@ -2540,16 +3379,21 @@ class _$_OnGetSingleApplicationWithImage
         onCreateApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
     required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId) onSubmitPassport,
     required TResult Function() onUpdateApplication,
+    required TResult Function() onUpdatePassport,
     required TResult Function(String message) onUpdateMultiVisa,
     required TResult Function() onUpdateGuarantor,
     required TResult Function(String message) onDeleteSingleImage,
     required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
     required TResult Function(SingleVisaResponse singleResponse)
         onGetSingleApplicationWithImage,
+    required TResult Function(SingleVisaResponse singleResponse)
+        onGetSinglePassportWithImage,
     required TResult Function() deleteApplication,
     required TResult Function(List<ImageUploadResponse> list)
         onUploadImageComplete,
+    required TResult Function(ImageUploadResponse resp) onSelfieImageComplete,
   }) {
     return onGetSingleApplicationWithImage(singleResponse);
   }
@@ -2563,15 +3407,20 @@ class _$_OnGetSingleApplicationWithImage
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
     TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSinglePassportWithImage,
     TResult Function()? deleteApplication,
     TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult Function(ImageUploadResponse resp)? onSelfieImageComplete,
   }) {
     return onGetSingleApplicationWithImage?.call(singleResponse);
   }
@@ -2585,15 +3434,20 @@ class _$_OnGetSingleApplicationWithImage
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
     TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSinglePassportWithImage,
     TResult Function()? deleteApplication,
     TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult Function(ImageUploadResponse resp)? onSelfieImageComplete,
     required TResult orElse(),
   }) {
     if (onGetSingleApplicationWithImage != null) {
@@ -2611,7 +3465,9 @@ class _$_OnGetSingleApplicationWithImage
     required TResult Function(_OnCreateApplication value) onCreateApplication,
     required TResult Function(_OnCreatePassport value) onCreatePassport,
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitPassport value) onSubmitPassport,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
+    required TResult Function(_OnUpdatePassport value) onUpdatePassport,
     required TResult Function(_OnUpdateMultiVisa value) onUpdateMultiVisa,
     required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
     required TResult Function(_OnDeleteSingleImage value) onDeleteSingleImage,
@@ -2619,9 +3475,13 @@ class _$_OnGetSingleApplicationWithImage
         onGetSingleApplication,
     required TResult Function(_OnGetSingleApplicationWithImage value)
         onGetSingleApplicationWithImage,
+    required TResult Function(_OnGetSinglePassportWithImage value)
+        onGetSinglePassportWithImage,
     required TResult Function(_DeleteApplication value) deleteApplication,
     required TResult Function(_OnUploadImageComplete value)
         onUploadImageComplete,
+    required TResult Function(_OnSelfieImageComplete value)
+        onSelfieImageComplete,
   }) {
     return onGetSingleApplicationWithImage(this);
   }
@@ -2635,15 +3495,20 @@ class _$_OnGetSingleApplicationWithImage
     TResult Function(_OnCreateApplication value)? onCreateApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdatePassport value)? onUpdatePassport,
     TResult Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
+    TResult Function(_OnGetSinglePassportWithImage value)?
+        onGetSinglePassportWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
   }) {
     return onGetSingleApplicationWithImage?.call(this);
   }
@@ -2657,15 +3522,20 @@ class _$_OnGetSingleApplicationWithImage
     TResult Function(_OnCreateApplication value)? onCreateApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdatePassport value)? onUpdatePassport,
     TResult Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
+    TResult Function(_OnGetSinglePassportWithImage value)?
+        onGetSinglePassportWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
     required TResult orElse(),
   }) {
     if (onGetSingleApplicationWithImage != null) {
@@ -2685,6 +3555,269 @@ abstract class _OnGetSingleApplicationWithImage
   @JsonKey(ignore: true)
   _$$_OnGetSingleApplicationWithImageCopyWith<
           _$_OnGetSingleApplicationWithImage>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_OnGetSinglePassportWithImageCopyWith<$Res> {
+  factory _$$_OnGetSinglePassportWithImageCopyWith(
+          _$_OnGetSinglePassportWithImage value,
+          $Res Function(_$_OnGetSinglePassportWithImage) then) =
+      __$$_OnGetSinglePassportWithImageCopyWithImpl<$Res>;
+  $Res call({SingleVisaResponse singleResponse});
+
+  $SingleVisaResponseCopyWith<$Res> get singleResponse;
+}
+
+/// @nodoc
+class __$$_OnGetSinglePassportWithImageCopyWithImpl<$Res>
+    extends _$UpdateApplicationStateCopyWithImpl<$Res>
+    implements _$$_OnGetSinglePassportWithImageCopyWith<$Res> {
+  __$$_OnGetSinglePassportWithImageCopyWithImpl(
+      _$_OnGetSinglePassportWithImage _value,
+      $Res Function(_$_OnGetSinglePassportWithImage) _then)
+      : super(_value, (v) => _then(v as _$_OnGetSinglePassportWithImage));
+
+  @override
+  _$_OnGetSinglePassportWithImage get _value =>
+      super._value as _$_OnGetSinglePassportWithImage;
+
+  @override
+  $Res call({
+    Object? singleResponse = freezed,
+  }) {
+    return _then(_$_OnGetSinglePassportWithImage(
+      singleResponse == freezed
+          ? _value.singleResponse
+          : singleResponse // ignore: cast_nullable_to_non_nullable
+              as SingleVisaResponse,
+    ));
+  }
+
+  @override
+  $SingleVisaResponseCopyWith<$Res> get singleResponse {
+    return $SingleVisaResponseCopyWith<$Res>(_value.singleResponse, (value) {
+      return _then(_value.copyWith(singleResponse: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_OnGetSinglePassportWithImage implements _OnGetSinglePassportWithImage {
+  const _$_OnGetSinglePassportWithImage(this.singleResponse);
+
+  @override
+  final SingleVisaResponse singleResponse;
+
+  @override
+  String toString() {
+    return 'UpdateApplicationState.onGetSinglePassportWithImage(singleResponse: $singleResponse)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_OnGetSinglePassportWithImage &&
+            const DeepCollectionEquality()
+                .equals(other.singleResponse, singleResponse));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(singleResponse));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_OnGetSinglePassportWithImageCopyWith<_$_OnGetSinglePassportWithImage>
+      get copyWith => __$$_OnGetSinglePassportWithImageCopyWithImpl<
+          _$_OnGetSinglePassportWithImage>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() onLoading,
+    required TResult Function(String error) onError,
+    required TResult Function(VisaApplicationModel visaApps)
+        onCreateApplication,
+    required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
+    required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId) onSubmitPassport,
+    required TResult Function() onUpdateApplication,
+    required TResult Function() onUpdatePassport,
+    required TResult Function(String message) onUpdateMultiVisa,
+    required TResult Function() onUpdateGuarantor,
+    required TResult Function(String message) onDeleteSingleImage,
+    required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
+    required TResult Function(SingleVisaResponse singleResponse)
+        onGetSingleApplicationWithImage,
+    required TResult Function(SingleVisaResponse singleResponse)
+        onGetSinglePassportWithImage,
+    required TResult Function() deleteApplication,
+    required TResult Function(List<ImageUploadResponse> list)
+        onUploadImageComplete,
+    required TResult Function(ImageUploadResponse resp) onSelfieImageComplete,
+  }) {
+    return onGetSinglePassportWithImage(singleResponse);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? onLoading,
+    TResult Function(String error)? onError,
+    TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
+    TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
+    TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitPassport,
+    TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdatePassport,
+    TResult Function(String message)? onUpdateMultiVisa,
+    TResult Function()? onUpdateGuarantor,
+    TResult Function(String message)? onDeleteSingleImage,
+    TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSingleApplicationWithImage,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSinglePassportWithImage,
+    TResult Function()? deleteApplication,
+    TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult Function(ImageUploadResponse resp)? onSelfieImageComplete,
+  }) {
+    return onGetSinglePassportWithImage?.call(singleResponse);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? onLoading,
+    TResult Function(String error)? onError,
+    TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
+    TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
+    TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitPassport,
+    TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdatePassport,
+    TResult Function(String message)? onUpdateMultiVisa,
+    TResult Function()? onUpdateGuarantor,
+    TResult Function(String message)? onDeleteSingleImage,
+    TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSingleApplicationWithImage,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSinglePassportWithImage,
+    TResult Function()? deleteApplication,
+    TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult Function(ImageUploadResponse resp)? onSelfieImageComplete,
+    required TResult orElse(),
+  }) {
+    if (onGetSinglePassportWithImage != null) {
+      return onGetSinglePassportWithImage(singleResponse);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_OnLoading value) onLoading,
+    required TResult Function(_OnError value) onError,
+    required TResult Function(_OnCreateApplication value) onCreateApplication,
+    required TResult Function(_OnCreatePassport value) onCreatePassport,
+    required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitPassport value) onSubmitPassport,
+    required TResult Function(_OnUpdateApplication value) onUpdateApplication,
+    required TResult Function(_OnUpdatePassport value) onUpdatePassport,
+    required TResult Function(_OnUpdateMultiVisa value) onUpdateMultiVisa,
+    required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
+    required TResult Function(_OnDeleteSingleImage value) onDeleteSingleImage,
+    required TResult Function(_OnGetSingleApplication value)
+        onGetSingleApplication,
+    required TResult Function(_OnGetSingleApplicationWithImage value)
+        onGetSingleApplicationWithImage,
+    required TResult Function(_OnGetSinglePassportWithImage value)
+        onGetSinglePassportWithImage,
+    required TResult Function(_DeleteApplication value) deleteApplication,
+    required TResult Function(_OnUploadImageComplete value)
+        onUploadImageComplete,
+    required TResult Function(_OnSelfieImageComplete value)
+        onSelfieImageComplete,
+  }) {
+    return onGetSinglePassportWithImage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OnLoading value)? onLoading,
+    TResult Function(_OnError value)? onError,
+    TResult Function(_OnCreateApplication value)? onCreateApplication,
+    TResult Function(_OnCreatePassport value)? onCreatePassport,
+    TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitPassport value)? onSubmitPassport,
+    TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdatePassport value)? onUpdatePassport,
+    TResult Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
+    TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
+    TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
+    TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
+    TResult Function(_OnGetSingleApplicationWithImage value)?
+        onGetSingleApplicationWithImage,
+    TResult Function(_OnGetSinglePassportWithImage value)?
+        onGetSinglePassportWithImage,
+    TResult Function(_DeleteApplication value)? deleteApplication,
+    TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
+  }) {
+    return onGetSinglePassportWithImage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OnLoading value)? onLoading,
+    TResult Function(_OnError value)? onError,
+    TResult Function(_OnCreateApplication value)? onCreateApplication,
+    TResult Function(_OnCreatePassport value)? onCreatePassport,
+    TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitPassport value)? onSubmitPassport,
+    TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdatePassport value)? onUpdatePassport,
+    TResult Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
+    TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
+    TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
+    TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
+    TResult Function(_OnGetSingleApplicationWithImage value)?
+        onGetSingleApplicationWithImage,
+    TResult Function(_OnGetSinglePassportWithImage value)?
+        onGetSinglePassportWithImage,
+    TResult Function(_DeleteApplication value)? deleteApplication,
+    TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
+    required TResult orElse(),
+  }) {
+    if (onGetSinglePassportWithImage != null) {
+      return onGetSinglePassportWithImage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnGetSinglePassportWithImage implements UpdateApplicationState {
+  const factory _OnGetSinglePassportWithImage(
+          final SingleVisaResponse singleResponse) =
+      _$_OnGetSinglePassportWithImage;
+
+  SingleVisaResponse get singleResponse;
+  @JsonKey(ignore: true)
+  _$$_OnGetSinglePassportWithImageCopyWith<_$_OnGetSinglePassportWithImage>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -2736,16 +3869,21 @@ class _$_DeleteApplication implements _DeleteApplication {
         onCreateApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
     required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId) onSubmitPassport,
     required TResult Function() onUpdateApplication,
+    required TResult Function() onUpdatePassport,
     required TResult Function(String message) onUpdateMultiVisa,
     required TResult Function() onUpdateGuarantor,
     required TResult Function(String message) onDeleteSingleImage,
     required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
     required TResult Function(SingleVisaResponse singleResponse)
         onGetSingleApplicationWithImage,
+    required TResult Function(SingleVisaResponse singleResponse)
+        onGetSinglePassportWithImage,
     required TResult Function() deleteApplication,
     required TResult Function(List<ImageUploadResponse> list)
         onUploadImageComplete,
+    required TResult Function(ImageUploadResponse resp) onSelfieImageComplete,
   }) {
     return deleteApplication();
   }
@@ -2759,15 +3897,20 @@ class _$_DeleteApplication implements _DeleteApplication {
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
     TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSinglePassportWithImage,
     TResult Function()? deleteApplication,
     TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult Function(ImageUploadResponse resp)? onSelfieImageComplete,
   }) {
     return deleteApplication?.call();
   }
@@ -2781,15 +3924,20 @@ class _$_DeleteApplication implements _DeleteApplication {
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
     TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSinglePassportWithImage,
     TResult Function()? deleteApplication,
     TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult Function(ImageUploadResponse resp)? onSelfieImageComplete,
     required TResult orElse(),
   }) {
     if (deleteApplication != null) {
@@ -2807,7 +3955,9 @@ class _$_DeleteApplication implements _DeleteApplication {
     required TResult Function(_OnCreateApplication value) onCreateApplication,
     required TResult Function(_OnCreatePassport value) onCreatePassport,
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitPassport value) onSubmitPassport,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
+    required TResult Function(_OnUpdatePassport value) onUpdatePassport,
     required TResult Function(_OnUpdateMultiVisa value) onUpdateMultiVisa,
     required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
     required TResult Function(_OnDeleteSingleImage value) onDeleteSingleImage,
@@ -2815,9 +3965,13 @@ class _$_DeleteApplication implements _DeleteApplication {
         onGetSingleApplication,
     required TResult Function(_OnGetSingleApplicationWithImage value)
         onGetSingleApplicationWithImage,
+    required TResult Function(_OnGetSinglePassportWithImage value)
+        onGetSinglePassportWithImage,
     required TResult Function(_DeleteApplication value) deleteApplication,
     required TResult Function(_OnUploadImageComplete value)
         onUploadImageComplete,
+    required TResult Function(_OnSelfieImageComplete value)
+        onSelfieImageComplete,
   }) {
     return deleteApplication(this);
   }
@@ -2831,15 +3985,20 @@ class _$_DeleteApplication implements _DeleteApplication {
     TResult Function(_OnCreateApplication value)? onCreateApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdatePassport value)? onUpdatePassport,
     TResult Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
+    TResult Function(_OnGetSinglePassportWithImage value)?
+        onGetSinglePassportWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
   }) {
     return deleteApplication?.call(this);
   }
@@ -2853,15 +4012,20 @@ class _$_DeleteApplication implements _DeleteApplication {
     TResult Function(_OnCreateApplication value)? onCreateApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdatePassport value)? onUpdatePassport,
     TResult Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
+    TResult Function(_OnGetSinglePassportWithImage value)?
+        onGetSinglePassportWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
     required TResult orElse(),
   }) {
     if (deleteApplication != null) {
@@ -2954,16 +4118,21 @@ class _$_OnUploadImageComplete implements _OnUploadImageComplete {
         onCreateApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
     required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId) onSubmitPassport,
     required TResult Function() onUpdateApplication,
+    required TResult Function() onUpdatePassport,
     required TResult Function(String message) onUpdateMultiVisa,
     required TResult Function() onUpdateGuarantor,
     required TResult Function(String message) onDeleteSingleImage,
     required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
     required TResult Function(SingleVisaResponse singleResponse)
         onGetSingleApplicationWithImage,
+    required TResult Function(SingleVisaResponse singleResponse)
+        onGetSinglePassportWithImage,
     required TResult Function() deleteApplication,
     required TResult Function(List<ImageUploadResponse> list)
         onUploadImageComplete,
+    required TResult Function(ImageUploadResponse resp) onSelfieImageComplete,
   }) {
     return onUploadImageComplete(list);
   }
@@ -2977,15 +4146,20 @@ class _$_OnUploadImageComplete implements _OnUploadImageComplete {
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
     TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSinglePassportWithImage,
     TResult Function()? deleteApplication,
     TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult Function(ImageUploadResponse resp)? onSelfieImageComplete,
   }) {
     return onUploadImageComplete?.call(list);
   }
@@ -2999,15 +4173,20 @@ class _$_OnUploadImageComplete implements _OnUploadImageComplete {
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
     TResult Function(String message)? onDeleteSingleImage,
     TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
     TResult Function(SingleVisaResponse singleResponse)?
         onGetSingleApplicationWithImage,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSinglePassportWithImage,
     TResult Function()? deleteApplication,
     TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult Function(ImageUploadResponse resp)? onSelfieImageComplete,
     required TResult orElse(),
   }) {
     if (onUploadImageComplete != null) {
@@ -3025,7 +4204,9 @@ class _$_OnUploadImageComplete implements _OnUploadImageComplete {
     required TResult Function(_OnCreateApplication value) onCreateApplication,
     required TResult Function(_OnCreatePassport value) onCreatePassport,
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitPassport value) onSubmitPassport,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
+    required TResult Function(_OnUpdatePassport value) onUpdatePassport,
     required TResult Function(_OnUpdateMultiVisa value) onUpdateMultiVisa,
     required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
     required TResult Function(_OnDeleteSingleImage value) onDeleteSingleImage,
@@ -3033,9 +4214,13 @@ class _$_OnUploadImageComplete implements _OnUploadImageComplete {
         onGetSingleApplication,
     required TResult Function(_OnGetSingleApplicationWithImage value)
         onGetSingleApplicationWithImage,
+    required TResult Function(_OnGetSinglePassportWithImage value)
+        onGetSinglePassportWithImage,
     required TResult Function(_DeleteApplication value) deleteApplication,
     required TResult Function(_OnUploadImageComplete value)
         onUploadImageComplete,
+    required TResult Function(_OnSelfieImageComplete value)
+        onSelfieImageComplete,
   }) {
     return onUploadImageComplete(this);
   }
@@ -3049,15 +4234,20 @@ class _$_OnUploadImageComplete implements _OnUploadImageComplete {
     TResult Function(_OnCreateApplication value)? onCreateApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdatePassport value)? onUpdatePassport,
     TResult Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
+    TResult Function(_OnGetSinglePassportWithImage value)?
+        onGetSinglePassportWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
   }) {
     return onUploadImageComplete?.call(this);
   }
@@ -3071,15 +4261,20 @@ class _$_OnUploadImageComplete implements _OnUploadImageComplete {
     TResult Function(_OnCreateApplication value)? onCreateApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdatePassport value)? onUpdatePassport,
     TResult Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
     TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
     TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
     TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
     TResult Function(_OnGetSingleApplicationWithImage value)?
         onGetSingleApplicationWithImage,
+    TResult Function(_OnGetSinglePassportWithImage value)?
+        onGetSinglePassportWithImage,
     TResult Function(_DeleteApplication value)? deleteApplication,
     TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
     required TResult orElse(),
   }) {
     if (onUploadImageComplete != null) {
@@ -3096,5 +4291,264 @@ abstract class _OnUploadImageComplete implements UpdateApplicationState {
   List<ImageUploadResponse> get list;
   @JsonKey(ignore: true)
   _$$_OnUploadImageCompleteCopyWith<_$_OnUploadImageComplete> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_OnSelfieImageCompleteCopyWith<$Res> {
+  factory _$$_OnSelfieImageCompleteCopyWith(_$_OnSelfieImageComplete value,
+          $Res Function(_$_OnSelfieImageComplete) then) =
+      __$$_OnSelfieImageCompleteCopyWithImpl<$Res>;
+  $Res call({ImageUploadResponse resp});
+
+  $ImageUploadResponseCopyWith<$Res> get resp;
+}
+
+/// @nodoc
+class __$$_OnSelfieImageCompleteCopyWithImpl<$Res>
+    extends _$UpdateApplicationStateCopyWithImpl<$Res>
+    implements _$$_OnSelfieImageCompleteCopyWith<$Res> {
+  __$$_OnSelfieImageCompleteCopyWithImpl(_$_OnSelfieImageComplete _value,
+      $Res Function(_$_OnSelfieImageComplete) _then)
+      : super(_value, (v) => _then(v as _$_OnSelfieImageComplete));
+
+  @override
+  _$_OnSelfieImageComplete get _value =>
+      super._value as _$_OnSelfieImageComplete;
+
+  @override
+  $Res call({
+    Object? resp = freezed,
+  }) {
+    return _then(_$_OnSelfieImageComplete(
+      resp == freezed
+          ? _value.resp
+          : resp // ignore: cast_nullable_to_non_nullable
+              as ImageUploadResponse,
+    ));
+  }
+
+  @override
+  $ImageUploadResponseCopyWith<$Res> get resp {
+    return $ImageUploadResponseCopyWith<$Res>(_value.resp, (value) {
+      return _then(_value.copyWith(resp: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_OnSelfieImageComplete implements _OnSelfieImageComplete {
+  const _$_OnSelfieImageComplete(this.resp);
+
+  @override
+  final ImageUploadResponse resp;
+
+  @override
+  String toString() {
+    return 'UpdateApplicationState.onSelfieImageComplete(resp: $resp)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_OnSelfieImageComplete &&
+            const DeepCollectionEquality().equals(other.resp, resp));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(resp));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_OnSelfieImageCompleteCopyWith<_$_OnSelfieImageComplete> get copyWith =>
+      __$$_OnSelfieImageCompleteCopyWithImpl<_$_OnSelfieImageComplete>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() onLoading,
+    required TResult Function(String error) onError,
+    required TResult Function(VisaApplicationModel visaApps)
+        onCreateApplication,
+    required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
+    required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId) onSubmitPassport,
+    required TResult Function() onUpdateApplication,
+    required TResult Function() onUpdatePassport,
+    required TResult Function(String message) onUpdateMultiVisa,
+    required TResult Function() onUpdateGuarantor,
+    required TResult Function(String message) onDeleteSingleImage,
+    required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
+    required TResult Function(SingleVisaResponse singleResponse)
+        onGetSingleApplicationWithImage,
+    required TResult Function(SingleVisaResponse singleResponse)
+        onGetSinglePassportWithImage,
+    required TResult Function() deleteApplication,
+    required TResult Function(List<ImageUploadResponse> list)
+        onUploadImageComplete,
+    required TResult Function(ImageUploadResponse resp) onSelfieImageComplete,
+  }) {
+    return onSelfieImageComplete(resp);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? onLoading,
+    TResult Function(String error)? onError,
+    TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
+    TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
+    TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitPassport,
+    TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdatePassport,
+    TResult Function(String message)? onUpdateMultiVisa,
+    TResult Function()? onUpdateGuarantor,
+    TResult Function(String message)? onDeleteSingleImage,
+    TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSingleApplicationWithImage,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSinglePassportWithImage,
+    TResult Function()? deleteApplication,
+    TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult Function(ImageUploadResponse resp)? onSelfieImageComplete,
+  }) {
+    return onSelfieImageComplete?.call(resp);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? onLoading,
+    TResult Function(String error)? onError,
+    TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
+    TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
+    TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitPassport,
+    TResult Function()? onUpdateApplication,
+    TResult Function()? onUpdatePassport,
+    TResult Function(String message)? onUpdateMultiVisa,
+    TResult Function()? onUpdateGuarantor,
+    TResult Function(String message)? onDeleteSingleImage,
+    TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSingleApplicationWithImage,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSinglePassportWithImage,
+    TResult Function()? deleteApplication,
+    TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult Function(ImageUploadResponse resp)? onSelfieImageComplete,
+    required TResult orElse(),
+  }) {
+    if (onSelfieImageComplete != null) {
+      return onSelfieImageComplete(resp);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_OnLoading value) onLoading,
+    required TResult Function(_OnError value) onError,
+    required TResult Function(_OnCreateApplication value) onCreateApplication,
+    required TResult Function(_OnCreatePassport value) onCreatePassport,
+    required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitPassport value) onSubmitPassport,
+    required TResult Function(_OnUpdateApplication value) onUpdateApplication,
+    required TResult Function(_OnUpdatePassport value) onUpdatePassport,
+    required TResult Function(_OnUpdateMultiVisa value) onUpdateMultiVisa,
+    required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
+    required TResult Function(_OnDeleteSingleImage value) onDeleteSingleImage,
+    required TResult Function(_OnGetSingleApplication value)
+        onGetSingleApplication,
+    required TResult Function(_OnGetSingleApplicationWithImage value)
+        onGetSingleApplicationWithImage,
+    required TResult Function(_OnGetSinglePassportWithImage value)
+        onGetSinglePassportWithImage,
+    required TResult Function(_DeleteApplication value) deleteApplication,
+    required TResult Function(_OnUploadImageComplete value)
+        onUploadImageComplete,
+    required TResult Function(_OnSelfieImageComplete value)
+        onSelfieImageComplete,
+  }) {
+    return onSelfieImageComplete(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OnLoading value)? onLoading,
+    TResult Function(_OnError value)? onError,
+    TResult Function(_OnCreateApplication value)? onCreateApplication,
+    TResult Function(_OnCreatePassport value)? onCreatePassport,
+    TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitPassport value)? onSubmitPassport,
+    TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdatePassport value)? onUpdatePassport,
+    TResult Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
+    TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
+    TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
+    TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
+    TResult Function(_OnGetSingleApplicationWithImage value)?
+        onGetSingleApplicationWithImage,
+    TResult Function(_OnGetSinglePassportWithImage value)?
+        onGetSinglePassportWithImage,
+    TResult Function(_DeleteApplication value)? deleteApplication,
+    TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
+  }) {
+    return onSelfieImageComplete?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OnLoading value)? onLoading,
+    TResult Function(_OnError value)? onError,
+    TResult Function(_OnCreateApplication value)? onCreateApplication,
+    TResult Function(_OnCreatePassport value)? onCreatePassport,
+    TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitPassport value)? onSubmitPassport,
+    TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdatePassport value)? onUpdatePassport,
+    TResult Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
+    TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
+    TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
+    TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
+    TResult Function(_OnGetSingleApplicationWithImage value)?
+        onGetSingleApplicationWithImage,
+    TResult Function(_OnGetSinglePassportWithImage value)?
+        onGetSinglePassportWithImage,
+    TResult Function(_DeleteApplication value)? deleteApplication,
+    TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
+    required TResult orElse(),
+  }) {
+    if (onSelfieImageComplete != null) {
+      return onSelfieImageComplete(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnSelfieImageComplete implements UpdateApplicationState {
+  const factory _OnSelfieImageComplete(final ImageUploadResponse resp) =
+      _$_OnSelfieImageComplete;
+
+  ImageUploadResponse get resp;
+  @JsonKey(ignore: true)
+  _$$_OnSelfieImageCompleteCopyWith<_$_OnSelfieImageComplete> get copyWith =>
       throw _privateConstructorUsedError;
 }
