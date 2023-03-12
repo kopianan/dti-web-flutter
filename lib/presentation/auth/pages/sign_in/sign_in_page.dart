@@ -2,9 +2,9 @@ import 'dart:developer';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:dti_web/application/app_list/app_list_cubit.dart';
 import 'package:dti_web/application/auth/auth_cubit.dart';
 import 'package:dti_web/core/widgets/auth_footer_widget.dart';
-import 'package:dti_web/core/widgets/auth_header_widget.dart';
 import 'package:dti_web/core/widgets/loading_primary_button.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
 import 'package:dti_web/injection.dart';
@@ -15,7 +15,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../widgets/email_text_field.dart';
 import 'widget/media_social_button.dart';
@@ -42,6 +41,11 @@ class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          getIt<AppListCubit>().getUserApplication(); 
+        },
+      ),
       appBar: kDebugMode
           ? AppBar(
               backgroundColor: Colors.red,
@@ -108,7 +112,6 @@ class _SignInPageState extends State<SignInPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    
                     Row(
                       children: [
                         Expanded(

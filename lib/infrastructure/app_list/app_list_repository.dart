@@ -8,12 +8,11 @@ import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: IAppList)
 class AppListRepository extends IAppList {
-  Dio? dio;
+  AppListRepository(this.dio);
+  final Dio dio;
   final storage = Storage();
   @override
   Future<Either<String, List<SimpleVisaModel>>> getUserVisaApplication() async {
-    dio = Dio();
-
     //ONLY GET APPLICATION, NOT PASSPORT
     // final result =
     // await dio!.get('${dotenv.env['BASE_URL']}/applicationsByUser',
@@ -21,7 +20,7 @@ class AppListRepository extends IAppList {
     //       headers: {'Authorization': 'Bearer ${storage.getToken()}'},
     //     ));
     final result =
-        await dio!.get('${dotenv.env['BASE_URL']}/overallApplicationsByUser',
+        await dio.get('${dotenv.env['BASE_URL']}/overallApplicationsByUser',
             options: Options(
               headers: {'Authorization': 'Bearer ${storage.getToken()}'},
             ));

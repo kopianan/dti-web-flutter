@@ -74,6 +74,9 @@ class _SelfiePageState extends State<SelfiePage> {
                     );
                   },
                 );
+                AutoRouter.of(context).push(PassportDetailRoute(
+                    firebaseDocId:
+                        getIt<DocumentCubit>().state.visa!.firebaseDocId!));
               },
             );
           },
@@ -294,7 +297,7 @@ class UploadButton extends StatelessWidget {
               labelStyle: TextStyle(fontSize: 20.sp),
               onClick: () async {
                 //check deleted images
-                if (getIt<DocumentCubit>().state.deletedSelfiePhoto == null) {
+                if (getIt<DocumentCubit>().state.selfie == null) {
                   AutoRouter.of(context).push(PassportDetailRoute(
                       firebaseDocId:
                           getIt<DocumentCubit>().state.visa!.firebaseDocId!));
