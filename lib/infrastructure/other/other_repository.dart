@@ -280,4 +280,27 @@ class OtherRepository extends IOther {
       return left(Failures.serverError());
     }
   }
+
+  @override
+  Future<Either<Failures, String>> refreshToken() async {
+    final dio = Dio();
+    Storage storage = Storage();
+
+    try {
+      var result = await dio.post(
+          '${dotenv.env['BASE_URL']}/revokeRefreshTokens',
+          options: Options(
+              headers: {'Authorization': 'Bearer ${storage.getToken()}'}));
+      var data = result.data['data'];
+      print(data);
+      if (data != null) {
+        String newToken = (data['token']).toString();
+        await storage.saveToken(newToken);
+        return right(newToken);
+      }
+      return left(Failures.generalError(data['error']));
+    } on Exception catch (e) {
+      return left(Failures.serverError());
+    }
+  }
 }

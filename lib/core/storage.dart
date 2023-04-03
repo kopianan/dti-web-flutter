@@ -31,6 +31,7 @@ class Storage {
   }
 
   Future<void> saveToken(String token) async {
+    print('token Saved');
     await box.write(TOKEN, token);
   }
 

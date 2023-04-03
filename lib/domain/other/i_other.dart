@@ -12,6 +12,7 @@ abstract class IOther {
       required String fileName});
   Future<Either<Failures, QuestionnaireDataModel>> getQuestionnaireList();
   Future<Either<Failures, dynamic>> getLocation();
+  Future<Either<Failures, String>> refreshToken();
   Future<Either<Failures, dynamic>> sendFeedback(int rating, String comment);
   Future<Either<Failures, String>> contactUs(String name, String title);
   Future<Either<Failures, List<DocumentDataModel>>> getApplicationMasterData();

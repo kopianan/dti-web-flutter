@@ -53,26 +53,26 @@ class DashboardCubit extends Cubit<DashboardState> {
     }
   }
 
-  void deleteSingleData(SimpleVisaModel visa, bool? isOnArrival) async {
+  void deleteSingleData(SimpleVisaModel visa, int appsType) async {
     emit(const DashboardState.loading());
     try {
       final data = await iDashboard.deleteApplication(visa.firebaseDocId!);
       data.fold(
         (l) => emit(DashboardState.error(l)),
-        (r) => emit(DashboardState.onDeleteSingleData(visa, isOnArrival)),
+        (r) => emit(DashboardState.onDeleteSingleData(visa, appsType)),
       );
     } on Exception catch (e) {
       emit(DashboardState.error(Failures.serverError()));
     }
   }
 
-  void deleteSinglePassport(SimpleVisaModel visa, bool? isOnArrival) async {
+  void deleteSinglePassport(SimpleVisaModel visa, int appType) async {
     emit(const DashboardState.loading());
     try {
-      final data = await iDashboard.deleteApplication(visa.firebaseDocId!);
+      final data = await iDashboard.deleteSinglePassport(visa.firebaseDocId!);
       data.fold(
         (l) => emit(DashboardState.error(l)),
-        (r) => emit(DashboardState.onDeletePassport(visa)),
+        (r) => emit(DashboardState.onDeletePassport(visa, appType)),
       );
     } on Exception catch (e) {
       emit(DashboardState.error(Failures.serverError()));

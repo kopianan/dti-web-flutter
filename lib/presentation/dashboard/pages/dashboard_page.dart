@@ -3,6 +3,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dti_web/application/auth/auth_cubit.dart';
 import 'package:dti_web/application/dashboard/dashboard_cubit.dart';
 import 'package:dti_web/application/other/other_cubit.dart';
+import 'package:dti_web/application/timer/timer_cubit.dart';
 import 'package:dti_web/core/widgets/application_card.dart';
 import 'package:dti_web/core/widgets/passport_card.dart';
 import 'package:dti_web/core/widgets/social_button_widget.dart';
@@ -63,36 +64,56 @@ class _DashboardPageState extends State<DashboardPage> {
                 },
                 onDeletePassport: (e) {
                   dashboardCubit.getLastPassportAndApplicationData();
+                  if (e.appType == 1) {
+                    AutoRouter.of(context)
+                        .push(QuestionnaireRoute(boolIsInit: true));
+                  } else if (e.appType == 2) {
+                    AutoRouter.of(context).push(VOASummaryRoute());
+                  } else {
+                    AutoRouter.of(context).push(ChoosePassportRoute());
+                  }
                 },
                 onDeleteSingleData: (e) {
                   //get another data
 
                   dashboardCubit.getLastPassport();
 
-                  if (e.deletedVisa.subTitle == "Visa On Arrival") {
-                    if (e.isOnArrival == null) {
-                      AutoRouter.of(context).push(VOASummaryRoute());
-                    } else if (e.isOnArrival == true) {
-                      AutoRouter.of(context).push(VOASummaryRoute());
-                    } else {
-                      AutoRouter.of(context)
-                          .push(QuestionnaireRoute(boolIsInit: true));
-                    }
+                  if (e.appType == 1) {
+                    AutoRouter.of(context)
+                        .push(QuestionnaireRoute(boolIsInit: true));
+                  } else if (e.appType == 2) {
+                    AutoRouter.of(context).push(VOASummaryRoute());
                   } else {
-                    if (e.isOnArrival == null) {
-                      AutoRouter.of(context)
-                          .push(QuestionnaireRoute(boolIsInit: true));
-                    } else if (e.isOnArrival == true) {
-                      AutoRouter.of(context).push(VOASummaryRoute());
-                    } else {
-                      AutoRouter.of(context)
-                          .push(QuestionnaireRoute(boolIsInit: true));
-                    }
+                    AutoRouter.of(context).push(ChoosePassportRoute());
                   }
+
+                  // if (e.deletedVisa.subTitle == "Visa On Arrival") {
+                  //   if (e.isOnArrival == null) {
+                  //     AutoRouter.of(context).push(VOASummaryRoute());
+                  //   } else if (e.isOnArrival == true) {
+                  //     AutoRouter.of(context).push(VOASummaryRoute());
+                  //   } else {
+                  //     AutoRouter.of(context)
+                  //         .push(QuestionnaireRoute(boolIsInit: true));
+                  //   }
+                  // } else {
+                  //   if (e.isOnArrival == null) {
+                  //     AutoRouter.of(context)
+                  //         .push(QuestionnaireRoute(boolIsInit: true));
+                  //   } else if (e.isOnArrival == true) {
+                  //     AutoRouter.of(context).push(VOASummaryRoute());
+                  //   } else {
+                  //     AutoRouter.of(context)
+                  //         .push(QuestionnaireRoute(boolIsInit: true));
+                  //   }
+                  // }
                 },
               );
             },
             child: Scaffold(
+              floatingActionButton: FloatingActionButton(
+                onPressed: () {},
+              ),
               appBar: AppBar(
                 toolbarHeight: 80.h,
                 backgroundColor: Color(0xff000649),
@@ -113,7 +134,6 @@ class _DashboardPageState extends State<DashboardPage> {
                         state.maybeMap(
                             orElse: () {},
                             onGetUserData: (e) {
-                              print(e);
                               if (e.userData.mobileNumber == null) {
                                 //user must verify the number.
                                 AutoRouter.of(context)
@@ -128,7 +148,8 @@ class _DashboardPageState extends State<DashboardPage> {
                                 baseColor: Colors.grey,
                                 highlightColor: Colors.white70,
                                 child: Container(
-                                  margin: EdgeInsets.symmetric(vertical: 30),
+                                  margin:
+                                      const EdgeInsets.symmetric(vertical: 30),
                                   width: 200.0,
                                   height: 10.0,
                                   decoration: BoxDecoration(
@@ -232,98 +253,150 @@ class _DashboardPageState extends State<DashboardPage> {
                                 BlocBuilder<DashboardCubit, DashboardState>(
                                   builder: (context, state) {
                                     return state.maybeMap(
-                                        orElse: () => Row(
+                                        orElse: () => Column(
                                               children: [
-                                                Expanded(
-                                                  child: InkWell(
-                                                    onTap: () {
-                                                      onCreateVisaApps(state);
-                                                    },
-                                                    child: Card(
-                                                      clipBehavior:
-                                                          Clip.hardEdge,
-                                                      shape:
-                                                          RoundedRectangleBorder(
+                                                Row(
+                                                  children: [
+                                                    Expanded(
+                                                      child: InkWell(
+                                                        onTap: () {
+                                                          onCreateVisaApps(
+                                                              state);
+                                                        },
+                                                        child: Card(
+                                                          clipBehavior:
+                                                              Clip.hardEdge,
+                                                          shape: RoundedRectangleBorder(
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .circular(
                                                                           10)),
-                                                      child: Container(
-                                                        padding:
-                                                            REdgeInsets.only(
-                                                                left: 20.w,
-                                                                top: 10.h,
-                                                                bottom: 10.h),
-                                                        child: Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.min,
-                                                          children: [
-                                                            Image.asset(
-                                                              'assets/images/bookimage.png',
-                                                              width: 70,
+                                                          child: Container(
+                                                            padding: REdgeInsets
+                                                                .only(
+                                                                    left: 20.w,
+                                                                    top: 10.h,
+                                                                    bottom:
+                                                                        10.h),
+                                                            child: Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .min,
+                                                              children: [
+                                                                Image.asset(
+                                                                  'assets/images/bookimage.png',
+                                                                  width: 70,
+                                                                ),
+                                                                SizedBox(
+                                                                    width:
+                                                                        20.w),
+                                                                Column(
+                                                                    children: [
+                                                                      Text(
+                                                                        "Create Visa\nor Stay Permit",
+                                                                        style: TextStyle(
+                                                                            fontSize:
+                                                                                18.sp,
+                                                                            fontWeight: FontWeight.bold),
+                                                                      )
+                                                                    ]),
+                                                              ],
                                                             ),
-                                                            SizedBox(
-                                                                width: 20.w),
-                                                            Column(children: [
-                                                              Text(
-                                                                "Create Visa\nor Stay Permit",
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        18.sp,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .bold),
-                                                              )
-                                                            ]),
-                                                          ],
+                                                          ),
                                                         ),
                                                       ),
                                                     ),
-                                                  ),
-                                                ),
-                                                Expanded(
-                                                  child: InkWell(
-                                                    onTap: () {
-                                                      onCreateVOA(state);
-                                                    },
-                                                    child: Card(
-                                                      clipBehavior:
-                                                          Clip.hardEdge,
-                                                      shape:
-                                                          RoundedRectangleBorder(
+                                                    Expanded(
+                                                      child: InkWell(
+                                                        onTap: () {
+                                                          onCreateVOA(state);
+                                                        },
+                                                        child: Card(
+                                                          clipBehavior:
+                                                              Clip.hardEdge,
+                                                          shape: RoundedRectangleBorder(
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .circular(
                                                                           10)),
-                                                      child: Container(
-                                                        padding:
-                                                            REdgeInsets.only(
-                                                                left: 20.w,
-                                                                top: 10.h,
-                                                                bottom: 10.h),
-                                                        child: Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.min,
-                                                          children: [
-                                                            Image.asset(
-                                                              'assets/images/bookimage.png',
-                                                              width: 70,
+                                                          child: Container(
+                                                            padding: REdgeInsets
+                                                                .only(
+                                                                    left: 20.w,
+                                                                    top: 10.h,
+                                                                    bottom:
+                                                                        10.h),
+                                                            child: Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .min,
+                                                              children: [
+                                                                Image.asset(
+                                                                  'assets/images/bookimage.png',
+                                                                  width: 70,
+                                                                ),
+                                                                SizedBox(
+                                                                    width:
+                                                                        20.w),
+                                                                Column(
+                                                                    children: [
+                                                                      Text(
+                                                                        "Create Visa\non Arrival",
+                                                                        style: TextStyle(
+                                                                            fontSize:
+                                                                                18.sp,
+                                                                            fontWeight: FontWeight.bold),
+                                                                      )
+                                                                    ]),
+                                                              ],
                                                             ),
-                                                            SizedBox(
-                                                                width: 20.w),
-                                                            Column(children: [
-                                                              Text(
-                                                                "Create Visa\non Arrival",
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        18.sp,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .bold),
-                                                              )
-                                                            ]),
-                                                          ],
+                                                          ),
                                                         ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                                InkWell(
+                                                  onTap: () {
+                                                    onCreatePassport(state);
+                                                    // AutoRouter.of(context).push(
+                                                    //     ChoosePassportRoute());
+                                                  },
+                                                  child: Card(
+                                                    clipBehavior: Clip.hardEdge,
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        10)),
+                                                    child: Container(
+                                                      width: double.infinity,
+                                                      padding: REdgeInsets.only(
+                                                          left: 20.w,
+                                                          top: 10.h,
+                                                          bottom: 10.h),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.min,
+                                                        children: [
+                                                          Image.asset(
+                                                            'assets/images/bookimage.png',
+                                                            width: 70,
+                                                          ),
+                                                          SizedBox(width: 20.w),
+                                                          Column(children: [
+                                                            Text(
+                                                              "Create Passport",
+                                                              style: TextStyle(
+                                                                  fontSize:
+                                                                      18.sp,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold),
+                                                            )
+                                                          ]),
+                                                        ],
                                                       ),
                                                     ),
                                                   ),
@@ -351,41 +424,6 @@ class _DashboardPageState extends State<DashboardPage> {
                                           );
                                         });
                                   },
-                                ),
-                                InkWell(
-                                  onTap: () {
-                                    AutoRouter.of(context)
-                                        .push(ChoosePassportRoute());
-                                  },
-                                  child: Card(
-                                    clipBehavior: Clip.hardEdge,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(10)),
-                                    child: Container(
-                                      width: double.infinity,
-                                      padding: REdgeInsets.only(
-                                          left: 20.w, top: 10.h, bottom: 10.h),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          Image.asset(
-                                            'assets/images/bookimage.png',
-                                            width: 70,
-                                          ),
-                                          SizedBox(width: 20.w),
-                                          Column(children: [
-                                            Text(
-                                              "Create Passport",
-                                              style: TextStyle(
-                                                  fontSize: 18.sp,
-                                                  fontWeight: FontWeight.bold),
-                                            )
-                                          ]),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
                                 ),
                                 20.verticalSpace,
                                 InkWell(
@@ -465,7 +503,6 @@ class _DashboardPageState extends State<DashboardPage> {
                                           return PassportCard(
                                             visaApps: e.visa,
                                             onCardClick: () {
-                                              print(e.visa); 
                                               onPassportCardClicked(context,
                                                   e.visa, width, height);
                                             },
@@ -523,26 +560,30 @@ class _DashboardPageState extends State<DashboardPage> {
           context: context,
           width: ScreenUtil().screenWidth / 4,
           title: "Draft Application",
-          body: const Center(
-            child: Text(
-              "You have Incomplete Visa Application. Do you want to continue from your latest draft? ",
-              textAlign: TextAlign.center,
-            ),
-          ),
+          desc: visa.subTitle == "Visa On Arrival"
+              ? "You have Incomplete Visa On Arrival Application. Do you want to continue from your latest draft?"
+              : visa.title!.toLowerCase().contains('passport')
+                  ? "You have Incomplete Passport. Do you want to continue from your latest draft?"
+                  : "You have Incomplete Visa Application. Do you want to continue from your latest draft?",
           btnOkText: "Continue",
           btnCancelText: "Delete",
           btnOkOnPress: () {
-            // context
-            //     .read<ApplicationCubit>()
-            //     .setupApplication(visa);
-            AutoRouter.of(context).push(
-                PersonalInformation1Route(firebaseDocId: visa.firebaseDocId!));
-            //TODO
-            // AutoRouter.of(context)
-            //     .push(UploadDocumentRoute());
+            if (visa.title!.toLowerCase().contains('passport')) {
+              AutoRouter.of(context).push(PassportPersonalParticularRoute(
+                  firebaseDocId: visa.firebaseDocId!));
+            } else {
+              AutoRouter.of(context).push(PersonalInformation1Route(
+                  firebaseDocId: visa.firebaseDocId!));
+            }
           },
           btnCancelOnPress: () {
-            dashboardCubit.deleteSingleData(visa, null);
+            if (visa.subTitle == "Visa On Arrival") {
+              dashboardCubit.deleteSingleData(visa, 2);
+            } else if (visa.title!.toLowerCase().contains('passport')) {
+              dashboardCubit.deleteSinglePassport(visa, 3);
+            } else {
+              dashboardCubit.deleteSingleData(visa, 1);
+            }
           }).show();
     } else {
       showDialog(
@@ -576,26 +617,30 @@ class _DashboardPageState extends State<DashboardPage> {
           context: context,
           width: ScreenUtil().screenWidth / 4,
           title: "Draft Passport",
-          body: const Center(
-            child: Text(
-              "You have Incomplete Passport. Do you want to continue from your latest draft? ",
-              textAlign: TextAlign.center,
-            ),
-          ),
+          desc: visa.subTitle == "Visa On Arrival"
+              ? "You have Incomplete Visa On Arrival Application. Do you want to continue from your latest draft?"
+              : visa.title!.toLowerCase().contains('passport')
+                  ? "You have Incomplete Passport. Do you want to continue from your latest draft?"
+                  : "You have Incomplete Visa Application. Do you want to continue from your latest draft?",
           btnOkText: "Continue",
           btnCancelText: "Delete",
           btnOkOnPress: () {
-            // context
-            //     .read<ApplicationCubit>()
-            //     .setupApplication(visa);
-            AutoRouter.of(context).push(PassportPersonalParticularRoute(
-                firebaseDocId: visa.firebaseDocId!));
-            //TODO
-            // AutoRouter.of(context)
-            //     .push(UploadDocumentRoute());
+            if (visa.title!.toLowerCase().contains('passport')) {
+              AutoRouter.of(context).push(PassportPersonalParticularRoute(
+                  firebaseDocId: visa.firebaseDocId!));
+            } else {
+              AutoRouter.of(context).push(PersonalInformation1Route(
+                  firebaseDocId: visa.firebaseDocId!));
+            }
           },
           btnCancelOnPress: () {
-            dashboardCubit.deleteSinglePassport(visa, null);
+            if (visa.subTitle == "Visa On Arrival") {
+              dashboardCubit.deleteSingleData(visa, 2);
+            } else if (visa.title!.toLowerCase().contains('passport')) {
+              dashboardCubit.deleteSinglePassport(visa, 3);
+            } else {
+              dashboardCubit.deleteSingleData(visa, 1);
+            }
           }).show();
     } else {
       showDialog(
@@ -632,14 +677,20 @@ class _DashboardPageState extends State<DashboardPage> {
               title: "Draft Application",
               desc: e.visa.subTitle == "Visa On Arrival"
                   ? "You have Incomplete Visa On Arrival Application. Do you want to continue from your latest draft?"
-                  : "You have Incomplete Visa Application. Do you want to start Visa On Arrival Application?",
+                  : e.visa.subTitle!.toLowerCase().contains('passport')
+                      ? "You have Incomplete Passport . Do you want to start Visa On Arrival Application?"
+                      : "You have Incomplete Visa Application. Do you want to start Visa On Arrival Application?",
               btnOkText:
                   e.visa.subTitle == "Visa On Arrival" ? "Continue" : "Yes",
               btnCancelText:
                   e.visa.subTitle == "Visa On Arrival" ? "Create New" : "No",
               btnOkOnPress: () {
                 if (e.visa.subTitle != "Visa On Arrival") {
-                  dashboardCubit.deleteSingleData(e.visa, true);
+                  if (e.visa.subTitle!.toLowerCase().contains('passport')) {
+                    dashboardCubit.deleteSinglePassport(e.visa, 2);
+                  } else {
+                    dashboardCubit.deleteSingleData(e.visa, 2);
+                  }
                 } else {
                   AutoRouter.of(context).popAndPush(PersonalInformation1Route(
                       firebaseDocId: e.visa.firebaseDocId!));
@@ -648,11 +699,65 @@ class _DashboardPageState extends State<DashboardPage> {
               btnCancelOnPress: () {
                 if (e.visa.subTitle != "Visa On Arrival") {
                 } else {
-                  dashboardCubit.deleteSingleData(e.visa, true);
-                }
+                  dashboardCubit.deleteSingleData(e.visa, 2);
+                } //
               }).show();
         } else {
           AutoRouter.of(context).push(VOASummaryRoute());
+        }
+      },
+    );
+  }
+
+  void onCreatePassport(DashboardState state) {
+    state.maybeMap(
+      orElse: () {
+        AutoRouter.of(context).push(ChoosePassportRoute());
+      },
+      onGetSingleData: (e) {
+        if (e.visa.status!.toLowerCase() == 'draft') {
+          AwesomeDialog(
+              context: context,
+              width: ScreenUtil().screenWidth / 4,
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              title: "Draft Application",
+              desc: e.visa.subTitle!.toLowerCase().contains('passport')
+                  ? "You have Incomplete Passport. Do you want to continue from your latest draft?"
+                  : e.visa.subTitle == "Visa On Arrival"
+                      ? "You have Incomplete Visa On Arrival . Do you want to start New Passport Application?"
+                      : "You have Incomplete Visa Application.  Do you want to start New Passport Application?",
+              btnOkText: e.visa.subTitle == "Visa On Arrival"
+                  ? "Yes"
+                  : e.visa.subTitle!.toLowerCase().contains('passport')
+                      ? "Continue"
+                      : "Yes",
+              btnCancelText: e.visa.subTitle == "Visa On Arrival"
+                  ? "No"
+                  : e.visa.subTitle!.toLowerCase().contains('passport')
+                      ? "Create New"
+                      : "No",
+              btnOkOnPress: () {
+                if (e.visa.subTitle == "Visa On Arrival") {
+                  dashboardCubit.deleteSingleData(e.visa, 3);
+                } else if (e.visa.subTitle!
+                    .toLowerCase()
+                    .contains('passport')) {
+                  AutoRouter.of(context).popAndPush(
+                      PassportPersonalParticularRoute(
+                          firebaseDocId: e.visa.firebaseDocId!));
+                } else {
+                  dashboardCubit.deleteSingleData(e.visa, 3);
+                }
+              },
+              btnCancelOnPress: () {
+                if (e.visa.subTitle!.toLowerCase().contains('passport')) {
+                  dashboardCubit.deleteSinglePassport(e.visa, 3);
+                }
+                if (e.visa.subTitle == "Visa On Arrival" ||
+                    e.visa.subTitle!.toLowerCase().contains('passport')) {}
+              }).show();
+        } else {
+          AutoRouter.of(context).push(ChoosePassportRoute());
         }
       },
     );
@@ -672,23 +777,36 @@ class _DashboardPageState extends State<DashboardPage> {
               title: "Draft Application",
               desc: e.visa.subTitle == "Visa On Arrival"
                   ? "You have Incomplete Visa On Arrival Application. Do you want to start Visa Application?"
-                  : "You have Incomplete Visa Application. Do you want to continue from your latest draft?",
-              btnOkText:
-                  e.visa.subTitle == "Visa On Arrival" ? "Yes" : "Continue",
-              btnCancelText:
-                  e.visa.subTitle == "Visa On Arrival" ? "No" : "Create New",
+                  : e.visa.subTitle!.toLowerCase().contains('passport')
+                      ? "You have Incomplete Passport . Do you want to start Visa Application?"
+                      : "You have Incomplete Visa Application. Do you want to continue from your latest draft?",
+              btnOkText: e.visa.subTitle == "Visa On Arrival"
+                  ? "Yes"
+                  : e.visa.subTitle!.toLowerCase().contains('passport')
+                      ? "Yes"
+                      : "Continue",
+              btnCancelText: e.visa.subTitle == "Visa On Arrival"
+                  ? "No"
+                  : e.visa.subTitle!.toLowerCase().contains('passport')
+                      ? "No"
+                      : "Create New",
               btnOkOnPress: () {
                 if (e.visa.subTitle == "Visa On Arrival") {
-                  dashboardCubit.deleteSingleData(e.visa, false);
+                  dashboardCubit.deleteSingleData(e.visa, 1);
+                } else if (e.visa.subTitle!
+                    .toLowerCase()
+                    .contains('passport')) {
+                  dashboardCubit.deleteSinglePassport(e.visa, 1);
                 } else {
                   AutoRouter.of(context).popAndPush(PersonalInformation1Route(
                       firebaseDocId: e.visa.firebaseDocId!));
                 }
               },
               btnCancelOnPress: () {
-                if (e.visa.subTitle == "Visa On Arrival") {
+                if (e.visa.subTitle == "Visa On Arrival" ||
+                    e.visa.subTitle!.toLowerCase().contains('passport')) {
                 } else {
-                  dashboardCubit.deleteSingleData(e.visa, false);
+                  dashboardCubit.deleteSingleData(e.visa, 1);
                 }
               }).show();
         } else {

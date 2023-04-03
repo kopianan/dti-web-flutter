@@ -4,6 +4,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dti_web/application/app_list/app_list_cubit.dart';
 import 'package:dti_web/application/auth/auth_cubit.dart';
+import 'package:dti_web/application/timer/timer_cubit.dart';
 import 'package:dti_web/core/widgets/auth_footer_widget.dart';
 import 'package:dti_web/core/widgets/loading_primary_button.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
@@ -41,15 +42,20 @@ class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          getIt<AppListCubit>().getUserApplication(); 
+      floatingActionButton: BlocBuilder<AuthCubit, AuthState>(
+        builder: (context, state) {
+          return FloatingActionButton(
+            onPressed: () {
+              authCubit.loginWithEmailAndPassword(
+                  'kopianandev@gmail.com', '123456');
+            },
+          );
         },
       ),
       appBar: kDebugMode
           ? AppBar(
               backgroundColor: Colors.red,
-              title: Text("TESTING NOW V.2.1"),
+              title: const Text("TESTING NOW V.3.0 + Passport"),
             )
           : null,
       body: BlocProvider(
@@ -96,7 +102,7 @@ class _SignInPageState extends State<SignInPage> {
               },
               onLoginSuccess: (e) {
                 //get user data first.
-
+                getIt<TimerCubit>().startTimer();
                 context.router.replaceAll([const DashboardRoute()]);
               },
               onLoginSuccessWithoutPhoneNumber: (e) {

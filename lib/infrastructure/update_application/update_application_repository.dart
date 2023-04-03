@@ -57,7 +57,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
       });
 
       final dataImage = await dio.post(
-        '${dotenv.env['BASE_URL']}/passport/file/upload',
+        '${dotenv.env['BASE_URL']}/passport/selfie/${visa.firebaseDocId}',
         options: Options(headers: {'Authorization': 'Bearer $token'}),
         data: formData,
       );

@@ -112,28 +112,53 @@ class _ApplicationCardPageState extends State<ApplicationCardPage> {
                                                     ScreenUtil().screenWidth /
                                                         4,
                                                 title: "Draft Passport",
-                                                body: const Center(
-                                                  child: Text(
-                                                    "You have Incomplete Passport Application. Do you want to continue from your latest draft? ",
-                                                    textAlign: TextAlign.center,
-                                                  ),
-                                                ),
+                                                desc: element.subTitle ==
+                                                        "Visa On Arrival"
+                                                    ? "You have Incomplete Visa On Arrival Application. Do you want to continue from your latest draft?"
+                                                    : element.title!
+                                                            .toLowerCase()
+                                                            .contains(
+                                                                'passport')
+                                                        ? "You have Incomplete Passport. Do you want to continue from your latest draft?"
+                                                        : "You have Incomplete Visa Application. Do you want to continue from your latest draft?",
                                                 btnOkText: "Continue",
                                                 btnCancelText: "Delete",
                                                 btnOkOnPress: () async {
                                                   await AutoRouter.of(context)
                                                       .pop();
-                                                  AutoRouter.of(context).push(
-                                                      PassportPersonalParticularRoute(
-                                                          firebaseDocId: element
-                                                              .firebaseDocId!));
+                                                  if (element.title!
+                                                      .toLowerCase()
+                                                      .contains('passport')) {
+                                                    AutoRouter.of(context).push(
+                                                        PassportPersonalParticularRoute(
+                                                            firebaseDocId: element
+                                                                .firebaseDocId!));
+                                                  } else {
+                                                    AutoRouter.of(context).push(
+                                                        PersonalInformation1Route(
+                                                            firebaseDocId: element
+                                                                .firebaseDocId!));
+                                                  }
                                                 },
                                                 btnCancelOnPress: () async {
                                                   await AutoRouter.of(context)
                                                       .pop();
-                                                  widget.dashboardCubit
-                                                      .deleteSinglePassport(
-                                                          element, null);
+                                                  if (element.subTitle ==
+                                                      "Visa On Arrival") {
+                                                    widget.dashboardCubit
+                                                        .deleteSingleData(
+                                                            element, 2);
+                                                  } else if (element.title!
+                                                      .toLowerCase()
+                                                      .contains('passport')) {
+                                                    widget.dashboardCubit
+                                                        .deleteSinglePassport(
+                                                            element, 3);
+                                                  } else {
+                                                    widget.dashboardCubit
+                                                        .deleteSingleData(
+                                                            element, 1);
+                                                  }
                                                 },
                                               ).show();
                                             } else {
@@ -159,28 +184,53 @@ class _ApplicationCardPageState extends State<ApplicationCardPage> {
                                                     ScreenUtil().screenWidth /
                                                         4,
                                                 title: "Draft Application",
-                                                body: const Center(
-                                                  child: Text(
-                                                    "You have Incomplete Visa Application. Do you want to continue from your latest draft? ",
-                                                    textAlign: TextAlign.center,
-                                                  ),
-                                                ),
+                                                desc: element.subTitle ==
+                                                        "Visa On Arrival"
+                                                    ? "You have Incomplete Visa On Arrival Application. Do you want to continue from your latest draft?"
+                                                    : element.title!
+                                                            .toLowerCase()
+                                                            .contains(
+                                                                'passport')
+                                                        ? "You have Incomplete Passport. Do you want to continue from your latest draft?"
+                                                        : "You have Incomplete Visa Application. Do you want to continue from your latest draft?",
                                                 btnOkText: "Continue",
                                                 btnCancelText: "Delete",
                                                 btnOkOnPress: () async {
                                                   await AutoRouter.of(context)
                                                       .pop();
-                                                  AutoRouter.of(context).push(
-                                                      PersonalInformation1Route(
-                                                          firebaseDocId: element
-                                                              .firebaseDocId!));
+                                                  if (element.title!
+                                                      .toLowerCase()
+                                                      .contains('passport')) {
+                                                    AutoRouter.of(context).push(
+                                                        PassportPersonalParticularRoute(
+                                                            firebaseDocId: element
+                                                                .firebaseDocId!));
+                                                  } else {
+                                                    AutoRouter.of(context).push(
+                                                        PersonalInformation1Route(
+                                                            firebaseDocId: element
+                                                                .firebaseDocId!));
+                                                  }
                                                 },
                                                 btnCancelOnPress: () async {
                                                   await AutoRouter.of(context)
                                                       .pop();
-                                                  widget.dashboardCubit
-                                                      .deleteSingleData(
-                                                          element, null);
+                                                  if (element.subTitle ==
+                                                      "Visa On Arrival") {
+                                                    widget.dashboardCubit
+                                                        .deleteSingleData(
+                                                            element, 2);
+                                                  } else if (element.title!
+                                                      .toLowerCase()
+                                                      .contains('passport')) {
+                                                    widget.dashboardCubit
+                                                        .deleteSinglePassport(
+                                                            element, 3);
+                                                  } else {
+                                                    widget.dashboardCubit
+                                                        .deleteSingleData(
+                                                            element, 1);
+                                                  }
                                                 },
                                               ).show();
                                             } else {

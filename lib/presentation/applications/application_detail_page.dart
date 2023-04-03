@@ -412,6 +412,7 @@ class _SuccessBodyState extends State<SuccessBody> {
                                     if (e.attachment != null &&
                                         e.attachment!.contains('.doc')) {
                                       // file is document, not picture
+
                                       AutoRouter.of(context).navigate(
                                         DTIPdfViewerRoute(
                                           imageUrl: filtered.single,

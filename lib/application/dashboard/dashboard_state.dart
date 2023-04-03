@@ -8,7 +8,7 @@ class DashboardState with _$DashboardState {
   const factory DashboardState.onGetSingleData(SimpleVisaModel visa) =
       _OnGetSingleData;
   const factory DashboardState.onDeleteSingleData(
-      SimpleVisaModel deletedVisa, bool? isOnArrival) = _OnDeleteSingleData;
-  const factory DashboardState.onDeletePassport(SimpleVisaModel deletedVisa) =
+      SimpleVisaModel deletedVisa, int appType) = _OnDeleteSingleData;
+  const factory DashboardState.onDeletePassport(SimpleVisaModel deletedVisa, int appType) =
       _OnDeletePassport;
 }

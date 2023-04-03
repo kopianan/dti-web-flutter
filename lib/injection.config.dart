@@ -11,17 +11,18 @@ import 'package:get_it/get_it.dart' as _i1;
 import 'package:google_sign_in/google_sign_in.dart' as _i7;
 import 'package:injectable/injectable.dart' as _i2;
 
-import 'application/app_list/app_list_cubit.dart' as _i25;
+import 'application/app_list/app_list_cubit.dart' as _i26;
 import 'application/application_cubit.dart' as _i3;
-import 'application/auth/auth_cubit.dart' as _i26;
-import 'application/dashboard/dashboard_cubit.dart' as _i27;
+import 'application/auth/auth_cubit.dart' as _i27;
+import 'application/dashboard/dashboard_cubit.dart' as _i28;
 import 'application/document/document_cubit.dart' as _i5;
 import 'application/other/other_cubit.dart' as _i20;
 import 'application/payment/payment_cubit.dart' as _i21;
 import 'application/questionnaire_cubit.dart' as _i22;
 import 'application/startup/startup_cubit.dart' as _i23;
-import 'application/update_application/update_application_cubit.dart' as _i24;
-import 'core/firebase_injectable_module.dart' as _i28;
+import 'application/timer/timer_cubit.dart' as _i24;
+import 'application/update_application/update_application_cubit.dart' as _i25;
+import 'core/firebase_injectable_module.dart' as _i29;
 import 'domain/app_list/i_app_list.dart' as _i8;
 import 'domain/auth/i_auth.dart' as _i10;
 import 'domain/dashboard/i_dashboard.dart' as _i12;
@@ -70,13 +71,14 @@ _i1.GetIt $initGetIt(
   gh.factory<_i21.PaymentCubit>(() => _i21.PaymentCubit(get<_i16.IPayment>()));
   gh.lazySingleton<_i22.QuestionnaireCubit>(() => _i22.QuestionnaireCubit());
   gh.factory<_i23.StartupCubit>(() => _i23.StartupCubit());
-  gh.factory<_i24.UpdateApplicationCubit>(
-      () => _i24.UpdateApplicationCubit(get<_i18.IUpdateApplication>()));
-  gh.factory<_i25.AppListCubit>(() => _i25.AppListCubit(get<_i8.IAppList>()));
-  gh.factory<_i26.AuthCubit>(() => _i26.AuthCubit(get<_i10.IAuth>()));
-  gh.factory<_i27.DashboardCubit>(
-      () => _i27.DashboardCubit(get<_i12.IDashboard>()));
+  gh.lazySingleton<_i24.TimerCubit>(() => _i24.TimerCubit(get<_i14.IOther>()));
+  gh.factory<_i25.UpdateApplicationCubit>(
+      () => _i25.UpdateApplicationCubit(get<_i18.IUpdateApplication>()));
+  gh.factory<_i26.AppListCubit>(() => _i26.AppListCubit(get<_i8.IAppList>()));
+  gh.factory<_i27.AuthCubit>(() => _i27.AuthCubit(get<_i10.IAuth>()));
+  gh.factory<_i28.DashboardCubit>(
+      () => _i28.DashboardCubit(get<_i12.IDashboard>()));
   return get;
 }
 
-class _$FirebaseInjectableModule extends _i28.FirebaseInjectableModule {}
+class _$FirebaseInjectableModule extends _i29.FirebaseInjectableModule {}

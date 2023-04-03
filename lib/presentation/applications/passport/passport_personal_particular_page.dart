@@ -64,7 +64,7 @@ class _PassportPersonalParticularPageState
               //close loading dialog
               EasyLoading.dismiss();
               initialDateOfBirth = DateConverter.convertDateDefault(
-                  e.singleResponse.visaApplicationModel!.dateOfBirth!);
+                  e.singleResponse.visaApplicationModel?.dateOfBirth);
               context
                   .read<ApplicationCubit>()
                   .setupApplication(e.singleResponse.visaApplicationModel!);

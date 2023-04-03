@@ -117,20 +117,24 @@ class _LeftSideState extends State<LeftSide> {
                                   .then((value) {
                                 EasyLoading.dismiss();
                                 //check if the apps type is passport
-                                AutoRouter.of(context)
-                                    .push(ApplicationDetailRoute(
-                                  firebaseDocId: docState.visa!.firebaseDocId!,
-                                ));
+                                if (docState.visa!.subTitle!
+                                    .toLowerCase()
+                                    .contains('passport')) {
+                                  AutoRouter.of(context).push(SelfieRoute());
+                                } else {
+                                  AutoRouter.of(context)
+                                      .push(ApplicationDetailRoute(
+                                    firebaseDocId:
+                                        docState.visa!.firebaseDocId!,
+                                  ));
+                                }
                               });
                             },
                             label: "Continue",
                             labelStyle: const TextStyle(fontSize: 20),
                           )
                         : PrimaryButton(
-                            onClick: () {
-                              //TODO
-                              AutoRouter.of(context).push(SelfieRoute());
-                            },
+                            onClick: () {},
                             bgColor: Colors.grey,
                             label: "Continue",
                             labelStyle: const TextStyle(fontSize: 20),
