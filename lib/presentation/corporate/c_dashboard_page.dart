@@ -109,8 +109,9 @@ class _CDashboardPageState extends State<CDashboardPage> {
             BannerHomeWidget()
           ],
         )),
+        Container(color: Colors.blue),
     ApplicationPage(),
-    Container(color: Colors.blue),
+    
   ];
 
   List<NavigationRailDestination> _menuList() => [

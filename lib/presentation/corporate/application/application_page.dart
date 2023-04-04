@@ -1,4 +1,3 @@
-import 'package:data_table_2/data_table_2.dart';
 import 'package:dti_web/application/app_list/app_list_cubit.dart';
 import 'package:dti_web/domain/core/simple_visa_model.dart';
 import 'package:dti_web/injection.dart';
@@ -39,71 +38,32 @@ class _ApplicationPageState extends State<ApplicationPage> {
                       return Container();
                     },
                     onGetUsersApplication: (e) {
-                      return DataTable2(
-                          columnSpacing: 12,
-                          horizontalMargin: 12,
-                          minWidth: 600,
-                          smRatio: 0.75,
-                          lmRatio: 1.5,
-                          columns: const [
-                            DataColumn2(
-                              size: ColumnSize.S,
-                              label: Text('Column A'),
-                            ),
-                            DataColumn(
-                              label: Text('Column B'),
-                            ),
-                            DataColumn(
-                              label: Text('Column C'),
-                            ),
-                            DataColumn(
-                              label: Text('Column D'),
-                            ),
-                            DataColumn2(
-                              label: Text('Column NUMBERS'),
-                              numeric: true,
-                              size: ColumnSize.L,
-                            ),
-                          ],
-                          rows: List<DataRow>.generate(
-                              100,
-                              (index) => DataRow(cells: [
-                                    DataCell(Text('A' * (10 - index % 10))),
-                                    DataCell(
-                                        Text('B' * (10 - (index + 5) % 10))),
-                                    DataCell(
-                                        Text('C' * (15 - (index + 5) % 10))),
-                                    DataCell(
-                                        Text('D' * (15 - (index + 10) % 10))),
-                                    DataCell(
-                                        Text(((index + 0.1) * 25.4).toString()))
-                                  ])));
-                      // return Container(
-                      //     width: double.infinity,
-                      //     child: DataTable2(
-                      //         columnSpacing: 12,
-                      //         horizontalMargin: 12,
-                      //         minWidth: 600,
-
-                      //         smRatio: 0.75,
-                      //         lmRatio: 1.5,
-                      //         decoration: BoxDecoration(
-                      //           border: Border.all(
-                      //             color: Colors.grey.shade300,
-                      //             width: 1.0,
-                      //             style: BorderStyle.solid,
-                      //           ),
-                      //         ),
-                      //         columns: [
-                      //           applicationHeaderColumn(label: "Email"),
-                      //           applicationHeaderColumn(label: "Visa Type"),
-                      //           applicationHeaderColumn(label: "Status"),
-                      //           applicationHeaderColumn(
-                      //               label: "Reference Number"),
-                      //         ],
-                      //         rows: e.apps
-                      //             .map((e) => applicationDataRow(e))
-                      //             .toList()));
+                      return Container(
+                          width: double.infinity,
+                          child: SingleChildScrollView(
+                            child: DataTable(
+                                columnSpacing: 12,
+                                horizontalMargin: 12,
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: Colors.grey.shade300,
+                                    width: 1.0,
+                                    style: BorderStyle.solid,
+                                  ),
+                                ),
+                                columns: [
+                                  applicationHeaderColumn(label: "No"),
+                                  applicationHeaderColumn(label: "Email"),
+                                  applicationHeaderColumn(label: "Visa Type"),
+                                  applicationHeaderColumn(label: "Status"),
+                                  applicationHeaderColumn(
+                                      label: "Reference Number"),
+                                ],
+                                rows: e.apps
+                                    .map((value) => applicationDataRow(
+                                        value, e.apps.indexOf(value)))
+                                    .toList()),
+                          ));
                     },
                   );
                 },
@@ -115,8 +75,9 @@ class _ApplicationPageState extends State<ApplicationPage> {
     );
   }
 
-  DataRow2 applicationDataRow(SimpleVisaModel visa) {
-    return DataRow2(cells: [
+  DataRow applicationDataRow(SimpleVisaModel visa, int index) {
+    return DataRow(selected: index % 2 == 0 ? true : false, cells: [
+      DataCell(Text((index + 1).toString())),
       DataCell(Text(visa.title ?? "")),
       DataCell(Text(visa.subTitle ?? "")),
       DataCell(Text(visa.status ?? "")),
@@ -124,8 +85,8 @@ class _ApplicationPageState extends State<ApplicationPage> {
     ]);
   }
 
-  DataColumn2 applicationHeaderColumn({required String label}) {
-    return DataColumn2(
+  DataColumn applicationHeaderColumn({required String label}) {
+    return DataColumn(
       label: Padding(
         padding: EdgeInsets.symmetric(vertical: 16.0),
         child: Text(
