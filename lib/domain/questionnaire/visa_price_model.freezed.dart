@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'visa_price_model.dart';
 
@@ -32,29 +32,32 @@ mixin _$VisaPriceModel {
 abstract class $VisaPriceModelCopyWith<$Res> {
   factory $VisaPriceModelCopyWith(
           VisaPriceModel value, $Res Function(VisaPriceModel) then) =
-      _$VisaPriceModelCopyWithImpl<$Res>;
+      _$VisaPriceModelCopyWithImpl<$Res, VisaPriceModel>;
+  @useResult
   $Res call({int? usd});
 }
 
 /// @nodoc
-class _$VisaPriceModelCopyWithImpl<$Res>
+class _$VisaPriceModelCopyWithImpl<$Res, $Val extends VisaPriceModel>
     implements $VisaPriceModelCopyWith<$Res> {
   _$VisaPriceModelCopyWithImpl(this._value, this._then);
 
-  final VisaPriceModel _value;
   // ignore: unused_field
-  final $Res Function(VisaPriceModel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? usd = freezed,
   }) {
     return _then(_value.copyWith(
-      usd: usd == freezed
+      usd: freezed == usd
           ? _value.usd
           : usd // ignore: cast_nullable_to_non_nullable
               as int?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -65,26 +68,25 @@ abstract class _$$_VisaPriceModelCopyWith<$Res>
           _$_VisaPriceModel value, $Res Function(_$_VisaPriceModel) then) =
       __$$_VisaPriceModelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({int? usd});
 }
 
 /// @nodoc
 class __$$_VisaPriceModelCopyWithImpl<$Res>
-    extends _$VisaPriceModelCopyWithImpl<$Res>
+    extends _$VisaPriceModelCopyWithImpl<$Res, _$_VisaPriceModel>
     implements _$$_VisaPriceModelCopyWith<$Res> {
   __$$_VisaPriceModelCopyWithImpl(
       _$_VisaPriceModel _value, $Res Function(_$_VisaPriceModel) _then)
-      : super(_value, (v) => _then(v as _$_VisaPriceModel));
+      : super(_value, _then);
 
-  @override
-  _$_VisaPriceModel get _value => super._value as _$_VisaPriceModel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? usd = freezed,
   }) {
     return _then(_$_VisaPriceModel(
-      usd: usd == freezed
+      usd: freezed == usd
           ? _value.usd
           : usd // ignore: cast_nullable_to_non_nullable
               as int?,
@@ -113,16 +115,16 @@ class _$_VisaPriceModel implements _VisaPriceModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_VisaPriceModel &&
-            const DeepCollectionEquality().equals(other.usd, usd));
+            (identical(other.usd, usd) || other.usd == usd));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(usd));
+  int get hashCode => Object.hash(runtimeType, usd);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_VisaPriceModelCopyWith<_$_VisaPriceModel> get copyWith =>
       __$$_VisaPriceModelCopyWithImpl<_$_VisaPriceModel>(this, _$identity);
 

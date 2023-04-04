@@ -17,7 +17,7 @@ class DTIPdfViewerPage extends StatelessWidget {
   final Uint8List? bytesImage;
   const DTIPdfViewerPage(
       {super.key,
-      required this.imageUrl,
+    required this.imageUrl,
       this.isNetwork = false,
       this.bytesImage});
 

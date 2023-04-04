@@ -33,7 +33,11 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
             state.maybeMap(
               orElse: () {},
               authorized: (e) {
-                AutoRouter.of(context).replaceAll([DashboardRoute()]);
+                if (e.userData.isAgent) {
+                  AutoRouter.of(context).replaceAll([CDashboardRoute()]);
+                } else {
+                  AutoRouter.of(context).replaceAll([DashboardRoute()]);
+                }
               },
               unAuthorized: (e) {
                 AutoRouter.of(context).replaceAll([SignInRoute()]);

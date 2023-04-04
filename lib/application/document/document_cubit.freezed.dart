@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'document_cubit.dart';
 
@@ -42,7 +42,8 @@ mixin _$DocumentState {
 abstract class $DocumentStateCopyWith<$Res> {
   factory $DocumentStateCopyWith(
           DocumentState value, $Res Function(DocumentState) then) =
-      _$DocumentStateCopyWithImpl<$Res>;
+      _$DocumentStateCopyWithImpl<$Res, DocumentState>;
+  @useResult
   $Res call(
       {VisaApplicationModel? visa,
       List<DocumentDataModel>? docs,
@@ -63,21 +64,23 @@ abstract class $DocumentStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$DocumentStateCopyWithImpl<$Res>
+class _$DocumentStateCopyWithImpl<$Res, $Val extends DocumentState>
     implements $DocumentStateCopyWith<$Res> {
   _$DocumentStateCopyWithImpl(this._value, this._then);
 
-  final DocumentState _value;
   // ignore: unused_field
-  final $Res Function(DocumentState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? visa = freezed,
     Object? docs = freezed,
-    Object? initialDocs = freezed,
+    Object? initialDocs = null,
     Object? selectedIndex = freezed,
-    Object? masterListData = freezed,
+    Object? masterListData = null,
     Object? selectedMasterListData = freezed,
     Object? deletedImagesName = freezed,
     Object? selectedDocument = freezed,
@@ -85,83 +88,85 @@ class _$DocumentStateCopyWithImpl<$Res>
     Object? selfie = freezed,
     Object? deletedSelfiePhoto = freezed,
     Object? selectedDataType = freezed,
-    Object? isAllRead = freezed,
+    Object? isAllRead = null,
   }) {
     return _then(_value.copyWith(
-      visa: visa == freezed
+      visa: freezed == visa
           ? _value.visa
           : visa // ignore: cast_nullable_to_non_nullable
               as VisaApplicationModel?,
-      docs: docs == freezed
+      docs: freezed == docs
           ? _value.docs
           : docs // ignore: cast_nullable_to_non_nullable
               as List<DocumentDataModel>?,
-      initialDocs: initialDocs == freezed
+      initialDocs: null == initialDocs
           ? _value.initialDocs
           : initialDocs // ignore: cast_nullable_to_non_nullable
               as List<DocumentDataModel>,
-      selectedIndex: selectedIndex == freezed
+      selectedIndex: freezed == selectedIndex
           ? _value.selectedIndex
           : selectedIndex // ignore: cast_nullable_to_non_nullable
               as int?,
-      masterListData: masterListData == freezed
+      masterListData: null == masterListData
           ? _value.masterListData
           : masterListData // ignore: cast_nullable_to_non_nullable
               as List<Map<String, dynamic>>,
-      selectedMasterListData: selectedMasterListData == freezed
+      selectedMasterListData: freezed == selectedMasterListData
           ? _value.selectedMasterListData
           : selectedMasterListData // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-      deletedImagesName: deletedImagesName == freezed
+      deletedImagesName: freezed == deletedImagesName
           ? _value.deletedImagesName
           : deletedImagesName // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-      selectedDocument: selectedDocument == freezed
+      selectedDocument: freezed == selectedDocument
           ? _value.selectedDocument
           : selectedDocument // ignore: cast_nullable_to_non_nullable
               as DocumentDataModel?,
-      selectedDataCollection: selectedDataCollection == freezed
+      selectedDataCollection: freezed == selectedDataCollection
           ? _value.selectedDataCollection
           : selectedDataCollection // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>?,
-      selfie: selfie == freezed
+      selfie: freezed == selfie
           ? _value.selfie
           : selfie // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>?,
-      deletedSelfiePhoto: deletedSelfiePhoto == freezed
+      deletedSelfiePhoto: freezed == deletedSelfiePhoto
           ? _value.deletedSelfiePhoto
           : deletedSelfiePhoto // ignore: cast_nullable_to_non_nullable
               as String?,
-      selectedDataType: selectedDataType == freezed
+      selectedDataType: freezed == selectedDataType
           ? _value.selectedDataType
           : selectedDataType // ignore: cast_nullable_to_non_nullable
               as int?,
-      isAllRead: isAllRead == freezed
+      isAllRead: null == isAllRead
           ? _value.isAllRead
           : isAllRead // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $VisaApplicationModelCopyWith<$Res>? get visa {
     if (_value.visa == null) {
       return null;
     }
 
     return $VisaApplicationModelCopyWith<$Res>(_value.visa!, (value) {
-      return _then(_value.copyWith(visa: value));
+      return _then(_value.copyWith(visa: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $DocumentDataModelCopyWith<$Res>? get selectedDocument {
     if (_value.selectedDocument == null) {
       return null;
     }
 
     return $DocumentDataModelCopyWith<$Res>(_value.selectedDocument!, (value) {
-      return _then(_value.copyWith(selectedDocument: value));
+      return _then(_value.copyWith(selectedDocument: value) as $Val);
     });
   }
 }
@@ -173,6 +178,7 @@ abstract class _$$_DocumentStateCopyWith<$Res>
           _$_DocumentState value, $Res Function(_$_DocumentState) then) =
       __$$_DocumentStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {VisaApplicationModel? visa,
       List<DocumentDataModel>? docs,
@@ -196,22 +202,20 @@ abstract class _$$_DocumentStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_DocumentStateCopyWithImpl<$Res>
-    extends _$DocumentStateCopyWithImpl<$Res>
+    extends _$DocumentStateCopyWithImpl<$Res, _$_DocumentState>
     implements _$$_DocumentStateCopyWith<$Res> {
   __$$_DocumentStateCopyWithImpl(
       _$_DocumentState _value, $Res Function(_$_DocumentState) _then)
-      : super(_value, (v) => _then(v as _$_DocumentState));
+      : super(_value, _then);
 
-  @override
-  _$_DocumentState get _value => super._value as _$_DocumentState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? visa = freezed,
     Object? docs = freezed,
-    Object? initialDocs = freezed,
+    Object? initialDocs = null,
     Object? selectedIndex = freezed,
-    Object? masterListData = freezed,
+    Object? masterListData = null,
     Object? selectedMasterListData = freezed,
     Object? deletedImagesName = freezed,
     Object? selectedDocument = freezed,
@@ -219,58 +223,58 @@ class __$$_DocumentStateCopyWithImpl<$Res>
     Object? selfie = freezed,
     Object? deletedSelfiePhoto = freezed,
     Object? selectedDataType = freezed,
-    Object? isAllRead = freezed,
+    Object? isAllRead = null,
   }) {
     return _then(_$_DocumentState(
-      visa: visa == freezed
+      visa: freezed == visa
           ? _value.visa
           : visa // ignore: cast_nullable_to_non_nullable
               as VisaApplicationModel?,
-      docs: docs == freezed
+      docs: freezed == docs
           ? _value.docs
           : docs // ignore: cast_nullable_to_non_nullable
               as List<DocumentDataModel>?,
-      initialDocs: initialDocs == freezed
+      initialDocs: null == initialDocs
           ? _value.initialDocs
           : initialDocs // ignore: cast_nullable_to_non_nullable
               as List<DocumentDataModel>,
-      selectedIndex: selectedIndex == freezed
+      selectedIndex: freezed == selectedIndex
           ? _value.selectedIndex
           : selectedIndex // ignore: cast_nullable_to_non_nullable
               as int?,
-      masterListData: masterListData == freezed
+      masterListData: null == masterListData
           ? _value.masterListData
           : masterListData // ignore: cast_nullable_to_non_nullable
               as List<Map<String, dynamic>>,
-      selectedMasterListData: selectedMasterListData == freezed
+      selectedMasterListData: freezed == selectedMasterListData
           ? _value.selectedMasterListData
           : selectedMasterListData // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-      deletedImagesName: deletedImagesName == freezed
+      deletedImagesName: freezed == deletedImagesName
           ? _value.deletedImagesName
           : deletedImagesName // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-      selectedDocument: selectedDocument == freezed
+      selectedDocument: freezed == selectedDocument
           ? _value.selectedDocument
           : selectedDocument // ignore: cast_nullable_to_non_nullable
               as DocumentDataModel?,
-      selectedDataCollection: selectedDataCollection == freezed
+      selectedDataCollection: freezed == selectedDataCollection
           ? _value.selectedDataCollection
           : selectedDataCollection // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>?,
-      selfie: selfie == freezed
+      selfie: freezed == selfie
           ? _value.selfie
           : selfie // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>?,
-      deletedSelfiePhoto: deletedSelfiePhoto == freezed
+      deletedSelfiePhoto: freezed == deletedSelfiePhoto
           ? _value.deletedSelfiePhoto
           : deletedSelfiePhoto // ignore: cast_nullable_to_non_nullable
               as String?,
-      selectedDataType: selectedDataType == freezed
+      selectedDataType: freezed == selectedDataType
           ? _value.selectedDataType
           : selectedDataType // ignore: cast_nullable_to_non_nullable
               as int?,
-      isAllRead: isAllRead == freezed
+      isAllRead: null == isAllRead
           ? _value.isAllRead
           : isAllRead // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -358,49 +362,51 @@ class _$_DocumentState with DiagnosticableTreeMixin implements _DocumentState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_DocumentState &&
-            const DeepCollectionEquality().equals(other.visa, visa) &&
+            (identical(other.visa, visa) || other.visa == visa) &&
             const DeepCollectionEquality().equals(other.docs, docs) &&
             const DeepCollectionEquality()
                 .equals(other.initialDocs, initialDocs) &&
-            const DeepCollectionEquality()
-                .equals(other.selectedIndex, selectedIndex) &&
+            (identical(other.selectedIndex, selectedIndex) ||
+                other.selectedIndex == selectedIndex) &&
             const DeepCollectionEquality()
                 .equals(other.masterListData, masterListData) &&
             const DeepCollectionEquality()
                 .equals(other.selectedMasterListData, selectedMasterListData) &&
             const DeepCollectionEquality()
                 .equals(other.deletedImagesName, deletedImagesName) &&
-            const DeepCollectionEquality()
-                .equals(other.selectedDocument, selectedDocument) &&
+            (identical(other.selectedDocument, selectedDocument) ||
+                other.selectedDocument == selectedDocument) &&
             const DeepCollectionEquality()
                 .equals(other.selectedDataCollection, selectedDataCollection) &&
             const DeepCollectionEquality().equals(other.selfie, selfie) &&
-            const DeepCollectionEquality()
-                .equals(other.deletedSelfiePhoto, deletedSelfiePhoto) &&
-            const DeepCollectionEquality()
-                .equals(other.selectedDataType, selectedDataType) &&
-            const DeepCollectionEquality().equals(other.isAllRead, isAllRead));
+            (identical(other.deletedSelfiePhoto, deletedSelfiePhoto) ||
+                other.deletedSelfiePhoto == deletedSelfiePhoto) &&
+            (identical(other.selectedDataType, selectedDataType) ||
+                other.selectedDataType == selectedDataType) &&
+            (identical(other.isAllRead, isAllRead) ||
+                other.isAllRead == isAllRead));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(visa),
+      visa,
       const DeepCollectionEquality().hash(docs),
       const DeepCollectionEquality().hash(initialDocs),
-      const DeepCollectionEquality().hash(selectedIndex),
+      selectedIndex,
       const DeepCollectionEquality().hash(masterListData),
       const DeepCollectionEquality().hash(selectedMasterListData),
       const DeepCollectionEquality().hash(deletedImagesName),
-      const DeepCollectionEquality().hash(selectedDocument),
+      selectedDocument,
       const DeepCollectionEquality().hash(selectedDataCollection),
       const DeepCollectionEquality().hash(selfie),
-      const DeepCollectionEquality().hash(deletedSelfiePhoto),
-      const DeepCollectionEquality().hash(selectedDataType),
-      const DeepCollectionEquality().hash(isAllRead));
+      deletedSelfiePhoto,
+      selectedDataType,
+      isAllRead);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_DocumentStateCopyWith<_$_DocumentState> get copyWith =>
       __$$_DocumentStateCopyWithImpl<_$_DocumentState>(this, _$identity);
 }

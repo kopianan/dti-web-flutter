@@ -68,7 +68,8 @@ class AuthCubit extends Cubit<AuthState> {
         if (isExpired) {
           emit(const AuthState.unAuthorized());
         } else {
-          emit(const AuthState.authorized());
+          final user = storage.getLocalUserData();
+          emit( AuthState.authorized(user!));
         }
       } else {
         emit(const AuthState.unAuthorized());
@@ -99,7 +100,13 @@ class AuthCubit extends Cubit<AuthState> {
       (l) => emit(AuthState.error(l)),
       (r) async {
         await storage.saveToken(r);
-        emit(AuthState.onLoginSuccess(r));
+        final result = await iAuth.getUserData();
+        result.fold(
+          (l) => null,
+          (userData) {
+            emit(AuthState.onLoginSuccess(r, userData.isAgent));
+          },
+        );
       },
     );
   }
@@ -117,15 +124,15 @@ class AuthCubit extends Cubit<AuthState> {
         if (r.isNewUser) {
           emit(AuthState.onRegisterSuccess(r.token));
         } else {
-          //get user data
           final result = await iAuth.getUserData();
           result.fold(
             (l) => null,
             (userData) {
               if (userData.mobileNumber != null) {
-                emit(AuthState.onLoginSuccess(r.token));
+                emit(AuthState.onLoginSuccess(r.token, userData.isAgent));
               } else {
-                emit(AuthState.onLoginSuccessWithoutPhoneNumber(r.token));
+                emit(AuthState.onLoginSuccessWithoutPhoneNumber(
+                    r.token, userData.isAgent));
               }
             },
           );
@@ -144,7 +151,7 @@ class AuthCubit extends Cubit<AuthState> {
       (l) => emit(AuthState.onError(l)),
       (r) async {
         await storage.saveToken(r);
-        emit(AuthState.onLoginSuccess(r));
+        emit(AuthState.onLoginSuccess(r, false));
       },
     );
   }

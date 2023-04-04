@@ -10,12 +10,13 @@ class AuthState with _$AuthState {
 
   //LOGIN
   const factory AuthState.onSignOut() = _OnSignOut;
-  const factory AuthState.authorized() = _Authorized;
+  const factory AuthState.authorized(UserData userData)= _Authorized;
   const factory AuthState.unAuthorized() = _UnAuthorized;
   const factory AuthState.isOpenFromPhone(String userAgent) = _IsOpenFromPhone;
-  const factory AuthState.onLoginSuccess(String token) = _OnLoginSuccess;
-  const factory AuthState.onLoginSuccessWithoutPhoneNumber(String token) =
-      _OnLoginSuccessWithoutPhoneNumber;
+  const factory AuthState.onLoginSuccess(String token, bool isAgent) =
+      _OnLoginSuccess;
+  const factory AuthState.onLoginSuccessWithoutPhoneNumber(
+      String token, bool isAgent) = _OnLoginSuccessWithoutPhoneNumber;
   const factory AuthState.onRegisterSuccess(String token) = _OnRegisterSuccess;
   const factory AuthState.onResetPassword(String message) = _OnResetPassword;
   const factory AuthState.onGetUserData(UserData userData) = _OnGetUserData;

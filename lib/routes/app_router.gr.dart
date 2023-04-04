@@ -17,6 +17,12 @@ class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    CDashboardRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const CDashboardPage(),
+      );
+    },
     SplashScreenRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
@@ -322,6 +328,10 @@ class _$AppRouter extends RootStackRouter {
   @override
   List<RouteConfig> get routes => [
         RouteConfig(
+          CDashboardRoute.name,
+          path: '/cdashboard',
+        ),
+        RouteConfig(
           SplashScreenRoute.name,
           path: '/',
         ),
@@ -454,6 +464,18 @@ class _$AppRouter extends RootStackRouter {
           path: '/create-new-password',
         ),
       ];
+}
+
+/// generated route for
+/// [CDashboardPage]
+class CDashboardRoute extends PageRouteInfo<void> {
+  const CDashboardRoute()
+      : super(
+          CDashboardRoute.name,
+          path: '/cdashboard',
+        );
+
+  static const String name = 'CDashboardRoute';
 }
 
 /// generated route for

@@ -69,17 +69,17 @@ class _SignInPageState extends State<SignInPage> {
                   orElse: () {},
                   authError: (e) {
                     AwesomeDialog(
-                            width: ScreenUtil().screenWidth / 2,
-                            padding: REdgeInsets.symmetric(horizontal: 20),
-                            context: context,
-                            dialogType: DialogType.warning,
-                            title: "Warning",
-                            desc: e.message,
-                            btnCancelOnPress: () {
-                              AutoRouter.of(context).pop();
-                            },
-                            btnCancelText: "Try again")
-                        .show();
+                      width: ScreenUtil().screenWidth / 2,
+                      padding: REdgeInsets.symmetric(horizontal: 20),
+                      context: context,
+                      dialogType: DialogType.warning,
+                      title: "Warning",
+                      desc: e.message,
+                      btnCancelOnPress: () {
+                        AutoRouter.of(context).pop();
+                      },
+                      btnCancelText: "Try again",
+                    ).show();
                   },
                 );
               },
@@ -102,8 +102,13 @@ class _SignInPageState extends State<SignInPage> {
               },
               onLoginSuccess: (e) {
                 //get user data first.
-                getIt<TimerCubit>().startTimer();
-                context.router.replaceAll([const DashboardRoute()]);
+
+                // getIt<TimerCubit>().startTimer();
+                if (e.isAgent) {
+                  context.router.replaceAll([const CDashboardRoute()]);
+                } else {
+                  context.router.replaceAll([const DashboardRoute()]);
+                }
               },
               onLoginSuccessWithoutPhoneNumber: (e) {
                 context.router.replaceAll([NumberRegistrationRoute()]);

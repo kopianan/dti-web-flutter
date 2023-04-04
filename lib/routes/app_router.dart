@@ -52,12 +52,10 @@ part "app_router.gr.dart";
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
-    // AutoRoute(
-    //   initial: true,
-    //   path: '/',
-    //   // path: '/asdf',
-    //   page: CDashboardPage,
-    // ),
+    AutoRoute(
+      path: CDashboardPage.routeName,
+      page: CDashboardPage,
+    ),
     AutoRoute(
       initial: true,
       path: '/',
