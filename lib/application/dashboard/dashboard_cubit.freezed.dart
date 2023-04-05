@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'dashboard_cubit.dart';
 
@@ -30,13 +30,13 @@ mixin _$DashboardState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(Failures err)? error,
-    TResult? Function(SimpleVisaModel visa)? onGetSingleData,
-    TResult? Function(SimpleVisaModel deletedVisa, int appType)?
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(Failures err)? error,
+    TResult Function(SimpleVisaModel visa)? onGetSingleData,
+    TResult Function(SimpleVisaModel deletedVisa, int appType)?
         onDeleteSingleData,
-    TResult? Function(SimpleVisaModel deletedVisa, int appType)?
+    TResult Function(SimpleVisaModel deletedVisa, int appType)?
         onDeletePassport,
   }) =>
       throw _privateConstructorUsedError;
@@ -65,12 +65,12 @@ mixin _$DashboardState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_OnGetSingleData value)? onGetSingleData,
-    TResult? Function(_OnDeleteSingleData value)? onDeleteSingleData,
-    TResult? Function(_OnDeletePassport value)? onDeletePassport,
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_OnGetSingleData value)? onGetSingleData,
+    TResult Function(_OnDeleteSingleData value)? onDeleteSingleData,
+    TResult Function(_OnDeletePassport value)? onDeletePassport,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -90,18 +90,17 @@ mixin _$DashboardState {
 abstract class $DashboardStateCopyWith<$Res> {
   factory $DashboardStateCopyWith(
           DashboardState value, $Res Function(DashboardState) then) =
-      _$DashboardStateCopyWithImpl<$Res, DashboardState>;
+      _$DashboardStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$DashboardStateCopyWithImpl<$Res, $Val extends DashboardState>
+class _$DashboardStateCopyWithImpl<$Res>
     implements $DashboardStateCopyWith<$Res> {
   _$DashboardStateCopyWithImpl(this._value, this._then);
 
+  final DashboardState _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(DashboardState) _then;
 }
 
 /// @nodoc
@@ -112,11 +111,13 @@ abstract class _$$_InitialCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$DashboardStateCopyWithImpl<$Res, _$_Initial>
+class __$$_InitialCopyWithImpl<$Res> extends _$DashboardStateCopyWithImpl<$Res>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_Initial));
+
+  @override
+  _$_Initial get _value => super._value as _$_Initial;
 }
 
 /// @nodoc
@@ -156,13 +157,13 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(Failures err)? error,
-    TResult? Function(SimpleVisaModel visa)? onGetSingleData,
-    TResult? Function(SimpleVisaModel deletedVisa, int appType)?
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(Failures err)? error,
+    TResult Function(SimpleVisaModel visa)? onGetSingleData,
+    TResult Function(SimpleVisaModel deletedVisa, int appType)?
         onDeleteSingleData,
-    TResult? Function(SimpleVisaModel deletedVisa, int appType)?
+    TResult Function(SimpleVisaModel deletedVisa, int appType)?
         onDeletePassport,
   }) {
     return initial?.call();
@@ -203,12 +204,12 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_OnGetSingleData value)? onGetSingleData,
-    TResult? Function(_OnDeleteSingleData value)? onDeleteSingleData,
-    TResult? Function(_OnDeletePassport value)? onDeletePassport,
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_OnGetSingleData value)? onGetSingleData,
+    TResult Function(_OnDeleteSingleData value)? onDeleteSingleData,
+    TResult Function(_OnDeletePassport value)? onDeletePassport,
   }) {
     return initial?.call(this);
   }
@@ -243,11 +244,13 @@ abstract class _$$_LoadingCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res>
-    extends _$DashboardStateCopyWithImpl<$Res, _$_Loading>
+class __$$_LoadingCopyWithImpl<$Res> extends _$DashboardStateCopyWithImpl<$Res>
     implements _$$_LoadingCopyWith<$Res> {
   __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_Loading));
+
+  @override
+  _$_Loading get _value => super._value as _$_Loading;
 }
 
 /// @nodoc
@@ -287,13 +290,13 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(Failures err)? error,
-    TResult? Function(SimpleVisaModel visa)? onGetSingleData,
-    TResult? Function(SimpleVisaModel deletedVisa, int appType)?
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(Failures err)? error,
+    TResult Function(SimpleVisaModel visa)? onGetSingleData,
+    TResult Function(SimpleVisaModel deletedVisa, int appType)?
         onDeleteSingleData,
-    TResult? Function(SimpleVisaModel deletedVisa, int appType)?
+    TResult Function(SimpleVisaModel deletedVisa, int appType)?
         onDeletePassport,
   }) {
     return loading?.call();
@@ -334,12 +337,12 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_OnGetSingleData value)? onGetSingleData,
-    TResult? Function(_OnDeleteSingleData value)? onDeleteSingleData,
-    TResult? Function(_OnDeletePassport value)? onDeletePassport,
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_OnGetSingleData value)? onGetSingleData,
+    TResult Function(_OnDeleteSingleData value)? onDeleteSingleData,
+    TResult Function(_OnDeletePassport value)? onDeletePassport,
   }) {
     return loading?.call(this);
   }
@@ -370,26 +373,26 @@ abstract class _Loading implements DashboardState {
 abstract class _$$_ErrorCopyWith<$Res> {
   factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
       __$$_ErrorCopyWithImpl<$Res>;
-  @useResult
   $Res call({Failures err});
 
   $FailuresCopyWith<$Res> get err;
 }
 
 /// @nodoc
-class __$$_ErrorCopyWithImpl<$Res>
-    extends _$DashboardStateCopyWithImpl<$Res, _$_Error>
+class __$$_ErrorCopyWithImpl<$Res> extends _$DashboardStateCopyWithImpl<$Res>
     implements _$$_ErrorCopyWith<$Res> {
   __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_Error));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_Error get _value => super._value as _$_Error;
+
   @override
   $Res call({
-    Object? err = null,
+    Object? err = freezed,
   }) {
     return _then(_$_Error(
-      null == err
+      err == freezed
           ? _value.err
           : err // ignore: cast_nullable_to_non_nullable
               as Failures,
@@ -397,7 +400,6 @@ class __$$_ErrorCopyWithImpl<$Res>
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $FailuresCopyWith<$Res> get err {
     return $FailuresCopyWith<$Res>(_value.err, (value) {
       return _then(_value.copyWith(err: value));
@@ -423,15 +425,15 @@ class _$_Error implements _Error {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Error &&
-            (identical(other.err, err) || other.err == err));
+            const DeepCollectionEquality().equals(other.err, err));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, err);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(err));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_ErrorCopyWith<_$_Error> get copyWith =>
       __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
 
@@ -453,13 +455,13 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(Failures err)? error,
-    TResult? Function(SimpleVisaModel visa)? onGetSingleData,
-    TResult? Function(SimpleVisaModel deletedVisa, int appType)?
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(Failures err)? error,
+    TResult Function(SimpleVisaModel visa)? onGetSingleData,
+    TResult Function(SimpleVisaModel deletedVisa, int appType)?
         onDeleteSingleData,
-    TResult? Function(SimpleVisaModel deletedVisa, int appType)?
+    TResult Function(SimpleVisaModel deletedVisa, int appType)?
         onDeletePassport,
   }) {
     return error?.call(err);
@@ -500,12 +502,12 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_OnGetSingleData value)? onGetSingleData,
-    TResult? Function(_OnDeleteSingleData value)? onDeleteSingleData,
-    TResult? Function(_OnDeletePassport value)? onDeletePassport,
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_OnGetSingleData value)? onGetSingleData,
+    TResult Function(_OnDeleteSingleData value)? onDeleteSingleData,
+    TResult Function(_OnDeletePassport value)? onDeletePassport,
   }) {
     return error?.call(this);
   }
@@ -542,7 +544,6 @@ abstract class _$$_OnGetSingleDataCopyWith<$Res> {
   factory _$$_OnGetSingleDataCopyWith(
           _$_OnGetSingleData value, $Res Function(_$_OnGetSingleData) then) =
       __$$_OnGetSingleDataCopyWithImpl<$Res>;
-  @useResult
   $Res call({SimpleVisaModel visa});
 
   $SimpleVisaModelCopyWith<$Res> get visa;
@@ -550,19 +551,21 @@ abstract class _$$_OnGetSingleDataCopyWith<$Res> {
 
 /// @nodoc
 class __$$_OnGetSingleDataCopyWithImpl<$Res>
-    extends _$DashboardStateCopyWithImpl<$Res, _$_OnGetSingleData>
+    extends _$DashboardStateCopyWithImpl<$Res>
     implements _$$_OnGetSingleDataCopyWith<$Res> {
   __$$_OnGetSingleDataCopyWithImpl(
       _$_OnGetSingleData _value, $Res Function(_$_OnGetSingleData) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_OnGetSingleData));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_OnGetSingleData get _value => super._value as _$_OnGetSingleData;
+
   @override
   $Res call({
-    Object? visa = null,
+    Object? visa = freezed,
   }) {
     return _then(_$_OnGetSingleData(
-      null == visa
+      visa == freezed
           ? _value.visa
           : visa // ignore: cast_nullable_to_non_nullable
               as SimpleVisaModel,
@@ -570,7 +573,6 @@ class __$$_OnGetSingleDataCopyWithImpl<$Res>
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $SimpleVisaModelCopyWith<$Res> get visa {
     return $SimpleVisaModelCopyWith<$Res>(_value.visa, (value) {
       return _then(_value.copyWith(visa: value));
@@ -596,15 +598,15 @@ class _$_OnGetSingleData implements _OnGetSingleData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_OnGetSingleData &&
-            (identical(other.visa, visa) || other.visa == visa));
+            const DeepCollectionEquality().equals(other.visa, visa));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, visa);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(visa));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_OnGetSingleDataCopyWith<_$_OnGetSingleData> get copyWith =>
       __$$_OnGetSingleDataCopyWithImpl<_$_OnGetSingleData>(this, _$identity);
 
@@ -626,13 +628,13 @@ class _$_OnGetSingleData implements _OnGetSingleData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(Failures err)? error,
-    TResult? Function(SimpleVisaModel visa)? onGetSingleData,
-    TResult? Function(SimpleVisaModel deletedVisa, int appType)?
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(Failures err)? error,
+    TResult Function(SimpleVisaModel visa)? onGetSingleData,
+    TResult Function(SimpleVisaModel deletedVisa, int appType)?
         onDeleteSingleData,
-    TResult? Function(SimpleVisaModel deletedVisa, int appType)?
+    TResult Function(SimpleVisaModel deletedVisa, int appType)?
         onDeletePassport,
   }) {
     return onGetSingleData?.call(visa);
@@ -673,12 +675,12 @@ class _$_OnGetSingleData implements _OnGetSingleData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_OnGetSingleData value)? onGetSingleData,
-    TResult? Function(_OnDeleteSingleData value)? onDeleteSingleData,
-    TResult? Function(_OnDeletePassport value)? onDeletePassport,
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_OnGetSingleData value)? onGetSingleData,
+    TResult Function(_OnDeleteSingleData value)? onDeleteSingleData,
+    TResult Function(_OnDeletePassport value)? onDeletePassport,
   }) {
     return onGetSingleData?.call(this);
   }
@@ -716,7 +718,6 @@ abstract class _$$_OnDeleteSingleDataCopyWith<$Res> {
   factory _$$_OnDeleteSingleDataCopyWith(_$_OnDeleteSingleData value,
           $Res Function(_$_OnDeleteSingleData) then) =
       __$$_OnDeleteSingleDataCopyWithImpl<$Res>;
-  @useResult
   $Res call({SimpleVisaModel deletedVisa, int appType});
 
   $SimpleVisaModelCopyWith<$Res> get deletedVisa;
@@ -724,24 +725,26 @@ abstract class _$$_OnDeleteSingleDataCopyWith<$Res> {
 
 /// @nodoc
 class __$$_OnDeleteSingleDataCopyWithImpl<$Res>
-    extends _$DashboardStateCopyWithImpl<$Res, _$_OnDeleteSingleData>
+    extends _$DashboardStateCopyWithImpl<$Res>
     implements _$$_OnDeleteSingleDataCopyWith<$Res> {
   __$$_OnDeleteSingleDataCopyWithImpl(
       _$_OnDeleteSingleData _value, $Res Function(_$_OnDeleteSingleData) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_OnDeleteSingleData));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_OnDeleteSingleData get _value => super._value as _$_OnDeleteSingleData;
+
   @override
   $Res call({
-    Object? deletedVisa = null,
-    Object? appType = null,
+    Object? deletedVisa = freezed,
+    Object? appType = freezed,
   }) {
     return _then(_$_OnDeleteSingleData(
-      null == deletedVisa
+      deletedVisa == freezed
           ? _value.deletedVisa
           : deletedVisa // ignore: cast_nullable_to_non_nullable
               as SimpleVisaModel,
-      null == appType
+      appType == freezed
           ? _value.appType
           : appType // ignore: cast_nullable_to_non_nullable
               as int,
@@ -749,7 +752,6 @@ class __$$_OnDeleteSingleDataCopyWithImpl<$Res>
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $SimpleVisaModelCopyWith<$Res> get deletedVisa {
     return $SimpleVisaModelCopyWith<$Res>(_value.deletedVisa, (value) {
       return _then(_value.copyWith(deletedVisa: value));
@@ -777,17 +779,19 @@ class _$_OnDeleteSingleData implements _OnDeleteSingleData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_OnDeleteSingleData &&
-            (identical(other.deletedVisa, deletedVisa) ||
-                other.deletedVisa == deletedVisa) &&
-            (identical(other.appType, appType) || other.appType == appType));
+            const DeepCollectionEquality()
+                .equals(other.deletedVisa, deletedVisa) &&
+            const DeepCollectionEquality().equals(other.appType, appType));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, deletedVisa, appType);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(deletedVisa),
+      const DeepCollectionEquality().hash(appType));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_OnDeleteSingleDataCopyWith<_$_OnDeleteSingleData> get copyWith =>
       __$$_OnDeleteSingleDataCopyWithImpl<_$_OnDeleteSingleData>(
           this, _$identity);
@@ -810,13 +814,13 @@ class _$_OnDeleteSingleData implements _OnDeleteSingleData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(Failures err)? error,
-    TResult? Function(SimpleVisaModel visa)? onGetSingleData,
-    TResult? Function(SimpleVisaModel deletedVisa, int appType)?
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(Failures err)? error,
+    TResult Function(SimpleVisaModel visa)? onGetSingleData,
+    TResult Function(SimpleVisaModel deletedVisa, int appType)?
         onDeleteSingleData,
-    TResult? Function(SimpleVisaModel deletedVisa, int appType)?
+    TResult Function(SimpleVisaModel deletedVisa, int appType)?
         onDeletePassport,
   }) {
     return onDeleteSingleData?.call(deletedVisa, appType);
@@ -857,12 +861,12 @@ class _$_OnDeleteSingleData implements _OnDeleteSingleData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_OnGetSingleData value)? onGetSingleData,
-    TResult? Function(_OnDeleteSingleData value)? onDeleteSingleData,
-    TResult? Function(_OnDeletePassport value)? onDeletePassport,
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_OnGetSingleData value)? onGetSingleData,
+    TResult Function(_OnDeleteSingleData value)? onDeleteSingleData,
+    TResult Function(_OnDeletePassport value)? onDeletePassport,
   }) {
     return onDeleteSingleData?.call(this);
   }
@@ -902,7 +906,6 @@ abstract class _$$_OnDeletePassportCopyWith<$Res> {
   factory _$$_OnDeletePassportCopyWith(
           _$_OnDeletePassport value, $Res Function(_$_OnDeletePassport) then) =
       __$$_OnDeletePassportCopyWithImpl<$Res>;
-  @useResult
   $Res call({SimpleVisaModel deletedVisa, int appType});
 
   $SimpleVisaModelCopyWith<$Res> get deletedVisa;
@@ -910,24 +913,26 @@ abstract class _$$_OnDeletePassportCopyWith<$Res> {
 
 /// @nodoc
 class __$$_OnDeletePassportCopyWithImpl<$Res>
-    extends _$DashboardStateCopyWithImpl<$Res, _$_OnDeletePassport>
+    extends _$DashboardStateCopyWithImpl<$Res>
     implements _$$_OnDeletePassportCopyWith<$Res> {
   __$$_OnDeletePassportCopyWithImpl(
       _$_OnDeletePassport _value, $Res Function(_$_OnDeletePassport) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_OnDeletePassport));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_OnDeletePassport get _value => super._value as _$_OnDeletePassport;
+
   @override
   $Res call({
-    Object? deletedVisa = null,
-    Object? appType = null,
+    Object? deletedVisa = freezed,
+    Object? appType = freezed,
   }) {
     return _then(_$_OnDeletePassport(
-      null == deletedVisa
+      deletedVisa == freezed
           ? _value.deletedVisa
           : deletedVisa // ignore: cast_nullable_to_non_nullable
               as SimpleVisaModel,
-      null == appType
+      appType == freezed
           ? _value.appType
           : appType // ignore: cast_nullable_to_non_nullable
               as int,
@@ -935,7 +940,6 @@ class __$$_OnDeletePassportCopyWithImpl<$Res>
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $SimpleVisaModelCopyWith<$Res> get deletedVisa {
     return $SimpleVisaModelCopyWith<$Res>(_value.deletedVisa, (value) {
       return _then(_value.copyWith(deletedVisa: value));
@@ -963,17 +967,19 @@ class _$_OnDeletePassport implements _OnDeletePassport {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_OnDeletePassport &&
-            (identical(other.deletedVisa, deletedVisa) ||
-                other.deletedVisa == deletedVisa) &&
-            (identical(other.appType, appType) || other.appType == appType));
+            const DeepCollectionEquality()
+                .equals(other.deletedVisa, deletedVisa) &&
+            const DeepCollectionEquality().equals(other.appType, appType));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, deletedVisa, appType);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(deletedVisa),
+      const DeepCollectionEquality().hash(appType));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_OnDeletePassportCopyWith<_$_OnDeletePassport> get copyWith =>
       __$$_OnDeletePassportCopyWithImpl<_$_OnDeletePassport>(this, _$identity);
 
@@ -995,13 +1001,13 @@ class _$_OnDeletePassport implements _OnDeletePassport {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(Failures err)? error,
-    TResult? Function(SimpleVisaModel visa)? onGetSingleData,
-    TResult? Function(SimpleVisaModel deletedVisa, int appType)?
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(Failures err)? error,
+    TResult Function(SimpleVisaModel visa)? onGetSingleData,
+    TResult Function(SimpleVisaModel deletedVisa, int appType)?
         onDeleteSingleData,
-    TResult? Function(SimpleVisaModel deletedVisa, int appType)?
+    TResult Function(SimpleVisaModel deletedVisa, int appType)?
         onDeletePassport,
   }) {
     return onDeletePassport?.call(deletedVisa, appType);
@@ -1042,12 +1048,12 @@ class _$_OnDeletePassport implements _OnDeletePassport {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Error value)? error,
-    TResult? Function(_OnGetSingleData value)? onGetSingleData,
-    TResult? Function(_OnDeleteSingleData value)? onDeleteSingleData,
-    TResult? Function(_OnDeletePassport value)? onDeletePassport,
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_OnGetSingleData value)? onGetSingleData,
+    TResult Function(_OnDeleteSingleData value)? onDeleteSingleData,
+    TResult Function(_OnDeletePassport value)? onDeletePassport,
   }) {
     return onDeletePassport?.call(this);
   }

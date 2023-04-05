@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'simple_visa_model.dart';
 
@@ -39,8 +39,7 @@ mixin _$SimpleVisaModel {
 abstract class $SimpleVisaModelCopyWith<$Res> {
   factory $SimpleVisaModelCopyWith(
           SimpleVisaModel value, $Res Function(SimpleVisaModel) then) =
-      _$SimpleVisaModelCopyWithImpl<$Res, SimpleVisaModel>;
-  @useResult
+      _$SimpleVisaModelCopyWithImpl<$Res>;
   $Res call(
       {String? firebaseDocId,
       String? applicationID,
@@ -53,16 +52,14 @@ abstract class $SimpleVisaModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SimpleVisaModelCopyWithImpl<$Res, $Val extends SimpleVisaModel>
+class _$SimpleVisaModelCopyWithImpl<$Res>
     implements $SimpleVisaModelCopyWith<$Res> {
   _$SimpleVisaModelCopyWithImpl(this._value, this._then);
 
+  final SimpleVisaModel _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(SimpleVisaModel) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? firebaseDocId = freezed,
@@ -75,39 +72,39 @@ class _$SimpleVisaModelCopyWithImpl<$Res, $Val extends SimpleVisaModel>
     Object? createdDate = freezed,
   }) {
     return _then(_value.copyWith(
-      firebaseDocId: freezed == firebaseDocId
+      firebaseDocId: firebaseDocId == freezed
           ? _value.firebaseDocId
           : firebaseDocId // ignore: cast_nullable_to_non_nullable
               as String?,
-      applicationID: freezed == applicationID
+      applicationID: applicationID == freezed
           ? _value.applicationID
           : applicationID // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: freezed == status
+      status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String?,
-      title: freezed == title
+      title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
-      subTitle: freezed == subTitle
+      subTitle: subTitle == freezed
           ? _value.subTitle
           : subTitle // ignore: cast_nullable_to_non_nullable
               as String?,
-      usedByDate: freezed == usedByDate
+      usedByDate: usedByDate == freezed
           ? _value.usedByDate
           : usedByDate // ignore: cast_nullable_to_non_nullable
               as String?,
-      lengthOfStay: freezed == lengthOfStay
+      lengthOfStay: lengthOfStay == freezed
           ? _value.lengthOfStay
           : lengthOfStay // ignore: cast_nullable_to_non_nullable
               as int?,
-      createdDate: freezed == createdDate
+      createdDate: createdDate == freezed
           ? _value.createdDate
           : createdDate // ignore: cast_nullable_to_non_nullable
               as String?,
-    ) as $Val);
+    ));
   }
 }
 
@@ -118,7 +115,6 @@ abstract class _$$_SimpleVisaModelCopyWith<$Res>
           _$_SimpleVisaModel value, $Res Function(_$_SimpleVisaModel) then) =
       __$$_SimpleVisaModelCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {String? firebaseDocId,
       String? applicationID,
@@ -132,13 +128,15 @@ abstract class _$$_SimpleVisaModelCopyWith<$Res>
 
 /// @nodoc
 class __$$_SimpleVisaModelCopyWithImpl<$Res>
-    extends _$SimpleVisaModelCopyWithImpl<$Res, _$_SimpleVisaModel>
+    extends _$SimpleVisaModelCopyWithImpl<$Res>
     implements _$$_SimpleVisaModelCopyWith<$Res> {
   __$$_SimpleVisaModelCopyWithImpl(
       _$_SimpleVisaModel _value, $Res Function(_$_SimpleVisaModel) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_SimpleVisaModel));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_SimpleVisaModel get _value => super._value as _$_SimpleVisaModel;
+
   @override
   $Res call({
     Object? firebaseDocId = freezed,
@@ -151,35 +149,35 @@ class __$$_SimpleVisaModelCopyWithImpl<$Res>
     Object? createdDate = freezed,
   }) {
     return _then(_$_SimpleVisaModel(
-      firebaseDocId: freezed == firebaseDocId
+      firebaseDocId: firebaseDocId == freezed
           ? _value.firebaseDocId
           : firebaseDocId // ignore: cast_nullable_to_non_nullable
               as String?,
-      applicationID: freezed == applicationID
+      applicationID: applicationID == freezed
           ? _value.applicationID
           : applicationID // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: freezed == status
+      status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String?,
-      title: freezed == title
+      title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
-      subTitle: freezed == subTitle
+      subTitle: subTitle == freezed
           ? _value.subTitle
           : subTitle // ignore: cast_nullable_to_non_nullable
               as String?,
-      usedByDate: freezed == usedByDate
+      usedByDate: usedByDate == freezed
           ? _value.usedByDate
           : usedByDate // ignore: cast_nullable_to_non_nullable
               as String?,
-      lengthOfStay: freezed == lengthOfStay
+      lengthOfStay: lengthOfStay == freezed
           ? _value.lengthOfStay
           : lengthOfStay // ignore: cast_nullable_to_non_nullable
               as int?,
-      createdDate: freezed == createdDate
+      createdDate: createdDate == freezed
           ? _value.createdDate
           : createdDate // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -230,30 +228,36 @@ class _$_SimpleVisaModel implements _SimpleVisaModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SimpleVisaModel &&
-            (identical(other.firebaseDocId, firebaseDocId) ||
-                other.firebaseDocId == firebaseDocId) &&
-            (identical(other.applicationID, applicationID) ||
-                other.applicationID == applicationID) &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.title, title) || other.title == title) &&
-            (identical(other.subTitle, subTitle) ||
-                other.subTitle == subTitle) &&
-            (identical(other.usedByDate, usedByDate) ||
-                other.usedByDate == usedByDate) &&
-            (identical(other.lengthOfStay, lengthOfStay) ||
-                other.lengthOfStay == lengthOfStay) &&
-            (identical(other.createdDate, createdDate) ||
-                other.createdDate == createdDate));
+            const DeepCollectionEquality()
+                .equals(other.firebaseDocId, firebaseDocId) &&
+            const DeepCollectionEquality()
+                .equals(other.applicationID, applicationID) &&
+            const DeepCollectionEquality().equals(other.status, status) &&
+            const DeepCollectionEquality().equals(other.title, title) &&
+            const DeepCollectionEquality().equals(other.subTitle, subTitle) &&
+            const DeepCollectionEquality()
+                .equals(other.usedByDate, usedByDate) &&
+            const DeepCollectionEquality()
+                .equals(other.lengthOfStay, lengthOfStay) &&
+            const DeepCollectionEquality()
+                .equals(other.createdDate, createdDate));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, firebaseDocId, applicationID,
-      status, title, subTitle, usedByDate, lengthOfStay, createdDate);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(firebaseDocId),
+      const DeepCollectionEquality().hash(applicationID),
+      const DeepCollectionEquality().hash(status),
+      const DeepCollectionEquality().hash(title),
+      const DeepCollectionEquality().hash(subTitle),
+      const DeepCollectionEquality().hash(usedByDate),
+      const DeepCollectionEquality().hash(lengthOfStay),
+      const DeepCollectionEquality().hash(createdDate));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_SimpleVisaModelCopyWith<_$_SimpleVisaModel> get copyWith =>
       __$$_SimpleVisaModelCopyWithImpl<_$_SimpleVisaModel>(this, _$identity);
 

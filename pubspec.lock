@@ -281,6 +281,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "5.0.3"
+  equatable:
+    dependency: transitive
+    description:
+      name: equatable
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.5"
+  excel:
+    dependency: "direct main"
+    description:
+      name: excel
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.4"
   facebook_auth_desktop:
     dependency: transitive
     description:

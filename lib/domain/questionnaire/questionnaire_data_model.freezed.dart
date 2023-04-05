@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'questionnaire_data_model.dart';
 
@@ -34,33 +34,29 @@ mixin _$QuestionnaireDataModel {
 abstract class $QuestionnaireDataModelCopyWith<$Res> {
   factory $QuestionnaireDataModelCopyWith(QuestionnaireDataModel value,
           $Res Function(QuestionnaireDataModel) then) =
-      _$QuestionnaireDataModelCopyWithImpl<$Res, QuestionnaireDataModel>;
-  @useResult
+      _$QuestionnaireDataModelCopyWithImpl<$Res>;
   $Res call({List<QuestionnaireModel> questionnaire});
 }
 
 /// @nodoc
-class _$QuestionnaireDataModelCopyWithImpl<$Res,
-        $Val extends QuestionnaireDataModel>
+class _$QuestionnaireDataModelCopyWithImpl<$Res>
     implements $QuestionnaireDataModelCopyWith<$Res> {
   _$QuestionnaireDataModelCopyWithImpl(this._value, this._then);
 
+  final QuestionnaireDataModel _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(QuestionnaireDataModel) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? questionnaire = null,
+    Object? questionnaire = freezed,
   }) {
     return _then(_value.copyWith(
-      questionnaire: null == questionnaire
+      questionnaire: questionnaire == freezed
           ? _value.questionnaire
           : questionnaire // ignore: cast_nullable_to_non_nullable
               as List<QuestionnaireModel>,
-    ) as $Val);
+    ));
   }
 }
 
@@ -71,26 +67,27 @@ abstract class _$$_QuestionnaireDataModelCopyWith<$Res>
           $Res Function(_$_QuestionnaireDataModel) then) =
       __$$_QuestionnaireDataModelCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call({List<QuestionnaireModel> questionnaire});
 }
 
 /// @nodoc
 class __$$_QuestionnaireDataModelCopyWithImpl<$Res>
-    extends _$QuestionnaireDataModelCopyWithImpl<$Res,
-        _$_QuestionnaireDataModel>
+    extends _$QuestionnaireDataModelCopyWithImpl<$Res>
     implements _$$_QuestionnaireDataModelCopyWith<$Res> {
   __$$_QuestionnaireDataModelCopyWithImpl(_$_QuestionnaireDataModel _value,
       $Res Function(_$_QuestionnaireDataModel) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_QuestionnaireDataModel));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_QuestionnaireDataModel get _value =>
+      super._value as _$_QuestionnaireDataModel;
+
   @override
   $Res call({
-    Object? questionnaire = null,
+    Object? questionnaire = freezed,
   }) {
     return _then(_$_QuestionnaireDataModel(
-      null == questionnaire
+      questionnaire == freezed
           ? _value._questionnaire
           : questionnaire // ignore: cast_nullable_to_non_nullable
               as List<QuestionnaireModel>,
@@ -110,7 +107,6 @@ class _$_QuestionnaireDataModel implements _QuestionnaireDataModel {
   final List<QuestionnaireModel> _questionnaire;
   @override
   List<QuestionnaireModel> get questionnaire {
-    if (_questionnaire is EqualUnmodifiableListView) return _questionnaire;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_questionnaire);
   }
@@ -136,7 +132,6 @@ class _$_QuestionnaireDataModel implements _QuestionnaireDataModel {
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_QuestionnaireDataModelCopyWith<_$_QuestionnaireDataModel> get copyWith =>
       __$$_QuestionnaireDataModelCopyWithImpl<_$_QuestionnaireDataModel>(
           this, _$identity);

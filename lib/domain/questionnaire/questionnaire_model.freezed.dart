@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'questionnaire_model.dart';
 
@@ -40,8 +40,7 @@ mixin _$QuestionnaireModel {
 abstract class $QuestionnaireModelCopyWith<$Res> {
   factory $QuestionnaireModelCopyWith(
           QuestionnaireModel value, $Res Function(QuestionnaireModel) then) =
-      _$QuestionnaireModelCopyWithImpl<$Res, QuestionnaireModel>;
-  @useResult
+      _$QuestionnaireModelCopyWithImpl<$Res>;
   $Res call(
       {List<QuestionnaireModel>? subQuestionnaire,
       String? footer,
@@ -56,16 +55,14 @@ abstract class $QuestionnaireModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$QuestionnaireModelCopyWithImpl<$Res, $Val extends QuestionnaireModel>
+class _$QuestionnaireModelCopyWithImpl<$Res>
     implements $QuestionnaireModelCopyWith<$Res> {
   _$QuestionnaireModelCopyWithImpl(this._value, this._then);
 
+  final QuestionnaireModel _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(QuestionnaireModel) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? subQuestionnaire = freezed,
@@ -78,50 +75,49 @@ class _$QuestionnaireModelCopyWithImpl<$Res, $Val extends QuestionnaireModel>
     Object? results = freezed,
   }) {
     return _then(_value.copyWith(
-      subQuestionnaire: freezed == subQuestionnaire
+      subQuestionnaire: subQuestionnaire == freezed
           ? _value.subQuestionnaire
           : subQuestionnaire // ignore: cast_nullable_to_non_nullable
               as List<QuestionnaireModel>?,
-      footer: freezed == footer
+      footer: footer == freezed
           ? _value.footer
           : footer // ignore: cast_nullable_to_non_nullable
               as String?,
-      imgName: freezed == imgName
+      imgName: imgName == freezed
           ? _value.imgName
           : imgName // ignore: cast_nullable_to_non_nullable
               as String?,
-      body: freezed == body
+      body: body == freezed
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
               as String?,
-      header: freezed == header
+      header: header == freezed
           ? _value.header
           : header // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: freezed == description
+      description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      importantNotes: freezed == importantNotes
+      importantNotes: importantNotes == freezed
           ? _value.importantNotes
           : importantNotes // ignore: cast_nullable_to_non_nullable
               as String?,
-      results: freezed == results
+      results: results == freezed
           ? _value.results
           : results // ignore: cast_nullable_to_non_nullable
               as ResultModel?,
-    ) as $Val);
+    ));
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $ResultModelCopyWith<$Res>? get results {
     if (_value.results == null) {
       return null;
     }
 
     return $ResultModelCopyWith<$Res>(_value.results!, (value) {
-      return _then(_value.copyWith(results: value) as $Val);
+      return _then(_value.copyWith(results: value));
     });
   }
 }
@@ -133,7 +129,6 @@ abstract class _$$_QuestionnaireModelCopyWith<$Res>
           $Res Function(_$_QuestionnaireModel) then) =
       __$$_QuestionnaireModelCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {List<QuestionnaireModel>? subQuestionnaire,
       String? footer,
@@ -150,13 +145,15 @@ abstract class _$$_QuestionnaireModelCopyWith<$Res>
 
 /// @nodoc
 class __$$_QuestionnaireModelCopyWithImpl<$Res>
-    extends _$QuestionnaireModelCopyWithImpl<$Res, _$_QuestionnaireModel>
+    extends _$QuestionnaireModelCopyWithImpl<$Res>
     implements _$$_QuestionnaireModelCopyWith<$Res> {
   __$$_QuestionnaireModelCopyWithImpl(
       _$_QuestionnaireModel _value, $Res Function(_$_QuestionnaireModel) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_QuestionnaireModel));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_QuestionnaireModel get _value => super._value as _$_QuestionnaireModel;
+
   @override
   $Res call({
     Object? subQuestionnaire = freezed,
@@ -169,35 +166,35 @@ class __$$_QuestionnaireModelCopyWithImpl<$Res>
     Object? results = freezed,
   }) {
     return _then(_$_QuestionnaireModel(
-      subQuestionnaire: freezed == subQuestionnaire
+      subQuestionnaire: subQuestionnaire == freezed
           ? _value.subQuestionnaire
           : subQuestionnaire // ignore: cast_nullable_to_non_nullable
               as List<QuestionnaireModel>?,
-      footer: freezed == footer
+      footer: footer == freezed
           ? _value.footer
           : footer // ignore: cast_nullable_to_non_nullable
               as String?,
-      imgName: freezed == imgName
+      imgName: imgName == freezed
           ? _value.imgName
           : imgName // ignore: cast_nullable_to_non_nullable
               as String?,
-      body: freezed == body
+      body: body == freezed
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
               as String?,
-      header: freezed == header
+      header: header == freezed
           ? _value.header
           : header // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: freezed == description
+      description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      importantNotes: freezed == importantNotes
+      importantNotes: importantNotes == freezed
           ? _value.importantNotes
           : importantNotes // ignore: cast_nullable_to_non_nullable
               as String?,
-      results: freezed == results
+      results: results == freezed
           ? _value.results
           : results // ignore: cast_nullable_to_non_nullable
               as ResultModel?,
@@ -250,15 +247,15 @@ class _$_QuestionnaireModel implements _QuestionnaireModel {
             other is _$_QuestionnaireModel &&
             const DeepCollectionEquality()
                 .equals(other.subQuestionnaire, subQuestionnaire) &&
-            (identical(other.footer, footer) || other.footer == footer) &&
-            (identical(other.imgName, imgName) || other.imgName == imgName) &&
-            (identical(other.body, body) || other.body == body) &&
-            (identical(other.header, header) || other.header == header) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
-            (identical(other.importantNotes, importantNotes) ||
-                other.importantNotes == importantNotes) &&
-            (identical(other.results, results) || other.results == results));
+            const DeepCollectionEquality().equals(other.footer, footer) &&
+            const DeepCollectionEquality().equals(other.imgName, imgName) &&
+            const DeepCollectionEquality().equals(other.body, body) &&
+            const DeepCollectionEquality().equals(other.header, header) &&
+            const DeepCollectionEquality()
+                .equals(other.description, description) &&
+            const DeepCollectionEquality()
+                .equals(other.importantNotes, importantNotes) &&
+            const DeepCollectionEquality().equals(other.results, results));
   }
 
   @JsonKey(ignore: true)
@@ -266,17 +263,16 @@ class _$_QuestionnaireModel implements _QuestionnaireModel {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(subQuestionnaire),
-      footer,
-      imgName,
-      body,
-      header,
-      description,
-      importantNotes,
-      results);
+      const DeepCollectionEquality().hash(footer),
+      const DeepCollectionEquality().hash(imgName),
+      const DeepCollectionEquality().hash(body),
+      const DeepCollectionEquality().hash(header),
+      const DeepCollectionEquality().hash(description),
+      const DeepCollectionEquality().hash(importantNotes),
+      const DeepCollectionEquality().hash(results));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_QuestionnaireModelCopyWith<_$_QuestionnaireModel> get copyWith =>
       __$$_QuestionnaireModelCopyWithImpl<_$_QuestionnaireModel>(
           this, _$identity);

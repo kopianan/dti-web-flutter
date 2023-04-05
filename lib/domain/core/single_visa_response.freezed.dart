@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'single_visa_response.dart';
 
@@ -37,8 +37,7 @@ mixin _$SingleVisaResponse {
 abstract class $SingleVisaResponseCopyWith<$Res> {
   factory $SingleVisaResponseCopyWith(
           SingleVisaResponse value, $Res Function(SingleVisaResponse) then) =
-      _$SingleVisaResponseCopyWithImpl<$Res, SingleVisaResponse>;
-  @useResult
+      _$SingleVisaResponseCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(name: 'data')
           VisaApplicationModel? visaApplicationModel,
@@ -49,35 +48,32 @@ abstract class $SingleVisaResponseCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SingleVisaResponseCopyWithImpl<$Res, $Val extends SingleVisaResponse>
+class _$SingleVisaResponseCopyWithImpl<$Res>
     implements $SingleVisaResponseCopyWith<$Res> {
   _$SingleVisaResponseCopyWithImpl(this._value, this._then);
 
+  final SingleVisaResponse _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(SingleVisaResponse) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? visaApplicationModel = freezed,
     Object? documentUserApplicationUrl = freezed,
   }) {
     return _then(_value.copyWith(
-      visaApplicationModel: freezed == visaApplicationModel
+      visaApplicationModel: visaApplicationModel == freezed
           ? _value.visaApplicationModel
           : visaApplicationModel // ignore: cast_nullable_to_non_nullable
               as VisaApplicationModel?,
-      documentUserApplicationUrl: freezed == documentUserApplicationUrl
+      documentUserApplicationUrl: documentUserApplicationUrl == freezed
           ? _value.documentUserApplicationUrl
           : documentUserApplicationUrl // ignore: cast_nullable_to_non_nullable
               as List<Map<String, dynamic>>?,
-    ) as $Val);
+    ));
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $VisaApplicationModelCopyWith<$Res>? get visaApplicationModel {
     if (_value.visaApplicationModel == null) {
       return null;
@@ -85,7 +81,7 @@ class _$SingleVisaResponseCopyWithImpl<$Res, $Val extends SingleVisaResponse>
 
     return $VisaApplicationModelCopyWith<$Res>(_value.visaApplicationModel!,
         (value) {
-      return _then(_value.copyWith(visaApplicationModel: value) as $Val);
+      return _then(_value.copyWith(visaApplicationModel: value));
     });
   }
 }
@@ -97,7 +93,6 @@ abstract class _$$_SingleVisaResponseCopyWith<$Res>
           $Res Function(_$_SingleVisaResponse) then) =
       __$$_SingleVisaResponseCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {@JsonKey(name: 'data')
           VisaApplicationModel? visaApplicationModel,
@@ -110,24 +105,26 @@ abstract class _$$_SingleVisaResponseCopyWith<$Res>
 
 /// @nodoc
 class __$$_SingleVisaResponseCopyWithImpl<$Res>
-    extends _$SingleVisaResponseCopyWithImpl<$Res, _$_SingleVisaResponse>
+    extends _$SingleVisaResponseCopyWithImpl<$Res>
     implements _$$_SingleVisaResponseCopyWith<$Res> {
   __$$_SingleVisaResponseCopyWithImpl(
       _$_SingleVisaResponse _value, $Res Function(_$_SingleVisaResponse) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_SingleVisaResponse));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_SingleVisaResponse get _value => super._value as _$_SingleVisaResponse;
+
   @override
   $Res call({
     Object? visaApplicationModel = freezed,
     Object? documentUserApplicationUrl = freezed,
   }) {
     return _then(_$_SingleVisaResponse(
-      visaApplicationModel: freezed == visaApplicationModel
+      visaApplicationModel: visaApplicationModel == freezed
           ? _value.visaApplicationModel
           : visaApplicationModel // ignore: cast_nullable_to_non_nullable
               as VisaApplicationModel?,
-      documentUserApplicationUrl: freezed == documentUserApplicationUrl
+      documentUserApplicationUrl: documentUserApplicationUrl == freezed
           ? _value._documentUserApplicationUrl
           : documentUserApplicationUrl // ignore: cast_nullable_to_non_nullable
               as List<Map<String, dynamic>>?,
@@ -157,8 +154,6 @@ class _$_SingleVisaResponse implements _SingleVisaResponse {
   List<Map<String, dynamic>>? get documentUserApplicationUrl {
     final value = _documentUserApplicationUrl;
     if (value == null) return null;
-    if (_documentUserApplicationUrl is EqualUnmodifiableListView)
-      return _documentUserApplicationUrl;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -173,8 +168,8 @@ class _$_SingleVisaResponse implements _SingleVisaResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SingleVisaResponse &&
-            (identical(other.visaApplicationModel, visaApplicationModel) ||
-                other.visaApplicationModel == visaApplicationModel) &&
+            const DeepCollectionEquality()
+                .equals(other.visaApplicationModel, visaApplicationModel) &&
             const DeepCollectionEquality().equals(
                 other._documentUserApplicationUrl,
                 _documentUserApplicationUrl));
@@ -182,12 +177,13 @@ class _$_SingleVisaResponse implements _SingleVisaResponse {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, visaApplicationModel,
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(visaApplicationModel),
       const DeepCollectionEquality().hash(_documentUserApplicationUrl));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_SingleVisaResponseCopyWith<_$_SingleVisaResponse> get copyWith =>
       __$$_SingleVisaResponseCopyWithImpl<_$_SingleVisaResponse>(
           this, _$identity);

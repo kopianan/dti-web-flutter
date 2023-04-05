@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'payment_cubit.dart';
 
@@ -26,10 +26,10 @@ mixin _$PaymentState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(String? errorMessage)? onError,
-    TResult? Function()? onLoading,
-    TResult? Function(String url)? onGetPaymentUrl,
+    TResult Function()? initial,
+    TResult Function(String? errorMessage)? onError,
+    TResult Function()? onLoading,
+    TResult Function(String url)? onGetPaymentUrl,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -51,10 +51,10 @@ mixin _$PaymentState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_OnError value)? onError,
-    TResult? Function(_OnLoading value)? onLoading,
-    TResult? Function(_OnGetPaymentUrl value)? onGetPaymentUrl,
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OnError value)? onError,
+    TResult Function(_OnLoading value)? onLoading,
+    TResult Function(_OnGetPaymentUrl value)? onGetPaymentUrl,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -72,18 +72,16 @@ mixin _$PaymentState {
 abstract class $PaymentStateCopyWith<$Res> {
   factory $PaymentStateCopyWith(
           PaymentState value, $Res Function(PaymentState) then) =
-      _$PaymentStateCopyWithImpl<$Res, PaymentState>;
+      _$PaymentStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$PaymentStateCopyWithImpl<$Res, $Val extends PaymentState>
-    implements $PaymentStateCopyWith<$Res> {
+class _$PaymentStateCopyWithImpl<$Res> implements $PaymentStateCopyWith<$Res> {
   _$PaymentStateCopyWithImpl(this._value, this._then);
 
+  final PaymentState _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(PaymentState) _then;
 }
 
 /// @nodoc
@@ -94,11 +92,13 @@ abstract class _$$_InitialCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$PaymentStateCopyWithImpl<$Res, _$_Initial>
+class __$$_InitialCopyWithImpl<$Res> extends _$PaymentStateCopyWithImpl<$Res>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_Initial));
+
+  @override
+  _$_Initial get _value => super._value as _$_Initial;
 }
 
 /// @nodoc
@@ -134,10 +134,10 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(String? errorMessage)? onError,
-    TResult? Function()? onLoading,
-    TResult? Function(String url)? onGetPaymentUrl,
+    TResult Function()? initial,
+    TResult Function(String? errorMessage)? onError,
+    TResult Function()? onLoading,
+    TResult Function(String url)? onGetPaymentUrl,
   }) {
     return initial?.call();
   }
@@ -171,10 +171,10 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_OnError value)? onError,
-    TResult? Function(_OnLoading value)? onLoading,
-    TResult? Function(_OnGetPaymentUrl value)? onGetPaymentUrl,
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OnError value)? onError,
+    TResult Function(_OnLoading value)? onLoading,
+    TResult Function(_OnGetPaymentUrl value)? onGetPaymentUrl,
   }) {
     return initial?.call(this);
   }
@@ -204,24 +204,24 @@ abstract class _$$_OnErrorCopyWith<$Res> {
   factory _$$_OnErrorCopyWith(
           _$_OnError value, $Res Function(_$_OnError) then) =
       __$$_OnErrorCopyWithImpl<$Res>;
-  @useResult
   $Res call({String? errorMessage});
 }
 
 /// @nodoc
-class __$$_OnErrorCopyWithImpl<$Res>
-    extends _$PaymentStateCopyWithImpl<$Res, _$_OnError>
+class __$$_OnErrorCopyWithImpl<$Res> extends _$PaymentStateCopyWithImpl<$Res>
     implements _$$_OnErrorCopyWith<$Res> {
   __$$_OnErrorCopyWithImpl(_$_OnError _value, $Res Function(_$_OnError) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_OnError));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_OnError get _value => super._value as _$_OnError;
+
   @override
   $Res call({
     Object? errorMessage = freezed,
   }) {
     return _then(_$_OnError(
-      errorMessage: freezed == errorMessage
+      errorMessage: errorMessage == freezed
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -247,16 +247,16 @@ class _$_OnError implements _OnError {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_OnError &&
-            (identical(other.errorMessage, errorMessage) ||
-                other.errorMessage == errorMessage));
+            const DeepCollectionEquality()
+                .equals(other.errorMessage, errorMessage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, errorMessage);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(errorMessage));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_OnErrorCopyWith<_$_OnError> get copyWith =>
       __$$_OnErrorCopyWithImpl<_$_OnError>(this, _$identity);
 
@@ -274,10 +274,10 @@ class _$_OnError implements _OnError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(String? errorMessage)? onError,
-    TResult? Function()? onLoading,
-    TResult? Function(String url)? onGetPaymentUrl,
+    TResult Function()? initial,
+    TResult Function(String? errorMessage)? onError,
+    TResult Function()? onLoading,
+    TResult Function(String url)? onGetPaymentUrl,
   }) {
     return onError?.call(errorMessage);
   }
@@ -311,10 +311,10 @@ class _$_OnError implements _OnError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_OnError value)? onError,
-    TResult? Function(_OnLoading value)? onLoading,
-    TResult? Function(_OnGetPaymentUrl value)? onGetPaymentUrl,
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OnError value)? onError,
+    TResult Function(_OnLoading value)? onLoading,
+    TResult Function(_OnGetPaymentUrl value)? onGetPaymentUrl,
   }) {
     return onError?.call(this);
   }
@@ -352,12 +352,14 @@ abstract class _$$_OnLoadingCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_OnLoadingCopyWithImpl<$Res>
-    extends _$PaymentStateCopyWithImpl<$Res, _$_OnLoading>
+class __$$_OnLoadingCopyWithImpl<$Res> extends _$PaymentStateCopyWithImpl<$Res>
     implements _$$_OnLoadingCopyWith<$Res> {
   __$$_OnLoadingCopyWithImpl(
       _$_OnLoading _value, $Res Function(_$_OnLoading) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_OnLoading));
+
+  @override
+  _$_OnLoading get _value => super._value as _$_OnLoading;
 }
 
 /// @nodoc
@@ -393,10 +395,10 @@ class _$_OnLoading implements _OnLoading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(String? errorMessage)? onError,
-    TResult? Function()? onLoading,
-    TResult? Function(String url)? onGetPaymentUrl,
+    TResult Function()? initial,
+    TResult Function(String? errorMessage)? onError,
+    TResult Function()? onLoading,
+    TResult Function(String url)? onGetPaymentUrl,
   }) {
     return onLoading?.call();
   }
@@ -430,10 +432,10 @@ class _$_OnLoading implements _OnLoading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_OnError value)? onError,
-    TResult? Function(_OnLoading value)? onLoading,
-    TResult? Function(_OnGetPaymentUrl value)? onGetPaymentUrl,
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OnError value)? onError,
+    TResult Function(_OnLoading value)? onLoading,
+    TResult Function(_OnGetPaymentUrl value)? onGetPaymentUrl,
   }) {
     return onLoading?.call(this);
   }
@@ -463,25 +465,26 @@ abstract class _$$_OnGetPaymentUrlCopyWith<$Res> {
   factory _$$_OnGetPaymentUrlCopyWith(
           _$_OnGetPaymentUrl value, $Res Function(_$_OnGetPaymentUrl) then) =
       __$$_OnGetPaymentUrlCopyWithImpl<$Res>;
-  @useResult
   $Res call({String url});
 }
 
 /// @nodoc
 class __$$_OnGetPaymentUrlCopyWithImpl<$Res>
-    extends _$PaymentStateCopyWithImpl<$Res, _$_OnGetPaymentUrl>
+    extends _$PaymentStateCopyWithImpl<$Res>
     implements _$$_OnGetPaymentUrlCopyWith<$Res> {
   __$$_OnGetPaymentUrlCopyWithImpl(
       _$_OnGetPaymentUrl _value, $Res Function(_$_OnGetPaymentUrl) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_OnGetPaymentUrl));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_OnGetPaymentUrl get _value => super._value as _$_OnGetPaymentUrl;
+
   @override
   $Res call({
-    Object? url = null,
+    Object? url = freezed,
   }) {
     return _then(_$_OnGetPaymentUrl(
-      null == url
+      url == freezed
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
@@ -507,15 +510,15 @@ class _$_OnGetPaymentUrl implements _OnGetPaymentUrl {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_OnGetPaymentUrl &&
-            (identical(other.url, url) || other.url == url));
+            const DeepCollectionEquality().equals(other.url, url));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, url);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(url));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_OnGetPaymentUrlCopyWith<_$_OnGetPaymentUrl> get copyWith =>
       __$$_OnGetPaymentUrlCopyWithImpl<_$_OnGetPaymentUrl>(this, _$identity);
 
@@ -533,10 +536,10 @@ class _$_OnGetPaymentUrl implements _OnGetPaymentUrl {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(String? errorMessage)? onError,
-    TResult? Function()? onLoading,
-    TResult? Function(String url)? onGetPaymentUrl,
+    TResult Function()? initial,
+    TResult Function(String? errorMessage)? onError,
+    TResult Function()? onLoading,
+    TResult Function(String url)? onGetPaymentUrl,
   }) {
     return onGetPaymentUrl?.call(url);
   }
@@ -570,10 +573,10 @@ class _$_OnGetPaymentUrl implements _OnGetPaymentUrl {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_OnError value)? onError,
-    TResult? Function(_OnLoading value)? onLoading,
-    TResult? Function(_OnGetPaymentUrl value)? onGetPaymentUrl,
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OnError value)? onError,
+    TResult Function(_OnLoading value)? onLoading,
+    TResult Function(_OnGetPaymentUrl value)? onGetPaymentUrl,
   }) {
     return onGetPaymentUrl?.call(this);
   }

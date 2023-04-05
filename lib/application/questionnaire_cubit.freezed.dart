@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'questionnaire_cubit.dart';
 
@@ -30,8 +30,7 @@ mixin _$QuestionnaireState {
 abstract class $QuestionnaireStateCopyWith<$Res> {
   factory $QuestionnaireStateCopyWith(
           QuestionnaireState value, $Res Function(QuestionnaireState) then) =
-      _$QuestionnaireStateCopyWithImpl<$Res, QuestionnaireState>;
-  @useResult
+      _$QuestionnaireStateCopyWithImpl<$Res>;
   $Res call(
       {List<QuestionnaireModel>? listQuestionnaire,
       List<String>? importantNotes,
@@ -39,16 +38,14 @@ abstract class $QuestionnaireStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$QuestionnaireStateCopyWithImpl<$Res, $Val extends QuestionnaireState>
+class _$QuestionnaireStateCopyWithImpl<$Res>
     implements $QuestionnaireStateCopyWith<$Res> {
   _$QuestionnaireStateCopyWithImpl(this._value, this._then);
 
+  final QuestionnaireState _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(QuestionnaireState) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? listQuestionnaire = freezed,
@@ -56,19 +53,19 @@ class _$QuestionnaireStateCopyWithImpl<$Res, $Val extends QuestionnaireState>
     Object? description = freezed,
   }) {
     return _then(_value.copyWith(
-      listQuestionnaire: freezed == listQuestionnaire
+      listQuestionnaire: listQuestionnaire == freezed
           ? _value.listQuestionnaire
           : listQuestionnaire // ignore: cast_nullable_to_non_nullable
               as List<QuestionnaireModel>?,
-      importantNotes: freezed == importantNotes
+      importantNotes: importantNotes == freezed
           ? _value.importantNotes
           : importantNotes // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-      description: freezed == description
+      description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-    ) as $Val);
+    ));
   }
 }
 
@@ -79,7 +76,6 @@ abstract class _$$_QuestionnaireStateCopyWith<$Res>
           $Res Function(_$_QuestionnaireState) then) =
       __$$_QuestionnaireStateCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {List<QuestionnaireModel>? listQuestionnaire,
       List<String>? importantNotes,
@@ -88,13 +84,15 @@ abstract class _$$_QuestionnaireStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_QuestionnaireStateCopyWithImpl<$Res>
-    extends _$QuestionnaireStateCopyWithImpl<$Res, _$_QuestionnaireState>
+    extends _$QuestionnaireStateCopyWithImpl<$Res>
     implements _$$_QuestionnaireStateCopyWith<$Res> {
   __$$_QuestionnaireStateCopyWithImpl(
       _$_QuestionnaireState _value, $Res Function(_$_QuestionnaireState) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_QuestionnaireState));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_QuestionnaireState get _value => super._value as _$_QuestionnaireState;
+
   @override
   $Res call({
     Object? listQuestionnaire = freezed,
@@ -102,15 +100,15 @@ class __$$_QuestionnaireStateCopyWithImpl<$Res>
     Object? description = freezed,
   }) {
     return _then(_$_QuestionnaireState(
-      listQuestionnaire: freezed == listQuestionnaire
+      listQuestionnaire: listQuestionnaire == freezed
           ? _value.listQuestionnaire
           : listQuestionnaire // ignore: cast_nullable_to_non_nullable
               as List<QuestionnaireModel>?,
-      importantNotes: freezed == importantNotes
+      importantNotes: importantNotes == freezed
           ? _value.importantNotes
           : importantNotes // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-      description: freezed == description
+      description: description == freezed
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as List<String>?,
@@ -158,7 +156,6 @@ class _$_QuestionnaireState implements _QuestionnaireState {
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_QuestionnaireStateCopyWith<_$_QuestionnaireState> get copyWith =>
       __$$_QuestionnaireStateCopyWithImpl<_$_QuestionnaireState>(
           this, _$identity);

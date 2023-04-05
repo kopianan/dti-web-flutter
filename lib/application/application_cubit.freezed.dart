@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'application_cubit.dart';
 
@@ -34,8 +34,7 @@ mixin _$ApplicationState {
 abstract class $ApplicationStateCopyWith<$Res> {
   factory $ApplicationStateCopyWith(
           ApplicationState value, $Res Function(ApplicationState) then) =
-      _$ApplicationStateCopyWithImpl<$Res, ApplicationState>;
-  @useResult
+      _$ApplicationStateCopyWithImpl<$Res>;
   $Res call(
       {bool onLoading,
       String? onError,
@@ -48,19 +47,17 @@ abstract class $ApplicationStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ApplicationStateCopyWithImpl<$Res, $Val extends ApplicationState>
+class _$ApplicationStateCopyWithImpl<$Res>
     implements $ApplicationStateCopyWith<$Res> {
   _$ApplicationStateCopyWithImpl(this._value, this._then);
 
+  final ApplicationState _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(ApplicationState) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? onLoading = null,
+    Object? onLoading = freezed,
     Object? onError = freezed,
     Object? onSuccess = freezed,
     Object? documnets = freezed,
@@ -68,35 +65,34 @@ class _$ApplicationStateCopyWithImpl<$Res, $Val extends ApplicationState>
     Object? visaApplicationModel = freezed,
   }) {
     return _then(_value.copyWith(
-      onLoading: null == onLoading
+      onLoading: onLoading == freezed
           ? _value.onLoading
           : onLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      onError: freezed == onError
+      onError: onError == freezed
           ? _value.onError
           : onError // ignore: cast_nullable_to_non_nullable
               as String?,
-      onSuccess: freezed == onSuccess
+      onSuccess: onSuccess == freezed
           ? _value.onSuccess
           : onSuccess // ignore: cast_nullable_to_non_nullable
               as String?,
-      documnets: freezed == documnets
+      documnets: documnets == freezed
           ? _value.documnets
           : documnets // ignore: cast_nullable_to_non_nullable
               as List<DocumentDataModel>?,
-      masterListData: freezed == masterListData
+      masterListData: masterListData == freezed
           ? _value.masterListData
           : masterListData // ignore: cast_nullable_to_non_nullable
               as List<Map<String, dynamic>>?,
-      visaApplicationModel: freezed == visaApplicationModel
+      visaApplicationModel: visaApplicationModel == freezed
           ? _value.visaApplicationModel
           : visaApplicationModel // ignore: cast_nullable_to_non_nullable
               as VisaApplicationModel?,
-    ) as $Val);
+    ));
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $VisaApplicationModelCopyWith<$Res>? get visaApplicationModel {
     if (_value.visaApplicationModel == null) {
       return null;
@@ -104,7 +100,7 @@ class _$ApplicationStateCopyWithImpl<$Res, $Val extends ApplicationState>
 
     return $VisaApplicationModelCopyWith<$Res>(_value.visaApplicationModel!,
         (value) {
-      return _then(_value.copyWith(visaApplicationModel: value) as $Val);
+      return _then(_value.copyWith(visaApplicationModel: value));
     });
   }
 }
@@ -116,7 +112,6 @@ abstract class _$$_ApplicationStateCopyWith<$Res>
           _$_ApplicationState value, $Res Function(_$_ApplicationState) then) =
       __$$_ApplicationStateCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {bool onLoading,
       String? onError,
@@ -131,16 +126,18 @@ abstract class _$$_ApplicationStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_ApplicationStateCopyWithImpl<$Res>
-    extends _$ApplicationStateCopyWithImpl<$Res, _$_ApplicationState>
+    extends _$ApplicationStateCopyWithImpl<$Res>
     implements _$$_ApplicationStateCopyWith<$Res> {
   __$$_ApplicationStateCopyWithImpl(
       _$_ApplicationState _value, $Res Function(_$_ApplicationState) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_ApplicationState));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_ApplicationState get _value => super._value as _$_ApplicationState;
+
   @override
   $Res call({
-    Object? onLoading = null,
+    Object? onLoading = freezed,
     Object? onError = freezed,
     Object? onSuccess = freezed,
     Object? documnets = freezed,
@@ -148,27 +145,27 @@ class __$$_ApplicationStateCopyWithImpl<$Res>
     Object? visaApplicationModel = freezed,
   }) {
     return _then(_$_ApplicationState(
-      onLoading: null == onLoading
+      onLoading: onLoading == freezed
           ? _value.onLoading
           : onLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      onError: freezed == onError
+      onError: onError == freezed
           ? _value.onError
           : onError // ignore: cast_nullable_to_non_nullable
               as String?,
-      onSuccess: freezed == onSuccess
+      onSuccess: onSuccess == freezed
           ? _value.onSuccess
           : onSuccess // ignore: cast_nullable_to_non_nullable
               as String?,
-      documnets: freezed == documnets
+      documnets: documnets == freezed
           ? _value._documnets
           : documnets // ignore: cast_nullable_to_non_nullable
               as List<DocumentDataModel>?,
-      masterListData: freezed == masterListData
+      masterListData: masterListData == freezed
           ? _value._masterListData
           : masterListData // ignore: cast_nullable_to_non_nullable
               as List<Map<String, dynamic>>?,
-      visaApplicationModel: freezed == visaApplicationModel
+      visaApplicationModel: visaApplicationModel == freezed
           ? _value.visaApplicationModel
           : visaApplicationModel // ignore: cast_nullable_to_non_nullable
               as VisaApplicationModel?,
@@ -203,7 +200,6 @@ class _$_ApplicationState
   List<DocumentDataModel>? get documnets {
     final value = _documnets;
     if (value == null) return null;
-    if (_documnets is EqualUnmodifiableListView) return _documnets;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -213,7 +209,6 @@ class _$_ApplicationState
   List<Map<String, dynamic>>? get masterListData {
     final value = _masterListData;
     if (value == null) return null;
-    if (_masterListData is EqualUnmodifiableListView) return _masterListData;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -244,32 +239,29 @@ class _$_ApplicationState
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ApplicationState &&
-            (identical(other.onLoading, onLoading) ||
-                other.onLoading == onLoading) &&
-            (identical(other.onError, onError) || other.onError == onError) &&
-            (identical(other.onSuccess, onSuccess) ||
-                other.onSuccess == onSuccess) &&
+            const DeepCollectionEquality().equals(other.onLoading, onLoading) &&
+            const DeepCollectionEquality().equals(other.onError, onError) &&
+            const DeepCollectionEquality().equals(other.onSuccess, onSuccess) &&
             const DeepCollectionEquality()
                 .equals(other._documnets, _documnets) &&
             const DeepCollectionEquality()
                 .equals(other._masterListData, _masterListData) &&
-            (identical(other.visaApplicationModel, visaApplicationModel) ||
-                other.visaApplicationModel == visaApplicationModel));
+            const DeepCollectionEquality()
+                .equals(other.visaApplicationModel, visaApplicationModel));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      onLoading,
-      onError,
-      onSuccess,
+      const DeepCollectionEquality().hash(onLoading),
+      const DeepCollectionEquality().hash(onError),
+      const DeepCollectionEquality().hash(onSuccess),
       const DeepCollectionEquality().hash(_documnets),
       const DeepCollectionEquality().hash(_masterListData),
-      visaApplicationModel);
+      const DeepCollectionEquality().hash(visaApplicationModel));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_ApplicationStateCopyWith<_$_ApplicationState> get copyWith =>
       __$$_ApplicationStateCopyWithImpl<_$_ApplicationState>(this, _$identity);
 }

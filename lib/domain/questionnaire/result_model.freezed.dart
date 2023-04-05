@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'result_model.dart';
 
@@ -37,8 +37,7 @@ mixin _$ResultModel {
 abstract class $ResultModelCopyWith<$Res> {
   factory $ResultModelCopyWith(
           ResultModel value, $Res Function(ResultModel) then) =
-      _$ResultModelCopyWithImpl<$Res, ResultModel>;
-  @useResult
+      _$ResultModelCopyWithImpl<$Res>;
   $Res call(
       {bool? contactUs,
       VisaPriceModel? visaPrice,
@@ -51,16 +50,13 @@ abstract class $ResultModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ResultModelCopyWithImpl<$Res, $Val extends ResultModel>
-    implements $ResultModelCopyWith<$Res> {
+class _$ResultModelCopyWithImpl<$Res> implements $ResultModelCopyWith<$Res> {
   _$ResultModelCopyWithImpl(this._value, this._then);
 
+  final ResultModel _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(ResultModel) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? contactUs = freezed,
@@ -71,42 +67,41 @@ class _$ResultModelCopyWithImpl<$Res, $Val extends ResultModel>
     Object? visaSubTitle = freezed,
   }) {
     return _then(_value.copyWith(
-      contactUs: freezed == contactUs
+      contactUs: contactUs == freezed
           ? _value.contactUs
           : contactUs // ignore: cast_nullable_to_non_nullable
               as bool?,
-      visaPrice: freezed == visaPrice
+      visaPrice: visaPrice == freezed
           ? _value.visaPrice
           : visaPrice // ignore: cast_nullable_to_non_nullable
               as VisaPriceModel?,
-      visaEntry: freezed == visaEntry
+      visaEntry: visaEntry == freezed
           ? _value.visaEntry
           : visaEntry // ignore: cast_nullable_to_non_nullable
               as String?,
-      documents: freezed == documents
+      documents: documents == freezed
           ? _value.documents
           : documents // ignore: cast_nullable_to_non_nullable
               as String?,
-      visaTitle: freezed == visaTitle
+      visaTitle: visaTitle == freezed
           ? _value.visaTitle
           : visaTitle // ignore: cast_nullable_to_non_nullable
               as String?,
-      visaSubTitle: freezed == visaSubTitle
+      visaSubTitle: visaSubTitle == freezed
           ? _value.visaSubTitle
           : visaSubTitle // ignore: cast_nullable_to_non_nullable
               as String?,
-    ) as $Val);
+    ));
   }
 
   @override
-  @pragma('vm:prefer-inline')
   $VisaPriceModelCopyWith<$Res>? get visaPrice {
     if (_value.visaPrice == null) {
       return null;
     }
 
     return $VisaPriceModelCopyWith<$Res>(_value.visaPrice!, (value) {
-      return _then(_value.copyWith(visaPrice: value) as $Val);
+      return _then(_value.copyWith(visaPrice: value));
     });
   }
 }
@@ -118,7 +113,6 @@ abstract class _$$_ResultModelCopyWith<$Res>
           _$_ResultModel value, $Res Function(_$_ResultModel) then) =
       __$$_ResultModelCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {bool? contactUs,
       VisaPriceModel? visaPrice,
@@ -132,14 +126,15 @@ abstract class _$$_ResultModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ResultModelCopyWithImpl<$Res>
-    extends _$ResultModelCopyWithImpl<$Res, _$_ResultModel>
+class __$$_ResultModelCopyWithImpl<$Res> extends _$ResultModelCopyWithImpl<$Res>
     implements _$$_ResultModelCopyWith<$Res> {
   __$$_ResultModelCopyWithImpl(
       _$_ResultModel _value, $Res Function(_$_ResultModel) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_ResultModel));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_ResultModel get _value => super._value as _$_ResultModel;
+
   @override
   $Res call({
     Object? contactUs = freezed,
@@ -150,27 +145,27 @@ class __$$_ResultModelCopyWithImpl<$Res>
     Object? visaSubTitle = freezed,
   }) {
     return _then(_$_ResultModel(
-      contactUs: freezed == contactUs
+      contactUs: contactUs == freezed
           ? _value.contactUs
           : contactUs // ignore: cast_nullable_to_non_nullable
               as bool?,
-      visaPrice: freezed == visaPrice
+      visaPrice: visaPrice == freezed
           ? _value.visaPrice
           : visaPrice // ignore: cast_nullable_to_non_nullable
               as VisaPriceModel?,
-      visaEntry: freezed == visaEntry
+      visaEntry: visaEntry == freezed
           ? _value.visaEntry
           : visaEntry // ignore: cast_nullable_to_non_nullable
               as String?,
-      documents: freezed == documents
+      documents: documents == freezed
           ? _value.documents
           : documents // ignore: cast_nullable_to_non_nullable
               as String?,
-      visaTitle: freezed == visaTitle
+      visaTitle: visaTitle == freezed
           ? _value.visaTitle
           : visaTitle // ignore: cast_nullable_to_non_nullable
               as String?,
-      visaSubTitle: freezed == visaSubTitle
+      visaSubTitle: visaSubTitle == freezed
           ? _value.visaSubTitle
           : visaSubTitle // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -215,28 +210,28 @@ class _$_ResultModel implements _ResultModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ResultModel &&
-            (identical(other.contactUs, contactUs) ||
-                other.contactUs == contactUs) &&
-            (identical(other.visaPrice, visaPrice) ||
-                other.visaPrice == visaPrice) &&
-            (identical(other.visaEntry, visaEntry) ||
-                other.visaEntry == visaEntry) &&
-            (identical(other.documents, documents) ||
-                other.documents == documents) &&
-            (identical(other.visaTitle, visaTitle) ||
-                other.visaTitle == visaTitle) &&
-            (identical(other.visaSubTitle, visaSubTitle) ||
-                other.visaSubTitle == visaSubTitle));
+            const DeepCollectionEquality().equals(other.contactUs, contactUs) &&
+            const DeepCollectionEquality().equals(other.visaPrice, visaPrice) &&
+            const DeepCollectionEquality().equals(other.visaEntry, visaEntry) &&
+            const DeepCollectionEquality().equals(other.documents, documents) &&
+            const DeepCollectionEquality().equals(other.visaTitle, visaTitle) &&
+            const DeepCollectionEquality()
+                .equals(other.visaSubTitle, visaSubTitle));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, contactUs, visaPrice, visaEntry,
-      documents, visaTitle, visaSubTitle);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(contactUs),
+      const DeepCollectionEquality().hash(visaPrice),
+      const DeepCollectionEquality().hash(visaEntry),
+      const DeepCollectionEquality().hash(documents),
+      const DeepCollectionEquality().hash(visaTitle),
+      const DeepCollectionEquality().hash(visaSubTitle));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_ResultModelCopyWith<_$_ResultModel> get copyWith =>
       __$$_ResultModelCopyWithImpl<_$_ResultModel>(this, _$identity);
 

@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'failures.dart';
 
@@ -29,13 +29,13 @@ mixin _$Failures {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? serverError,
-    TResult? Function()? apiExpired,
-    TResult? Function(String err)? generalError,
-    TResult? Function(String err)? noData,
-    TResult? Function(String err)? timeOut,
-    TResult? Function(String message)? authError,
-    TResult? Function()? browserIsSafari,
+    TResult Function()? serverError,
+    TResult Function()? apiExpired,
+    TResult Function(String err)? generalError,
+    TResult Function(String err)? noData,
+    TResult Function(String err)? timeOut,
+    TResult Function(String message)? authError,
+    TResult Function()? browserIsSafari,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,13 +63,13 @@ mixin _$Failures {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ServerError value)? serverError,
-    TResult? Function(_ApiExpired value)? apiExpired,
-    TResult? Function(_GeneralError value)? generalError,
-    TResult? Function(_NoData value)? noData,
-    TResult? Function(_TimeOut value)? timeOut,
-    TResult? Function(_AuthError value)? authError,
-    TResult? Function(_BrowserIsSafari value)? browserIsSafari,
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_ApiExpired value)? apiExpired,
+    TResult Function(_GeneralError value)? generalError,
+    TResult Function(_NoData value)? noData,
+    TResult Function(_TimeOut value)? timeOut,
+    TResult Function(_AuthError value)? authError,
+    TResult Function(_BrowserIsSafari value)? browserIsSafari,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -89,18 +89,16 @@ mixin _$Failures {
 /// @nodoc
 abstract class $FailuresCopyWith<$Res> {
   factory $FailuresCopyWith(Failures value, $Res Function(Failures) then) =
-      _$FailuresCopyWithImpl<$Res, Failures>;
+      _$FailuresCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$FailuresCopyWithImpl<$Res, $Val extends Failures>
-    implements $FailuresCopyWith<$Res> {
+class _$FailuresCopyWithImpl<$Res> implements $FailuresCopyWith<$Res> {
   _$FailuresCopyWithImpl(this._value, this._then);
 
+  final Failures _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(Failures) _then;
 }
 
 /// @nodoc
@@ -111,12 +109,14 @@ abstract class _$$_ServerErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ServerErrorCopyWithImpl<$Res>
-    extends _$FailuresCopyWithImpl<$Res, _$_ServerError>
+class __$$_ServerErrorCopyWithImpl<$Res> extends _$FailuresCopyWithImpl<$Res>
     implements _$$_ServerErrorCopyWith<$Res> {
   __$$_ServerErrorCopyWithImpl(
       _$_ServerError _value, $Res Function(_$_ServerError) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_ServerError));
+
+  @override
+  _$_ServerError get _value => super._value as _$_ServerError;
 }
 
 /// @nodoc
@@ -155,13 +155,13 @@ class _$_ServerError implements _ServerError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? serverError,
-    TResult? Function()? apiExpired,
-    TResult? Function(String err)? generalError,
-    TResult? Function(String err)? noData,
-    TResult? Function(String err)? timeOut,
-    TResult? Function(String message)? authError,
-    TResult? Function()? browserIsSafari,
+    TResult Function()? serverError,
+    TResult Function()? apiExpired,
+    TResult Function(String err)? generalError,
+    TResult Function(String err)? noData,
+    TResult Function(String err)? timeOut,
+    TResult Function(String message)? authError,
+    TResult Function()? browserIsSafari,
   }) {
     return serverError?.call();
   }
@@ -201,13 +201,13 @@ class _$_ServerError implements _ServerError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ServerError value)? serverError,
-    TResult? Function(_ApiExpired value)? apiExpired,
-    TResult? Function(_GeneralError value)? generalError,
-    TResult? Function(_NoData value)? noData,
-    TResult? Function(_TimeOut value)? timeOut,
-    TResult? Function(_AuthError value)? authError,
-    TResult? Function(_BrowserIsSafari value)? browserIsSafari,
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_ApiExpired value)? apiExpired,
+    TResult Function(_GeneralError value)? generalError,
+    TResult Function(_NoData value)? noData,
+    TResult Function(_TimeOut value)? timeOut,
+    TResult Function(_AuthError value)? authError,
+    TResult Function(_BrowserIsSafari value)? browserIsSafari,
   }) {
     return serverError?.call(this);
   }
@@ -243,12 +243,14 @@ abstract class _$$_ApiExpiredCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ApiExpiredCopyWithImpl<$Res>
-    extends _$FailuresCopyWithImpl<$Res, _$_ApiExpired>
+class __$$_ApiExpiredCopyWithImpl<$Res> extends _$FailuresCopyWithImpl<$Res>
     implements _$$_ApiExpiredCopyWith<$Res> {
   __$$_ApiExpiredCopyWithImpl(
       _$_ApiExpired _value, $Res Function(_$_ApiExpired) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_ApiExpired));
+
+  @override
+  _$_ApiExpired get _value => super._value as _$_ApiExpired;
 }
 
 /// @nodoc
@@ -287,13 +289,13 @@ class _$_ApiExpired implements _ApiExpired {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? serverError,
-    TResult? Function()? apiExpired,
-    TResult? Function(String err)? generalError,
-    TResult? Function(String err)? noData,
-    TResult? Function(String err)? timeOut,
-    TResult? Function(String message)? authError,
-    TResult? Function()? browserIsSafari,
+    TResult Function()? serverError,
+    TResult Function()? apiExpired,
+    TResult Function(String err)? generalError,
+    TResult Function(String err)? noData,
+    TResult Function(String err)? timeOut,
+    TResult Function(String message)? authError,
+    TResult Function()? browserIsSafari,
   }) {
     return apiExpired?.call();
   }
@@ -333,13 +335,13 @@ class _$_ApiExpired implements _ApiExpired {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ServerError value)? serverError,
-    TResult? Function(_ApiExpired value)? apiExpired,
-    TResult? Function(_GeneralError value)? generalError,
-    TResult? Function(_NoData value)? noData,
-    TResult? Function(_TimeOut value)? timeOut,
-    TResult? Function(_AuthError value)? authError,
-    TResult? Function(_BrowserIsSafari value)? browserIsSafari,
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_ApiExpired value)? apiExpired,
+    TResult Function(_GeneralError value)? generalError,
+    TResult Function(_NoData value)? noData,
+    TResult Function(_TimeOut value)? timeOut,
+    TResult Function(_AuthError value)? authError,
+    TResult Function(_BrowserIsSafari value)? browserIsSafari,
   }) {
     return apiExpired?.call(this);
   }
@@ -372,25 +374,25 @@ abstract class _$$_GeneralErrorCopyWith<$Res> {
   factory _$$_GeneralErrorCopyWith(
           _$_GeneralError value, $Res Function(_$_GeneralError) then) =
       __$$_GeneralErrorCopyWithImpl<$Res>;
-  @useResult
   $Res call({String err});
 }
 
 /// @nodoc
-class __$$_GeneralErrorCopyWithImpl<$Res>
-    extends _$FailuresCopyWithImpl<$Res, _$_GeneralError>
+class __$$_GeneralErrorCopyWithImpl<$Res> extends _$FailuresCopyWithImpl<$Res>
     implements _$$_GeneralErrorCopyWith<$Res> {
   __$$_GeneralErrorCopyWithImpl(
       _$_GeneralError _value, $Res Function(_$_GeneralError) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_GeneralError));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_GeneralError get _value => super._value as _$_GeneralError;
+
   @override
   $Res call({
-    Object? err = null,
+    Object? err = freezed,
   }) {
     return _then(_$_GeneralError(
-      null == err
+      err == freezed
           ? _value.err
           : err // ignore: cast_nullable_to_non_nullable
               as String,
@@ -416,15 +418,15 @@ class _$_GeneralError implements _GeneralError {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_GeneralError &&
-            (identical(other.err, err) || other.err == err));
+            const DeepCollectionEquality().equals(other.err, err));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, err);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(err));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_GeneralErrorCopyWith<_$_GeneralError> get copyWith =>
       __$$_GeneralErrorCopyWithImpl<_$_GeneralError>(this, _$identity);
 
@@ -445,13 +447,13 @@ class _$_GeneralError implements _GeneralError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? serverError,
-    TResult? Function()? apiExpired,
-    TResult? Function(String err)? generalError,
-    TResult? Function(String err)? noData,
-    TResult? Function(String err)? timeOut,
-    TResult? Function(String message)? authError,
-    TResult? Function()? browserIsSafari,
+    TResult Function()? serverError,
+    TResult Function()? apiExpired,
+    TResult Function(String err)? generalError,
+    TResult Function(String err)? noData,
+    TResult Function(String err)? timeOut,
+    TResult Function(String message)? authError,
+    TResult Function()? browserIsSafari,
   }) {
     return generalError?.call(err);
   }
@@ -491,13 +493,13 @@ class _$_GeneralError implements _GeneralError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ServerError value)? serverError,
-    TResult? Function(_ApiExpired value)? apiExpired,
-    TResult? Function(_GeneralError value)? generalError,
-    TResult? Function(_NoData value)? noData,
-    TResult? Function(_TimeOut value)? timeOut,
-    TResult? Function(_AuthError value)? authError,
-    TResult? Function(_BrowserIsSafari value)? browserIsSafari,
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_ApiExpired value)? apiExpired,
+    TResult Function(_GeneralError value)? generalError,
+    TResult Function(_NoData value)? noData,
+    TResult Function(_TimeOut value)? timeOut,
+    TResult Function(_AuthError value)? authError,
+    TResult Function(_BrowserIsSafari value)? browserIsSafari,
   }) {
     return generalError?.call(this);
   }
@@ -534,24 +536,24 @@ abstract class _GeneralError implements Failures {
 abstract class _$$_NoDataCopyWith<$Res> {
   factory _$$_NoDataCopyWith(_$_NoData value, $Res Function(_$_NoData) then) =
       __$$_NoDataCopyWithImpl<$Res>;
-  @useResult
   $Res call({String err});
 }
 
 /// @nodoc
-class __$$_NoDataCopyWithImpl<$Res>
-    extends _$FailuresCopyWithImpl<$Res, _$_NoData>
+class __$$_NoDataCopyWithImpl<$Res> extends _$FailuresCopyWithImpl<$Res>
     implements _$$_NoDataCopyWith<$Res> {
   __$$_NoDataCopyWithImpl(_$_NoData _value, $Res Function(_$_NoData) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_NoData));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_NoData get _value => super._value as _$_NoData;
+
   @override
   $Res call({
-    Object? err = null,
+    Object? err = freezed,
   }) {
     return _then(_$_NoData(
-      null == err
+      err == freezed
           ? _value.err
           : err // ignore: cast_nullable_to_non_nullable
               as String,
@@ -577,15 +579,15 @@ class _$_NoData implements _NoData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_NoData &&
-            (identical(other.err, err) || other.err == err));
+            const DeepCollectionEquality().equals(other.err, err));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, err);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(err));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_NoDataCopyWith<_$_NoData> get copyWith =>
       __$$_NoDataCopyWithImpl<_$_NoData>(this, _$identity);
 
@@ -606,13 +608,13 @@ class _$_NoData implements _NoData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? serverError,
-    TResult? Function()? apiExpired,
-    TResult? Function(String err)? generalError,
-    TResult? Function(String err)? noData,
-    TResult? Function(String err)? timeOut,
-    TResult? Function(String message)? authError,
-    TResult? Function()? browserIsSafari,
+    TResult Function()? serverError,
+    TResult Function()? apiExpired,
+    TResult Function(String err)? generalError,
+    TResult Function(String err)? noData,
+    TResult Function(String err)? timeOut,
+    TResult Function(String message)? authError,
+    TResult Function()? browserIsSafari,
   }) {
     return noData?.call(err);
   }
@@ -652,13 +654,13 @@ class _$_NoData implements _NoData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ServerError value)? serverError,
-    TResult? Function(_ApiExpired value)? apiExpired,
-    TResult? Function(_GeneralError value)? generalError,
-    TResult? Function(_NoData value)? noData,
-    TResult? Function(_TimeOut value)? timeOut,
-    TResult? Function(_AuthError value)? authError,
-    TResult? Function(_BrowserIsSafari value)? browserIsSafari,
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_ApiExpired value)? apiExpired,
+    TResult Function(_GeneralError value)? generalError,
+    TResult Function(_NoData value)? noData,
+    TResult Function(_TimeOut value)? timeOut,
+    TResult Function(_AuthError value)? authError,
+    TResult Function(_BrowserIsSafari value)? browserIsSafari,
   }) {
     return noData?.call(this);
   }
@@ -696,24 +698,24 @@ abstract class _$$_TimeOutCopyWith<$Res> {
   factory _$$_TimeOutCopyWith(
           _$_TimeOut value, $Res Function(_$_TimeOut) then) =
       __$$_TimeOutCopyWithImpl<$Res>;
-  @useResult
   $Res call({String err});
 }
 
 /// @nodoc
-class __$$_TimeOutCopyWithImpl<$Res>
-    extends _$FailuresCopyWithImpl<$Res, _$_TimeOut>
+class __$$_TimeOutCopyWithImpl<$Res> extends _$FailuresCopyWithImpl<$Res>
     implements _$$_TimeOutCopyWith<$Res> {
   __$$_TimeOutCopyWithImpl(_$_TimeOut _value, $Res Function(_$_TimeOut) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_TimeOut));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_TimeOut get _value => super._value as _$_TimeOut;
+
   @override
   $Res call({
-    Object? err = null,
+    Object? err = freezed,
   }) {
     return _then(_$_TimeOut(
-      null == err
+      err == freezed
           ? _value.err
           : err // ignore: cast_nullable_to_non_nullable
               as String,
@@ -739,15 +741,15 @@ class _$_TimeOut implements _TimeOut {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TimeOut &&
-            (identical(other.err, err) || other.err == err));
+            const DeepCollectionEquality().equals(other.err, err));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, err);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(err));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_TimeOutCopyWith<_$_TimeOut> get copyWith =>
       __$$_TimeOutCopyWithImpl<_$_TimeOut>(this, _$identity);
 
@@ -768,13 +770,13 @@ class _$_TimeOut implements _TimeOut {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? serverError,
-    TResult? Function()? apiExpired,
-    TResult? Function(String err)? generalError,
-    TResult? Function(String err)? noData,
-    TResult? Function(String err)? timeOut,
-    TResult? Function(String message)? authError,
-    TResult? Function()? browserIsSafari,
+    TResult Function()? serverError,
+    TResult Function()? apiExpired,
+    TResult Function(String err)? generalError,
+    TResult Function(String err)? noData,
+    TResult Function(String err)? timeOut,
+    TResult Function(String message)? authError,
+    TResult Function()? browserIsSafari,
   }) {
     return timeOut?.call(err);
   }
@@ -814,13 +816,13 @@ class _$_TimeOut implements _TimeOut {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ServerError value)? serverError,
-    TResult? Function(_ApiExpired value)? apiExpired,
-    TResult? Function(_GeneralError value)? generalError,
-    TResult? Function(_NoData value)? noData,
-    TResult? Function(_TimeOut value)? timeOut,
-    TResult? Function(_AuthError value)? authError,
-    TResult? Function(_BrowserIsSafari value)? browserIsSafari,
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_ApiExpired value)? apiExpired,
+    TResult Function(_GeneralError value)? generalError,
+    TResult Function(_NoData value)? noData,
+    TResult Function(_TimeOut value)? timeOut,
+    TResult Function(_AuthError value)? authError,
+    TResult Function(_BrowserIsSafari value)? browserIsSafari,
   }) {
     return timeOut?.call(this);
   }
@@ -858,25 +860,25 @@ abstract class _$$_AuthErrorCopyWith<$Res> {
   factory _$$_AuthErrorCopyWith(
           _$_AuthError value, $Res Function(_$_AuthError) then) =
       __$$_AuthErrorCopyWithImpl<$Res>;
-  @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$_AuthErrorCopyWithImpl<$Res>
-    extends _$FailuresCopyWithImpl<$Res, _$_AuthError>
+class __$$_AuthErrorCopyWithImpl<$Res> extends _$FailuresCopyWithImpl<$Res>
     implements _$$_AuthErrorCopyWith<$Res> {
   __$$_AuthErrorCopyWithImpl(
       _$_AuthError _value, $Res Function(_$_AuthError) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_AuthError));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_AuthError get _value => super._value as _$_AuthError;
+
   @override
   $Res call({
-    Object? message = null,
+    Object? message = freezed,
   }) {
     return _then(_$_AuthError(
-      null == message
+      message == freezed
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
@@ -902,15 +904,15 @@ class _$_AuthError implements _AuthError {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AuthError &&
-            (identical(other.message, message) || other.message == message));
+            const DeepCollectionEquality().equals(other.message, message));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(message));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_AuthErrorCopyWith<_$_AuthError> get copyWith =>
       __$$_AuthErrorCopyWithImpl<_$_AuthError>(this, _$identity);
 
@@ -931,13 +933,13 @@ class _$_AuthError implements _AuthError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? serverError,
-    TResult? Function()? apiExpired,
-    TResult? Function(String err)? generalError,
-    TResult? Function(String err)? noData,
-    TResult? Function(String err)? timeOut,
-    TResult? Function(String message)? authError,
-    TResult? Function()? browserIsSafari,
+    TResult Function()? serverError,
+    TResult Function()? apiExpired,
+    TResult Function(String err)? generalError,
+    TResult Function(String err)? noData,
+    TResult Function(String err)? timeOut,
+    TResult Function(String message)? authError,
+    TResult Function()? browserIsSafari,
   }) {
     return authError?.call(message);
   }
@@ -977,13 +979,13 @@ class _$_AuthError implements _AuthError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ServerError value)? serverError,
-    TResult? Function(_ApiExpired value)? apiExpired,
-    TResult? Function(_GeneralError value)? generalError,
-    TResult? Function(_NoData value)? noData,
-    TResult? Function(_TimeOut value)? timeOut,
-    TResult? Function(_AuthError value)? authError,
-    TResult? Function(_BrowserIsSafari value)? browserIsSafari,
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_ApiExpired value)? apiExpired,
+    TResult Function(_GeneralError value)? generalError,
+    TResult Function(_NoData value)? noData,
+    TResult Function(_TimeOut value)? timeOut,
+    TResult Function(_AuthError value)? authError,
+    TResult Function(_BrowserIsSafari value)? browserIsSafari,
   }) {
     return authError?.call(this);
   }
@@ -1025,11 +1027,14 @@ abstract class _$$_BrowserIsSafariCopyWith<$Res> {
 
 /// @nodoc
 class __$$_BrowserIsSafariCopyWithImpl<$Res>
-    extends _$FailuresCopyWithImpl<$Res, _$_BrowserIsSafari>
+    extends _$FailuresCopyWithImpl<$Res>
     implements _$$_BrowserIsSafariCopyWith<$Res> {
   __$$_BrowserIsSafariCopyWithImpl(
       _$_BrowserIsSafari _value, $Res Function(_$_BrowserIsSafari) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_BrowserIsSafari));
+
+  @override
+  _$_BrowserIsSafari get _value => super._value as _$_BrowserIsSafari;
 }
 
 /// @nodoc
@@ -1068,13 +1073,13 @@ class _$_BrowserIsSafari implements _BrowserIsSafari {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? serverError,
-    TResult? Function()? apiExpired,
-    TResult? Function(String err)? generalError,
-    TResult? Function(String err)? noData,
-    TResult? Function(String err)? timeOut,
-    TResult? Function(String message)? authError,
-    TResult? Function()? browserIsSafari,
+    TResult Function()? serverError,
+    TResult Function()? apiExpired,
+    TResult Function(String err)? generalError,
+    TResult Function(String err)? noData,
+    TResult Function(String err)? timeOut,
+    TResult Function(String message)? authError,
+    TResult Function()? browserIsSafari,
   }) {
     return browserIsSafari?.call();
   }
@@ -1114,13 +1119,13 @@ class _$_BrowserIsSafari implements _BrowserIsSafari {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ServerError value)? serverError,
-    TResult? Function(_ApiExpired value)? apiExpired,
-    TResult? Function(_GeneralError value)? generalError,
-    TResult? Function(_NoData value)? noData,
-    TResult? Function(_TimeOut value)? timeOut,
-    TResult? Function(_AuthError value)? authError,
-    TResult? Function(_BrowserIsSafari value)? browserIsSafari,
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_ApiExpired value)? apiExpired,
+    TResult Function(_GeneralError value)? generalError,
+    TResult Function(_NoData value)? noData,
+    TResult Function(_TimeOut value)? timeOut,
+    TResult Function(_AuthError value)? authError,
+    TResult Function(_BrowserIsSafari value)? browserIsSafari,
   }) {
     return browserIsSafari?.call(this);
   }

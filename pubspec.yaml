@@ -39,9 +39,9 @@ dependencies:
   country_picker: ^2.0.16
   cupertino_icons: ^1.0.2
   dartz: ^0.10.1
-   
   dio: ^4.0.6
   dropdown_search: ^5.0.3
+  excel: ^2.0.4
   file_picker: ^5.2.2
   firebase_auth: ^4.2.5
   firebase_core: ^2.4.1
@@ -57,7 +57,6 @@ dependencies:
   flutter_markdown: ^0.6.13
   flutter_material_pickers: ^3.1.4+1
   flutter_screenutil: ^5.5.4
-  # flutter_secure_storage: ^8.0.0
   form_builder_validators: ^8.3.0
   freezed_annotation: ^2.1.0
   get: ^4.6.5

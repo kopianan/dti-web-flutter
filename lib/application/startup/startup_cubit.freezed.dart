@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'startup_cubit.dart';
 
@@ -37,8 +37,7 @@ mixin _$StartupState {
 abstract class $StartupStateCopyWith<$Res> {
   factory $StartupStateCopyWith(
           StartupState value, $Res Function(StartupState) then) =
-      _$StartupStateCopyWithImpl<$Res, StartupState>;
-  @useResult
+      _$StartupStateCopyWithImpl<$Res>;
   $Res call(
       {List<Province>? provinces,
       List<City>? cities,
@@ -54,16 +53,13 @@ abstract class $StartupStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$StartupStateCopyWithImpl<$Res, $Val extends StartupState>
-    implements $StartupStateCopyWith<$Res> {
+class _$StartupStateCopyWithImpl<$Res> implements $StartupStateCopyWith<$Res> {
   _$StartupStateCopyWithImpl(this._value, this._then);
 
+  final StartupState _value;
   // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final $Res Function(StartupState) _then;
 
-  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? provinces = freezed,
@@ -71,59 +67,59 @@ class _$StartupStateCopyWithImpl<$Res, $Val extends StartupState>
     Object? districts = freezed,
     Object? citiesByProvince = freezed,
     Object? districtsByCity = freezed,
-    Object? selectedProvince = null,
+    Object? selectedProvince = freezed,
     Object? selectedCity = freezed,
     Object? selectedDistrict = freezed,
-    Object? isLoading = null,
-    Object? isSuccess = null,
-    Object? isError = null,
+    Object? isLoading = freezed,
+    Object? isSuccess = freezed,
+    Object? isError = freezed,
   }) {
     return _then(_value.copyWith(
-      provinces: freezed == provinces
+      provinces: provinces == freezed
           ? _value.provinces
           : provinces // ignore: cast_nullable_to_non_nullable
               as List<Province>?,
-      cities: freezed == cities
+      cities: cities == freezed
           ? _value.cities
           : cities // ignore: cast_nullable_to_non_nullable
               as List<City>?,
-      districts: freezed == districts
+      districts: districts == freezed
           ? _value.districts
           : districts // ignore: cast_nullable_to_non_nullable
               as List<District>?,
-      citiesByProvince: freezed == citiesByProvince
+      citiesByProvince: citiesByProvince == freezed
           ? _value.citiesByProvince
           : citiesByProvince // ignore: cast_nullable_to_non_nullable
               as List<City>?,
-      districtsByCity: freezed == districtsByCity
+      districtsByCity: districtsByCity == freezed
           ? _value.districtsByCity
           : districtsByCity // ignore: cast_nullable_to_non_nullable
               as List<District>?,
-      selectedProvince: null == selectedProvince
+      selectedProvince: selectedProvince == freezed
           ? _value.selectedProvince
           : selectedProvince // ignore: cast_nullable_to_non_nullable
               as Province,
-      selectedCity: freezed == selectedCity
+      selectedCity: selectedCity == freezed
           ? _value.selectedCity
           : selectedCity // ignore: cast_nullable_to_non_nullable
               as City?,
-      selectedDistrict: freezed == selectedDistrict
+      selectedDistrict: selectedDistrict == freezed
           ? _value.selectedDistrict
           : selectedDistrict // ignore: cast_nullable_to_non_nullable
               as District?,
-      isLoading: null == isLoading
+      isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      isSuccess: null == isSuccess
+      isSuccess: isSuccess == freezed
           ? _value.isSuccess
           : isSuccess // ignore: cast_nullable_to_non_nullable
               as bool,
-      isError: null == isError
+      isError: isError == freezed
           ? _value.isError
           : isError // ignore: cast_nullable_to_non_nullable
               as bool,
-    ) as $Val);
+    ));
   }
 }
 
@@ -134,7 +130,6 @@ abstract class _$$_StartupStateCopyWith<$Res>
           _$_StartupState value, $Res Function(_$_StartupState) then) =
       __$$_StartupStateCopyWithImpl<$Res>;
   @override
-  @useResult
   $Res call(
       {List<Province>? provinces,
       List<City>? cities,
@@ -151,13 +146,15 @@ abstract class _$$_StartupStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_StartupStateCopyWithImpl<$Res>
-    extends _$StartupStateCopyWithImpl<$Res, _$_StartupState>
+    extends _$StartupStateCopyWithImpl<$Res>
     implements _$$_StartupStateCopyWith<$Res> {
   __$$_StartupStateCopyWithImpl(
       _$_StartupState _value, $Res Function(_$_StartupState) _then)
-      : super(_value, _then);
+      : super(_value, (v) => _then(v as _$_StartupState));
 
-  @pragma('vm:prefer-inline')
+  @override
+  _$_StartupState get _value => super._value as _$_StartupState;
+
   @override
   $Res call({
     Object? provinces = freezed,
@@ -165,55 +162,55 @@ class __$$_StartupStateCopyWithImpl<$Res>
     Object? districts = freezed,
     Object? citiesByProvince = freezed,
     Object? districtsByCity = freezed,
-    Object? selectedProvince = null,
+    Object? selectedProvince = freezed,
     Object? selectedCity = freezed,
     Object? selectedDistrict = freezed,
-    Object? isLoading = null,
-    Object? isSuccess = null,
-    Object? isError = null,
+    Object? isLoading = freezed,
+    Object? isSuccess = freezed,
+    Object? isError = freezed,
   }) {
     return _then(_$_StartupState(
-      provinces: freezed == provinces
+      provinces: provinces == freezed
           ? _value._provinces
           : provinces // ignore: cast_nullable_to_non_nullable
               as List<Province>?,
-      cities: freezed == cities
+      cities: cities == freezed
           ? _value._cities
           : cities // ignore: cast_nullable_to_non_nullable
               as List<City>?,
-      districts: freezed == districts
+      districts: districts == freezed
           ? _value._districts
           : districts // ignore: cast_nullable_to_non_nullable
               as List<District>?,
-      citiesByProvince: freezed == citiesByProvince
+      citiesByProvince: citiesByProvince == freezed
           ? _value._citiesByProvince
           : citiesByProvince // ignore: cast_nullable_to_non_nullable
               as List<City>?,
-      districtsByCity: freezed == districtsByCity
+      districtsByCity: districtsByCity == freezed
           ? _value._districtsByCity
           : districtsByCity // ignore: cast_nullable_to_non_nullable
               as List<District>?,
-      selectedProvince: null == selectedProvince
+      selectedProvince: selectedProvince == freezed
           ? _value.selectedProvince
           : selectedProvince // ignore: cast_nullable_to_non_nullable
               as Province,
-      selectedCity: freezed == selectedCity
+      selectedCity: selectedCity == freezed
           ? _value.selectedCity
           : selectedCity // ignore: cast_nullable_to_non_nullable
               as City?,
-      selectedDistrict: freezed == selectedDistrict
+      selectedDistrict: selectedDistrict == freezed
           ? _value.selectedDistrict
           : selectedDistrict // ignore: cast_nullable_to_non_nullable
               as District?,
-      isLoading: null == isLoading
+      isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      isSuccess: null == isSuccess
+      isSuccess: isSuccess == freezed
           ? _value.isSuccess
           : isSuccess // ignore: cast_nullable_to_non_nullable
               as bool,
-      isError: null == isError
+      isError: isError == freezed
           ? _value.isError
           : isError // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -247,7 +244,6 @@ class _$_StartupState implements _StartupState {
   List<Province>? get provinces {
     final value = _provinces;
     if (value == null) return null;
-    if (_provinces is EqualUnmodifiableListView) return _provinces;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -257,7 +253,6 @@ class _$_StartupState implements _StartupState {
   List<City>? get cities {
     final value = _cities;
     if (value == null) return null;
-    if (_cities is EqualUnmodifiableListView) return _cities;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -267,7 +262,6 @@ class _$_StartupState implements _StartupState {
   List<District>? get districts {
     final value = _districts;
     if (value == null) return null;
-    if (_districts is EqualUnmodifiableListView) return _districts;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -277,8 +271,6 @@ class _$_StartupState implements _StartupState {
   List<City>? get citiesByProvince {
     final value = _citiesByProvince;
     if (value == null) return null;
-    if (_citiesByProvince is EqualUnmodifiableListView)
-      return _citiesByProvince;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -288,7 +280,6 @@ class _$_StartupState implements _StartupState {
   List<District>? get districtsByCity {
     final value = _districtsByCity;
     if (value == null) return null;
-    if (_districtsByCity is EqualUnmodifiableListView) return _districtsByCity;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -329,17 +320,15 @@ class _$_StartupState implements _StartupState {
                 .equals(other._citiesByProvince, _citiesByProvince) &&
             const DeepCollectionEquality()
                 .equals(other._districtsByCity, _districtsByCity) &&
-            (identical(other.selectedProvince, selectedProvince) ||
-                other.selectedProvince == selectedProvince) &&
-            (identical(other.selectedCity, selectedCity) ||
-                other.selectedCity == selectedCity) &&
-            (identical(other.selectedDistrict, selectedDistrict) ||
-                other.selectedDistrict == selectedDistrict) &&
-            (identical(other.isLoading, isLoading) ||
-                other.isLoading == isLoading) &&
-            (identical(other.isSuccess, isSuccess) ||
-                other.isSuccess == isSuccess) &&
-            (identical(other.isError, isError) || other.isError == isError));
+            const DeepCollectionEquality()
+                .equals(other.selectedProvince, selectedProvince) &&
+            const DeepCollectionEquality()
+                .equals(other.selectedCity, selectedCity) &&
+            const DeepCollectionEquality()
+                .equals(other.selectedDistrict, selectedDistrict) &&
+            const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
+            const DeepCollectionEquality().equals(other.isSuccess, isSuccess) &&
+            const DeepCollectionEquality().equals(other.isError, isError));
   }
 
   @override
@@ -350,16 +339,15 @@ class _$_StartupState implements _StartupState {
       const DeepCollectionEquality().hash(_districts),
       const DeepCollectionEquality().hash(_citiesByProvince),
       const DeepCollectionEquality().hash(_districtsByCity),
-      selectedProvince,
-      selectedCity,
-      selectedDistrict,
-      isLoading,
-      isSuccess,
-      isError);
+      const DeepCollectionEquality().hash(selectedProvince),
+      const DeepCollectionEquality().hash(selectedCity),
+      const DeepCollectionEquality().hash(selectedDistrict),
+      const DeepCollectionEquality().hash(isLoading),
+      const DeepCollectionEquality().hash(isSuccess),
+      const DeepCollectionEquality().hash(isError));
 
   @JsonKey(ignore: true)
   @override
-  @pragma('vm:prefer-inline')
   _$$_StartupStateCopyWith<_$_StartupState> get copyWith =>
       __$$_StartupStateCopyWithImpl<_$_StartupState>(this, _$identity);
 }
