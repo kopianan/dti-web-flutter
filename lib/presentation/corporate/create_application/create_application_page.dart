@@ -276,7 +276,7 @@ class FilledRecordWidget extends StatelessWidget {
                         .toList(),
                     rows: state.body
                         .map((body) => DataRow(
-                          selected: true,
+                            selected: true,
                             onSelectChanged: (e) {
                               print(e);
                             },
