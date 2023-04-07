@@ -69,7 +69,11 @@ class AuthCubit extends Cubit<AuthState> {
           emit(const AuthState.unAuthorized());
         } else {
           final user = storage.getLocalUserData();
-          emit( AuthState.authorized(user!));
+          if (user == null) {
+            emit(const AuthState.unAuthorized());
+          } else {
+            emit(AuthState.authorized(user));
+          }
         }
       } else {
         emit(const AuthState.unAuthorized());
@@ -101,9 +105,11 @@ class AuthCubit extends Cubit<AuthState> {
       (r) async {
         await storage.saveToken(r);
         final result = await iAuth.getUserData();
+
         result.fold(
           (l) => null,
           (userData) {
+            storage.saveUser(userData);
             emit(AuthState.onLoginSuccess(r, userData.isAgent));
           },
         );

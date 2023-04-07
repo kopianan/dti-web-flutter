@@ -39,6 +39,7 @@ dependencies:
   country_picker: ^2.0.16
   cupertino_icons: ^1.0.2
   dartz: ^0.10.1
+  data_table_2: ^2.4.2
   dio: ^5.1.1
   dropdown_search: ^5.0.3
   excel: ^2.0.4

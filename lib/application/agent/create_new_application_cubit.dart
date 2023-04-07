@@ -14,6 +14,11 @@ part 'create_new_application_cubit.freezed.dart';
 class CreateNewApplicationCubit extends Cubit<CreateNewApplicationState> {
   CreateNewApplicationCubit() : super(CreateNewApplicationState.initial());
 
+  void resetData() {
+    emit(state
+        .copyWith(body: [], header: [], pickedFile: null, excelBytes: null));
+  }
+
   void setPickedFile(FilePickerResult file) {
     emit(state.copyWith(pickedFile: file));
   }

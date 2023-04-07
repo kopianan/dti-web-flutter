@@ -1,4 +1,5 @@
 import 'dart:io' as io;
+import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/src/painting/box_border.dart' as border;
 import 'package:dti_web/application/agent/create_new_application_cubit.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
@@ -203,7 +204,8 @@ class CreateApplicationModal extends StatelessWidget {
 }
 
 class FilledRecordWidget extends StatelessWidget {
-  const FilledRecordWidget({super.key});
+  FilledRecordWidget({super.key});
+  final horizontal = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -229,7 +231,12 @@ class FilledRecordWidget extends StatelessWidget {
                         ),
                         SizedBox(width: 20.sp),
                         PrimaryButton(
-                          onClick: () {},
+                          onClick: () {
+                            //reset
+                            context
+                                .read<CreateNewApplicationCubit>()
+                                .resetData();
+                          },
                           label: 'Reset',
                           height: 40.h,
                           width: 100.w,
@@ -260,42 +267,42 @@ class FilledRecordWidget extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 30.h),
-              SingleChildScrollView(
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: DataTable(
-                    columns: state.header
-                        .map((header) => DataColumn(
-                                label: Text(
-                              header?.value.toString() ?? "null",
-                              style: TextStyle(
-                                fontSize: 18.sp,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            )))
-                        .toList(),
-                    rows: state.body
-                        .map((body) => DataRow(
-                            selected: true,
-                            onSelectChanged: (e) {
-                              print(e);
-                            },
-                            cells: body
-                                .map(
-                                  (e) => DataCell(
-                                    Text(
-                                      e?.value.toString() ?? "null",
-                                      style: TextStyle(
-                                          fontSize: 14.sp,
-                                          color: e?.value == null
-                                              ? Colors.red
-                                              : Colors.black),
-                                    ),
+              Expanded(
+                child: DataTable2(
+                  columnSpacing: 12,
+                  horizontalMargin: 12,
+                  minWidth: 10600,
+                  columns: state.header
+                      .map((header) => DataColumn2(
+                          fixedWidth: 300,
+                          label: Text(
+                            header?.value.toString() ?? "null",
+                            style: TextStyle(
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          )))
+                      .toList(),
+                  rows: state.body
+                      .map((body) => DataRow2(
+                          onSelectChanged: (e) {
+                            print(e);
+                          },
+                          cells: body
+                              .map(
+                                (e) => DataCell(
+                                  Text(
+                                    e?.value.toString() ?? "null",
+                                    style: TextStyle(
+                                        fontSize: 14.sp,
+                                        color: e?.value == null
+                                            ? Colors.red
+                                            : Colors.black),
                                   ),
-                                )
-                                .toList()))
-                        .toList(),
-                  ),
+                                ),
+                              )
+                              .toList()))
+                      .toList(),
                 ),
               ),
             ],
