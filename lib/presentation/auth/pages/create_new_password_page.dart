@@ -9,6 +9,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+@RoutePage()
 class CreateNewPasswordPage extends StatelessWidget {
   static const String routeName = '/create-new-password';
   const CreateNewPasswordPage({super.key});
@@ -26,7 +27,7 @@ class CreateNewPasswordPage extends StatelessWidget {
             Row(
               children: [
                 Expanded(
-                  child: Container( 
+                  child: Container(
                     child: Image.asset('assets/images/dti_auth_register.png'),
                   ),
                 ),

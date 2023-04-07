@@ -16,6 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+@RoutePage()
 class QuestionnaireSummaryPage extends StatefulWidget {
   const QuestionnaireSummaryPage({super.key, required this.resultModel});
   static const String routeName = '/questionnaire-summary';

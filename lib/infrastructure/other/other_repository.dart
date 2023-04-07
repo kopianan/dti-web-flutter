@@ -57,7 +57,7 @@ class OtherRepository extends IOther {
       }
       return Left(Failures.generalError("Something Wrong"));
     } on DioError catch (e) {
-      if (e.type == DioErrorType.response) {
+      if (e.type == DioErrorType.badResponse) {
         if (e.response!.statusCode! == 404) {
           if (e.response!.data['error'] != null) {
             return Left(Failures.generalError(e.response!.data['error']));
@@ -173,7 +173,7 @@ class OtherRepository extends IOther {
       }
       return Left(Failures.generalError("Something Wrong"));
     } on DioError catch (e) {
-      if (e.type == DioErrorType.response) {
+      if (e.type == DioErrorType.badResponse) {
         if (e.response!.statusCode! == 404) {
           if (e.response!.data['error'] != null) {
             return Left(Failures.generalError(e.response!.data['error']));
@@ -215,7 +215,7 @@ class OtherRepository extends IOther {
       }
       return Left(Failures.generalError("Something Wrong"));
     } on DioError catch (e) {
-      if (e.type == DioErrorType.response) {
+      if (e.type == DioErrorType.badResponse) {
         if (e.response!.statusCode! == 404) {
           if (e.response!.data['error'] != null) {
             return Left(Failures.generalError(e.response!.data['error']));

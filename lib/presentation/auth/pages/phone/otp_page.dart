@@ -13,6 +13,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pinput/pinput.dart';
 
+@RoutePage()
 class OTPPage extends StatelessWidget {
   static const String routeName = '/otp-page';
   OTPPage({super.key, required this.code, required this.number});

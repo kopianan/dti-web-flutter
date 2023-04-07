@@ -58,7 +58,7 @@ class AppWidget extends StatelessWidget {
         child: MaterialApp.router(
           routerDelegate: _appRouter.delegate(),
           routeInformationParser: _appRouter.defaultRouteParser(),
-          supportedLocales: FormBuilderLocalizations.delegate.supportedLocales,
+          supportedLocales: FormBuilderLocalizations.supportedLocales,
           localizationsDelegates: const [
             FormBuilderLocalizations.delegate,
           ],

@@ -20,6 +20,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../widgets/email_text_field.dart';
 import 'widget/media_social_button.dart';
 
+@RoutePage()
 class SignInPage extends StatefulWidget {
   static const String routeName = '/login';
   const SignInPage({super.key});

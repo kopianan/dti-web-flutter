@@ -16,6 +16,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+@RoutePage()
 class SelfiePage extends StatefulWidget {
   static const String routeName = '/selfie-page';
   const SelfiePage({super.key});
@@ -49,31 +50,32 @@ class _SelfiePageState extends State<SelfiePage> {
               },
               onSelfieImageComplete: (e) {
                 EasyLoading.dismiss();
-                showFlash(
-                  context: context,
-                  duration: Duration(seconds: 4),
-                  builder: (context, controller) {
-                    return Flash(
-                      controller: controller,
-                      behavior: FlashBehavior.floating,
-                      position: FlashPosition.top,
-                      backgroundColor: Colors.green,
-                      boxShadows: kElevationToShadow[4],
-                      horizontalDismissDirection:
-                          HorizontalDismissDirection.horizontal,
-                      child: FlashBar(
-                        indicatorColor: AppColor.primaryColor,
-                        content: const Text(
-                          'Document has been updated',
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white),
-                        ),
-                      ),
-                    );
-                  },
-                );
+                //TODO show flash deleted here
+                // showFlash(
+                //   context: context,
+                //   duration: Duration(seconds: 4),
+                //   builder: (context, controller) {
+                //     return Flash(
+                //       controller: controller,
+                //       position: FlashPosition.top,
+                //       backgroundColor: Colors.green,
+                //       boxShadows: kElevationToShadow[4],
+                //       horizontalDismissDirection:
+                //           HorizontalDismissDirection.horizontal,
+                //       child: FlashBar(
+                //         indicatorColor: AppColor.primaryColor,
+                //         content: const Text(
+                //           'Document has been updated',
+                //           style: TextStyle(
+                //               fontSize: 20,
+                //               fontWeight: FontWeight.bold,
+                //               color: Colors.white),
+                //         ),
+                //         controller: null,
+                //       ),
+                //     );
+                //   },
+                // );
                 AutoRouter.of(context).push(PassportDetailRoute(
                     firebaseDocId:
                         getIt<DocumentCubit>().state.visa!.firebaseDocId!));

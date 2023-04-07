@@ -18,6 +18,7 @@ import 'package:get/get.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 import 'package:syncfusion_flutter_signaturepad/signaturepad.dart';
 
+@RoutePage()
 class SignaturePage extends StatefulWidget {
   static const String routeName = '/signature';
   const SignaturePage({
@@ -145,7 +146,7 @@ class _SignaturePageState extends State<SignaturePage> {
                                   documentType: widget.appDocument.id!.trim());
                             }
 
-                            if (isSignatureDrawed == false) { 
+                            if (isSignatureDrawed == false) {
                               Get.showSnackbar(
                                 const GetSnackBar(
                                   message: "Please draw your signature",

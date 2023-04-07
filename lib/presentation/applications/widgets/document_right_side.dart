@@ -52,31 +52,32 @@ class _RighSideState extends State<RighSide> {
               //UPDATE THE DOCUMENT
               context.read<DocumentCubit>().updateDocumentStatus(e.list);
               setState(() {});
-              showFlash(
-                context: context,
-                duration: Duration(seconds: 4),
-                builder: (context, controller) {
-                  return Flash(
-                    controller: controller,
-                    behavior: FlashBehavior.floating,
-                    position: FlashPosition.top,
-                    backgroundColor: Colors.green,
-                    boxShadows: kElevationToShadow[4],
-                    horizontalDismissDirection:
-                        HorizontalDismissDirection.horizontal,
-                    child: FlashBar(
-                      indicatorColor: AppColor.primaryColor,
-                      content: const Text(
-                        'Document has been updated',
-                        style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
-                      ),
-                    ),
-                  );
-                },
-              );
+              //TODO remove flash here
+              // showFlash(
+              //   context: context,
+              //   duration: Duration(seconds: 4),
+              //   builder: (context, controller) {
+              //     return Flash(
+              //       controller: controller,
+              //       behavior: FlashBehavior.floating,
+              //       position: FlashPosition.top,
+              //       backgroundColor: Colors.green,
+              //       boxShadows: kElevationToShadow[4],
+              //       horizontalDismissDirection:
+              //           HorizontalDismissDirection.horizontal,
+              //       child: FlashBar(
+              //         indicatorColor: AppColor.primaryColor,
+              //         content: const Text(
+              //           'Document has been updated',
+              //           style: TextStyle(
+              //               fontSize: 20,
+              //               fontWeight: FontWeight.bold,
+              //               color: Colors.white),
+              //         ),
+              //       ),
+              //     );
+              //   },
+              // );
             },
           );
         },

@@ -21,6 +21,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+@RoutePage()
 class DashboardPage extends StatefulWidget {
   static const String routeName = '/dashboard-page';
   const DashboardPage({super.key});

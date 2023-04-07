@@ -14,6 +14,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
+@RoutePage()
 class PersonalInformation4Page extends StatefulWidget {
   const PersonalInformation4Page({
     super.key,

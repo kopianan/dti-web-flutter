@@ -19,6 +19,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+@RoutePage()
 class PassportDetailPage extends StatefulWidget {
   static const String routeName = '/passport-detail/:id';
   const PassportDetailPage({

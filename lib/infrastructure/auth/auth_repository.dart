@@ -131,7 +131,7 @@ class AuthRepository extends IAuth {
       // return
       return Left("Something wrong");
     } on DioError catch (e) {
-      if (e.type == DioErrorType.response) {
+      if (e.type == DioErrorType.badResponse) {
         if (e.response != null) {
           if (e.response!.statusCode == 403) {
             return Left(e.response!.data!['error']);
@@ -166,7 +166,7 @@ class AuthRepository extends IAuth {
       return Left(Failures.noData("Something wrong"));
     } on DioError catch (e) {
       switch (e.type) {
-        case DioErrorType.connectTimeout:
+        case DioErrorType.connectionTimeout:
           // TODO: Handle this case.
           break;
         case DioErrorType.sendTimeout:
@@ -175,7 +175,7 @@ class AuthRepository extends IAuth {
         case DioErrorType.receiveTimeout:
           // TODO: Handle this case.
           break;
-        case DioErrorType.response:
+        case DioErrorType.badResponse:
           if (e.response!.statusCode == 400) {
             return Left(Failures.generalError(e.response!.data.toString()));
           }
@@ -183,7 +183,7 @@ class AuthRepository extends IAuth {
         case DioErrorType.cancel:
           // TODO: Handle this case.
           break;
-        case DioErrorType.other:
+        case DioErrorType.unknown:
           // TODO: Handle this case.
           break;
       }
@@ -206,7 +206,7 @@ class AuthRepository extends IAuth {
       return Left(Failures.noData("Something wrong"));
     } on DioError catch (e) {
       switch (e.type) {
-        case DioErrorType.connectTimeout:
+        case DioErrorType.connectionTimeout:
           // TODO: Handle this case.
           break;
         case DioErrorType.sendTimeout:
@@ -215,7 +215,7 @@ class AuthRepository extends IAuth {
         case DioErrorType.receiveTimeout:
           // TODO: Handle this case.
           break;
-        case DioErrorType.response:
+        case DioErrorType.badResponse:
           if (e.response!.statusCode == 400) {
             return Left(Failures.generalError(e.response!.data.toString()));
           }
@@ -226,7 +226,7 @@ class AuthRepository extends IAuth {
         case DioErrorType.cancel:
           // TODO: Handle this case.
           break;
-        case DioErrorType.other:
+        case DioErrorType.unknown:
           // TODO: Handle this case.
           break;
       }

@@ -49,129 +49,75 @@ import '../presentation/questionnaire/personal_information_2_page.dart';
 
 part "app_router.gr.dart";
 
-@MaterialAutoRouter(
+@AutoRouterConfig(
   replaceInRouteName: 'Page,Route',
-  routes: <AutoRoute>[
+)
+class AppRouter extends _$AppRouter {
+  @override
+  RouteType get defaultRouteType => RouteType.material();
+  @override
+  final List<AutoRoute> routes = [
+    AutoRoute(path: CDashboardPage.routeName, page: CDashboardRoute.page),
+    AutoRoute(path: '/', page: SplashScreenRoute.page),
+    AutoRoute(path: SelfiePage.routeName, page: SelfieRoute.page),
     AutoRoute(
-      path: CDashboardPage.routeName,
-      page: CDashboardPage,
-    ),
+        path: PassportPaymentPage.routeName, page: PassportPaymentRoute.page),
     AutoRoute(
-      initial: true,
-      path: '/',
-      page: SplashScreenPage,
-    ),
+        path: PassportDetailPage.routeName, page: PassportDetailRoute.page),
     AutoRoute(
-      path: SelfiePage.routeName,
-      page: SelfiePage,
-    ),
+        path: ChoosePassportPage.routeName, page: ChoosePassportRoute.page),
     AutoRoute(
-      path: PassportPaymentPage.routeName,
-      page: PassportPaymentPage,
-    ),
+        path: PassportPersonalParticularPage.routeName,
+        page: PassportPersonalParticularRoute.page),
+    AutoRoute(path: DashboardPage.routeName, page: DashboardRoute.page),
+    AutoRoute(path: PlatformPage.routeName, page: PlatformRoute.page),
+    AutoRoute(path: VOASummaryPage.routeName, page: VOASummaryRoute.page),
     AutoRoute(
-      path: PassportDetailPage.routeName,
-      page: PassportDetailPage,
-    ),
-
+        page: ApplicationDetailRoute.page,
+        path: ApplicationDetailPage.routeName),
+    AutoRoute(page: SignatureRoute.page, path: SignaturePage.routeName),
+    AutoRoute(page: UserDomicileRoute.page, path: UserDomicilePage.routeName),
+    AutoRoute(page: GuarantorRoute.page, path: GuarantorPage.routeName),
     AutoRoute(
-      path: ChoosePassportPage.routeName,
-      page: ChoosePassportPage,
-    ),
-    AutoRoute(
-      path: PassportPersonalParticularPage.routeName,
-      page: PassportPersonalParticularPage,
-    ),
-    AutoRoute(
-      path: DashboardPage.routeName,
-      page: DashboardPage,
-    ),
-    AutoRoute(
-      // initial: true,
-      // path: '/',
-      path: PlatformPage.routeName,
-      page: PlatformPage,
-    ),
-    AutoRoute(
-      path: VOASummaryPage.routeName,
-      page: VOASummaryPage,
-    ),
-    AutoRoute(
-      page: ApplicationDetailPage,
-      path: ApplicationDetailPage.routeName,
-    ),
-    AutoRoute(
-      page: SignaturePage,
-      path: SignaturePage.routeName,
-    ),
-    // AutoRoute(
-    //   page: SubmitScreenPage,
-    //   path: SubmitScreenPage.routeName,
-    // ),
-    AutoRoute(
-      page: UserDomicilePage,
-      path: UserDomicilePage.routeName,
-    ),
-    AutoRoute(
-      page: GuarantorPage,
-      path: GuarantorPage.routeName,
-    ),
-    AutoRoute(
-        page: PersonalInformation2Page,
+        page: PersonalInformation2Route.page,
         path: PersonalInformation2Page.routeName),
     AutoRoute(
-        page: PersonalInformation4Page,
+        page: PersonalInformation4Route.page,
         path: PersonalInformation4Page.routeName),
     AutoRoute(
-        page: PersonalInformation4bPage,
+        page: PersonalInformation4bRoute.page,
         path: PersonalInformation4bPage.routeName),
-    AutoRoute(page: ApplicationCardPage, path: ApplicationCardPage.routeName),
-    AutoRoute(page: PaymentPage, path: PaymentPage.routeName),
     AutoRoute(
-      page: PersonalInformation3Page,
-      path: PersonalInformation3Page.routeName,
-    ),
+        page: ApplicationCardRoute.page, path: ApplicationCardPage.routeName),
+    AutoRoute(page: PaymentRoute.page, path: PaymentPage.routeName),
     AutoRoute(
-      page: PersonalInformation1Page,
-    ),
+        page: PersonalInformation3Route.page,
+        path: PersonalInformation3Page.routeName),
     AutoRoute(
-      path: SignInPage.routeName,
-      page: SignInPage,
-    ),
-
+        page: PersonalInformation1Route.page,
+        path: PersonalInformation1Page.routeName),
+    AutoRoute(path: SignInPage.routeName, page: SignInRoute.page),
     AutoRoute(
-      path: UploadDocumentPage.routeName,
-      page: UploadDocumentPage,
-    ),
+        path: UploadDocumentPage.routeName, page: UploadDocumentRoute.page),
     AutoRoute(
-      path: NumberRegistrationPage.routeName,
-      page: NumberRegistrationPage,
-    ),
+        path: NumberRegistrationPage.routeName,
+        page: NumberRegistrationRoute.page),
+    AutoRoute(path: DTIPdfViewerPage.routeName, page: DTIPdfViewerRoute.page),
     AutoRoute(
-      path: DTIPdfViewerPage.routeName,
-      page: DTIPdfViewerPage,
-    ),
-    AutoRoute(
-        page: PhotoViewPage,
+        page: PhotoViewRoute.page,
         path: PhotoViewPage.routeName,
         fullscreenDialog: true),
     AutoRoute(
-        page: QuestionnaireSummaryPage,
+        page: QuestionnaireSummaryRoute.page,
         path: QuestionnaireSummaryPage.routeName),
+    AutoRoute(page: QuestionnaireRoute.page, path: QuestionnairePage.routeName),
+    AutoRoute(page: SignUpRoute.page, path: SignUpPage.routeName),
+    AutoRoute(page: ResetRoute.page, path: ResetPage.routeName),
+    AutoRoute(page: OTPRoute.page, path: OTPPage.routeName),
+    AutoRoute(page: LandingRoute.page, path: LandingPage.routeName),
+    AutoRoute(page: CheckEmailRoute.page, path: CheckEmailPage.routeName),
     AutoRoute(
-      page: QuestionnairePage,
-      path: QuestionnairePage.routeName,
-    ),
-    AutoRoute(
-      page: SignUpPage,
-      path: SignUpPage.routeName,
-    ),
-    AutoRoute(page: ResetPage, path: ResetPage.routeName),
-    AutoRoute(page: OTPPage, path: OTPPage.routeName),
-    AutoRoute(page: LandingPage, path: LandingPage.routeName),
-    AutoRoute(page: CheckEmailPage, path: CheckEmailPage.routeName),
-    AutoRoute(
-        page: CreateNewPasswordPage, path: CreateNewPasswordPage.routeName),
-  ],
-)
-class AppRouter extends _$AppRouter {}
+        page: CreateNewPasswordRoute.page,
+        path: CreateNewPasswordPage.routeName),
+  ];
+}

@@ -1,5 +1,5 @@
 import 'dart:io' as io;
-
+import 'package:flutter/src/painting/box_border.dart' as border;
 import 'package:dti_web/application/agent/create_new_application_cubit.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
 import 'package:dti_web/injection.dart';
@@ -121,7 +121,7 @@ class CreateApplicationModal extends StatelessWidget {
                         Container(
                           padding: const EdgeInsets.all(30),
                           decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black)),
+                              border: border.Border.all(color: Colors.black)),
                           child: InkWell(
                             onTap: () async {
                               //get file
@@ -315,7 +315,7 @@ class EmptyRecordWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       margin: EdgeInsets.symmetric(horizontal: 30.w),
-      shape: Border.all(style: BorderStyle.solid, color: Colors.black),
+      shape: border.Border.all(color: Colors.black),
       clipBehavior: Clip.hardEdge,
       child: Container(
           height: 300,

@@ -8,6 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+@RoutePage()
 class DTIPdfViewerPage extends StatelessWidget {
   static const String routeName = '/dti-pdf-viewer';
   final String imageUrl;
@@ -17,7 +18,7 @@ class DTIPdfViewerPage extends StatelessWidget {
   final Uint8List? bytesImage;
   const DTIPdfViewerPage(
       {super.key,
-    required this.imageUrl,
+      required this.imageUrl,
       this.isNetwork = false,
       this.bytesImage});
 
@@ -29,7 +30,7 @@ class DTIPdfViewerPage extends StatelessWidget {
             isNetwork
                 ? IconButton(
                     onPressed: () {
-                      launch(this.imageUrl); 
+                      launch(this.imageUrl);
                     },
                     icon: Icon(
                       Icons.download,

@@ -11,6 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 
+@RoutePage()
 class ApplicationCardPage extends StatefulWidget {
   static const String routeName = '/application-card';
   const ApplicationCardPage({super.key, required this.dashboardCubit});

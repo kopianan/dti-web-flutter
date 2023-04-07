@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:dti_web/core/widgets/auth_footer_widget.dart';
 import 'package:dti_web/core/widgets/auth_header_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+@RoutePage()
 class CheckEmailPage extends StatelessWidget {
   static const String routeName = '/check_email';
   const CheckEmailPage({super.key});

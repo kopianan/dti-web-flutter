@@ -392,7 +392,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
       return Right(result.toString());
     } on DioError catch (e) {
       switch (e.type) {
-        case DioErrorType.connectTimeout:
+        case DioErrorType.connectionTimeout:
           // TODO: Handle this case.
           break;
         case DioErrorType.sendTimeout:
@@ -401,7 +401,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
         case DioErrorType.receiveTimeout:
           // TODO: Handle this case.
           break;
-        case DioErrorType.response:
+        case DioErrorType.badResponse:
           if (e.response!.statusCode! == 404) {
             if (e.response!.data['error'] != null) {
               return Left(Failures.generalError(e.response!.data['error']));
@@ -412,7 +412,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
         case DioErrorType.cancel:
           // TODO: Handle this case.
           break;
-        case DioErrorType.other:
+        case DioErrorType.unknown:
           // TODO: Handle this case.
           break;
       }
@@ -434,7 +434,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
       return Right(result.toString());
     } on DioError catch (e) {
       switch (e.type) {
-        case DioErrorType.connectTimeout:
+        case DioErrorType.connectionTimeout:
           // TODO: Handle this case.
           break;
         case DioErrorType.sendTimeout:
@@ -443,7 +443,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
         case DioErrorType.receiveTimeout:
           // TODO: Handle this case.
           break;
-        case DioErrorType.response:
+        case DioErrorType.badResponse:
           if (e.response!.statusCode! == 404) {
             if (e.response!.data['error'] != null) {
               return Left(Failures.generalError(e.response!.data['error']));
@@ -454,7 +454,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
         case DioErrorType.cancel:
           // TODO: Handle this case.
           break;
-        case DioErrorType.other:
+        case DioErrorType.unknown:
           // TODO: Handle this case.
           break;
       }

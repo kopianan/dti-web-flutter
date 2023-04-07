@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+@RoutePage()
 class PlatformPage extends StatefulWidget {
   static const String routeName = '/platform';
   const PlatformPage({super.key});
@@ -35,13 +37,10 @@ class _PlatformPageState extends State<PlatformPage> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
                       image: DecorationImage(
-                        
                         image: AssetImage(
                           'assets/imgs/me.png',
-
                         ),
                         fit: BoxFit.cover,
-
                       )),
                 ),
                 SizedBox(

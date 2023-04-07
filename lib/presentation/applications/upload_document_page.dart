@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:dti_web/application/application_cubit.dart';
 import 'package:dti_web/application/document/document_cubit.dart';
 import 'package:dti_web/application/other/other_cubit.dart';
@@ -13,8 +14,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-// import 'package:image_picker_web/image_picker_web.dart';
 
+// import 'package:image_picker_web/image_picker_web.dart';
+@RoutePage()
 class UploadDocumentPage extends StatefulWidget {
   static const String routeName = '/upload-document';
   const UploadDocumentPage({super.key});

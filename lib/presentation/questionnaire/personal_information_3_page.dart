@@ -17,6 +17,7 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 
 import '../../application/startup/startup_cubit.dart';
 
+@RoutePage()
 class PersonalInformation3Page extends StatefulWidget {
   const PersonalInformation3Page({super.key, this.question});
   static const String routeName = '/personal-information3';

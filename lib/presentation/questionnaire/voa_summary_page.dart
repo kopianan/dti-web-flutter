@@ -16,6 +16,7 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+@RoutePage()
 class VOASummaryPage extends StatefulWidget {
   const VOASummaryPage({super.key});
   static const String routeName = '/voa-summary';
@@ -81,7 +82,7 @@ class _VOASummaryPageState extends State<VOASummaryPage> {
           listener: (context, state) {
             state.maybeMap(
               orElse: () {},
-              onCreateApplication: (value) { 
+              onCreateApplication: (value) {
                 context
                     .read<ApplicationCubit>()
                     .setupApplication(value.visaApps);

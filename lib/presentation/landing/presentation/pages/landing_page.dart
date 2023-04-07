@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +7,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+@RoutePage()
 class LandingPage extends StatefulWidget {
   static const String routeName = '/landing-page';
   const LandingPage({super.key});

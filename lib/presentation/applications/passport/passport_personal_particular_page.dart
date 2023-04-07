@@ -18,6 +18,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:intl/intl.dart';
 
+@RoutePage()
 class PassportPersonalParticularPage extends StatefulWidget {
   const PassportPersonalParticularPage(
       {super.key, required this.firebaseDocId});

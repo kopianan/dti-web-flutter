@@ -13,6 +13,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+@RoutePage()
 class ResetPage extends StatelessWidget {
   static const String routeName = '/reset';
   ResetPage({super.key});
@@ -72,7 +73,6 @@ class ResetPage extends StatelessWidget {
             return Scaffold(
               body: SingleChildScrollView(
                 child: Container(
-                  
                   height: ScreenUtil().screenHeight,
                   margin: EdgeInsets.symmetric(horizontal: 0.1.sw),
                   child: Column(
