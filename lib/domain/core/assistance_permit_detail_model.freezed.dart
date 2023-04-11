@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'assistance_permit_detail_model.dart';
 
@@ -36,19 +36,24 @@ abstract class $AssistancePermitDetailModelCopyWith<$Res> {
   factory $AssistancePermitDetailModelCopyWith(
           AssistancePermitDetailModel value,
           $Res Function(AssistancePermitDetailModel) then) =
-      _$AssistancePermitDetailModelCopyWithImpl<$Res>;
+      _$AssistancePermitDetailModelCopyWithImpl<$Res,
+          AssistancePermitDetailModel>;
+  @useResult
   $Res call({String? expiredDate, String? dateOfPermit, String? permitPhoto});
 }
 
 /// @nodoc
-class _$AssistancePermitDetailModelCopyWithImpl<$Res>
+class _$AssistancePermitDetailModelCopyWithImpl<$Res,
+        $Val extends AssistancePermitDetailModel>
     implements $AssistancePermitDetailModelCopyWith<$Res> {
   _$AssistancePermitDetailModelCopyWithImpl(this._value, this._then);
 
-  final AssistancePermitDetailModel _value;
   // ignore: unused_field
-  final $Res Function(AssistancePermitDetailModel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? expiredDate = freezed,
@@ -56,19 +61,19 @@ class _$AssistancePermitDetailModelCopyWithImpl<$Res>
     Object? permitPhoto = freezed,
   }) {
     return _then(_value.copyWith(
-      expiredDate: expiredDate == freezed
+      expiredDate: freezed == expiredDate
           ? _value.expiredDate
           : expiredDate // ignore: cast_nullable_to_non_nullable
               as String?,
-      dateOfPermit: dateOfPermit == freezed
+      dateOfPermit: freezed == dateOfPermit
           ? _value.dateOfPermit
           : dateOfPermit // ignore: cast_nullable_to_non_nullable
               as String?,
-      permitPhoto: permitPhoto == freezed
+      permitPhoto: freezed == permitPhoto
           ? _value.permitPhoto
           : permitPhoto // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -80,22 +85,21 @@ abstract class _$$_AssistancePermitDetailModelCopyWith<$Res>
           $Res Function(_$_AssistancePermitDetailModel) then) =
       __$$_AssistancePermitDetailModelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String? expiredDate, String? dateOfPermit, String? permitPhoto});
 }
 
 /// @nodoc
 class __$$_AssistancePermitDetailModelCopyWithImpl<$Res>
-    extends _$AssistancePermitDetailModelCopyWithImpl<$Res>
+    extends _$AssistancePermitDetailModelCopyWithImpl<$Res,
+        _$_AssistancePermitDetailModel>
     implements _$$_AssistancePermitDetailModelCopyWith<$Res> {
   __$$_AssistancePermitDetailModelCopyWithImpl(
       _$_AssistancePermitDetailModel _value,
       $Res Function(_$_AssistancePermitDetailModel) _then)
-      : super(_value, (v) => _then(v as _$_AssistancePermitDetailModel));
+      : super(_value, _then);
 
-  @override
-  _$_AssistancePermitDetailModel get _value =>
-      super._value as _$_AssistancePermitDetailModel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? expiredDate = freezed,
@@ -103,15 +107,15 @@ class __$$_AssistancePermitDetailModelCopyWithImpl<$Res>
     Object? permitPhoto = freezed,
   }) {
     return _then(_$_AssistancePermitDetailModel(
-      expiredDate: expiredDate == freezed
+      expiredDate: freezed == expiredDate
           ? _value.expiredDate
           : expiredDate // ignore: cast_nullable_to_non_nullable
               as String?,
-      dateOfPermit: dateOfPermit == freezed
+      dateOfPermit: freezed == dateOfPermit
           ? _value.dateOfPermit
           : dateOfPermit // ignore: cast_nullable_to_non_nullable
               as String?,
-      permitPhoto: permitPhoto == freezed
+      permitPhoto: freezed == permitPhoto
           ? _value.permitPhoto
           : permitPhoto // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -145,24 +149,22 @@ class _$_AssistancePermitDetailModel implements _AssistancePermitDetailModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AssistancePermitDetailModel &&
-            const DeepCollectionEquality()
-                .equals(other.expiredDate, expiredDate) &&
-            const DeepCollectionEquality()
-                .equals(other.dateOfPermit, dateOfPermit) &&
-            const DeepCollectionEquality()
-                .equals(other.permitPhoto, permitPhoto));
+            (identical(other.expiredDate, expiredDate) ||
+                other.expiredDate == expiredDate) &&
+            (identical(other.dateOfPermit, dateOfPermit) ||
+                other.dateOfPermit == dateOfPermit) &&
+            (identical(other.permitPhoto, permitPhoto) ||
+                other.permitPhoto == permitPhoto));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(expiredDate),
-      const DeepCollectionEquality().hash(dateOfPermit),
-      const DeepCollectionEquality().hash(permitPhoto));
+  int get hashCode =>
+      Object.hash(runtimeType, expiredDate, dateOfPermit, permitPhoto);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_AssistancePermitDetailModelCopyWith<_$_AssistancePermitDetailModel>
       get copyWith => __$$_AssistancePermitDetailModelCopyWithImpl<
           _$_AssistancePermitDetailModel>(this, _$identity);

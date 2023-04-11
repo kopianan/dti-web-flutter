@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'visa_application_model.dart';
 
@@ -148,7 +148,8 @@ mixin _$VisaApplicationModel {
 abstract class $VisaApplicationModelCopyWith<$Res> {
   factory $VisaApplicationModelCopyWith(VisaApplicationModel value,
           $Res Function(VisaApplicationModel) then) =
-      _$VisaApplicationModelCopyWithImpl<$Res>;
+      _$VisaApplicationModelCopyWithImpl<$Res, VisaApplicationModel>;
+  @useResult
   $Res call(
       {String? bookingCode,
       String? identityNumber,
@@ -269,14 +270,17 @@ abstract class $VisaApplicationModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$VisaApplicationModelCopyWithImpl<$Res>
+class _$VisaApplicationModelCopyWithImpl<$Res,
+        $Val extends VisaApplicationModel>
     implements $VisaApplicationModelCopyWith<$Res> {
   _$VisaApplicationModelCopyWithImpl(this._value, this._then);
 
-  final VisaApplicationModel _value;
   // ignore: unused_field
-  final $Res Function(VisaApplicationModel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? bookingCode = freezed,
@@ -342,254 +346,255 @@ class _$VisaApplicationModelCopyWithImpl<$Res>
     Object? multiVisaDuration = freezed,
   }) {
     return _then(_value.copyWith(
-      bookingCode: bookingCode == freezed
+      bookingCode: freezed == bookingCode
           ? _value.bookingCode
           : bookingCode // ignore: cast_nullable_to_non_nullable
               as String?,
-      identityNumber: identityNumber == freezed
+      identityNumber: freezed == identityNumber
           ? _value.identityNumber
           : identityNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      type: type == freezed
+      type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String?,
-      selfieImage: selfieImage == freezed
+      selfieImage: freezed == selfieImage
           ? _value.selfieImage
           : selfieImage // ignore: cast_nullable_to_non_nullable
               as String?,
-      newPassport: newPassport == freezed
+      newPassport: freezed == newPassport
           ? _value.newPassport
           : newPassport // ignore: cast_nullable_to_non_nullable
               as String?,
-      rejectionNote: rejectionNote == freezed
+      rejectionNote: freezed == rejectionNote
           ? _value.rejectionNote
           : rejectionNote // ignore: cast_nullable_to_non_nullable
               as String?,
-      entry: entry == freezed
+      entry: freezed == entry
           ? _value.entry
           : entry // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastName: lastName == freezed
+      lastName: freezed == lastName
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
               as String?,
-      userName: userName == freezed
+      userName: freezed == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
               as String?,
-      nationality: nationality == freezed
+      nationality: freezed == nationality
           ? _value.nationality
           : nationality // ignore: cast_nullable_to_non_nullable
               as String?,
-      guarantorDTI: guarantorDTI == freezed
+      guarantorDTI: freezed == guarantorDTI
           ? _value.guarantorDTI
           : guarantorDTI // ignore: cast_nullable_to_non_nullable
               as bool?,
-      passportNumber: passportNumber == freezed
+      passportNumber: freezed == passportNumber
           ? _value.passportNumber
           : passportNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      district: district == freezed
+      district: freezed == district
           ? _value.district
           : district // ignore: cast_nullable_to_non_nullable
               as String?,
-      overstayedFlag: overstayedFlag == freezed
+      overstayedFlag: freezed == overstayedFlag
           ? _value.overstayedFlag
           : overstayedFlag // ignore: cast_nullable_to_non_nullable
               as bool?,
-      createdBy: createdBy == freezed
+      createdBy: freezed == createdBy
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
               as String?,
-      xenditPaymentMethod: xenditPaymentMethod == freezed
+      xenditPaymentMethod: freezed == xenditPaymentMethod
           ? _value.xenditPaymentMethod
           : xenditPaymentMethod // ignore: cast_nullable_to_non_nullable
               as String?,
-      address: address == freezed
+      address: freezed == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String?,
-      city: city == freezed
+      city: freezed == city
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
               as String?,
-      modeOfTransportation: modeOfTransportation == freezed
+      modeOfTransportation: freezed == modeOfTransportation
           ? _value.modeOfTransportation
           : modeOfTransportation // ignore: cast_nullable_to_non_nullable
               as String?,
-      flightNumber: flightNumber == freezed
+      flightNumber: freezed == flightNumber
           ? _value.flightNumber
           : flightNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      arrivalDate: arrivalDate == freezed
+      arrivalDate: freezed == arrivalDate
           ? _value.arrivalDate
           : arrivalDate // ignore: cast_nullable_to_non_nullable
               as String?,
-      xenditPaymentStatus: xenditPaymentStatus == freezed
+      xenditPaymentStatus: freezed == xenditPaymentStatus
           ? _value.xenditPaymentStatus
           : xenditPaymentStatus // ignore: cast_nullable_to_non_nullable
               as String?,
-      xenditPaymentGateway: xenditPaymentGateway == freezed
+      xenditPaymentGateway: freezed == xenditPaymentGateway
           ? _value.xenditPaymentGateway
           : xenditPaymentGateway // ignore: cast_nullable_to_non_nullable
               as String?,
-      xenditPaymentId: xenditPaymentId == freezed
+      xenditPaymentId: freezed == xenditPaymentId
           ? _value.xenditPaymentId
           : xenditPaymentId // ignore: cast_nullable_to_non_nullable
               as String?,
-      mobileNumber: mobileNumber == freezed
+      mobileNumber: freezed == mobileNumber
           ? _value.mobileNumber
           : mobileNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: status == freezed
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String?,
-      xenditPaymentDescription: xenditPaymentDescription == freezed
+      xenditPaymentDescription: freezed == xenditPaymentDescription
           ? _value.xenditPaymentDescription
           : xenditPaymentDescription // ignore: cast_nullable_to_non_nullable
               as String?,
-      submittedDate: submittedDate == freezed
+      submittedDate: freezed == submittedDate
           ? _value.submittedDate
           : submittedDate // ignore: cast_nullable_to_non_nullable
               as String?,
-      subTitle: subTitle == freezed
+      subTitle: freezed == subTitle
           ? _value.subTitle
           : subTitle // ignore: cast_nullable_to_non_nullable
               as String?,
-      documentsData: documentsData == freezed
+      documentsData: freezed == documentsData
           ? _value.documentsData
           : documentsData // ignore: cast_nullable_to_non_nullable
               as List<DocumentDataModel>?,
-      title: title == freezed
+      title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastUpdatedDate: lastUpdatedDate == freezed
+      lastUpdatedDate: freezed == lastUpdatedDate
           ? _value.lastUpdatedDate
           : lastUpdatedDate // ignore: cast_nullable_to_non_nullable
               as String?,
-      errorMessage: errorMessage == freezed
+      errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
-      firebaseDocId: firebaseDocId == freezed
+      firebaseDocId: freezed == firebaseDocId
           ? _value.firebaseDocId
           : firebaseDocId // ignore: cast_nullable_to_non_nullable
               as String?,
-      relationshipStatus: relationshipStatus == freezed
+      relationshipStatus: freezed == relationshipStatus
           ? _value.relationshipStatus
           : relationshipStatus // ignore: cast_nullable_to_non_nullable
               as String?,
-      dateOfExpiration: dateOfExpiration == freezed
+      dateOfExpiration: freezed == dateOfExpiration
           ? _value.dateOfExpiration
           : dateOfExpiration // ignore: cast_nullable_to_non_nullable
               as String?,
-      cityDomicile: cityDomicile == freezed
+      cityDomicile: freezed == cityDomicile
           ? _value.cityDomicile
           : cityDomicile // ignore: cast_nullable_to_non_nullable
               as String?,
-      applicationID: applicationID == freezed
+      applicationID: freezed == applicationID
           ? _value.applicationID
           : applicationID // ignore: cast_nullable_to_non_nullable
               as String?,
-      createdDate: createdDate == freezed
+      createdDate: freezed == createdDate
           ? _value.createdDate
           : createdDate // ignore: cast_nullable_to_non_nullable
               as String?,
-      xenditPaymentInvoiceUrl: xenditPaymentInvoiceUrl == freezed
+      xenditPaymentInvoiceUrl: freezed == xenditPaymentInvoiceUrl
           ? _value.xenditPaymentInvoiceUrl
           : xenditPaymentInvoiceUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      xenditPaymentCurrency: xenditPaymentCurrency == freezed
+      xenditPaymentCurrency: freezed == xenditPaymentCurrency
           ? _value.xenditPaymentCurrency
           : xenditPaymentCurrency // ignore: cast_nullable_to_non_nullable
               as String?,
-      placeOfBirth: placeOfBirth == freezed
+      placeOfBirth: freezed == placeOfBirth
           ? _value.placeOfBirth
           : placeOfBirth // ignore: cast_nullable_to_non_nullable
               as String?,
-      mobileDialCode: mobileDialCode == freezed
+      mobileDialCode: freezed == mobileDialCode
           ? _value.mobileDialCode
           : mobileDialCode // ignore: cast_nullable_to_non_nullable
               as String?,
-      currency: currency == freezed
+      currency: freezed == currency
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
               as String?,
-      inIndonesia: inIndonesia == freezed
+      inIndonesia: freezed == inIndonesia
           ? _value.inIndonesia
           : inIndonesia // ignore: cast_nullable_to_non_nullable
               as bool?,
-      xenditPaymentPaidAmount: xenditPaymentPaidAmount == freezed
+      xenditPaymentPaidAmount: freezed == xenditPaymentPaidAmount
           ? _value.xenditPaymentPaidAmount
           : xenditPaymentPaidAmount // ignore: cast_nullable_to_non_nullable
               as int?,
-      dateOfIssue: dateOfIssue == freezed
+      dateOfIssue: freezed == dateOfIssue
           ? _value.dateOfIssue
           : dateOfIssue // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastUpdatedBy: lastUpdatedBy == freezed
+      lastUpdatedBy: freezed == lastUpdatedBy
           ? _value.lastUpdatedBy
           : lastUpdatedBy // ignore: cast_nullable_to_non_nullable
               as String?,
-      documents: documents == freezed
+      documents: freezed == documents
           ? _value.documents
           : documents // ignore: cast_nullable_to_non_nullable
               as String?,
-      firstName: firstName == freezed
+      firstName: freezed == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
               as String?,
-      assistanceForPermit: assistanceForPermit == freezed
+      assistanceForPermit: freezed == assistanceForPermit
           ? _value.assistanceForPermit
           : assistanceForPermit // ignore: cast_nullable_to_non_nullable
               as AssitanceForPermitModel?,
-      issuingCountry: issuingCountry == freezed
+      issuingCountry: freezed == issuingCountry
           ? _value.issuingCountry
           : issuingCountry // ignore: cast_nullable_to_non_nullable
               as String?,
-      province: province == freezed
+      province: freezed == province
           ? _value.province
           : province // ignore: cast_nullable_to_non_nullable
               as String?,
-      xenditPaymentAmount: xenditPaymentAmount == freezed
+      xenditPaymentAmount: freezed == xenditPaymentAmount
           ? _value.xenditPaymentAmount
           : xenditPaymentAmount // ignore: cast_nullable_to_non_nullable
               as int?,
-      mobileCountryCode: mobileCountryCode == freezed
+      mobileCountryCode: freezed == mobileCountryCode
           ? _value.mobileCountryCode
           : mobileCountryCode // ignore: cast_nullable_to_non_nullable
               as String?,
-      gender: gender == freezed
+      gender: freezed == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as String?,
-      deportedFlag: deportedFlag == freezed
+      deportedFlag: freezed == deportedFlag
           ? _value.deportedFlag
           : deportedFlag // ignore: cast_nullable_to_non_nullable
               as bool?,
-      xenditPaymentPaidAt: xenditPaymentPaidAt == freezed
+      xenditPaymentPaidAt: freezed == xenditPaymentPaidAt
           ? _value.xenditPaymentPaidAt
           : xenditPaymentPaidAt // ignore: cast_nullable_to_non_nullable
               as String?,
-      dateOfBirth: dateOfBirth == freezed
+      dateOfBirth: freezed == dateOfBirth
           ? _value.dateOfBirth
           : dateOfBirth // ignore: cast_nullable_to_non_nullable
               as String?,
-      price: price == freezed
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double?,
-      multiVisaDuration: multiVisaDuration == freezed
+      multiVisaDuration: freezed == multiVisaDuration
           ? _value.multiVisaDuration
           : multiVisaDuration // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $AssitanceForPermitModelCopyWith<$Res>? get assistanceForPermit {
     if (_value.assistanceForPermit == null) {
       return null;
@@ -597,7 +602,7 @@ class _$VisaApplicationModelCopyWithImpl<$Res>
 
     return $AssitanceForPermitModelCopyWith<$Res>(_value.assistanceForPermit!,
         (value) {
-      return _then(_value.copyWith(assistanceForPermit: value));
+      return _then(_value.copyWith(assistanceForPermit: value) as $Val);
     });
   }
 }
@@ -609,6 +614,7 @@ abstract class _$$_VisaApplicationModelCopyWith<$Res>
           $Res Function(_$_VisaApplicationModel) then) =
       __$$_VisaApplicationModelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String? bookingCode,
       String? identityNumber,
@@ -731,15 +737,13 @@ abstract class _$$_VisaApplicationModelCopyWith<$Res>
 
 /// @nodoc
 class __$$_VisaApplicationModelCopyWithImpl<$Res>
-    extends _$VisaApplicationModelCopyWithImpl<$Res>
+    extends _$VisaApplicationModelCopyWithImpl<$Res, _$_VisaApplicationModel>
     implements _$$_VisaApplicationModelCopyWith<$Res> {
   __$$_VisaApplicationModelCopyWithImpl(_$_VisaApplicationModel _value,
       $Res Function(_$_VisaApplicationModel) _then)
-      : super(_value, (v) => _then(v as _$_VisaApplicationModel));
+      : super(_value, _then);
 
-  @override
-  _$_VisaApplicationModel get _value => super._value as _$_VisaApplicationModel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? bookingCode = freezed,
@@ -805,247 +809,247 @@ class __$$_VisaApplicationModelCopyWithImpl<$Res>
     Object? multiVisaDuration = freezed,
   }) {
     return _then(_$_VisaApplicationModel(
-      bookingCode: bookingCode == freezed
+      bookingCode: freezed == bookingCode
           ? _value.bookingCode
           : bookingCode // ignore: cast_nullable_to_non_nullable
               as String?,
-      identityNumber: identityNumber == freezed
+      identityNumber: freezed == identityNumber
           ? _value.identityNumber
           : identityNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      type: type == freezed
+      type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String?,
-      selfieImage: selfieImage == freezed
+      selfieImage: freezed == selfieImage
           ? _value.selfieImage
           : selfieImage // ignore: cast_nullable_to_non_nullable
               as String?,
-      newPassport: newPassport == freezed
+      newPassport: freezed == newPassport
           ? _value.newPassport
           : newPassport // ignore: cast_nullable_to_non_nullable
               as String?,
-      rejectionNote: rejectionNote == freezed
+      rejectionNote: freezed == rejectionNote
           ? _value.rejectionNote
           : rejectionNote // ignore: cast_nullable_to_non_nullable
               as String?,
-      entry: entry == freezed
+      entry: freezed == entry
           ? _value.entry
           : entry // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastName: lastName == freezed
+      lastName: freezed == lastName
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
               as String?,
-      userName: userName == freezed
+      userName: freezed == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
               as String?,
-      nationality: nationality == freezed
+      nationality: freezed == nationality
           ? _value.nationality
           : nationality // ignore: cast_nullable_to_non_nullable
               as String?,
-      guarantorDTI: guarantorDTI == freezed
+      guarantorDTI: freezed == guarantorDTI
           ? _value.guarantorDTI
           : guarantorDTI // ignore: cast_nullable_to_non_nullable
               as bool?,
-      passportNumber: passportNumber == freezed
+      passportNumber: freezed == passportNumber
           ? _value.passportNumber
           : passportNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      district: district == freezed
+      district: freezed == district
           ? _value.district
           : district // ignore: cast_nullable_to_non_nullable
               as String?,
-      overstayedFlag: overstayedFlag == freezed
+      overstayedFlag: freezed == overstayedFlag
           ? _value.overstayedFlag
           : overstayedFlag // ignore: cast_nullable_to_non_nullable
               as bool?,
-      createdBy: createdBy == freezed
+      createdBy: freezed == createdBy
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
               as String?,
-      xenditPaymentMethod: xenditPaymentMethod == freezed
+      xenditPaymentMethod: freezed == xenditPaymentMethod
           ? _value.xenditPaymentMethod
           : xenditPaymentMethod // ignore: cast_nullable_to_non_nullable
               as String?,
-      address: address == freezed
+      address: freezed == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String?,
-      city: city == freezed
+      city: freezed == city
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
               as String?,
-      modeOfTransportation: modeOfTransportation == freezed
+      modeOfTransportation: freezed == modeOfTransportation
           ? _value.modeOfTransportation
           : modeOfTransportation // ignore: cast_nullable_to_non_nullable
               as String?,
-      flightNumber: flightNumber == freezed
+      flightNumber: freezed == flightNumber
           ? _value.flightNumber
           : flightNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      arrivalDate: arrivalDate == freezed
+      arrivalDate: freezed == arrivalDate
           ? _value.arrivalDate
           : arrivalDate // ignore: cast_nullable_to_non_nullable
               as String?,
-      xenditPaymentStatus: xenditPaymentStatus == freezed
+      xenditPaymentStatus: freezed == xenditPaymentStatus
           ? _value.xenditPaymentStatus
           : xenditPaymentStatus // ignore: cast_nullable_to_non_nullable
               as String?,
-      xenditPaymentGateway: xenditPaymentGateway == freezed
+      xenditPaymentGateway: freezed == xenditPaymentGateway
           ? _value.xenditPaymentGateway
           : xenditPaymentGateway // ignore: cast_nullable_to_non_nullable
               as String?,
-      xenditPaymentId: xenditPaymentId == freezed
+      xenditPaymentId: freezed == xenditPaymentId
           ? _value.xenditPaymentId
           : xenditPaymentId // ignore: cast_nullable_to_non_nullable
               as String?,
-      mobileNumber: mobileNumber == freezed
+      mobileNumber: freezed == mobileNumber
           ? _value.mobileNumber
           : mobileNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: status == freezed
+      status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String?,
-      xenditPaymentDescription: xenditPaymentDescription == freezed
+      xenditPaymentDescription: freezed == xenditPaymentDescription
           ? _value.xenditPaymentDescription
           : xenditPaymentDescription // ignore: cast_nullable_to_non_nullable
               as String?,
-      submittedDate: submittedDate == freezed
+      submittedDate: freezed == submittedDate
           ? _value.submittedDate
           : submittedDate // ignore: cast_nullable_to_non_nullable
               as String?,
-      subTitle: subTitle == freezed
+      subTitle: freezed == subTitle
           ? _value.subTitle
           : subTitle // ignore: cast_nullable_to_non_nullable
               as String?,
-      documentsData: documentsData == freezed
+      documentsData: freezed == documentsData
           ? _value._documentsData
           : documentsData // ignore: cast_nullable_to_non_nullable
               as List<DocumentDataModel>?,
-      title: title == freezed
+      title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastUpdatedDate: lastUpdatedDate == freezed
+      lastUpdatedDate: freezed == lastUpdatedDate
           ? _value.lastUpdatedDate
           : lastUpdatedDate // ignore: cast_nullable_to_non_nullable
               as String?,
-      errorMessage: errorMessage == freezed
+      errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
               as String?,
-      firebaseDocId: firebaseDocId == freezed
+      firebaseDocId: freezed == firebaseDocId
           ? _value.firebaseDocId
           : firebaseDocId // ignore: cast_nullable_to_non_nullable
               as String?,
-      relationshipStatus: relationshipStatus == freezed
+      relationshipStatus: freezed == relationshipStatus
           ? _value.relationshipStatus
           : relationshipStatus // ignore: cast_nullable_to_non_nullable
               as String?,
-      dateOfExpiration: dateOfExpiration == freezed
+      dateOfExpiration: freezed == dateOfExpiration
           ? _value.dateOfExpiration
           : dateOfExpiration // ignore: cast_nullable_to_non_nullable
               as String?,
-      cityDomicile: cityDomicile == freezed
+      cityDomicile: freezed == cityDomicile
           ? _value.cityDomicile
           : cityDomicile // ignore: cast_nullable_to_non_nullable
               as String?,
-      applicationID: applicationID == freezed
+      applicationID: freezed == applicationID
           ? _value.applicationID
           : applicationID // ignore: cast_nullable_to_non_nullable
               as String?,
-      createdDate: createdDate == freezed
+      createdDate: freezed == createdDate
           ? _value.createdDate
           : createdDate // ignore: cast_nullable_to_non_nullable
               as String?,
-      xenditPaymentInvoiceUrl: xenditPaymentInvoiceUrl == freezed
+      xenditPaymentInvoiceUrl: freezed == xenditPaymentInvoiceUrl
           ? _value.xenditPaymentInvoiceUrl
           : xenditPaymentInvoiceUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      xenditPaymentCurrency: xenditPaymentCurrency == freezed
+      xenditPaymentCurrency: freezed == xenditPaymentCurrency
           ? _value.xenditPaymentCurrency
           : xenditPaymentCurrency // ignore: cast_nullable_to_non_nullable
               as String?,
-      placeOfBirth: placeOfBirth == freezed
+      placeOfBirth: freezed == placeOfBirth
           ? _value.placeOfBirth
           : placeOfBirth // ignore: cast_nullable_to_non_nullable
               as String?,
-      mobileDialCode: mobileDialCode == freezed
+      mobileDialCode: freezed == mobileDialCode
           ? _value.mobileDialCode
           : mobileDialCode // ignore: cast_nullable_to_non_nullable
               as String?,
-      currency: currency == freezed
+      currency: freezed == currency
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
               as String?,
-      inIndonesia: inIndonesia == freezed
+      inIndonesia: freezed == inIndonesia
           ? _value.inIndonesia
           : inIndonesia // ignore: cast_nullable_to_non_nullable
               as bool?,
-      xenditPaymentPaidAmount: xenditPaymentPaidAmount == freezed
+      xenditPaymentPaidAmount: freezed == xenditPaymentPaidAmount
           ? _value.xenditPaymentPaidAmount
           : xenditPaymentPaidAmount // ignore: cast_nullable_to_non_nullable
               as int?,
-      dateOfIssue: dateOfIssue == freezed
+      dateOfIssue: freezed == dateOfIssue
           ? _value.dateOfIssue
           : dateOfIssue // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastUpdatedBy: lastUpdatedBy == freezed
+      lastUpdatedBy: freezed == lastUpdatedBy
           ? _value.lastUpdatedBy
           : lastUpdatedBy // ignore: cast_nullable_to_non_nullable
               as String?,
-      documents: documents == freezed
+      documents: freezed == documents
           ? _value.documents
           : documents // ignore: cast_nullable_to_non_nullable
               as String?,
-      firstName: firstName == freezed
+      firstName: freezed == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
               as String?,
-      assistanceForPermit: assistanceForPermit == freezed
+      assistanceForPermit: freezed == assistanceForPermit
           ? _value.assistanceForPermit
           : assistanceForPermit // ignore: cast_nullable_to_non_nullable
               as AssitanceForPermitModel?,
-      issuingCountry: issuingCountry == freezed
+      issuingCountry: freezed == issuingCountry
           ? _value.issuingCountry
           : issuingCountry // ignore: cast_nullable_to_non_nullable
               as String?,
-      province: province == freezed
+      province: freezed == province
           ? _value.province
           : province // ignore: cast_nullable_to_non_nullable
               as String?,
-      xenditPaymentAmount: xenditPaymentAmount == freezed
+      xenditPaymentAmount: freezed == xenditPaymentAmount
           ? _value.xenditPaymentAmount
           : xenditPaymentAmount // ignore: cast_nullable_to_non_nullable
               as int?,
-      mobileCountryCode: mobileCountryCode == freezed
+      mobileCountryCode: freezed == mobileCountryCode
           ? _value.mobileCountryCode
           : mobileCountryCode // ignore: cast_nullable_to_non_nullable
               as String?,
-      gender: gender == freezed
+      gender: freezed == gender
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as String?,
-      deportedFlag: deportedFlag == freezed
+      deportedFlag: freezed == deportedFlag
           ? _value.deportedFlag
           : deportedFlag // ignore: cast_nullable_to_non_nullable
               as bool?,
-      xenditPaymentPaidAt: xenditPaymentPaidAt == freezed
+      xenditPaymentPaidAt: freezed == xenditPaymentPaidAt
           ? _value.xenditPaymentPaidAt
           : xenditPaymentPaidAt // ignore: cast_nullable_to_non_nullable
               as String?,
-      dateOfBirth: dateOfBirth == freezed
+      dateOfBirth: freezed == dateOfBirth
           ? _value.dateOfBirth
           : dateOfBirth // ignore: cast_nullable_to_non_nullable
               as String?,
-      price: price == freezed
+      price: freezed == price
           ? _value.price
           : price // ignore: cast_nullable_to_non_nullable
               as double?,
-      multiVisaDuration: multiVisaDuration == freezed
+      multiVisaDuration: freezed == multiVisaDuration
           ? _value.multiVisaDuration
           : multiVisaDuration // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -1055,7 +1059,7 @@ class __$$_VisaApplicationModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true, includeIfNull: false)
 class _$_VisaApplicationModel implements _VisaApplicationModel {
   _$_VisaApplicationModel(
       {this.bookingCode,
@@ -1263,6 +1267,7 @@ class _$_VisaApplicationModel implements _VisaApplicationModel {
   List<DocumentDataModel>? get documentsData {
     final value = _documentsData;
     if (value == null) return null;
+    if (_documentsData is EqualUnmodifiableListView) return _documentsData;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -1371,181 +1376,178 @@ class _$_VisaApplicationModel implements _VisaApplicationModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_VisaApplicationModel &&
-            const DeepCollectionEquality()
-                .equals(other.bookingCode, bookingCode) &&
-            const DeepCollectionEquality()
-                .equals(other.identityNumber, identityNumber) &&
-            const DeepCollectionEquality().equals(other.type, type) &&
-            const DeepCollectionEquality()
-                .equals(other.selfieImage, selfieImage) &&
-            const DeepCollectionEquality()
-                .equals(other.newPassport, newPassport) &&
-            const DeepCollectionEquality()
-                .equals(other.rejectionNote, rejectionNote) &&
-            const DeepCollectionEquality().equals(other.entry, entry) &&
-            const DeepCollectionEquality().equals(other.lastName, lastName) &&
-            const DeepCollectionEquality().equals(other.userName, userName) &&
-            const DeepCollectionEquality()
-                .equals(other.nationality, nationality) &&
-            const DeepCollectionEquality()
-                .equals(other.guarantorDTI, guarantorDTI) &&
-            const DeepCollectionEquality()
-                .equals(other.passportNumber, passportNumber) &&
-            const DeepCollectionEquality().equals(other.district, district) &&
-            const DeepCollectionEquality()
-                .equals(other.overstayedFlag, overstayedFlag) &&
-            const DeepCollectionEquality().equals(other.createdBy, createdBy) &&
-            const DeepCollectionEquality()
-                .equals(other.xenditPaymentMethod, xenditPaymentMethod) &&
-            const DeepCollectionEquality().equals(other.address, address) &&
-            const DeepCollectionEquality().equals(other.city, city) &&
-            const DeepCollectionEquality()
-                .equals(other.modeOfTransportation, modeOfTransportation) &&
-            const DeepCollectionEquality()
-                .equals(other.flightNumber, flightNumber) &&
-            const DeepCollectionEquality()
-                .equals(other.arrivalDate, arrivalDate) &&
-            const DeepCollectionEquality()
-                .equals(other.xenditPaymentStatus, xenditPaymentStatus) &&
-            const DeepCollectionEquality()
-                .equals(other.xenditPaymentGateway, xenditPaymentGateway) &&
-            const DeepCollectionEquality()
-                .equals(other.xenditPaymentId, xenditPaymentId) &&
-            const DeepCollectionEquality()
-                .equals(other.mobileNumber, mobileNumber) &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality().equals(
-                other.xenditPaymentDescription, xenditPaymentDescription) &&
-            const DeepCollectionEquality()
-                .equals(other.submittedDate, submittedDate) &&
-            const DeepCollectionEquality().equals(other.subTitle, subTitle) &&
+            (identical(other.bookingCode, bookingCode) ||
+                other.bookingCode == bookingCode) &&
+            (identical(other.identityNumber, identityNumber) ||
+                other.identityNumber == identityNumber) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.selfieImage, selfieImage) ||
+                other.selfieImage == selfieImage) &&
+            (identical(other.newPassport, newPassport) ||
+                other.newPassport == newPassport) &&
+            (identical(other.rejectionNote, rejectionNote) ||
+                other.rejectionNote == rejectionNote) &&
+            (identical(other.entry, entry) || other.entry == entry) &&
+            (identical(other.lastName, lastName) ||
+                other.lastName == lastName) &&
+            (identical(other.userName, userName) ||
+                other.userName == userName) &&
+            (identical(other.nationality, nationality) ||
+                other.nationality == nationality) &&
+            (identical(other.guarantorDTI, guarantorDTI) ||
+                other.guarantorDTI == guarantorDTI) &&
+            (identical(other.passportNumber, passportNumber) ||
+                other.passportNumber == passportNumber) &&
+            (identical(other.district, district) ||
+                other.district == district) &&
+            (identical(other.overstayedFlag, overstayedFlag) ||
+                other.overstayedFlag == overstayedFlag) &&
+            (identical(other.createdBy, createdBy) ||
+                other.createdBy == createdBy) &&
+            (identical(other.xenditPaymentMethod, xenditPaymentMethod) ||
+                other.xenditPaymentMethod == xenditPaymentMethod) &&
+            (identical(other.address, address) || other.address == address) &&
+            (identical(other.city, city) || other.city == city) &&
+            (identical(other.modeOfTransportation, modeOfTransportation) ||
+                other.modeOfTransportation == modeOfTransportation) &&
+            (identical(other.flightNumber, flightNumber) ||
+                other.flightNumber == flightNumber) &&
+            (identical(other.arrivalDate, arrivalDate) ||
+                other.arrivalDate == arrivalDate) &&
+            (identical(other.xenditPaymentStatus, xenditPaymentStatus) ||
+                other.xenditPaymentStatus == xenditPaymentStatus) &&
+            (identical(other.xenditPaymentGateway, xenditPaymentGateway) ||
+                other.xenditPaymentGateway == xenditPaymentGateway) &&
+            (identical(other.xenditPaymentId, xenditPaymentId) ||
+                other.xenditPaymentId == xenditPaymentId) &&
+            (identical(other.mobileNumber, mobileNumber) ||
+                other.mobileNumber == mobileNumber) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.xenditPaymentDescription, xenditPaymentDescription) ||
+                other.xenditPaymentDescription == xenditPaymentDescription) &&
+            (identical(other.submittedDate, submittedDate) ||
+                other.submittedDate == submittedDate) &&
+            (identical(other.subTitle, subTitle) ||
+                other.subTitle == subTitle) &&
             const DeepCollectionEquality()
                 .equals(other._documentsData, _documentsData) &&
-            const DeepCollectionEquality().equals(other.title, title) &&
-            const DeepCollectionEquality()
-                .equals(other.lastUpdatedDate, lastUpdatedDate) &&
-            const DeepCollectionEquality()
-                .equals(other.errorMessage, errorMessage) &&
-            const DeepCollectionEquality()
-                .equals(other.firebaseDocId, firebaseDocId) &&
-            const DeepCollectionEquality()
-                .equals(other.relationshipStatus, relationshipStatus) &&
-            const DeepCollectionEquality()
-                .equals(other.dateOfExpiration, dateOfExpiration) &&
-            const DeepCollectionEquality()
-                .equals(other.cityDomicile, cityDomicile) &&
-            const DeepCollectionEquality()
-                .equals(other.applicationID, applicationID) &&
-            const DeepCollectionEquality()
-                .equals(other.createdDate, createdDate) &&
-            const DeepCollectionEquality().equals(
-                other.xenditPaymentInvoiceUrl, xenditPaymentInvoiceUrl) &&
-            const DeepCollectionEquality()
-                .equals(other.xenditPaymentCurrency, xenditPaymentCurrency) &&
-            const DeepCollectionEquality()
-                .equals(other.placeOfBirth, placeOfBirth) &&
-            const DeepCollectionEquality()
-                .equals(other.mobileDialCode, mobileDialCode) &&
-            const DeepCollectionEquality().equals(other.currency, currency) &&
-            const DeepCollectionEquality()
-                .equals(other.inIndonesia, inIndonesia) &&
-            const DeepCollectionEquality().equals(
-                other.xenditPaymentPaidAmount, xenditPaymentPaidAmount) &&
-            const DeepCollectionEquality()
-                .equals(other.dateOfIssue, dateOfIssue) &&
-            const DeepCollectionEquality()
-                .equals(other.lastUpdatedBy, lastUpdatedBy) &&
-            const DeepCollectionEquality().equals(other.documents, documents) &&
-            const DeepCollectionEquality().equals(other.firstName, firstName) &&
-            const DeepCollectionEquality()
-                .equals(other.assistanceForPermit, assistanceForPermit) &&
-            const DeepCollectionEquality()
-                .equals(other.issuingCountry, issuingCountry) &&
-            const DeepCollectionEquality().equals(other.province, province) &&
-            const DeepCollectionEquality()
-                .equals(other.xenditPaymentAmount, xenditPaymentAmount) &&
-            const DeepCollectionEquality()
-                .equals(other.mobileCountryCode, mobileCountryCode) &&
-            const DeepCollectionEquality().equals(other.gender, gender) &&
-            const DeepCollectionEquality()
-                .equals(other.deportedFlag, deportedFlag) &&
-            const DeepCollectionEquality()
-                .equals(other.xenditPaymentPaidAt, xenditPaymentPaidAt) &&
-            const DeepCollectionEquality()
-                .equals(other.dateOfBirth, dateOfBirth) &&
-            const DeepCollectionEquality().equals(other.price, price) &&
-            const DeepCollectionEquality().equals(other.multiVisaDuration, multiVisaDuration));
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.lastUpdatedDate, lastUpdatedDate) ||
+                other.lastUpdatedDate == lastUpdatedDate) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage) &&
+            (identical(other.firebaseDocId, firebaseDocId) ||
+                other.firebaseDocId == firebaseDocId) &&
+            (identical(other.relationshipStatus, relationshipStatus) ||
+                other.relationshipStatus == relationshipStatus) &&
+            (identical(other.dateOfExpiration, dateOfExpiration) ||
+                other.dateOfExpiration == dateOfExpiration) &&
+            (identical(other.cityDomicile, cityDomicile) ||
+                other.cityDomicile == cityDomicile) &&
+            (identical(other.applicationID, applicationID) ||
+                other.applicationID == applicationID) &&
+            (identical(other.createdDate, createdDate) ||
+                other.createdDate == createdDate) &&
+            (identical(other.xenditPaymentInvoiceUrl, xenditPaymentInvoiceUrl) ||
+                other.xenditPaymentInvoiceUrl == xenditPaymentInvoiceUrl) &&
+            (identical(other.xenditPaymentCurrency, xenditPaymentCurrency) ||
+                other.xenditPaymentCurrency == xenditPaymentCurrency) &&
+            (identical(other.placeOfBirth, placeOfBirth) ||
+                other.placeOfBirth == placeOfBirth) &&
+            (identical(other.mobileDialCode, mobileDialCode) ||
+                other.mobileDialCode == mobileDialCode) &&
+            (identical(other.currency, currency) ||
+                other.currency == currency) &&
+            (identical(other.inIndonesia, inIndonesia) ||
+                other.inIndonesia == inIndonesia) &&
+            (identical(other.xenditPaymentPaidAmount, xenditPaymentPaidAmount) || other.xenditPaymentPaidAmount == xenditPaymentPaidAmount) &&
+            (identical(other.dateOfIssue, dateOfIssue) || other.dateOfIssue == dateOfIssue) &&
+            (identical(other.lastUpdatedBy, lastUpdatedBy) || other.lastUpdatedBy == lastUpdatedBy) &&
+            (identical(other.documents, documents) || other.documents == documents) &&
+            (identical(other.firstName, firstName) || other.firstName == firstName) &&
+            (identical(other.assistanceForPermit, assistanceForPermit) || other.assistanceForPermit == assistanceForPermit) &&
+            (identical(other.issuingCountry, issuingCountry) || other.issuingCountry == issuingCountry) &&
+            (identical(other.province, province) || other.province == province) &&
+            (identical(other.xenditPaymentAmount, xenditPaymentAmount) || other.xenditPaymentAmount == xenditPaymentAmount) &&
+            (identical(other.mobileCountryCode, mobileCountryCode) || other.mobileCountryCode == mobileCountryCode) &&
+            (identical(other.gender, gender) || other.gender == gender) &&
+            (identical(other.deportedFlag, deportedFlag) || other.deportedFlag == deportedFlag) &&
+            (identical(other.xenditPaymentPaidAt, xenditPaymentPaidAt) || other.xenditPaymentPaidAt == xenditPaymentPaidAt) &&
+            (identical(other.dateOfBirth, dateOfBirth) || other.dateOfBirth == dateOfBirth) &&
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.multiVisaDuration, multiVisaDuration) || other.multiVisaDuration == multiVisaDuration));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        const DeepCollectionEquality().hash(bookingCode),
-        const DeepCollectionEquality().hash(identityNumber),
-        const DeepCollectionEquality().hash(type),
-        const DeepCollectionEquality().hash(selfieImage),
-        const DeepCollectionEquality().hash(newPassport),
-        const DeepCollectionEquality().hash(rejectionNote),
-        const DeepCollectionEquality().hash(entry),
-        const DeepCollectionEquality().hash(lastName),
-        const DeepCollectionEquality().hash(userName),
-        const DeepCollectionEquality().hash(nationality),
-        const DeepCollectionEquality().hash(guarantorDTI),
-        const DeepCollectionEquality().hash(passportNumber),
-        const DeepCollectionEquality().hash(district),
-        const DeepCollectionEquality().hash(overstayedFlag),
-        const DeepCollectionEquality().hash(createdBy),
-        const DeepCollectionEquality().hash(xenditPaymentMethod),
-        const DeepCollectionEquality().hash(address),
-        const DeepCollectionEquality().hash(city),
-        const DeepCollectionEquality().hash(modeOfTransportation),
-        const DeepCollectionEquality().hash(flightNumber),
-        const DeepCollectionEquality().hash(arrivalDate),
-        const DeepCollectionEquality().hash(xenditPaymentStatus),
-        const DeepCollectionEquality().hash(xenditPaymentGateway),
-        const DeepCollectionEquality().hash(xenditPaymentId),
-        const DeepCollectionEquality().hash(mobileNumber),
-        const DeepCollectionEquality().hash(status),
-        const DeepCollectionEquality().hash(xenditPaymentDescription),
-        const DeepCollectionEquality().hash(submittedDate),
-        const DeepCollectionEquality().hash(subTitle),
+        bookingCode,
+        identityNumber,
+        type,
+        selfieImage,
+        newPassport,
+        rejectionNote,
+        entry,
+        lastName,
+        userName,
+        nationality,
+        guarantorDTI,
+        passportNumber,
+        district,
+        overstayedFlag,
+        createdBy,
+        xenditPaymentMethod,
+        address,
+        city,
+        modeOfTransportation,
+        flightNumber,
+        arrivalDate,
+        xenditPaymentStatus,
+        xenditPaymentGateway,
+        xenditPaymentId,
+        mobileNumber,
+        status,
+        xenditPaymentDescription,
+        submittedDate,
+        subTitle,
         const DeepCollectionEquality().hash(_documentsData),
-        const DeepCollectionEquality().hash(title),
-        const DeepCollectionEquality().hash(lastUpdatedDate),
-        const DeepCollectionEquality().hash(errorMessage),
-        const DeepCollectionEquality().hash(firebaseDocId),
-        const DeepCollectionEquality().hash(relationshipStatus),
-        const DeepCollectionEquality().hash(dateOfExpiration),
-        const DeepCollectionEquality().hash(cityDomicile),
-        const DeepCollectionEquality().hash(applicationID),
-        const DeepCollectionEquality().hash(createdDate),
-        const DeepCollectionEquality().hash(xenditPaymentInvoiceUrl),
-        const DeepCollectionEquality().hash(xenditPaymentCurrency),
-        const DeepCollectionEquality().hash(placeOfBirth),
-        const DeepCollectionEquality().hash(mobileDialCode),
-        const DeepCollectionEquality().hash(currency),
-        const DeepCollectionEquality().hash(inIndonesia),
-        const DeepCollectionEquality().hash(xenditPaymentPaidAmount),
-        const DeepCollectionEquality().hash(dateOfIssue),
-        const DeepCollectionEquality().hash(lastUpdatedBy),
-        const DeepCollectionEquality().hash(documents),
-        const DeepCollectionEquality().hash(firstName),
-        const DeepCollectionEquality().hash(assistanceForPermit),
-        const DeepCollectionEquality().hash(issuingCountry),
-        const DeepCollectionEquality().hash(province),
-        const DeepCollectionEquality().hash(xenditPaymentAmount),
-        const DeepCollectionEquality().hash(mobileCountryCode),
-        const DeepCollectionEquality().hash(gender),
-        const DeepCollectionEquality().hash(deportedFlag),
-        const DeepCollectionEquality().hash(xenditPaymentPaidAt),
-        const DeepCollectionEquality().hash(dateOfBirth),
-        const DeepCollectionEquality().hash(price),
-        const DeepCollectionEquality().hash(multiVisaDuration)
+        title,
+        lastUpdatedDate,
+        errorMessage,
+        firebaseDocId,
+        relationshipStatus,
+        dateOfExpiration,
+        cityDomicile,
+        applicationID,
+        createdDate,
+        xenditPaymentInvoiceUrl,
+        xenditPaymentCurrency,
+        placeOfBirth,
+        mobileDialCode,
+        currency,
+        inIndonesia,
+        xenditPaymentPaidAmount,
+        dateOfIssue,
+        lastUpdatedBy,
+        documents,
+        firstName,
+        assistanceForPermit,
+        issuingCountry,
+        province,
+        xenditPaymentAmount,
+        mobileCountryCode,
+        gender,
+        deportedFlag,
+        xenditPaymentPaidAt,
+        dateOfBirth,
+        price,
+        multiVisaDuration
       ]);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_VisaApplicationModelCopyWith<_$_VisaApplicationModel> get copyWith =>
       __$$_VisaApplicationModelCopyWithImpl<_$_VisaApplicationModel>(
           this, _$identity);

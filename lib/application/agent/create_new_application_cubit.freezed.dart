@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'create_new_application_cubit.dart';
 
@@ -19,7 +19,7 @@ mixin _$CreateNewApplicationState {
   FilePickerResult? get pickedFile => throw _privateConstructorUsedError;
   Uint8List? get excelBytes => throw _privateConstructorUsedError;
   List<Data?> get header => throw _privateConstructorUsedError;
-  List<List<Data?>> get body => throw _privateConstructorUsedError;
+  List<DataTableModel> get body => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CreateNewApplicationStateCopyWith<CreateNewApplicationState> get copyWith =>
@@ -30,48 +30,52 @@ mixin _$CreateNewApplicationState {
 abstract class $CreateNewApplicationStateCopyWith<$Res> {
   factory $CreateNewApplicationStateCopyWith(CreateNewApplicationState value,
           $Res Function(CreateNewApplicationState) then) =
-      _$CreateNewApplicationStateCopyWithImpl<$Res>;
+      _$CreateNewApplicationStateCopyWithImpl<$Res, CreateNewApplicationState>;
+  @useResult
   $Res call(
       {FilePickerResult? pickedFile,
       Uint8List? excelBytes,
       List<Data?> header,
-      List<List<Data?>> body});
+      List<DataTableModel> body});
 }
 
 /// @nodoc
-class _$CreateNewApplicationStateCopyWithImpl<$Res>
+class _$CreateNewApplicationStateCopyWithImpl<$Res,
+        $Val extends CreateNewApplicationState>
     implements $CreateNewApplicationStateCopyWith<$Res> {
   _$CreateNewApplicationStateCopyWithImpl(this._value, this._then);
 
-  final CreateNewApplicationState _value;
   // ignore: unused_field
-  final $Res Function(CreateNewApplicationState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? pickedFile = freezed,
     Object? excelBytes = freezed,
-    Object? header = freezed,
-    Object? body = freezed,
+    Object? header = null,
+    Object? body = null,
   }) {
     return _then(_value.copyWith(
-      pickedFile: pickedFile == freezed
+      pickedFile: freezed == pickedFile
           ? _value.pickedFile
           : pickedFile // ignore: cast_nullable_to_non_nullable
               as FilePickerResult?,
-      excelBytes: excelBytes == freezed
+      excelBytes: freezed == excelBytes
           ? _value.excelBytes
           : excelBytes // ignore: cast_nullable_to_non_nullable
               as Uint8List?,
-      header: header == freezed
+      header: null == header
           ? _value.header
           : header // ignore: cast_nullable_to_non_nullable
               as List<Data?>,
-      body: body == freezed
+      body: null == body
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
-              as List<List<Data?>>,
-    ));
+              as List<DataTableModel>,
+    ) as $Val);
   }
 }
 
@@ -83,50 +87,49 @@ abstract class _$$_CreateNewApplicationCubitCopyWith<$Res>
           $Res Function(_$_CreateNewApplicationCubit) then) =
       __$$_CreateNewApplicationCubitCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {FilePickerResult? pickedFile,
       Uint8List? excelBytes,
       List<Data?> header,
-      List<List<Data?>> body});
+      List<DataTableModel> body});
 }
 
 /// @nodoc
 class __$$_CreateNewApplicationCubitCopyWithImpl<$Res>
-    extends _$CreateNewApplicationStateCopyWithImpl<$Res>
+    extends _$CreateNewApplicationStateCopyWithImpl<$Res,
+        _$_CreateNewApplicationCubit>
     implements _$$_CreateNewApplicationCubitCopyWith<$Res> {
   __$$_CreateNewApplicationCubitCopyWithImpl(
       _$_CreateNewApplicationCubit _value,
       $Res Function(_$_CreateNewApplicationCubit) _then)
-      : super(_value, (v) => _then(v as _$_CreateNewApplicationCubit));
+      : super(_value, _then);
 
-  @override
-  _$_CreateNewApplicationCubit get _value =>
-      super._value as _$_CreateNewApplicationCubit;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? pickedFile = freezed,
     Object? excelBytes = freezed,
-    Object? header = freezed,
-    Object? body = freezed,
+    Object? header = null,
+    Object? body = null,
   }) {
     return _then(_$_CreateNewApplicationCubit(
-      pickedFile: pickedFile == freezed
+      pickedFile: freezed == pickedFile
           ? _value.pickedFile
           : pickedFile // ignore: cast_nullable_to_non_nullable
               as FilePickerResult?,
-      excelBytes: excelBytes == freezed
+      excelBytes: freezed == excelBytes
           ? _value.excelBytes
           : excelBytes // ignore: cast_nullable_to_non_nullable
               as Uint8List?,
-      header: header == freezed
+      header: null == header
           ? _value._header
           : header // ignore: cast_nullable_to_non_nullable
               as List<Data?>,
-      body: body == freezed
+      body: null == body
           ? _value._body
           : body // ignore: cast_nullable_to_non_nullable
-              as List<List<Data?>>,
+              as List<DataTableModel>,
     ));
   }
 }
@@ -140,7 +143,7 @@ class _$_CreateNewApplicationCubit
       {this.pickedFile,
       this.excelBytes,
       required final List<Data?> header,
-      required final List<List<Data?>> body})
+      required final List<DataTableModel> body})
       : _header = header,
         _body = body;
 
@@ -151,13 +154,15 @@ class _$_CreateNewApplicationCubit
   final List<Data?> _header;
   @override
   List<Data?> get header {
+    if (_header is EqualUnmodifiableListView) return _header;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_header);
   }
 
-  final List<List<Data?>> _body;
+  final List<DataTableModel> _body;
   @override
-  List<List<Data?>> get body {
+  List<DataTableModel> get body {
+    if (_body is EqualUnmodifiableListView) return _body;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_body);
   }
@@ -183,8 +188,8 @@ class _$_CreateNewApplicationCubit
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CreateNewApplicationCubit &&
-            const DeepCollectionEquality()
-                .equals(other.pickedFile, pickedFile) &&
+            (identical(other.pickedFile, pickedFile) ||
+                other.pickedFile == pickedFile) &&
             const DeepCollectionEquality()
                 .equals(other.excelBytes, excelBytes) &&
             const DeepCollectionEquality().equals(other._header, _header) &&
@@ -194,13 +199,14 @@ class _$_CreateNewApplicationCubit
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(pickedFile),
+      pickedFile,
       const DeepCollectionEquality().hash(excelBytes),
       const DeepCollectionEquality().hash(_header),
       const DeepCollectionEquality().hash(_body));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_CreateNewApplicationCubitCopyWith<_$_CreateNewApplicationCubit>
       get copyWith => __$$_CreateNewApplicationCubitCopyWithImpl<
           _$_CreateNewApplicationCubit>(this, _$identity);
@@ -211,7 +217,7 @@ abstract class _CreateNewApplicationCubit implements CreateNewApplicationState {
       {final FilePickerResult? pickedFile,
       final Uint8List? excelBytes,
       required final List<Data?> header,
-      required final List<List<Data?>> body}) = _$_CreateNewApplicationCubit;
+      required final List<DataTableModel> body}) = _$_CreateNewApplicationCubit;
 
   @override
   FilePickerResult? get pickedFile;
@@ -220,7 +226,7 @@ abstract class _CreateNewApplicationCubit implements CreateNewApplicationState {
   @override
   List<Data?> get header;
   @override
-  List<List<Data?>> get body;
+  List<DataTableModel> get body;
   @override
   @JsonKey(ignore: true)
   _$$_CreateNewApplicationCubitCopyWith<_$_CreateNewApplicationCubit>

@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'auth_cubit.dart';
 
@@ -36,20 +36,20 @@ mixin _$AuthState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String error)? error,
-    TResult Function(Failures error)? onError,
-    TResult Function()? onSignOut,
-    TResult Function(UserData userData)? authorized,
-    TResult Function()? unAuthorized,
-    TResult Function(String userAgent)? isOpenFromPhone,
-    TResult Function(String token, bool isAgent)? onLoginSuccess,
-    TResult Function(String token, bool isAgent)?
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String error)? error,
+    TResult? Function(Failures error)? onError,
+    TResult? Function()? onSignOut,
+    TResult? Function(UserData userData)? authorized,
+    TResult? Function()? unAuthorized,
+    TResult? Function(String userAgent)? isOpenFromPhone,
+    TResult? Function(String token, bool isAgent)? onLoginSuccess,
+    TResult? Function(String token, bool isAgent)?
         onLoginSuccessWithoutPhoneNumber,
-    TResult Function(String token)? onRegisterSuccess,
-    TResult Function(String message)? onResetPassword,
-    TResult Function(UserData userData)? onGetUserData,
+    TResult? Function(String token)? onRegisterSuccess,
+    TResult? Function(String message)? onResetPassword,
+    TResult? Function(UserData userData)? onGetUserData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -91,20 +91,20 @@ mixin _$AuthState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_OnError value)? onError,
-    TResult Function(_OnSignOut value)? onSignOut,
-    TResult Function(_Authorized value)? authorized,
-    TResult Function(_UnAuthorized value)? unAuthorized,
-    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
-    TResult Function(_OnLoginSuccess value)? onLoginSuccess,
-    TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_OnError value)? onError,
+    TResult? Function(_OnSignOut value)? onSignOut,
+    TResult? Function(_Authorized value)? authorized,
+    TResult? Function(_UnAuthorized value)? unAuthorized,
+    TResult? Function(_IsOpenFromPhone value)? isOpenFromPhone,
+    TResult? Function(_OnLoginSuccess value)? onLoginSuccess,
+    TResult? Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
-    TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
-    TResult Function(_OnResetPassword value)? onResetPassword,
-    TResult Function(_OnGetUserData value)? onGetUserData,
+    TResult? Function(_OnRegisterSuccess value)? onRegisterSuccess,
+    TResult? Function(_OnResetPassword value)? onResetPassword,
+    TResult? Function(_OnGetUserData value)? onGetUserData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -131,16 +131,18 @@ mixin _$AuthState {
 /// @nodoc
 abstract class $AuthStateCopyWith<$Res> {
   factory $AuthStateCopyWith(AuthState value, $Res Function(AuthState) then) =
-      _$AuthStateCopyWithImpl<$Res>;
+      _$AuthStateCopyWithImpl<$Res, AuthState>;
 }
 
 /// @nodoc
-class _$AuthStateCopyWithImpl<$Res> implements $AuthStateCopyWith<$Res> {
+class _$AuthStateCopyWithImpl<$Res, $Val extends AuthState>
+    implements $AuthStateCopyWith<$Res> {
   _$AuthStateCopyWithImpl(this._value, this._then);
 
-  final AuthState _value;
   // ignore: unused_field
-  final $Res Function(AuthState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -151,13 +153,11 @@ abstract class _$$_InitialCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
+class __$$_InitialCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, (v) => _then(v as _$_Initial));
-
-  @override
-  _$_Initial get _value => super._value as _$_Initial;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -203,20 +203,20 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String error)? error,
-    TResult Function(Failures error)? onError,
-    TResult Function()? onSignOut,
-    TResult Function(UserData userData)? authorized,
-    TResult Function()? unAuthorized,
-    TResult Function(String userAgent)? isOpenFromPhone,
-    TResult Function(String token, bool isAgent)? onLoginSuccess,
-    TResult Function(String token, bool isAgent)?
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String error)? error,
+    TResult? Function(Failures error)? onError,
+    TResult? Function()? onSignOut,
+    TResult? Function(UserData userData)? authorized,
+    TResult? Function()? unAuthorized,
+    TResult? Function(String userAgent)? isOpenFromPhone,
+    TResult? Function(String token, bool isAgent)? onLoginSuccess,
+    TResult? Function(String token, bool isAgent)?
         onLoginSuccessWithoutPhoneNumber,
-    TResult Function(String token)? onRegisterSuccess,
-    TResult Function(String message)? onResetPassword,
-    TResult Function(UserData userData)? onGetUserData,
+    TResult? Function(String token)? onRegisterSuccess,
+    TResult? Function(String message)? onResetPassword,
+    TResult? Function(UserData userData)? onGetUserData,
   }) {
     return initial?.call();
   }
@@ -270,20 +270,20 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_OnError value)? onError,
-    TResult Function(_OnSignOut value)? onSignOut,
-    TResult Function(_Authorized value)? authorized,
-    TResult Function(_UnAuthorized value)? unAuthorized,
-    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
-    TResult Function(_OnLoginSuccess value)? onLoginSuccess,
-    TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_OnError value)? onError,
+    TResult? Function(_OnSignOut value)? onSignOut,
+    TResult? Function(_Authorized value)? authorized,
+    TResult? Function(_UnAuthorized value)? unAuthorized,
+    TResult? Function(_IsOpenFromPhone value)? isOpenFromPhone,
+    TResult? Function(_OnLoginSuccess value)? onLoginSuccess,
+    TResult? Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
-    TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
-    TResult Function(_OnResetPassword value)? onResetPassword,
-    TResult Function(_OnGetUserData value)? onGetUserData,
+    TResult? Function(_OnRegisterSuccess value)? onRegisterSuccess,
+    TResult? Function(_OnResetPassword value)? onResetPassword,
+    TResult? Function(_OnGetUserData value)? onGetUserData,
   }) {
     return initial?.call(this);
   }
@@ -326,13 +326,11 @@ abstract class _$$_LoadingCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
+class __$$_LoadingCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$_Loading>
     implements _$$_LoadingCopyWith<$Res> {
   __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
-      : super(_value, (v) => _then(v as _$_Loading));
-
-  @override
-  _$_Loading get _value => super._value as _$_Loading;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -378,20 +376,20 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String error)? error,
-    TResult Function(Failures error)? onError,
-    TResult Function()? onSignOut,
-    TResult Function(UserData userData)? authorized,
-    TResult Function()? unAuthorized,
-    TResult Function(String userAgent)? isOpenFromPhone,
-    TResult Function(String token, bool isAgent)? onLoginSuccess,
-    TResult Function(String token, bool isAgent)?
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String error)? error,
+    TResult? Function(Failures error)? onError,
+    TResult? Function()? onSignOut,
+    TResult? Function(UserData userData)? authorized,
+    TResult? Function()? unAuthorized,
+    TResult? Function(String userAgent)? isOpenFromPhone,
+    TResult? Function(String token, bool isAgent)? onLoginSuccess,
+    TResult? Function(String token, bool isAgent)?
         onLoginSuccessWithoutPhoneNumber,
-    TResult Function(String token)? onRegisterSuccess,
-    TResult Function(String message)? onResetPassword,
-    TResult Function(UserData userData)? onGetUserData,
+    TResult? Function(String token)? onRegisterSuccess,
+    TResult? Function(String message)? onResetPassword,
+    TResult? Function(UserData userData)? onGetUserData,
   }) {
     return loading?.call();
   }
@@ -445,20 +443,20 @@ class _$_Loading implements _Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_OnError value)? onError,
-    TResult Function(_OnSignOut value)? onSignOut,
-    TResult Function(_Authorized value)? authorized,
-    TResult Function(_UnAuthorized value)? unAuthorized,
-    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
-    TResult Function(_OnLoginSuccess value)? onLoginSuccess,
-    TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_OnError value)? onError,
+    TResult? Function(_OnSignOut value)? onSignOut,
+    TResult? Function(_Authorized value)? authorized,
+    TResult? Function(_UnAuthorized value)? unAuthorized,
+    TResult? Function(_IsOpenFromPhone value)? isOpenFromPhone,
+    TResult? Function(_OnLoginSuccess value)? onLoginSuccess,
+    TResult? Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
-    TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
-    TResult Function(_OnResetPassword value)? onResetPassword,
-    TResult Function(_OnGetUserData value)? onGetUserData,
+    TResult? Function(_OnRegisterSuccess value)? onRegisterSuccess,
+    TResult? Function(_OnResetPassword value)? onResetPassword,
+    TResult? Function(_OnGetUserData value)? onGetUserData,
   }) {
     return loading?.call(this);
   }
@@ -497,24 +495,24 @@ abstract class _Loading implements AuthState {
 abstract class _$$_ErrorCopyWith<$Res> {
   factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
       __$$_ErrorCopyWithImpl<$Res>;
+  @useResult
   $Res call({String error});
 }
 
 /// @nodoc
-class __$$_ErrorCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
+class __$$_ErrorCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$_Error>
     implements _$$_ErrorCopyWith<$Res> {
   __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
-      : super(_value, (v) => _then(v as _$_Error));
+      : super(_value, _then);
 
-  @override
-  _$_Error get _value => super._value as _$_Error;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? error = freezed,
+    Object? error = null,
   }) {
     return _then(_$_Error(
-      error == freezed
+      null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as String,
@@ -540,15 +538,15 @@ class _$_Error implements _Error {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Error &&
-            const DeepCollectionEquality().equals(other.error, error));
+            (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(runtimeType, error);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ErrorCopyWith<_$_Error> get copyWith =>
       __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
 
@@ -576,20 +574,20 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String error)? error,
-    TResult Function(Failures error)? onError,
-    TResult Function()? onSignOut,
-    TResult Function(UserData userData)? authorized,
-    TResult Function()? unAuthorized,
-    TResult Function(String userAgent)? isOpenFromPhone,
-    TResult Function(String token, bool isAgent)? onLoginSuccess,
-    TResult Function(String token, bool isAgent)?
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String error)? error,
+    TResult? Function(Failures error)? onError,
+    TResult? Function()? onSignOut,
+    TResult? Function(UserData userData)? authorized,
+    TResult? Function()? unAuthorized,
+    TResult? Function(String userAgent)? isOpenFromPhone,
+    TResult? Function(String token, bool isAgent)? onLoginSuccess,
+    TResult? Function(String token, bool isAgent)?
         onLoginSuccessWithoutPhoneNumber,
-    TResult Function(String token)? onRegisterSuccess,
-    TResult Function(String message)? onResetPassword,
-    TResult Function(UserData userData)? onGetUserData,
+    TResult? Function(String token)? onRegisterSuccess,
+    TResult? Function(String message)? onResetPassword,
+    TResult? Function(UserData userData)? onGetUserData,
   }) {
     return error?.call(this.error);
   }
@@ -643,20 +641,20 @@ class _$_Error implements _Error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_OnError value)? onError,
-    TResult Function(_OnSignOut value)? onSignOut,
-    TResult Function(_Authorized value)? authorized,
-    TResult Function(_UnAuthorized value)? unAuthorized,
-    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
-    TResult Function(_OnLoginSuccess value)? onLoginSuccess,
-    TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_OnError value)? onError,
+    TResult? Function(_OnSignOut value)? onSignOut,
+    TResult? Function(_Authorized value)? authorized,
+    TResult? Function(_UnAuthorized value)? unAuthorized,
+    TResult? Function(_IsOpenFromPhone value)? isOpenFromPhone,
+    TResult? Function(_OnLoginSuccess value)? onLoginSuccess,
+    TResult? Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
-    TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
-    TResult Function(_OnResetPassword value)? onResetPassword,
-    TResult Function(_OnGetUserData value)? onGetUserData,
+    TResult? Function(_OnRegisterSuccess value)? onRegisterSuccess,
+    TResult? Function(_OnResetPassword value)? onResetPassword,
+    TResult? Function(_OnGetUserData value)? onGetUserData,
   }) {
     return error?.call(this);
   }
@@ -701,26 +699,26 @@ abstract class _$$_OnErrorCopyWith<$Res> {
   factory _$$_OnErrorCopyWith(
           _$_OnError value, $Res Function(_$_OnError) then) =
       __$$_OnErrorCopyWithImpl<$Res>;
+  @useResult
   $Res call({Failures error});
 
   $FailuresCopyWith<$Res> get error;
 }
 
 /// @nodoc
-class __$$_OnErrorCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
+class __$$_OnErrorCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$_OnError>
     implements _$$_OnErrorCopyWith<$Res> {
   __$$_OnErrorCopyWithImpl(_$_OnError _value, $Res Function(_$_OnError) _then)
-      : super(_value, (v) => _then(v as _$_OnError));
+      : super(_value, _then);
 
-  @override
-  _$_OnError get _value => super._value as _$_OnError;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? error = freezed,
+    Object? error = null,
   }) {
     return _then(_$_OnError(
-      error == freezed
+      null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as Failures,
@@ -728,6 +726,7 @@ class __$$_OnErrorCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $FailuresCopyWith<$Res> get error {
     return $FailuresCopyWith<$Res>(_value.error, (value) {
       return _then(_value.copyWith(error: value));
@@ -753,15 +752,15 @@ class _$_OnError implements _OnError {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_OnError &&
-            const DeepCollectionEquality().equals(other.error, error));
+            (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(runtimeType, error);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_OnErrorCopyWith<_$_OnError> get copyWith =>
       __$$_OnErrorCopyWithImpl<_$_OnError>(this, _$identity);
 
@@ -789,20 +788,20 @@ class _$_OnError implements _OnError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String error)? error,
-    TResult Function(Failures error)? onError,
-    TResult Function()? onSignOut,
-    TResult Function(UserData userData)? authorized,
-    TResult Function()? unAuthorized,
-    TResult Function(String userAgent)? isOpenFromPhone,
-    TResult Function(String token, bool isAgent)? onLoginSuccess,
-    TResult Function(String token, bool isAgent)?
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String error)? error,
+    TResult? Function(Failures error)? onError,
+    TResult? Function()? onSignOut,
+    TResult? Function(UserData userData)? authorized,
+    TResult? Function()? unAuthorized,
+    TResult? Function(String userAgent)? isOpenFromPhone,
+    TResult? Function(String token, bool isAgent)? onLoginSuccess,
+    TResult? Function(String token, bool isAgent)?
         onLoginSuccessWithoutPhoneNumber,
-    TResult Function(String token)? onRegisterSuccess,
-    TResult Function(String message)? onResetPassword,
-    TResult Function(UserData userData)? onGetUserData,
+    TResult? Function(String token)? onRegisterSuccess,
+    TResult? Function(String message)? onResetPassword,
+    TResult? Function(UserData userData)? onGetUserData,
   }) {
     return onError?.call(this.error);
   }
@@ -856,20 +855,20 @@ class _$_OnError implements _OnError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_OnError value)? onError,
-    TResult Function(_OnSignOut value)? onSignOut,
-    TResult Function(_Authorized value)? authorized,
-    TResult Function(_UnAuthorized value)? unAuthorized,
-    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
-    TResult Function(_OnLoginSuccess value)? onLoginSuccess,
-    TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_OnError value)? onError,
+    TResult? Function(_OnSignOut value)? onSignOut,
+    TResult? Function(_Authorized value)? authorized,
+    TResult? Function(_UnAuthorized value)? unAuthorized,
+    TResult? Function(_IsOpenFromPhone value)? isOpenFromPhone,
+    TResult? Function(_OnLoginSuccess value)? onLoginSuccess,
+    TResult? Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
-    TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
-    TResult Function(_OnResetPassword value)? onResetPassword,
-    TResult Function(_OnGetUserData value)? onGetUserData,
+    TResult? Function(_OnRegisterSuccess value)? onRegisterSuccess,
+    TResult? Function(_OnResetPassword value)? onResetPassword,
+    TResult? Function(_OnGetUserData value)? onGetUserData,
   }) {
     return onError?.call(this);
   }
@@ -917,14 +916,12 @@ abstract class _$$_OnSignOutCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_OnSignOutCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
+class __$$_OnSignOutCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$_OnSignOut>
     implements _$$_OnSignOutCopyWith<$Res> {
   __$$_OnSignOutCopyWithImpl(
       _$_OnSignOut _value, $Res Function(_$_OnSignOut) _then)
-      : super(_value, (v) => _then(v as _$_OnSignOut));
-
-  @override
-  _$_OnSignOut get _value => super._value as _$_OnSignOut;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -970,20 +967,20 @@ class _$_OnSignOut implements _OnSignOut {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String error)? error,
-    TResult Function(Failures error)? onError,
-    TResult Function()? onSignOut,
-    TResult Function(UserData userData)? authorized,
-    TResult Function()? unAuthorized,
-    TResult Function(String userAgent)? isOpenFromPhone,
-    TResult Function(String token, bool isAgent)? onLoginSuccess,
-    TResult Function(String token, bool isAgent)?
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String error)? error,
+    TResult? Function(Failures error)? onError,
+    TResult? Function()? onSignOut,
+    TResult? Function(UserData userData)? authorized,
+    TResult? Function()? unAuthorized,
+    TResult? Function(String userAgent)? isOpenFromPhone,
+    TResult? Function(String token, bool isAgent)? onLoginSuccess,
+    TResult? Function(String token, bool isAgent)?
         onLoginSuccessWithoutPhoneNumber,
-    TResult Function(String token)? onRegisterSuccess,
-    TResult Function(String message)? onResetPassword,
-    TResult Function(UserData userData)? onGetUserData,
+    TResult? Function(String token)? onRegisterSuccess,
+    TResult? Function(String message)? onResetPassword,
+    TResult? Function(UserData userData)? onGetUserData,
   }) {
     return onSignOut?.call();
   }
@@ -1037,20 +1034,20 @@ class _$_OnSignOut implements _OnSignOut {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_OnError value)? onError,
-    TResult Function(_OnSignOut value)? onSignOut,
-    TResult Function(_Authorized value)? authorized,
-    TResult Function(_UnAuthorized value)? unAuthorized,
-    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
-    TResult Function(_OnLoginSuccess value)? onLoginSuccess,
-    TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_OnError value)? onError,
+    TResult? Function(_OnSignOut value)? onSignOut,
+    TResult? Function(_Authorized value)? authorized,
+    TResult? Function(_UnAuthorized value)? unAuthorized,
+    TResult? Function(_IsOpenFromPhone value)? isOpenFromPhone,
+    TResult? Function(_OnLoginSuccess value)? onLoginSuccess,
+    TResult? Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
-    TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
-    TResult Function(_OnResetPassword value)? onResetPassword,
-    TResult Function(_OnGetUserData value)? onGetUserData,
+    TResult? Function(_OnRegisterSuccess value)? onRegisterSuccess,
+    TResult? Function(_OnResetPassword value)? onResetPassword,
+    TResult? Function(_OnGetUserData value)? onGetUserData,
   }) {
     return onSignOut?.call(this);
   }
@@ -1090,27 +1087,27 @@ abstract class _$$_AuthorizedCopyWith<$Res> {
   factory _$$_AuthorizedCopyWith(
           _$_Authorized value, $Res Function(_$_Authorized) then) =
       __$$_AuthorizedCopyWithImpl<$Res>;
+  @useResult
   $Res call({UserData userData});
 
   $UserDataCopyWith<$Res> get userData;
 }
 
 /// @nodoc
-class __$$_AuthorizedCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
+class __$$_AuthorizedCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$_Authorized>
     implements _$$_AuthorizedCopyWith<$Res> {
   __$$_AuthorizedCopyWithImpl(
       _$_Authorized _value, $Res Function(_$_Authorized) _then)
-      : super(_value, (v) => _then(v as _$_Authorized));
+      : super(_value, _then);
 
-  @override
-  _$_Authorized get _value => super._value as _$_Authorized;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userData = freezed,
+    Object? userData = null,
   }) {
     return _then(_$_Authorized(
-      userData == freezed
+      null == userData
           ? _value.userData
           : userData // ignore: cast_nullable_to_non_nullable
               as UserData,
@@ -1118,6 +1115,7 @@ class __$$_AuthorizedCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $UserDataCopyWith<$Res> get userData {
     return $UserDataCopyWith<$Res>(_value.userData, (value) {
       return _then(_value.copyWith(userData: value));
@@ -1143,15 +1141,16 @@ class _$_Authorized implements _Authorized {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Authorized &&
-            const DeepCollectionEquality().equals(other.userData, userData));
+            (identical(other.userData, userData) ||
+                other.userData == userData));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(userData));
+  int get hashCode => Object.hash(runtimeType, userData);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_AuthorizedCopyWith<_$_Authorized> get copyWith =>
       __$$_AuthorizedCopyWithImpl<_$_Authorized>(this, _$identity);
 
@@ -1179,20 +1178,20 @@ class _$_Authorized implements _Authorized {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String error)? error,
-    TResult Function(Failures error)? onError,
-    TResult Function()? onSignOut,
-    TResult Function(UserData userData)? authorized,
-    TResult Function()? unAuthorized,
-    TResult Function(String userAgent)? isOpenFromPhone,
-    TResult Function(String token, bool isAgent)? onLoginSuccess,
-    TResult Function(String token, bool isAgent)?
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String error)? error,
+    TResult? Function(Failures error)? onError,
+    TResult? Function()? onSignOut,
+    TResult? Function(UserData userData)? authorized,
+    TResult? Function()? unAuthorized,
+    TResult? Function(String userAgent)? isOpenFromPhone,
+    TResult? Function(String token, bool isAgent)? onLoginSuccess,
+    TResult? Function(String token, bool isAgent)?
         onLoginSuccessWithoutPhoneNumber,
-    TResult Function(String token)? onRegisterSuccess,
-    TResult Function(String message)? onResetPassword,
-    TResult Function(UserData userData)? onGetUserData,
+    TResult? Function(String token)? onRegisterSuccess,
+    TResult? Function(String message)? onResetPassword,
+    TResult? Function(UserData userData)? onGetUserData,
   }) {
     return authorized?.call(userData);
   }
@@ -1246,20 +1245,20 @@ class _$_Authorized implements _Authorized {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_OnError value)? onError,
-    TResult Function(_OnSignOut value)? onSignOut,
-    TResult Function(_Authorized value)? authorized,
-    TResult Function(_UnAuthorized value)? unAuthorized,
-    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
-    TResult Function(_OnLoginSuccess value)? onLoginSuccess,
-    TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_OnError value)? onError,
+    TResult? Function(_OnSignOut value)? onSignOut,
+    TResult? Function(_Authorized value)? authorized,
+    TResult? Function(_UnAuthorized value)? unAuthorized,
+    TResult? Function(_IsOpenFromPhone value)? isOpenFromPhone,
+    TResult? Function(_OnLoginSuccess value)? onLoginSuccess,
+    TResult? Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
-    TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
-    TResult Function(_OnResetPassword value)? onResetPassword,
-    TResult Function(_OnGetUserData value)? onGetUserData,
+    TResult? Function(_OnRegisterSuccess value)? onRegisterSuccess,
+    TResult? Function(_OnResetPassword value)? onResetPassword,
+    TResult? Function(_OnGetUserData value)? onGetUserData,
   }) {
     return authorized?.call(this);
   }
@@ -1307,14 +1306,12 @@ abstract class _$$_UnAuthorizedCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_UnAuthorizedCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
+class __$$_UnAuthorizedCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$_UnAuthorized>
     implements _$$_UnAuthorizedCopyWith<$Res> {
   __$$_UnAuthorizedCopyWithImpl(
       _$_UnAuthorized _value, $Res Function(_$_UnAuthorized) _then)
-      : super(_value, (v) => _then(v as _$_UnAuthorized));
-
-  @override
-  _$_UnAuthorized get _value => super._value as _$_UnAuthorized;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -1360,20 +1357,20 @@ class _$_UnAuthorized implements _UnAuthorized {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String error)? error,
-    TResult Function(Failures error)? onError,
-    TResult Function()? onSignOut,
-    TResult Function(UserData userData)? authorized,
-    TResult Function()? unAuthorized,
-    TResult Function(String userAgent)? isOpenFromPhone,
-    TResult Function(String token, bool isAgent)? onLoginSuccess,
-    TResult Function(String token, bool isAgent)?
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String error)? error,
+    TResult? Function(Failures error)? onError,
+    TResult? Function()? onSignOut,
+    TResult? Function(UserData userData)? authorized,
+    TResult? Function()? unAuthorized,
+    TResult? Function(String userAgent)? isOpenFromPhone,
+    TResult? Function(String token, bool isAgent)? onLoginSuccess,
+    TResult? Function(String token, bool isAgent)?
         onLoginSuccessWithoutPhoneNumber,
-    TResult Function(String token)? onRegisterSuccess,
-    TResult Function(String message)? onResetPassword,
-    TResult Function(UserData userData)? onGetUserData,
+    TResult? Function(String token)? onRegisterSuccess,
+    TResult? Function(String message)? onResetPassword,
+    TResult? Function(UserData userData)? onGetUserData,
   }) {
     return unAuthorized?.call();
   }
@@ -1427,20 +1424,20 @@ class _$_UnAuthorized implements _UnAuthorized {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_OnError value)? onError,
-    TResult Function(_OnSignOut value)? onSignOut,
-    TResult Function(_Authorized value)? authorized,
-    TResult Function(_UnAuthorized value)? unAuthorized,
-    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
-    TResult Function(_OnLoginSuccess value)? onLoginSuccess,
-    TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_OnError value)? onError,
+    TResult? Function(_OnSignOut value)? onSignOut,
+    TResult? Function(_Authorized value)? authorized,
+    TResult? Function(_UnAuthorized value)? unAuthorized,
+    TResult? Function(_IsOpenFromPhone value)? isOpenFromPhone,
+    TResult? Function(_OnLoginSuccess value)? onLoginSuccess,
+    TResult? Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
-    TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
-    TResult Function(_OnResetPassword value)? onResetPassword,
-    TResult Function(_OnGetUserData value)? onGetUserData,
+    TResult? Function(_OnRegisterSuccess value)? onRegisterSuccess,
+    TResult? Function(_OnResetPassword value)? onResetPassword,
+    TResult? Function(_OnGetUserData value)? onGetUserData,
   }) {
     return unAuthorized?.call(this);
   }
@@ -1480,26 +1477,25 @@ abstract class _$$_IsOpenFromPhoneCopyWith<$Res> {
   factory _$$_IsOpenFromPhoneCopyWith(
           _$_IsOpenFromPhone value, $Res Function(_$_IsOpenFromPhone) then) =
       __$$_IsOpenFromPhoneCopyWithImpl<$Res>;
+  @useResult
   $Res call({String userAgent});
 }
 
 /// @nodoc
 class __$$_IsOpenFromPhoneCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$_IsOpenFromPhone>
     implements _$$_IsOpenFromPhoneCopyWith<$Res> {
   __$$_IsOpenFromPhoneCopyWithImpl(
       _$_IsOpenFromPhone _value, $Res Function(_$_IsOpenFromPhone) _then)
-      : super(_value, (v) => _then(v as _$_IsOpenFromPhone));
+      : super(_value, _then);
 
-  @override
-  _$_IsOpenFromPhone get _value => super._value as _$_IsOpenFromPhone;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userAgent = freezed,
+    Object? userAgent = null,
   }) {
     return _then(_$_IsOpenFromPhone(
-      userAgent == freezed
+      null == userAgent
           ? _value.userAgent
           : userAgent // ignore: cast_nullable_to_non_nullable
               as String,
@@ -1525,15 +1521,16 @@ class _$_IsOpenFromPhone implements _IsOpenFromPhone {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_IsOpenFromPhone &&
-            const DeepCollectionEquality().equals(other.userAgent, userAgent));
+            (identical(other.userAgent, userAgent) ||
+                other.userAgent == userAgent));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(userAgent));
+  int get hashCode => Object.hash(runtimeType, userAgent);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_IsOpenFromPhoneCopyWith<_$_IsOpenFromPhone> get copyWith =>
       __$$_IsOpenFromPhoneCopyWithImpl<_$_IsOpenFromPhone>(this, _$identity);
 
@@ -1561,20 +1558,20 @@ class _$_IsOpenFromPhone implements _IsOpenFromPhone {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String error)? error,
-    TResult Function(Failures error)? onError,
-    TResult Function()? onSignOut,
-    TResult Function(UserData userData)? authorized,
-    TResult Function()? unAuthorized,
-    TResult Function(String userAgent)? isOpenFromPhone,
-    TResult Function(String token, bool isAgent)? onLoginSuccess,
-    TResult Function(String token, bool isAgent)?
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String error)? error,
+    TResult? Function(Failures error)? onError,
+    TResult? Function()? onSignOut,
+    TResult? Function(UserData userData)? authorized,
+    TResult? Function()? unAuthorized,
+    TResult? Function(String userAgent)? isOpenFromPhone,
+    TResult? Function(String token, bool isAgent)? onLoginSuccess,
+    TResult? Function(String token, bool isAgent)?
         onLoginSuccessWithoutPhoneNumber,
-    TResult Function(String token)? onRegisterSuccess,
-    TResult Function(String message)? onResetPassword,
-    TResult Function(UserData userData)? onGetUserData,
+    TResult? Function(String token)? onRegisterSuccess,
+    TResult? Function(String message)? onResetPassword,
+    TResult? Function(UserData userData)? onGetUserData,
   }) {
     return isOpenFromPhone?.call(userAgent);
   }
@@ -1628,20 +1625,20 @@ class _$_IsOpenFromPhone implements _IsOpenFromPhone {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_OnError value)? onError,
-    TResult Function(_OnSignOut value)? onSignOut,
-    TResult Function(_Authorized value)? authorized,
-    TResult Function(_UnAuthorized value)? unAuthorized,
-    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
-    TResult Function(_OnLoginSuccess value)? onLoginSuccess,
-    TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_OnError value)? onError,
+    TResult? Function(_OnSignOut value)? onSignOut,
+    TResult? Function(_Authorized value)? authorized,
+    TResult? Function(_UnAuthorized value)? unAuthorized,
+    TResult? Function(_IsOpenFromPhone value)? isOpenFromPhone,
+    TResult? Function(_OnLoginSuccess value)? onLoginSuccess,
+    TResult? Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
-    TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
-    TResult Function(_OnResetPassword value)? onResetPassword,
-    TResult Function(_OnGetUserData value)? onGetUserData,
+    TResult? Function(_OnRegisterSuccess value)? onRegisterSuccess,
+    TResult? Function(_OnResetPassword value)? onResetPassword,
+    TResult? Function(_OnGetUserData value)? onGetUserData,
   }) {
     return isOpenFromPhone?.call(this);
   }
@@ -1686,31 +1683,30 @@ abstract class _$$_OnLoginSuccessCopyWith<$Res> {
   factory _$$_OnLoginSuccessCopyWith(
           _$_OnLoginSuccess value, $Res Function(_$_OnLoginSuccess) then) =
       __$$_OnLoginSuccessCopyWithImpl<$Res>;
+  @useResult
   $Res call({String token, bool isAgent});
 }
 
 /// @nodoc
 class __$$_OnLoginSuccessCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$_OnLoginSuccess>
     implements _$$_OnLoginSuccessCopyWith<$Res> {
   __$$_OnLoginSuccessCopyWithImpl(
       _$_OnLoginSuccess _value, $Res Function(_$_OnLoginSuccess) _then)
-      : super(_value, (v) => _then(v as _$_OnLoginSuccess));
+      : super(_value, _then);
 
-  @override
-  _$_OnLoginSuccess get _value => super._value as _$_OnLoginSuccess;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? token = freezed,
-    Object? isAgent = freezed,
+    Object? token = null,
+    Object? isAgent = null,
   }) {
     return _then(_$_OnLoginSuccess(
-      token == freezed
+      null == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String,
-      isAgent == freezed
+      null == isAgent
           ? _value.isAgent
           : isAgent // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -1738,18 +1734,16 @@ class _$_OnLoginSuccess implements _OnLoginSuccess {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_OnLoginSuccess &&
-            const DeepCollectionEquality().equals(other.token, token) &&
-            const DeepCollectionEquality().equals(other.isAgent, isAgent));
+            (identical(other.token, token) || other.token == token) &&
+            (identical(other.isAgent, isAgent) || other.isAgent == isAgent));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(token),
-      const DeepCollectionEquality().hash(isAgent));
+  int get hashCode => Object.hash(runtimeType, token, isAgent);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_OnLoginSuccessCopyWith<_$_OnLoginSuccess> get copyWith =>
       __$$_OnLoginSuccessCopyWithImpl<_$_OnLoginSuccess>(this, _$identity);
 
@@ -1777,20 +1771,20 @@ class _$_OnLoginSuccess implements _OnLoginSuccess {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String error)? error,
-    TResult Function(Failures error)? onError,
-    TResult Function()? onSignOut,
-    TResult Function(UserData userData)? authorized,
-    TResult Function()? unAuthorized,
-    TResult Function(String userAgent)? isOpenFromPhone,
-    TResult Function(String token, bool isAgent)? onLoginSuccess,
-    TResult Function(String token, bool isAgent)?
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String error)? error,
+    TResult? Function(Failures error)? onError,
+    TResult? Function()? onSignOut,
+    TResult? Function(UserData userData)? authorized,
+    TResult? Function()? unAuthorized,
+    TResult? Function(String userAgent)? isOpenFromPhone,
+    TResult? Function(String token, bool isAgent)? onLoginSuccess,
+    TResult? Function(String token, bool isAgent)?
         onLoginSuccessWithoutPhoneNumber,
-    TResult Function(String token)? onRegisterSuccess,
-    TResult Function(String message)? onResetPassword,
-    TResult Function(UserData userData)? onGetUserData,
+    TResult? Function(String token)? onRegisterSuccess,
+    TResult? Function(String message)? onResetPassword,
+    TResult? Function(UserData userData)? onGetUserData,
   }) {
     return onLoginSuccess?.call(token, isAgent);
   }
@@ -1844,20 +1838,20 @@ class _$_OnLoginSuccess implements _OnLoginSuccess {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_OnError value)? onError,
-    TResult Function(_OnSignOut value)? onSignOut,
-    TResult Function(_Authorized value)? authorized,
-    TResult Function(_UnAuthorized value)? unAuthorized,
-    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
-    TResult Function(_OnLoginSuccess value)? onLoginSuccess,
-    TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_OnError value)? onError,
+    TResult? Function(_OnSignOut value)? onSignOut,
+    TResult? Function(_Authorized value)? authorized,
+    TResult? Function(_UnAuthorized value)? unAuthorized,
+    TResult? Function(_IsOpenFromPhone value)? isOpenFromPhone,
+    TResult? Function(_OnLoginSuccess value)? onLoginSuccess,
+    TResult? Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
-    TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
-    TResult Function(_OnResetPassword value)? onResetPassword,
-    TResult Function(_OnGetUserData value)? onGetUserData,
+    TResult? Function(_OnRegisterSuccess value)? onRegisterSuccess,
+    TResult? Function(_OnResetPassword value)? onResetPassword,
+    TResult? Function(_OnGetUserData value)? onGetUserData,
   }) {
     return onLoginSuccess?.call(this);
   }
@@ -1905,33 +1899,31 @@ abstract class _$$_OnLoginSuccessWithoutPhoneNumberCopyWith<$Res> {
           _$_OnLoginSuccessWithoutPhoneNumber value,
           $Res Function(_$_OnLoginSuccessWithoutPhoneNumber) then) =
       __$$_OnLoginSuccessWithoutPhoneNumberCopyWithImpl<$Res>;
+  @useResult
   $Res call({String token, bool isAgent});
 }
 
 /// @nodoc
 class __$$_OnLoginSuccessWithoutPhoneNumberCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$_OnLoginSuccessWithoutPhoneNumber>
     implements _$$_OnLoginSuccessWithoutPhoneNumberCopyWith<$Res> {
   __$$_OnLoginSuccessWithoutPhoneNumberCopyWithImpl(
       _$_OnLoginSuccessWithoutPhoneNumber _value,
       $Res Function(_$_OnLoginSuccessWithoutPhoneNumber) _then)
-      : super(_value, (v) => _then(v as _$_OnLoginSuccessWithoutPhoneNumber));
+      : super(_value, _then);
 
-  @override
-  _$_OnLoginSuccessWithoutPhoneNumber get _value =>
-      super._value as _$_OnLoginSuccessWithoutPhoneNumber;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? token = freezed,
-    Object? isAgent = freezed,
+    Object? token = null,
+    Object? isAgent = null,
   }) {
     return _then(_$_OnLoginSuccessWithoutPhoneNumber(
-      token == freezed
+      null == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String,
-      isAgent == freezed
+      null == isAgent
           ? _value.isAgent
           : isAgent // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -1960,18 +1952,16 @@ class _$_OnLoginSuccessWithoutPhoneNumber
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_OnLoginSuccessWithoutPhoneNumber &&
-            const DeepCollectionEquality().equals(other.token, token) &&
-            const DeepCollectionEquality().equals(other.isAgent, isAgent));
+            (identical(other.token, token) || other.token == token) &&
+            (identical(other.isAgent, isAgent) || other.isAgent == isAgent));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(token),
-      const DeepCollectionEquality().hash(isAgent));
+  int get hashCode => Object.hash(runtimeType, token, isAgent);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_OnLoginSuccessWithoutPhoneNumberCopyWith<
           _$_OnLoginSuccessWithoutPhoneNumber>
       get copyWith => __$$_OnLoginSuccessWithoutPhoneNumberCopyWithImpl<
@@ -2001,20 +1991,20 @@ class _$_OnLoginSuccessWithoutPhoneNumber
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String error)? error,
-    TResult Function(Failures error)? onError,
-    TResult Function()? onSignOut,
-    TResult Function(UserData userData)? authorized,
-    TResult Function()? unAuthorized,
-    TResult Function(String userAgent)? isOpenFromPhone,
-    TResult Function(String token, bool isAgent)? onLoginSuccess,
-    TResult Function(String token, bool isAgent)?
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String error)? error,
+    TResult? Function(Failures error)? onError,
+    TResult? Function()? onSignOut,
+    TResult? Function(UserData userData)? authorized,
+    TResult? Function()? unAuthorized,
+    TResult? Function(String userAgent)? isOpenFromPhone,
+    TResult? Function(String token, bool isAgent)? onLoginSuccess,
+    TResult? Function(String token, bool isAgent)?
         onLoginSuccessWithoutPhoneNumber,
-    TResult Function(String token)? onRegisterSuccess,
-    TResult Function(String message)? onResetPassword,
-    TResult Function(UserData userData)? onGetUserData,
+    TResult? Function(String token)? onRegisterSuccess,
+    TResult? Function(String message)? onResetPassword,
+    TResult? Function(UserData userData)? onGetUserData,
   }) {
     return onLoginSuccessWithoutPhoneNumber?.call(token, isAgent);
   }
@@ -2068,20 +2058,20 @@ class _$_OnLoginSuccessWithoutPhoneNumber
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_OnError value)? onError,
-    TResult Function(_OnSignOut value)? onSignOut,
-    TResult Function(_Authorized value)? authorized,
-    TResult Function(_UnAuthorized value)? unAuthorized,
-    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
-    TResult Function(_OnLoginSuccess value)? onLoginSuccess,
-    TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_OnError value)? onError,
+    TResult? Function(_OnSignOut value)? onSignOut,
+    TResult? Function(_Authorized value)? authorized,
+    TResult? Function(_UnAuthorized value)? unAuthorized,
+    TResult? Function(_IsOpenFromPhone value)? isOpenFromPhone,
+    TResult? Function(_OnLoginSuccess value)? onLoginSuccess,
+    TResult? Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
-    TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
-    TResult Function(_OnResetPassword value)? onResetPassword,
-    TResult Function(_OnGetUserData value)? onGetUserData,
+    TResult? Function(_OnRegisterSuccess value)? onRegisterSuccess,
+    TResult? Function(_OnResetPassword value)? onResetPassword,
+    TResult? Function(_OnGetUserData value)? onGetUserData,
   }) {
     return onLoginSuccessWithoutPhoneNumber?.call(this);
   }
@@ -2130,26 +2120,25 @@ abstract class _$$_OnRegisterSuccessCopyWith<$Res> {
   factory _$$_OnRegisterSuccessCopyWith(_$_OnRegisterSuccess value,
           $Res Function(_$_OnRegisterSuccess) then) =
       __$$_OnRegisterSuccessCopyWithImpl<$Res>;
+  @useResult
   $Res call({String token});
 }
 
 /// @nodoc
 class __$$_OnRegisterSuccessCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$_OnRegisterSuccess>
     implements _$$_OnRegisterSuccessCopyWith<$Res> {
   __$$_OnRegisterSuccessCopyWithImpl(
       _$_OnRegisterSuccess _value, $Res Function(_$_OnRegisterSuccess) _then)
-      : super(_value, (v) => _then(v as _$_OnRegisterSuccess));
+      : super(_value, _then);
 
-  @override
-  _$_OnRegisterSuccess get _value => super._value as _$_OnRegisterSuccess;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? token = freezed,
+    Object? token = null,
   }) {
     return _then(_$_OnRegisterSuccess(
-      token == freezed
+      null == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String,
@@ -2175,15 +2164,15 @@ class _$_OnRegisterSuccess implements _OnRegisterSuccess {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_OnRegisterSuccess &&
-            const DeepCollectionEquality().equals(other.token, token));
+            (identical(other.token, token) || other.token == token));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(token));
+  int get hashCode => Object.hash(runtimeType, token);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_OnRegisterSuccessCopyWith<_$_OnRegisterSuccess> get copyWith =>
       __$$_OnRegisterSuccessCopyWithImpl<_$_OnRegisterSuccess>(
           this, _$identity);
@@ -2212,20 +2201,20 @@ class _$_OnRegisterSuccess implements _OnRegisterSuccess {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String error)? error,
-    TResult Function(Failures error)? onError,
-    TResult Function()? onSignOut,
-    TResult Function(UserData userData)? authorized,
-    TResult Function()? unAuthorized,
-    TResult Function(String userAgent)? isOpenFromPhone,
-    TResult Function(String token, bool isAgent)? onLoginSuccess,
-    TResult Function(String token, bool isAgent)?
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String error)? error,
+    TResult? Function(Failures error)? onError,
+    TResult? Function()? onSignOut,
+    TResult? Function(UserData userData)? authorized,
+    TResult? Function()? unAuthorized,
+    TResult? Function(String userAgent)? isOpenFromPhone,
+    TResult? Function(String token, bool isAgent)? onLoginSuccess,
+    TResult? Function(String token, bool isAgent)?
         onLoginSuccessWithoutPhoneNumber,
-    TResult Function(String token)? onRegisterSuccess,
-    TResult Function(String message)? onResetPassword,
-    TResult Function(UserData userData)? onGetUserData,
+    TResult? Function(String token)? onRegisterSuccess,
+    TResult? Function(String message)? onResetPassword,
+    TResult? Function(UserData userData)? onGetUserData,
   }) {
     return onRegisterSuccess?.call(token);
   }
@@ -2279,20 +2268,20 @@ class _$_OnRegisterSuccess implements _OnRegisterSuccess {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_OnError value)? onError,
-    TResult Function(_OnSignOut value)? onSignOut,
-    TResult Function(_Authorized value)? authorized,
-    TResult Function(_UnAuthorized value)? unAuthorized,
-    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
-    TResult Function(_OnLoginSuccess value)? onLoginSuccess,
-    TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_OnError value)? onError,
+    TResult? Function(_OnSignOut value)? onSignOut,
+    TResult? Function(_Authorized value)? authorized,
+    TResult? Function(_UnAuthorized value)? unAuthorized,
+    TResult? Function(_IsOpenFromPhone value)? isOpenFromPhone,
+    TResult? Function(_OnLoginSuccess value)? onLoginSuccess,
+    TResult? Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
-    TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
-    TResult Function(_OnResetPassword value)? onResetPassword,
-    TResult Function(_OnGetUserData value)? onGetUserData,
+    TResult? Function(_OnRegisterSuccess value)? onRegisterSuccess,
+    TResult? Function(_OnResetPassword value)? onResetPassword,
+    TResult? Function(_OnGetUserData value)? onGetUserData,
   }) {
     return onRegisterSuccess?.call(this);
   }
@@ -2337,26 +2326,25 @@ abstract class _$$_OnResetPasswordCopyWith<$Res> {
   factory _$$_OnResetPasswordCopyWith(
           _$_OnResetPassword value, $Res Function(_$_OnResetPassword) then) =
       __$$_OnResetPasswordCopyWithImpl<$Res>;
+  @useResult
   $Res call({String message});
 }
 
 /// @nodoc
 class __$$_OnResetPasswordCopyWithImpl<$Res>
-    extends _$AuthStateCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$_OnResetPassword>
     implements _$$_OnResetPasswordCopyWith<$Res> {
   __$$_OnResetPasswordCopyWithImpl(
       _$_OnResetPassword _value, $Res Function(_$_OnResetPassword) _then)
-      : super(_value, (v) => _then(v as _$_OnResetPassword));
+      : super(_value, _then);
 
-  @override
-  _$_OnResetPassword get _value => super._value as _$_OnResetPassword;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = freezed,
+    Object? message = null,
   }) {
     return _then(_$_OnResetPassword(
-      message == freezed
+      null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
@@ -2382,15 +2370,15 @@ class _$_OnResetPassword implements _OnResetPassword {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_OnResetPassword &&
-            const DeepCollectionEquality().equals(other.message, message));
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(message));
+  int get hashCode => Object.hash(runtimeType, message);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_OnResetPasswordCopyWith<_$_OnResetPassword> get copyWith =>
       __$$_OnResetPasswordCopyWithImpl<_$_OnResetPassword>(this, _$identity);
 
@@ -2418,20 +2406,20 @@ class _$_OnResetPassword implements _OnResetPassword {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String error)? error,
-    TResult Function(Failures error)? onError,
-    TResult Function()? onSignOut,
-    TResult Function(UserData userData)? authorized,
-    TResult Function()? unAuthorized,
-    TResult Function(String userAgent)? isOpenFromPhone,
-    TResult Function(String token, bool isAgent)? onLoginSuccess,
-    TResult Function(String token, bool isAgent)?
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String error)? error,
+    TResult? Function(Failures error)? onError,
+    TResult? Function()? onSignOut,
+    TResult? Function(UserData userData)? authorized,
+    TResult? Function()? unAuthorized,
+    TResult? Function(String userAgent)? isOpenFromPhone,
+    TResult? Function(String token, bool isAgent)? onLoginSuccess,
+    TResult? Function(String token, bool isAgent)?
         onLoginSuccessWithoutPhoneNumber,
-    TResult Function(String token)? onRegisterSuccess,
-    TResult Function(String message)? onResetPassword,
-    TResult Function(UserData userData)? onGetUserData,
+    TResult? Function(String token)? onRegisterSuccess,
+    TResult? Function(String message)? onResetPassword,
+    TResult? Function(UserData userData)? onGetUserData,
   }) {
     return onResetPassword?.call(message);
   }
@@ -2485,20 +2473,20 @@ class _$_OnResetPassword implements _OnResetPassword {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_OnError value)? onError,
-    TResult Function(_OnSignOut value)? onSignOut,
-    TResult Function(_Authorized value)? authorized,
-    TResult Function(_UnAuthorized value)? unAuthorized,
-    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
-    TResult Function(_OnLoginSuccess value)? onLoginSuccess,
-    TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_OnError value)? onError,
+    TResult? Function(_OnSignOut value)? onSignOut,
+    TResult? Function(_Authorized value)? authorized,
+    TResult? Function(_UnAuthorized value)? unAuthorized,
+    TResult? Function(_IsOpenFromPhone value)? isOpenFromPhone,
+    TResult? Function(_OnLoginSuccess value)? onLoginSuccess,
+    TResult? Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
-    TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
-    TResult Function(_OnResetPassword value)? onResetPassword,
-    TResult Function(_OnGetUserData value)? onGetUserData,
+    TResult? Function(_OnRegisterSuccess value)? onRegisterSuccess,
+    TResult? Function(_OnResetPassword value)? onResetPassword,
+    TResult? Function(_OnGetUserData value)? onGetUserData,
   }) {
     return onResetPassword?.call(this);
   }
@@ -2543,27 +2531,27 @@ abstract class _$$_OnGetUserDataCopyWith<$Res> {
   factory _$$_OnGetUserDataCopyWith(
           _$_OnGetUserData value, $Res Function(_$_OnGetUserData) then) =
       __$$_OnGetUserDataCopyWithImpl<$Res>;
+  @useResult
   $Res call({UserData userData});
 
   $UserDataCopyWith<$Res> get userData;
 }
 
 /// @nodoc
-class __$$_OnGetUserDataCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
+class __$$_OnGetUserDataCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$_OnGetUserData>
     implements _$$_OnGetUserDataCopyWith<$Res> {
   __$$_OnGetUserDataCopyWithImpl(
       _$_OnGetUserData _value, $Res Function(_$_OnGetUserData) _then)
-      : super(_value, (v) => _then(v as _$_OnGetUserData));
+      : super(_value, _then);
 
-  @override
-  _$_OnGetUserData get _value => super._value as _$_OnGetUserData;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userData = freezed,
+    Object? userData = null,
   }) {
     return _then(_$_OnGetUserData(
-      userData == freezed
+      null == userData
           ? _value.userData
           : userData // ignore: cast_nullable_to_non_nullable
               as UserData,
@@ -2571,6 +2559,7 @@ class __$$_OnGetUserDataCopyWithImpl<$Res> extends _$AuthStateCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $UserDataCopyWith<$Res> get userData {
     return $UserDataCopyWith<$Res>(_value.userData, (value) {
       return _then(_value.copyWith(userData: value));
@@ -2596,15 +2585,16 @@ class _$_OnGetUserData implements _OnGetUserData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_OnGetUserData &&
-            const DeepCollectionEquality().equals(other.userData, userData));
+            (identical(other.userData, userData) ||
+                other.userData == userData));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(userData));
+  int get hashCode => Object.hash(runtimeType, userData);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_OnGetUserDataCopyWith<_$_OnGetUserData> get copyWith =>
       __$$_OnGetUserDataCopyWithImpl<_$_OnGetUserData>(this, _$identity);
 
@@ -2632,20 +2622,20 @@ class _$_OnGetUserData implements _OnGetUserData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String error)? error,
-    TResult Function(Failures error)? onError,
-    TResult Function()? onSignOut,
-    TResult Function(UserData userData)? authorized,
-    TResult Function()? unAuthorized,
-    TResult Function(String userAgent)? isOpenFromPhone,
-    TResult Function(String token, bool isAgent)? onLoginSuccess,
-    TResult Function(String token, bool isAgent)?
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String error)? error,
+    TResult? Function(Failures error)? onError,
+    TResult? Function()? onSignOut,
+    TResult? Function(UserData userData)? authorized,
+    TResult? Function()? unAuthorized,
+    TResult? Function(String userAgent)? isOpenFromPhone,
+    TResult? Function(String token, bool isAgent)? onLoginSuccess,
+    TResult? Function(String token, bool isAgent)?
         onLoginSuccessWithoutPhoneNumber,
-    TResult Function(String token)? onRegisterSuccess,
-    TResult Function(String message)? onResetPassword,
-    TResult Function(UserData userData)? onGetUserData,
+    TResult? Function(String token)? onRegisterSuccess,
+    TResult? Function(String message)? onResetPassword,
+    TResult? Function(UserData userData)? onGetUserData,
   }) {
     return onGetUserData?.call(userData);
   }
@@ -2699,20 +2689,20 @@ class _$_OnGetUserData implements _OnGetUserData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
-    TResult Function(_OnError value)? onError,
-    TResult Function(_OnSignOut value)? onSignOut,
-    TResult Function(_Authorized value)? authorized,
-    TResult Function(_UnAuthorized value)? unAuthorized,
-    TResult Function(_IsOpenFromPhone value)? isOpenFromPhone,
-    TResult Function(_OnLoginSuccess value)? onLoginSuccess,
-    TResult Function(_OnLoginSuccessWithoutPhoneNumber value)?
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_OnError value)? onError,
+    TResult? Function(_OnSignOut value)? onSignOut,
+    TResult? Function(_Authorized value)? authorized,
+    TResult? Function(_UnAuthorized value)? unAuthorized,
+    TResult? Function(_IsOpenFromPhone value)? isOpenFromPhone,
+    TResult? Function(_OnLoginSuccess value)? onLoginSuccess,
+    TResult? Function(_OnLoginSuccessWithoutPhoneNumber value)?
         onLoginSuccessWithoutPhoneNumber,
-    TResult Function(_OnRegisterSuccess value)? onRegisterSuccess,
-    TResult Function(_OnResetPassword value)? onResetPassword,
-    TResult Function(_OnGetUserData value)? onGetUserData,
+    TResult? Function(_OnRegisterSuccess value)? onRegisterSuccess,
+    TResult? Function(_OnResetPassword value)? onResetPassword,
+    TResult? Function(_OnGetUserData value)? onGetUserData,
   }) {
     return onGetUserData?.call(this);
   }

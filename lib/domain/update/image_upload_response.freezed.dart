@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'image_upload_response.dart';
 
@@ -38,7 +38,8 @@ mixin _$ImageUploadResponse {
 abstract class $ImageUploadResponseCopyWith<$Res> {
   factory $ImageUploadResponseCopyWith(
           ImageUploadResponse value, $Res Function(ImageUploadResponse) then) =
-      _$ImageUploadResponseCopyWithImpl<$Res>;
+      _$ImageUploadResponseCopyWithImpl<$Res, ImageUploadResponse>;
+  @useResult
   $Res call(
       {String fileName,
       String? oldFileName,
@@ -48,44 +49,46 @@ abstract class $ImageUploadResponseCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ImageUploadResponseCopyWithImpl<$Res>
+class _$ImageUploadResponseCopyWithImpl<$Res, $Val extends ImageUploadResponse>
     implements $ImageUploadResponseCopyWith<$Res> {
   _$ImageUploadResponseCopyWithImpl(this._value, this._then);
 
-  final ImageUploadResponse _value;
   // ignore: unused_field
-  final $Res Function(ImageUploadResponse) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? fileName = freezed,
+    Object? fileName = null,
     Object? oldFileName = freezed,
-    Object? downloadUrl = freezed,
+    Object? downloadUrl = null,
     Object? appId = freezed,
     Object? docId = freezed,
   }) {
     return _then(_value.copyWith(
-      fileName: fileName == freezed
+      fileName: null == fileName
           ? _value.fileName
           : fileName // ignore: cast_nullable_to_non_nullable
               as String,
-      oldFileName: oldFileName == freezed
+      oldFileName: freezed == oldFileName
           ? _value.oldFileName
           : oldFileName // ignore: cast_nullable_to_non_nullable
               as String?,
-      downloadUrl: downloadUrl == freezed
+      downloadUrl: null == downloadUrl
           ? _value.downloadUrl
           : downloadUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      appId: appId == freezed
+      appId: freezed == appId
           ? _value.appId
           : appId // ignore: cast_nullable_to_non_nullable
               as String?,
-      docId: docId == freezed
+      docId: freezed == docId
           ? _value.docId
           : docId // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -96,6 +99,7 @@ abstract class _$$_ImageUploadResponseCopyWith<$Res>
           $Res Function(_$_ImageUploadResponse) then) =
       __$$_ImageUploadResponseCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String fileName,
       String? oldFileName,
@@ -106,41 +110,39 @@ abstract class _$$_ImageUploadResponseCopyWith<$Res>
 
 /// @nodoc
 class __$$_ImageUploadResponseCopyWithImpl<$Res>
-    extends _$ImageUploadResponseCopyWithImpl<$Res>
+    extends _$ImageUploadResponseCopyWithImpl<$Res, _$_ImageUploadResponse>
     implements _$$_ImageUploadResponseCopyWith<$Res> {
   __$$_ImageUploadResponseCopyWithImpl(_$_ImageUploadResponse _value,
       $Res Function(_$_ImageUploadResponse) _then)
-      : super(_value, (v) => _then(v as _$_ImageUploadResponse));
+      : super(_value, _then);
 
-  @override
-  _$_ImageUploadResponse get _value => super._value as _$_ImageUploadResponse;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? fileName = freezed,
+    Object? fileName = null,
     Object? oldFileName = freezed,
-    Object? downloadUrl = freezed,
+    Object? downloadUrl = null,
     Object? appId = freezed,
     Object? docId = freezed,
   }) {
     return _then(_$_ImageUploadResponse(
-      fileName: fileName == freezed
+      fileName: null == fileName
           ? _value.fileName
           : fileName // ignore: cast_nullable_to_non_nullable
               as String,
-      oldFileName: oldFileName == freezed
+      oldFileName: freezed == oldFileName
           ? _value.oldFileName
           : oldFileName // ignore: cast_nullable_to_non_nullable
               as String?,
-      downloadUrl: downloadUrl == freezed
+      downloadUrl: null == downloadUrl
           ? _value.downloadUrl
           : downloadUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      appId: appId == freezed
+      appId: freezed == appId
           ? _value.appId
           : appId // ignore: cast_nullable_to_non_nullable
               as String?,
-      docId: docId == freezed
+      docId: freezed == docId
           ? _value.docId
           : docId // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -184,27 +186,24 @@ class _$_ImageUploadResponse implements _ImageUploadResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ImageUploadResponse &&
-            const DeepCollectionEquality().equals(other.fileName, fileName) &&
-            const DeepCollectionEquality()
-                .equals(other.oldFileName, oldFileName) &&
-            const DeepCollectionEquality()
-                .equals(other.downloadUrl, downloadUrl) &&
-            const DeepCollectionEquality().equals(other.appId, appId) &&
-            const DeepCollectionEquality().equals(other.docId, docId));
+            (identical(other.fileName, fileName) ||
+                other.fileName == fileName) &&
+            (identical(other.oldFileName, oldFileName) ||
+                other.oldFileName == oldFileName) &&
+            (identical(other.downloadUrl, downloadUrl) ||
+                other.downloadUrl == downloadUrl) &&
+            (identical(other.appId, appId) || other.appId == appId) &&
+            (identical(other.docId, docId) || other.docId == docId));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(fileName),
-      const DeepCollectionEquality().hash(oldFileName),
-      const DeepCollectionEquality().hash(downloadUrl),
-      const DeepCollectionEquality().hash(appId),
-      const DeepCollectionEquality().hash(docId));
+      runtimeType, fileName, oldFileName, downloadUrl, appId, docId);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ImageUploadResponseCopyWith<_$_ImageUploadResponse> get copyWith =>
       __$$_ImageUploadResponseCopyWithImpl<_$_ImageUploadResponse>(
           this, _$identity);

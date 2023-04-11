@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'user_data.dart';
 
@@ -47,7 +47,8 @@ mixin _$UserData {
 /// @nodoc
 abstract class $UserDataCopyWith<$Res> {
   factory $UserDataCopyWith(UserData value, $Res Function(UserData) then) =
-      _$UserDataCopyWithImpl<$Res>;
+      _$UserDataCopyWithImpl<$Res, UserData>;
+  @useResult
   $Res call(
       {bool? usedReferralCodeFlag,
       String? selfReferralCode,
@@ -69,13 +70,16 @@ abstract class $UserDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$UserDataCopyWithImpl<$Res> implements $UserDataCopyWith<$Res> {
+class _$UserDataCopyWithImpl<$Res, $Val extends UserData>
+    implements $UserDataCopyWith<$Res> {
   _$UserDataCopyWithImpl(this._value, this._then);
 
-  final UserData _value;
   // ignore: unused_field
-  final $Res Function(UserData) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? usedReferralCodeFlag = freezed,
@@ -88,7 +92,7 @@ class _$UserDataCopyWithImpl<$Res> implements $UserDataCopyWith<$Res> {
     Object? lastUpdatedBy = freezed,
     Object? email = freezed,
     Object? name = freezed,
-    Object? isAgent = freezed,
+    Object? isAgent = null,
     Object? selfReferralCodeTotal = freezed,
     Object? createdAt = freezed,
     Object? usedReferralCode = freezed,
@@ -97,75 +101,75 @@ class _$UserDataCopyWithImpl<$Res> implements $UserDataCopyWith<$Res> {
     Object? userReferral = freezed,
   }) {
     return _then(_value.copyWith(
-      usedReferralCodeFlag: usedReferralCodeFlag == freezed
+      usedReferralCodeFlag: freezed == usedReferralCodeFlag
           ? _value.usedReferralCodeFlag
           : usedReferralCodeFlag // ignore: cast_nullable_to_non_nullable
               as bool?,
-      selfReferralCode: selfReferralCode == freezed
+      selfReferralCode: freezed == selfReferralCode
           ? _value.selfReferralCode
           : selfReferralCode // ignore: cast_nullable_to_non_nullable
               as String?,
-      userId: userId == freezed
+      userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String?,
-      mobileNumber: mobileNumber == freezed
+      mobileNumber: freezed == mobileNumber
           ? _value.mobileNumber
           : mobileNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      outstandingAction: outstandingAction == freezed
+      outstandingAction: freezed == outstandingAction
           ? _value.outstandingAction
           : outstandingAction // ignore: cast_nullable_to_non_nullable
               as bool?,
-      token: token == freezed
+      token: freezed == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastUpdatedDate: lastUpdatedDate == freezed
+      lastUpdatedDate: freezed == lastUpdatedDate
           ? _value.lastUpdatedDate
           : lastUpdatedDate // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastUpdatedBy: lastUpdatedBy == freezed
+      lastUpdatedBy: freezed == lastUpdatedBy
           ? _value.lastUpdatedBy
           : lastUpdatedBy // ignore: cast_nullable_to_non_nullable
               as String?,
-      email: email == freezed
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      isAgent: isAgent == freezed
+      isAgent: null == isAgent
           ? _value.isAgent
           : isAgent // ignore: cast_nullable_to_non_nullable
               as bool,
-      selfReferralCodeTotal: selfReferralCodeTotal == freezed
+      selfReferralCodeTotal: freezed == selfReferralCodeTotal
           ? _value.selfReferralCodeTotal
           : selfReferralCodeTotal // ignore: cast_nullable_to_non_nullable
               as int?,
-      createdAt: createdAt == freezed
+      createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as String?,
-      usedReferralCode: usedReferralCode == freezed
+      usedReferralCode: freezed == usedReferralCode
           ? _value.usedReferralCode
           : usedReferralCode // ignore: cast_nullable_to_non_nullable
               as String?,
-      totalVisa: totalVisa == freezed
+      totalVisa: freezed == totalVisa
           ? _value.totalVisa
           : totalVisa // ignore: cast_nullable_to_non_nullable
               as int?,
-      countryCode: countryCode == freezed
+      countryCode: freezed == countryCode
           ? _value.countryCode
           : countryCode // ignore: cast_nullable_to_non_nullable
               as String?,
-      userReferral: userReferral == freezed
+      userReferral: freezed == userReferral
           ? _value.userReferral
           : userReferral // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -175,6 +179,7 @@ abstract class _$$_UserDataCopyWith<$Res> implements $UserDataCopyWith<$Res> {
           _$_UserData value, $Res Function(_$_UserData) then) =
       __$$_UserDataCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {bool? usedReferralCodeFlag,
       String? selfReferralCode,
@@ -196,15 +201,14 @@ abstract class _$$_UserDataCopyWith<$Res> implements $UserDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_UserDataCopyWithImpl<$Res> extends _$UserDataCopyWithImpl<$Res>
+class __$$_UserDataCopyWithImpl<$Res>
+    extends _$UserDataCopyWithImpl<$Res, _$_UserData>
     implements _$$_UserDataCopyWith<$Res> {
   __$$_UserDataCopyWithImpl(
       _$_UserData _value, $Res Function(_$_UserData) _then)
-      : super(_value, (v) => _then(v as _$_UserData));
+      : super(_value, _then);
 
-  @override
-  _$_UserData get _value => super._value as _$_UserData;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? usedReferralCodeFlag = freezed,
@@ -217,7 +221,7 @@ class __$$_UserDataCopyWithImpl<$Res> extends _$UserDataCopyWithImpl<$Res>
     Object? lastUpdatedBy = freezed,
     Object? email = freezed,
     Object? name = freezed,
-    Object? isAgent = freezed,
+    Object? isAgent = null,
     Object? selfReferralCodeTotal = freezed,
     Object? createdAt = freezed,
     Object? usedReferralCode = freezed,
@@ -226,71 +230,71 @@ class __$$_UserDataCopyWithImpl<$Res> extends _$UserDataCopyWithImpl<$Res>
     Object? userReferral = freezed,
   }) {
     return _then(_$_UserData(
-      usedReferralCodeFlag: usedReferralCodeFlag == freezed
+      usedReferralCodeFlag: freezed == usedReferralCodeFlag
           ? _value.usedReferralCodeFlag
           : usedReferralCodeFlag // ignore: cast_nullable_to_non_nullable
               as bool?,
-      selfReferralCode: selfReferralCode == freezed
+      selfReferralCode: freezed == selfReferralCode
           ? _value.selfReferralCode
           : selfReferralCode // ignore: cast_nullable_to_non_nullable
               as String?,
-      userId: userId == freezed
+      userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String?,
-      mobileNumber: mobileNumber == freezed
+      mobileNumber: freezed == mobileNumber
           ? _value.mobileNumber
           : mobileNumber // ignore: cast_nullable_to_non_nullable
               as String?,
-      outstandingAction: outstandingAction == freezed
+      outstandingAction: freezed == outstandingAction
           ? _value.outstandingAction
           : outstandingAction // ignore: cast_nullable_to_non_nullable
               as bool?,
-      token: token == freezed
+      token: freezed == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastUpdatedDate: lastUpdatedDate == freezed
+      lastUpdatedDate: freezed == lastUpdatedDate
           ? _value.lastUpdatedDate
           : lastUpdatedDate // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastUpdatedBy: lastUpdatedBy == freezed
+      lastUpdatedBy: freezed == lastUpdatedBy
           ? _value.lastUpdatedBy
           : lastUpdatedBy // ignore: cast_nullable_to_non_nullable
               as String?,
-      email: email == freezed
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      isAgent: isAgent == freezed
+      isAgent: null == isAgent
           ? _value.isAgent
           : isAgent // ignore: cast_nullable_to_non_nullable
               as bool,
-      selfReferralCodeTotal: selfReferralCodeTotal == freezed
+      selfReferralCodeTotal: freezed == selfReferralCodeTotal
           ? _value.selfReferralCodeTotal
           : selfReferralCodeTotal // ignore: cast_nullable_to_non_nullable
               as int?,
-      createdAt: createdAt == freezed
+      createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as String?,
-      usedReferralCode: usedReferralCode == freezed
+      usedReferralCode: freezed == usedReferralCode
           ? _value.usedReferralCode
           : usedReferralCode // ignore: cast_nullable_to_non_nullable
               as String?,
-      totalVisa: totalVisa == freezed
+      totalVisa: freezed == totalVisa
           ? _value.totalVisa
           : totalVisa // ignore: cast_nullable_to_non_nullable
               as int?,
-      countryCode: countryCode == freezed
+      countryCode: freezed == countryCode
           ? _value.countryCode
           : countryCode // ignore: cast_nullable_to_non_nullable
               as String?,
-      userReferral: userReferral == freezed
+      userReferral: freezed == userReferral
           ? _value.userReferral
           : userReferral // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -369,59 +373,62 @@ class _$_UserData implements _UserData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_UserData &&
-            const DeepCollectionEquality()
-                .equals(other.usedReferralCodeFlag, usedReferralCodeFlag) &&
-            const DeepCollectionEquality()
-                .equals(other.selfReferralCode, selfReferralCode) &&
-            const DeepCollectionEquality().equals(other.userId, userId) &&
-            const DeepCollectionEquality()
-                .equals(other.mobileNumber, mobileNumber) &&
-            const DeepCollectionEquality()
-                .equals(other.outstandingAction, outstandingAction) &&
-            const DeepCollectionEquality().equals(other.token, token) &&
-            const DeepCollectionEquality()
-                .equals(other.lastUpdatedDate, lastUpdatedDate) &&
-            const DeepCollectionEquality()
-                .equals(other.lastUpdatedBy, lastUpdatedBy) &&
-            const DeepCollectionEquality().equals(other.email, email) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.isAgent, isAgent) &&
-            const DeepCollectionEquality()
-                .equals(other.selfReferralCodeTotal, selfReferralCodeTotal) &&
-            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
-            const DeepCollectionEquality()
-                .equals(other.usedReferralCode, usedReferralCode) &&
-            const DeepCollectionEquality().equals(other.totalVisa, totalVisa) &&
-            const DeepCollectionEquality()
-                .equals(other.countryCode, countryCode) &&
-            const DeepCollectionEquality()
-                .equals(other.userReferral, userReferral));
+            (identical(other.usedReferralCodeFlag, usedReferralCodeFlag) ||
+                other.usedReferralCodeFlag == usedReferralCodeFlag) &&
+            (identical(other.selfReferralCode, selfReferralCode) ||
+                other.selfReferralCode == selfReferralCode) &&
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.mobileNumber, mobileNumber) ||
+                other.mobileNumber == mobileNumber) &&
+            (identical(other.outstandingAction, outstandingAction) ||
+                other.outstandingAction == outstandingAction) &&
+            (identical(other.token, token) || other.token == token) &&
+            (identical(other.lastUpdatedDate, lastUpdatedDate) ||
+                other.lastUpdatedDate == lastUpdatedDate) &&
+            (identical(other.lastUpdatedBy, lastUpdatedBy) ||
+                other.lastUpdatedBy == lastUpdatedBy) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.isAgent, isAgent) || other.isAgent == isAgent) &&
+            (identical(other.selfReferralCodeTotal, selfReferralCodeTotal) ||
+                other.selfReferralCodeTotal == selfReferralCodeTotal) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.usedReferralCode, usedReferralCode) ||
+                other.usedReferralCode == usedReferralCode) &&
+            (identical(other.totalVisa, totalVisa) ||
+                other.totalVisa == totalVisa) &&
+            (identical(other.countryCode, countryCode) ||
+                other.countryCode == countryCode) &&
+            (identical(other.userReferral, userReferral) ||
+                other.userReferral == userReferral));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(usedReferralCodeFlag),
-      const DeepCollectionEquality().hash(selfReferralCode),
-      const DeepCollectionEquality().hash(userId),
-      const DeepCollectionEquality().hash(mobileNumber),
-      const DeepCollectionEquality().hash(outstandingAction),
-      const DeepCollectionEquality().hash(token),
-      const DeepCollectionEquality().hash(lastUpdatedDate),
-      const DeepCollectionEquality().hash(lastUpdatedBy),
-      const DeepCollectionEquality().hash(email),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(isAgent),
-      const DeepCollectionEquality().hash(selfReferralCodeTotal),
-      const DeepCollectionEquality().hash(createdAt),
-      const DeepCollectionEquality().hash(usedReferralCode),
-      const DeepCollectionEquality().hash(totalVisa),
-      const DeepCollectionEquality().hash(countryCode),
-      const DeepCollectionEquality().hash(userReferral));
+      usedReferralCodeFlag,
+      selfReferralCode,
+      userId,
+      mobileNumber,
+      outstandingAction,
+      token,
+      lastUpdatedDate,
+      lastUpdatedBy,
+      email,
+      name,
+      isAgent,
+      selfReferralCodeTotal,
+      createdAt,
+      usedReferralCode,
+      totalVisa,
+      countryCode,
+      userReferral);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_UserDataCopyWith<_$_UserData> get copyWith =>
       __$$_UserDataCopyWithImpl<_$_UserData>(this, _$identity);
 

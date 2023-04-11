@@ -17,7 +17,10 @@ import 'package:dti_web/presentation/applications/widgets/signature_page.dart';
 import 'package:dti_web/presentation/auth/pages/phone/number_registration_page.dart';
 import 'package:dti_web/presentation/auth/pages/platform/platform_page.dart';
 import 'package:dti_web/presentation/auth/pages/splash_screen_page.dart';
+import 'package:dti_web/presentation/corporate/application/application_page.dart';
 import 'package:dti_web/presentation/corporate/c_dashboard_page.dart';
+import 'package:dti_web/presentation/corporate/create_application/create_application_page.dart';
+import 'package:dti_web/presentation/corporate/customer/customer_page.dart';
 import 'package:dti_web/presentation/dashboard/pages/application_card_page.dart';
 import 'package:dti_web/presentation/payment/payment_page.dart';
 import 'package:dti_web/presentation/questionnaire/guarantor_page.dart';
@@ -49,15 +52,32 @@ import '../presentation/questionnaire/personal_information_2_page.dart';
 
 part "app_router.gr.dart";
 
-@AutoRouterConfig(
-  replaceInRouteName: 'Page,Route',
-)
+@AutoRouterConfig(replaceInRouteName: 'Page,Route')
 class AppRouter extends _$AppRouter {
   @override
   RouteType get defaultRouteType => RouteType.material();
   @override
   final List<AutoRoute> routes = [
-    AutoRoute(path: CDashboardPage.routeName, page: CDashboardRoute.page),
+    CustomRoute(
+      durationInMilliseconds: 0,
+      reverseDurationInMilliseconds: 0,
+      path: '/cDashboard',
+      page: CDashboardRoute.page,
+      children: [
+        AutoRoute(
+          path: 'create-application',
+          page: CreateApplicationRoute.page,
+        ),
+        AutoRoute(
+          path: 'customer',
+          page: CustomerRoute.page,
+        ),
+        AutoRoute(
+          path: 'application',
+          page: ApplicationRoute.page,
+        ),
+      ],
+    ),
     AutoRoute(path: '/', page: SplashScreenRoute.page),
     AutoRoute(path: SelfiePage.routeName, page: SelfieRoute.page),
     AutoRoute(

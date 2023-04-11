@@ -4,6 +4,7 @@ import 'package:dti_web/injection.dart';
 import 'package:dti_web/presentation/corporate/application/application_page.dart';
 import 'package:dti_web/presentation/corporate/create_application/create_application_page.dart';
 import 'package:dti_web/presentation/corporate/widgets/banner_home_widget.dart';
+import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,7 +12,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 @RoutePage()
 class CDashboardPage extends StatefulWidget {
-  static const String routeName = '/cdashboard';
   const CDashboardPage({super.key});
 
   @override
@@ -84,17 +84,30 @@ class _CDashboardPageState extends State<CDashboardPage> {
                     unselectedIconTheme:
                         const IconThemeData(color: Colors.white),
                     indicatorColor: Colors.blue[300],
-                    useIndicator: true,
                     selectedIndex: selected,
                     onDestinationSelected: (e) {
-                      setState(() {
-                        selected = e;
-                      });
+                      switch (e) {
+                        case 0:
+                          context.router.push(const CustomerRoute());
+                          break;
+                        case 1:
+                          context.router.push(const CustomerRoute());
+                          break;
+                        case 2:
+                          context.router.push(const ApplicationRoute());
+                          break;
+                        case 3:
+                          context.router.push(const CreateApplicationRoute());
+                          break;
+                      }
+                      // setState(() {
+                      // //   selected = e;
+                      // // });
                     },
                     destinations: _menuList(),
                   ),
-                  const VerticalDivider(thickness: 1, width: 1),
-                  Expanded(child: _body[selected]),
+                  // const VerticalDivider(thickness: 1, width: 1),
+                  const Expanded(child: AutoRouter()),
                 ],
               ),
             ),

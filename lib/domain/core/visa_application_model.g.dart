@@ -78,67 +78,76 @@ _$_VisaApplicationModel _$$_VisaApplicationModelFromJson(
     );
 
 Map<String, dynamic> _$$_VisaApplicationModelToJson(
-        _$_VisaApplicationModel instance) =>
-    <String, dynamic>{
-      'bookingCode': instance.bookingCode,
-      'identityNumber': instance.identityNumber,
-      'type': instance.type,
-      'selfieImage': instance.selfieImage,
-      'newPassport': instance.newPassport,
-      'rejectionNote': instance.rejectionNote,
-      'entry': instance.entry,
-      'lastName': instance.lastName,
-      'userName': instance.userName,
-      'nationality': instance.nationality,
-      'guarantorDTI': instance.guarantorDTI,
-      'passportNumber': instance.passportNumber,
-      'district': instance.district,
-      'overstayedFlag': instance.overstayedFlag,
-      'createdBy': instance.createdBy,
-      'xenditPaymentMethod': instance.xenditPaymentMethod,
-      'address': instance.address,
-      'city': instance.city,
-      'modeOfTransportation': instance.modeOfTransportation,
-      'flightNumber': instance.flightNumber,
-      'arrivalDate': instance.arrivalDate,
-      'xenditPaymentStatus': instance.xenditPaymentStatus,
-      'xenditPaymentGateway': instance.xenditPaymentGateway,
-      'xenditPaymentId': instance.xenditPaymentId,
-      'mobileNumber': instance.mobileNumber,
-      'status': instance.status,
-      'xenditPaymentDescription': instance.xenditPaymentDescription,
-      'submittedDate': instance.submittedDate,
-      'subTitle': instance.subTitle,
-      'documents_data': instance.documentsData?.map((e) => e.toJson()).toList(),
-      'title': instance.title,
-      'lastUpdatedDate': instance.lastUpdatedDate,
-      'errorMessage': instance.errorMessage,
-      'firebaseDocId': instance.firebaseDocId,
-      'relationshipStatus': instance.relationshipStatus,
-      'dateOfExpiration': instance.dateOfExpiration,
-      'cityDomicile': instance.cityDomicile,
-      'applicationID': instance.applicationID,
-      'createdDate': instance.createdDate,
-      'xenditPaymentInvoiceUrl': instance.xenditPaymentInvoiceUrl,
-      'xenditPaymentCurrency': instance.xenditPaymentCurrency,
-      'placeOfBirth': instance.placeOfBirth,
-      'mobileDialCode': instance.mobileDialCode,
-      'currency': instance.currency,
-      'inIndonesia': instance.inIndonesia,
-      'xenditPaymentPaidAmount': instance.xenditPaymentPaidAmount,
-      'dateOfIssue': instance.dateOfIssue,
-      'lastUpdatedBy': instance.lastUpdatedBy,
-      'documents': instance.documents,
-      'firstName': instance.firstName,
-      'assistanceForPermit': instance.assistanceForPermit?.toJson(),
-      'issuingCountry': instance.issuingCountry,
-      'province': instance.province,
-      'xenditPaymentAmount': instance.xenditPaymentAmount,
-      'mobileCountryCode': instance.mobileCountryCode,
-      'gender': instance.gender,
-      'deportedFlag': instance.deportedFlag,
-      'xenditPaymentPaidAt': instance.xenditPaymentPaidAt,
-      'dateOfBirth': instance.dateOfBirth,
-      'price': instance.price,
-      'multiVisaDuration': instance.multiVisaDuration,
-    };
+    _$_VisaApplicationModel instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('bookingCode', instance.bookingCode);
+  writeNotNull('identityNumber', instance.identityNumber);
+  writeNotNull('type', instance.type);
+  writeNotNull('selfieImage', instance.selfieImage);
+  writeNotNull('newPassport', instance.newPassport);
+  writeNotNull('rejectionNote', instance.rejectionNote);
+  writeNotNull('entry', instance.entry);
+  writeNotNull('lastName', instance.lastName);
+  writeNotNull('userName', instance.userName);
+  writeNotNull('nationality', instance.nationality);
+  writeNotNull('guarantorDTI', instance.guarantorDTI);
+  writeNotNull('passportNumber', instance.passportNumber);
+  writeNotNull('district', instance.district);
+  writeNotNull('overstayedFlag', instance.overstayedFlag);
+  writeNotNull('createdBy', instance.createdBy);
+  writeNotNull('xenditPaymentMethod', instance.xenditPaymentMethod);
+  writeNotNull('address', instance.address);
+  writeNotNull('city', instance.city);
+  writeNotNull('modeOfTransportation', instance.modeOfTransportation);
+  writeNotNull('flightNumber', instance.flightNumber);
+  writeNotNull('arrivalDate', instance.arrivalDate);
+  writeNotNull('xenditPaymentStatus', instance.xenditPaymentStatus);
+  writeNotNull('xenditPaymentGateway', instance.xenditPaymentGateway);
+  writeNotNull('xenditPaymentId', instance.xenditPaymentId);
+  writeNotNull('mobileNumber', instance.mobileNumber);
+  writeNotNull('status', instance.status);
+  writeNotNull('xenditPaymentDescription', instance.xenditPaymentDescription);
+  writeNotNull('submittedDate', instance.submittedDate);
+  writeNotNull('subTitle', instance.subTitle);
+  writeNotNull('documents_data',
+      instance.documentsData?.map((e) => e.toJson()).toList());
+  writeNotNull('title', instance.title);
+  writeNotNull('lastUpdatedDate', instance.lastUpdatedDate);
+  writeNotNull('errorMessage', instance.errorMessage);
+  writeNotNull('firebaseDocId', instance.firebaseDocId);
+  writeNotNull('relationshipStatus', instance.relationshipStatus);
+  writeNotNull('dateOfExpiration', instance.dateOfExpiration);
+  writeNotNull('cityDomicile', instance.cityDomicile);
+  writeNotNull('applicationID', instance.applicationID);
+  writeNotNull('createdDate', instance.createdDate);
+  writeNotNull('xenditPaymentInvoiceUrl', instance.xenditPaymentInvoiceUrl);
+  writeNotNull('xenditPaymentCurrency', instance.xenditPaymentCurrency);
+  writeNotNull('placeOfBirth', instance.placeOfBirth);
+  writeNotNull('mobileDialCode', instance.mobileDialCode);
+  writeNotNull('currency', instance.currency);
+  writeNotNull('inIndonesia', instance.inIndonesia);
+  writeNotNull('xenditPaymentPaidAmount', instance.xenditPaymentPaidAmount);
+  writeNotNull('dateOfIssue', instance.dateOfIssue);
+  writeNotNull('lastUpdatedBy', instance.lastUpdatedBy);
+  writeNotNull('documents', instance.documents);
+  writeNotNull('firstName', instance.firstName);
+  writeNotNull('assistanceForPermit', instance.assistanceForPermit?.toJson());
+  writeNotNull('issuingCountry', instance.issuingCountry);
+  writeNotNull('province', instance.province);
+  writeNotNull('xenditPaymentAmount', instance.xenditPaymentAmount);
+  writeNotNull('mobileCountryCode', instance.mobileCountryCode);
+  writeNotNull('gender', instance.gender);
+  writeNotNull('deportedFlag', instance.deportedFlag);
+  writeNotNull('xenditPaymentPaidAt', instance.xenditPaymentPaidAt);
+  writeNotNull('dateOfBirth', instance.dateOfBirth);
+  writeNotNull('price', instance.price);
+  writeNotNull('multiVisaDuration', instance.multiVisaDuration);
+  return val;
+}

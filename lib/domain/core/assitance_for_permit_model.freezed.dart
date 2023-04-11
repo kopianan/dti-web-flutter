@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'assitance_for_permit_model.dart';
 
@@ -34,46 +34,51 @@ mixin _$AssitanceForPermitModel {
 abstract class $AssitanceForPermitModelCopyWith<$Res> {
   factory $AssitanceForPermitModelCopyWith(AssitanceForPermitModel value,
           $Res Function(AssitanceForPermitModel) then) =
-      _$AssitanceForPermitModelCopyWithImpl<$Res>;
+      _$AssitanceForPermitModelCopyWithImpl<$Res, AssitanceForPermitModel>;
+  @useResult
   $Res call({bool? isActive, AssistancePermitDetailModel? data});
 
   $AssistancePermitDetailModelCopyWith<$Res>? get data;
 }
 
 /// @nodoc
-class _$AssitanceForPermitModelCopyWithImpl<$Res>
+class _$AssitanceForPermitModelCopyWithImpl<$Res,
+        $Val extends AssitanceForPermitModel>
     implements $AssitanceForPermitModelCopyWith<$Res> {
   _$AssitanceForPermitModelCopyWithImpl(this._value, this._then);
 
-  final AssitanceForPermitModel _value;
   // ignore: unused_field
-  final $Res Function(AssitanceForPermitModel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? isActive = freezed,
     Object? data = freezed,
   }) {
     return _then(_value.copyWith(
-      isActive: isActive == freezed
+      isActive: freezed == isActive
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
               as bool?,
-      data: data == freezed
+      data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as AssistancePermitDetailModel?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $AssistancePermitDetailModelCopyWith<$Res>? get data {
     if (_value.data == null) {
       return null;
     }
 
     return $AssistancePermitDetailModelCopyWith<$Res>(_value.data!, (value) {
-      return _then(_value.copyWith(data: value));
+      return _then(_value.copyWith(data: value) as $Val);
     });
   }
 }
@@ -85,6 +90,7 @@ abstract class _$$_AssitanceForPermitModelCopyWith<$Res>
           $Res Function(_$_AssitanceForPermitModel) then) =
       __$$_AssitanceForPermitModelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({bool? isActive, AssistancePermitDetailModel? data});
 
   @override
@@ -93,27 +99,25 @@ abstract class _$$_AssitanceForPermitModelCopyWith<$Res>
 
 /// @nodoc
 class __$$_AssitanceForPermitModelCopyWithImpl<$Res>
-    extends _$AssitanceForPermitModelCopyWithImpl<$Res>
+    extends _$AssitanceForPermitModelCopyWithImpl<$Res,
+        _$_AssitanceForPermitModel>
     implements _$$_AssitanceForPermitModelCopyWith<$Res> {
   __$$_AssitanceForPermitModelCopyWithImpl(_$_AssitanceForPermitModel _value,
       $Res Function(_$_AssitanceForPermitModel) _then)
-      : super(_value, (v) => _then(v as _$_AssitanceForPermitModel));
+      : super(_value, _then);
 
-  @override
-  _$_AssitanceForPermitModel get _value =>
-      super._value as _$_AssitanceForPermitModel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? isActive = freezed,
     Object? data = freezed,
   }) {
     return _then(_$_AssitanceForPermitModel(
-      isActive: isActive == freezed
+      isActive: freezed == isActive
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
               as bool?,
-      data: data == freezed
+      data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as AssistancePermitDetailModel?,
@@ -144,19 +148,18 @@ class _$_AssitanceForPermitModel implements _AssitanceForPermitModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AssitanceForPermitModel &&
-            const DeepCollectionEquality().equals(other.isActive, isActive) &&
-            const DeepCollectionEquality().equals(other.data, data));
+            (identical(other.isActive, isActive) ||
+                other.isActive == isActive) &&
+            (identical(other.data, data) || other.data == data));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(isActive),
-      const DeepCollectionEquality().hash(data));
+  int get hashCode => Object.hash(runtimeType, isActive, data);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_AssitanceForPermitModelCopyWith<_$_AssitanceForPermitModel>
       get copyWith =>
           __$$_AssitanceForPermitModelCopyWithImpl<_$_AssitanceForPermitModel>(

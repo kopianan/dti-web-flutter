@@ -7,11 +7,11 @@ part 'visa_application_model.g.dart';
 
 @freezed
 class VisaApplicationModel with _$VisaApplicationModel {
-  @JsonSerializable(explicitToJson: true)
+  @JsonSerializable(explicitToJson: true, includeIfNull: false)
   factory VisaApplicationModel({
     //Passport exclusive
     String? bookingCode,
-    String? identityNumber, 
+    String? identityNumber,
     String? type,
     String? selfieImage,
     String? newPassport,

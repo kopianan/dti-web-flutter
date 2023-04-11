@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'document_data_model.dart';
 
@@ -39,7 +39,8 @@ mixin _$DocumentDataModel {
 abstract class $DocumentDataModelCopyWith<$Res> {
   factory $DocumentDataModelCopyWith(
           DocumentDataModel value, $Res Function(DocumentDataModel) then) =
-      _$DocumentDataModelCopyWithImpl<$Res>;
+      _$DocumentDataModelCopyWithImpl<$Res, DocumentDataModel>;
+  @useResult
   $Res call(
       {String? id,
       String? previewImage,
@@ -52,14 +53,16 @@ abstract class $DocumentDataModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$DocumentDataModelCopyWithImpl<$Res>
+class _$DocumentDataModelCopyWithImpl<$Res, $Val extends DocumentDataModel>
     implements $DocumentDataModelCopyWith<$Res> {
   _$DocumentDataModelCopyWithImpl(this._value, this._then);
 
-  final DocumentDataModel _value;
   // ignore: unused_field
-  final $Res Function(DocumentDataModel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -72,39 +75,39 @@ class _$DocumentDataModelCopyWithImpl<$Res>
     Object? imageList = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      previewImage: previewImage == freezed
+      previewImage: freezed == previewImage
           ? _value.previewImage
           : previewImage // ignore: cast_nullable_to_non_nullable
               as String?,
-      isSubmited: isSubmited == freezed
+      isSubmited: freezed == isSubmited
           ? _value.isSubmited
           : isSubmited // ignore: cast_nullable_to_non_nullable
               as bool?,
-      body: body == freezed
+      body: freezed == body
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
               as String?,
-      attachment: attachment == freezed
+      attachment: freezed == attachment
           ? _value.attachment
           : attachment // ignore: cast_nullable_to_non_nullable
               as String?,
-      numberOfDocs: numberOfDocs == freezed
+      numberOfDocs: freezed == numberOfDocs
           ? _value.numberOfDocs
           : numberOfDocs // ignore: cast_nullable_to_non_nullable
               as int?,
-      header: header == freezed
+      header: freezed == header
           ? _value.header
           : header // ignore: cast_nullable_to_non_nullable
               as String?,
-      imageList: imageList == freezed
+      imageList: freezed == imageList
           ? _value.imageList
           : imageList // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -115,6 +118,7 @@ abstract class _$$_DocumentDataModelCopyWith<$Res>
           $Res Function(_$_DocumentDataModel) then) =
       __$$_DocumentDataModelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String? id,
       String? previewImage,
@@ -128,15 +132,13 @@ abstract class _$$_DocumentDataModelCopyWith<$Res>
 
 /// @nodoc
 class __$$_DocumentDataModelCopyWithImpl<$Res>
-    extends _$DocumentDataModelCopyWithImpl<$Res>
+    extends _$DocumentDataModelCopyWithImpl<$Res, _$_DocumentDataModel>
     implements _$$_DocumentDataModelCopyWith<$Res> {
   __$$_DocumentDataModelCopyWithImpl(
       _$_DocumentDataModel _value, $Res Function(_$_DocumentDataModel) _then)
-      : super(_value, (v) => _then(v as _$_DocumentDataModel));
+      : super(_value, _then);
 
-  @override
-  _$_DocumentDataModel get _value => super._value as _$_DocumentDataModel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -149,35 +151,35 @@ class __$$_DocumentDataModelCopyWithImpl<$Res>
     Object? imageList = freezed,
   }) {
     return _then(_$_DocumentDataModel(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      previewImage: previewImage == freezed
+      previewImage: freezed == previewImage
           ? _value.previewImage
           : previewImage // ignore: cast_nullable_to_non_nullable
               as String?,
-      isSubmited: isSubmited == freezed
+      isSubmited: freezed == isSubmited
           ? _value.isSubmited
           : isSubmited // ignore: cast_nullable_to_non_nullable
               as bool?,
-      body: body == freezed
+      body: freezed == body
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
               as String?,
-      attachment: attachment == freezed
+      attachment: freezed == attachment
           ? _value.attachment
           : attachment // ignore: cast_nullable_to_non_nullable
               as String?,
-      numberOfDocs: numberOfDocs == freezed
+      numberOfDocs: freezed == numberOfDocs
           ? _value.numberOfDocs
           : numberOfDocs // ignore: cast_nullable_to_non_nullable
               as int?,
-      header: header == freezed
+      header: freezed == header
           ? _value.header
           : header // ignore: cast_nullable_to_non_nullable
               as String?,
-      imageList: imageList == freezed
+      imageList: freezed == imageList
           ? _value._imageList
           : imageList // ignore: cast_nullable_to_non_nullable
               as List<String>?,
@@ -221,6 +223,7 @@ class _$_DocumentDataModel implements _DocumentDataModel {
   List<String>? get imageList {
     final value = _imageList;
     if (value == null) return null;
+    if (_imageList is EqualUnmodifiableListView) return _imageList;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
@@ -235,17 +238,17 @@ class _$_DocumentDataModel implements _DocumentDataModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_DocumentDataModel &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality()
-                .equals(other.previewImage, previewImage) &&
-            const DeepCollectionEquality()
-                .equals(other.isSubmited, isSubmited) &&
-            const DeepCollectionEquality().equals(other.body, body) &&
-            const DeepCollectionEquality()
-                .equals(other.attachment, attachment) &&
-            const DeepCollectionEquality()
-                .equals(other.numberOfDocs, numberOfDocs) &&
-            const DeepCollectionEquality().equals(other.header, header) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.previewImage, previewImage) ||
+                other.previewImage == previewImage) &&
+            (identical(other.isSubmited, isSubmited) ||
+                other.isSubmited == isSubmited) &&
+            (identical(other.body, body) || other.body == body) &&
+            (identical(other.attachment, attachment) ||
+                other.attachment == attachment) &&
+            (identical(other.numberOfDocs, numberOfDocs) ||
+                other.numberOfDocs == numberOfDocs) &&
+            (identical(other.header, header) || other.header == header) &&
             const DeepCollectionEquality()
                 .equals(other._imageList, _imageList));
   }
@@ -254,17 +257,18 @@ class _$_DocumentDataModel implements _DocumentDataModel {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(previewImage),
-      const DeepCollectionEquality().hash(isSubmited),
-      const DeepCollectionEquality().hash(body),
-      const DeepCollectionEquality().hash(attachment),
-      const DeepCollectionEquality().hash(numberOfDocs),
-      const DeepCollectionEquality().hash(header),
+      id,
+      previewImage,
+      isSubmited,
+      body,
+      attachment,
+      numberOfDocs,
+      header,
       const DeepCollectionEquality().hash(_imageList));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_DocumentDataModelCopyWith<_$_DocumentDataModel> get copyWith =>
       __$$_DocumentDataModelCopyWithImpl<_$_DocumentDataModel>(
           this, _$identity);

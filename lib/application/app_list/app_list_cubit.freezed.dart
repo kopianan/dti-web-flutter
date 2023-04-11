@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'app_list_cubit.dart';
 
@@ -26,10 +26,10 @@ mixin _$AppListState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? onLoading,
-    TResult Function(String errMsg)? onError,
-    TResult Function(List<SimpleVisaModel> apps)? onGetUsersApplication,
+    TResult? Function()? initial,
+    TResult? Function()? onLoading,
+    TResult? Function(String errMsg)? onError,
+    TResult? Function(List<SimpleVisaModel> apps)? onGetUsersApplication,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -52,10 +52,10 @@ mixin _$AppListState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_OnLoading value)? onLoading,
-    TResult Function(_OnError value)? onError,
-    TResult Function(_OnGetUsersApplication value)? onGetUsersApplication,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_OnLoading value)? onLoading,
+    TResult? Function(_OnError value)? onError,
+    TResult? Function(_OnGetUsersApplication value)? onGetUsersApplication,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -73,16 +73,18 @@ mixin _$AppListState {
 abstract class $AppListStateCopyWith<$Res> {
   factory $AppListStateCopyWith(
           AppListState value, $Res Function(AppListState) then) =
-      _$AppListStateCopyWithImpl<$Res>;
+      _$AppListStateCopyWithImpl<$Res, AppListState>;
 }
 
 /// @nodoc
-class _$AppListStateCopyWithImpl<$Res> implements $AppListStateCopyWith<$Res> {
+class _$AppListStateCopyWithImpl<$Res, $Val extends AppListState>
+    implements $AppListStateCopyWith<$Res> {
   _$AppListStateCopyWithImpl(this._value, this._then);
 
-  final AppListState _value;
   // ignore: unused_field
-  final $Res Function(AppListState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
@@ -93,13 +95,11 @@ abstract class _$$_InitialCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res> extends _$AppListStateCopyWithImpl<$Res>
+class __$$_InitialCopyWithImpl<$Res>
+    extends _$AppListStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, (v) => _then(v as _$_Initial));
-
-  @override
-  _$_Initial get _value => super._value as _$_Initial;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -135,10 +135,10 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? onLoading,
-    TResult Function(String errMsg)? onError,
-    TResult Function(List<SimpleVisaModel> apps)? onGetUsersApplication,
+    TResult? Function()? initial,
+    TResult? Function()? onLoading,
+    TResult? Function(String errMsg)? onError,
+    TResult? Function(List<SimpleVisaModel> apps)? onGetUsersApplication,
   }) {
     return initial?.call();
   }
@@ -173,10 +173,10 @@ class _$_Initial implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_OnLoading value)? onLoading,
-    TResult Function(_OnError value)? onError,
-    TResult Function(_OnGetUsersApplication value)? onGetUsersApplication,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_OnLoading value)? onLoading,
+    TResult? Function(_OnError value)? onError,
+    TResult? Function(_OnGetUsersApplication value)? onGetUsersApplication,
   }) {
     return initial?.call(this);
   }
@@ -209,14 +209,12 @@ abstract class _$$_OnLoadingCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_OnLoadingCopyWithImpl<$Res> extends _$AppListStateCopyWithImpl<$Res>
+class __$$_OnLoadingCopyWithImpl<$Res>
+    extends _$AppListStateCopyWithImpl<$Res, _$_OnLoading>
     implements _$$_OnLoadingCopyWith<$Res> {
   __$$_OnLoadingCopyWithImpl(
       _$_OnLoading _value, $Res Function(_$_OnLoading) _then)
-      : super(_value, (v) => _then(v as _$_OnLoading));
-
-  @override
-  _$_OnLoading get _value => super._value as _$_OnLoading;
+      : super(_value, _then);
 }
 
 /// @nodoc
@@ -252,10 +250,10 @@ class _$_OnLoading implements _OnLoading {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? onLoading,
-    TResult Function(String errMsg)? onError,
-    TResult Function(List<SimpleVisaModel> apps)? onGetUsersApplication,
+    TResult? Function()? initial,
+    TResult? Function()? onLoading,
+    TResult? Function(String errMsg)? onError,
+    TResult? Function(List<SimpleVisaModel> apps)? onGetUsersApplication,
   }) {
     return onLoading?.call();
   }
@@ -290,10 +288,10 @@ class _$_OnLoading implements _OnLoading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_OnLoading value)? onLoading,
-    TResult Function(_OnError value)? onError,
-    TResult Function(_OnGetUsersApplication value)? onGetUsersApplication,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_OnLoading value)? onLoading,
+    TResult? Function(_OnError value)? onError,
+    TResult? Function(_OnGetUsersApplication value)? onGetUsersApplication,
   }) {
     return onLoading?.call(this);
   }
@@ -323,24 +321,24 @@ abstract class _$$_OnErrorCopyWith<$Res> {
   factory _$$_OnErrorCopyWith(
           _$_OnError value, $Res Function(_$_OnError) then) =
       __$$_OnErrorCopyWithImpl<$Res>;
+  @useResult
   $Res call({String errMsg});
 }
 
 /// @nodoc
-class __$$_OnErrorCopyWithImpl<$Res> extends _$AppListStateCopyWithImpl<$Res>
+class __$$_OnErrorCopyWithImpl<$Res>
+    extends _$AppListStateCopyWithImpl<$Res, _$_OnError>
     implements _$$_OnErrorCopyWith<$Res> {
   __$$_OnErrorCopyWithImpl(_$_OnError _value, $Res Function(_$_OnError) _then)
-      : super(_value, (v) => _then(v as _$_OnError));
+      : super(_value, _then);
 
-  @override
-  _$_OnError get _value => super._value as _$_OnError;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? errMsg = freezed,
+    Object? errMsg = null,
   }) {
     return _then(_$_OnError(
-      errMsg == freezed
+      null == errMsg
           ? _value.errMsg
           : errMsg // ignore: cast_nullable_to_non_nullable
               as String,
@@ -366,15 +364,15 @@ class _$_OnError implements _OnError {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_OnError &&
-            const DeepCollectionEquality().equals(other.errMsg, errMsg));
+            (identical(other.errMsg, errMsg) || other.errMsg == errMsg));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(errMsg));
+  int get hashCode => Object.hash(runtimeType, errMsg);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_OnErrorCopyWith<_$_OnError> get copyWith =>
       __$$_OnErrorCopyWithImpl<_$_OnError>(this, _$identity);
 
@@ -392,10 +390,10 @@ class _$_OnError implements _OnError {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? onLoading,
-    TResult Function(String errMsg)? onError,
-    TResult Function(List<SimpleVisaModel> apps)? onGetUsersApplication,
+    TResult? Function()? initial,
+    TResult? Function()? onLoading,
+    TResult? Function(String errMsg)? onError,
+    TResult? Function(List<SimpleVisaModel> apps)? onGetUsersApplication,
   }) {
     return onError?.call(errMsg);
   }
@@ -430,10 +428,10 @@ class _$_OnError implements _OnError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_OnLoading value)? onLoading,
-    TResult Function(_OnError value)? onError,
-    TResult Function(_OnGetUsersApplication value)? onGetUsersApplication,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_OnLoading value)? onLoading,
+    TResult? Function(_OnError value)? onError,
+    TResult? Function(_OnGetUsersApplication value)? onGetUsersApplication,
   }) {
     return onError?.call(this);
   }
@@ -468,27 +466,25 @@ abstract class _$$_OnGetUsersApplicationCopyWith<$Res> {
   factory _$$_OnGetUsersApplicationCopyWith(_$_OnGetUsersApplication value,
           $Res Function(_$_OnGetUsersApplication) then) =
       __$$_OnGetUsersApplicationCopyWithImpl<$Res>;
+  @useResult
   $Res call({List<SimpleVisaModel> apps});
 }
 
 /// @nodoc
 class __$$_OnGetUsersApplicationCopyWithImpl<$Res>
-    extends _$AppListStateCopyWithImpl<$Res>
+    extends _$AppListStateCopyWithImpl<$Res, _$_OnGetUsersApplication>
     implements _$$_OnGetUsersApplicationCopyWith<$Res> {
   __$$_OnGetUsersApplicationCopyWithImpl(_$_OnGetUsersApplication _value,
       $Res Function(_$_OnGetUsersApplication) _then)
-      : super(_value, (v) => _then(v as _$_OnGetUsersApplication));
+      : super(_value, _then);
 
-  @override
-  _$_OnGetUsersApplication get _value =>
-      super._value as _$_OnGetUsersApplication;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? apps = freezed,
+    Object? apps = null,
   }) {
     return _then(_$_OnGetUsersApplication(
-      apps == freezed
+      null == apps
           ? _value._apps
           : apps // ignore: cast_nullable_to_non_nullable
               as List<SimpleVisaModel>,
@@ -505,6 +501,7 @@ class _$_OnGetUsersApplication implements _OnGetUsersApplication {
   final List<SimpleVisaModel> _apps;
   @override
   List<SimpleVisaModel> get apps {
+    if (_apps is EqualUnmodifiableListView) return _apps;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_apps);
   }
@@ -528,6 +525,7 @@ class _$_OnGetUsersApplication implements _OnGetUsersApplication {
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_OnGetUsersApplicationCopyWith<_$_OnGetUsersApplication> get copyWith =>
       __$$_OnGetUsersApplicationCopyWithImpl<_$_OnGetUsersApplication>(
           this, _$identity);
@@ -546,10 +544,10 @@ class _$_OnGetUsersApplication implements _OnGetUsersApplication {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? onLoading,
-    TResult Function(String errMsg)? onError,
-    TResult Function(List<SimpleVisaModel> apps)? onGetUsersApplication,
+    TResult? Function()? initial,
+    TResult? Function()? onLoading,
+    TResult? Function(String errMsg)? onError,
+    TResult? Function(List<SimpleVisaModel> apps)? onGetUsersApplication,
   }) {
     return onGetUsersApplication?.call(apps);
   }
@@ -584,10 +582,10 @@ class _$_OnGetUsersApplication implements _OnGetUsersApplication {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_OnLoading value)? onLoading,
-    TResult Function(_OnError value)? onError,
-    TResult Function(_OnGetUsersApplication value)? onGetUsersApplication,
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_OnLoading value)? onLoading,
+    TResult? Function(_OnError value)? onError,
+    TResult? Function(_OnGetUsersApplication value)? onGetUsersApplication,
   }) {
     return onGetUsersApplication?.call(this);
   }

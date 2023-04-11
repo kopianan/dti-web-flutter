@@ -1,20 +1,19 @@
 import 'dart:io' as io;
+import 'package:auto_route/auto_route.dart';
 import 'package:data_table_2/data_table_2.dart';
+import 'package:dti_web/application/agent/agent_cubit.dart';
 import 'package:flutter/src/painting/box_border.dart' as border;
 import 'package:dti_web/application/agent/create_new_application_cubit.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
 import 'package:dti_web/injection.dart';
 import 'package:dti_web/utils/app_color.dart';
-import 'package:excel/excel.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+@RoutePage()
 class CreateApplicationPage extends StatefulWidget {
   const CreateApplicationPage({super.key});
 
@@ -25,14 +24,16 @@ class CreateApplicationPage extends StatefulWidget {
 class _CreateApplicationPageState extends State<CreateApplicationPage> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CreateNewApplicationCubit, CreateNewApplicationState>(
-      builder: (context, state) {
-        if (state.excelBytes != null) {
-          return FilledRecordWidget();
-        } else {
-          return EmptyRecordWidget();
-        }
-      },
+    return Scaffold(
+      body: BlocBuilder<CreateNewApplicationCubit, CreateNewApplicationState>(
+        builder: (context, state) {
+          if (state.excelBytes != null) {
+            return FilledRecordWidget();
+          } else {
+            return EmptyRecordWidget();
+          }
+        },
+      ),
     );
   }
 }
@@ -108,8 +109,8 @@ class CreateApplicationModal extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CircleAvatar(child: Text('2')),
-                    SizedBox(width: 20),
+                    const CircleAvatar(child: Text('2')),
+                    const SizedBox(width: 20),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -232,7 +233,6 @@ class FilledRecordWidget extends StatelessWidget {
                         SizedBox(width: 20.sp),
                         PrimaryButton(
                           onClick: () {
-                            //reset
                             context
                                 .read<CreateNewApplicationCubit>()
                                 .resetData();
@@ -247,7 +247,7 @@ class FilledRecordWidget extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          "03 Selected",
+                          "${state.body.length.toString()} Selected",
                           style: TextStyle(
                               fontSize: 20.sp,
                               color: Colors.grey,
@@ -255,7 +255,14 @@ class FilledRecordWidget extends StatelessWidget {
                         ),
                         SizedBox(width: 20.sp),
                         PrimaryButton(
-                          onClick: () {},
+                          onClick: () {
+                            final list = context
+                                .read<CreateNewApplicationCubit>()
+                                .convertDataTableToModel();
+                            context
+                                .read<AgentCubit>()
+                                .createBulkVisaApplication(list);
+                          },
                           label: 'Confirm',
                           height: 40.h,
                           width: 120.w,
@@ -285,10 +292,16 @@ class FilledRecordWidget extends StatelessWidget {
                       .toList(),
                   rows: state.body
                       .map((body) => DataRow2(
+                          selected: body.selected,
+                          onTap: () {},
                           onSelectChanged: (e) {
                             print(e);
+                            final index = state.body.indexOf(body);
+                            context
+                                .read<CreateNewApplicationCubit>()
+                                .updateSelectedRow(index);
                           },
-                          cells: body
+                          cells: body.bodyData
                               .map(
                                 (e) => DataCell(
                                   Text(
@@ -348,7 +361,7 @@ class EmptyRecordWidget extends StatelessWidget {
                     }
                   },
                   label: "Create",
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   height: 50.h,
                   width: 120.w,
                   labelStyle: TextStyle(fontSize: 20.sp),
