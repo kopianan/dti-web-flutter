@@ -109,6 +109,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const CreateNewPasswordPage(),
       );
     },
+    CameraRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const CameraPage(),
+      );
+    },
     PaymentRoute.name: (routeData) {
       final args = routeData.argsAs<PaymentRouteArgs>();
       return AutoRoutePage<dynamic>(
@@ -604,6 +610,20 @@ class CreateNewPasswordRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'CreateNewPasswordRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [CameraPage]
+class CameraRoute extends PageRouteInfo<void> {
+  const CameraRoute({List<PageRouteInfo>? children})
+      : super(
+          CameraRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'CameraRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

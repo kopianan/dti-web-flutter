@@ -35,7 +35,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
               orElse: () {},
               authorized: (e) {
                 if (e.userData.isAgent) {
-                  AutoRouter.of(context).replaceAll([CDashboardRoute()]);
+                  AutoRouter.of(context).replaceAll([DashboardRoute()]);
                 } else {
                   AutoRouter.of(context).replaceAll([DashboardRoute()]);
                 }

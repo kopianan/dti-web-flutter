@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:dti_web/application/other/other_cubit.dart';
 import 'package:dti_web/core/widgets/auth_footer_widget.dart';
@@ -29,6 +30,23 @@ class OTPPage extends StatelessWidget {
           state.maybeMap(
             orElse: () {
               EasyLoading.dismiss();
+            },
+            errorState: (e) {
+              EasyLoading.dismiss();
+              String message = 'something wrong';
+              e.failures.maybeMap(
+                orElse: () {},
+                serverError: (msg) => message = "Server error",
+                generalError: (msg) => message = msg.err,
+              );
+
+              AwesomeDialog(
+                context: context,
+                width: 400,
+                descTextStyle: TextStyle(fontSize: 16.sp),
+                desc: message,
+                dialogType: DialogType.error,
+              ).show();
             },
             loading: (e) {
               EasyLoading.show(maskType: EasyLoadingMaskType.black);

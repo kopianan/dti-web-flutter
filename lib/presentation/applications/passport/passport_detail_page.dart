@@ -557,7 +557,11 @@ class _SuccessBodyState extends State<SuccessBody> {
                                       widget.visa.status!.toLowerCase() ==
                                           'completed' ||
                                       widget.visa.status!.toLowerCase() ==
-                                          'submitted',
+                                          'pending payment' ||
+                                      widget.visa.status!.toLowerCase() ==
+                                          'submitted' ||
+                                      widget.visa.status!.toLowerCase() ==
+                                          'rejected',
                               child: Container(
                                 width: double.infinity,
                                 height: 50,

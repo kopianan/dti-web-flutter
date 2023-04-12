@@ -21,27 +21,28 @@ class FeedbackCard extends StatelessWidget {
       },
       child: Container(
         padding: const EdgeInsets.all(10),
-        height: 100.h,
+        height: 70.h,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           color: const Color(0xff06186B),
         ),
-        width: 300.w,
+        width: 200.w,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset(imageAsset, width: 50.w),
-            SizedBox(width: 30.w),
+            Image.asset(imageAsset, width: 30.w),
+            SizedBox(width: 20.w),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  title,
-                  style: TextStyle(
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
+                FittedBox(
+                  fit: BoxFit.cover,
+                  child: Text(
+                    title,
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.white),
+                  ),
                 ),
                 Text(
                   subtitle,

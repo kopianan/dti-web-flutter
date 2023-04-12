@@ -10,6 +10,7 @@ import 'package:dti_web/core/widgets/loading_primary_button.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
 import 'package:dti_web/injection.dart';
 import 'package:dti_web/presentation/auth/widgets/password_text_field.dart';
+import 'package:dti_web/presentation/camera/camera_page.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:flutter/foundation.dart';
@@ -47,8 +48,11 @@ class _SignInPageState extends State<SignInPage> {
         builder: (context, state) {
           return FloatingActionButton(
             onPressed: () {
-              authCubit.loginWithEmailAndPassword(
-                  'kopianandev@gmail.com', '123456');
+              //camera
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (e) => const CameraPage()));
+              // authCubit.loginWithEmailAndPassword(
+              //     'kopianandev@gmail.com', '123456');
             },
           );
         },

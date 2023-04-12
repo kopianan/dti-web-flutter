@@ -60,7 +60,7 @@ class _FeedbackSectionState extends State<FeedbackSection> {
                   await onEmeailUsClicked();
                 },
               ),
-              SizedBox(width: 60.w),
+              SizedBox(width: 30.w),
               FeedbackCard(
                 onTap: () async {
                   await onFeedbackClicked(context);

@@ -17,6 +17,7 @@ import 'package:dti_web/presentation/applications/widgets/signature_page.dart';
 import 'package:dti_web/presentation/auth/pages/phone/number_registration_page.dart';
 import 'package:dti_web/presentation/auth/pages/platform/platform_page.dart';
 import 'package:dti_web/presentation/auth/pages/splash_screen_page.dart';
+import 'package:dti_web/presentation/camera/camera_page.dart';
 import 'package:dti_web/presentation/corporate/application/application_page.dart';
 import 'package:dti_web/presentation/corporate/c_dashboard_page.dart';
 import 'package:dti_web/presentation/corporate/create_application/create_application_page.dart';
@@ -79,6 +80,10 @@ class AppRouter extends _$AppRouter {
       ],
     ),
     AutoRoute(path: '/', page: SplashScreenRoute.page),
+    AutoRoute(
+      path: '/camera',
+      page: CameraRoute.page,
+    ),
     AutoRoute(path: SelfiePage.routeName, page: SelfieRoute.page),
     AutoRoute(
         path: PassportPaymentPage.routeName, page: PassportPaymentRoute.page),

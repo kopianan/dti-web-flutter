@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:auto_route/auto_route.dart';
+import 'package:camera/camera.dart';
 import 'package:dti_web/application/document/document_cubit.dart';
 import 'package:dti_web/application/update_application/update_application_cubit.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
@@ -275,14 +276,25 @@ class UploadButton extends StatelessWidget {
               labelStyle:
                   TextStyle(fontSize: 20.sp, color: AppColor.primaryColor),
               onClick: () async {
-                final file = await onPickDocument();
+                final file =
+                    await AutoRouter.of(context).push(CameraRoute()) as XFile?;
+
                 if (file != null) {
+                  Uint8List? imageByte;
+                  String nameOrPath = '';
+                  if (kIsWeb) {
+                    imageByte = await file.readAsBytes();
+                    nameOrPath = file.name;
+                  } else {
+                    imageByte = null;
+                    nameOrPath = file.path;
+                  }
+
                   getIt<DocumentCubit>().updateSelfieImage(
-                      //because on web path is always then i add this.
-                      kIsWeb
-                          ? "/${file.files.single.name}"
-                          : file.files.single.path!,
-                      selfieBytes: kIsWeb ? file.files.single.bytes : null);
+                    //because on web path is always then i add this.
+                    kIsWeb ? "/$nameOrPath" : nameOrPath,
+                    selfieBytes: imageByte,
+                  );
 
                   if (getIt<DocumentCubit>().state.visa!.selfieImage == null) {
                     getIt<DocumentCubit>().setDeletedSelfiePhoto(
@@ -290,33 +302,49 @@ class UploadButton extends StatelessWidget {
                   }
                 }
               },
-              label: "Pick Photo",
+              label: "Take Photo",
             ),
           ),
           20.horizontalSpace,
-          Expanded(
-            child: PrimaryButton(
-              labelStyle: TextStyle(fontSize: 20.sp),
-              onClick: () async {
-                //check deleted images
-                if (getIt<DocumentCubit>().state.selfie == null) {
-                  AutoRouter.of(context).push(PassportDetailRoute(
-                      firebaseDocId:
-                          getIt<DocumentCubit>().state.visa!.firebaseDocId!));
-                } else {
-                  updateCubit.uploadSelfie(
-                    visa,
-                    getIt<DocumentCubit>().state.deletedSelfiePhoto == null
-                        ? []
-                        : [getIt<DocumentCubit>().state.deletedSelfiePhoto!],
-                    imageCollection: getIt<DocumentCubit>().state.selfie!,
-                  );
-                }
-              },
-              label: getIt<DocumentCubit>().state.deletedSelfiePhoto == null
-                  ? "Next"
-                  : "Upload Photo",
-            ),
+          BlocBuilder<DocumentCubit, DocumentState>(
+            builder: (context, docState) {
+              return Visibility(
+                  visible: docState.selfie != null ||
+                      docState.visa?.selfieImage != null,
+                  child: Expanded(
+                    child: PrimaryButton(
+                      labelStyle: TextStyle(fontSize: 20.sp),
+                      onClick: () async {
+                        //check deleted images
+                        if (getIt<DocumentCubit>().state.selfie == null) {
+                          AutoRouter.of(context).push(PassportDetailRoute(
+                              firebaseDocId: getIt<DocumentCubit>()
+                                  .state
+                                  .visa!
+                                  .firebaseDocId!));
+                        } else {
+                          updateCubit.uploadSelfie(
+                            visa,
+                            getIt<DocumentCubit>().state.deletedSelfiePhoto ==
+                                    null
+                                ? []
+                                : [
+                                    getIt<DocumentCubit>()
+                                        .state
+                                        .deletedSelfiePhoto!
+                                  ],
+                            imageCollection:
+                                getIt<DocumentCubit>().state.selfie!,
+                          );
+                        }
+                      },
+                      label: getIt<DocumentCubit>().state.deletedSelfiePhoto ==
+                              null
+                          ? "Next"
+                          : "Upload Photo",
+                    ),
+                  ));
+            },
           ),
         ],
       ),
@@ -324,53 +352,53 @@ class UploadButton extends StatelessWidget {
   }
 }
 
-class ShowImage extends StatelessWidget {
-  const ShowImage({super.key, required this.state, this.name});
-  final DocumentState state;
-  final String? name;
+// class ShowImage extends StatelessWidget {
+//   const ShowImage({super.key, required this.state, this.name});
+//   final DocumentState state;
+//   final String? name;
 
-  Image imageFromFile(String imageUrl) {
-    return kIsWeb
-        ? Image.memory(
-            state.selectedDataCollection![imageUrl],
-            fit: BoxFit.cover,
-            width: double.infinity,
-            height: double.infinity,
-          )
-        : Image.file(
-            File(imageUrl),
-            width: double.infinity,
-            height: double.infinity,
-            fit: BoxFit.cover,
-          );
-  }
+//   Image imageFromFile(String imageUrl) {
+//     return kIsWeb
+//         ? Image.memory(
+//             state.selectedDataCollection![imageUrl],
+//             fit: BoxFit.cover,
+//             width: double.infinity,
+//             height: double.infinity,
+//           )
+//         : Image.file(
+//             File(imageUrl),
+//             width: double.infinity,
+//             height: double.infinity,
+//             fit: BoxFit.cover,
+//           );
+//   }
 
-  @override
-  Widget build(BuildContext context) {
-    if (name == null) {
-      return Image.asset(
-        'assets/imgs/documentpage/upload.png',
-        fit: BoxFit.cover,
-        width: double.infinity,
-        height: double.infinity,
-      );
-    } else if (name!.contains('/')) {
-      return imageFromFile(name!);
-    } else {
-      return Image.network(
-        state.selectedMasterListData!.firstWhere(
-          (element) => element.contains(name!),
-        ),
-        fit: BoxFit.cover,
-        width: double.infinity,
-        height: double.infinity,
-        loadingBuilder: (context, child, loadingProgress) {
-          if (loadingProgress == null) {
-            return child;
-          }
-          return Center(child: CircularProgressIndicator());
-        },
-      );
-    }
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     if (name == null) {
+//       return Image.asset(
+//         'assets/imgs/documentpage/upload.png',
+//         fit: BoxFit.cover,
+//         width: double.infinity,
+//         height: double.infinity,
+//       );
+//     } else if (name!.contains('/')) {
+//       return imageFromFile(name!);
+//     } else {
+//       return Image.network(
+//         state.selectedMasterListData!.firstWhere(
+//           (element) => element.contains(name!),
+//         ),
+//         fit: BoxFit.cover,
+//         width: double.infinity,
+//         height: double.infinity,
+//         loadingBuilder: (context, child, loadingProgress) {
+//           if (loadingProgress == null) {
+//             return child;
+//           }
+//           return Center(child: CircularProgressIndicator());
+//         },
+//       );
+//     }
+//   }
+// }

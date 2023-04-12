@@ -113,7 +113,9 @@ class _DashboardPageState extends State<DashboardPage> {
             },
             child: Scaffold(
               floatingActionButton: FloatingActionButton(
-                onPressed: () {},
+                onPressed: () {
+                  AutoRouter.of(context).push(CameraRoute());
+                },
               ),
               appBar: AppBar(
                 toolbarHeight: 80.h,
@@ -357,50 +359,61 @@ class _DashboardPageState extends State<DashboardPage> {
                                                     ),
                                                   ],
                                                 ),
-                                                InkWell(
-                                                  onTap: () {
-                                                    onCreatePassport(state);
-                                                    // AutoRouter.of(context).push(
-                                                    //     ChoosePassportRoute());
-                                                  },
-                                                  child: Card(
-                                                    clipBehavior: Clip.hardEdge,
-                                                    shape:
-                                                        RoundedRectangleBorder(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        10)),
-                                                    child: Container(
-                                                      width: double.infinity,
-                                                      padding: REdgeInsets.only(
-                                                          left: 20.w,
-                                                          top: 10.h,
-                                                          bottom: 10.h),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.min,
-                                                        children: [
-                                                          Image.asset(
-                                                            'assets/images/bookimage.png',
-                                                            width: 70,
+                                                Row(
+                                                  children: [
+                                                    Expanded(
+                                                      child: InkWell(
+                                                        onTap: () {
+                                                          onCreatePassport(
+                                                              state);
+                                                          // AutoRouter.of(context).push(
+                                                          //     ChoosePassportRoute());
+                                                        },
+                                                        child: Card(
+                                                          clipBehavior:
+                                                              Clip.hardEdge,
+                                                          shape: RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10)),
+                                                          child: Container(
+                                                            padding: REdgeInsets
+                                                                .only(
+                                                                    left: 20.w,
+                                                                    top: 10.h,
+                                                                    bottom:
+                                                                        10.h),
+                                                            child: Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .min,
+                                                              children: [
+                                                                Image.asset(
+                                                                  'assets/images/bookimage.png',
+                                                                  width: 70,
+                                                                ),
+                                                                SizedBox(
+                                                                    width:
+                                                                        20.w),
+                                                                Column(
+                                                                    children: [
+                                                                      Text(
+                                                                        "Create Passport",
+                                                                        style: TextStyle(
+                                                                            fontSize:
+                                                                                18.sp,
+                                                                            fontWeight: FontWeight.bold),
+                                                                      )
+                                                                    ]),
+                                                              ],
+                                                            ),
                                                           ),
-                                                          SizedBox(width: 20.w),
-                                                          Column(children: [
-                                                            Text(
-                                                              "Create Passport",
-                                                              style: TextStyle(
-                                                                  fontSize:
-                                                                      18.sp,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold),
-                                                            )
-                                                          ]),
-                                                        ],
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
+                                                    Expanded(child: SizedBox()),
+                                                  ],
                                                 ),
                                               ],
                                             ),
@@ -532,10 +545,9 @@ class _DashboardPageState extends State<DashboardPage> {
                         Expanded(child: Image.asset('assets/images/koper.png')),
                       ],
                     )),
-                    const SizedBox(height: 20),
-                    Container(
-                        padding: EdgeInsets.symmetric(horizontal: 40.w),
-                        child: const FeedbackSection()),
+                    SizedBox(
+                      height: 20.h,
+                    ),
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 50.h),
                       child: const _DashboardFooter(),
@@ -838,38 +850,46 @@ class _DashboardFooter extends StatelessWidget {
                       'assets/images/lock.png',
                       width: 80.w,
                     ),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                              child: Text("Your Data is Safe",
-                                  style: TextStyle(
-                                      fontSize: 17.sp,
-                                      fontWeight: FontWeight.bold,
-                                      color: AppColor.primaryColor))),
-                          10.verticalSpace,
-                          SizedBox(
-                            // width: 100.w,
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const SafetyInfoWidget(
-                                    title: "Data Privacy",
-                                    subtitle:
-                                        "We are in compliance with data\nprotection laws and regulations"),
-                                10.horizontalSpace,
-                                const SafetyInfoWidget(
-                                  title: "Data Security",
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                            child: Text("Your Data is Safe",
+                                style: TextStyle(
+                                    fontSize: 17.sp,
+                                    fontWeight: FontWeight.bold,
+                                    color: AppColor.primaryColor))),
+                        10.verticalSpace,
+                        SizedBox(
+                          // width: 100.w,
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const SafetyInfoWidget(
+                                  title: "Data Privacy",
                                   subtitle:
-                                      "We are protecting your data\nfrom internal and external attackers",
-                                ),
-                              ],
-                            ),
+                                      "We are in compliance with data\nprotection laws and regulations"),
+                              10.horizontalSpace,
+                              const SafetyInfoWidget(
+                                title: "Data Security",
+                                subtitle:
+                                    "We are protecting your data\nfrom internal and external attackers",
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                    )
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      width: 30.w,
+                    ),
+                    Spacer(),
+                    Container(
+                        // padding: EdgeInsets.symmetric(horizontal: 40.w),
+                        child: const FeedbackSection()),
+                    SizedBox(
+                      width: 30.w,
+                    ),
                   ],
                 ),
               ),

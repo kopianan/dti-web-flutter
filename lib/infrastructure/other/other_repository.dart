@@ -147,7 +147,10 @@ class OtherRepository extends IOther {
       }
 
       return Left(Failures.generalError("Failed"));
-    } on Exception catch (e) {
+    } on DioError catch (e) {
+      if (e.response!.statusCode! >= 400 && e.response!.statusCode! < 500) {
+        return left(Failures.generalError(e.response!.data['error']));
+      }
       return left(Failures.serverError());
     }
   }

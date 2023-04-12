@@ -53,7 +53,7 @@ class OtherCubit extends Cubit<OtherState> {
       code: otpCode,
     );
     data.fold(
-      (l) => emit(OtherState.error()),
+      (l) => emit(OtherState.errorState(l)),
       (r) => emit(OtherState.onOTPVerified(r)),
     );
   }
