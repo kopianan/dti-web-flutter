@@ -9,12 +9,15 @@ class SimpleVisaModel with _$SimpleVisaModel {
     String? firebaseDocId,
     String? applicationID,
     String? status,
+    String? bookingCode,
     String? title,
     String? subTitle,
     String? usedByDate,
     int? lengthOfStay,
     String? createdDate,
   }) = _SimpleVisaModel;
+
+  factory SimpleVisaModel.empty() => SimpleVisaModel();
 
   factory SimpleVisaModel.fromJson(Map<String, dynamic> json) =>
       _$SimpleVisaModelFromJson(json);

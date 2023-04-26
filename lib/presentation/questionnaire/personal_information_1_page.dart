@@ -74,7 +74,7 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                   .read<ApplicationCubit>()
                   .setupApplication(e.singleResponse.visaApplicationModel!);
               context.read<ApplicationCubit>().setupDocumentsMasterData(
-                    e.singleResponse.documentUserApplicationUrl!,
+                    e.singleResponse.documentUserApplicationUrl ?? [],
                   );
             },
           );
@@ -138,7 +138,7 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                                             child: FormBuilder(
                                               key: _formKey,
                                               onChanged: () => {
-                                                //print("Form has been changed")
+                                                //log("Form has been changed")
                                               },
                                               initialValue: const {
                                                 'textfield': ''
@@ -412,6 +412,7 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                                                     items: [
                                                       'Single',
                                                       'Married',
+                                                      'Maried',
                                                       'Divorced',
                                                       'Widowed'
                                                     ]

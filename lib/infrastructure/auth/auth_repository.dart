@@ -71,7 +71,7 @@ class AuthRepository extends IAuth {
           return left(Failures.authError("Unkown Error"));
       }
     } catch (e) {
-      print(e);
+      log(e.toString());
     }
 
     if (googleUser == null) {
@@ -186,6 +186,12 @@ class AuthRepository extends IAuth {
         case DioErrorType.unknown:
           // TODO: Handle this case.
           break;
+        case DioErrorType.badCertificate:
+          // TODO: Handle this case.
+          break;
+        case DioErrorType.connectionError:
+          // TODO: Handle this case.
+          break;
       }
       return Left(Failures.serverError());
     }
@@ -227,6 +233,12 @@ class AuthRepository extends IAuth {
           // TODO: Handle this case.
           break;
         case DioErrorType.unknown:
+          // TODO: Handle this case.
+          break;
+        case DioErrorType.badCertificate:
+          // TODO: Handle this case.
+          break;
+        case DioErrorType.connectionError:
           // TODO: Handle this case.
           break;
       }

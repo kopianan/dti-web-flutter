@@ -22,6 +22,7 @@ mixin _$AgentState {
     required TResult Function(String message) error,
     required TResult Function() loading,
     required TResult Function(String message) onCreateBulkVisaSuccess,
+    required TResult Function() onDeleteBulkSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$AgentState {
     TResult? Function(String message)? error,
     TResult? Function()? loading,
     TResult? Function(String message)? onCreateBulkVisaSuccess,
+    TResult? Function()? onDeleteBulkSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$AgentState {
     TResult Function(String message)? error,
     TResult Function()? loading,
     TResult Function(String message)? onCreateBulkVisaSuccess,
+    TResult Function()? onDeleteBulkSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +51,7 @@ mixin _$AgentState {
     required TResult Function(_Loading value) loading,
     required TResult Function(_OnCreateBulkVisaSuccess value)
         onCreateBulkVisaSuccess,
+    required TResult Function(_OnDeleteBulkSuccess value) onDeleteBulkSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,6 +60,7 @@ mixin _$AgentState {
     TResult? Function(_Error value)? error,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_OnCreateBulkVisaSuccess value)? onCreateBulkVisaSuccess,
+    TResult? Function(_OnDeleteBulkSuccess value)? onDeleteBulkSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -64,6 +69,7 @@ mixin _$AgentState {
     TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
     TResult Function(_OnCreateBulkVisaSuccess value)? onCreateBulkVisaSuccess,
+    TResult Function(_OnDeleteBulkSuccess value)? onDeleteBulkSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -128,6 +134,7 @@ class _$_Initial implements _Initial {
     required TResult Function(String message) error,
     required TResult Function() loading,
     required TResult Function(String message) onCreateBulkVisaSuccess,
+    required TResult Function() onDeleteBulkSuccess,
   }) {
     return initial();
   }
@@ -139,6 +146,7 @@ class _$_Initial implements _Initial {
     TResult? Function(String message)? error,
     TResult? Function()? loading,
     TResult? Function(String message)? onCreateBulkVisaSuccess,
+    TResult? Function()? onDeleteBulkSuccess,
   }) {
     return initial?.call();
   }
@@ -150,6 +158,7 @@ class _$_Initial implements _Initial {
     TResult Function(String message)? error,
     TResult Function()? loading,
     TResult Function(String message)? onCreateBulkVisaSuccess,
+    TResult Function()? onDeleteBulkSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -166,6 +175,7 @@ class _$_Initial implements _Initial {
     required TResult Function(_Loading value) loading,
     required TResult Function(_OnCreateBulkVisaSuccess value)
         onCreateBulkVisaSuccess,
+    required TResult Function(_OnDeleteBulkSuccess value) onDeleteBulkSuccess,
   }) {
     return initial(this);
   }
@@ -177,6 +187,7 @@ class _$_Initial implements _Initial {
     TResult? Function(_Error value)? error,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_OnCreateBulkVisaSuccess value)? onCreateBulkVisaSuccess,
+    TResult? Function(_OnDeleteBulkSuccess value)? onDeleteBulkSuccess,
   }) {
     return initial?.call(this);
   }
@@ -188,6 +199,7 @@ class _$_Initial implements _Initial {
     TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
     TResult Function(_OnCreateBulkVisaSuccess value)? onCreateBulkVisaSuccess,
+    TResult Function(_OnDeleteBulkSuccess value)? onDeleteBulkSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -267,6 +279,7 @@ class _$_Error implements _Error {
     required TResult Function(String message) error,
     required TResult Function() loading,
     required TResult Function(String message) onCreateBulkVisaSuccess,
+    required TResult Function() onDeleteBulkSuccess,
   }) {
     return error(message);
   }
@@ -278,6 +291,7 @@ class _$_Error implements _Error {
     TResult? Function(String message)? error,
     TResult? Function()? loading,
     TResult? Function(String message)? onCreateBulkVisaSuccess,
+    TResult? Function()? onDeleteBulkSuccess,
   }) {
     return error?.call(message);
   }
@@ -289,6 +303,7 @@ class _$_Error implements _Error {
     TResult Function(String message)? error,
     TResult Function()? loading,
     TResult Function(String message)? onCreateBulkVisaSuccess,
+    TResult Function()? onDeleteBulkSuccess,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -305,6 +320,7 @@ class _$_Error implements _Error {
     required TResult Function(_Loading value) loading,
     required TResult Function(_OnCreateBulkVisaSuccess value)
         onCreateBulkVisaSuccess,
+    required TResult Function(_OnDeleteBulkSuccess value) onDeleteBulkSuccess,
   }) {
     return error(this);
   }
@@ -316,6 +332,7 @@ class _$_Error implements _Error {
     TResult? Function(_Error value)? error,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_OnCreateBulkVisaSuccess value)? onCreateBulkVisaSuccess,
+    TResult? Function(_OnDeleteBulkSuccess value)? onDeleteBulkSuccess,
   }) {
     return error?.call(this);
   }
@@ -327,6 +344,7 @@ class _$_Error implements _Error {
     TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
     TResult Function(_OnCreateBulkVisaSuccess value)? onCreateBulkVisaSuccess,
+    TResult Function(_OnDeleteBulkSuccess value)? onDeleteBulkSuccess,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -386,6 +404,7 @@ class _$_Loading implements _Loading {
     required TResult Function(String message) error,
     required TResult Function() loading,
     required TResult Function(String message) onCreateBulkVisaSuccess,
+    required TResult Function() onDeleteBulkSuccess,
   }) {
     return loading();
   }
@@ -397,6 +416,7 @@ class _$_Loading implements _Loading {
     TResult? Function(String message)? error,
     TResult? Function()? loading,
     TResult? Function(String message)? onCreateBulkVisaSuccess,
+    TResult? Function()? onDeleteBulkSuccess,
   }) {
     return loading?.call();
   }
@@ -408,6 +428,7 @@ class _$_Loading implements _Loading {
     TResult Function(String message)? error,
     TResult Function()? loading,
     TResult Function(String message)? onCreateBulkVisaSuccess,
+    TResult Function()? onDeleteBulkSuccess,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -424,6 +445,7 @@ class _$_Loading implements _Loading {
     required TResult Function(_Loading value) loading,
     required TResult Function(_OnCreateBulkVisaSuccess value)
         onCreateBulkVisaSuccess,
+    required TResult Function(_OnDeleteBulkSuccess value) onDeleteBulkSuccess,
   }) {
     return loading(this);
   }
@@ -435,6 +457,7 @@ class _$_Loading implements _Loading {
     TResult? Function(_Error value)? error,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_OnCreateBulkVisaSuccess value)? onCreateBulkVisaSuccess,
+    TResult? Function(_OnDeleteBulkSuccess value)? onDeleteBulkSuccess,
   }) {
     return loading?.call(this);
   }
@@ -446,6 +469,7 @@ class _$_Loading implements _Loading {
     TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
     TResult Function(_OnCreateBulkVisaSuccess value)? onCreateBulkVisaSuccess,
+    TResult Function(_OnDeleteBulkSuccess value)? onDeleteBulkSuccess,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -529,6 +553,7 @@ class _$_OnCreateBulkVisaSuccess implements _OnCreateBulkVisaSuccess {
     required TResult Function(String message) error,
     required TResult Function() loading,
     required TResult Function(String message) onCreateBulkVisaSuccess,
+    required TResult Function() onDeleteBulkSuccess,
   }) {
     return onCreateBulkVisaSuccess(message);
   }
@@ -540,6 +565,7 @@ class _$_OnCreateBulkVisaSuccess implements _OnCreateBulkVisaSuccess {
     TResult? Function(String message)? error,
     TResult? Function()? loading,
     TResult? Function(String message)? onCreateBulkVisaSuccess,
+    TResult? Function()? onDeleteBulkSuccess,
   }) {
     return onCreateBulkVisaSuccess?.call(message);
   }
@@ -551,6 +577,7 @@ class _$_OnCreateBulkVisaSuccess implements _OnCreateBulkVisaSuccess {
     TResult Function(String message)? error,
     TResult Function()? loading,
     TResult Function(String message)? onCreateBulkVisaSuccess,
+    TResult Function()? onDeleteBulkSuccess,
     required TResult orElse(),
   }) {
     if (onCreateBulkVisaSuccess != null) {
@@ -567,6 +594,7 @@ class _$_OnCreateBulkVisaSuccess implements _OnCreateBulkVisaSuccess {
     required TResult Function(_Loading value) loading,
     required TResult Function(_OnCreateBulkVisaSuccess value)
         onCreateBulkVisaSuccess,
+    required TResult Function(_OnDeleteBulkSuccess value) onDeleteBulkSuccess,
   }) {
     return onCreateBulkVisaSuccess(this);
   }
@@ -578,6 +606,7 @@ class _$_OnCreateBulkVisaSuccess implements _OnCreateBulkVisaSuccess {
     TResult? Function(_Error value)? error,
     TResult? Function(_Loading value)? loading,
     TResult? Function(_OnCreateBulkVisaSuccess value)? onCreateBulkVisaSuccess,
+    TResult? Function(_OnDeleteBulkSuccess value)? onDeleteBulkSuccess,
   }) {
     return onCreateBulkVisaSuccess?.call(this);
   }
@@ -589,6 +618,7 @@ class _$_OnCreateBulkVisaSuccess implements _OnCreateBulkVisaSuccess {
     TResult Function(_Error value)? error,
     TResult Function(_Loading value)? loading,
     TResult Function(_OnCreateBulkVisaSuccess value)? onCreateBulkVisaSuccess,
+    TResult Function(_OnDeleteBulkSuccess value)? onDeleteBulkSuccess,
     required TResult orElse(),
   }) {
     if (onCreateBulkVisaSuccess != null) {
@@ -606,4 +636,125 @@ abstract class _OnCreateBulkVisaSuccess implements AgentState {
   @JsonKey(ignore: true)
   _$$_OnCreateBulkVisaSuccessCopyWith<_$_OnCreateBulkVisaSuccess>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_OnDeleteBulkSuccessCopyWith<$Res> {
+  factory _$$_OnDeleteBulkSuccessCopyWith(_$_OnDeleteBulkSuccess value,
+          $Res Function(_$_OnDeleteBulkSuccess) then) =
+      __$$_OnDeleteBulkSuccessCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_OnDeleteBulkSuccessCopyWithImpl<$Res>
+    extends _$AgentStateCopyWithImpl<$Res, _$_OnDeleteBulkSuccess>
+    implements _$$_OnDeleteBulkSuccessCopyWith<$Res> {
+  __$$_OnDeleteBulkSuccessCopyWithImpl(_$_OnDeleteBulkSuccess _value,
+      $Res Function(_$_OnDeleteBulkSuccess) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_OnDeleteBulkSuccess implements _OnDeleteBulkSuccess {
+  const _$_OnDeleteBulkSuccess();
+
+  @override
+  String toString() {
+    return 'AgentState.onDeleteBulkSuccess()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_OnDeleteBulkSuccess);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String message) error,
+    required TResult Function() loading,
+    required TResult Function(String message) onCreateBulkVisaSuccess,
+    required TResult Function() onDeleteBulkSuccess,
+  }) {
+    return onDeleteBulkSuccess();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(String message)? error,
+    TResult? Function()? loading,
+    TResult? Function(String message)? onCreateBulkVisaSuccess,
+    TResult? Function()? onDeleteBulkSuccess,
+  }) {
+    return onDeleteBulkSuccess?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String message)? error,
+    TResult Function()? loading,
+    TResult Function(String message)? onCreateBulkVisaSuccess,
+    TResult Function()? onDeleteBulkSuccess,
+    required TResult orElse(),
+  }) {
+    if (onDeleteBulkSuccess != null) {
+      return onDeleteBulkSuccess();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Error value) error,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_OnCreateBulkVisaSuccess value)
+        onCreateBulkVisaSuccess,
+    required TResult Function(_OnDeleteBulkSuccess value) onDeleteBulkSuccess,
+  }) {
+    return onDeleteBulkSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_OnCreateBulkVisaSuccess value)? onCreateBulkVisaSuccess,
+    TResult? Function(_OnDeleteBulkSuccess value)? onDeleteBulkSuccess,
+  }) {
+    return onDeleteBulkSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Error value)? error,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_OnCreateBulkVisaSuccess value)? onCreateBulkVisaSuccess,
+    TResult Function(_OnDeleteBulkSuccess value)? onDeleteBulkSuccess,
+    required TResult orElse(),
+  }) {
+    if (onDeleteBulkSuccess != null) {
+      return onDeleteBulkSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnDeleteBulkSuccess implements AgentState {
+  const factory _OnDeleteBulkSuccess() = _$_OnDeleteBulkSuccess;
 }

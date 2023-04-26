@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:dio/dio.dart';
@@ -213,7 +214,7 @@ class OtherRepository extends IOther {
         }).toList();
         Storage().setNationality(json.encode(_nationalityList));
 
-        print(_nationality.length);
+        log(_nationality.length.toString());
         return Right("");
       }
       return Left(Failures.generalError("Something Wrong"));
@@ -295,7 +296,7 @@ class OtherRepository extends IOther {
           options: Options(
               headers: {'Authorization': 'Bearer ${storage.getToken()}'}));
       var data = result.data['data'];
-      print(data);
+      log(data);
       if (data != null) {
         String newToken = (data['token']).toString();
         await storage.saveToken(newToken);

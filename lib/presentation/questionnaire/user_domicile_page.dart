@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:dti_web/application/application_cubit.dart';
 import 'package:dti_web/application/update_application/update_application_cubit.dart';
@@ -52,7 +54,7 @@ class _UserDomicilePageState extends State<UserDomicilePage> {
           create: (context) => getIt<UpdateApplicationCubit>(),
           child: BlocListener<UpdateApplicationCubit, UpdateApplicationState>(
             listener: (context, state) {
-              print(state);
+              log(state.toString());
               state.maybeMap(orElse: () {
                 EasyLoading.dismiss();
               }, onUpdateApplication: (e) {

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:dti_web/domain/auth/user_data.dart';
 import 'package:dti_web/domain/core/country_nationality.dart';
@@ -31,7 +32,7 @@ class Storage {
   }
 
   Future<void> saveToken(String token) async {
-    print('token Saved');
+    log('token Saved');
     await box.write(TOKEN, token);
   }
 

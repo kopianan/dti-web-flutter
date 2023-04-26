@@ -136,16 +136,16 @@ class __$$_CreateNewApplicationCubitCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CreateNewApplicationCubit
-    with DiagnosticableTreeMixin
-    implements _CreateNewApplicationCubit {
+class _$_CreateNewApplicationCubit extends _CreateNewApplicationCubit
+    with DiagnosticableTreeMixin {
   _$_CreateNewApplicationCubit(
       {this.pickedFile,
       this.excelBytes,
       required final List<Data?> header,
       required final List<DataTableModel> body})
       : _header = header,
-        _body = body;
+        _body = body,
+        super._();
 
   @override
   final FilePickerResult? pickedFile;
@@ -212,12 +212,13 @@ class _$_CreateNewApplicationCubit
           _$_CreateNewApplicationCubit>(this, _$identity);
 }
 
-abstract class _CreateNewApplicationCubit implements CreateNewApplicationState {
+abstract class _CreateNewApplicationCubit extends CreateNewApplicationState {
   factory _CreateNewApplicationCubit(
       {final FilePickerResult? pickedFile,
       final Uint8List? excelBytes,
       required final List<Data?> header,
       required final List<DataTableModel> body}) = _$_CreateNewApplicationCubit;
+  _CreateNewApplicationCubit._() : super._();
 
   @override
   FilePickerResult? get pickedFile;

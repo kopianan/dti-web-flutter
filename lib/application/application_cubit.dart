@@ -19,7 +19,6 @@ class ApplicationCubit extends Cubit<ApplicationState> {
   //clean first
   void cleanAll() {
     emit(ApplicationState.initial());
-    print(state);
   }
 
   void setupDocumentsMasterData(List<Map<String, dynamic>> list) {

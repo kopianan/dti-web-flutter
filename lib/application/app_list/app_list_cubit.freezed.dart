@@ -16,56 +16,12 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AppListState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() onLoading,
-    required TResult Function(String errMsg) onError,
-    required TResult Function(List<SimpleVisaModel> apps) onGetUsersApplication,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? onLoading,
-    TResult? Function(String errMsg)? onError,
-    TResult? Function(List<SimpleVisaModel> apps)? onGetUsersApplication,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? onLoading,
-    TResult Function(String errMsg)? onError,
-    TResult Function(List<SimpleVisaModel> apps)? onGetUsersApplication,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_OnLoading value) onLoading,
-    required TResult Function(_OnError value) onError,
-    required TResult Function(_OnGetUsersApplication value)
-        onGetUsersApplication,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_OnLoading value)? onLoading,
-    TResult? Function(_OnError value)? onError,
-    TResult? Function(_OnGetUsersApplication value)? onGetUsersApplication,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_OnLoading value)? onLoading,
-    TResult Function(_OnError value)? onError,
-    TResult Function(_OnGetUsersApplication value)? onGetUsersApplication,
-    required TResult orElse(),
-  }) =>
+  AppListStatus get status => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
+  List<DataListModel> get apps => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $AppListStateCopyWith<AppListState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -74,6 +30,9 @@ abstract class $AppListStateCopyWith<$Res> {
   factory $AppListStateCopyWith(
           AppListState value, $Res Function(AppListState) then) =
       _$AppListStateCopyWithImpl<$Res, AppListState>;
+  @useResult
+  $Res call(
+      {AppListStatus status, String? errorMessage, List<DataListModel> apps});
 }
 
 /// @nodoc
@@ -85,422 +44,93 @@ class _$AppListStateCopyWithImpl<$Res, $Val extends AppListState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$AppListStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_Initial implements _Initial {
-  const _$_Initial();
-
-  @override
-  String toString() {
-    return 'AppListState.initial()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() onLoading,
-    required TResult Function(String errMsg) onError,
-    required TResult Function(List<SimpleVisaModel> apps) onGetUsersApplication,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? onLoading,
-    TResult? Function(String errMsg)? onError,
-    TResult? Function(List<SimpleVisaModel> apps)? onGetUsersApplication,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? onLoading,
-    TResult Function(String errMsg)? onError,
-    TResult Function(List<SimpleVisaModel> apps)? onGetUsersApplication,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_OnLoading value) onLoading,
-    required TResult Function(_OnError value) onError,
-    required TResult Function(_OnGetUsersApplication value)
-        onGetUsersApplication,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_OnLoading value)? onLoading,
-    TResult? Function(_OnError value)? onError,
-    TResult? Function(_OnGetUsersApplication value)? onGetUsersApplication,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_OnLoading value)? onLoading,
-    TResult Function(_OnError value)? onError,
-    TResult Function(_OnGetUsersApplication value)? onGetUsersApplication,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Initial implements AppListState {
-  const factory _Initial() = _$_Initial;
-}
-
-/// @nodoc
-abstract class _$$_OnLoadingCopyWith<$Res> {
-  factory _$$_OnLoadingCopyWith(
-          _$_OnLoading value, $Res Function(_$_OnLoading) then) =
-      __$$_OnLoadingCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_OnLoadingCopyWithImpl<$Res>
-    extends _$AppListStateCopyWithImpl<$Res, _$_OnLoading>
-    implements _$$_OnLoadingCopyWith<$Res> {
-  __$$_OnLoadingCopyWithImpl(
-      _$_OnLoading _value, $Res Function(_$_OnLoading) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_OnLoading implements _OnLoading {
-  const _$_OnLoading();
-
-  @override
-  String toString() {
-    return 'AppListState.onLoading()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_OnLoading);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() onLoading,
-    required TResult Function(String errMsg) onError,
-    required TResult Function(List<SimpleVisaModel> apps) onGetUsersApplication,
-  }) {
-    return onLoading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? onLoading,
-    TResult? Function(String errMsg)? onError,
-    TResult? Function(List<SimpleVisaModel> apps)? onGetUsersApplication,
-  }) {
-    return onLoading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? onLoading,
-    TResult Function(String errMsg)? onError,
-    TResult Function(List<SimpleVisaModel> apps)? onGetUsersApplication,
-    required TResult orElse(),
-  }) {
-    if (onLoading != null) {
-      return onLoading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_OnLoading value) onLoading,
-    required TResult Function(_OnError value) onError,
-    required TResult Function(_OnGetUsersApplication value)
-        onGetUsersApplication,
-  }) {
-    return onLoading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_OnLoading value)? onLoading,
-    TResult? Function(_OnError value)? onError,
-    TResult? Function(_OnGetUsersApplication value)? onGetUsersApplication,
-  }) {
-    return onLoading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_OnLoading value)? onLoading,
-    TResult Function(_OnError value)? onError,
-    TResult Function(_OnGetUsersApplication value)? onGetUsersApplication,
-    required TResult orElse(),
-  }) {
-    if (onLoading != null) {
-      return onLoading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _OnLoading implements AppListState {
-  const factory _OnLoading() = _$_OnLoading;
-}
-
-/// @nodoc
-abstract class _$$_OnErrorCopyWith<$Res> {
-  factory _$$_OnErrorCopyWith(
-          _$_OnError value, $Res Function(_$_OnError) then) =
-      __$$_OnErrorCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String errMsg});
-}
-
-/// @nodoc
-class __$$_OnErrorCopyWithImpl<$Res>
-    extends _$AppListStateCopyWithImpl<$Res, _$_OnError>
-    implements _$$_OnErrorCopyWith<$Res> {
-  __$$_OnErrorCopyWithImpl(_$_OnError _value, $Res Function(_$_OnError) _then)
-      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? errMsg = null,
-  }) {
-    return _then(_$_OnError(
-      null == errMsg
-          ? _value.errMsg
-          : errMsg // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_OnError implements _OnError {
-  const _$_OnError(this.errMsg);
-
-  @override
-  final String errMsg;
-
-  @override
-  String toString() {
-    return 'AppListState.onError(errMsg: $errMsg)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_OnError &&
-            (identical(other.errMsg, errMsg) || other.errMsg == errMsg));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, errMsg);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_OnErrorCopyWith<_$_OnError> get copyWith =>
-      __$$_OnErrorCopyWithImpl<_$_OnError>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() onLoading,
-    required TResult Function(String errMsg) onError,
-    required TResult Function(List<SimpleVisaModel> apps) onGetUsersApplication,
-  }) {
-    return onError(errMsg);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? onLoading,
-    TResult? Function(String errMsg)? onError,
-    TResult? Function(List<SimpleVisaModel> apps)? onGetUsersApplication,
-  }) {
-    return onError?.call(errMsg);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? onLoading,
-    TResult Function(String errMsg)? onError,
-    TResult Function(List<SimpleVisaModel> apps)? onGetUsersApplication,
-    required TResult orElse(),
-  }) {
-    if (onError != null) {
-      return onError(errMsg);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_OnLoading value) onLoading,
-    required TResult Function(_OnError value) onError,
-    required TResult Function(_OnGetUsersApplication value)
-        onGetUsersApplication,
-  }) {
-    return onError(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_OnLoading value)? onLoading,
-    TResult? Function(_OnError value)? onError,
-    TResult? Function(_OnGetUsersApplication value)? onGetUsersApplication,
-  }) {
-    return onError?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_OnLoading value)? onLoading,
-    TResult Function(_OnError value)? onError,
-    TResult Function(_OnGetUsersApplication value)? onGetUsersApplication,
-    required TResult orElse(),
-  }) {
-    if (onError != null) {
-      return onError(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _OnError implements AppListState {
-  const factory _OnError(final String errMsg) = _$_OnError;
-
-  String get errMsg;
-  @JsonKey(ignore: true)
-  _$$_OnErrorCopyWith<_$_OnError> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_OnGetUsersApplicationCopyWith<$Res> {
-  factory _$$_OnGetUsersApplicationCopyWith(_$_OnGetUsersApplication value,
-          $Res Function(_$_OnGetUsersApplication) then) =
-      __$$_OnGetUsersApplicationCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<SimpleVisaModel> apps});
-}
-
-/// @nodoc
-class __$$_OnGetUsersApplicationCopyWithImpl<$Res>
-    extends _$AppListStateCopyWithImpl<$Res, _$_OnGetUsersApplication>
-    implements _$$_OnGetUsersApplicationCopyWith<$Res> {
-  __$$_OnGetUsersApplicationCopyWithImpl(_$_OnGetUsersApplication _value,
-      $Res Function(_$_OnGetUsersApplication) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
+    Object? status = null,
+    Object? errorMessage = freezed,
     Object? apps = null,
   }) {
-    return _then(_$_OnGetUsersApplication(
-      null == apps
+    return _then(_value.copyWith(
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as AppListStatus,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      apps: null == apps
+          ? _value.apps
+          : apps // ignore: cast_nullable_to_non_nullable
+              as List<DataListModel>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_AppListStateCopyWith<$Res>
+    implements $AppListStateCopyWith<$Res> {
+  factory _$$_AppListStateCopyWith(
+          _$_AppListState value, $Res Function(_$_AppListState) then) =
+      __$$_AppListStateCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {AppListStatus status, String? errorMessage, List<DataListModel> apps});
+}
+
+/// @nodoc
+class __$$_AppListStateCopyWithImpl<$Res>
+    extends _$AppListStateCopyWithImpl<$Res, _$_AppListState>
+    implements _$$_AppListStateCopyWith<$Res> {
+  __$$_AppListStateCopyWithImpl(
+      _$_AppListState _value, $Res Function(_$_AppListState) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = null,
+    Object? errorMessage = freezed,
+    Object? apps = null,
+  }) {
+    return _then(_$_AppListState(
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as AppListStatus,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      apps: null == apps
           ? _value._apps
           : apps // ignore: cast_nullable_to_non_nullable
-              as List<SimpleVisaModel>,
+              as List<DataListModel>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_OnGetUsersApplication implements _OnGetUsersApplication {
-  const _$_OnGetUsersApplication(final List<SimpleVisaModel> apps)
-      : _apps = apps;
+class _$_AppListState extends _AppListState {
+  const _$_AppListState(
+      {required this.status,
+      this.errorMessage,
+      final List<DataListModel> apps = const []})
+      : _apps = apps,
+        super._();
 
-  final List<SimpleVisaModel> _apps;
   @override
-  List<SimpleVisaModel> get apps {
+  final AppListStatus status;
+  @override
+  final String? errorMessage;
+  final List<DataListModel> _apps;
+  @override
+  @JsonKey()
+  List<DataListModel> get apps {
     if (_apps is EqualUnmodifiableListView) return _apps;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_apps);
@@ -508,110 +138,46 @@ class _$_OnGetUsersApplication implements _OnGetUsersApplication {
 
   @override
   String toString() {
-    return 'AppListState.onGetUsersApplication(apps: $apps)';
+    return 'AppListState(status: $status, errorMessage: $errorMessage, apps: $apps)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnGetUsersApplication &&
+            other is _$_AppListState &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage) &&
             const DeepCollectionEquality().equals(other._apps, _apps));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_apps));
+  int get hashCode => Object.hash(runtimeType, status, errorMessage,
+      const DeepCollectionEquality().hash(_apps));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnGetUsersApplicationCopyWith<_$_OnGetUsersApplication> get copyWith =>
-      __$$_OnGetUsersApplicationCopyWithImpl<_$_OnGetUsersApplication>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() onLoading,
-    required TResult Function(String errMsg) onError,
-    required TResult Function(List<SimpleVisaModel> apps) onGetUsersApplication,
-  }) {
-    return onGetUsersApplication(apps);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? onLoading,
-    TResult? Function(String errMsg)? onError,
-    TResult? Function(List<SimpleVisaModel> apps)? onGetUsersApplication,
-  }) {
-    return onGetUsersApplication?.call(apps);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? onLoading,
-    TResult Function(String errMsg)? onError,
-    TResult Function(List<SimpleVisaModel> apps)? onGetUsersApplication,
-    required TResult orElse(),
-  }) {
-    if (onGetUsersApplication != null) {
-      return onGetUsersApplication(apps);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_OnLoading value) onLoading,
-    required TResult Function(_OnError value) onError,
-    required TResult Function(_OnGetUsersApplication value)
-        onGetUsersApplication,
-  }) {
-    return onGetUsersApplication(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_OnLoading value)? onLoading,
-    TResult? Function(_OnError value)? onError,
-    TResult? Function(_OnGetUsersApplication value)? onGetUsersApplication,
-  }) {
-    return onGetUsersApplication?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_OnLoading value)? onLoading,
-    TResult Function(_OnError value)? onError,
-    TResult Function(_OnGetUsersApplication value)? onGetUsersApplication,
-    required TResult orElse(),
-  }) {
-    if (onGetUsersApplication != null) {
-      return onGetUsersApplication(this);
-    }
-    return orElse();
-  }
+  _$$_AppListStateCopyWith<_$_AppListState> get copyWith =>
+      __$$_AppListStateCopyWithImpl<_$_AppListState>(this, _$identity);
 }
 
-abstract class _OnGetUsersApplication implements AppListState {
-  const factory _OnGetUsersApplication(final List<SimpleVisaModel> apps) =
-      _$_OnGetUsersApplication;
+abstract class _AppListState extends AppListState {
+  const factory _AppListState(
+      {required final AppListStatus status,
+      final String? errorMessage,
+      final List<DataListModel> apps}) = _$_AppListState;
+  const _AppListState._() : super._();
 
-  List<SimpleVisaModel> get apps;
+  @override
+  AppListStatus get status;
+  @override
+  String? get errorMessage;
+  @override
+  List<DataListModel> get apps;
+  @override
   @JsonKey(ignore: true)
-  _$$_OnGetUsersApplicationCopyWith<_$_OnGetUsersApplication> get copyWith =>
+  _$$_AppListStateCopyWith<_$_AppListState> get copyWith =>
       throw _privateConstructorUsedError;
 }

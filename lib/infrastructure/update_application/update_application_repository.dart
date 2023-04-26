@@ -223,7 +223,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
         //   "inIndonesia": visaApplicationModel.inIndonesia
         // },
         );
-    print(visaApplicationModel.toJson());
+    log(visaApplicationModel.toJson().toString());
     return Right(result.data['data']['firebaseDocId']);
   }
 
@@ -415,6 +415,12 @@ class IUpdateApplicationRepository extends IUpdateApplication {
         case DioErrorType.unknown:
           // TODO: Handle this case.
           break;
+        case DioErrorType.badCertificate:
+          // TODO: Handle this case.
+          break;
+        case DioErrorType.connectionError:
+          // TODO: Handle this case.
+          break;
       }
       return Left(Failures.serverError());
     }
@@ -455,6 +461,12 @@ class IUpdateApplicationRepository extends IUpdateApplication {
           // TODO: Handle this case.
           break;
         case DioErrorType.unknown:
+          // TODO: Handle this case.
+          break;
+        case DioErrorType.badCertificate:
+          // TODO: Handle this case.
+          break;
+        case DioErrorType.connectionError:
           // TODO: Handle this case.
           break;
       }

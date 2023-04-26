@@ -20,6 +20,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:toggle_switch/toggle_switch.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class RighSide extends StatefulWidget {
   const RighSide({
@@ -364,9 +365,9 @@ class _RighSideState extends State<RighSide> {
           final cek = docState.selectedMasterListData!.firstWhere(
             (element) => element.contains(selectedFile),
           );
-
-          AutoRouter.of(context)
-              .navigate(DTIPdfViewerRoute(imageUrl: cek, isNetwork: true));
+          launch(cek);
+          // AutoRouter.of(context)
+          //     .navigate(DTIPdfViewerRoute(imageUrl: cek, isNetwork: true));
         }
       } else {
         //check image from url or file
@@ -376,7 +377,7 @@ class _RighSideState extends State<RighSide> {
           final bytesData = docState.selectedDataCollection![selectedFile];
           if (kIsWeb) {
             AutoRouter.of(context).push(PhotoViewRoute(
-                images: ["noDataHere"],
+                images: const ["noDataHere"],
                 isNetwork: false,
                 imagesBytes: [bytesData]));
           } else {
@@ -621,7 +622,7 @@ class _RighSideState extends State<RighSide> {
 //         options: Options(
 //           headers: {'Authorization': 'Bearer ${storage.getToken()}'},
 //         ));
-//     print(result);
+//     log(result);
 //     return result.data['downloadUrl'];
 //   }
 // }
@@ -644,7 +645,7 @@ class ImageFromUrl extends StatelessWidget {
         builder: (context, state) {
           return state.maybeMap(
             orElse: () {
-              return SizedBox();
+              return const SizedBox();
             },
             onGetImageUrl: (value) => Image.network(
               value.url,

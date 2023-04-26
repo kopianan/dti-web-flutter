@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:dti_web/core/storage.dart';
@@ -19,15 +21,20 @@ class AppListRepository extends IAppList {
     //     options: Options(
     //       headers: {'Authorization': 'Bearer ${storage.getToken()}'},
     //     ));
-    final result =
-        await dio.get('${dotenv.env['BASE_URL']}/overallApplicationsByUser',
-            options: Options(
-              headers: {'Authorization': 'Bearer ${storage.getToken()}'},
-            ));
-    final listData = (result.data['data'] as List)
-        .map((e) => SimpleVisaModel.fromJson(e))
-        .toList();
-    return Right(listData);
+    try {
+      final result =
+          await dio.get('${dotenv.env['BASE_URL']}/overallApplicationsByUser',
+              options: Options(
+                headers: {'Authorization': 'Bearer ${storage.getToken()}'},
+              ));
+      final listData = (result.data['data'] as List)
+          .map((e) => SimpleVisaModel.fromJson(e))
+          .toList();
+      return Right(listData);
+    } on Exception catch (e) {
+      log(e.toString());
+      return left("");
+    }
   }
 
 //   @override

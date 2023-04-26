@@ -44,214 +44,211 @@ class _ApplicationCardPageState extends State<ApplicationCardPage> {
         child: BlocConsumer<AppListCubit, AppListState>(
           listener: (context, state) {},
           builder: (context, state) {
-            return state.maybeMap(
-              orElse: () {
-                return Container();
-              },
-              onLoading: (e) {
-                return Shimmer(
-                  direction: ShimmerDirection.ltr,
-                  gradient: const LinearGradient(colors: [
-                    Color.fromARGB(255, 198, 198, 198),
-                    Color.fromARGB(255, 235, 235, 235),
-                    Color.fromARGB(255, 188, 188, 188),
-                  ]),
-                  child: GridView.builder(
-                    padding: const EdgeInsets.symmetric(horizontal: 30),
-                    itemCount: 8,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            mainAxisSpacing: 20,
-                            crossAxisSpacing: 20,
-                            childAspectRatio: 2 / 0.7),
-                    itemBuilder: (context, index) {
-                      return Container(
-                        clipBehavior: Clip.hardEdge,
-                        decoration: BoxDecoration(
-                            color: Colors.grey,
-                            borderRadius: BorderRadius.circular(20)),
-                      );
-                    },
+            if (state.status == AppListStatus.loading) {
+              return Shimmer(
+                direction: ShimmerDirection.ltr,
+                gradient: const LinearGradient(colors: [
+                  Color.fromARGB(255, 198, 198, 198),
+                  Color.fromARGB(255, 235, 235, 235),
+                  Color.fromARGB(255, 188, 188, 188),
+                ]),
+                child: GridView.builder(
+                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  itemCount: 8,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 20,
+                      crossAxisSpacing: 20,
+                      childAspectRatio: 2 / 0.7),
+                  itemBuilder: (context, index) {
+                    return Container(
+                      clipBehavior: Clip.hardEdge,
+                      decoration: BoxDecoration(
+                          color: Colors.grey,
+                          borderRadius: BorderRadius.circular(20)),
+                    );
+                  },
+                ),
+              );
+            } else if (state.status == AppListStatus.success) {
+              if (state.apps.isEmpty) {
+                return const Center(
+                  child: Text(
+                    "No Application Data Yet",
+                    style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        color: AppColor.primaryColor),
                   ),
                 );
-              },
-              onGetUsersApplication: (e) {
-                if (e.apps.isEmpty) {
-                  return const Center(
-                    child: Text(
-                      "No Application Data Yet",
-                      style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                          color: AppColor.primaryColor),
-                    ),
-                  );
-                }
-                return SingleChildScrollView(
-                  child: Container(
-                    alignment: Alignment.center,
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: Wrap(
-                        verticalDirection: VerticalDirection.down,
-                        crossAxisAlignment: WrapCrossAlignment.center,
-                        alignment: WrapAlignment.start,
-                        children: e.apps
-                            .map((element) => SizedBox(
-                                  width: 500,
-                                  child: element.subTitle!
-                                          .toLowerCase()
-                                          .contains('passport')
-                                      ? PassportCard(
-                                          visaApps: element,
-                                          onCardClick: () async {
-                                            if (element.status!.toLowerCase() ==
-                                                'draft') {
-                                              AwesomeDialog(
-                                                context: context,
-                                                width:
-                                                    ScreenUtil().screenWidth /
-                                                        4,
-                                                title: "Draft Passport",
-                                                desc: element.subTitle ==
-                                                        "Visa On Arrival"
-                                                    ? "You have Incomplete Visa On Arrival Application. Do you want to continue from your latest draft?"
-                                                    : element.title!
-                                                            .toLowerCase()
-                                                            .contains(
-                                                                'passport')
-                                                        ? "You have Incomplete Passport. Do you want to continue from your latest draft?"
-                                                        : "You have Incomplete Visa Application. Do you want to continue from your latest draft?",
-                                                btnOkText: "Continue",
-                                                btnCancelText: "Delete",
-                                                btnOkOnPress: () async {
-                                                  await AutoRouter.of(context)
-                                                      .pop();
-                                                  if (element.title!
-                                                      .toLowerCase()
-                                                      .contains('passport')) {
-                                                    AutoRouter.of(context).push(
-                                                        PassportPersonalParticularRoute(
-                                                            firebaseDocId: element
-                                                                .firebaseDocId!));
-                                                  } else {
-                                                    AutoRouter.of(context).push(
-                                                        PersonalInformation1Route(
-                                                            firebaseDocId: element
-                                                                .firebaseDocId!));
-                                                  }
-                                                },
-                                                btnCancelOnPress: () async {
-                                                  await AutoRouter.of(context)
-                                                      .pop();
-                                                  if (element.subTitle ==
-                                                      "Visa On Arrival") {
-                                                    widget.dashboardCubit
-                                                        .deleteSingleData(
-                                                            element, 2);
-                                                  } else if (element.title!
-                                                      .toLowerCase()
-                                                      .contains('passport')) {
-                                                    widget.dashboardCubit
-                                                        .deleteSinglePassport(
-                                                            element, 3);
-                                                  } else {
-                                                    widget.dashboardCubit
-                                                        .deleteSingleData(
-                                                            element, 1);
-                                                  }
-                                                },
-                                              ).show();
-                                            } else {
-                                              await AutoRouter.of(context)
-                                                  .pop();
-                                              AutoRouter.of(context).navigate(
-                                                PassportDetailRoute(
-                                                  firebaseDocId:
-                                                      element.firebaseDocId!,
-                                                ),
-                                              );
-                                            }
-                                          },
-                                        )
-                                      : VisaApplicationCard(
-                                          visaApps: element,
-                                          onCardClick: () async {
-                                            if (element.status!.toLowerCase() ==
-                                                'draft') {
-                                              AwesomeDialog(
-                                                context: context,
-                                                width:
-                                                    ScreenUtil().screenWidth /
-                                                        4,
-                                                title: "Draft Application",
-                                                desc: element.subTitle ==
-                                                        "Visa On Arrival"
-                                                    ? "You have Incomplete Visa On Arrival Application. Do you want to continue from your latest draft?"
-                                                    : element.title!
-                                                            .toLowerCase()
-                                                            .contains(
-                                                                'passport')
-                                                        ? "You have Incomplete Passport. Do you want to continue from your latest draft?"
-                                                        : "You have Incomplete Visa Application. Do you want to continue from your latest draft?",
-                                                btnOkText: "Continue",
-                                                btnCancelText: "Delete",
-                                                btnOkOnPress: () async {
-                                                  await AutoRouter.of(context)
-                                                      .pop();
-                                                  if (element.title!
-                                                      .toLowerCase()
-                                                      .contains('passport')) {
-                                                    AutoRouter.of(context).push(
-                                                        PassportPersonalParticularRoute(
-                                                            firebaseDocId: element
-                                                                .firebaseDocId!));
-                                                  } else {
-                                                    AutoRouter.of(context).push(
-                                                        PersonalInformation1Route(
-                                                            firebaseDocId: element
-                                                                .firebaseDocId!));
-                                                  }
-                                                },
-                                                btnCancelOnPress: () async {
-                                                  await AutoRouter.of(context)
-                                                      .pop();
-                                                  if (element.subTitle ==
-                                                      "Visa On Arrival") {
-                                                    widget.dashboardCubit
-                                                        .deleteSingleData(
-                                                            element, 2);
-                                                  } else if (element.title!
-                                                      .toLowerCase()
-                                                      .contains('passport')) {
-                                                    widget.dashboardCubit
-                                                        .deleteSinglePassport(
-                                                            element, 3);
-                                                  } else {
-                                                    widget.dashboardCubit
-                                                        .deleteSingleData(
-                                                            element, 1);
-                                                  }
-                                                },
-                                              ).show();
-                                            } else {
-                                              await AutoRouter.of(context)
-                                                  .pop();
-                                              AutoRouter.of(context).navigate(
-                                                ApplicationDetailRoute(
-                                                  firebaseDocId:
-                                                      element.firebaseDocId!,
-                                                ),
-                                              );
-                                            }
-                                          },
-                                        ),
-                                ))
-                            .toList()),
-                  ),
-                );
-              },
-            );
+              }
+              return SingleChildScrollView(
+                child: Container(
+                  alignment: Alignment.center,
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: Wrap(
+                      verticalDirection: VerticalDirection.down,
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      alignment: WrapAlignment.start,
+                      children: state.apps
+                          .map((element) => SizedBox(
+                                width: 500,
+                                child: element.bodyData.subTitle!
+                                        .toLowerCase()
+                                        .contains('passport')
+                                    ? PassportCard(
+                                        visaApps: element.bodyData,
+                                        onCardClick: () async {
+                                          if (element.bodyData.status!
+                                                  .toLowerCase() ==
+                                              'draft') {
+                                            AwesomeDialog(
+                                              context: context,
+                                              width:
+                                                  ScreenUtil().screenWidth / 4,
+                                              title: "Draft Passport",
+                                              desc: element.bodyData.subTitle ==
+                                                      "Visa On Arrival"
+                                                  ? "You have Incomplete Visa On Arrival Application. Do you want to continue from your latest draft?"
+                                                  : element.bodyData.title!
+                                                          .toLowerCase()
+                                                          .contains('passport')
+                                                      ? "You have Incomplete Passport. Do you want to continue from your latest draft?"
+                                                      : "You have Incomplete Visa Application. Do you want to continue from your latest draft?",
+                                              btnOkText: "Continue",
+                                              btnCancelText: "Delete",
+                                              btnOkOnPress: () async {
+                                                await AutoRouter.of(context)
+                                                    .pop();
+                                                if (element.bodyData.title!
+                                                    .toLowerCase()
+                                                    .contains('passport')) {
+                                                  AutoRouter.of(context).push(
+                                                      PassportPersonalParticularRoute(
+                                                          firebaseDocId: element
+                                                              .bodyData
+                                                              .firebaseDocId!));
+                                                } else {
+                                                  AutoRouter.of(context).push(
+                                                      PersonalInformation1Route(
+                                                          firebaseDocId: element
+                                                              .bodyData
+                                                              .firebaseDocId!));
+                                                }
+                                              },
+                                              btnCancelOnPress: () async {
+                                                await AutoRouter.of(context)
+                                                    .pop();
+                                                if (element.bodyData.subTitle ==
+                                                    "Visa On Arrival") {
+                                                  widget.dashboardCubit
+                                                      .deleteSingleData(
+                                                          element.bodyData, 2);
+                                                } else if (element
+                                                    .bodyData.title!
+                                                    .toLowerCase()
+                                                    .contains('passport')) {
+                                                  widget.dashboardCubit
+                                                      .deleteSinglePassport(
+                                                          element.bodyData, 3);
+                                                } else {
+                                                  widget.dashboardCubit
+                                                      .deleteSingleData(
+                                                          element.bodyData, 1);
+                                                }
+                                              },
+                                            ).show();
+                                          } else {
+                                            await AutoRouter.of(context).pop();
+                                            AutoRouter.of(context).navigate(
+                                              PassportDetailRoute(
+                                                firebaseDocId: element
+                                                    .bodyData.firebaseDocId!,
+                                              ),
+                                            );
+                                          }
+                                        },
+                                      )
+                                    : VisaApplicationCard(
+                                        visaApps: element.bodyData,
+                                        onCardClick: () async {
+                                          if (element.bodyData.status!
+                                                  .toLowerCase() ==
+                                              'draft') {
+                                            AwesomeDialog(
+                                              context: context,
+                                              width:
+                                                  ScreenUtil().screenWidth / 4,
+                                              title: "Draft Application",
+                                              desc: element.bodyData.subTitle ==
+                                                      "Visa On Arrival"
+                                                  ? "You have Incomplete Visa On Arrival Application. Do you want to continue from your latest draft?"
+                                                  : element.bodyData.title!
+                                                          .toLowerCase()
+                                                          .contains('passport')
+                                                      ? "You have Incomplete Passport. Do you want to continue from your latest draft?"
+                                                      : "You have Incomplete Visa Application. Do you want to continue from your latest draft?",
+                                              btnOkText: "Continue",
+                                              btnCancelText: "Delete",
+                                              btnOkOnPress: () async {
+                                                await AutoRouter.of(context)
+                                                    .pop();
+                                                if (element.bodyData.title!
+                                                    .toLowerCase()
+                                                    .contains('passport')) {
+                                                  AutoRouter.of(context).push(
+                                                      PassportPersonalParticularRoute(
+                                                          firebaseDocId: element
+                                                              .bodyData
+                                                              .firebaseDocId!));
+                                                } else {
+                                                  AutoRouter.of(context).push(
+                                                      PersonalInformation1Route(
+                                                          firebaseDocId: element
+                                                              .bodyData
+                                                              .firebaseDocId!));
+                                                }
+                                              },
+                                              btnCancelOnPress: () async {
+                                                await AutoRouter.of(context)
+                                                    .pop();
+                                                if (element.bodyData.subTitle ==
+                                                    "Visa On Arrival") {
+                                                  widget.dashboardCubit
+                                                      .deleteSingleData(
+                                                          element.bodyData, 2);
+                                                } else if (element
+                                                    .bodyData.title!
+                                                    .toLowerCase()
+                                                    .contains('passport')) {
+                                                  widget.dashboardCubit
+                                                      .deleteSinglePassport(
+                                                          element.bodyData, 3);
+                                                } else {
+                                                  widget.dashboardCubit
+                                                      .deleteSingleData(
+                                                          element.bodyData, 1);
+                                                }
+                                              },
+                                            ).show();
+                                          } else {
+                                            await AutoRouter.of(context).pop();
+                                            AutoRouter.of(context).navigate(
+                                              ApplicationDetailRoute(
+                                                firebaseDocId: element
+                                                    .bodyData.firebaseDocId!,
+                                              ),
+                                            );
+                                          }
+                                        },
+                                      ),
+                              ))
+                          .toList()),
+                ),
+              );
+            } else {
+              return Container();
+            }
           },
         ),
       ),

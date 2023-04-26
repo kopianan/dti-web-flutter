@@ -1,5 +1,8 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:dti_web/application/agent/agent_cubit.dart';
 import 'package:dti_web/application/agent/create_new_application_cubit.dart';
+import 'package:dti_web/application/app_list/app_list_cubit.dart';
+import 'package:dti_web/application/other/other_cubit.dart';
 import 'package:dti_web/injection.dart';
 import 'package:dti_web/presentation/corporate/application/application_page.dart';
 import 'package:dti_web/presentation/corporate/create_application/create_application_page.dart';
@@ -22,98 +25,129 @@ class _CDashboardPageState extends State<CDashboardPage> {
   int selected = 0;
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<CreateNewApplicationCubit>(),
-      child: Scaffold(
-        body: Column(
-          children: [
-            Card(
-              margin: EdgeInsets.zero,
-              child: Container(
-                width: double.infinity,
-                height: 100,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                color: Colors.white,
-                child: Row(
-                  children: [
-                    Image.asset('assets/imgs/me.png'),
-                    20.horizontalSpace,
-                    const Text(
-                      "Welcome, Name Here",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const Spacer(),
-                    InkWell(
-                      onTap: () {},
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const Icon(Icons.logout,
-                              color: Colors.grey, size: 25),
-                          10.horizontalSpace,
-                          const Text(
-                            "Logout",
-                            style: TextStyle(
-                                fontSize: 20,
-                                color: Colors.grey,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              ),
+    return AutoTabsRouter(
+      routes: [
+        CustomerRoute(),
+        CustomerRoute(),
+        ApplicationRoute(),
+        CreateApplicationRoute(),
+      ],
+      builder: (context, child) {
+        final tabsRouter = AutoTabsRouter.of(context);
+
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => getIt<CreateNewApplicationCubit>(),
             ),
-            Expanded(
-              child: Row(
-                children: [
-                  NavigationRail(
-                    backgroundColor: AppColor.primaryColor,
-                    minExtendedWidth: 300,
-                    elevation: 10,
-                    extended: true,
-                    selectedLabelTextStyle: const TextStyle(fontSize: 20),
-                    unselectedLabelTextStyle: const TextStyle(fontSize: 20),
-                    selectedIconTheme: const IconThemeData(color: Colors.white),
-                    unselectedIconTheme:
-                        const IconThemeData(color: Colors.white),
-                    indicatorColor: Colors.blue[300],
-                    selectedIndex: selected,
-                    onDestinationSelected: (e) {
-                      switch (e) {
-                        case 0:
-                          context.router.push(const CustomerRoute());
-                          break;
-                        case 1:
-                          context.router.push(const CustomerRoute());
-                          break;
-                        case 2:
-                          context.router.push(const ApplicationRoute());
-                          break;
-                        case 3:
-                          context.router.push(const CreateApplicationRoute());
-                          break;
-                      }
-                      // setState(() {
-                      // //   selected = e;
-                      // // });
-                    },
-                    destinations: _menuList(),
-                  ),
-                  // const VerticalDivider(thickness: 1, width: 1),
-                  const Expanded(child: AutoRouter()),
-                ],
-              ),
+            BlocProvider(
+              create: (context) => getIt<AgentCubit>(),
+            ),
+            BlocProvider(
+              create: (context) => getIt<AppListCubit>(),
+            ),
+            BlocProvider(
+              create: (context) => getIt<OtherCubit>()
+                ..getLocation()
+                ..getDocumentsData(),
             ),
           ],
-        ),
-      ),
+          child: Scaffold(
+            body: Column(
+              children: [
+                Card(
+                  margin: EdgeInsets.zero,
+                  child: Container(
+                    width: double.infinity,
+                    height: 100,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 20),
+                    color: Colors.white,
+                    child: Row(
+                      children: [
+                        Image.asset('assets/imgs/me.png'),
+                        20.horizontalSpace,
+                        const Text(
+                          "Welcome, Name Here",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const Spacer(),
+                        InkWell(
+                          onTap: () {},
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              const Icon(Icons.logout,
+                                  color: Colors.grey, size: 25),
+                              10.horizontalSpace,
+                              const Text(
+                                "Logout",
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.grey,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Row(
+                    children: [
+                      NavigationRail(
+                        backgroundColor: AppColor.primaryColor,
+                        minExtendedWidth: 300,
+                        elevation: 10,
+                        extended: true,
+                        selectedLabelTextStyle: const TextStyle(fontSize: 20),
+                        unselectedLabelTextStyle: const TextStyle(fontSize: 20),
+                        selectedIconTheme:
+                            const IconThemeData(color: Colors.white),
+                        unselectedIconTheme:
+                            const IconThemeData(color: Colors.white),
+                        indicatorColor: Colors.blue[300],
+                        selectedIndex: tabsRouter.activeIndex,
+                        onDestinationSelected: (e) {
+                          tabsRouter.setActiveIndex(e);
+
+                          // switch (e) {
+                          //   case 0:
+                          //     context.router.push(const CustomerRoute());
+                          //     break;
+                          //   case 1:
+                          //     context.router.push(const CustomerRoute());
+                          //     break;
+                          //   case 2:
+                          //     context.router.push(const ApplicationRoute());
+                          //     break;
+                          //   case 3:
+                          //     context.router
+                          //         .push(const CreateApplicationRoute());
+                          //     break;
+                          // }
+                          // setState(() {
+                          // //   selected = e;
+                          // // });
+                        },
+                        destinations: _menuList(),
+                      ),
+                      // const VerticalDivider(thickness: 1, width: 1),
+                      Expanded(child: child),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 

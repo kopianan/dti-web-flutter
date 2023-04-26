@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:auto_route/auto_route.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dti_web/application/document/document_cubit.dart';
@@ -66,7 +65,7 @@ class _ApplicationDetailPageState extends State<ApplicationDetailPage> {
                   return Container();
                 },
                 onError: (e) {
-                  return Center(
+                  return const Center(
                     child: Text("Something wrong"),
                   );
                 },
@@ -78,7 +77,7 @@ class _ApplicationDetailPageState extends State<ApplicationDetailPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          CircularProgressIndicator(),
+                          const CircularProgressIndicator(),
                           20.verticalSpace,
                           Text(
                             "Getting Data . . .",
@@ -413,13 +412,13 @@ class _SuccessBodyState extends State<SuccessBody> {
                                     if (e.attachment != null &&
                                         e.attachment!.contains('.doc')) {
                                       // file is document, not picture
-
-                                      AutoRouter.of(context).navigate(
-                                        DTIPdfViewerRoute(
-                                          imageUrl: filtered.single,
-                                          isNetwork: true,
-                                        ),
-                                      );
+                                      launch(filtered.single);
+                                      // AutoRouter.of(context).navigate(
+                                      //   DTIPdfViewerRoute(
+                                      //     imageUrl: filtered.single,
+                                      //     isNetwork: true,
+                                      //   ),
+                                      // );
                                     } else {
                                       showDialog(
                                         context: context,
@@ -523,7 +522,7 @@ class _SuccessBodyState extends State<SuccessBody> {
                     Visibility(
                         visible:
                             widget.visa.status!.toLowerCase() == 'completed',
-                        child: Container(
+                        child: SizedBox(
                           width: double.infinity,
                           height: 50,
                           child: PrimaryButton(
@@ -535,10 +534,11 @@ class _SuccessBodyState extends State<SuccessBody> {
                                                 .containsKey('EVISA'))
                                     as Map<String, dynamic>;
                                 if (data['EVISA'].toString().contains('.pdf')) {
-                                  AutoRouter.of(context).navigate(
-                                      DTIPdfViewerRoute(
-                                          imageUrl: data['EVISA'].toString(),
-                                          isNetwork: true));
+                                  launch(data['EVISA'].toString());
+                                  // AutoRouter.of(context).navigate(
+                                  //     DTIPdfViewerRoute(
+                                  //         imageUrl: data['EVISA'].toString(),
+                                  //         isNetwork: true));
                                 } else {
                                   AutoRouter.of(context).push(PhotoViewRoute(
                                       images: [data['EVISA'].toString()],
@@ -610,13 +610,13 @@ class _SuccessBodyState extends State<SuccessBody> {
                       visible: widget.visa.status!.toLowerCase() == 'paid' ||
                           widget.visa.status!.toLowerCase() == 'completed' ||
                           widget.visa.status!.toLowerCase() == 'submitted',
-                      child: Container(
+                      child: SizedBox(
                         width: double.infinity,
                         height: 50,
                         child: PrimaryButton(
                           onClick: () {
                             AutoRouter.of(context).pushAndPopUntil(
-                                DashboardRoute(),
+                                const DashboardRoute(),
                                 predicate:
                                     ModalRoute.withName(DashboardRoute.name));
                           },
@@ -844,7 +844,7 @@ class _SuccessBodyState extends State<SuccessBody> {
                       btnOkText: "Continue",
                       btnOkOnPress: () {
                         AutoRouter.of(context).pushAndPopUntil(
-                          DashboardRoute(),
+                          const DashboardRoute(),
                           predicate: (route) => false,
                         );
                       },
@@ -867,7 +867,8 @@ class _SuccessBodyState extends State<SuccessBody> {
                   width: 300,
                   label: "CONFIRM",
                   labelStyle: TextStyle(fontSize: 20.sp),
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   height: 60,
                 );
               }, onLoading: (e) {
@@ -876,7 +877,8 @@ class _SuccessBodyState extends State<SuccessBody> {
                   width: 300,
                   label: "Loading . . . ",
                   labelStyle: TextStyle(fontSize: 20.sp),
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   height: 60,
                 );
               });
@@ -890,7 +892,7 @@ class _SuccessBodyState extends State<SuccessBody> {
 
 extension StringExtension on String {
   String capitalize() {
-    return "${this[0].toUpperCase()}${this.substring(1).toLowerCase()}";
+    return "${this[0].toUpperCase()}${substring(1).toLowerCase()}";
   }
 }
 

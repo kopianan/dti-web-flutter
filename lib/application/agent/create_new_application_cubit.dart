@@ -19,6 +19,13 @@ part 'create_new_application_cubit.freezed.dart';
 class CreateNewApplicationCubit extends Cubit<CreateNewApplicationState> {
   CreateNewApplicationCubit() : super(CreateNewApplicationState.initial());
 
+  void updateAllSelected(bool status) {
+    var detailList = state.body;
+    final newList =
+        detailList.map((a) => a.copyWith(selected: status)).toList();
+    emit(state.copyWith(body: newList));
+  }
+
   void updateSelectedRow(int index) {
     var row = state.body[index];
 
@@ -97,8 +104,8 @@ class CreateNewApplicationCubit extends Cubit<CreateNewApplicationState> {
           status: 'Draft',
           userName: body[0]?.value.toString() ?? '',
         );
+        listOfVisa.add(visa);
       }
-      listOfVisa.add(visa);
     }
     return listOfVisa;
   }
@@ -137,7 +144,7 @@ class CreateNewApplicationCubit extends Cubit<CreateNewApplicationState> {
   //                         for (var i = 0; i < totalRows.length; i++) {
   //                           if (i != 0) {
   //                             for (var element in totalRows[i]) {
-  //                               print(element?.value.toString());
+  //                               log(element?.value.toString());
   //                             }
   //                           }
   //                         }

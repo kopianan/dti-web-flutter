@@ -112,11 +112,11 @@ class _DashboardPageState extends State<DashboardPage> {
               );
             },
             child: Scaffold(
-              floatingActionButton: FloatingActionButton(
-                onPressed: () {
-                  AutoRouter.of(context).push(CameraRoute());
-                },
-              ),
+              // floatingActionButton: FloatingActionButton(
+              //   onPressed: () {
+              //     AutoRouter.of(context).push(CameraRoute());
+              //   },
+              // ),
               appBar: AppBar(
                 toolbarHeight: 80.h,
                 backgroundColor: Color(0xff000649),

@@ -2,11 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:dti_web/core/widgets/auth_footer_widget.dart';
 import 'package:dti_web/core/widgets/auth_header_widget.dart';
 import 'package:dti_web/presentation/auth/pages/sign_up_page.dart';
-import 'package:dti_web/routes/app_router.dart';
-import 'package:dti_web/utils/app_color.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 @RoutePage()

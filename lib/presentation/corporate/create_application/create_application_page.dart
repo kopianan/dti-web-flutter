@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io' as io;
 import 'package:auto_route/auto_route.dart';
 import 'package:data_table_2/data_table_2.dart';
@@ -10,6 +11,7 @@ import 'package:dti_web/utils/app_color.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -49,6 +51,7 @@ class CreateApplicationModal extends StatelessWidget {
       color: Colors.white,
       width: 500,
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           Padding(
             padding: EdgeInsets.only(top: 20.w, left: 20.w, right: 20.w),
@@ -194,7 +197,8 @@ class CreateApplicationModal extends StatelessWidget {
                       labelStyle: TextStyle(fontSize: 15.sp),
                     ),
                   ],
-                )
+                ),
+                SizedBox(height: 30.h)
               ],
             ),
           ),
@@ -212,115 +216,133 @@ class FilledRecordWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 30.w),
-      child: BlocBuilder<CreateNewApplicationCubit, CreateNewApplicationState>(
-        builder: (context, state) {
-          return Column(
-            children: [
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 20.h),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          "Needs Validation",
-                          style: TextStyle(
-                              fontSize: 30.sp,
-                              color: Colors.grey,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(width: 20.sp),
-                        PrimaryButton(
-                          onClick: () {
-                            context
-                                .read<CreateNewApplicationCubit>()
-                                .resetData();
-                          },
-                          label: 'Reset',
-                          height: 40.h,
-                          width: 100.w,
-                          labelStyle: TextStyle(fontSize: 20.sp),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          "${state.body.length.toString()} Selected",
-                          style: TextStyle(
-                              fontSize: 20.sp,
-                              color: Colors.grey,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(width: 20.sp),
-                        PrimaryButton(
-                          onClick: () {
-                            final list = context
-                                .read<CreateNewApplicationCubit>()
-                                .convertDataTableToModel();
-                            context
-                                .read<AgentCubit>()
-                                .createBulkVisaApplication(list);
-                          },
-                          label: 'Confirm',
-                          height: 40.h,
-                          width: 120.w,
-                          labelStyle: TextStyle(fontSize: 20.sp),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: 30.h),
-              Expanded(
-                child: DataTable2(
-                  columnSpacing: 12,
-                  horizontalMargin: 12,
-                  minWidth: 10600,
-                  columns: state.header
-                      .map((header) => DataColumn2(
-                          fixedWidth: 300,
-                          label: Text(
-                            header?.value.toString() ?? "null",
-                            style: TextStyle(
-                              fontSize: 18.sp,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          )))
-                      .toList(),
-                  rows: state.body
-                      .map((body) => DataRow2(
-                          selected: body.selected,
-                          onTap: () {},
-                          onSelectChanged: (e) {
-                            print(e);
-                            final index = state.body.indexOf(body);
-                            context
-                                .read<CreateNewApplicationCubit>()
-                                .updateSelectedRow(index);
-                          },
-                          cells: body.bodyData
-                              .map(
-                                (e) => DataCell(
-                                  Text(
-                                    e?.value.toString() ?? "null",
-                                    style: TextStyle(
-                                        fontSize: 14.sp,
-                                        color: e?.value == null
-                                            ? Colors.red
-                                            : Colors.black),
-                                  ),
-                                ),
-                              )
-                              .toList()))
-                      .toList(),
-                ),
-              ),
-            ],
-          );
+      child: BlocListener<AgentCubit, AgentState>(
+        listener: (context, state) {
+          state.maybeMap(orElse: () {
+            EasyLoading.dismiss();
+          }, loading: (e) {
+            EasyLoading.show();
+          }, onCreateBulkVisaSuccess: (e) {
+            EasyLoading.dismiss();
+            context.read<CreateNewApplicationCubit>().resetData();
+          });
         },
+        child:
+            BlocBuilder<CreateNewApplicationCubit, CreateNewApplicationState>(
+          builder: (context, state) {
+            return Column(
+              children: [
+                Container(
+                  margin: EdgeInsets.symmetric(vertical: 20.h),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            "Needs Validation",
+                            style: TextStyle(
+                                fontSize: 30.sp,
+                                color: Colors.grey,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(width: 20.sp),
+                          PrimaryButton(
+                            onClick: () {
+                              context
+                                  .read<CreateNewApplicationCubit>()
+                                  .resetData();
+                            },
+                            label: 'Reset',
+                            height: 40.h,
+                            width: 100.w,
+                            labelStyle: TextStyle(fontSize: 20.sp),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            "${state.totalSelected} Selected",
+                            style: TextStyle(
+                                fontSize: 20.sp,
+                                color: Colors.grey,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(width: 20.sp),
+                          PrimaryButton(
+                            onClick: () {
+                              final list = context
+                                  .read<CreateNewApplicationCubit>()
+                                  .convertDataTableToModel();
+                              context
+                                  .read<AgentCubit>()
+                                  .createBulkVisaApplication(list);
+                            },
+                            label: 'Confirm',
+                            height: 40.h,
+                            width: 120.w,
+                            labelStyle: TextStyle(fontSize: 20.sp),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 30.h),
+                Expanded(
+                  child: DataTable2(
+                    columnSpacing: 12,
+                    horizontalMargin: 12,
+                    minWidth: 10600,
+                    onSelectAll: (e) {
+                      context
+                          .read<CreateNewApplicationCubit>()
+                          .updateAllSelected(e ?? false);
+                    },
+                    columns: state.header
+                        .map((header) => DataColumn2(
+                            fixedWidth: 300,
+                            label: Text(
+                              header?.value.toString() ?? "null",
+                              style: TextStyle(
+                                fontSize: 18.sp,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            )))
+                        .toList(),
+                    rows: state.body
+                        .map((body) => DataRow2(
+                            selected: body.selected,
+                            onTap: () {},
+                            onSelectChanged: (e) {
+                              log(e.toString());
+                              final index = state.body.indexOf(body);
+                              context
+                                  .read<CreateNewApplicationCubit>()
+                                  .updateSelectedRow(index);
+                            },
+                            cells: body.bodyData
+                                .map(
+                                  (e) => DataCell(
+                                    Text(
+                                      e?.value.toString() ?? "null",
+                                      style: TextStyle(
+                                          fontSize: 14.sp,
+                                          color: e?.value == null
+                                              ? Colors.red
+                                              : Colors.black),
+                                    ),
+                                  ),
+                                )
+                                .toList()))
+                        .toList(),
+                  ),
+                ),
+              ],
+            );
+          },
+        ),
       ),
     );
   }

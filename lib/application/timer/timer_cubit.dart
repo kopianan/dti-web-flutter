@@ -34,13 +34,11 @@ class TimerCubit extends Cubit<TimerState> {
           timer.cancel();
           startTimer();
         } else {
-          print(decodedToken);
-
           // if (_start < 10) {
           //   //check remaingin
           //   if (remaining.inSeconds < 10) {
           //     iOther.refreshToken().then((value) {
-          //       print(value);
+          //       log(value);
           //       //re run  timer
           //       startTimer(10);
           //     });

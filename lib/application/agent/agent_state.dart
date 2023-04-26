@@ -7,4 +7,5 @@ class AgentState with _$AgentState {
   const factory AgentState.loading() = _Loading;
   const factory AgentState.onCreateBulkVisaSuccess(String message) =
       _OnCreateBulkVisaSuccess;
+  const factory AgentState.onDeleteBulkSuccess() = _OnDeleteBulkSuccess;
 }

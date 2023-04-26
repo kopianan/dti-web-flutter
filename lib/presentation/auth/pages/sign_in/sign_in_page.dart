@@ -44,19 +44,19 @@ class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: BlocBuilder<AuthCubit, AuthState>(
-        builder: (context, state) {
-          return FloatingActionButton(
-            onPressed: () {
-              //camera
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (e) => const CameraPage()));
-              // authCubit.loginWithEmailAndPassword(
-              //     'kopianandev@gmail.com', '123456');
-            },
-          );
-        },
-      ),
+      // floatingActionButton: BlocBuilder<AuthCubit, AuthState>(
+      //   builder: (context, state) {
+      //     return FloatingActionButton(
+      //       onPressed: () {
+      //         //camera
+      //         Navigator.of(context)
+      //             .push(MaterialPageRoute(builder: (e) => const CameraPage()));
+      //         // authCubit.loginWithEmailAndPassword(
+      //         //     'kopianandev@gmail.com', '123456');
+      //       },
+      //     );
+      //   },
+      // ),
       appBar: kDebugMode
           ? AppBar(
               backgroundColor: Colors.red,
@@ -112,7 +112,7 @@ class _SignInPageState extends State<SignInPage> {
                 if (e.isAgent) {
                   context.router.replaceAll([const CDashboardRoute()]);
                 } else {
-                  context.router.replaceAll([const DashboardRoute()]);
+                  context.router.replaceAll([const CDashboardRoute()]);
                 }
               },
               onLoginSuccessWithoutPhoneNumber: (e) {
@@ -263,7 +263,7 @@ class _SignInPageState extends State<SignInPage> {
                     ),
                     40.verticalSpace,
                     const AuthFooterWidget(),
-                    Center(child: Text("V.2.3"))
+                    Center(child: Text("V.2.4"))
                   ],
                 ),
               ),

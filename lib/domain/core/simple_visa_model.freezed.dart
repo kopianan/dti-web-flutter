@@ -23,6 +23,7 @@ mixin _$SimpleVisaModel {
   String? get firebaseDocId => throw _privateConstructorUsedError;
   String? get applicationID => throw _privateConstructorUsedError;
   String? get status => throw _privateConstructorUsedError;
+  String? get bookingCode => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
   String? get subTitle => throw _privateConstructorUsedError;
   String? get usedByDate => throw _privateConstructorUsedError;
@@ -45,6 +46,7 @@ abstract class $SimpleVisaModelCopyWith<$Res> {
       {String? firebaseDocId,
       String? applicationID,
       String? status,
+      String? bookingCode,
       String? title,
       String? subTitle,
       String? usedByDate,
@@ -68,6 +70,7 @@ class _$SimpleVisaModelCopyWithImpl<$Res, $Val extends SimpleVisaModel>
     Object? firebaseDocId = freezed,
     Object? applicationID = freezed,
     Object? status = freezed,
+    Object? bookingCode = freezed,
     Object? title = freezed,
     Object? subTitle = freezed,
     Object? usedByDate = freezed,
@@ -86,6 +89,10 @@ class _$SimpleVisaModelCopyWithImpl<$Res, $Val extends SimpleVisaModel>
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bookingCode: freezed == bookingCode
+          ? _value.bookingCode
+          : bookingCode // ignore: cast_nullable_to_non_nullable
               as String?,
       title: freezed == title
           ? _value.title
@@ -123,6 +130,7 @@ abstract class _$$_SimpleVisaModelCopyWith<$Res>
       {String? firebaseDocId,
       String? applicationID,
       String? status,
+      String? bookingCode,
       String? title,
       String? subTitle,
       String? usedByDate,
@@ -144,6 +152,7 @@ class __$$_SimpleVisaModelCopyWithImpl<$Res>
     Object? firebaseDocId = freezed,
     Object? applicationID = freezed,
     Object? status = freezed,
+    Object? bookingCode = freezed,
     Object? title = freezed,
     Object? subTitle = freezed,
     Object? usedByDate = freezed,
@@ -162,6 +171,10 @@ class __$$_SimpleVisaModelCopyWithImpl<$Res>
       status: freezed == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
+              as String?,
+      bookingCode: freezed == bookingCode
+          ? _value.bookingCode
+          : bookingCode // ignore: cast_nullable_to_non_nullable
               as String?,
       title: freezed == title
           ? _value.title
@@ -194,6 +207,7 @@ class _$_SimpleVisaModel implements _SimpleVisaModel {
       {this.firebaseDocId,
       this.applicationID,
       this.status,
+      this.bookingCode,
       this.title,
       this.subTitle,
       this.usedByDate,
@@ -210,6 +224,8 @@ class _$_SimpleVisaModel implements _SimpleVisaModel {
   @override
   final String? status;
   @override
+  final String? bookingCode;
+  @override
   final String? title;
   @override
   final String? subTitle;
@@ -222,7 +238,7 @@ class _$_SimpleVisaModel implements _SimpleVisaModel {
 
   @override
   String toString() {
-    return 'SimpleVisaModel(firebaseDocId: $firebaseDocId, applicationID: $applicationID, status: $status, title: $title, subTitle: $subTitle, usedByDate: $usedByDate, lengthOfStay: $lengthOfStay, createdDate: $createdDate)';
+    return 'SimpleVisaModel(firebaseDocId: $firebaseDocId, applicationID: $applicationID, status: $status, bookingCode: $bookingCode, title: $title, subTitle: $subTitle, usedByDate: $usedByDate, lengthOfStay: $lengthOfStay, createdDate: $createdDate)';
   }
 
   @override
@@ -235,6 +251,8 @@ class _$_SimpleVisaModel implements _SimpleVisaModel {
             (identical(other.applicationID, applicationID) ||
                 other.applicationID == applicationID) &&
             (identical(other.status, status) || other.status == status) &&
+            (identical(other.bookingCode, bookingCode) ||
+                other.bookingCode == bookingCode) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.subTitle, subTitle) ||
                 other.subTitle == subTitle) &&
@@ -248,8 +266,17 @@ class _$_SimpleVisaModel implements _SimpleVisaModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, firebaseDocId, applicationID,
-      status, title, subTitle, usedByDate, lengthOfStay, createdDate);
+  int get hashCode => Object.hash(
+      runtimeType,
+      firebaseDocId,
+      applicationID,
+      status,
+      bookingCode,
+      title,
+      subTitle,
+      usedByDate,
+      lengthOfStay,
+      createdDate);
 
   @JsonKey(ignore: true)
   @override
@@ -270,6 +297,7 @@ abstract class _SimpleVisaModel implements SimpleVisaModel {
       {final String? firebaseDocId,
       final String? applicationID,
       final String? status,
+      final String? bookingCode,
       final String? title,
       final String? subTitle,
       final String? usedByDate,
@@ -285,6 +313,8 @@ abstract class _SimpleVisaModel implements SimpleVisaModel {
   String? get applicationID;
   @override
   String? get status;
+  @override
+  String? get bookingCode;
   @override
   String? get title;
   @override

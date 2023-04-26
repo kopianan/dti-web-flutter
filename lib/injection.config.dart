@@ -88,7 +88,10 @@ _i1.GetIt $initGetIt(
   gh.lazySingleton<_i28.TimerCubit>(() => _i28.TimerCubit(gh<_i18.IOther>()));
   gh.factory<_i29.UpdateApplicationCubit>(
       () => _i29.UpdateApplicationCubit(gh<_i22.IUpdateApplication>()));
-  gh.factory<_i30.AgentCubit>(() => _i30.AgentCubit(gh<_i10.IAgent>()));
+  gh.factory<_i30.AgentCubit>(() => _i30.AgentCubit(
+        gh<_i10.IAgent>(),
+        gh<_i16.IDashboard>(),
+      ));
   gh.factory<_i31.AppListCubit>(() => _i31.AppListCubit(gh<_i12.IAppList>()));
   gh.factory<_i32.AuthCubit>(() => _i32.AuthCubit(gh<_i14.IAuth>()));
   gh.factory<_i33.DashboardCubit>(

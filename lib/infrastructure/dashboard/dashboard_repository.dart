@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:dti_web/core/storage.dart';
 import 'package:dti_web/domain/core/simple_visa_model.dart';
@@ -42,6 +44,7 @@ class DashboardRepository extends IDashboard {
       getLastPassportAndApplication() async {
     final dio = Dio();
     final storage = Storage();
+    log(storage.getToken().toString());
     try {
       final result =
           await dio.get("${dotenv.env['BASE_URL']}/overallApplicationsByUser/1",
@@ -77,7 +80,7 @@ class DashboardRepository extends IDashboard {
               headers: {'Authorization': 'Bearer ${storage.getToken()}'}));
       if (result.data['data'] != null) {
         //SUCCESS
-        print(result);
+        log(result.toString());
         return Right(result.data['data']['message']);
       }
 
@@ -101,7 +104,7 @@ class DashboardRepository extends IDashboard {
               headers: {'Authorization': 'Bearer ${storage.getToken()}'}));
       if (result.data['data'] != null) {
         //SUCCESS
-        print(result);
+        log(result.toString());
         return Right(result.data['data']['message']);
       }
 

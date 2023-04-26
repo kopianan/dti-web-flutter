@@ -1,15 +1,11 @@
-import 'dart:io';
-
+import 'package:universal_io/io.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:dti_web/routes/app_router.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 @RoutePage()
-class DTIPdfViewerPage extends StatelessWidget {
+class DTIPdfViewerPage extends StatefulWidget {
   static const String routeName = '/dti-pdf-viewer';
   final String imageUrl;
   final bool isNetwork;
@@ -23,34 +19,26 @@ class DTIPdfViewerPage extends StatelessWidget {
       this.bytesImage});
 
   @override
+  State<DTIPdfViewerPage> createState() => _DTIPdfViewerPageState();
+}
+
+class _DTIPdfViewerPageState extends State<DTIPdfViewerPage> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          actions: [
-            isNetwork
-                ? IconButton(
-                    onPressed: () {
-                      launch(this.imageUrl);
-                    },
-                    icon: Icon(
-                      Icons.download,
-                    ),
-                    iconSize: 30.sp,
-                  )
-                : SizedBox()
-          ],
           leading: IconButton(
               onPressed: () {
                 AutoRouter.of(context).pop();
               },
-              icon: Icon(Icons.close)),
+              icon: const Icon(Icons.close)),
           backgroundColor: Colors.white,
           foregroundColor: Colors.black,
         ),
-        body: isNetwork
-            ? SfPdfViewer.network(imageUrl)
+        body: widget.isNetwork
+            ? SfPdfViewer.network(widget.imageUrl)
             : (kIsWeb)
-                ? SfPdfViewer.memory(bytesImage!)
-                : SfPdfViewer.file(File(imageUrl)));
+                ? SfPdfViewer.memory(widget.bytesImage!)
+                : SfPdfViewer.file(File(widget.imageUrl)));
   }
 }

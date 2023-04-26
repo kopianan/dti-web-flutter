@@ -1,14 +1,10 @@
-import 'dart:developer';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:dti_web/application/auth/auth_cubit.dart';
 import 'package:dti_web/injection.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-
-import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 @RoutePage()
 class SplashScreenPage extends StatefulWidget {
@@ -21,6 +17,13 @@ class SplashScreenPage extends StatefulWidget {
 class _SplashScreenPageState extends State<SplashScreenPage> {
   @override
   void initState() {
+    EasyLoading.instance
+      ..displayDuration = const Duration(milliseconds: 2000)
+      ..indicatorType = EasyLoadingIndicatorType.fadingCircle
+      ..loadingStyle = EasyLoadingStyle.dark
+      ..indicatorSize = 45.0
+      ..radius = 10.0
+      ..dismissOnTap = false;
     super.initState();
   }
 
@@ -35,16 +38,18 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
               orElse: () {},
               authorized: (e) {
                 if (e.userData.isAgent) {
-                  AutoRouter.of(context).replaceAll([DashboardRoute()]);
+                  AutoRouter.of(context).replaceAll([const DashboardRoute()]);
+                  // AutoRouter.of(context).replaceAll([const CDashboardRoute()]);
                 } else {
-                  AutoRouter.of(context).replaceAll([DashboardRoute()]);
+                  AutoRouter.of(context).replaceAll([const DashboardRoute()]);
+                  // AutoRouter.of(context).replaceAll([CDashboardRoute()]);
                 }
               },
               unAuthorized: (e) {
-                AutoRouter.of(context).replaceAll([SignInRoute()]);
+                AutoRouter.of(context).replaceAll([const SignInRoute()]);
               },
               isOpenFromPhone: (e) {
-                AutoRouter.of(context).replaceAll([PlatformRoute()]);
+                AutoRouter.of(context).replaceAll([const PlatformRoute()]);
               },
             );
           },

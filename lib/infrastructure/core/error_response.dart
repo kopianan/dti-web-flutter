@@ -27,6 +27,12 @@ class ErrorResponse {
 
       case DioErrorType.unknown:
         return Failures.serverError();
+      case DioErrorType.badCertificate:
+        // TODO: Handle this case.
+        break;
+      case DioErrorType.connectionError:
+        // TODO: Handle this case.
+        break;
     }
     return Failures.serverError();
   }

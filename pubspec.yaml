@@ -5,18 +5,11 @@ description: A new Flutter project.
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-# The following defines the version and build number for your application.
-# A version number is three numbers separated by dots, like 1.2.43
-# followed by an optional build number separated by a +.
-# Both the version and the builder number may be overridden in flutter
-# build by specifying --build-name and --build-number, respectively.
-# In Android, build-name is used as versionName while build-number used as versionCode.
-# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
-# In iOS, build-name is used as CFBundleShortVersionString while build-number is used as CFBundleVersion.
-# Read more about iOS versioning at
-# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-# In Windows, build-name is used as the major, minor, and patch parts
-# of the product and file versions while build-number is used as the build suffix.
+#How to deploy Prod/Env  google-signin-client_id
+#1. change dotenv for change the environment
+#2. change the firebase ID on index.html
+#3. remove file in macOs (for debug only) : GoogleService-Info and firebase_app_id_file
+#4. set flutterfire configure and change the project (this will generate removed file on number 3)
 version: 1.1.5+3
 
 environment:
@@ -34,7 +27,6 @@ dependencies:
   bloc: ^8.1.0
   build_web_compilers: ^3.2.7
   camera: ^0.10.3+2
-  # camera_web: ^0.3.1+3
   carousel_slider: ^4.1.1
   country_code_picker: ^3.0.0
   country_codes: ^2.2.0
@@ -80,6 +72,7 @@ dependencies:
   syncfusion_flutter_pdfviewer: ^21.1.38
   syncfusion_flutter_signaturepad: ^21.1.38
   toggle_switch: ^2.0.1
+  universal_io: ^2.2.0
   url_launcher: ^6.1.6
   web_browser_detect: ^2.0.3
 dependency_overrides:

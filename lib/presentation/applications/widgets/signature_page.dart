@@ -293,7 +293,7 @@ class _SignaturePageState extends State<SignaturePage> {
             //               documentType: widget.appDocument.id!.trim());
             //           // await OpenFile.open(file.path);
             //           if (isSignatureDrawed == false) {
-            //             print(isSignatureDrawed);
+            //             log(isSignatureDrawed);
             //             Get.showSnackbar(
             //               const GetSnackBar(
             //                 message: "Please draw your signature",

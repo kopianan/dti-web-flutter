@@ -256,9 +256,7 @@ class DocumentCubit extends Cubit<DocumentState> {
                     (element) => element.id == needUpdatedData!.id)] =
                 needUpdatedData.copyWith(isSubmited: true);
           }
-        } on Exception catch (e) {
-          print(e);
-        }
+        } on Exception catch (e) {}
       }
     }
 

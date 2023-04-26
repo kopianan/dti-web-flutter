@@ -2,6 +2,7 @@ part of 'create_new_application_cubit.dart';
 
 @freezed
 class CreateNewApplicationState with _$CreateNewApplicationState {
+  const CreateNewApplicationState._();
   factory CreateNewApplicationState.initial() =>
       CreateNewApplicationState(header: [], body: []);
 
@@ -11,4 +12,6 @@ class CreateNewApplicationState with _$CreateNewApplicationState {
     required List<Data?> header,
     required List<DataTableModel> body,
   }) = _CreateNewApplicationCubit;
+
+  int get totalSelected => body.where((element) => element.selected).length;
 }
