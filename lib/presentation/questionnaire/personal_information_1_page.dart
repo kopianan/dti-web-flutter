@@ -1,8 +1,6 @@
-import 'dart:developer';
 import 'package:dti_web/core/storage.dart';
 import 'package:dti_web/presentation/questionnaire/widget/custom_second_header.dart';
 import 'package:dti_web/utils/date_time_child.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:country_code_picker/country_code_picker.dart';
@@ -14,7 +12,6 @@ import 'package:dti_web/injection.dart';
 import 'package:dti_web/presentation/widgets/loading_page.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
-import 'package:dti_web/utils/constant.dart';
 import 'package:dti_web/utils/date_converter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -81,7 +78,7 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
         }, builder: (context, updateState) {
           return updateState.maybeMap(
             orElse: () {
-              return LoadingPage();
+              return const LoadingPage();
             },
             onGetSingleApplicationWithImage: (e) {
               return BlocBuilder<ApplicationCubit, ApplicationState>(
@@ -92,8 +89,8 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                       Expanded(
                         child: Container(
                             margin: EdgeInsets.symmetric(vertical: 40.h),
-                            decoration: BoxDecoration(
-                              borderRadius: const BorderRadius.horizontal(
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.horizontal(
                                   right: Radius.circular(10)),
                             ),
                             child: Column(
@@ -351,7 +348,7 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                                                       selectedItem: Storage()
                                                               .getNationality()
                                                               ?.first ??
-                                                          CountryNationality(
+                                                          const CountryNationality(
                                                               code: "1",
                                                               name: "name"),
                                                       onChanged: (value) {
@@ -428,10 +425,8 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                                                     decoration: const InputDecoration(
                                                         labelText:
                                                             "Relationshop Status",
-                                                        hintStyle:
-                                                            const TextStyle(
-                                                                color: Colors
-                                                                    .grey),
+                                                        hintStyle: TextStyle(
+                                                            color: Colors.grey),
                                                         hintText:
                                                             "Relationshop Status"),
                                                   ),
@@ -497,6 +492,33 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                                                     ),
                                                   ),
                                                   // //Deported
+                                                  20.verticalSpace,
+                                                  FormBuilderTextField(
+                                                    name: 'mothersName',
+                                                    initialValue: state
+                                                                .visaApplicationModel ==
+                                                            null
+                                                        ? ''
+                                                        : state
+                                                            .visaApplicationModel!
+                                                            .motherName,
+                                                    enableSuggestions: false,
+                                                    decoration:
+                                                        const InputDecoration(
+                                                            hintText:
+                                                                "Mother's Name",
+                                                            labelText:
+                                                                "Mother's Name"),
+                                                    autocorrect: false,
+                                                    validator: FormBuilderValidators
+                                                        .required(
+                                                            errorText:
+                                                                "Mother's name can not be empty"),
+                                                    autovalidateMode:
+                                                        AutovalidateMode
+                                                            .onUserInteraction,
+                                                    enabled: true,
+                                                  ),
                                                   20.verticalSpace,
 
                                                   FormBuilderRadioGroup(
@@ -643,6 +665,7 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
       context.read<ApplicationCubit>().updatePersonalInformation1(
             firstName: formData['firstName'],
             lastName: formData['lastName'],
+            motherName: formData['motherName'],
             placeOfBirth: formData['placeBirthDate'],
             dateOfBirth: formData['dateOfBirthDate'],
             gender: formData['gender'],

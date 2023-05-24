@@ -15,6 +15,7 @@ class VisaApplicationModel with _$VisaApplicationModel {
     String? type,
     String? selfieImage,
     String? newPassport,
+    String? motherName,
     @JsonKey(name: 'rejectionNote') String? rejectionNote,
     @JsonKey(name: 'entry') String? entry,
     @JsonKey(name: 'lastName') String? lastName,

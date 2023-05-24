@@ -151,7 +151,7 @@ class _CDashboardPageState extends State<CDashboardPage> {
     );
   }
 
-  List<Widget> _body = [
+  final List<Widget> _body = [
     Container(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         child: Column(

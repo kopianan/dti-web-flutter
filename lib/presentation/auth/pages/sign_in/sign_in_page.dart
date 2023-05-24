@@ -110,7 +110,7 @@ class _SignInPageState extends State<SignInPage> {
 
                 // getIt<TimerCubit>().startTimer();
                 if (e.isAgent) {
-                  context.router.replaceAll([const CDashboardRoute()]);
+                  context.router.replaceAll([const DashboardRoute()]);
                 } else {
                   context.router.replaceAll([const CDashboardRoute()]);
                 }
@@ -263,7 +263,7 @@ class _SignInPageState extends State<SignInPage> {
                     ),
                     40.verticalSpace,
                     const AuthFooterWidget(),
-                    Center(child: Text("V.2.4"))
+                    const Center(child: Text("V.2.4"))
                   ],
                 ),
               ),

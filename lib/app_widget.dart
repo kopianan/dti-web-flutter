@@ -18,6 +18,8 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'routes/dti_route_observer.dart';
+
 class AppWidget extends StatelessWidget {
   AppWidget({super.key});
   final _appRouter = AppRouter();
@@ -56,7 +58,8 @@ class AppWidget extends StatelessWidget {
           ),
         ],
         child: MaterialApp.router(
-          routerConfig: _appRouter.config(),
+          routerConfig:
+              _appRouter.config(navigatorObservers: () => [DTIRouteObserver()]),
           supportedLocales: FormBuilderLocalizations.supportedLocales,
           localizationsDelegates: const [
             FormBuilderLocalizations.delegate,

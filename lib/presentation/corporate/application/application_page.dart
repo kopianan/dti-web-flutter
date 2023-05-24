@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:dti_web/application/agent/agent_cubit.dart';
 import 'package:dti_web/application/app_list/app_list_cubit.dart';
 import 'package:dti_web/domain/core/simple_visa_model.dart';
 import 'package:dti_web/domain/global/data_list_model.dart';
-import 'package:dti_web/injection.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -43,7 +43,7 @@ class _ApplicationPageState extends State<ApplicationPage> {
             }
           },
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 40),
+            padding: const EdgeInsets.symmetric(horizontal: 40),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -67,7 +67,7 @@ class _ApplicationPageState extends State<ApplicationPage> {
                           "Refresh",
                           style: TextStyle(fontSize: 16.sp),
                         ),
-                        icon: Icon(Icons.refresh),
+                        icon: const Icon(Icons.refresh),
                         onPressed: () {
                           context.read<AppListCubit>().getUserApplication();
                         },
@@ -86,29 +86,29 @@ class _ApplicationPageState extends State<ApplicationPage> {
                           children: [
                             Visibility(
                               visible: state.showDeleteButton,
-                              child: Container(
+                              child: SizedBox(
                                 height: 40,
                                 width: 100,
                                 child: ElevatedButton(
-                                  child: Text("Delete"),
                                   onPressed: () {
                                     List<SimpleVisaModel> visa = [];
-                                    state.getSelectedApplication
-                                        .forEach((element) {
+                                    for (var element
+                                        in state.getSelectedApplication) {
                                       visa.add(element.bodyData);
-                                    });
+                                    }
                                     context
                                         .read<AgentCubit>()
                                         .deleteApplicationAndPassport(visa);
                                   },
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.red),
+                                  child: const Text("Delete"),
                                 ),
                               ),
                             ),
-                            SizedBox(height: 20),
+                            const SizedBox(height: 20),
                             Expanded(
-                              child: Container(
+                              child: SizedBox(
                                   width: double.infinity,
                                   child: DataTable2(
                                       showCheckboxColumn: true,
@@ -117,8 +117,8 @@ class _ApplicationPageState extends State<ApplicationPage> {
                                       horizontalMargin: 12,
                                       decoration: BoxDecoration(
                                         border: Border.all(
-                                          color:
-                                              Color.fromARGB(255, 49, 19, 19),
+                                          color: const Color.fromARGB(
+                                              255, 49, 19, 19),
                                           width: 1.0,
                                           style: BorderStyle.solid,
                                         ),
@@ -129,10 +129,9 @@ class _ApplicationPageState extends State<ApplicationPage> {
                                             .updateAllSelected(e ?? false);
                                       },
                                       columns: [
-                                        applicationHeaderColumn(label: "No"),
-                                        applicationHeaderColumn(label: "Email"),
+                                        applicationHeaderColumn(label: "Title"),
                                         applicationHeaderColumn(
-                                            label: "Visa Type"),
+                                            label: "Subtitle"),
                                         applicationHeaderColumn(
                                             label: "Status"),
                                         applicationHeaderColumn(
@@ -162,18 +161,60 @@ class _ApplicationPageState extends State<ApplicationPage> {
   DataRow applicationDataRow(DataListModel visa, int index) {
     return DataRow2(
       selected: visa.selected,
-      onSelectChanged: (e) {
-        context.read<AppListCubit>().updateSelectedRow(index);
-      },
+      // onSelectChanged: (e) {
+      // context.read<AppListCubit>().updateSelectedRow(index);
+      // },
       onTap: () {
-        AutoRouter.of(context).push(PersonalInformation1Route(
-            firebaseDocId: visa.bodyData.firebaseDocId!));
+        String subtitle = visa.bodyData.subTitle?.toLowerCase() ?? "";
+        if (visa.bodyData.status?.toLowerCase() == "draft") {
+          late String desc;
+          if (subtitle.contains('passport')) {
+            desc =
+                "You have incomplete Passport. Do you want to continue from your latest draft ? ";
+          } else if (subtitle.contains("arrival")) {
+            desc =
+                "You have incomplete Visa On Arrivale. Do you want to continue from your latest draft ? ";
+          } else {
+            desc =
+                "You have incomplete Visa Application. Do you want to continue from your latest draft ? ";
+          }
+          AwesomeDialog(
+            context: context,
+            width: 400,
+            dialogType: DialogType.info,
+            title: "Draft Application",
+            desc: desc,
+            btnCancelText: "Delete",
+            btnOkText: "Continue",
+            btnCancelOnPress: () {
+              context
+                  .read<AgentCubit>()
+                  .deleteApplicationAndPassport([visa.bodyData]);
+            },
+            btnOkOnPress: () {
+              if (subtitle.toLowerCase().contains('passport')) {
+                AutoRouter.of(context).push(PassportPersonalParticularRoute(
+                    firebaseDocId: visa.bodyData.firebaseDocId!));
+              } else {
+                AutoRouter.of(context).push(PersonalInformation1Route(
+                    firebaseDocId: visa.bodyData.firebaseDocId!));
+              }
+            },
+          ).show();
+        } else {
+          if (subtitle.toLowerCase().contains('passport')) {
+            AutoRouter.of(context).push(PassportPersonalParticularRoute(
+                firebaseDocId: visa.bodyData.firebaseDocId!));
+          } else {
+            AutoRouter.of(context).push(PersonalInformation1Route(
+                firebaseDocId: visa.bodyData.firebaseDocId!));
+          }
+        }
       },
       color: index % 2 == 0
           ? MaterialStatePropertyAll(Colors.blue[100])
-          : MaterialStatePropertyAll(Colors.white),
+          : const MaterialStatePropertyAll(Colors.white),
       cells: [
-        DataCell(Text((index + 1).toString())),
         DataCell(Text(visa.bodyData.title ?? "")),
         DataCell(Text(visa.bodyData.subTitle ?? "")),
         DataCell(Text(visa.bodyData.status ?? "")),
@@ -189,7 +230,7 @@ class _ApplicationPageState extends State<ApplicationPage> {
         padding: const EdgeInsets.symmetric(vertical: 16.0),
         child: Text(
           label,
-          style: TextStyle(
+          style: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 16.0,
           ),

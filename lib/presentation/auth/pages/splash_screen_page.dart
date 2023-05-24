@@ -42,7 +42,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
                   // AutoRouter.of(context).replaceAll([const CDashboardRoute()]);
                 } else {
                   AutoRouter.of(context).replaceAll([const DashboardRoute()]);
-                  // AutoRouter.of(context).replaceAll([CDashboardRoute()]);
+                  // AutoRouter.of(context).replaceAll([const CDashboardRoute()]);
                 }
               },
               unAuthorized: (e) {

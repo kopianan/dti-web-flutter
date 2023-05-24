@@ -102,6 +102,7 @@ class ApplicationCubit extends Cubit<ApplicationState> {
     required String placeOfBirth,
     required String dateOfBirth,
     required String gender,
+    required String motherName,
     required String relation,
     required String mobileNumber,
     String? mobileCountryCode,
@@ -111,6 +112,7 @@ class ApplicationCubit extends Cubit<ApplicationState> {
   }) async {
     var visa = state.visaApplicationModel!.copyWith(
         firstName: firstName,
+        motherName: motherName,
         lastName: lastName,
         placeOfBirth: placeOfBirth,
         dateOfBirth: dateOfBirth,

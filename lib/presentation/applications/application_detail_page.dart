@@ -274,6 +274,17 @@ class _SuccessBodyState extends State<SuccessBody> {
                                 : "NO",
                           ),
                         ]),
+                        vertDistance,
+                        TableRow(children: [
+                          DetailItemWidget(
+                            label: "Mother's Name",
+                            value: widget.visa.motherName ?? "-",
+                          ),
+                          const DetailItemWidget(
+                            label: "",
+                            value: "",
+                          ),
+                        ]),
                       ],
                     ),
                     20.verticalSpace,
