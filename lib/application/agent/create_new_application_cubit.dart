@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
 
@@ -49,7 +48,7 @@ class CreateNewApplicationCubit extends Cubit<CreateNewApplicationState> {
     try {
       final date = DateConverter.convertDateDefault(dateString);
       return date;
-    } on Exception catch (e) {
+    } on Exception {
       return dateString;
     }
   }
@@ -57,8 +56,9 @@ class CreateNewApplicationCubit extends Cubit<CreateNewApplicationState> {
   bool _checFalseOrTrue(String data) {
     if (data.trim().toLowerCase() == 'false') {
       return false;
-    } else
+    } else {
       return true;
+    }
   }
 
   List<VisaApplicationModel> convertDataTableToModel() {
@@ -107,6 +107,7 @@ class CreateNewApplicationCubit extends Cubit<CreateNewApplicationState> {
         listOfVisa.add(visa);
       }
     }
+
     return listOfVisa;
   }
 
@@ -131,9 +132,14 @@ class CreateNewApplicationCubit extends Cubit<CreateNewApplicationState> {
       final excelInfo = Excel.decodeBytes(state.excelBytes!);
       var body = excelInfo.tables[sheetName]!.rows.toList();
       var header = body.removeAt(0).toList();
-      var notSelectedBody = body
-          .map((e) => DataTableModel(bodyData: e, selected: false))
-          .toList();
+      List<DataTableModel> notSelectedBody = [];
+      log("DATA");
+      print("anan${body[4][5]!.value}anan ");
+      for (var e in body) {
+        if (e[0]?.value != null) {
+          notSelectedBody.add(DataTableModel(bodyData: e, selected: false));
+        }
+      }
       //title
       emit(state.copyWith(header: header, body: notSelectedBody));
     }

@@ -50,16 +50,18 @@ import '../presentation/auth/pages/sign_up_page.dart';
 import '../presentation/dashboard/pages/dashboard_page.dart';
 import '../presentation/landing/presentation/pages/landing_page.dart';
 import '../presentation/questionnaire/personal_information_2_page.dart';
+import 'agent_guard.dart';
+import 'user_only_guard.dart';
 // import 'package:auto_route/annotations.dart';
 
 part "app_router.gr.dart";
 
 @AutoRouterConfig(replaceInRouteName: 'Page,Route')
 class AppRouter extends _$AppRouter implements AutoRouteGuard {
+  final Storage storage = Storage();
   @override
   void onNavigation(NavigationResolver resolver, StackRouter router) {
     log("navigate");
-    final Storage storage = Storage();
 
     final token = storage.getToken();
     log(token.toString(), name: "TOKEN");
@@ -73,6 +75,7 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
   List<String> authRouteExcept = [
     SignInRoute.name,
     SignUpRoute.name,
+    SplashScreenRoute.name,
     ResetRoute.name,
     SplashScreenRoute.name,
     CreateNewPasswordRoute.name,
@@ -88,6 +91,7 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
       reverseDurationInMilliseconds: 0,
       path: '/agent-dashboard',
       page: CDashboardRoute.page,
+      guards: [AgentGuard()],
       children: [
         AutoRoute(
           path: 'create-application',
@@ -118,7 +122,10 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
     AutoRoute(
         path: PassportPersonalParticularPage.routeName,
         page: PassportPersonalParticularRoute.page),
-    AutoRoute(path: DashboardPage.routeName, page: DashboardRoute.page),
+    AutoRoute(
+        path: DashboardPage.routeName,
+        page: DashboardRoute.page,
+        guards: [UserOnlyGuard()]),
     AutoRoute(path: PlatformPage.routeName, page: PlatformRoute.page),
     AutoRoute(path: VOASummaryPage.routeName, page: VOASummaryRoute.page),
     AutoRoute(
