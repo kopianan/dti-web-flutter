@@ -494,7 +494,7 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                                                   // //Deported
                                                   20.verticalSpace,
                                                   FormBuilderTextField(
-                                                    name: 'mothersName',
+                                                    name: 'motherName',
                                                     initialValue: state
                                                                 .visaApplicationModel ==
                                                             null

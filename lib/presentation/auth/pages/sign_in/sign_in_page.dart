@@ -2,15 +2,12 @@ import 'dart:developer';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:dti_web/application/app_list/app_list_cubit.dart';
 import 'package:dti_web/application/auth/auth_cubit.dart';
-import 'package:dti_web/application/timer/timer_cubit.dart';
 import 'package:dti_web/core/widgets/auth_footer_widget.dart';
 import 'package:dti_web/core/widgets/loading_primary_button.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
 import 'package:dti_web/injection.dart';
 import 'package:dti_web/presentation/auth/widgets/password_text_field.dart';
-import 'package:dti_web/presentation/camera/camera_page.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:flutter/foundation.dart';
@@ -107,12 +104,13 @@ class _SignInPageState extends State<SignInPage> {
               },
               onLoginSuccess: (e) {
                 //get user data first.
+                log(e.isAgent.toString(), name: "AGENT");
 
                 // getIt<TimerCubit>().startTimer();
                 if (e.isAgent) {
-                  context.router.replaceAll([const DashboardRoute()]);
-                } else {
                   context.router.replaceAll([const CDashboardRoute()]);
+                } else {
+                  context.router.replaceAll([const DashboardRoute()]);
                 }
               },
               onLoginSuccessWithoutPhoneNumber: (e) {

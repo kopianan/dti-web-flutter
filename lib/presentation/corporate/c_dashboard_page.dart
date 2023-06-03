@@ -3,6 +3,7 @@ import 'package:dti_web/application/agent/agent_cubit.dart';
 import 'package:dti_web/application/agent/create_new_application_cubit.dart';
 import 'package:dti_web/application/app_list/app_list_cubit.dart';
 import 'package:dti_web/application/other/other_cubit.dart';
+import 'package:dti_web/core/storage.dart';
 import 'package:dti_web/injection.dart';
 import 'package:dti_web/presentation/corporate/application/application_page.dart';
 import 'package:dti_web/presentation/corporate/create_application/create_application_page.dart';
@@ -26,7 +27,7 @@ class _CDashboardPageState extends State<CDashboardPage> {
   @override
   Widget build(BuildContext context) {
     return AutoTabsRouter(
-      routes: [
+      routes: const [
         CustomerRoute(),
         CustomerRoute(),
         ApplicationRoute(),
@@ -76,7 +77,9 @@ class _CDashboardPageState extends State<CDashboardPage> {
                         ),
                         const Spacer(),
                         InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            Storage().deleteStorage();
+                          },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
@@ -169,8 +172,8 @@ class _CDashboardPageState extends State<CDashboardPage> {
           ],
         )),
     Container(color: Colors.blue),
-    ApplicationPage(),
-    CreateApplicationPage()
+    const ApplicationPage(),
+    const CreateApplicationPage()
   ];
 
   List<NavigationRailDestination> _menuList() => [

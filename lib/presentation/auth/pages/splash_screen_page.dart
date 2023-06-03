@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:dti_web/application/auth/auth_cubit.dart';
 import 'package:dti_web/injection.dart';
@@ -37,8 +39,9 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
             state.maybeMap(
               orElse: () {},
               authorized: (e) {
+                log(e.userData.isAgent.toString(), name: "AGENT");
                 if (e.userData.isAgent) {
-                  AutoRouter.of(context).replaceAll([const DashboardRoute()]);
+                  AutoRouter.of(context).replaceAll([const CDashboardRoute()]);
                   // AutoRouter.of(context).replaceAll([const CDashboardRoute()]);
                 } else {
                   AutoRouter.of(context).replaceAll([const DashboardRoute()]);

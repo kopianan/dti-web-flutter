@@ -18,16 +18,20 @@ class AgentRepository extends IAgent {
     final listOfRequestData = listOfVisa.map((e) {
       return e.toJson();
     }).toList();
-    final result = await dio.post(
-      '${dotenv.env['BASE_URL']}/applicationBulk',
-      data: {'listOfApplications': listOfRequestData},
-      options: Options(
-        headers: {
-          'Authorization': 'Bearer ${storage.getToken()}',
-        },
-      ),
-    );
+    try {
+      final result = await dio.post(
+        '${dotenv.env['BASE_URL']}/applicationBulk',
+        data: {'listOfApplications': listOfRequestData},
+        options: Options(
+          headers: {
+            'Authorization': 'Bearer ${storage.getToken()}',
+          },
+        ),
+      );
+    } on Exception catch (e) {
+      print(e);
+    }
 
-    return Right('listData');
+    return const Right('listData');
   }
 }

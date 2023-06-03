@@ -67,7 +67,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
 
       //DELETE IMAGE
       if (visa.selfieImage != null) {
-        await Future.delayed(Duration(seconds: 3));
+        await Future.delayed(const Duration(seconds: 3));
 
         var result = dio.post(
           '${dotenv.env['BASE_URL']}/passport/file/delete',
@@ -164,7 +164,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
 
       //DELETE IMAGE
       if (deletedImages.isNotEmpty) {
-        await Future.delayed(Duration(seconds: 3));
+        await Future.delayed(const Duration(seconds: 3));
         late Future<Response<dynamic>> result;
         if (isPassport(visa)) {
           result = dio!.post(
@@ -275,8 +275,8 @@ class IUpdateApplicationRepository extends IUpdateApplication {
       } else {
         return Right(result.data['data']['message']);
       }
-    } on Exception catch (e) {
-      return Left("");
+    } on Exception {
+      return const Left("");
     }
   }
 
@@ -290,6 +290,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
       "lastName": visaApplicationModel.lastName,
       "placeOfBirth": visaApplicationModel.placeOfBirth,
       "dateOfBirth": visaApplicationModel.dateOfBirth,
+      "motherName": visaApplicationModel.motherName,
       "gender": visaApplicationModel.gender,
       "nationality": visaApplicationModel.nationality!.toUpperCase(),
       "relationshipStatus": visaApplicationModel.relationshipStatus,
@@ -324,8 +325,8 @@ class IUpdateApplicationRepository extends IUpdateApplication {
       } else {
         return Right(result.data['data']['message']);
       }
-    } on Exception catch (e) {
-      return Left("");
+    } on Exception {
+      return const Left("");
     }
   }
 
@@ -373,8 +374,8 @@ class IUpdateApplicationRepository extends IUpdateApplication {
       } else {
         return Right(result.data['data']['message']);
       }
-    } on Exception catch (e) {
-      return Left("");
+    } on Exception {
+      return const Left("");
     }
   }
 
@@ -543,8 +544,8 @@ class IUpdateApplicationRepository extends IUpdateApplication {
         return Right(result.data['message']);
       }
       return Left(result.data['message']);
-    } on Exception catch (e) {
-      return Left("Something wrong");
+    } on Exception {
+      return const Left("Something wrong");
     }
   }
 
@@ -556,7 +557,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
 
     try {
       final result = await dio!.post(
-          "${dotenv.env['BASE_URL']}/application/multiVisaDuration/${firebaseDocId}",
+          "${dotenv.env['BASE_URL']}/application/multiVisaDuration/$firebaseDocId",
           options: Options(
             headers: {
               "Authorization": "Bearer ${storage.getToken()}",
@@ -570,8 +571,8 @@ class IUpdateApplicationRepository extends IUpdateApplication {
       } else {
         return Right(result.data['data']['message']);
       }
-    } on Exception catch (e) {
-      return Left("");
+    } on Exception {
+      return const Left("");
     }
   }
 
@@ -649,8 +650,8 @@ class IUpdateApplicationRepository extends IUpdateApplication {
       } else {
         return Right(result.data['data']['message']);
       }
-    } on Exception catch (e) {
-      return Left("");
+    } on Exception {
+      return const Left("");
     }
   }
 }
