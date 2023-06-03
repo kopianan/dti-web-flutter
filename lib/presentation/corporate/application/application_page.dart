@@ -21,6 +21,12 @@ class ApplicationPage extends StatefulWidget {
 
 class _ApplicationPageState extends State<ApplicationPage> {
   @override
+  void initState() {
+    context.read<AppListCubit>().getUserApplication();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocListener<AgentCubit, AgentState>(
@@ -78,7 +84,6 @@ class _ApplicationPageState extends State<ApplicationPage> {
                 const SizedBox(height: 20),
                 Expanded(
                   child: BlocBuilder<AppListCubit, AppListState>(
-                    bloc: context.read<AppListCubit>()..getUserApplication(),
                     builder: (context, state) {
                       if (state.status == AppListStatus.success) {
                         return Column(

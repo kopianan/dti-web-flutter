@@ -22,7 +22,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  auto_route: ^6.0.5
+  auto_route: ^7.4.0
   awesome_dialog: ^3.0.2
   bloc: ^8.1.0
   build_web_compilers: ^3.2.7
@@ -78,7 +78,7 @@ dependencies:
 dependency_overrides:
   google_sign_in_web: ^0.11.0
 dev_dependencies:
-  auto_route_generator: ^6.0.3
+  auto_route_generator: ^7.1.1
 
   build_runner: ^2.2.1
 

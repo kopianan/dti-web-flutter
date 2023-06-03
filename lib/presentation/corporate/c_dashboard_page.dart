@@ -27,9 +27,9 @@ class _CDashboardPageState extends State<CDashboardPage> {
   @override
   Widget build(BuildContext context) {
     return AutoTabsRouter(
+      inheritNavigatorObservers: true,
       routes: const [
-        CustomerRoute(),
-        CustomerRoute(),
+        AgentHomeRoute(),
         ApplicationRoute(),
         CreateApplicationRoute(),
       ],
@@ -180,22 +180,22 @@ class _CDashboardPageState extends State<CDashboardPage> {
         const NavigationRailDestination(
           icon: Icon(Icons.home_outlined, size: 30),
           selectedIcon: Icon(Icons.home, size: 30),
-          label: Text('Home', style: TextStyle(fontSize: 20)),
-        ),
-        const NavigationRailDestination(
-          icon: Icon(Icons.person_outline_rounded, size: 30),
-          selectedIcon: Icon(Icons.person_rounded, size: 30),
-          label: Text('Customers', style: TextStyle(fontSize: 20)),
-        ),
-        const NavigationRailDestination(
-          icon: Icon(Icons.star_border, size: 30),
-          selectedIcon: Icon(Icons.star, size: 30),
-          label: Text('View Application', style: TextStyle(fontSize: 20)),
+          label: Text(
+            'Home',
+            style: TextStyle(fontSize: 20, color: Colors.white),
+          ),
         ),
         const NavigationRailDestination(
           icon: Icon(Icons.star_border, size: 30),
           selectedIcon: Icon(Icons.star, size: 30),
-          label: Text('Create Application', style: TextStyle(fontSize: 20)),
+          label: Text('View Application',
+              style: TextStyle(fontSize: 20, color: Colors.white)),
+        ),
+        const NavigationRailDestination(
+          icon: Icon(Icons.star_border, size: 30),
+          selectedIcon: Icon(Icons.star, size: 30),
+          label: Text('Create Application',
+              style: TextStyle(fontSize: 20, color: Colors.white)),
         ),
       ];
 }

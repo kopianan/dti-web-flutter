@@ -10,10 +10,17 @@
 part of 'app_router.dart';
 
 abstract class _$AppRouter extends RootStackRouter {
-  _$AppRouter([GlobalKey<NavigatorState>? navigatorKey]) : super(navigatorKey);
+  // ignore: unused_element
+  _$AppRouter({super.navigatorKey});
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    AgentHomeRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AgentHomePage(),
+      );
+    },
     CDashboardRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -344,6 +351,20 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
   };
+}
+
+/// generated route for
+/// [AgentHomePage]
+class AgentHomeRoute extends PageRouteInfo<void> {
+  const AgentHomeRoute({List<PageRouteInfo>? children})
+      : super(
+          AgentHomeRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AgentHomeRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for

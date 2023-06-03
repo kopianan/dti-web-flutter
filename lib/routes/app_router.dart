@@ -1,8 +1,9 @@
+import 'dart:developer';
+
 import 'package:auto_route/auto_route.dart';
-import 'package:auto_route/annotations.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:dti_web/application/dashboard/dashboard_cubit.dart';
-import 'package:dti_web/application/document/document_cubit.dart';
+import 'package:dti_web/core/storage.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/domain/core/document_data_model.dart';
 import 'package:dti_web/domain/questionnaire/result_model.dart';
@@ -22,6 +23,7 @@ import 'package:dti_web/presentation/corporate/application/application_page.dart
 import 'package:dti_web/presentation/corporate/c_dashboard_page.dart';
 import 'package:dti_web/presentation/corporate/create_application/create_application_page.dart';
 import 'package:dti_web/presentation/corporate/customer/customer_page.dart';
+import 'package:dti_web/presentation/corporate/home/agent_home_page.dart';
 import 'package:dti_web/presentation/dashboard/pages/application_card_page.dart';
 import 'package:dti_web/presentation/payment/payment_page.dart';
 import 'package:dti_web/presentation/questionnaire/guarantor_page.dart';
@@ -32,7 +34,6 @@ import 'package:dti_web/presentation/questionnaire/personal_information_4b_page.
 import 'package:dti_web/presentation/questionnaire/photo_view_page.dart';
 import 'package:dti_web/presentation/questionnaire/questionnaire_page.dart';
 import 'package:dti_web/presentation/questionnaire/questionnaire_summary_page.dart';
-import 'package:dti_web/presentation/questionnaire/submit_screen_page.dart';
 import 'package:dti_web/presentation/questionnaire/user_domicile_page.dart';
 import 'package:dti_web/presentation/questionnaire/voa_summary_page.dart';
 import 'package:dti_web/presentation/viewer/dti_pdf_viewer_page.dart';
@@ -54,15 +55,38 @@ import '../presentation/questionnaire/personal_information_2_page.dart';
 part "app_router.gr.dart";
 
 @AutoRouterConfig(replaceInRouteName: 'Page,Route')
-class AppRouter extends _$AppRouter {
+class AppRouter extends _$AppRouter implements AutoRouteGuard {
   @override
-  RouteType get defaultRouteType => RouteType.material();
+  void onNavigation(NavigationResolver resolver, StackRouter router) {
+    log("navigate");
+    final Storage storage = Storage();
+
+    final token = storage.getToken();
+    log(token.toString(), name: "TOKEN");
+    if (token != null || authRouteExcept.contains(resolver.route.name)) {
+      resolver.next();
+    } else {
+      router.replaceAll([const SignInRoute()]);
+    }
+  }
+
+  List<String> authRouteExcept = [
+    SignInRoute.name,
+    SignUpRoute.name,
+    ResetRoute.name,
+    SplashScreenRoute.name,
+    CreateNewPasswordRoute.name,
+    CheckEmailRoute.name
+  ];
+
+  @override
+  RouteType get defaultRouteType => const RouteType.material();
   @override
   final List<AutoRoute> routes = [
     CustomRoute(
       durationInMilliseconds: 0,
       reverseDurationInMilliseconds: 0,
-      path: '/cDashboard',
+      path: '/agent-dashboard',
       page: CDashboardRoute.page,
       children: [
         AutoRoute(
@@ -70,8 +94,8 @@ class AppRouter extends _$AppRouter {
           page: CreateApplicationRoute.page,
         ),
         AutoRoute(
-          path: 'customer',
-          page: CustomerRoute.page,
+          path: 'agent-home',
+          page: AgentHomeRoute.page,
         ),
         AutoRoute(
           path: 'application',

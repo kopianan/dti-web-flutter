@@ -7,6 +7,7 @@ import 'package:dti_web/application/startup/startup_cubit.dart';
 import 'package:dti_web/application/timer/timer_cubit.dart';
 import 'package:dti_web/application/update_application/update_application_cubit.dart';
 import 'package:dti_web/injection.dart';
+import 'package:dti_web/routes/agent_observer.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:flutter/material.dart';
@@ -17,8 +18,6 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 // ignore: unused_import
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import 'routes/dti_route_observer.dart';
 
 class AppWidget extends StatelessWidget {
   AppWidget({super.key});
@@ -58,8 +57,9 @@ class AppWidget extends StatelessWidget {
           ),
         ],
         child: MaterialApp.router(
-          routerConfig:
-              _appRouter.config(navigatorObservers: () => [DTIRouteObserver()]),
+          routerConfig: _appRouter.config(
+            navigatorObservers: () => [AgentObserver()],
+          ),
           supportedLocales: FormBuilderLocalizations.supportedLocales,
           localizationsDelegates: const [
             FormBuilderLocalizations.delegate,
