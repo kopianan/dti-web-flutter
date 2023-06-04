@@ -2,6 +2,7 @@ import 'package:dti_web/application/app_list/app_list_cubit.dart';
 import 'package:dti_web/application/application_cubit.dart';
 import 'package:dti_web/application/auth/auth_cubit.dart';
 import 'package:dti_web/application/document/document_cubit.dart';
+import 'package:dti_web/application/global/global_user_cubit.dart';
 import 'package:dti_web/application/questionnaire_cubit.dart';
 import 'package:dti_web/application/startup/startup_cubit.dart';
 import 'package:dti_web/application/timer/timer_cubit.dart';
@@ -36,6 +37,9 @@ class AppWidget extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) => getIt<UpdateApplicationCubit>(),
+          ),
+          BlocProvider(
+            create: (context) => getIt<GlobalUserCubit>(),
           ),
           BlocProvider(
             create: (context) => getIt<DocumentCubit>(),

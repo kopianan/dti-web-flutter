@@ -32,7 +32,7 @@ class _CreateApplicationPageState extends State<CreateApplicationPage> {
           if (state.excelBytes != null) {
             return FilledRecordWidget();
           } else {
-            return EmptyRecordWidget();
+            return const EmptyRecordWidget();
           }
         },
       ),
@@ -69,7 +69,7 @@ class CreateApplicationModal extends StatelessWidget {
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  icon: Icon(Icons.close),
+                  icon: const Icon(Icons.close),
                   iconSize: 30.sp,
                 )
               ],
@@ -304,7 +304,7 @@ class FilledRecordWidget extends StatelessWidget {
                         .map((header) => DataColumn2(
                             fixedWidth: 300,
                             label: Text(
-                              header?.value.toString() ?? "null",
+                              header?.value.toString() ?? "-",
                               style: TextStyle(
                                 fontSize: 18.sp,
                                 fontWeight: FontWeight.bold,
@@ -326,7 +326,9 @@ class FilledRecordWidget extends StatelessWidget {
                                 .map(
                                   (e) => DataCell(
                                     Text(
-                                      e?.value.toString() ?? "null",
+                                      e?.value == null
+                                          ? '-'
+                                          : e!.value.toString(),
                                       style: TextStyle(
                                           fontSize: 14.sp,
                                           color: e?.value == null

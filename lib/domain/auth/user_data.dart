@@ -24,7 +24,7 @@ class UserData with _$UserData {
     String? countryCode,
     String? userReferral,
   }) = _UserData;
-
+  factory UserData.empty() => UserData();
   factory UserData.fromJson(Map<String, dynamic> json) =>
       _$UserDataFromJson(json);
 }

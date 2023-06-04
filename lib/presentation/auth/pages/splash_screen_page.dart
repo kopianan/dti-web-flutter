@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:dti_web/application/auth/auth_cubit.dart';
+import 'package:dti_web/application/global/global_user_cubit.dart';
 import 'package:dti_web/injection.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:flutter/material.dart';
@@ -40,6 +41,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
               orElse: () {},
               authorized: (e) {
                 log(e.userData.isAgent.toString(), name: "AGENT");
+                getIt<GlobalUserCubit>().setUserDatata(e.userData);
                 if (e.userData.isAgent) {
                   AutoRouter.of(context).replaceAll([const CDashboardRoute()]);
                   // AutoRouter.of(context).replaceAll([const CDashboardRoute()]);

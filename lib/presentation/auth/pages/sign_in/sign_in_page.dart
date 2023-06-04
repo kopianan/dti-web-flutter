@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:auto_route/auto_route.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dti_web/application/auth/auth_cubit.dart';
+import 'package:dti_web/application/global/global_user_cubit.dart';
 import 'package:dti_web/core/widgets/auth_footer_widget.dart';
 import 'package:dti_web/core/widgets/loading_primary_button.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
@@ -104,10 +105,11 @@ class _SignInPageState extends State<SignInPage> {
               },
               onLoginSuccess: (e) {
                 //get user data first.
-                log(e.isAgent.toString(), name: "AGENT");
-
+                log(e.userData.toString(), name: "AGENT");
+                //update global state management
+                getIt<GlobalUserCubit>().setUserDatata(e.userData);
                 // getIt<TimerCubit>().startTimer();
-                if (e.isAgent) {
+                if (e.userData.isAgent) {
                   context.router.replaceAll([const CDashboardRoute()]);
                 } else {
                   context.router.replaceAll([const DashboardRoute()]);
@@ -261,7 +263,7 @@ class _SignInPageState extends State<SignInPage> {
                     ),
                     40.verticalSpace,
                     const AuthFooterWidget(),
-                    const Center(child: Text("V.2.4"))
+                    const Center(child: Text("V.3.0 + agent"))
                   ],
                 ),
               ),

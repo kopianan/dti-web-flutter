@@ -5,7 +5,6 @@ import 'package:dti_web/core/storage.dart';
 import 'package:dti_web/domain/auth/i_auth.dart';
 import 'package:dti_web/domain/auth/user_data.dart';
 import 'package:dti_web/domain/global/failures.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
@@ -22,7 +21,7 @@ class AuthCubit extends Cubit<AuthState> {
 
   final Storage storage = Storage();
   void clean() {
-    emit(AuthState.initial());
+    emit(const AuthState.initial());
   }
 
   void signOut() async {
@@ -110,7 +109,7 @@ class AuthCubit extends Cubit<AuthState> {
           (l) => null,
           (userData) {
             storage.saveUser(userData);
-            emit(AuthState.onLoginSuccess(r, userData.isAgent));
+            emit(AuthState.onLoginSuccess(r, userData));
           },
         );
       },
@@ -118,7 +117,7 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   void loginUsingGoogle({GoogleSignInAccount? accountUser}) async {
-    emit(AuthState.loading());
+    emit(const AuthState.loading());
     final result = await iAuth.loginWithGoogle(accountUser: accountUser);
 
     //SAVE DATA TO LOCALE
@@ -135,10 +134,10 @@ class AuthCubit extends Cubit<AuthState> {
             (l) => null,
             (userData) {
               if (userData.mobileNumber != null) {
-                emit(AuthState.onLoginSuccess(r.token, userData.isAgent));
+                emit(AuthState.onLoginSuccess(r.token, userData));
               } else {
                 emit(AuthState.onLoginSuccessWithoutPhoneNumber(
-                    r.token, userData.isAgent));
+                    r.token, userData));
               }
             },
           );
@@ -148,7 +147,7 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   void loginUsingFacebook() async {
-    emit(AuthState.loading());
+    emit(const AuthState.loading());
 
     final result = await iAuth.signinUsingFacebook();
 
@@ -157,7 +156,7 @@ class AuthCubit extends Cubit<AuthState> {
       (l) => emit(AuthState.onError(l)),
       (r) async {
         await storage.saveToken(r);
-        emit(AuthState.onLoginSuccess(r, false));
+        emit(AuthState.onLoginSuccess(r, UserData(isAgent: false)));
       },
     );
   }

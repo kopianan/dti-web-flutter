@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
@@ -133,15 +132,35 @@ class CreateNewApplicationCubit extends Cubit<CreateNewApplicationState> {
       var body = excelInfo.tables[sheetName]!.rows.toList();
       var header = body.removeAt(0).toList();
       List<DataTableModel> notSelectedBody = [];
-      log("DATA");
-      print("anan${body[4][5]!.value}anan ");
-      for (var e in body) {
-        if (e[0]?.value != null) {
+
+      for (int i = 0; i < body.length; i++) {
+        var e = body[i];
+        final totalLength = e.length;
+        final reallyNull = e.where((element) => element?.value == null).length;
+
+        if (reallyNull >= totalLength - 1) {
+          //do nothing
+        } else {
+          var dateOfBirth = e[15]?.value.toString();
+          var dateOfIssue = e[23]?.value.toString();
+          var dateOfExpiration = e[24]?.value.toString();
+          e[15]?.value = convertDateOfTheField(dateOfBirth);
+          e[23]?.value = convertDateOfTheField(dateOfIssue);
+          e[24]?.value = convertDateOfTheField(dateOfExpiration);
+
           notSelectedBody.add(DataTableModel(bodyData: e, selected: false));
         }
       }
       //title
       emit(state.copyWith(header: header, body: notSelectedBody));
+    }
+  }
+
+  String? convertDateOfTheField(String? date) {
+    if (date != null) {
+      return DateConverter.convertDateDefault(date);
+    } else {
+      return date;
     }
   }
   //  var excel = Excel.decodeBytes(excelFile.toList());

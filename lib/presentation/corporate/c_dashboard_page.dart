@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:dti_web/application/agent/agent_cubit.dart';
 import 'package:dti_web/application/agent/create_new_application_cubit.dart';
 import 'package:dti_web/application/app_list/app_list_cubit.dart';
+import 'package:dti_web/application/global/global_user_cubit.dart';
 import 'package:dti_web/application/other/other_cubit.dart';
 import 'package:dti_web/core/storage.dart';
 import 'package:dti_web/injection.dart';
@@ -68,12 +69,16 @@ class _CDashboardPageState extends State<CDashboardPage> {
                       children: [
                         Image.asset('assets/imgs/me.png'),
                         20.horizontalSpace,
-                        const Text(
-                          "Welcome, Name Here",
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
+                        BlocBuilder<GlobalUserCubit, GlobalUserState>(
+                          builder: (context, state) {
+                            return Text(
+                              "Welcome, ${state.user.name ?? "-"}",
+                              style: const TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            );
+                          },
                         ),
                         const Spacer(),
                         InkWell(
