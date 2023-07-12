@@ -54,105 +54,136 @@ class _CDashboardPageState extends State<CDashboardPage> {
                 ..getDocumentsData(),
             ),
           ],
-          child: Scaffold(
-            body: Column(
-              children: [
-                Card(
-                  margin: EdgeInsets.zero,
-                  child: Container(
-                    width: double.infinity,
-                    height: 100,
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 20),
-                    color: Colors.white,
-                    child: Row(
-                      children: [
-                        Image.asset('assets/imgs/me.png'),
-                        20.horizontalSpace,
-                        BlocBuilder<GlobalUserCubit, GlobalUserState>(
-                          builder: (context, state) {
-                            return Text(
-                              "Welcome, ${state.user.name ?? "-"}",
-                              style: const TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            );
-                          },
-                        ),
-                        const Spacer(),
-                        InkWell(
-                          onTap: () {
-                            Storage().deleteStorage();
-                          },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              const Icon(Icons.logout,
-                                  color: Colors.grey, size: 25),
-                              10.horizontalSpace,
-                              const Text(
-                                "Logout",
-                                style: TextStyle(
+          child: BlocBuilder<OtherCubit, OtherState>(
+            builder: (context, state) {
+              return Scaffold(
+                body: Column(
+                  children: [
+                    Card(
+                      elevation: 7,
+                      margin: const EdgeInsets.only(bottom: 10),
+                      child: Container(
+                        width: double.infinity,
+                        height: 100,
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 20),
+                        color: Colors.white,
+                        child: Row(
+                          children: [
+                            Image.asset('assets/imgs/me.png'),
+                            20.horizontalSpace,
+                            BlocBuilder<GlobalUserCubit, GlobalUserState>(
+                              builder: (context, state) {
+                                return Text(
+                                  "Welcome, ${state.user.name ?? "-"}",
+                                  style: const TextStyle(
                                     fontSize: 20,
-                                    color: Colors.grey,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Row(
-                    children: [
-                      NavigationRail(
-                        backgroundColor: AppColor.primaryColor,
-                        minExtendedWidth: 300,
-                        elevation: 10,
-                        extended: true,
-                        selectedLabelTextStyle: const TextStyle(fontSize: 20),
-                        unselectedLabelTextStyle: const TextStyle(fontSize: 20),
-                        selectedIconTheme:
-                            const IconThemeData(color: Colors.white),
-                        unselectedIconTheme:
-                            const IconThemeData(color: Colors.white),
-                        indicatorColor: Colors.blue[300],
-                        selectedIndex: tabsRouter.activeIndex,
-                        onDestinationSelected: (e) {
-                          tabsRouter.setActiveIndex(e);
-
-                          // switch (e) {
-                          //   case 0:
-                          //     context.router.push(const CustomerRoute());
-                          //     break;
-                          //   case 1:
-                          //     context.router.push(const CustomerRoute());
-                          //     break;
-                          //   case 2:
-                          //     context.router.push(const ApplicationRoute());
-                          //     break;
-                          //   case 3:
-                          //     context.router
-                          //         .push(const CreateApplicationRoute());
-                          //     break;
-                          // }
-                          // setState(() {
-                          // //   selected = e;
-                          // // });
-                        },
-                        destinations: _menuList(),
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                );
+                              },
+                            ),
+                            const Spacer(),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                InkWell(
+                                  onTap: () {},
+                                  child: Row(
+                                    children: [
+                                      const Icon(Icons.notifications_active,
+                                          color: Colors.grey, size: 25),
+                                      10.horizontalSpace,
+                                      const Text(
+                                        "Notification",
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            color: Colors.grey,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                30.horizontalSpace,
+                                InkWell(
+                                  onTap: () {
+                                    Storage().deleteStorage();
+                                    AutoRouter.of(context)
+                                        .replaceAll([const SignInRoute()]);
+                                  },
+                                  child: Row(
+                                    children: [
+                                      const Icon(Icons.logout,
+                                          color: Colors.grey, size: 25),
+                                      10.horizontalSpace,
+                                      const Text(
+                                        "Logout",
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            color: Colors.grey,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            )
+                          ],
+                        ),
                       ),
-                      // const VerticalDivider(thickness: 1, width: 1),
-                      Expanded(child: child),
-                    ],
-                  ),
+                    ),
+                    Expanded(
+                      child: Row(
+                        children: [
+                          NavigationRail(
+                            backgroundColor: AppColor.primaryColor,
+                            minExtendedWidth: 300,
+                            elevation: 10,
+                            extended: true,
+                            selectedLabelTextStyle:
+                                const TextStyle(fontSize: 20),
+                            unselectedLabelTextStyle:
+                                const TextStyle(fontSize: 20),
+                            selectedIconTheme:
+                                const IconThemeData(color: Colors.white),
+                            unselectedIconTheme:
+                                const IconThemeData(color: Colors.white),
+                            indicatorColor: Colors.blue[300],
+                            selectedIndex: tabsRouter.activeIndex,
+                            onDestinationSelected: (e) {
+                              tabsRouter.setActiveIndex(e);
+
+                              // switch (e) {
+                              //   case 0:
+                              //     context.router.push(const CustomerRoute());
+                              //     break;
+                              //   case 1:
+                              //     context.router.push(const CustomerRoute());
+                              //     break;
+                              //   case 2:
+                              //     context.router.push(const ApplicationRoute());
+                              //     break;
+                              //   case 3:
+                              //     context.router
+                              //         .push(const CreateApplicationRoute());
+                              //     break;
+                              // }
+                              // setState(() {
+                              // //   selected = e;
+                              // // });
+                            },
+                            destinations: _menuList(),
+                          ),
+                          // const VerticalDivider(thickness: 1, width: 1),
+                          Expanded(child: child),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              );
+            },
           ),
         );
       },
@@ -191,14 +222,14 @@ class _CDashboardPageState extends State<CDashboardPage> {
           ),
         ),
         const NavigationRailDestination(
-          icon: Icon(Icons.star_border, size: 30),
-          selectedIcon: Icon(Icons.star, size: 30),
+          icon: Icon(Icons.file_copy, size: 30),
+          selectedIcon: Icon(Icons.file_copy, size: 30),
           label: Text('View Application',
               style: TextStyle(fontSize: 20, color: Colors.white)),
         ),
         const NavigationRailDestination(
-          icon: Icon(Icons.star_border, size: 30),
-          selectedIcon: Icon(Icons.star, size: 30),
+          icon: Icon(Icons.edit_document, size: 30),
+          selectedIcon: Icon(Icons.edit_document, size: 30),
           label: Text('Create Application',
               style: TextStyle(fontSize: 20, color: Colors.white)),
         ),

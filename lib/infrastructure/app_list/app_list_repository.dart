@@ -30,6 +30,9 @@ class AppListRepository extends IAppList {
       final listData = (result.data['data'] as List)
           .map((e) => SimpleVisaModel.fromJson(e))
           .toList();
+      listData.sort(
+        (a, b) => a.createdDate!.compareTo(b.createdDate!),
+      );
       return Right(listData);
     } on Exception catch (e) {
       log(e.toString());

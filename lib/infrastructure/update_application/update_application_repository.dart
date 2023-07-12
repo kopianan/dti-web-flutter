@@ -1,6 +1,5 @@
 import 'dart:developer';
 import 'dart:math' as math;
-import 'package:http_parser/http_parser.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:dti_web/core/storage.dart';
@@ -12,7 +11,6 @@ import 'package:dti_web/domain/update/i_update_application.dart';
 import 'package:dti_web/domain/update/image_upload_response.dart';
 
 import 'package:dti_web/infrastructure/core/error_response.dart';
-import 'package:dti_web/utils/constant.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:injectable/injectable.dart';
@@ -243,6 +241,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
       "mobileCountryCode": visaApplicationModel.mobileCountryCode,
       "mobileDialCode": visaApplicationModel.mobileDialCode,
       "mobileNumber": visaApplicationModel.mobileNumber,
+      "motherName": visaApplicationModel.motherName,
       "deportedFlag": visaApplicationModel.deportedFlag,
       "overstayedFlag": visaApplicationModel.overstayedFlag,
       "passportNumber": visaApplicationModel.passportNumber,

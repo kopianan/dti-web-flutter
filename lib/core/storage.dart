@@ -71,8 +71,8 @@ class Storage {
 
   List<DocumentDataModel> loadDocument() {
     final result = box.read(DOCUMENTS);
-    List list = json.decode(result);
-    if (list != null) {
+    if (result != null) {
+      List list = json.decode(result);
       final lists = list.map((e) => DocumentDataModel.fromJson(e)).toList();
       return lists;
     }
@@ -82,14 +82,14 @@ class Storage {
 
   List<CountryNationality>? getNationality() {
     try {
-      var _stringData = box.read(NATIONALITY);
-      if (_stringData == null) return null;
+      var stringData = box.read(NATIONALITY);
+      if (stringData == null) return null;
 
-      List object = json.decode(_stringData);
+      List object = json.decode(stringData);
       final list = object.map((e) => CountryNationality.fromJson(e)).toList();
       list.sort((a, b) => a.name.compareTo(b.name));
       return list;
-    } on Exception catch (e) {
+    } on Exception {
       return null;
     }
   }
@@ -97,6 +97,6 @@ class Storage {
   Future<void> setNationality(dynamic nationality) async {
     try {
       await box.write(NATIONALITY, nationality);
-    } on Exception catch (e) {}
+    } on Exception {}
   }
 }

@@ -1,7 +1,5 @@
 import 'dart:io';
-import 'dart:typed_data';
 
-import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:camera/camera.dart';
 import 'package:dti_web/application/camera/camera_cubit.dart';
@@ -27,7 +25,7 @@ class _CameraPageState extends State<CameraPage> {
   late void _initializeControllerFuture;
 
   Future<void> initCamera() async {
-    await Future.delayed(Duration(seconds: 1));
+    await Future.delayed(const Duration(seconds: 1));
     _initializeControllerFuture = await controller.initialize();
   }
 
@@ -135,11 +133,11 @@ class _CameraPageState extends State<CameraPage> {
                                       visible: cameraState.file == null
                                           ? false
                                           : true,
-                                      child: Container(
+                                      child: SizedBox(
                                         width: 200.w,
                                         height: 50.h,
                                         child: ElevatedButton(
-                                          style: ButtonStyle(
+                                          style: const ButtonStyle(
                                               elevation:
                                                   MaterialStatePropertyAll(0),
                                               backgroundColor:
@@ -154,6 +152,7 @@ class _CameraPageState extends State<CameraPage> {
                                           ),
                                           onPressed: () async {
                                             await controller.dispose();
+                                            await controller.stopImageStream();
                                             AutoRouter.of(context)
                                                 .pop(cameraState.file);
                                           },

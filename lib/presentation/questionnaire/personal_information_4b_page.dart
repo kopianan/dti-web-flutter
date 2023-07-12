@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:dti_web/application/application_cubit.dart';
 import 'package:dti_web/application/update_application/update_application_cubit.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
-import 'package:dti_web/domain/questionnaire/questionnaire_model.dart';
 import 'package:dti_web/injection.dart';
 import 'package:dti_web/presentation/questionnaire/widget/custom_second_header.dart';
 import 'package:dti_web/routes/app_router.dart';
@@ -29,7 +28,7 @@ class PersonalInformation4bPage extends StatefulWidget {
 
 class _PersonalInformation4bPageState extends State<PersonalInformation4bPage> {
   final _formKey = GlobalKey<FormBuilderState>();
-  String _current = "";
+  final String _current = "";
   var curretDate = DateTime.now();
 
   @override
@@ -51,7 +50,7 @@ class _PersonalInformation4bPageState extends State<PersonalInformation4bPage> {
             EasyLoading.show(maskType: EasyLoadingMaskType.black);
           }, onUpdateApplication: (e) {
             EasyLoading.dismiss();
-            AutoRouter.of(context).navigate(UploadDocumentRoute());
+            AutoRouter.of(context).navigate(const UploadDocumentRoute());
           });
         },
         builder: (context, state) {
@@ -199,7 +198,7 @@ class _PersonalInformation4bPageState extends State<PersonalInformation4bPage> {
                                                             .stringToDate(state
                                                                 .visaApplicationModel!
                                                                 .arrivalDate!);
-                                                      } on Exception catch (e) {
+                                                      } on Exception {
                                                         initial =
                                                             DateTime.parse(state
                                                                 .visaApplicationModel!
@@ -251,6 +250,15 @@ class _PersonalInformation4bPageState extends State<PersonalInformation4bPage> {
                                                           var x = DateFormat(
                                                                   "dd MMM yyyy")
                                                               .parse(value);
+
+                                                          if (x.isBefore(
+                                                              DateTime.now().add(
+                                                                  const Duration(
+                                                                      days:
+                                                                          1)))) {
+                                                            return "At least two days ahead from today's date";
+                                                          }
+
                                                           //maximum today
                                                           if (x.isBefore(
                                                               curretDate)) {

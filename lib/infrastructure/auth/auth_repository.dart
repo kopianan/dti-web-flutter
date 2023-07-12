@@ -15,14 +15,13 @@ import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
-import 'package:web_browser_detect/web_browser_detect.dart';
 
 @LazySingleton(as: IAuth)
 class AuthRepository extends IAuth {
   AuthRepository(this._googleSignIn, this._firebaseAuth);
   Dio? dio;
-  GoogleSignIn _googleSignIn;
-  FirebaseAuth _firebaseAuth;
+  final GoogleSignIn _googleSignIn;
+  final FirebaseAuth _firebaseAuth;
 
   @override
   Future<Either<Failures, UserData>> getUserData() async {
@@ -44,8 +43,7 @@ class AuthRepository extends IAuth {
   }
 
   @override
-  Future<Either<Failures, AuthResponse>> loginWithGoogle(
-      {GoogleSignInAccount? accountUser}) async {
+  Future<Either<Failures, AuthResponse>> loginWithGoogle() async {
     //Trigger Authentication Flow
 
     bool isNewUser = false;
@@ -53,13 +51,10 @@ class AuthRepository extends IAuth {
     GoogleSignInAccount? googleUser;
 
     try {
-      if (accountUser != null) {
-        googleUser = accountUser;
-      } else {
-        await _googleSignIn.disconnect();
-        await _googleSignIn.signOut();
-        googleUser = await _googleSignIn.signIn();
-      }
+      await _googleSignIn.disconnect();
+      await _googleSignIn.signOut();
+      googleUser = await _googleSignIn.signIn();
+      googleUser ??= await _googleSignIn.signInSilently();
     } on PlatformException catch (e) {
       switch (e.code) {
         case "popup_closed_by_user":
@@ -80,37 +75,38 @@ class AuthRepository extends IAuth {
     //check if user signedup or no
     var methods = await FirebaseAuth.instance
         .fetchSignInMethodsForEmail(googleUser.email);
-    if (methods.contains('google.com')) {
-      ///  User already signed-up with this google account
-      isNewUser = false;
-    } else {
-      ///  User is trying to sign-up for first time
+    // if (methods.contains('google.com')) {
+    //   ///  User already signed-up with this google account
+    //   isNewUser = false;
+    // } else {
+    //   ///  User is trying to sign-up for first time
+    //   isNewUser = true;
+    // }
+
+    if (methods.isEmpty) {
       isNewUser = true;
     }
-
     try {
       //Obtain the auth details from the request
       final GoogleSignInAuthentication googleAuth =
           await googleUser.authentication;
 
-      final GoogleAuthCredential credential = GoogleAuthProvider.credential(
+      final credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
-      ) as GoogleAuthCredential;
+      );
 
       //Once Sign In, return the UserCredential
-      UserCredential userCreds =
-          await _firebaseAuth.signInWithCredential(credential);
+      UserCredential userCreds = await _firebaseAuth
+          .signInWithCustomToken(credential.accessToken ?? "");
 
-      if (userCreds != null) {
-        final token = await userCreds.user!.getIdToken();
-        return right(AuthResponse(isNewUser: isNewUser, token: token));
-      }
+      final token = googleAuth.idToken ?? "";
+      return right(AuthResponse(isNewUser: isNewUser, token: token));
     } catch (e) {
       return left(Failures.noData("No Data"));
     }
 
-    return Left(Failures.serverError());
+    // return Left(Failures.serverError());
   }
 
   @override
@@ -129,7 +125,7 @@ class AuthRepository extends IAuth {
         return Right(result.data['data']['token']);
       }
       // return
-      return Left("Something wrong");
+      return const Left("Something wrong");
     } on DioError catch (e) {
       if (e.type == DioErrorType.badResponse) {
         if (e.response != null) {
@@ -137,7 +133,7 @@ class AuthRepository extends IAuth {
             return Left(e.response!.data!['error']);
           }
           if (e.response!.statusCode == 500) {
-            return Left("Server Error");
+            return const Left("Server Error");
           }
         }
       }
@@ -253,8 +249,8 @@ class AuthRepository extends IAuth {
       final LoginResult loginResult = await FacebookAuth.instance.login();
       if (loginResult.status == LoginStatus.success) {
         //Check the if the email is exist
-        var _email = await FacebookAuth.i.getUserData(fields: "email");
-        if (_email['email'] == "" || _email['email'] == null) {
+        var email = await FacebookAuth.i.getUserData(fields: "email");
+        if (email['email'] == "" || email['email'] == null) {
           return left(Failures.authError("Email was not set on Facebook."));
         }
 
@@ -267,10 +263,8 @@ class AuthRepository extends IAuth {
 // Once signed in, return the UserCredential
         UserCredential userCreds = await FirebaseAuth.instance
             .signInWithCredential(facebookAuthCredential);
-        if (userCreds != null) {
-          final token = await userCreds.user!.getIdToken();
-          return right(token);
-        }
+        final token = await userCreds.user!.getIdToken();
+        return right(token);
 
         return left(Failures.authError("Something wrong"));
       } else {

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class BannerHomeWidget extends StatelessWidget {
   const BannerHomeWidget({
@@ -34,7 +35,10 @@ class BannerHomeWidget extends StatelessWidget {
                   Row(
                     children: [
                       ElevatedButton(
-                          onPressed: () {}, child: const Text("Let's Go")),
+                          onPressed: () {
+                            launch("https://wa.me/6281337308850");
+                          },
+                          child: const Text("Let's Go")),
                       const Spacer(),
                       Row(
                         children: [

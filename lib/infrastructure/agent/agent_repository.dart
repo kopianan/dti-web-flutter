@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:dti_web/core/storage.dart';
@@ -18,6 +20,8 @@ class AgentRepository extends IAgent {
     final listOfRequestData = listOfVisa.map((e) {
       return e.toJson();
     }).toList();
+
+    print(json.encode(listOfRequestData));
     try {
       final result = await dio.post(
         '${dotenv.env['BASE_URL']}/applicationBulk',
@@ -28,6 +32,7 @@ class AgentRepository extends IAgent {
           },
         ),
       );
+      print(result);
     } on Exception catch (e) {
       print(e);
     }
