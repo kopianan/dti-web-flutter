@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:dti_web/core/storage.dart';
@@ -27,69 +25,52 @@ class AuthRepository extends IAuth {
   Future<Either<Failures, UserData>> getUserData() async {
     final storage = Storage();
     dio = Dio();
-    late Response<dynamic> result;
+
     try {
-      result = await dio!.get(
+      final result = await dio!.get(
         "${dotenv.env['BASE_URL']}/user",
         options: Options(
           headers: {'Authorization': 'Bearer ${storage.getToken()}'},
         ),
       );
-    } on Exception catch (e) {
-      print(e);
+      if (result.data['data'] != null) {
+        //Success
+        final userRaw = result.data['data'];
+        print(userRaw.toString());
+        return Right(UserData.fromJson(userRaw));
+      } else {
+        return Left(Failures.generalError("Something wrong"));
+      }
+    } on Exception {
+      return Left(Failures.generalError("Something wrong"));
     }
-
-    if (result.data['data'] != null) {
-      //Success
-      final userRaw = (result.data['data']);
-
-      return Right(UserData.fromJson(userRaw));
-    }
-    return Left(Failures.generalError("Something wrong"));
   }
 
   @override
   Future<Either<Failures, AuthResponse>> loginWithGoogle() async {
-    bool isNewUser = false;
     var googleSignIn = GoogleSignIn(scopes: ['email']);
     GoogleSignInAccount? googleUser;
-
     try {
-      final googleSignInAccount = await googleSignIn.signIn();
-      if (googleSignInAccount == null) {
-        final GoogleSignInAuthentication googleSignInAuthentication =
-            await googleSignInAccount!.authentication;
-        final AuthCredential credential = GoogleAuthProvider.credential(
-          accessToken: googleSignInAuthentication.accessToken,
-          idToken: googleSignInAuthentication.idToken,
-        );
-
-        final UserCredential authResult =
-            await _firebaseAuth.signInWithCredential(credential);
-        final User? user = authResult.user;
-        return right(AuthResponse(
-          isNewUser: true,
-          token: googleSignInAuthentication.idToken!,
-        ));
-      } else {
-        final user = await googleSignInAccount.authentication;
-
-        final GoogleAuthCredential credential = GoogleAuthProvider.credential(
-          accessToken: user.accessToken,
-          idToken: user.idToken,
-        ) as GoogleAuthCredential;
-
-        //Once Sign In, return the UserCredential
-        UserCredential userCreds =
-            await _firebaseAuth.signInWithCredential(credential);
-
-        final token = await userCreds.user!.getIdToken();
-
-        print(token);
-        return right(AuthResponse(isNewUser: false, token: token));
+      googleUser = await googleSignIn.signInSilently();
+      googleUser ??= await googleSignIn.signIn();
+      if (googleUser == null) {
+        return Left(Failures.authError("No Goolge Provider On Browser"));
       }
+
+      final user = await googleUser.authentication;
+
+      final GoogleAuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: user.accessToken,
+        idToken: user.idToken,
+      ) as GoogleAuthCredential;
+
+      //Once Sign In, return the UserCredential
+      UserCredential userCreds =
+          await _firebaseAuth.signInWithCredential(credential);
+
+      final token = await userCreds.user!.getIdToken();
+      return right(AuthResponse(isNewUser: false, token: token));
     } on PlatformException catch (e) {
-      print(e);
       switch (e.code) {
         case "popup_closed_by_user":
           return left(Failures.authError(
@@ -98,47 +79,12 @@ class AuthRepository extends IAuth {
           return left(Failures.authError("Access denied."));
         case "immediate_failed":
           return left(Failures.authError("Unkown Error"));
+        default:
+          return left(Failures.authError("Unkown Error"));
       }
     } catch (e) {
-      log(e.toString());
+      return left(Failures.authError("Server Error"));
     }
-
-    if (googleUser == null) {
-      return left(Failures.noData("No User Found"));
-    }
-    //check if user signedup or no
-    var methods = await FirebaseAuth.instance
-        .fetchSignInMethodsForEmail(googleUser.email);
-
-    // if (methods.contains('google.com')) {
-    //   ///  User already signed-up with this google account
-    //   isNewUser = false;
-    // } else {
-    //   ///  User is trying to sign-up for first time
-    //   isNewUser = true;
-    // }
-
-    if (methods.isEmpty) {
-      isNewUser = true;
-    }
-    try {
-      //Obtain the auth details from the request
-      final GoogleSignInAuthentication googleAuth =
-          await googleUser.authentication;
-      final credential =
-          GoogleAuthProvider.credential(idToken: googleAuth.idToken);
-
-      //Once Sign In, return the UserCredential
-      // UserCredential userCreds = await _firebaseAuth
-      //     .signInWithCustomToken(credential.accessToken ?? "");
-
-      final token = googleAuth.idToken ?? "";
-      return right(AuthResponse(isNewUser: isNewUser, token: token));
-    } catch (e) {
-      return left(Failures.noData("No Data"));
-    }
-
-    // return Left(Failures.serverError());
   }
 
   @override

@@ -92,11 +92,9 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     NumberRegistrationRoute.name: (routeData) {
-      final args = routeData.argsAs<NumberRegistrationRouteArgs>(
-          orElse: () => const NumberRegistrationRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: NumberRegistrationPage(key: args.key),
+        child: const NumberRegistrationPage(),
       );
     },
     OTPRoute.name: (routeData) {
@@ -551,32 +549,16 @@ class ResetRouteArgs {
 
 /// generated route for
 /// [NumberRegistrationPage]
-class NumberRegistrationRoute
-    extends PageRouteInfo<NumberRegistrationRouteArgs> {
-  NumberRegistrationRoute({
-    Key? key,
-    List<PageRouteInfo>? children,
-  }) : super(
+class NumberRegistrationRoute extends PageRouteInfo<void> {
+  const NumberRegistrationRoute({List<PageRouteInfo>? children})
+      : super(
           NumberRegistrationRoute.name,
-          args: NumberRegistrationRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'NumberRegistrationRoute';
 
-  static const PageInfo<NumberRegistrationRouteArgs> page =
-      PageInfo<NumberRegistrationRouteArgs>(name);
-}
-
-class NumberRegistrationRouteArgs {
-  const NumberRegistrationRouteArgs({this.key});
-
-  final Key? key;
-
-  @override
-  String toString() {
-    return 'NumberRegistrationRouteArgs{key: $key}';
-  }
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for

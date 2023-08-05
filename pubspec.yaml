@@ -22,7 +22,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependency_overrides:
-  google_sign_in_web: ^0.11.0
+  # google_sign_in_web: ^0.11.0
 
 dependencies:
   auto_route: ^7.4.0
@@ -62,8 +62,8 @@ dependencies:
   get_storage: ^2.0.3
   getxbottombar: ^0.0.1
   google_fonts: ^4.0.3
-  # google_sign_in: ^6.1.4
-  google_sign_in: ^5.4.4
+  google_sign_in: ^6.1.4
+  # google_sign_in: ^5.4.4
 
   group_radio_button: ^1.2.0
   injectable: ^2.1.1

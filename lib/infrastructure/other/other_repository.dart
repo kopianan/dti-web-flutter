@@ -103,8 +103,9 @@ class OtherRepository extends IOther {
         return right(status);
       }
       return left(Failures.generalError("something wrong"));
-    } on Exception catch (e) {
-      return left(Failures.serverError());
+    } on Exception {
+      return left(
+          Failures.generalError("Wrong number, Please re-check your number"));
     }
   }
 
@@ -203,19 +204,19 @@ class OtherRepository extends IOther {
           ));
 
       if (data.data['data'] != null) {
-        final _nationality =
+        final nationality =
             data.data['data']['nationality'] as Map<String, dynamic>;
-        var _nationalityList = _nationality.entries.map((element) {
-          var _newNationality = CountryNationality(
+        var nationalityList = nationality.entries.map((element) {
+          var newNationality = CountryNationality(
             code: element.key,
             name: element.value,
           );
-          return _newNationality;
+          return newNationality;
         }).toList();
-        Storage().setNationality(json.encode(_nationalityList));
+        Storage().setNationality(json.encode(nationalityList));
 
-        log(_nationality.length.toString());
-        return Right("");
+        log(nationality.length.toString());
+        return const Right("");
       }
       return Left(Failures.generalError("Something Wrong"));
     } on DioError catch (e) {
@@ -253,7 +254,7 @@ class OtherRepository extends IOther {
         return right(data['message']);
       }
       return left(Failures.generalError("something wrong"));
-    } on Exception catch (e) {
+    } on Exception {
       return left(Failures.serverError());
     }
   }
@@ -280,7 +281,7 @@ class OtherRepository extends IOther {
         return right(data['message']);
       }
       return left(Failures.generalError("something wrong"));
-    } on Exception catch (e) {
+    } on Exception {
       return left(Failures.serverError());
     }
   }
@@ -303,7 +304,7 @@ class OtherRepository extends IOther {
         return right(newToken);
       }
       return left(Failures.generalError(data['error']));
-    } on Exception catch (e) {
+    } on Exception {
       return left(Failures.serverError());
     }
   }

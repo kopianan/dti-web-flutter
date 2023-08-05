@@ -11,7 +11,7 @@ class AgentGuard extends AutoRouteGuard {
     final user = storage.getLocalUserData();
     //to enter the agent Dashboard,
     //user has have non null token, route to dashboard, and user is agent
-    if (user!.isAgent) {
+    if (user?.isAgent == true) {
       resolver.next();
     } else {
       resolver.next(false);

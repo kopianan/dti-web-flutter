@@ -1,12 +1,11 @@
-import 'dart:developer';
 import 'package:auto_route/auto_route.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:dti_web/application/other/other_cubit.dart';
+import 'package:dti_web/core/mixin/core_mixin.dart';
 import 'package:dti_web/core/widgets/auth_footer_widget.dart';
 import 'package:dti_web/core/widgets/auth_header_widget.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
 import 'package:dti_web/injection.dart';
-import 'package:dti_web/presentation/auth/pages/phone/otp_page.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:flutter/material.dart';
@@ -19,13 +18,14 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 @RoutePage()
 class NumberRegistrationPage extends StatefulWidget {
   static const String routeName = '/number-registration';
-  NumberRegistrationPage({super.key});
+  const NumberRegistrationPage({super.key});
 
   @override
   State<NumberRegistrationPage> createState() => _NumberRegistrationPageState();
 }
 
-class _NumberRegistrationPageState extends State<NumberRegistrationPage> {
+class _NumberRegistrationPageState extends State<NumberRegistrationPage>
+    with CoreMixin {
   final formKey = GlobalKey<FormBuilderState>();
   late CountryCode countryCode;
   String? phoneNumber;
@@ -45,6 +45,25 @@ class _NumberRegistrationPageState extends State<NumberRegistrationPage> {
             state.maybeMap(
               orElse: () {
                 EasyLoading.dismiss();
+              },
+              errorState: (e) {
+                String err = "";
+                e.failures.maybeMap(
+                  orElse: () {
+                    err = "Something wrong";
+                  },
+                  generalError: (e) {
+                    err = e.err;
+                  },
+                  serverError: (e) {
+                    err = "Server Error";
+                  },
+                );
+                showErrDialog(
+                  context,
+                  title: "OTP ERROR",
+                  desc: err,
+                );
               },
               loading: (e) {
                 EasyLoading.show(maskType: EasyLoadingMaskType.black);
@@ -204,7 +223,7 @@ class _NumberRegistrationPageState extends State<NumberRegistrationPage> {
                         ),
                       ],
                     ),
-                    AuthFooterWidget()
+                    const AuthFooterWidget()
                   ],
                 ),
               ),

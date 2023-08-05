@@ -31,8 +31,7 @@ class CustomSecondHeader extends StatelessWidget {
             Expanded(child: header ?? const SizedBox()),
             InkWell(
               onTap: () {
-                AutoRouter.of(context)
-                    .pushAndPopUntil(DashboardRoute(), predicate: (e) => false);
+                AutoRouter.of(context).replaceAll([const DashboardRoute()]);
               },
               child: Image.asset(
                 'assets/images/dti_bottom_icon.png',

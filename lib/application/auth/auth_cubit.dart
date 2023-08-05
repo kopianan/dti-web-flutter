@@ -70,6 +70,8 @@ class AuthCubit extends Cubit<AuthState> {
           if (user == null) {
             emit(const AuthState.unAuthorized());
           } else {
+            await Storage().saveUser(user);
+
             emit(AuthState.authorized(user));
           }
         }
@@ -130,13 +132,17 @@ class AuthCubit extends Cubit<AuthState> {
         } else {
           final result = await iAuth.getUserData();
           result.fold(
-            (l) => null,
-            (userData) {
+            (l) => emit(AuthState.onError(l)),
+            (userData) async {
+              await Storage().saveUser(userData);
+              log(userData.mobileNumber.toString());
               if (userData.mobileNumber != null) {
                 emit(AuthState.onLoginSuccess(r.token, userData));
               } else {
                 emit(AuthState.onLoginSuccessWithoutPhoneNumber(
-                    r.token, userData));
+                  r.token,
+                  userData,
+                ));
               }
             },
           );

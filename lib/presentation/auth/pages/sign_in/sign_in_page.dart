@@ -101,7 +101,7 @@ class _SignInPageState extends State<SignInPage> {
                     .show();
               },
               onRegisterSuccess: (e) {
-                context.router.replaceAll([NumberRegistrationRoute()]);
+                context.router.replaceAll([const NumberRegistrationRoute()]);
               },
               onLoginSuccess: (e) {
                 //get user data first.
@@ -116,7 +116,7 @@ class _SignInPageState extends State<SignInPage> {
                 }
               },
               onLoginSuccessWithoutPhoneNumber: (e) {
-                context.router.replaceAll([NumberRegistrationRoute()]);
+                context.router.replaceAll([const NumberRegistrationRoute()]);
               },
             );
           },
@@ -263,7 +263,7 @@ class _SignInPageState extends State<SignInPage> {
                     ),
                     40.verticalSpace,
                     const AuthFooterWidget(),
-                    const Center(child: Text("V.3.1 + agent + bugfix"))
+                    const Center(child: Text("V.3.3"))
                   ],
                 ),
               ),
