@@ -27,11 +27,17 @@ class AuthRepository extends IAuth {
   Future<Either<Failures, UserData>> getUserData() async {
     final storage = Storage();
     dio = Dio();
-
-    final result = await dio!.get("${dotenv.env['BASE_URL']}/user",
+    late Response<dynamic> result;
+    try {
+      result = await dio!.get(
+        "${dotenv.env['BASE_URL']}/user",
         options: Options(
           headers: {'Authorization': 'Bearer ${storage.getToken()}'},
-        ));
+        ),
+      );
+    } on Exception catch (e) {
+      print(e);
+    }
 
     if (result.data['data'] != null) {
       //Success
@@ -44,18 +50,46 @@ class AuthRepository extends IAuth {
 
   @override
   Future<Either<Failures, AuthResponse>> loginWithGoogle() async {
-    //Trigger Authentication Flow
-
     bool isNewUser = false;
-
+    var googleSignIn = GoogleSignIn(scopes: ['email']);
     GoogleSignInAccount? googleUser;
 
     try {
-      await _googleSignIn.disconnect();
-      await _googleSignIn.signOut();
-      googleUser = await _googleSignIn.signIn();
-      googleUser ??= await _googleSignIn.signInSilently();
+      final googleSignInAccount = await googleSignIn.signIn();
+      if (googleSignInAccount == null) {
+        final GoogleSignInAuthentication googleSignInAuthentication =
+            await googleSignInAccount!.authentication;
+        final AuthCredential credential = GoogleAuthProvider.credential(
+          accessToken: googleSignInAuthentication.accessToken,
+          idToken: googleSignInAuthentication.idToken,
+        );
+
+        final UserCredential authResult =
+            await _firebaseAuth.signInWithCredential(credential);
+        final User? user = authResult.user;
+        return right(AuthResponse(
+          isNewUser: true,
+          token: googleSignInAuthentication.idToken!,
+        ));
+      } else {
+        final user = await googleSignInAccount.authentication;
+
+        final GoogleAuthCredential credential = GoogleAuthProvider.credential(
+          accessToken: user.accessToken,
+          idToken: user.idToken,
+        ) as GoogleAuthCredential;
+
+        //Once Sign In, return the UserCredential
+        UserCredential userCreds =
+            await _firebaseAuth.signInWithCredential(credential);
+
+        final token = await userCreds.user!.getIdToken();
+
+        print(token);
+        return right(AuthResponse(isNewUser: false, token: token));
+      }
     } on PlatformException catch (e) {
+      print(e);
       switch (e.code) {
         case "popup_closed_by_user":
           return left(Failures.authError(
@@ -75,6 +109,7 @@ class AuthRepository extends IAuth {
     //check if user signedup or no
     var methods = await FirebaseAuth.instance
         .fetchSignInMethodsForEmail(googleUser.email);
+
     // if (methods.contains('google.com')) {
     //   ///  User already signed-up with this google account
     //   isNewUser = false;
@@ -90,15 +125,12 @@ class AuthRepository extends IAuth {
       //Obtain the auth details from the request
       final GoogleSignInAuthentication googleAuth =
           await googleUser.authentication;
-
-      final credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth.accessToken,
-        idToken: googleAuth.idToken,
-      );
+      final credential =
+          GoogleAuthProvider.credential(idToken: googleAuth.idToken);
 
       //Once Sign In, return the UserCredential
-      UserCredential userCreds = await _firebaseAuth
-          .signInWithCustomToken(credential.accessToken ?? "");
+      // UserCredential userCreds = await _firebaseAuth
+      //     .signInWithCustomToken(credential.accessToken ?? "");
 
       final token = googleAuth.idToken ?? "";
       return right(AuthResponse(isNewUser: isNewUser, token: token));

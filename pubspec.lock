@@ -801,10 +801,10 @@ packages:
     dependency: "direct main"
     description:
       name: google_sign_in
-      sha256: aab6fdc41374014494f9e9026b9859e7309639d50a0bf4a2a412467a5ae4abc6
+      sha256: "821f354c053d51a2d417b02d42532a19a6ea8057d2f9ebb8863c07d81c98aaf9"
       url: "https://pub.dev"
     source: hosted
-    version: "6.1.4"
+    version: "5.4.4"
   google_sign_in_android:
     dependency: transitive
     description:
@@ -830,13 +830,13 @@ packages:
     source: hosted
     version: "2.4.0"
   google_sign_in_web:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
       name: google_sign_in_web
-      sha256: "69b9ce0e760945ff52337921a8b5871592b74c92f85e7632293310701eea68cc"
+      sha256: "9f883b9b525297663510dfbbe8b04d39715aa0abba430851f501b7d1e4b0f465"
       url: "https://pub.dev"
     source: hosted
-    version: "0.12.0+2"
+    version: "0.11.0+2"
   graphs:
     dependency: transitive
     description:
