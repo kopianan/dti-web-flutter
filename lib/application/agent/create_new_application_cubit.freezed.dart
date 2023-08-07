@@ -19,6 +19,7 @@ mixin _$CreateNewApplicationState {
   FilePickerResult? get pickedFile => throw _privateConstructorUsedError;
   Uint8List? get excelBytes => throw _privateConstructorUsedError;
   List<Data?> get header => throw _privateConstructorUsedError;
+  bool get error => throw _privateConstructorUsedError;
   List<DataTableModel> get body => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -36,6 +37,7 @@ abstract class $CreateNewApplicationStateCopyWith<$Res> {
       {FilePickerResult? pickedFile,
       Uint8List? excelBytes,
       List<Data?> header,
+      bool error,
       List<DataTableModel> body});
 }
 
@@ -56,6 +58,7 @@ class _$CreateNewApplicationStateCopyWithImpl<$Res,
     Object? pickedFile = freezed,
     Object? excelBytes = freezed,
     Object? header = null,
+    Object? error = null,
     Object? body = null,
   }) {
     return _then(_value.copyWith(
@@ -71,6 +74,10 @@ class _$CreateNewApplicationStateCopyWithImpl<$Res,
           ? _value.header
           : header // ignore: cast_nullable_to_non_nullable
               as List<Data?>,
+      error: null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as bool,
       body: null == body
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
@@ -92,6 +99,7 @@ abstract class _$$_CreateNewApplicationCubitCopyWith<$Res>
       {FilePickerResult? pickedFile,
       Uint8List? excelBytes,
       List<Data?> header,
+      bool error,
       List<DataTableModel> body});
 }
 
@@ -111,6 +119,7 @@ class __$$_CreateNewApplicationCubitCopyWithImpl<$Res>
     Object? pickedFile = freezed,
     Object? excelBytes = freezed,
     Object? header = null,
+    Object? error = null,
     Object? body = null,
   }) {
     return _then(_$_CreateNewApplicationCubit(
@@ -126,6 +135,10 @@ class __$$_CreateNewApplicationCubitCopyWithImpl<$Res>
           ? _value._header
           : header // ignore: cast_nullable_to_non_nullable
               as List<Data?>,
+      error: null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as bool,
       body: null == body
           ? _value._body
           : body // ignore: cast_nullable_to_non_nullable
@@ -142,6 +155,7 @@ class _$_CreateNewApplicationCubit extends _CreateNewApplicationCubit
       {this.pickedFile,
       this.excelBytes,
       required final List<Data?> header,
+      required this.error,
       required final List<DataTableModel> body})
       : _header = header,
         _body = body,
@@ -159,6 +173,8 @@ class _$_CreateNewApplicationCubit extends _CreateNewApplicationCubit
     return EqualUnmodifiableListView(_header);
   }
 
+  @override
+  final bool error;
   final List<DataTableModel> _body;
   @override
   List<DataTableModel> get body {
@@ -169,7 +185,7 @@ class _$_CreateNewApplicationCubit extends _CreateNewApplicationCubit
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CreateNewApplicationState(pickedFile: $pickedFile, excelBytes: $excelBytes, header: $header, body: $body)';
+    return 'CreateNewApplicationState(pickedFile: $pickedFile, excelBytes: $excelBytes, header: $header, error: $error, body: $body)';
   }
 
   @override
@@ -180,6 +196,7 @@ class _$_CreateNewApplicationCubit extends _CreateNewApplicationCubit
       ..add(DiagnosticsProperty('pickedFile', pickedFile))
       ..add(DiagnosticsProperty('excelBytes', excelBytes))
       ..add(DiagnosticsProperty('header', header))
+      ..add(DiagnosticsProperty('error', error))
       ..add(DiagnosticsProperty('body', body));
   }
 
@@ -193,6 +210,7 @@ class _$_CreateNewApplicationCubit extends _CreateNewApplicationCubit
             const DeepCollectionEquality()
                 .equals(other.excelBytes, excelBytes) &&
             const DeepCollectionEquality().equals(other._header, _header) &&
+            (identical(other.error, error) || other.error == error) &&
             const DeepCollectionEquality().equals(other._body, _body));
   }
 
@@ -202,6 +220,7 @@ class _$_CreateNewApplicationCubit extends _CreateNewApplicationCubit
       pickedFile,
       const DeepCollectionEquality().hash(excelBytes),
       const DeepCollectionEquality().hash(_header),
+      error,
       const DeepCollectionEquality().hash(_body));
 
   @JsonKey(ignore: true)
@@ -217,6 +236,7 @@ abstract class _CreateNewApplicationCubit extends CreateNewApplicationState {
       {final FilePickerResult? pickedFile,
       final Uint8List? excelBytes,
       required final List<Data?> header,
+      required final bool error,
       required final List<DataTableModel> body}) = _$_CreateNewApplicationCubit;
   _CreateNewApplicationCubit._() : super._();
 
@@ -226,6 +246,8 @@ abstract class _CreateNewApplicationCubit extends CreateNewApplicationState {
   Uint8List? get excelBytes;
   @override
   List<Data?> get header;
+  @override
+  bool get error;
   @override
   List<DataTableModel> get body;
   @override

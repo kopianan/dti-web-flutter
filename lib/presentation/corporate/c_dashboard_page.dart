@@ -153,25 +153,6 @@ class _CDashboardPageState extends State<CDashboardPage> {
                             selectedIndex: tabsRouter.activeIndex,
                             onDestinationSelected: (e) {
                               tabsRouter.setActiveIndex(e);
-
-                              // switch (e) {
-                              //   case 0:
-                              //     context.router.push(const CustomerRoute());
-                              //     break;
-                              //   case 1:
-                              //     context.router.push(const CustomerRoute());
-                              //     break;
-                              //   case 2:
-                              //     context.router.push(const ApplicationRoute());
-                              //     break;
-                              //   case 3:
-                              //     context.router
-                              //         .push(const CreateApplicationRoute());
-                              //     break;
-                              // }
-                              // setState(() {
-                              // //   selected = e;
-                              // // });
                             },
                             destinations: _menuList(),
                           ),

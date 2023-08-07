@@ -59,7 +59,7 @@ class _PassportPersonalParticularPageState
             },
             onUpdatePassport: (e) {
               EasyLoading.dismiss();
-              AutoRouter.of(context).navigate(UploadDocumentRoute());
+              AutoRouter.of(context).navigate(const UploadDocumentRoute());
             },
             onGetSinglePassportWithImage: (e) {
               //close loading dialog
@@ -88,8 +88,8 @@ class _PassportPersonalParticularPageState
                       Expanded(
                         child: Container(
                             margin: EdgeInsets.symmetric(vertical: 40.h),
-                            decoration: BoxDecoration(
-                              borderRadius: const BorderRadius.horizontal(
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.horizontal(
                                   right: Radius.circular(10)),
                             ),
                             child: Column(
@@ -192,7 +192,8 @@ class _PassportPersonalParticularPageState
                                                         AutovalidateMode
                                                             .onUserInteraction,
                                                     enabled: true,
-                                                    decoration: InputDecoration(
+                                                    decoration:
+                                                        const InputDecoration(
                                                       labelText: "Last Name",
                                                       border:
                                                           OutlineInputBorder(
@@ -202,8 +203,7 @@ class _PassportPersonalParticularPageState
                                                         ),
                                                       ),
                                                       filled: true,
-                                                      hintStyle:
-                                                          const TextStyle(
+                                                      hintStyle: TextStyle(
                                                         color: Colors.grey,
                                                       ),
                                                       hintText: "Last Name",
@@ -316,19 +316,19 @@ class _PassportPersonalParticularPageState
                                                     autovalidateMode:
                                                         AutovalidateMode
                                                             .onUserInteraction,
-                                                    decoration: InputDecoration(
+                                                    decoration:
+                                                        const InputDecoration(
                                                       labelText:
                                                           "Date of birth",
                                                       border:
-                                                          const OutlineInputBorder(
+                                                          OutlineInputBorder(
                                                         borderRadius:
                                                             BorderRadius.all(
                                                           Radius.circular(10.0),
                                                         ),
                                                       ),
                                                       filled: true,
-                                                      hintStyle:
-                                                          const TextStyle(
+                                                      hintStyle: TextStyle(
                                                         color: Colors.grey,
                                                       ),
                                                       hintText: "Date of birth",
@@ -340,10 +340,10 @@ class _PassportPersonalParticularPageState
                                                     initialValue: state
                                                         .visaApplicationModel!
                                                         .gender,
-                                                    decoration: InputDecoration(
+                                                    decoration: const InputDecoration(
                                                         labelText: "Gender",
                                                         enabledBorder:
-                                                            const UnderlineInputBorder(
+                                                            UnderlineInputBorder(
                                                                 borderSide: BorderSide(
                                                                     color: Colors
                                                                         .white))),
@@ -354,7 +354,7 @@ class _PassportPersonalParticularPageState
                                                     autovalidateMode:
                                                         AutovalidateMode
                                                             .onUserInteraction,
-                                                    options: [
+                                                    options: const [
                                                       FormBuilderFieldOption(
                                                           value: "Male",
                                                           child: Text("Male")),
@@ -411,7 +411,7 @@ class _PassportPersonalParticularPageState
                                                       fillColor: Colors.white70,
                                                     ),
                                                   ),
-                                                  SizedBox(height: 40),
+                                                  const SizedBox(height: 40),
                                                   //validate button
                                                   20.verticalSpace,
                                                   SizedBox(
@@ -480,17 +480,15 @@ class _PassportPersonalParticularPageState
       final formData = _formKey.currentState!.value;
       var visaApplication = state.visaApplicationModel;
 
-      var _curr = visaApplication!.copyWith(
+      var curr = visaApplication!.copyWith(
         firstName: formData["FirstNameField"],
         lastName: formData["LastNameField"],
         identityNumber: formData["KtpField"],
         gender: formData["GenderField"],
         dateOfBirth: formData["DateOfBirthField"],
       );
-      context.read<ApplicationCubit>().updatePassportPersonalInformation(_curr);
-      context
-          .read<UpdateApplicationCubit>()
-          .updatePassportParticularData(_curr);
+      context.read<ApplicationCubit>().updatePassportPersonalInformation(curr);
+      context.read<UpdateApplicationCubit>().updatePassportParticularData(curr);
     }
   }
 }

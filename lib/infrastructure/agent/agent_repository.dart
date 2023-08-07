@@ -39,4 +39,9 @@ class AgentRepository extends IAgent {
 
     return const Right('listData');
   }
+
+  @override
+  Future<Either<String, String>> downloadFileFromUrl() async {
+    return const Right("");
+  }
 }

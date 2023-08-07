@@ -12,14 +12,15 @@ part 'agent_cubit.freezed.dart';
 
 @injectable
 class AgentCubit extends Cubit<AgentState> {
-  AgentCubit(this.iAgent, this.iDashboard) : super(AgentState.initial());
+  AgentCubit(this.iAgent, this.iDashboard) : super(const AgentState.initial());
 
   final dio = Dio();
   final IAgent iAgent;
   final IDashboard iDashboard;
 
+  void downloadExcelTemplate(String url) async {}
   void createBulkVisaApplication(List<VisaApplicationModel> listVisa) async {
-    emit(AgentState.loading());
+    emit(const AgentState.loading());
     final result = await iAgent.createBulkData(listVisa);
 
     result.fold(
@@ -29,18 +30,17 @@ class AgentCubit extends Cubit<AgentState> {
   }
 
   void deleteApplicationAndPassport(List<SimpleVisaModel> deletedApps) async {
-    emit(AgentState.loading());
+    emit(const AgentState.loading());
     //seperate the visa type
     List<String> passport = [];
     List<String> application = [];
-    deletedApps.forEach((element) {
+    for (var element in deletedApps) {
       if (element.title!.toLowerCase().contains('passport')) {
         passport.add(element.firebaseDocId!);
       } else {
         application.add(element.firebaseDocId!);
       }
-      ;
-    });
+    }
 
     //delete passport
 
@@ -51,7 +51,7 @@ class AgentCubit extends Cubit<AgentState> {
         application.map((e) => iDashboard.deleteApplication(e)).toList();
     final resultApplication = await Future.wait(listRequestApplication);
 
-    emit(AgentState.onDeleteBulkSuccess());
+    emit(const AgentState.onDeleteBulkSuccess());
 
     // final result = await iDashboard.dele
   }

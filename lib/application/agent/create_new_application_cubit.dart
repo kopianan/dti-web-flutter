@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
@@ -24,6 +25,10 @@ class CreateNewApplicationCubit extends Cubit<CreateNewApplicationState> {
     emit(state.copyWith(body: newList));
   }
 
+  void resetErrorState() {
+    emit(state.copyWith(error: false));
+  }
+
   void updateSelectedRow(int index) {
     var row = state.body[index];
 
@@ -35,8 +40,12 @@ class CreateNewApplicationCubit extends Cubit<CreateNewApplicationState> {
   }
 
   void resetData() {
-    emit(state
-        .copyWith(body: [], header: [], pickedFile: null, excelBytes: null));
+    emit(state.copyWith(
+        body: [],
+        header: [],
+        pickedFile: null,
+        excelBytes: null,
+        error: false));
   }
 
   void setPickedFile(FilePickerResult file) {
@@ -122,7 +131,12 @@ class CreateNewApplicationCubit extends Cubit<CreateNewApplicationState> {
       }
 
       emit(state.copyWith(excelBytes: excelFile));
-      setupTable();
+      try {
+        setupTable();
+      } catch (e) {
+        emit(state.copyWith(excelBytes: null, error: true));
+        log("ERROR EXTRACTING ");
+      }
     }
   }
 

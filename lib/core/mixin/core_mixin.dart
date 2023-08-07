@@ -12,19 +12,24 @@ mixin CoreMixin {
     Function()? btnCancelOnPress,
   }) {
     AwesomeDialog(
-      context: context,
-      dialogType: DialogType.info,
-      animType: AnimType.scale,
-      headerAnimationLoop: true,
-      title: title,
-      desc: desc,
-      btnOkOnPress: btnOkOnPress ?? () {},
-      btnOkColor: Colors.blue,
-      btnOkText: okText ?? "OK",
-      btnCancelOnPress: btnCancelOnPress ?? () {},
-      btnCancelColor: Colors.red,
-      btnCancelText: cancelText ?? "Cancel",
-    ).show();
+            width: 400,
+            context: context,
+            dialogType: DialogType.info,
+            animType: AnimType.scale,
+            headerAnimationLoop: true,
+            title: title,
+            titleTextStyle:
+                const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            descTextStyle: const TextStyle(fontSize: 20),
+            desc: desc,
+            btnOkOnPress: btnOkOnPress ?? () {},
+            btnOkColor: Colors.blue,
+            btnOkText: okText ?? "OK",
+            btnCancelOnPress: btnCancelOnPress ?? () {},
+            btnCancelColor: Colors.red,
+            btnCancelText: cancelText ?? "Cancel",
+            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20))
+        .show();
   }
 
   void showErrDialog(
@@ -37,16 +42,21 @@ mixin CoreMixin {
     Function()? btnCancelOnPress,
   }) {
     AwesomeDialog(
-      context: context,
-      dialogType: DialogType.error,
-      animType: AnimType.scale,
-      headerAnimationLoop: true,
-      title: title,
-      desc: desc,
-      btnOkOnPress: btnOkOnPress ?? () {},
-      btnOkColor: Colors.red,
-      btnOkText: okText ?? "OK",
-    ).show();
+            width: 400,
+            context: context,
+            dialogType: DialogType.error,
+            animType: AnimType.scale,
+            titleTextStyle:
+                const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            descTextStyle: const TextStyle(fontSize: 20),
+            headerAnimationLoop: true,
+            title: title,
+            desc: desc,
+            btnOkOnPress: btnOkOnPress ?? () {},
+            btnOkColor: Colors.red,
+            btnOkText: okText ?? "OK",
+            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20))
+        .show();
   }
 
   void showSuccessDialog(
@@ -59,15 +69,20 @@ mixin CoreMixin {
     Function()? btnCancelOnPress,
   }) {
     AwesomeDialog(
-      context: context,
-      dialogType: DialogType.success,
-      animType: AnimType.scale,
-      headerAnimationLoop: true,
-      title: title,
-      desc: desc,
-      btnOkOnPress: btnOkOnPress ?? () {},
-      btnOkColor: Colors.green,
-      btnOkText: okText ?? "OK",
-    ).show();
+            width: 400,
+            context: context,
+            dialogType: DialogType.success,
+            animType: AnimType.scale,
+            headerAnimationLoop: true,
+            title: title,
+            titleTextStyle:
+                const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            descTextStyle: const TextStyle(fontSize: 20),
+            desc: desc,
+            btnOkOnPress: btnOkOnPress ?? () {},
+            btnOkColor: Colors.green,
+            btnOkText: okText ?? "OK",
+            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20))
+        .show();
   }
 }

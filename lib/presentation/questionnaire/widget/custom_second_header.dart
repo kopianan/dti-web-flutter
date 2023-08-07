@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:dti_web/core/storage.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +32,16 @@ class CustomSecondHeader extends StatelessWidget {
             Expanded(child: header ?? const SizedBox()),
             InkWell(
               onTap: () {
-                AutoRouter.of(context).replaceAll([const DashboardRoute()]);
+                final storage = Storage();
+                final user = storage.getLocalUserData();
+                if (user != null) {
+                  if (user.isAgent) {
+                    AutoRouter.of(context)
+                        .replaceAll([const CDashboardRoute()]);
+                  } else {
+                    AutoRouter.of(context).replaceAll([const DashboardRoute()]);
+                  }
+                }
               },
               child: Image.asset(
                 'assets/images/dti_bottom_icon.png',

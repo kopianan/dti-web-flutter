@@ -1,8 +1,9 @@
 import 'dart:developer';
-import 'dart:io' as io;
 import 'package:auto_route/auto_route.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:dti_web/application/agent/agent_cubit.dart';
+import 'package:dti_web/application/app_list/app_list_cubit.dart';
+import 'package:dti_web/core/mixin/core_mixin.dart';
 import 'package:flutter/src/painting/box_border.dart' as border;
 import 'package:dti_web/application/agent/create_new_application_cubit.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
@@ -23,11 +24,22 @@ class CreateApplicationPage extends StatefulWidget {
   State<CreateApplicationPage> createState() => _CreateApplicationPageState();
 }
 
-class _CreateApplicationPageState extends State<CreateApplicationPage> {
+class _CreateApplicationPageState extends State<CreateApplicationPage>
+    with CoreMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocBuilder<CreateNewApplicationCubit, CreateNewApplicationState>(
+      body: BlocConsumer<CreateNewApplicationCubit, CreateNewApplicationState>(
+        listener: (context, state) {
+          if (state.error == true) {
+            showErrDialog(
+              context,
+              title: "Import Error",
+              desc:
+                  "Please re-check your excel file. Make sure it follow the template given.",
+            );
+          }
+        },
         builder: (context, state) {
           if (state.excelBytes != null) {
             return FilledRecordWidget();
@@ -48,10 +60,12 @@ class CreateApplicationModal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
-      width: 500,
+      width: 600,
+      margin: const EdgeInsets.symmetric(horizontal: 30),
+      alignment: Alignment.center,
       child: Column(
-        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
         children: [
           Padding(
             padding: EdgeInsets.only(top: 20.w, left: 20.w, right: 20.w),
@@ -91,8 +105,10 @@ class CreateApplicationModal extends StatelessWidget {
                       children: [
                         InkWell(
                           onTap: () async {
-                            await launchUrl(Uri.parse(
-                                "https://docs.google.com/spreadsheets/d/1VeT0kKWpurZ7zsYqQnAUsJKxQw-gXi4h/edit?usp=share_link&ouid=111746787850921804428&rtpof=true&sd=true"));
+                            await launchUrl(
+                                Uri.parse(
+                                    "https://drive.google.com/uc?export=download&id=1VeT0kKWpurZ7zsYqQnAUsJKxQw-gXi4h"),
+                                mode: LaunchMode.externalNonBrowserApplication);
                           },
                           child: Text(
                             "Download Template",
@@ -122,26 +138,26 @@ class CreateApplicationModal extends StatelessWidget {
                           style:
                               TextStyle(fontSize: 20.sp, color: Colors.black),
                         ),
-                        const SizedBox(height: 20),
-                        Container(
-                          padding: const EdgeInsets.all(30),
-                          decoration: BoxDecoration(
-                              border: border.Border.all(color: Colors.black)),
-                          child: InkWell(
-                            onTap: () async {
-                              //get file
-                              final pickedFile =
-                                  await FilePicker.platform.pickFiles(
-                                allowMultiple: false,
-                                type: FileType.custom,
-                                allowedExtensions: ['xlsx'],
-                              );
-                              if (pickedFile != null) {
-                                //update file
-                                getIt<CreateNewApplicationCubit>()
-                                    .setPickedFile(pickedFile);
-                              }
-                            },
+                        const SizedBox(height: 30),
+                        InkWell(
+                          onTap: () async {
+                            //get file
+                            final pickedFile =
+                                await FilePicker.platform.pickFiles(
+                              allowMultiple: false,
+                              type: FileType.custom,
+                              allowedExtensions: ['xlsx'],
+                            );
+                            if (pickedFile != null) {
+                              //update file
+                              getIt<CreateNewApplicationCubit>()
+                                  .setPickedFile(pickedFile);
+                            }
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.all(30),
+                            decoration: BoxDecoration(
+                                border: border.Border.all(color: Colors.black)),
                             child: BlocBuilder<CreateNewApplicationCubit,
                                 CreateNewApplicationState>(
                               bloc: getIt<CreateNewApplicationCubit>(),
@@ -181,7 +197,9 @@ class CreateApplicationModal extends StatelessWidget {
                       height: 50.h,
                       width: 100.w,
                       bgColor: Colors.grey[100],
-                      onClick: () {},
+                      onClick: () {
+                        AutoRouter.of(context).pop();
+                      },
                       label: "Cancel",
                       labelStyle: TextStyle(
                           fontSize: 15.sp, color: AppColor.primaryColor),
@@ -208,144 +226,156 @@ class CreateApplicationModal extends StatelessWidget {
   }
 }
 
-class FilledRecordWidget extends StatelessWidget {
+class FilledRecordWidget extends StatelessWidget with CoreMixin {
   FilledRecordWidget({super.key});
   final horizontal = ScrollController();
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 30.w),
-      child: BlocListener<AgentCubit, AgentState>(
-        listener: (context, state) {
-          state.maybeMap(orElse: () {
-            EasyLoading.dismiss();
-          }, loading: (e) {
-            EasyLoading.show();
-          }, onCreateBulkVisaSuccess: (e) {
-            EasyLoading.dismiss();
-            context.read<CreateNewApplicationCubit>().resetData();
-          });
-        },
-        child:
-            BlocBuilder<CreateNewApplicationCubit, CreateNewApplicationState>(
-          builder: (context, state) {
-            return Column(
-              children: [
-                Container(
-                  margin: EdgeInsets.symmetric(vertical: 20.h),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
+    return BlocBuilder<AppListCubit, AppListState>(
+      builder: (context, state) {
+        return Container(
+          margin: EdgeInsets.symmetric(horizontal: 30.w),
+          child: BlocListener<AgentCubit, AgentState>(
+            listener: (context, state) {
+              state.maybeMap(orElse: () {
+                EasyLoading.dismiss();
+              }, loading: (e) {
+                EasyLoading.show();
+              }, onCreateBulkVisaSuccess: (e) {
+                EasyLoading.dismiss();
+                context.read<CreateNewApplicationCubit>().resetData();
+                context.read<AppListCubit>().getUserApplication();
+                context.read<CreateNewApplicationCubit>().resetErrorState();
+                //show success here
+                showSuccessDialog(
+                  context,
+                  title: "Success Import",
+                  desc: "Success import selected record.",
+                );
+              });
+            },
+            child: BlocBuilder<CreateNewApplicationCubit,
+                CreateNewApplicationState>(
+              builder: (context, state) {
+                return Column(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.symmetric(vertical: 20.h),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            "Needs Validation",
-                            style: TextStyle(
-                                fontSize: 30.sp,
-                                color: Colors.grey,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(width: 20.sp),
-                          PrimaryButton(
-                            onClick: () {
-                              context
-                                  .read<CreateNewApplicationCubit>()
-                                  .resetData();
-                            },
-                            label: 'Reset',
-                            height: 40.h,
-                            width: 100.w,
-                            labelStyle: TextStyle(fontSize: 20.sp),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            "${state.totalSelected} Selected",
-                            style: TextStyle(
-                                fontSize: 20.sp,
-                                color: Colors.grey,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(width: 20.sp),
-                          PrimaryButton(
-                            onClick: () {
-                              final list = context
-                                  .read<CreateNewApplicationCubit>()
-                                  .convertDataTableToModel();
-                              context
-                                  .read<AgentCubit>()
-                                  .createBulkVisaApplication(list);
-                            },
-                            label: 'Confirm',
-                            height: 40.h,
-                            width: 120.w,
-                            labelStyle: TextStyle(fontSize: 20.sp),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(height: 30.h),
-                Expanded(
-                  child: DataTable2(
-                    columnSpacing: 12,
-                    horizontalMargin: 12,
-                    minWidth: 10600,
-                    onSelectAll: (e) {
-                      context
-                          .read<CreateNewApplicationCubit>()
-                          .updateAllSelected(e ?? false);
-                    },
-                    columns: state.header
-                        .map((header) => DataColumn2(
-                            fixedWidth: 300,
-                            label: Text(
-                              header?.value.toString() ?? "-",
-                              style: TextStyle(
-                                fontSize: 18.sp,
-                                fontWeight: FontWeight.bold,
+                          Row(
+                            children: [
+                              Text(
+                                "Needs Validation",
+                                style: TextStyle(
+                                    fontSize: 30.sp,
+                                    color: Colors.grey,
+                                    fontWeight: FontWeight.bold),
                               ),
-                            )))
-                        .toList(),
-                    rows: state.body
-                        .map((body) => DataRow2(
-                            selected: body.selected,
-                            onTap: () {},
-                            onSelectChanged: (e) {
-                              log(e.toString());
-                              final index = state.body.indexOf(body);
-                              context
-                                  .read<CreateNewApplicationCubit>()
-                                  .updateSelectedRow(index);
-                            },
-                            cells: body.bodyData
-                                .map(
-                                  (e) => DataCell(
-                                    Text(
-                                      e?.value == null
-                                          ? '-'
-                                          : e!.value.toString(),
-                                      style: TextStyle(
-                                          fontSize: 14.sp,
-                                          color: e?.value == null
-                                              ? Colors.red
-                                              : Colors.black),
-                                    ),
+                              SizedBox(width: 20.sp),
+                              PrimaryButton(
+                                onClick: () {
+                                  context
+                                      .read<CreateNewApplicationCubit>()
+                                      .resetData();
+                                },
+                                label: 'Reset',
+                                height: 40.h,
+                                width: 100.w,
+                                labelStyle: TextStyle(fontSize: 20.sp),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                "${state.totalSelected} Selected",
+                                style: TextStyle(
+                                    fontSize: 20.sp,
+                                    color: Colors.grey,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(width: 20.sp),
+                              PrimaryButton(
+                                onClick: () {
+                                  final list = context
+                                      .read<CreateNewApplicationCubit>()
+                                      .convertDataTableToModel();
+                                  context
+                                      .read<AgentCubit>()
+                                      .createBulkVisaApplication(list);
+                                },
+                                label: 'Confirm',
+                                height: 40.h,
+                                width: 120.w,
+                                labelStyle: TextStyle(fontSize: 20.sp),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 30.h),
+                    Expanded(
+                      child: DataTable2(
+                        columnSpacing: 12,
+                        horizontalMargin: 12,
+                        minWidth: 10600,
+                        onSelectAll: (e) {
+                          context
+                              .read<CreateNewApplicationCubit>()
+                              .updateAllSelected(e ?? false);
+                        },
+                        columns: state.header
+                            .map((header) => DataColumn2(
+                                fixedWidth: 300,
+                                label: Text(
+                                  header?.value.toString() ?? "-",
+                                  style: TextStyle(
+                                    fontSize: 18.sp,
+                                    fontWeight: FontWeight.bold,
                                   ),
-                                )
-                                .toList()))
-                        .toList(),
-                  ),
-                ),
-              ],
-            );
-          },
-        ),
-      ),
+                                )))
+                            .toList(),
+                        rows: state.body
+                            .map((body) => DataRow2(
+                                selected: body.selected,
+                                onTap: () {},
+                                onSelectChanged: (e) {
+                                  log(e.toString());
+                                  final index = state.body.indexOf(body);
+                                  context
+                                      .read<CreateNewApplicationCubit>()
+                                      .updateSelectedRow(index);
+                                },
+                                cells: body.bodyData
+                                    .map(
+                                      (e) => DataCell(
+                                        Text(
+                                          e?.value == null
+                                              ? '-'
+                                              : e!.value.toString(),
+                                          style: TextStyle(
+                                              fontSize: 14.sp,
+                                              color: e?.value == null
+                                                  ? Colors.red
+                                                  : Colors.black),
+                                        ),
+                                      ),
+                                    )
+                                    .toList()))
+                            .toList(),
+                      ),
+                    ),
+                  ],
+                );
+              },
+            ),
+          ),
+        );
+      },
     );
   }
 }
@@ -371,6 +401,8 @@ class EmptyRecordWidget extends StatelessWidget {
                 alignment: Alignment.topLeft,
                 child: PrimaryButton(
                   onClick: () async {
+                    //clean first
+                    getIt<CreateNewApplicationCubit>().resetData();
                     final result = await showDialog(
                       context: context,
                       builder: (context) {

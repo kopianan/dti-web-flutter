@@ -163,6 +163,19 @@ class _ApplicationPageState extends State<ApplicationPage> {
     );
   }
 
+  bool _isOpenDetail(String status) {
+    if (status == "Completed" ||
+        status == "Submitted" ||
+        status == "Paid" ||
+        status == "Pending Payment") {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  onOpenPressed() {}
+
   DataRow applicationDataRow(DataListModel visa, int index) {
     return DataRow2(
       selected: visa.selected,
@@ -197,22 +210,50 @@ class _ApplicationPageState extends State<ApplicationPage> {
                   .deleteApplicationAndPassport([visa.bodyData]);
             },
             btnOkOnPress: () {
+              final status = visa.bodyData.status!;
               if (subtitle.toLowerCase().contains('passport')) {
-                AutoRouter.of(context).push(PassportPersonalParticularRoute(
-                    firebaseDocId: visa.bodyData.firebaseDocId!));
+                if (_isOpenDetail(status)) {
+                  AutoRouter.of(context).push(PassportDetailRoute(
+                      firebaseDocId: visa.bodyData.firebaseDocId!));
+                } else {
+                  AutoRouter.of(context).push(
+                    PassportPersonalParticularRoute(
+                      firebaseDocId: visa.bodyData.firebaseDocId!,
+                    ),
+                  );
+                }
               } else {
-                AutoRouter.of(context).push(PersonalInformation1Route(
-                    firebaseDocId: visa.bodyData.firebaseDocId!));
+                if (_isOpenDetail(status)) {
+                  AutoRouter.of(context).push(ApplicationDetailRoute(
+                      firebaseDocId: visa.bodyData.firebaseDocId!));
+                } else {
+                  AutoRouter.of(context).push(PersonalInformation1Route(
+                      firebaseDocId: visa.bodyData.firebaseDocId!));
+                }
               }
             },
           ).show();
         } else {
+          final status = visa.bodyData.status!;
           if (subtitle.toLowerCase().contains('passport')) {
-            AutoRouter.of(context).push(PassportPersonalParticularRoute(
-                firebaseDocId: visa.bodyData.firebaseDocId!));
+            if (_isOpenDetail(status)) {
+              AutoRouter.of(context).push(PassportDetailRoute(
+                  firebaseDocId: visa.bodyData.firebaseDocId!));
+            } else {
+              AutoRouter.of(context).push(
+                PassportPersonalParticularRoute(
+                  firebaseDocId: visa.bodyData.firebaseDocId!,
+                ),
+              );
+            }
           } else {
-            AutoRouter.of(context).push(PersonalInformation1Route(
-                firebaseDocId: visa.bodyData.firebaseDocId!));
+            if (_isOpenDetail(status)) {
+              AutoRouter.of(context).push(ApplicationDetailRoute(
+                  firebaseDocId: visa.bodyData.firebaseDocId!));
+            } else {
+              AutoRouter.of(context).push(PersonalInformation1Route(
+                  firebaseDocId: visa.bodyData.firebaseDocId!));
+            }
           }
         }
       },
