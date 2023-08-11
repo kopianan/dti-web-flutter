@@ -178,9 +178,7 @@ class __$$_ApplicationStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ApplicationState
-    with DiagnosticableTreeMixin
-    implements _ApplicationState {
+class _$_ApplicationState implements _ApplicationState {
   const _$_ApplicationState(
       {this.onLoading = false,
       this.onError,
@@ -222,21 +220,8 @@ class _$_ApplicationState
   final VisaApplicationModel? visaApplicationModel;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'ApplicationState(onLoading: $onLoading, onError: $onError, onSuccess: $onSuccess, documnets: $documnets, masterListData: $masterListData, visaApplicationModel: $visaApplicationModel)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'ApplicationState'))
-      ..add(DiagnosticsProperty('onLoading', onLoading))
-      ..add(DiagnosticsProperty('onError', onError))
-      ..add(DiagnosticsProperty('onSuccess', onSuccess))
-      ..add(DiagnosticsProperty('documnets', documnets))
-      ..add(DiagnosticsProperty('masterListData', masterListData))
-      ..add(DiagnosticsProperty('visaApplicationModel', visaApplicationModel));
   }
 
   @override

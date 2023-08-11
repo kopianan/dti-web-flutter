@@ -3,6 +3,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dti_web/application/document/document_cubit.dart';
 import 'package:dti_web/application/update_application/update_application_cubit.dart';
+import 'package:dti_web/core/mixin/navigate_mixin.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/injection.dart';
@@ -32,12 +33,8 @@ class PassportDetailPage extends StatefulWidget {
   State<PassportDetailPage> createState() => _PassportDetailPageState();
 }
 
-class _PassportDetailPageState extends State<PassportDetailPage> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
+class _PassportDetailPageState extends State<PassportDetailPage>
+    with NavigateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -117,7 +114,7 @@ class SuccessBody extends StatefulWidget {
   State<SuccessBody> createState() => _SuccessBodyState();
 }
 
-class _SuccessBodyState extends State<SuccessBody> {
+class _SuccessBodyState extends State<SuccessBody> with NavigateMixin {
   bool isCheckedA = false;
   bool isCheckedB = false;
   bool isCheckedC = false;
@@ -475,16 +472,15 @@ class _SuccessBodyState extends State<SuccessBody> {
                                             .toString()
                                             .contains('.pdf')) {
                                           launch(data.values.single);
-                                          // AutoRouter.of(context).navigate(
-                                          //     DTIPdfViewerRoute(
-                                          //         imageUrl: data.values.single
-                                          //             .toString(),
-                                          //         isNetwork: true));
                                         } else {
                                           AutoRouter.of(context).push(
-                                              PhotoViewRoute(images: [
-                                            data.values.single.toString()
-                                          ], isNetwork: true));
+                                            PhotoViewRoute(
+                                              images: [
+                                                data.values.single.toString()
+                                              ],
+                                              isNetwork: true,
+                                            ),
+                                          );
                                         }
                                       } catch (e) {
                                         log(e.toString());
@@ -569,10 +565,7 @@ class _SuccessBodyState extends State<SuccessBody> {
                                 height: 50,
                                 child: PrimaryButton(
                                   onClick: () {
-                                    AutoRouter.of(context).pushAndPopUntil(
-                                        const DashboardRoute(),
-                                        predicate: ModalRoute.withName(
-                                            DashboardRoute.name));
+                                    backToDashboard(context);
                                   },
                                   label: "Back to dashboard",
                                   labelStyle: TextStyle(
@@ -797,10 +790,7 @@ class _SuccessBodyState extends State<SuccessBody> {
                       ),
                       btnOkText: "Continue",
                       btnOkOnPress: () {
-                        AutoRouter.of(context).pushAndPopUntil(
-                          const DashboardRoute(),
-                          predicate: (route) => false,
-                        );
+                        backToDashboard(context);
                       },
                     ).show();
                   });

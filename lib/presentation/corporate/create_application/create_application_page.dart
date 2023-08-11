@@ -237,23 +237,29 @@ class FilledRecordWidget extends StatelessWidget with CoreMixin {
         return Container(
           margin: EdgeInsets.symmetric(horizontal: 30.w),
           child: BlocListener<AgentCubit, AgentState>(
-            listener: (context, state) {
-              state.maybeMap(orElse: () {
-                EasyLoading.dismiss();
-              }, loading: (e) {
-                EasyLoading.show();
-              }, onCreateBulkVisaSuccess: (e) {
-                EasyLoading.dismiss();
-                context.read<CreateNewApplicationCubit>().resetData();
-                context.read<AppListCubit>().getUserApplication();
-                context.read<CreateNewApplicationCubit>().resetErrorState();
-                //show success here
-                showSuccessDialog(
-                  context,
-                  title: "Success Import",
-                  desc: "Success import selected record.",
-                );
-              });
+            listener: (ctx, state) {
+              state.maybeMap(
+                orElse: () {
+                  EasyLoading.dismiss();
+                },
+                loading: (e) {
+                  EasyLoading.show();
+                },
+                onCreateBulkVisaSuccess: (e) async {
+                  EasyLoading.dismiss();
+                  ctx.read<AppListCubit>().getUserApplication();
+                  //show success here
+                  await showSuccessDialog(
+                    context,
+                    title: "Success Import",
+                    desc: "Success import selected record.",
+                    btnOkOnPress: () {},
+                  );
+
+                  ctx.read<CreateNewApplicationCubit>().resetErrorState();
+                  ctx.read<CreateNewApplicationCubit>().resetData();
+                },
+              );
             },
             child: BlocBuilder<CreateNewApplicationCubit,
                 CreateNewApplicationState>(

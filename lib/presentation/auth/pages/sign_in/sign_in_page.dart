@@ -108,7 +108,7 @@ class _SignInPageState extends State<SignInPage> {
                 log(e.userData.toString(), name: "AGENT");
                 //update global state management
                 getIt<GlobalUserCubit>().setUserDatata(e.userData);
-                // getIt<TimerCubit>().startTimer();
+
                 if (e.userData.isAgent) {
                   context.router.replaceAll([const CDashboardRoute()]);
                 } else {

@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:dti_web/application/other/other_cubit.dart';
+import 'package:dti_web/core/mixin/navigate_mixin.dart';
 import 'package:dti_web/core/widgets/auth_footer_widget.dart';
 import 'package:dti_web/core/widgets/auth_header_widget.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
@@ -15,7 +16,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pinput/pinput.dart';
 
 @RoutePage()
-class OTPPage extends StatelessWidget {
+class OTPPage extends StatelessWidget with NavigateMixin {
   static const String routeName = '/otp-page';
   OTPPage({super.key, required this.code, required this.number});
   final CountryCode code;
@@ -53,7 +54,7 @@ class OTPPage extends StatelessWidget {
             },
             onOTPVerified: (e) {
               EasyLoading.dismiss();
-              AutoRouter.of(context).replaceAll([DashboardRoute()]);
+              backToDashboard(context);
             },
           );
         },
@@ -148,7 +149,7 @@ class OTPPage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    AuthFooterWidget()
+                    const AuthFooterWidget()
                   ],
                 ),
               ),

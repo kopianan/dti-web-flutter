@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:bloc/bloc.dart';
 import 'package:country_code_picker/country_code_picker.dart';
@@ -6,7 +7,6 @@ import 'package:dti_web/core/storage.dart';
 import 'package:dti_web/domain/core/document_data_model.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/domain/questionnaire/raw_data.dart';
-import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 

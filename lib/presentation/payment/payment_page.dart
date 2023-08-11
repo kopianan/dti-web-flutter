@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:dti_web/application/payment/payment_cubit.dart';
+import 'package:dti_web/core/mixin/navigate_mixin.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/injection.dart';
@@ -21,7 +22,7 @@ class PaymentPage extends StatefulWidget {
   State<PaymentPage> createState() => _PaymentPageState();
 }
 
-class _PaymentPageState extends State<PaymentPage> {
+class _PaymentPageState extends State<PaymentPage> with NavigateMixin {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -47,14 +48,16 @@ class _PaymentPageState extends State<PaymentPage> {
         builder: (context, state) {
           return Scaffold(
             body: state.maybeMap(
-              orElse: () {},
+              orElse: () {
+                return null;
+              },
               onLoading: (e) {
-                return Container(
+                return SizedBox(
                   width: double.infinity,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      CircularProgressIndicator(),
+                      const CircularProgressIndicator(),
                       20.verticalSpace,
                       Text(
                         "Preparing your payment\nPlease Wait . . . . .",
@@ -71,7 +74,7 @@ class _PaymentPageState extends State<PaymentPage> {
               onGetPaymentUrl: (e) {
                 return Stack(
                   children: [
-                    Container(
+                    SizedBox(
                       height: ScreenUtil().screenHeight,
                       width: ScreenUtil().screenWidth,
                       child: Image.asset('assets/images/bg/bg_payment.png'),
@@ -82,7 +85,7 @@ class _PaymentPageState extends State<PaymentPage> {
                         width: ScreenUtil().screenWidth / 2,
                         height: ScreenUtil().screenHeight / 1.7,
                         decoration: BoxDecoration(
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                               blurRadius: 1,
                               color: Colors.white,
@@ -107,15 +110,12 @@ class _PaymentPageState extends State<PaymentPage> {
                                   fontSize: 18.sp, fontWeight: FontWeight.bold),
                             ),
                             30.verticalSpace,
-                            Container(
+                            SizedBox(
                               width: 400.w,
                               height: 50.h,
                               child: PrimaryButton(
                                 onClick: () {
-                                  AutoRouter.of(context).pushAndPopUntil(
-                                    DashboardRoute(),
-                                    predicate: (route) => false,
-                                  );
+                                  backToDashboard(context);
                                 },
                                 labelStyle: TextStyle(fontSize: 17.sp),
                                 label: "Back to dashboard",

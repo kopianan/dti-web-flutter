@@ -111,10 +111,10 @@ class _UploadDocumentPageState extends State<UploadDocumentPage> {
                       return Container();
                     },
                     onGetSinglePassportWithImage: (e) {
-                      return UploadDocumentCheckPage();
+                      return const UploadDocumentCheckPage();
                     },
                     onGetSingleApplicationWithImage: (e) {
-                      return UploadDocumentCheckPage();
+                      return const UploadDocumentCheckPage();
                     },
                   );
                 },
@@ -163,7 +163,7 @@ class UploadDocumentCheckPage extends StatelessWidget {
                               fontWeight: FontWeight.bold),
                         ),
                         30.verticalSpace,
-                        LeftSide()
+                        const LeftSide()
                       ],
                     ),
                   ),
@@ -190,7 +190,7 @@ class UploadDocumentCheckPage extends StatelessWidget {
                         color: Colors.white,
                       ),
                       // padding: EdgeInsets.symmetric(horizontal: 30.w),
-                      child: RighSide(),
+                      child: const RighSide(),
                     ),
                   )
                 ],

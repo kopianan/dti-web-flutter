@@ -10,7 +10,6 @@ import 'package:dti_web/presentation/questionnaire/widget/custom_second_header.d
 import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:flash/flash.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -132,7 +131,7 @@ class _SelfiePageState extends State<SelfiePage> {
                                     children: [
                                       const SelfieInformation(),
                                       30.verticalSpace,
-                                      const Expanded(child: const PhotoView()),
+                                      const Expanded(child: PhotoView()),
                                       30.verticalSpace,
                                       BlocBuilder<DocumentCubit, DocumentState>(
                                         builder: (context, docState) {
@@ -276,8 +275,8 @@ class UploadButton extends StatelessWidget {
               labelStyle:
                   TextStyle(fontSize: 20.sp, color: AppColor.primaryColor),
               onClick: () async {
-                final file =
-                    await AutoRouter.of(context).push(CameraRoute()) as XFile?;
+                final file = await AutoRouter.of(context)
+                    .push(const CameraRoute()) as XFile?;
 
                 if (file != null) {
                   Uint8List? imageByte;

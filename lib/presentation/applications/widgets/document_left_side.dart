@@ -113,14 +113,15 @@ class _LeftSideState extends State<LeftSide> {
                             onClick: () {
                               EasyLoading.show(
                                   maskType: EasyLoadingMaskType.black);
-                              Future.delayed(Duration(seconds: 4))
+                              Future.delayed(const Duration(seconds: 4))
                                   .then((value) {
                                 EasyLoading.dismiss();
                                 //check if the apps type is passport
                                 if (docState.visa!.subTitle!
                                     .toLowerCase()
                                     .contains('passport')) {
-                                  AutoRouter.of(context).push(SelfieRoute());
+                                  AutoRouter.of(context)
+                                      .push(const SelfieRoute());
                                 } else {
                                   AutoRouter.of(context)
                                       .push(ApplicationDetailRoute(

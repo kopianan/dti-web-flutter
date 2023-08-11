@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:dti_web/application/payment/payment_cubit.dart';
+import 'package:dti_web/core/mixin/navigate_mixin.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/injection.dart';
@@ -21,7 +22,8 @@ class PassportPaymentPage extends StatefulWidget {
   State<PassportPaymentPage> createState() => _PassportPaymentPageState();
 }
 
-class _PassportPaymentPageState extends State<PassportPaymentPage> {
+class _PassportPaymentPageState extends State<PassportPaymentPage>
+    with NavigateMixin {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -113,10 +115,7 @@ class _PassportPaymentPageState extends State<PassportPaymentPage> {
                               height: 50.h,
                               child: PrimaryButton(
                                 onClick: () {
-                                  AutoRouter.of(context).pushAndPopUntil(
-                                    DashboardRoute(),
-                                    predicate: (route) => false,
-                                  );
+                                  backToDashboard(context);
                                 },
                                 labelStyle: TextStyle(fontSize: 17.sp),
                                 label: "Back to dashboard",

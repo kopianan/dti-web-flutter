@@ -59,7 +59,7 @@ mixin CoreMixin {
         .show();
   }
 
-  void showSuccessDialog(
+  Future<void> showSuccessDialog(
     BuildContext context, {
     required String title,
     required String desc,
@@ -67,8 +67,8 @@ mixin CoreMixin {
     String? cancelText,
     Function()? btnOkOnPress,
     Function()? btnCancelOnPress,
-  }) {
-    AwesomeDialog(
+  }) async {
+    await AwesomeDialog(
             width: 400,
             context: context,
             dialogType: DialogType.success,
