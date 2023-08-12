@@ -31,7 +31,7 @@ Future<void> main() async {
       appId: "1224414981412498",
       cookie: true,
       xfbml: true,
-      version: "v14.0",
+      version: "v15.0",
     );
   }
   initializeDateFormatting();

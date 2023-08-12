@@ -70,6 +70,20 @@ class _SignInPageState extends State<SignInPage> {
               onError: (e) {
                 e.error.maybeMap(
                   orElse: () {},
+                  generalError: (e) {
+                    AwesomeDialog(
+                            width: ScreenUtil().screenWidth / 2,
+                            padding: REdgeInsets.symmetric(horizontal: 20),
+                            context: context,
+                            dialogType: DialogType.error,
+                            title: "Error",
+                            desc: e.err,
+                            btnCancelOnPress: () {
+                              AutoRouter.of(context).pop();
+                            },
+                            btnCancelText: "Try again")
+                        .show();
+                  },
                   authError: (e) {
                     AwesomeDialog(
                       width: ScreenUtil().screenWidth / 2,
@@ -263,7 +277,7 @@ class _SignInPageState extends State<SignInPage> {
                     ),
                     40.verticalSpace,
                     const AuthFooterWidget(),
-                    const Center(child: Text("V.3.4"))
+                    const Center(child: Text("V.3.4.1"))
                   ],
                 ),
               ),
@@ -275,8 +289,8 @@ class _SignInPageState extends State<SignInPage> {
   }
 
   Row _loginWithEmail() {
-    return Row(
-      children: const [
+    return const Row(
+      children: [
         Expanded(child: Divider()),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 10),

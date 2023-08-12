@@ -157,13 +157,27 @@ class AuthCubit extends Cubit<AuthState> {
     final result = await iAuth.signinUsingFacebook();
 
     //SAVE DATA TO LOCALE
-    result.fold(
-      (l) => emit(AuthState.onError(l)),
-      (r) async {
-        await storage.saveToken(r);
-        emit(AuthState.onLoginSuccess(r, UserData(isAgent: false)));
-      },
-    );
+    result.fold((l) => emit(AuthState.onError(l)), (r) async {
+      await storage.saveToken(r);
+      final result = await iAuth.getUserData();
+      result.fold(
+        (l) => emit(
+          AuthState.onError(l),
+        ),
+        (userData) async {
+          await Storage().saveUser(userData);
+          log(userData.mobileNumber.toString());
+          if (userData.mobileNumber != null) {
+            emit(AuthState.onLoginSuccess(r, userData));
+          } else {
+            emit(AuthState.onLoginSuccessWithoutPhoneNumber(
+              r,
+              userData,
+            ));
+          }
+        },
+      );
+    });
   }
 
   void resetPassword(String email) async {

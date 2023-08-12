@@ -41,6 +41,11 @@ class AuthRepository extends IAuth {
       } else {
         return Left(Failures.generalError("Something wrong"));
       }
+    } on DioError catch (e) {
+      if (e.response!.statusCode == 404) {
+        return Left(Failures.generalError("Data not found"));
+      }
+      return Left(Failures.generalError("Something wrong"));
     } on Exception {
       return Left(Failures.generalError("Something wrong"));
     }
@@ -224,7 +229,9 @@ class AuthRepository extends IAuth {
   Future<Either<Failures, String>> signinUsingFacebook() async {
     try {
       // Trigger the sign-in flow
-      final LoginResult loginResult = await FacebookAuth.instance.login();
+      final LoginResult loginResult = await FacebookAuth.instance.login(
+        permissions: ['email'],
+      );
       if (loginResult.status == LoginStatus.success) {
         //Check the if the email is exist
         var email = await FacebookAuth.i.getUserData(fields: "email");
@@ -239,12 +246,12 @@ class AuthRepository extends IAuth {
             FacebookAuthProvider.credential(accessToken.token);
 
 // Once signed in, return the UserCredential
-        UserCredential userCreds = await FirebaseAuth.instance
-            .signInWithCredential(facebookAuthCredential);
+        UserCredential userCreds =
+            await FirebaseAuth.instance.signInWithCredential(
+          facebookAuthCredential,
+        );
         final token = await userCreds.user!.getIdToken();
         return right(token);
-
-        return left(Failures.authError("Something wrong"));
       } else {
         return left(Failures.authError("No user found"));
       }

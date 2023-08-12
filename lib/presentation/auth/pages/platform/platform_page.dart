@@ -25,7 +25,7 @@ class _PlatformPageState extends State<PlatformPage> {
         child: Container(
             width: double.infinity,
             height: MediaQuery.of(context).size.height,
-            padding: EdgeInsets.symmetric(horizontal: 30),
+            padding: const EdgeInsets.symmetric(horizontal: 30),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -36,32 +36,32 @@ class _PlatformPageState extends State<PlatformPage> {
                   height: 100,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
-                      image: DecorationImage(
+                      image: const DecorationImage(
                         image: AssetImage(
                           'assets/imgs/me.png',
                         ),
                         fit: BoxFit.cover,
                       )),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
-                Text(
+                const Text(
                   "DoorToID",
                   style: TextStyle(
                     fontSize: 40,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 30),
-                Text(
+                const SizedBox(height: 30),
+                const Text(
                   "For better experience\nplease download our apps on",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 20,
                   ),
                 ),
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
                 InkWell(
                   onTap: () {
                     launch('http://onelink.to/mrk8sq');
