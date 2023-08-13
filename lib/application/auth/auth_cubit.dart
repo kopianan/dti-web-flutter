@@ -104,6 +104,7 @@ class AuthCubit extends Cubit<AuthState> {
       (l) => emit(AuthState.error(l)),
       (r) async {
         await storage.saveToken(r);
+        await Future.delayed(Duration(seconds: 4)); 
         final result = await iAuth.getUserData();
 
         result.fold(
@@ -129,7 +130,7 @@ class AuthCubit extends Cubit<AuthState> {
 
         if (r.isNewUser) {
           emit(AuthState.onRegisterSuccess(r.token));
-        } else {
+        } else {await Future.delayed(Duration(seconds: 4)); 
           final result = await iAuth.getUserData();
           result.fold(
             (l) => emit(AuthState.onError(l)),
@@ -159,6 +160,7 @@ class AuthCubit extends Cubit<AuthState> {
     //SAVE DATA TO LOCALE
     result.fold((l) => emit(AuthState.onError(l)), (r) async {
       await storage.saveToken(r);
+      await Future.delayed(Duration(seconds: 4)); 
       final result = await iAuth.getUserData();
       result.fold(
         (l) => emit(
