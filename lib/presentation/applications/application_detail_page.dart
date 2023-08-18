@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:dti_web/application/app_list/app_list_cubit.dart';
 import 'package:dti_web/application/document/document_cubit.dart';
 import 'package:dti_web/application/update_application/update_application_cubit.dart';
 import 'package:dti_web/core/mixin/navigate_mixin.dart';
@@ -855,6 +856,8 @@ class _SuccessBodyState extends State<SuccessBody> with NavigateMixin {
                       ),
                       btnOkText: "Continue",
                       btnOkOnPress: () {
+                        context.read<AppListCubit>().getUserApplication();
+
                         backToDashboard(context);
                       },
                     ).show();

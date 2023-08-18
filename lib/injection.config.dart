@@ -94,7 +94,7 @@ _i1.GetIt $initGetIt(
         gh<_i11.IAgent>(),
         gh<_i17.IDashboard>(),
       ));
-  gh.factory<_i32.AppListCubit>(() => _i32.AppListCubit(gh<_i13.IAppList>()));
+  gh.singleton<_i32.AppListCubit>(_i32.AppListCubit(gh<_i13.IAppList>()));
   gh.factory<_i33.AuthCubit>(() => _i33.AuthCubit(gh<_i15.IAuth>()));
   gh.factory<_i34.DashboardCubit>(
       () => _i34.DashboardCubit(gh<_i17.IDashboard>()));

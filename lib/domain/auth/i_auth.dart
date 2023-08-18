@@ -11,7 +11,7 @@ abstract class IAuth {
   Future<Either<Failures, String>> resetPassword({
     required String email,
   });
-  Future<Either<Failures, String>> signinUsingFacebook();
+  Future<Either<Failures, AuthResponse>> signinUsingFacebook();
   Future<Either<Failures, AuthResponse>> loginWithGoogle();
   Future<Either<Failures, UserData>> getUserData();
   Future<Either<Failures, String>> registerNewUser({

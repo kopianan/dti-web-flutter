@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:dti_web/core/storage.dart';
@@ -63,7 +65,6 @@ class AuthRepository extends IAuth {
       }
 
       final user = await googleUser.authentication;
-
       final GoogleAuthCredential credential = GoogleAuthProvider.credential(
         accessToken: user.accessToken,
         idToken: user.idToken,
@@ -73,8 +74,10 @@ class AuthRepository extends IAuth {
       UserCredential userCreds =
           await _firebaseAuth.signInWithCredential(credential);
 
+      final newUser = isNewUser(userCreds.user!);
+      log("IS NEW USER ? ${newUser.toString()}"); 
       final token = await userCreds.user!.getIdToken();
-      return right(AuthResponse(isNewUser: false, token: token));
+      return right(AuthResponse(isNewUser: newUser, token: token));
     } on PlatformException catch (e) {
       switch (e.code) {
         case "popup_closed_by_user":
@@ -90,6 +93,16 @@ class AuthRepository extends IAuth {
     } catch (e) {
       return left(Failures.authError("Server Error"));
     }
+  }
+
+  bool isNewUser(User user) {
+    DateTime now = DateTime.now();
+    DateTime? cTime = user.metadata.creationTime;
+    int longAgo = 15;
+    if (cTime == null) {
+      return true;
+    }
+    return now.difference(cTime).inSeconds < longAgo;
   }
 
   @override
@@ -226,7 +239,7 @@ class AuthRepository extends IAuth {
   }
 
   @override
-  Future<Either<Failures, String>> signinUsingFacebook() async {
+  Future<Either<Failures, AuthResponse>> signinUsingFacebook() async {
     try {
       // Trigger the sign-in flow
       final LoginResult loginResult = await FacebookAuth.instance.login(
@@ -245,13 +258,13 @@ class AuthRepository extends IAuth {
         final OAuthCredential facebookAuthCredential =
             FacebookAuthProvider.credential(accessToken.token);
 
-// Once signed in, return the UserCredential
         UserCredential userCreds =
             await FirebaseAuth.instance.signInWithCredential(
           facebookAuthCredential,
         );
+        final newUser = isNewUser(userCreds.user!);
         final token = await userCreds.user!.getIdToken();
-        return right(token);
+        return right(AuthResponse(isNewUser: newUser, token: token));
       } else {
         return left(Failures.authError("No user found"));
       }

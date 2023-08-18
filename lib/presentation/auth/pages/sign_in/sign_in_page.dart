@@ -4,6 +4,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dti_web/application/auth/auth_cubit.dart';
 import 'package:dti_web/application/global/global_user_cubit.dart';
+import 'package:dti_web/core/storage.dart';
 import 'package:dti_web/core/widgets/auth_footer_widget.dart';
 import 'package:dti_web/core/widgets/loading_primary_button.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
@@ -14,6 +15,7 @@ import 'package:dti_web/utils/app_color.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../widgets/email_text_field.dart';
@@ -42,23 +44,10 @@ class _SignInPageState extends State<SignInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // floatingActionButton: BlocBuilder<AuthCubit, AuthState>(
-      //   builder: (context, state) {
-      //     return FloatingActionButton(
-      //       onPressed: () {
-      //         //camera
-      //         Navigator.of(context)
-      //             .push(MaterialPageRoute(builder: (e) => const CameraPage()));
-      //         // authCubit.loginWithEmailAndPassword(
-      //         //     'kopianandev@gmail.com', '123456');
-      //       },
-      //     );
-      //   },
-      // ),
       appBar: kDebugMode
           ? AppBar(
               backgroundColor: Colors.red,
-              title: const Text("TESTING NOW V.3.0 + Passport"),
+              title: const Text("TESTING NOW V.3.0"),
             )
           : null,
       body: BlocProvider(
@@ -118,19 +107,25 @@ class _SignInPageState extends State<SignInPage> {
                 context.router.replaceAll([const NumberRegistrationRoute()]);
               },
               onLoginSuccess: (e) {
-                //get user data first.
-                log(e.userData.toString(), name: "AGENT");
-                //update global state management
-                getIt<GlobalUserCubit>().setUserDatata(e.userData);
+                //once it complete. get user data here.
+                EasyLoading.show(status: "Getting User Data . . . ");
 
+                context.read<AuthCubit>().getUserData();
+              },
+              onGetUserData: (e) async {
+                EasyLoading.dismiss();
+                //after get user data after login
+                //check the agent mode.
+                final user = e.userData;
+                //set to state management.
+                getIt<GlobalUserCubit>().setUserDatata(user);
+                //save to local storage
+                await Storage().saveUser(user);
                 if (e.userData.isAgent) {
                   context.router.replaceAll([const CDashboardRoute()]);
                 } else {
                   context.router.replaceAll([const DashboardRoute()]);
                 }
-              },
-              onLoginSuccessWithoutPhoneNumber: (e) {
-                context.router.replaceAll([const NumberRegistrationRoute()]);
               },
             );
           },
@@ -277,7 +272,7 @@ class _SignInPageState extends State<SignInPage> {
                     ),
                     40.verticalSpace,
                     const AuthFooterWidget(),
-                    const Center(child: Text("V.3.4.1"))
+                    const Center(child: Text("V.3.4.3"))
                   ],
                 ),
               ),

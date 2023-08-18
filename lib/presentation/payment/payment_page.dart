@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:dti_web/application/app_list/app_list_cubit.dart';
 import 'package:dti_web/application/payment/payment_cubit.dart';
 import 'package:dti_web/core/mixin/navigate_mixin.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
@@ -116,6 +117,9 @@ class _PaymentPageState extends State<PaymentPage> with NavigateMixin {
                               child: PrimaryButton(
                                 onClick: () {
                                   backToDashboard(context);
+                                  context
+                                      .read<AppListCubit>()
+                                      .getUserApplication();
                                 },
                                 labelStyle: TextStyle(fontSize: 17.sp),
                                 label: "Back to dashboard",

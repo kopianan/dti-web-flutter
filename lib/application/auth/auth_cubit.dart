@@ -81,8 +81,11 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  void getUserData() async {
+  void getUserData({Duration? delay}) async {
     emit(const AuthState.loading());
+    if (delay != null) {
+      await Future.delayed(delay);
+    }
     final result = await iAuth.getUserData();
     result.fold(
       (l) => emit(AuthState.onError(l)),
@@ -104,14 +107,14 @@ class AuthCubit extends Cubit<AuthState> {
       (l) => emit(AuthState.error(l)),
       (r) async {
         await storage.saveToken(r);
-        await Future.delayed(Duration(seconds: 4)); 
+        await Future.delayed(Duration(seconds: 4));
         final result = await iAuth.getUserData();
 
         result.fold(
           (l) => null,
           (userData) {
             storage.saveUser(userData);
-            emit(AuthState.onLoginSuccess(r, userData));
+            emit(AuthState.onLoginSuccess(r));
           },
         );
       },
@@ -127,26 +130,10 @@ class AuthCubit extends Cubit<AuthState> {
       (l) => emit(AuthState.onError(l)),
       (r) async {
         await storage.saveToken(r.token);
-
         if (r.isNewUser) {
           emit(AuthState.onRegisterSuccess(r.token));
-        } else {await Future.delayed(Duration(seconds: 4)); 
-          final result = await iAuth.getUserData();
-          result.fold(
-            (l) => emit(AuthState.onError(l)),
-            (userData) async {
-              await Storage().saveUser(userData);
-              log(userData.mobileNumber.toString());
-              if (userData.mobileNumber != null) {
-                emit(AuthState.onLoginSuccess(r.token, userData));
-              } else {
-                emit(AuthState.onLoginSuccessWithoutPhoneNumber(
-                  r.token,
-                  userData,
-                ));
-              }
-            },
-          );
+        } else {
+          emit(AuthState.onLoginSuccess(r.token));
         }
       },
     );
@@ -158,28 +145,22 @@ class AuthCubit extends Cubit<AuthState> {
     final result = await iAuth.signinUsingFacebook();
 
     //SAVE DATA TO LOCALE
-    result.fold((l) => emit(AuthState.onError(l)), (r) async {
-      await storage.saveToken(r);
-      await Future.delayed(Duration(seconds: 4)); 
-      final result = await iAuth.getUserData();
-      result.fold(
-        (l) => emit(
-          AuthState.onError(l),
-        ),
-        (userData) async {
-          await Storage().saveUser(userData);
-          log(userData.mobileNumber.toString());
-          if (userData.mobileNumber != null) {
-            emit(AuthState.onLoginSuccess(r, userData));
-          } else {
-            emit(AuthState.onLoginSuccessWithoutPhoneNumber(
-              r,
-              userData,
-            ));
-          }
-        },
-      );
-    });
+    result.fold(
+      (l) => emit(AuthState.onError(l)),
+      (r) async {
+        await storage.saveToken(r.token);
+        result.fold(
+          (l) => emit(AuthState.onError(l)),
+          (userData) {
+            if (userData.isNewUser) {
+              emit(AuthState.onRegisterSuccess(r.token));
+            } else {
+              emit(AuthState.onLoginSuccess(r.token));
+            }
+          },
+        );
+      },
+    );
   }
 
   void resetPassword(String email) async {

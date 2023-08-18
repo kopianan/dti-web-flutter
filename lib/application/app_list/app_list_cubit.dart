@@ -10,7 +10,7 @@ part 'app_list_cubit.freezed.dart';
 
 enum AppListStatus { loading, error, initial, success }
 
-@Injectable()
+@singleton
 class AppListCubit extends Cubit<AppListState> {
   AppListCubit(this.iAppList) : super(AppListState.initial());
   final IAppList iAppList;

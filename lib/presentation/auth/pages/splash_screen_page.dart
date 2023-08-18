@@ -46,7 +46,14 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
                   AutoRouter.of(context).replaceAll([const CDashboardRoute()]);
                   // AutoRouter.of(context).replaceAll([const CDashboardRoute()]);
                 } else {
-                  AutoRouter.of(context).replaceAll([const DashboardRoute()]);
+                  if (e.userData.mobileNumber == null ||
+                      e.userData.mobileNumber! == "") {
+                    AutoRouter.of(context)
+                        .replaceAll([const NumberRegistrationRoute()]);
+                  } else {
+                    AutoRouter.of(context).replaceAll([const DashboardRoute()]);
+                  }
+
                   // AutoRouter.of(context).replaceAll([const CDashboardRoute()]);
                 }
               },
