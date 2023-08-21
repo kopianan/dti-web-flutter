@@ -1,8 +1,6 @@
 import 'dart:io';
 
 import 'package:dti_web/domain/core/visa_application_model.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
@@ -94,16 +92,17 @@ void drawText(PdfPage page, String documentType, VisaApplicationModel visa) {
   final pageSize = page.getClientSize();
 
   if (documentType == "B3") {
-    const _titleText = 'SURAT PERNYATAAN\nSTATEMENT LETTER';
-    String _signatureText =
+    const titleText = 'SURAT PERNYATAAN\nSTATEMENT LETTER';
+    String signatureText =
         '${visa.cityDomicile}, ${DateFormat('dd MMMM yyyy').format(DateTime.now())}';
-    String _signatureName = '${visa.firstName} ${visa.lastName}';
+    String signatureName = '${visa.firstName} ${visa.lastName}';
+    String dateBirth = DateFormat('dd MMMM yyyy').format(DateTime.parse(visa.dateOfBirth!)); 
     String userDetails = '''
   I, the undersigned below
 
   ${'Name'.padRight(40)}:\t${visa.firstName} ${visa.lastName}
 
-  ${'Place And Date of Birth'.padRight(31)}:\t${visa.placeOfBirth}, ${visa.dateOfBirth}
+  ${'Place And Date of Birth'.padRight(31)}:\t${visa.placeOfBirth}, $dateBirth
 
   ${'Passport Number'.padRight(33)}:\t${visa.passportNumber}
 
@@ -114,7 +113,7 @@ void drawText(PdfPage page, String documentType, VisaApplicationModel visa) {
     const bodyText =
         "I hereby state that I am willing to follow the health monitoring process during the quarantine\nor isolation period and during my stay in Indonesia in accordance with health protocol and\nthe provisions of laws and regulations.\n\nI believe that the facts stated in the witness statement are true.";
 
-    page.graphics.drawString(_titleText,
+    page.graphics.drawString(titleText,
         PdfStandardFont(PdfFontFamily.helvetica, 10, style: PdfFontStyle.bold),
         format: PdfStringFormat(alignment: PdfTextAlignment.left),
         bounds: Rect.fromLTWH(
@@ -164,7 +163,7 @@ void drawText(PdfPage page, String documentType, VisaApplicationModel visa) {
         ));
 
     page.graphics.drawString(
-        _signatureText,
+        signatureText,
         PdfStandardFont(
           PdfFontFamily.helvetica,
           12,
@@ -177,7 +176,7 @@ void drawText(PdfPage page, String documentType, VisaApplicationModel visa) {
           0,
         ));
     page.graphics.drawString(
-        _signatureName,
+        signatureName,
         PdfStandardFont(
           PdfFontFamily.helvetica,
           12,
@@ -190,16 +189,17 @@ void drawText(PdfPage page, String documentType, VisaApplicationModel visa) {
           0,
         ));
   } else {
-    const _titleText = 'STATEMENT LETTER';
-    String _signatureText =
+    const titleText = 'STATEMENT LETTER';
+    String signatureText =
         '${visa.cityDomicile}, ${DateFormat('dd MMMM yyyy').format(DateTime.now())}';
-    String _signatureName = '${visa.firstName} ${visa.lastName}';
+    String signatureName = '${visa.firstName} ${visa.lastName}';
+    String dateBirth = DateFormat('dd MMMM yyyy').format(DateTime.parse(visa.dateOfBirth!)); 
     String userDetails = '''
   I, the undersigned below
 
   ${'Name'.padRight(40)}:\t${visa.firstName} ${visa.lastName}
 
-  ${'Place And Date of Birth'.padRight(31)}:\t${visa.placeOfBirth}, ${visa.dateOfBirth}
+  ${'Place And Date of Birth'.padRight(31)}:\t${visa.placeOfBirth}, $dateBirth
 
   ${'Passport Number'.padRight(33)}:\t${visa.passportNumber}
 
@@ -210,7 +210,7 @@ void drawText(PdfPage page, String documentType, VisaApplicationModel visa) {
     const bodyText =
         "\n\nI hereby state that I am willing to carry out quarantine and or treatment at my own\nexpense at government designated quarantine facility or health service facility if the PCR\ntest administered by the Indonesian health authorities at the port of entry gives a good\nresult, or there are clinical symptoms of Covid-19 in accordance with the health protocols\nand regulations.\n\nI believe that the facts stated in the witness statement are true.";
 
-    page.graphics.drawString(_titleText,
+    page.graphics.drawString(titleText,
         PdfStandardFont(PdfFontFamily.helvetica, 14, style: PdfFontStyle.bold),
         format: PdfStringFormat(alignment: PdfTextAlignment.left),
         bounds: Rect.fromLTWH(
@@ -260,7 +260,7 @@ void drawText(PdfPage page, String documentType, VisaApplicationModel visa) {
         ));
 
     page.graphics.drawString(
-        _signatureText,
+        signatureText,
         PdfStandardFont(
           PdfFontFamily.helvetica,
           12,
@@ -273,7 +273,7 @@ void drawText(PdfPage page, String documentType, VisaApplicationModel visa) {
           0,
         ));
     page.graphics.drawString(
-        _signatureName,
+        signatureName,
         PdfStandardFont(
           PdfFontFamily.helvetica,
           12,

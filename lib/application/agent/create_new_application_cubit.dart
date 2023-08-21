@@ -2,8 +2,10 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
+import 'package:dti_web/application/global/global_user_cubit.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/domain/global/data_table_model.dart';
+import 'package:dti_web/injection.dart';
 import 'package:dti_web/utils/date_converter.dart';
 import 'package:excel/excel.dart';
 import 'package:file_picker/file_picker.dart';
@@ -71,7 +73,7 @@ class CreateNewApplicationCubit extends Cubit<CreateNewApplicationState> {
 
   List<VisaApplicationModel> convertDataTableToModel() {
     var listOfVisa = <VisaApplicationModel>[];
-
+    final userData = getIt<GlobalUserCubit>().state.user;
     for (var row in state.body) {
       late VisaApplicationModel visa;
       if (row.selected == true) {
@@ -111,7 +113,7 @@ class CreateNewApplicationCubit extends Cubit<CreateNewApplicationState> {
           currency: 'Rp',
           documents: body[5]?.value.toString() ?? '',
           status: 'Draft',
-          userName: body[0]?.value.toString() ?? '',
+          userName: userData.name ?? userData.email,
         );
         listOfVisa.add(visa);
       }

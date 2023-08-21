@@ -50,23 +50,23 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDb4MmQZXUiJEjGm_-o-Xt7DTwJPB8Ibz0',
-    appId: '1:450417909901:web:6cc0c1e23a4fc7dd4802c4',
-    messagingSenderId: '450417909901',
-    projectId: 'doortoid',
-    authDomain: 'doortoid.firebaseapp.com',
-    storageBucket: 'doortoid.appspot.com',
-    measurementId: 'G-95DJF06G3P',
+    apiKey: 'AIzaSyDkCrB6O_oOyf4ajt3DcEYhckpbDUC0cgo',
+    appId: '1:58741229055:web:ff38b87aede41734f153ca',
+    messagingSenderId: '58741229055',
+    projectId: 'doortoid-mobile',
+    authDomain: 'doortoid-mobile.firebaseapp.com',
+    storageBucket: 'doortoid-mobile.appspot.com',
+    measurementId: 'G-N5Z1Y7YN6R',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDY7NcdJBi22_oVprNTLiopDGarUro5Ap8',
-    appId: '1:450417909901:ios:913e3b5c469a3e334802c4',
-    messagingSenderId: '450417909901',
-    projectId: 'doortoid',
-    storageBucket: 'doortoid.appspot.com',
-    androidClientId: '450417909901-5msdj2kaitidico3mt0pacn1v7c2noiu.apps.googleusercontent.com',
-    iosClientId: '450417909901-l2lbkpfrjft1bv6vretqq1id0td51qrs.apps.googleusercontent.com',
+    apiKey: 'AIzaSyC8Tym1o0lWbO5Bo_f6y5oaoLAH58X4ZLI',
+    appId: '1:58741229055:ios:b54572a46214a786f153ca',
+    messagingSenderId: '58741229055',
+    projectId: 'doortoid-mobile',
+    storageBucket: 'doortoid-mobile.appspot.com',
+    androidClientId: '58741229055-4de80uh73i6a4qfgtlf54duno7j0kg59.apps.googleusercontent.com',
+    iosClientId: '58741229055-p66k1t1d82t94vbh8hnlr1a9kusbcjml.apps.googleusercontent.com',
     iosBundleId: 'com.example.dtiWeb',
   );
 }

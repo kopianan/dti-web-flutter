@@ -1,6 +1,6 @@
 
  
 #DEV
-#BASE_URL = 'https://us-central1-doortoid-mobile.cloudfunctions.net/api'
+BASE_URL = 'https://us-central1-doortoid-mobile.cloudfunctions.net/api'
 #PROD
-BASE_URL = 'https://us-central1-doortoid.cloudfunctions.net/api'
+#BASE_URL = 'https://us-central1-doortoid.cloudfunctions.net/api'
