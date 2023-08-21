@@ -6,13 +6,11 @@ import 'package:injectable/injectable.dart';
 part 'global_user_state.dart';
 part 'global_user_cubit.freezed.dart';
 
-@lazySingleton
+@singleton
 class GlobalUserCubit extends Cubit<GlobalUserState> {
   GlobalUserCubit() : super(GlobalUserState.initial());
 
-  void setUserDatata(
-    UserData user,
-  ) {
+  void setUserDatata(UserData user) {
     emit(state.copyWith(user: user));
   }
 }

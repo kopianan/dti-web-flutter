@@ -5,6 +5,7 @@ part 'user_data.g.dart';
 
 @freezed
 class UserData with _$UserData {
+  UserData._();
   factory UserData({
     bool? usedReferralCodeFlag,
     String? selfReferralCode,
@@ -27,4 +28,11 @@ class UserData with _$UserData {
   factory UserData.empty() => UserData();
   factory UserData.fromJson(Map<String, dynamic> json) =>
       _$UserDataFromJson(json);
+
+  bool adminOrAgent() {
+    if (isAgent || email == "team@doortoid.com") {
+      return true;
+    }
+    return false;
+  }
 }

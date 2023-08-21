@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dti_web/application/auth/auth_cubit.dart';
@@ -121,7 +119,7 @@ class _SignInPageState extends State<SignInPage> {
                 getIt<GlobalUserCubit>().setUserDatata(user);
                 //save to local storage
                 await Storage().saveUser(user);
-                if (e.userData.isAgent) {
+                if (e.userData.adminOrAgent()) {
                   context.router.replaceAll([const CDashboardRoute()]);
                 } else {
                   context.router.replaceAll([const DashboardRoute()]);

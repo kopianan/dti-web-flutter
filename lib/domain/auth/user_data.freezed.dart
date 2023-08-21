@@ -304,7 +304,7 @@ class __$$_UserDataCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_UserData implements _UserData {
+class _$_UserData extends _UserData {
   _$_UserData(
       {this.usedReferralCodeFlag,
       this.selfReferralCode,
@@ -322,7 +322,8 @@ class _$_UserData implements _UserData {
       this.usedReferralCode,
       this.totalVisa,
       this.countryCode,
-      this.userReferral});
+      this.userReferral})
+      : super._();
 
   factory _$_UserData.fromJson(Map<String, dynamic> json) =>
       _$$_UserDataFromJson(json);
@@ -440,7 +441,7 @@ class _$_UserData implements _UserData {
   }
 }
 
-abstract class _UserData implements UserData {
+abstract class _UserData extends UserData {
   factory _UserData(
       {final bool? usedReferralCodeFlag,
       final String? selfReferralCode,
@@ -459,6 +460,7 @@ abstract class _UserData implements UserData {
       final int? totalVisa,
       final String? countryCode,
       final String? userReferral}) = _$_UserData;
+  _UserData._() : super._();
 
   factory _UserData.fromJson(Map<String, dynamic> json) = _$_UserData.fromJson;
 

@@ -1,3 +1,4 @@
+import 'package:dti_web/domain/core/date_time_or_null_converter.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'simple_visa_model.freezed.dart';
@@ -12,9 +13,10 @@ class SimpleVisaModel with _$SimpleVisaModel {
     String? bookingCode,
     String? title,
     String? subTitle,
-    String? usedByDate,
+    @DateTimeOrNullConverter() DateTime? usedByDate,
+    String? userName,
     int? lengthOfStay,
-    String? createdDate,
+    @DateTimeOrNullConverter() DateTime? createdDate,
   }) = _SimpleVisaModel;
 
   factory SimpleVisaModel.empty() => SimpleVisaModel();

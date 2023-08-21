@@ -1,11 +1,9 @@
 // ignore_for_file: constant_identifier_names
 
 import 'package:dti_web/domain/core/simple_visa_model.dart';
-import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/utils/date_converter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intl/intl.dart';
 
 // ignore: must_be_immutable
 class VisaApplicationCard extends StatelessWidget {
@@ -187,7 +185,8 @@ class VisaApplicationCard extends StatelessWidget {
                                         // ),
                                         Text(
                                           DateConverter.convertDateDefault(
-                                              visaApps.usedByDate),
+                                              visaApps.usedByDate
+                                                  ?.toIso8601String()),
                                           style: TextStyle(
                                             fontSize: 12.sp,
                                             fontWeight: FontWeight.bold,
@@ -206,7 +205,7 @@ class VisaApplicationCard extends StatelessWidget {
                                 ),
                                 Text(
                                   DateConverter.convertDateDefault(
-                                      visaApps.createdDate),
+                                      visaApps.createdDate?.toIso8601String()),
                                   maxLines: 1,
                                   style: TextStyle(
                                     fontSize: 12.sp,

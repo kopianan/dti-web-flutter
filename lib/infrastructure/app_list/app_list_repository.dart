@@ -14,7 +14,8 @@ class AppListRepository extends IAppList {
   final Dio dio;
   final storage = Storage();
   @override
-  Future<Either<String, List<SimpleVisaModel>>> getUserVisaApplication() async {
+  Future<Either<String, List<SimpleVisaModel>>> getUserVisaApplication(
+      bool isAgent) async {
     //ONLY GET APPLICATION, NOT PASSPORT
     // final result =
     // await dio!.get('${dotenv.env['BASE_URL']}/applicationsByUser',
@@ -22,11 +23,18 @@ class AppListRepository extends IAppList {
     //       headers: {'Authorization': 'Bearer ${storage.getToken()}'},
     //     ));
     try {
-      final result =
-          await dio.get('${dotenv.env['BASE_URL']}/overallApplicationsByUser',
+      final result = (isAgent)
+          //AGENT
+          ? await dio.get('${dotenv.env['BASE_URL']}/overallApplicationsByUser',
+              options: Options(
+                headers: {'Authorization': 'Bearer ${storage.getToken()}'},
+              ))
+          //ADMIN
+          : await dio.get('${dotenv.env['BASE_URL']}/applications',
               options: Options(
                 headers: {'Authorization': 'Bearer ${storage.getToken()}'},
               ));
+
       final listData = (result.data['data'] as List)
           .map((e) => SimpleVisaModel.fromJson(e))
           .toList();

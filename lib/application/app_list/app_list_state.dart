@@ -13,5 +13,5 @@ class AppListState with _$AppListState {
       apps.where((e) => e.selected).toList();
 
   bool get showDeleteButton => apps.any((element) => element.selected == true);
-  factory AppListState.initial() => AppListState(status: AppListStatus.initial);
+  factory AppListState.initial() => const AppListState(status: AppListStatus.initial);
 }

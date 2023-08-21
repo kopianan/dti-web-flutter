@@ -39,12 +39,6 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const ApplicationPage(),
       );
     },
-    CustomerRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const CustomerPage(),
-      );
-    },
     LandingRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -348,6 +342,18 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    AdminApplicationRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AdminApplicationPage(),
+      );
+    },
+    AdminCustomerRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AdminCustomerPage(),
+      );
+    },
   };
 }
 
@@ -403,20 +409,6 @@ class ApplicationRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ApplicationRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [CustomerPage]
-class CustomerRoute extends PageRouteInfo<void> {
-  const CustomerRoute({List<PageRouteInfo>? children})
-      : super(
-          CustomerRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'CustomerRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -1416,4 +1408,32 @@ class SignatureRouteArgs {
   String toString() {
     return 'SignatureRouteArgs{key: $key, visaApplication: $visaApplication, appDocument: $appDocument, index: $index}';
   }
+}
+
+/// generated route for
+/// [AdminApplicationPage]
+class AdminApplicationRoute extends PageRouteInfo<void> {
+  const AdminApplicationRoute({List<PageRouteInfo>? children})
+      : super(
+          AdminApplicationRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AdminApplicationRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [AdminCustomerPage]
+class AdminCustomerRoute extends PageRouteInfo<void> {
+  const AdminCustomerRoute({List<PageRouteInfo>? children})
+      : super(
+          AdminCustomerRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AdminCustomerRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }

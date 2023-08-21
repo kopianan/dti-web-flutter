@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:dti_web/domain/app_list/i_app_list.dart';
-import 'package:dti_web/domain/core/simple_visa_model.dart';
 import 'package:dti_web/domain/global/data_list_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -30,10 +29,10 @@ class AppListCubit extends Cubit<AppListState> {
     newList.insert(index, newData);
     emit(state.copyWith(apps: newList));
   }
-
-  void getUserApplication() async {
+ 
+  void getUserApplication({bool isAgent = true}) async {
     emit(state.copyWith(status: AppListStatus.loading));
-    final result = await iAppList.getUserVisaApplication();
+    final result = await iAppList.getUserVisaApplication(isAgent);
     result.fold(
       (l) => emit(state.copyWith(status: AppListStatus.error, errorMessage: l)),
       (r) {

@@ -180,14 +180,4 @@ class CreateNewApplicationCubit extends Cubit<CreateNewApplicationState> {
       return date;
     }
   }
-  //  var excel = Excel.decodeBytes(excelFile.toList());
-  //                         String sheetName = 'Data';
-  //                         final totalRows = excel.tables[sheetName]!.rows;
-  //                         for (var i = 0; i < totalRows.length; i++) {
-  //                           if (i != 0) {
-  //                             for (var element in totalRows[i]) {
-  //                               log(element?.value.toString());
-  //                             }
-  //                           }
-  //                         }
 }

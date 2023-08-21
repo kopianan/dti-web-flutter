@@ -42,7 +42,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
               authorized: (e) {
                 log(e.userData.isAgent.toString(), name: "AGENT");
                 getIt<GlobalUserCubit>().setUserDatata(e.userData);
-                if (e.userData.isAgent) {
+                if (e.userData.adminOrAgent()) {
                   AutoRouter.of(context).replaceAll([const CDashboardRoute()]);
                   // AutoRouter.of(context).replaceAll([const CDashboardRoute()]);
                 } else {

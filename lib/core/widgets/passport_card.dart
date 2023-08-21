@@ -1,11 +1,9 @@
 // ignore_for_file: constant_identifier_names
 
 import 'package:dti_web/domain/core/simple_visa_model.dart';
-import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/utils/date_converter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intl/intl.dart';
 
 // ignore: must_be_immutable
 class PassportCard extends StatelessWidget {
@@ -173,8 +171,9 @@ class PassportCard extends StatelessWidget {
                                       textAlign: TextAlign.end,
                                     ),
                                     Text(
-                                      DateConverter.convertDateDefault(
-                                          visaApps.createdDate),
+                                      DateConverter.convertDateDefault(visaApps
+                                          .createdDate
+                                          ?.toIso8601String()),
                                       maxLines: 1,
                                       style: TextStyle(
                                         fontSize: 12.sp,

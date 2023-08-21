@@ -31,14 +31,18 @@ class _ApplicationPageState extends State<ApplicationPage> {
     return Scaffold(
       body: BlocListener<AgentCubit, AgentState>(
         listener: (context, agentState) {
-          agentState.maybeMap(orElse: () {
-            EasyLoading.dismiss();
-          }, loading: (value) {
-            EasyLoading.show();
-          }, onDeleteBulkSuccess: (e) {
-            EasyLoading.dismiss();
-            context.read<AppListCubit>().getUserApplication();
-          });
+          agentState.maybeMap(
+            orElse: () {
+              EasyLoading.dismiss();
+            },
+            loading: (value) {
+              EasyLoading.show();
+            },
+            onDeleteBulkSuccess: (e) {
+              EasyLoading.dismiss();
+              context.read<AppListCubit>().getUserApplication();
+            },
+          );
         },
         child: BlocListener<AppListCubit, AppListState>(
           listener: (context, state) {
