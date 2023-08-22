@@ -21,10 +21,22 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const AgentHomePage(),
       );
     },
+    AdminContactUsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AdminContactUsPage(),
+      );
+    },
     CDashboardRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const CDashboardPage(),
+      );
+    },
+    AdminFeedbackRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AdminFeedbackPage(),
       );
     },
     CreateApplicationRoute.name: (routeData) {
@@ -33,10 +45,22 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const CreateApplicationPage(),
       );
     },
+    AdminApplicationRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AdminApplicationPage(),
+      );
+    },
     ApplicationRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const ApplicationPage(),
+      );
+    },
+    AdminCustomerRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AdminCustomerPage(),
       );
     },
     LandingRoute.name: (routeData) {
@@ -52,11 +76,9 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     SignUpRoute.name: (routeData) {
-      final args = routeData.argsAs<SignUpRouteArgs>(
-          orElse: () => const SignUpRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: SignUpPage(key: args.key),
+        child: const SignUpPage(),
       );
     },
     SplashScreenRoute.name: (routeData) {
@@ -342,30 +364,6 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
-    AdminApplicationRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const AdminApplicationPage(),
-      );
-    },
-    AdminCustomerRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const AdminCustomerPage(),
-      );
-    },
-    AdminFeedbackRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const AdminFeedbackPage(),
-      );
-    },
-    AdminContactUsRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const AdminContactUsPage(),
-      );
-    },
   };
 }
 
@@ -379,6 +377,20 @@ class AgentHomeRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'AgentHomeRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [AdminContactUsPage]
+class AdminContactUsRoute extends PageRouteInfo<void> {
+  const AdminContactUsRoute({List<PageRouteInfo>? children})
+      : super(
+          AdminContactUsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AdminContactUsRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -398,6 +410,20 @@ class CDashboardRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [AdminFeedbackPage]
+class AdminFeedbackRoute extends PageRouteInfo<void> {
+  const AdminFeedbackRoute({List<PageRouteInfo>? children})
+      : super(
+          AdminFeedbackRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AdminFeedbackRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [CreateApplicationPage]
 class CreateApplicationRoute extends PageRouteInfo<void> {
   const CreateApplicationRoute({List<PageRouteInfo>? children})
@@ -412,6 +438,20 @@ class CreateApplicationRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [AdminApplicationPage]
+class AdminApplicationRoute extends PageRouteInfo<void> {
+  const AdminApplicationRoute({List<PageRouteInfo>? children})
+      : super(
+          AdminApplicationRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AdminApplicationRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [ApplicationPage]
 class ApplicationRoute extends PageRouteInfo<void> {
   const ApplicationRoute({List<PageRouteInfo>? children})
@@ -421,6 +461,20 @@ class ApplicationRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'ApplicationRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [AdminCustomerPage]
+class AdminCustomerRoute extends PageRouteInfo<void> {
+  const AdminCustomerRoute({List<PageRouteInfo>? children})
+      : super(
+          AdminCustomerRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AdminCustomerRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
@@ -455,30 +509,16 @@ class SignInRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [SignUpPage]
-class SignUpRoute extends PageRouteInfo<SignUpRouteArgs> {
-  SignUpRoute({
-    Key? key,
-    List<PageRouteInfo>? children,
-  }) : super(
+class SignUpRoute extends PageRouteInfo<void> {
+  const SignUpRoute({List<PageRouteInfo>? children})
+      : super(
           SignUpRoute.name,
-          args: SignUpRouteArgs(key: key),
           initialChildren: children,
         );
 
   static const String name = 'SignUpRoute';
 
-  static const PageInfo<SignUpRouteArgs> page = PageInfo<SignUpRouteArgs>(name);
-}
-
-class SignUpRouteArgs {
-  const SignUpRouteArgs({this.key});
-
-  final Key? key;
-
-  @override
-  String toString() {
-    return 'SignUpRouteArgs{key: $key}';
-  }
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
@@ -1420,60 +1460,4 @@ class SignatureRouteArgs {
   String toString() {
     return 'SignatureRouteArgs{key: $key, visaApplication: $visaApplication, appDocument: $appDocument, index: $index}';
   }
-}
-
-/// generated route for
-/// [AdminApplicationPage]
-class AdminApplicationRoute extends PageRouteInfo<void> {
-  const AdminApplicationRoute({List<PageRouteInfo>? children})
-      : super(
-          AdminApplicationRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'AdminApplicationRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [AdminCustomerPage]
-class AdminCustomerRoute extends PageRouteInfo<void> {
-  const AdminCustomerRoute({List<PageRouteInfo>? children})
-      : super(
-          AdminCustomerRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'AdminCustomerRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [AdminFeedbackPage]
-class AdminFeedbackRoute extends PageRouteInfo<void> {
-  const AdminFeedbackRoute({List<PageRouteInfo>? children})
-      : super(
-          AdminFeedbackRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'AdminFeedbackRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [AdminContactUsPage]
-class AdminContactUsRoute extends PageRouteInfo<void> {
-  const AdminContactUsRoute({List<PageRouteInfo>? children})
-      : super(
-          AdminContactUsRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'AdminContactUsRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
 }

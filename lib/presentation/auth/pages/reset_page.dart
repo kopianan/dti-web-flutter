@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dti_web/application/auth/auth_cubit.dart';
 import 'package:dti_web/core/widgets/auth_footer_widget.dart';
-import 'package:dti_web/core/widgets/auth_header_widget.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
 import 'package:dti_web/injection.dart';
 import 'package:dti_web/presentation/auth/widgets/email_text_field.dart';

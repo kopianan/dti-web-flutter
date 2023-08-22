@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:dti_web/application/admin_application/cubit/admin_application_cubit.dart';
 import 'package:dti_web/application/agent/agent_cubit.dart';
 import 'package:dti_web/application/agent/create_new_application_cubit.dart';
 import 'package:dti_web/application/contact_us/cubit/contact_us_cubit.dart';
@@ -34,6 +35,9 @@ class AdminDashboardWidget extends StatelessWidget {
           providers: [
             BlocProvider(
               create: (context) => getIt<CreateNewApplicationCubit>(),
+            ),
+            BlocProvider(
+              create: (context) => getIt<AdminApplicationCubit>(),
             ),
             BlocProvider(
               create: (context) => getIt<CustomerCubit>(),

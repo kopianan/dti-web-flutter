@@ -16,17 +16,19 @@ import 'package:google_sign_in/google_sign_in.dart' as _i11;
 import 'package:injectable/injectable.dart' as _i2;
 
 import 'application/admin/cubit/admin_cubit.dart' as _i3;
-import 'application/agent/agent_cubit.dart' as _i38;
+import 'application/admin_application/cubit/admin_application_cubit.dart'
+    as _i38;
+import 'application/agent/agent_cubit.dart' as _i39;
 import 'application/agent/create_new_application_cubit.dart' as _i6;
-import 'application/app_list/app_list_cubit.dart' as _i39;
+import 'application/app_list/app_list_cubit.dart' as _i40;
 import 'application/application_cubit.dart' as _i4;
-import 'application/auth/auth_cubit.dart' as _i40;
+import 'application/auth/auth_cubit.dart' as _i41;
 import 'application/camera/camera_cubit.dart' as _i5;
-import 'application/contact_us/cubit/contact_us_cubit.dart' as _i41;
-import 'application/customer/cubit/customer_cubit.dart' as _i42;
-import 'application/dashboard/dashboard_cubit.dart' as _i43;
+import 'application/contact_us/cubit/contact_us_cubit.dart' as _i42;
+import 'application/customer/cubit/customer_cubit.dart' as _i43;
+import 'application/dashboard/dashboard_cubit.dart' as _i44;
 import 'application/document/document_cubit.dart' as _i8;
-import 'application/feedback/cubit/feedback_cubit.dart' as _i44;
+import 'application/feedback/cubit/feedback_cubit.dart' as _i45;
 import 'application/global/global_user_cubit.dart' as _i10;
 import 'application/other/other_cubit.dart' as _i32;
 import 'application/payment/payment_cubit.dart' as _i33;
@@ -34,7 +36,7 @@ import 'application/questionnaire_cubit.dart' as _i34;
 import 'application/startup/startup_cubit.dart' as _i35;
 import 'application/timer/timer_cubit.dart' as _i36;
 import 'application/update_application/update_application_cubit.dart' as _i37;
-import 'core/firebase_injectable_module.dart' as _i45;
+import 'core/firebase_injectable_module.dart' as _i46;
 import 'domain/agent/i_agent.dart' as _i12;
 import 'domain/app_list/i_app_list.dart' as _i14;
 import 'domain/auth/i_auth.dart' as _i16;
@@ -107,21 +109,23 @@ _i1.GetIt $initGetIt(
   gh.lazySingleton<_i36.TimerCubit>(() => _i36.TimerCubit(gh<_i26.IOther>()));
   gh.factory<_i37.UpdateApplicationCubit>(
       () => _i37.UpdateApplicationCubit(gh<_i30.IUpdateApplication>()));
-  gh.factory<_i38.AgentCubit>(() => _i38.AgentCubit(
+  gh.factory<_i38.AdminApplicationCubit>(
+      () => _i38.AdminApplicationCubit(gh<_i14.IAppList>()));
+  gh.factory<_i39.AgentCubit>(() => _i39.AgentCubit(
         gh<_i12.IAgent>(),
         gh<_i22.IDashboard>(),
       ));
-  gh.singleton<_i39.AppListCubit>(_i39.AppListCubit(gh<_i14.IAppList>()));
-  gh.factory<_i40.AuthCubit>(() => _i40.AuthCubit(gh<_i16.IAuth>()));
-  gh.factory<_i41.ContactUsCubit>(
-      () => _i41.ContactUsCubit(gh<_i18.IContactUs>()));
-  gh.factory<_i42.CustomerCubit>(
-      () => _i42.CustomerCubit(gh<_i20.ICustomer>()));
-  gh.factory<_i43.DashboardCubit>(
-      () => _i43.DashboardCubit(gh<_i22.IDashboard>()));
-  gh.factory<_i44.FeedbackCubit>(
-      () => _i44.FeedbackCubit(gh<_i24.IFeedback>()));
+  gh.singleton<_i40.AppListCubit>(_i40.AppListCubit(gh<_i14.IAppList>()));
+  gh.factory<_i41.AuthCubit>(() => _i41.AuthCubit(gh<_i16.IAuth>()));
+  gh.factory<_i42.ContactUsCubit>(
+      () => _i42.ContactUsCubit(gh<_i18.IContactUs>()));
+  gh.factory<_i43.CustomerCubit>(
+      () => _i43.CustomerCubit(gh<_i20.ICustomer>()));
+  gh.factory<_i44.DashboardCubit>(
+      () => _i44.DashboardCubit(gh<_i22.IDashboard>()));
+  gh.factory<_i45.FeedbackCubit>(
+      () => _i45.FeedbackCubit(gh<_i24.IFeedback>()));
   return getIt;
 }
 
-class _$FirebaseInjectableModule extends _i45.FirebaseInjectableModule {}
+class _$FirebaseInjectableModule extends _i46.FirebaseInjectableModule {}

@@ -18,10 +18,15 @@ class AdminContactUsPage extends StatefulWidget {
 
 class _AdminContactUsPageState extends State<AdminContactUsPage> {
   @override
+  void initState() {
+        context.read<ContactUsCubit>().getAllCustomer(); 
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocBuilder<ContactUsCubit, ContactUsState>(
-        bloc: context.read<ContactUsCubit>()..getAllCustomer(),
+     
         builder: (context, feedbackState) {
           return Container(
             padding: const EdgeInsets.symmetric(horizontal: 40),

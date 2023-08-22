@@ -14,12 +14,10 @@ _$_SimpleVisaModel _$$_SimpleVisaModelFromJson(Map<String, dynamic> json) =>
       bookingCode: json['bookingCode'] as String?,
       title: json['title'] as String?,
       subTitle: json['subTitle'] as String?,
-      usedByDate: const DateTimeOrNullConverter()
-          .fromJson(json['usedByDate'] as String?),
+      usedByDate: DateTime.parse(json['usedByDate'] as String),
       userName: json['userName'] as String?,
       lengthOfStay: json['lengthOfStay'] as int?,
-      createdDate: const DateTimeOrNullConverter()
-          .fromJson(json['createdDate'] as String?),
+      createdDate: DateTime.parse(json['createdDate'] as String),
     );
 
 Map<String, dynamic> _$$_SimpleVisaModelToJson(_$_SimpleVisaModel instance) =>
@@ -30,9 +28,8 @@ Map<String, dynamic> _$$_SimpleVisaModelToJson(_$_SimpleVisaModel instance) =>
       'bookingCode': instance.bookingCode,
       'title': instance.title,
       'subTitle': instance.subTitle,
-      'usedByDate': const DateTimeOrNullConverter().toJson(instance.usedByDate),
+      'usedByDate': instance.usedByDate.toIso8601String(),
       'userName': instance.userName,
       'lengthOfStay': instance.lengthOfStay,
-      'createdDate':
-          const DateTimeOrNullConverter().toJson(instance.createdDate),
+      'createdDate': instance.createdDate.toIso8601String(),
     };

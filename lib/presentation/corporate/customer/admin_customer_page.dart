@@ -18,10 +18,15 @@ class AdminCustomerPage extends StatefulWidget {
 
 class _AdminCustomerPageState extends State<AdminCustomerPage> {
   @override
+  void initState() {
+    context.read<CustomerCubit>().getAllCustomer();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocBuilder<CustomerCubit, CustomerState>(
-        bloc: getIt<CustomerCubit>()..getAllCustomer(),
         builder: (context, customerState) {
           return Container(
             padding: const EdgeInsets.symmetric(horizontal: 40),

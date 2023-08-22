@@ -3,7 +3,6 @@ import 'package:data_table_2/data_table_2.dart';
 import 'package:dti_web/application/app_list/app_list_cubit.dart';
 import 'package:dti_web/application/feedback/cubit/feedback_cubit.dart';
 import 'package:dti_web/domain/feedback/feedback_model.dart';
-import 'package:dti_web/injection.dart';
 import 'package:dti_web/utils/date_converter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,10 +18,15 @@ class AdminFeedbackPage extends StatefulWidget {
 
 class _AdminFeedbackPageState extends State<AdminFeedbackPage> {
   @override
+  void initState() {
+        context.read<FeedbackCubit>().getAllCustomer(); 
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocBuilder<FeedbackCubit, FeedbackState>(
-        bloc: getIt<FeedbackCubit>()..getAllCustomer(),
+    
         builder: (context, feedbackState) {
           return Container(
             padding: const EdgeInsets.symmetric(horizontal: 40),

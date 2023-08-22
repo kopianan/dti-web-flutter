@@ -1,5 +1,3 @@
-
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 class DateTimeOrNullConverter implements JsonConverter<DateTime?, String?> {
@@ -7,7 +5,7 @@ class DateTimeOrNullConverter implements JsonConverter<DateTime?, String?> {
 
   @override
   DateTime? fromJson(String? stringDate) {
-    return stringDate == null ? null : DateTime.parse(stringDate);
+    return stringDate == null ? DateTime(1990) : DateTime.parse(stringDate);
   }
 
   @override

@@ -59,7 +59,7 @@ class _DashboardPageState extends State<DashboardPage> {
                   value.err.maybeMap(
                     orElse: () {},
                     apiExpired: (err) {
-                      AutoRouter.of(context).replaceAll([SignInRoute()]);
+                      AutoRouter.of(context).replaceAll([const SignInRoute()]);
                     },
                   );
                 },
@@ -69,7 +69,7 @@ class _DashboardPageState extends State<DashboardPage> {
                     AutoRouter.of(context)
                         .push(QuestionnaireRoute(boolIsInit: true));
                   } else if (e.appType == 2) {
-                    AutoRouter.of(context).push(VOASummaryRoute());
+                    AutoRouter.of(context).push(const VOASummaryRoute());
                   } else {
                     AutoRouter.of(context).push(ChoosePassportRoute());
                   }
@@ -83,7 +83,7 @@ class _DashboardPageState extends State<DashboardPage> {
                     AutoRouter.of(context)
                         .push(QuestionnaireRoute(boolIsInit: true));
                   } else if (e.appType == 2) {
-                    AutoRouter.of(context).push(VOASummaryRoute());
+                    AutoRouter.of(context).push(const VOASummaryRoute());
                   } else {
                     AutoRouter.of(context).push(ChoosePassportRoute());
                   }
@@ -119,7 +119,7 @@ class _DashboardPageState extends State<DashboardPage> {
               // ),
               appBar: AppBar(
                 toolbarHeight: 80.h,
-                backgroundColor: Color(0xff000649),
+                backgroundColor: const Color(0xff000649),
                 title: Container(
                   width: 100,
                   height: 100,
@@ -140,7 +140,7 @@ class _DashboardPageState extends State<DashboardPage> {
                               if (e.userData.mobileNumber == null) {
                                 //user must verify the number.
                                 AutoRouter.of(context)
-                                    .navigate(NumberRegistrationRoute());
+                                    .navigate(const NumberRegistrationRoute());
                               }
                             });
                       },
@@ -186,7 +186,7 @@ class _DashboardPageState extends State<DashboardPage> {
                         state.maybeMap(
                           orElse: () {},
                           onSignOut: (e) {
-                            AutoRouter.of(context).replaceAll([SignInRoute()]);
+                            AutoRouter.of(context).replaceAll([const SignInRoute()]);
                           },
                         );
                       },
@@ -195,7 +195,7 @@ class _DashboardPageState extends State<DashboardPage> {
                           itemBuilder: (context) {
                             return [
                               PopupMenuItem(
-                                child: Text("Log Out"),
+                                child: const Text("Log Out"),
                                 onTap: () {
                                   context.read<AuthCubit>().signOut();
                                 },
@@ -217,7 +217,7 @@ class _DashboardPageState extends State<DashboardPage> {
                   )
                 ],
               ),
-              body: Container(
+              body: SizedBox(
                 height: ScreenUtil().screenHeight - kToolbarHeight,
                 child: Column(
                   children: [
@@ -412,7 +412,7 @@ class _DashboardPageState extends State<DashboardPage> {
                                                         ),
                                                       ),
                                                     ),
-                                                    Expanded(child: SizedBox()),
+                                                    const Expanded(child: SizedBox()),
                                                   ],
                                                 ),
                                               ],
@@ -679,7 +679,7 @@ class _DashboardPageState extends State<DashboardPage> {
   void onCreateVOA(DashboardState state) {
     state.maybeMap(
       orElse: () {
-        AutoRouter.of(context).push(VOASummaryRoute());
+        AutoRouter.of(context).push(const VOASummaryRoute());
       },
       onGetSingleData: (e) {
         if (e.visa.status!.toLowerCase() == 'draft') {
@@ -716,7 +716,7 @@ class _DashboardPageState extends State<DashboardPage> {
                 } //
               }).show();
         } else {
-          AutoRouter.of(context).push(VOASummaryRoute());
+          AutoRouter.of(context).push(const VOASummaryRoute());
         }
       },
     );
@@ -883,7 +883,7 @@ class _DashboardFooter extends StatelessWidget {
                     SizedBox(
                       width: 30.w,
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Container(
                         // padding: EdgeInsets.symmetric(horizontal: 40.w),
                         child: const FeedbackSection()),
@@ -904,20 +904,20 @@ class _DashboardFooter extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text("Copyright © 2022 DoorToID. All Rights Reserved."),
+            const Text("Copyright © 2022 DoorToID. All Rights Reserved."),
             Row(
               children: [
                 InkWell(
                     onTap: () {
                       launch("https://doortoid.com/term-of-use/");
                     },
-                    child: Text("Terms of Use")),
+                    child: const Text("Terms of Use")),
                 30.horizontalSpace,
                 InkWell(
                     onTap: () {
                       launch("https://doortoid.com/privacy-policy/");
                     },
-                    child: Text("Privacy Policy")),
+                    child: const Text("Privacy Policy")),
               ],
             )
           ],

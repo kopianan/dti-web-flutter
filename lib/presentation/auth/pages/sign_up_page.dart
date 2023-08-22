@@ -1,21 +1,15 @@
-import 'dart:math';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dti_web/application/auth/auth_cubit.dart';
 import 'package:dti_web/core/widgets/auth_footer_widget.dart';
-import 'package:dti_web/core/widgets/auth_header_widget.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
 import 'package:dti_web/injection.dart';
-import 'package:dti_web/presentation/auth/pages/sign_in/sign_in_page.dart';
 import 'package:dti_web/presentation/auth/widgets/email_text_field.dart';
 import 'package:dti_web/presentation/auth/widgets/password_text_field.dart';
-import 'package:dti_web/presentation/widgets/loading_dialog.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,7 +17,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 @RoutePage()
 class SignUpPage extends StatefulWidget {
   static const String routeName = '/register';
-  SignUpPage({super.key});
+  const SignUpPage({super.key});
 
   @override
   State<SignUpPage> createState() => _SignUpPageState();
@@ -77,14 +71,14 @@ class _SignUpPageState extends State<SignUpPage> {
             },
             onLoginSuccess: (e) {
               EasyLoading.dismiss();
-              context.router.replace(DashboardRoute());
+              context.router.replace(const DashboardRoute());
             },
             onRegisterSuccess: (e) {
               EasyLoading.dismiss();
 
               //loginuser
 
-              AutoRouter.of(context).replaceAll([NumberRegistrationRoute()]);
+              AutoRouter.of(context).replaceAll([const NumberRegistrationRoute()]);
               // context
               //     .read<AuthCubit>()
               //     .loginWithEmailAndPassword(email.text, password.text);
