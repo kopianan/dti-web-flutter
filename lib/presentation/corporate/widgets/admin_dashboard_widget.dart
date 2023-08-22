@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:dti_web/application/agent/agent_cubit.dart';
 import 'package:dti_web/application/agent/create_new_application_cubit.dart';
+import 'package:dti_web/application/contact_us/cubit/contact_us_cubit.dart';
 import 'package:dti_web/application/customer/cubit/customer_cubit.dart';
+import 'package:dti_web/application/feedback/cubit/feedback_cubit.dart';
 import 'package:dti_web/application/global/global_user_cubit.dart';
 import 'package:dti_web/application/other/other_cubit.dart';
 import 'package:dti_web/core/storage.dart';
@@ -22,8 +24,8 @@ class AdminDashboardWidget extends StatelessWidget {
       routes: const [
         AdminApplicationRoute(),
         AdminCustomerRoute(),
-        AdminApplicationRoute(),
-        AgentHomeRoute(),
+        AdminFeedbackRoute(),
+        AdminContactUsRoute(),
       ],
       builder: (context, child) {
         final tabsRouter = AutoTabsRouter.of(context);
@@ -35,6 +37,12 @@ class AdminDashboardWidget extends StatelessWidget {
             ),
             BlocProvider(
               create: (context) => getIt<CustomerCubit>(),
+            ),
+            BlocProvider(
+              create: (context) => getIt<FeedbackCubit>(),
+            ),
+            BlocProvider(
+              create: (context) => getIt<ContactUsCubit>(),
             ),
             BlocProvider(
               create: (context) => getIt<AgentCubit>(),

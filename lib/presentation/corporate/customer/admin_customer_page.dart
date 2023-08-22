@@ -108,96 +108,11 @@ class _AdminCustomerPageState extends State<AdminCustomerPage> {
     );
   }
 
-  bool _isOpenDetail(String status) {
-    if (status == "Completed" ||
-        status == "Submitted" ||
-        status == "Paid" ||
-        status == "Pending Payment") {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
   onOpenPressed() {}
 
   DataRow applicationDataRow(CustomerModel customer, int index) {
     return DataRow2(
-      onTap: () {
-        // String subtitle = visa.bodyData.subTitle?.toLowerCase() ?? "";
-        // if (visa.bodyData.status?.toLowerCase() == "draft") {
-        //   late String desc;
-        //   if (subtitle.contains('passport')) {
-        //     desc =
-        //         "You have incomplete Passport. Do you want to continue from your latest draft ? ";
-        //   } else if (subtitle.contains("arrival")) {
-        //     desc =
-        //         "You have incomplete Visa On Arrivale. Do you want to continue from your latest draft ? ";
-        //   } else {
-        //     desc =
-        //         "You have incomplete Visa Application. Do you want to continue from your latest draft ? ";
-        //   }
-        //   AwesomeDialog(
-        //     context: context,
-        //     width: 400,
-        //     dialogType: DialogType.info,
-        //     title: "Draft Application",
-        //     desc: desc,
-        //     btnCancelText: "Delete",
-        //     btnOkText: "Continue",
-        //     btnCancelOnPress: () {
-        //       context
-        //           .read<AgentCubit>()
-        //           .deleteApplicationAndPassport([visa.bodyData]);
-        //     },
-        //     btnOkOnPress: () {
-        //       final status = visa.bodyData.status!;
-        //       if (subtitle.toLowerCase().contains('passport')) {
-        //         if (_isOpenDetail(status)) {
-        //           AutoRouter.of(context).push(PassportDetailRoute(
-        //               firebaseDocId: visa.bodyData.firebaseDocId!));
-        //         } else {
-        //           AutoRouter.of(context).push(
-        //             PassportPersonalParticularRoute(
-        //               firebaseDocId: visa.bodyData.firebaseDocId!,
-        //             ),
-        //           );
-        //         }
-        //       } else {
-        //         if (_isOpenDetail(status)) {
-        //           AutoRouter.of(context).push(ApplicationDetailRoute(
-        //               firebaseDocId: visa.bodyData.firebaseDocId!));
-        //         } else {
-        //           AutoRouter.of(context).push(PersonalInformation1Route(
-        //               firebaseDocId: visa.bodyData.firebaseDocId!));
-        //         }
-        //       }
-        //     },
-        //   ).show();
-        // } else {
-        //   final status = visa.bodyData.status!;
-        //   if (subtitle.toLowerCase().contains('passport')) {
-        //     if (_isOpenDetail(status)) {
-        //       AutoRouter.of(context).push(PassportDetailRoute(
-        //           firebaseDocId: visa.bodyData.firebaseDocId!));
-        //     } else {
-        //       AutoRouter.of(context).push(
-        //         PassportPersonalParticularRoute(
-        //           firebaseDocId: visa.bodyData.firebaseDocId!,
-        //         ),
-        //       );
-        //     }
-        //   } else {
-        //     if (_isOpenDetail(status)) {
-        //       AutoRouter.of(context).push(ApplicationDetailRoute(
-        //           firebaseDocId: visa.bodyData.firebaseDocId!));
-        //     } else {
-        //       AutoRouter.of(context).push(PersonalInformation1Route(
-        //           firebaseDocId: visa.bodyData.firebaseDocId!));
-        //     }
-        //   }
-        // }
-      },
+      onTap: () {},
       color: index % 2 == 0
           ? MaterialStatePropertyAll(Colors.blue[100])
           : const MaterialStatePropertyAll(Colors.white),
