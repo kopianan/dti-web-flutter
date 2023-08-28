@@ -18,7 +18,7 @@ class AdminApplicationPage extends StatefulWidget {
 class _AdminApplicationPageState extends State<AdminApplicationPage> {
   @override
   void initState() {
-    context.read<AdminApplicationCubit>().getAllCustomer();
+    context.read<AdminApplicationCubit>().getAllUserVisa();
     super.initState();
   }
 
@@ -56,7 +56,7 @@ class _AdminApplicationPageState extends State<AdminApplicationPage> {
                         onPressed: () {
                           context
                               .read<AdminApplicationCubit>()
-                              .getAllCustomer();
+                              .getAllUserVisa();
                         },
                       ),
                     ),
@@ -110,11 +110,13 @@ class _AdminApplicationPageState extends State<AdminApplicationPage> {
     );
   }
 
-  
-
   DataRow applicationDataRow(SimpleVisaModel visa, int index) {
     return DataRow2(
-      onTap: () {},
+      onTap: () {
+        // context.router.push(
+        //   ApplicationDetailRoute(firebaseDocId: firebaseDocId),
+        // );
+      },
       color: index % 2 == 0
           ? MaterialStatePropertyAll(Colors.blue[100])
           : const MaterialStatePropertyAll(Colors.white),

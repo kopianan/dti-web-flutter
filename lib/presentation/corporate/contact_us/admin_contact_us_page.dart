@@ -1,8 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:data_table_2/data_table_2.dart';
+import 'package:dti_web/application/admin/cubit/admin_cubit.dart';
 import 'package:dti_web/application/app_list/app_list_cubit.dart';
 import 'package:dti_web/application/contact_us/cubit/contact_us_cubit.dart';
 import 'package:dti_web/domain/contact_us/contact_us_model.dart';
+import 'package:dti_web/injection.dart';
 import 'package:dti_web/utils/date_converter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,14 +21,14 @@ class AdminContactUsPage extends StatefulWidget {
 class _AdminContactUsPageState extends State<AdminContactUsPage> {
   @override
   void initState() {
-        context.read<ContactUsCubit>().getAllCustomer(); 
+    context.read<ContactUsCubit>().getAllCustomer();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocBuilder<ContactUsCubit, ContactUsState>(
-     
         builder: (context, feedbackState) {
           return Container(
             padding: const EdgeInsets.symmetric(horizontal: 40),
@@ -92,6 +94,7 @@ class _AdminContactUsPageState extends State<AdminContactUsPage> {
                               label: "Created Date", width: 150),
                           applicationHeaderColumn(label: "Email"),
                           applicationHeaderColumn(label: "Title", width: 400),
+                          applicationHeaderColumn(label: "Contact", width: 400),
                         ],
                         rows: e.contacts
                             .map((value) => applicationDataRow(
@@ -121,6 +124,42 @@ class _AdminContactUsPageState extends State<AdminContactUsPage> {
             contact.createdDate.toIso8601String()))),
         DataCell(Text(contact.email.toString())),
         DataCell(Text(contact.title)),
+        DataCell(BlocProvider(
+          create: (context) => getIt<AdminCubit>(),
+          child: BlocBuilder<AdminCubit, AdminState>(
+            builder: (context, state) {
+              return Row(
+                children: [
+                  SizedBox(
+                    width: 30,
+                    height: 30,
+                    child: InkWell(
+                      child: Image.asset(
+                        'assets/icons/email.png',
+                      ),
+                      onTap: () {
+                        context
+                            .read<AdminCubit>()
+                            .sendEmail(contact.title, contact.email);
+                      },
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  SizedBox(
+                    width: 30,
+                    height: 30,
+                    child: InkWell(
+                      child: Image.asset(
+                        'assets/icons/whatsapp.png',
+                      ),
+                      onTap: () {},
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
+        )),
       ],
     );
   }

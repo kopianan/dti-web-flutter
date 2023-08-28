@@ -12,7 +12,7 @@ class UserOnlyGuard extends AutoRouteGuard {
     //to enter the agent Dashboard,
     //user has have non null token, route to dashboard, and user is agent
 
-    if (user!.adminOrAgent()) {
+    if (!user!.adminOrAgent()) {
       resolver.next();
     } else {
       resolver.next(false);
