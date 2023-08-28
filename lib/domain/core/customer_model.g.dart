@@ -9,8 +9,10 @@ part of 'customer_model.dart';
 _$_CustomerModel _$$_CustomerModelFromJson(Map<String, dynamic> json) =>
     _$_CustomerModel(
       name: json['name'] as String? ?? "",
+      uid: json['uid'] as String?,
       email: json['email'] as String? ?? "",
       countryCode: json['countryCode'] as String? ?? "",
+      mobileNumber: json['mobileNumber'] as String? ?? "",
       totalVisa: json['totalVisa'] as int? ?? 0,
       createdDate: const DateTimeOrNullConverter()
           .fromJson(json['createdDate'] as String?),
@@ -22,8 +24,10 @@ _$_CustomerModel _$$_CustomerModelFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$_CustomerModelToJson(_$_CustomerModel instance) =>
     <String, dynamic>{
       'name': instance.name,
+      'uid': instance.uid,
       'email': instance.email,
       'countryCode': instance.countryCode,
+      'mobileNumber': instance.mobileNumber,
       'totalVisa': instance.totalVisa,
       'createdDate':
           const DateTimeOrNullConverter().toJson(instance.createdDate),

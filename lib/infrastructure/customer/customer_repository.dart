@@ -15,13 +15,7 @@ class CustomerRepository extends ICustomer {
   final Dio dio;
   final storage = Storage();
   @override
-  Future<Either<String, List<CustomerModel>>> getAllCustomer() async {
-    //ONLY GET APPLICATION, NOT PASSPORT
-    // final result =
-    // await dio!.get('${dotenv.env['BASE_URL']}/applicationsByUser',
-    //     options: Options(
-    //       headers: {'Authorization': 'Bearer ${storage.getToken()}'},
-    //     ));
+  Future<Either<String, List<CustomerModel>>> getAllUser() async {
     try {
       final result = await dio.get('${dotenv.env['BASE_URL']}/users',
           options: Options(
@@ -29,11 +23,30 @@ class CustomerRepository extends ICustomer {
           ));
 
       final user = result.data['data'] as List;
-      print(json.encode(  user)); 
+      print(json.encode(user));
 
       final listData = user.map((e) => CustomerModel.fromJson(e)).toList();
 
       return Right(listData);
+    } on Exception catch (e) {
+      log(e.toString());
+      return left("");
+    }
+  }
+
+  @override
+  Future<Either<String, CustomerModel>> getUserById(String userId) async {
+    try {
+      final result = await dio.get('${dotenv.env['BASE_URL']}/user/$userId',
+          options: Options(
+            headers: {'Authorization': 'Bearer ${storage.getToken()}'},
+          ));
+
+      final user = result.data['data'] as dynamic;
+
+      final userModel = CustomerModel.fromJson(user);
+
+      return Right(userModel);
     } on Exception catch (e) {
       log(e.toString());
       return left("");

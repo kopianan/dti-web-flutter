@@ -3,12 +3,15 @@ import 'package:data_table_2/data_table_2.dart';
 import 'package:dti_web/application/admin/cubit/admin_cubit.dart';
 import 'package:dti_web/application/app_list/app_list_cubit.dart';
 import 'package:dti_web/application/contact_us/cubit/contact_us_cubit.dart';
+import 'package:dti_web/application/customer/cubit/customer_cubit.dart';
 import 'package:dti_web/domain/contact_us/contact_us_model.dart';
 import 'package:dti_web/injection.dart';
 import 'package:dti_web/utils/date_converter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 @RoutePage()
 class AdminContactUsPage extends StatefulWidget {
@@ -93,7 +96,7 @@ class _AdminContactUsPageState extends State<AdminContactUsPage> {
                           applicationHeaderColumn(
                               label: "Created Date", width: 150),
                           applicationHeaderColumn(label: "Email"),
-                          applicationHeaderColumn(label: "Title", width: 400),
+                          applicationHeaderColumn(label: "Title", width: 300),
                           applicationHeaderColumn(label: "Contact", width: 400),
                         ],
                         rows: e.contacts
@@ -145,14 +148,41 @@ class _AdminContactUsPageState extends State<AdminContactUsPage> {
                     ),
                   ),
                   const SizedBox(width: 10),
-                  SizedBox(
-                    width: 30,
-                    height: 30,
-                    child: InkWell(
-                      child: Image.asset(
-                        'assets/icons/whatsapp.png',
-                      ),
-                      onTap: () {},
+                  BlocProvider(
+                    create: (context) => getIt<CustomerCubit>(),
+                    child: BlocConsumer<CustomerCubit, CustomerState>(
+                      listener: (context, state) {
+                        state.maybeMap(orElse: () {
+                          EasyLoading.dismiss();
+                        }, loading: (e) {
+                          EasyLoading.show();
+                        }, getSingleCustomer: (e) async {
+                          //generate link
+                          EasyLoading.dismiss();
+                          final phone =
+                              e.user.countryCode.replaceFirst('+', '') +
+                                  e.user.mobileNumber;
+                          print(phone);
+                          await launchUrl(Uri.parse("https://api.whatsapp.com/send/?phone=$phone"));
+                        });
+                      },
+                      builder: (context, state) {
+                        return SizedBox(
+                          width: 30,
+                          height: 30,
+                          child: InkWell(
+                            child: Image.asset(
+                              'assets/icons/whatsapp.png',
+                            ),
+                            onTap: () {
+                              //get user data
+                              context
+                                  .read<CustomerCubit>()
+                                  .getUserById(contact.createdBy);
+                            },
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ],

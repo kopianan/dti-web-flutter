@@ -22,6 +22,7 @@ mixin _$CustomerState {
     required TResult Function() loading,
     required TResult Function() error,
     required TResult Function(List<CustomerModel> customers) getAllCustomer,
+    required TResult Function(CustomerModel user) getSingleCustomer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$CustomerState {
     TResult? Function()? loading,
     TResult? Function()? error,
     TResult? Function(List<CustomerModel> customers)? getAllCustomer,
+    TResult? Function(CustomerModel user)? getSingleCustomer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$CustomerState {
     TResult Function()? loading,
     TResult Function()? error,
     TResult Function(List<CustomerModel> customers)? getAllCustomer,
+    TResult Function(CustomerModel user)? getSingleCustomer,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +50,7 @@ mixin _$CustomerState {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
     required TResult Function(_GetAllCustomer value) getAllCustomer,
+    required TResult Function(_GetSingleCustomer value) getSingleCustomer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +59,7 @@ mixin _$CustomerState {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Error value)? error,
     TResult? Function(_GetAllCustomer value)? getAllCustomer,
+    TResult? Function(_GetSingleCustomer value)? getSingleCustomer,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +68,7 @@ mixin _$CustomerState {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_GetAllCustomer value)? getAllCustomer,
+    TResult Function(_GetSingleCustomer value)? getSingleCustomer,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -127,6 +133,7 @@ class _$_Initial implements _Initial {
     required TResult Function() loading,
     required TResult Function() error,
     required TResult Function(List<CustomerModel> customers) getAllCustomer,
+    required TResult Function(CustomerModel user) getSingleCustomer,
   }) {
     return initial();
   }
@@ -138,6 +145,7 @@ class _$_Initial implements _Initial {
     TResult? Function()? loading,
     TResult? Function()? error,
     TResult? Function(List<CustomerModel> customers)? getAllCustomer,
+    TResult? Function(CustomerModel user)? getSingleCustomer,
   }) {
     return initial?.call();
   }
@@ -149,6 +157,7 @@ class _$_Initial implements _Initial {
     TResult Function()? loading,
     TResult Function()? error,
     TResult Function(List<CustomerModel> customers)? getAllCustomer,
+    TResult Function(CustomerModel user)? getSingleCustomer,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -164,6 +173,7 @@ class _$_Initial implements _Initial {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
     required TResult Function(_GetAllCustomer value) getAllCustomer,
+    required TResult Function(_GetSingleCustomer value) getSingleCustomer,
   }) {
     return initial(this);
   }
@@ -175,6 +185,7 @@ class _$_Initial implements _Initial {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Error value)? error,
     TResult? Function(_GetAllCustomer value)? getAllCustomer,
+    TResult? Function(_GetSingleCustomer value)? getSingleCustomer,
   }) {
     return initial?.call(this);
   }
@@ -186,6 +197,7 @@ class _$_Initial implements _Initial {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_GetAllCustomer value)? getAllCustomer,
+    TResult Function(_GetSingleCustomer value)? getSingleCustomer,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -240,6 +252,7 @@ class _$_Loading implements _Loading {
     required TResult Function() loading,
     required TResult Function() error,
     required TResult Function(List<CustomerModel> customers) getAllCustomer,
+    required TResult Function(CustomerModel user) getSingleCustomer,
   }) {
     return loading();
   }
@@ -251,6 +264,7 @@ class _$_Loading implements _Loading {
     TResult? Function()? loading,
     TResult? Function()? error,
     TResult? Function(List<CustomerModel> customers)? getAllCustomer,
+    TResult? Function(CustomerModel user)? getSingleCustomer,
   }) {
     return loading?.call();
   }
@@ -262,6 +276,7 @@ class _$_Loading implements _Loading {
     TResult Function()? loading,
     TResult Function()? error,
     TResult Function(List<CustomerModel> customers)? getAllCustomer,
+    TResult Function(CustomerModel user)? getSingleCustomer,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -277,6 +292,7 @@ class _$_Loading implements _Loading {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
     required TResult Function(_GetAllCustomer value) getAllCustomer,
+    required TResult Function(_GetSingleCustomer value) getSingleCustomer,
   }) {
     return loading(this);
   }
@@ -288,6 +304,7 @@ class _$_Loading implements _Loading {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Error value)? error,
     TResult? Function(_GetAllCustomer value)? getAllCustomer,
+    TResult? Function(_GetSingleCustomer value)? getSingleCustomer,
   }) {
     return loading?.call(this);
   }
@@ -299,6 +316,7 @@ class _$_Loading implements _Loading {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_GetAllCustomer value)? getAllCustomer,
+    TResult Function(_GetSingleCustomer value)? getSingleCustomer,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -352,6 +370,7 @@ class _$_Error implements _Error {
     required TResult Function() loading,
     required TResult Function() error,
     required TResult Function(List<CustomerModel> customers) getAllCustomer,
+    required TResult Function(CustomerModel user) getSingleCustomer,
   }) {
     return error();
   }
@@ -363,6 +382,7 @@ class _$_Error implements _Error {
     TResult? Function()? loading,
     TResult? Function()? error,
     TResult? Function(List<CustomerModel> customers)? getAllCustomer,
+    TResult? Function(CustomerModel user)? getSingleCustomer,
   }) {
     return error?.call();
   }
@@ -374,6 +394,7 @@ class _$_Error implements _Error {
     TResult Function()? loading,
     TResult Function()? error,
     TResult Function(List<CustomerModel> customers)? getAllCustomer,
+    TResult Function(CustomerModel user)? getSingleCustomer,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -389,6 +410,7 @@ class _$_Error implements _Error {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
     required TResult Function(_GetAllCustomer value) getAllCustomer,
+    required TResult Function(_GetSingleCustomer value) getSingleCustomer,
   }) {
     return error(this);
   }
@@ -400,6 +422,7 @@ class _$_Error implements _Error {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Error value)? error,
     TResult? Function(_GetAllCustomer value)? getAllCustomer,
+    TResult? Function(_GetSingleCustomer value)? getSingleCustomer,
   }) {
     return error?.call(this);
   }
@@ -411,6 +434,7 @@ class _$_Error implements _Error {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_GetAllCustomer value)? getAllCustomer,
+    TResult Function(_GetSingleCustomer value)? getSingleCustomer,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -500,6 +524,7 @@ class _$_GetAllCustomer implements _GetAllCustomer {
     required TResult Function() loading,
     required TResult Function() error,
     required TResult Function(List<CustomerModel> customers) getAllCustomer,
+    required TResult Function(CustomerModel user) getSingleCustomer,
   }) {
     return getAllCustomer(customers);
   }
@@ -511,6 +536,7 @@ class _$_GetAllCustomer implements _GetAllCustomer {
     TResult? Function()? loading,
     TResult? Function()? error,
     TResult? Function(List<CustomerModel> customers)? getAllCustomer,
+    TResult? Function(CustomerModel user)? getSingleCustomer,
   }) {
     return getAllCustomer?.call(customers);
   }
@@ -522,6 +548,7 @@ class _$_GetAllCustomer implements _GetAllCustomer {
     TResult Function()? loading,
     TResult Function()? error,
     TResult Function(List<CustomerModel> customers)? getAllCustomer,
+    TResult Function(CustomerModel user)? getSingleCustomer,
     required TResult orElse(),
   }) {
     if (getAllCustomer != null) {
@@ -537,6 +564,7 @@ class _$_GetAllCustomer implements _GetAllCustomer {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
     required TResult Function(_GetAllCustomer value) getAllCustomer,
+    required TResult Function(_GetSingleCustomer value) getSingleCustomer,
   }) {
     return getAllCustomer(this);
   }
@@ -548,6 +576,7 @@ class _$_GetAllCustomer implements _GetAllCustomer {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Error value)? error,
     TResult? Function(_GetAllCustomer value)? getAllCustomer,
+    TResult? Function(_GetSingleCustomer value)? getSingleCustomer,
   }) {
     return getAllCustomer?.call(this);
   }
@@ -559,6 +588,7 @@ class _$_GetAllCustomer implements _GetAllCustomer {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_GetAllCustomer value)? getAllCustomer,
+    TResult Function(_GetSingleCustomer value)? getSingleCustomer,
     required TResult orElse(),
   }) {
     if (getAllCustomer != null) {
@@ -575,5 +605,168 @@ abstract class _GetAllCustomer implements CustomerState {
   List<CustomerModel> get customers;
   @JsonKey(ignore: true)
   _$$_GetAllCustomerCopyWith<_$_GetAllCustomer> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_GetSingleCustomerCopyWith<$Res> {
+  factory _$$_GetSingleCustomerCopyWith(_$_GetSingleCustomer value,
+          $Res Function(_$_GetSingleCustomer) then) =
+      __$$_GetSingleCustomerCopyWithImpl<$Res>;
+  @useResult
+  $Res call({CustomerModel user});
+
+  $CustomerModelCopyWith<$Res> get user;
+}
+
+/// @nodoc
+class __$$_GetSingleCustomerCopyWithImpl<$Res>
+    extends _$CustomerStateCopyWithImpl<$Res, _$_GetSingleCustomer>
+    implements _$$_GetSingleCustomerCopyWith<$Res> {
+  __$$_GetSingleCustomerCopyWithImpl(
+      _$_GetSingleCustomer _value, $Res Function(_$_GetSingleCustomer) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? user = null,
+  }) {
+    return _then(_$_GetSingleCustomer(
+      null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as CustomerModel,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CustomerModelCopyWith<$Res> get user {
+    return $CustomerModelCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_GetSingleCustomer implements _GetSingleCustomer {
+  const _$_GetSingleCustomer(this.user);
+
+  @override
+  final CustomerModel user;
+
+  @override
+  String toString() {
+    return 'CustomerState.getSingleCustomer(user: $user)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_GetSingleCustomer &&
+            (identical(other.user, user) || other.user == user));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, user);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_GetSingleCustomerCopyWith<_$_GetSingleCustomer> get copyWith =>
+      __$$_GetSingleCustomerCopyWithImpl<_$_GetSingleCustomer>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() error,
+    required TResult Function(List<CustomerModel> customers) getAllCustomer,
+    required TResult Function(CustomerModel user) getSingleCustomer,
+  }) {
+    return getSingleCustomer(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? error,
+    TResult? Function(List<CustomerModel> customers)? getAllCustomer,
+    TResult? Function(CustomerModel user)? getSingleCustomer,
+  }) {
+    return getSingleCustomer?.call(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? error,
+    TResult Function(List<CustomerModel> customers)? getAllCustomer,
+    TResult Function(CustomerModel user)? getSingleCustomer,
+    required TResult orElse(),
+  }) {
+    if (getSingleCustomer != null) {
+      return getSingleCustomer(user);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Error value) error,
+    required TResult Function(_GetAllCustomer value) getAllCustomer,
+    required TResult Function(_GetSingleCustomer value) getSingleCustomer,
+  }) {
+    return getSingleCustomer(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_GetAllCustomer value)? getAllCustomer,
+    TResult? Function(_GetSingleCustomer value)? getSingleCustomer,
+  }) {
+    return getSingleCustomer?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_GetAllCustomer value)? getAllCustomer,
+    TResult Function(_GetSingleCustomer value)? getSingleCustomer,
+    required TResult orElse(),
+  }) {
+    if (getSingleCustomer != null) {
+      return getSingleCustomer(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetSingleCustomer implements CustomerState {
+  const factory _GetSingleCustomer(final CustomerModel user) =
+      _$_GetSingleCustomer;
+
+  CustomerModel get user;
+  @JsonKey(ignore: true)
+  _$$_GetSingleCustomerCopyWith<_$_GetSingleCustomer> get copyWith =>
       throw _privateConstructorUsedError;
 }

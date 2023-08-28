@@ -11,13 +11,21 @@ part 'customer_cubit.freezed.dart';
 class CustomerCubit extends Cubit<CustomerState> {
   CustomerCubit(this.iCustomer) : super(const CustomerState.initial());
   final ICustomer iCustomer;
+  void getUserById(String id) async {
+    emit(const CustomerState.loading());
+    final result = await iCustomer.getUserById(id);
+    result.fold(
+      (l) => emit(const CustomerState.error()),
+      (r) => emit(CustomerState.getSingleCustomer(r)),
+    );
+  }
 
   void getAllCustomer() async {
     emit(const CustomerState.loading());
-    final result = await iCustomer.getAllCustomer();
+    final result = await iCustomer.getAllUser();
     result.fold(
       (l) => emit(const CustomerState.error()),
       (r) => emit(CustomerState.getAllCustomer(r)),
-    ); 
+    );
   }
 }

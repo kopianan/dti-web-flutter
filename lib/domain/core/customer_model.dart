@@ -7,17 +7,15 @@ part 'customer_model.g.dart';
 @freezed
 class CustomerModel with _$CustomerModel {
   factory CustomerModel({
-    @JsonKey(includeIfNull: true) @Default("") String? name,
-    @JsonKey(includeIfNull: true) @Default("") String? email,
-    @JsonKey(includeIfNull: true) @Default("") String countryCode,
-    @JsonKey(includeIfNull: true) @Default(0) int totalVisa,
-    @JsonKey(includeIfNull: true)
-    @DateTimeOrNullConverter()
-    DateTime? createdDate,
-    @JsonKey(includeIfNull: true)
-    @DateTimeOrNullConverter()
-    DateTime? lastUpdatedDate,
-    @JsonKey(includeIfNull: true) @Default(false) bool outstandingAction,
+    @Default("") String name,
+    String? uid,
+    @Default("") String email,
+    @Default("") String countryCode,
+    @Default("") String mobileNumber,
+    @Default(0) int totalVisa,
+    @DateTimeOrNullConverter() DateTime? createdDate,
+    @DateTimeOrNullConverter() DateTime? lastUpdatedDate,
+    @Default(false) bool outstandingAction,
   }) = _CustomerModel;
 
   factory CustomerModel.fromJson(Map<String, dynamic> json) =>

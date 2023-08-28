@@ -247,7 +247,7 @@ class _SignInPageState extends State<SignInPage> {
                                       InkWell(
                                         onTap: () {
                                           AutoRouter.of(context)
-                                              .push(SignUpRoute());
+                                              .push(const SignUpRoute());
                                         },
                                         child: Text(
                                           "Sign Up",
@@ -270,7 +270,7 @@ class _SignInPageState extends State<SignInPage> {
                     ),
                     40.verticalSpace,
                     const AuthFooterWidget(),
-                    const Center(child: Text("V.3.4.6 "))
+                    const Center(child: Text("V.3.4.7"))
                   ],
                 ),
               ),

@@ -20,21 +20,16 @@ CustomerModel _$CustomerModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CustomerModel {
-  @JsonKey(includeIfNull: true)
-  String? get name => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: true)
-  String? get email => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: true)
+  String get name => throw _privateConstructorUsedError;
+  String? get uid => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
   String get countryCode => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: true)
+  String get mobileNumber => throw _privateConstructorUsedError;
   int get totalVisa => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: true)
   @DateTimeOrNullConverter()
   DateTime? get createdDate => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: true)
   @DateTimeOrNullConverter()
   DateTime? get lastUpdatedDate => throw _privateConstructorUsedError;
-  @JsonKey(includeIfNull: true)
   bool get outstandingAction => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -50,22 +45,15 @@ abstract class $CustomerModelCopyWith<$Res> {
       _$CustomerModelCopyWithImpl<$Res, CustomerModel>;
   @useResult
   $Res call(
-      {@JsonKey(includeIfNull: true)
-          String? name,
-      @JsonKey(includeIfNull: true)
-          String? email,
-      @JsonKey(includeIfNull: true)
-          String countryCode,
-      @JsonKey(includeIfNull: true)
-          int totalVisa,
-      @JsonKey(includeIfNull: true)
-      @DateTimeOrNullConverter()
-          DateTime? createdDate,
-      @JsonKey(includeIfNull: true)
-      @DateTimeOrNullConverter()
-          DateTime? lastUpdatedDate,
-      @JsonKey(includeIfNull: true)
-          bool outstandingAction});
+      {String name,
+      String? uid,
+      String email,
+      String countryCode,
+      String mobileNumber,
+      int totalVisa,
+      @DateTimeOrNullConverter() DateTime? createdDate,
+      @DateTimeOrNullConverter() DateTime? lastUpdatedDate,
+      bool outstandingAction});
 }
 
 /// @nodoc
@@ -81,26 +69,36 @@ class _$CustomerModelCopyWithImpl<$Res, $Val extends CustomerModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? email = freezed,
+    Object? name = null,
+    Object? uid = freezed,
+    Object? email = null,
     Object? countryCode = null,
+    Object? mobileNumber = null,
     Object? totalVisa = null,
     Object? createdDate = freezed,
     Object? lastUpdatedDate = freezed,
     Object? outstandingAction = null,
   }) {
     return _then(_value.copyWith(
-      name: freezed == name
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      uid: freezed == uid
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
               as String?,
-      email: freezed == email
+      email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       countryCode: null == countryCode
           ? _value.countryCode
           : countryCode // ignore: cast_nullable_to_non_nullable
+              as String,
+      mobileNumber: null == mobileNumber
+          ? _value.mobileNumber
+          : mobileNumber // ignore: cast_nullable_to_non_nullable
               as String,
       totalVisa: null == totalVisa
           ? _value.totalVisa
@@ -131,22 +129,15 @@ abstract class _$$_CustomerModelCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(includeIfNull: true)
-          String? name,
-      @JsonKey(includeIfNull: true)
-          String? email,
-      @JsonKey(includeIfNull: true)
-          String countryCode,
-      @JsonKey(includeIfNull: true)
-          int totalVisa,
-      @JsonKey(includeIfNull: true)
-      @DateTimeOrNullConverter()
-          DateTime? createdDate,
-      @JsonKey(includeIfNull: true)
-      @DateTimeOrNullConverter()
-          DateTime? lastUpdatedDate,
-      @JsonKey(includeIfNull: true)
-          bool outstandingAction});
+      {String name,
+      String? uid,
+      String email,
+      String countryCode,
+      String mobileNumber,
+      int totalVisa,
+      @DateTimeOrNullConverter() DateTime? createdDate,
+      @DateTimeOrNullConverter() DateTime? lastUpdatedDate,
+      bool outstandingAction});
 }
 
 /// @nodoc
@@ -160,26 +151,36 @@ class __$$_CustomerModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = freezed,
-    Object? email = freezed,
+    Object? name = null,
+    Object? uid = freezed,
+    Object? email = null,
     Object? countryCode = null,
+    Object? mobileNumber = null,
     Object? totalVisa = null,
     Object? createdDate = freezed,
     Object? lastUpdatedDate = freezed,
     Object? outstandingAction = null,
   }) {
     return _then(_$_CustomerModel(
-      name: freezed == name
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      uid: freezed == uid
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
               as String?,
-      email: freezed == email
+      email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       countryCode: null == countryCode
           ? _value.countryCode
           : countryCode // ignore: cast_nullable_to_non_nullable
+              as String,
+      mobileNumber: null == mobileNumber
+          ? _value.mobileNumber
+          : mobileNumber // ignore: cast_nullable_to_non_nullable
               as String,
       totalVisa: null == totalVisa
           ? _value.totalVisa
@@ -205,53 +206,49 @@ class __$$_CustomerModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_CustomerModel implements _CustomerModel {
   _$_CustomerModel(
-      {@JsonKey(includeIfNull: true)
-          this.name = "",
-      @JsonKey(includeIfNull: true)
-          this.email = "",
-      @JsonKey(includeIfNull: true)
-          this.countryCode = "",
-      @JsonKey(includeIfNull: true)
-          this.totalVisa = 0,
-      @JsonKey(includeIfNull: true)
-      @DateTimeOrNullConverter()
-          this.createdDate,
-      @JsonKey(includeIfNull: true)
-      @DateTimeOrNullConverter()
-          this.lastUpdatedDate,
-      @JsonKey(includeIfNull: true)
-          this.outstandingAction = false});
+      {this.name = "",
+      this.uid,
+      this.email = "",
+      this.countryCode = "",
+      this.mobileNumber = "",
+      this.totalVisa = 0,
+      @DateTimeOrNullConverter() this.createdDate,
+      @DateTimeOrNullConverter() this.lastUpdatedDate,
+      this.outstandingAction = false});
 
   factory _$_CustomerModel.fromJson(Map<String, dynamic> json) =>
       _$$_CustomerModelFromJson(json);
 
   @override
-  @JsonKey(includeIfNull: true)
-  final String? name;
+  @JsonKey()
+  final String name;
   @override
-  @JsonKey(includeIfNull: true)
-  final String? email;
+  final String? uid;
   @override
-  @JsonKey(includeIfNull: true)
+  @JsonKey()
+  final String email;
+  @override
+  @JsonKey()
   final String countryCode;
   @override
-  @JsonKey(includeIfNull: true)
+  @JsonKey()
+  final String mobileNumber;
+  @override
+  @JsonKey()
   final int totalVisa;
   @override
-  @JsonKey(includeIfNull: true)
   @DateTimeOrNullConverter()
   final DateTime? createdDate;
   @override
-  @JsonKey(includeIfNull: true)
   @DateTimeOrNullConverter()
   final DateTime? lastUpdatedDate;
   @override
-  @JsonKey(includeIfNull: true)
+  @JsonKey()
   final bool outstandingAction;
 
   @override
   String toString() {
-    return 'CustomerModel(name: $name, email: $email, countryCode: $countryCode, totalVisa: $totalVisa, createdDate: $createdDate, lastUpdatedDate: $lastUpdatedDate, outstandingAction: $outstandingAction)';
+    return 'CustomerModel(name: $name, uid: $uid, email: $email, countryCode: $countryCode, mobileNumber: $mobileNumber, totalVisa: $totalVisa, createdDate: $createdDate, lastUpdatedDate: $lastUpdatedDate, outstandingAction: $outstandingAction)';
   }
 
   @override
@@ -260,9 +257,12 @@ class _$_CustomerModel implements _CustomerModel {
         (other.runtimeType == runtimeType &&
             other is _$_CustomerModel &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.uid, uid) || other.uid == uid) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.countryCode, countryCode) ||
                 other.countryCode == countryCode) &&
+            (identical(other.mobileNumber, mobileNumber) ||
+                other.mobileNumber == mobileNumber) &&
             (identical(other.totalVisa, totalVisa) ||
                 other.totalVisa == totalVisa) &&
             (identical(other.createdDate, createdDate) ||
@@ -275,8 +275,8 @@ class _$_CustomerModel implements _CustomerModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name, email, countryCode,
-      totalVisa, createdDate, lastUpdatedDate, outstandingAction);
+  int get hashCode => Object.hash(runtimeType, name, uid, email, countryCode,
+      mobileNumber, totalVisa, createdDate, lastUpdatedDate, outstandingAction);
 
   @JsonKey(ignore: true)
   @override
@@ -294,48 +294,38 @@ class _$_CustomerModel implements _CustomerModel {
 
 abstract class _CustomerModel implements CustomerModel {
   factory _CustomerModel(
-      {@JsonKey(includeIfNull: true)
-          final String? name,
-      @JsonKey(includeIfNull: true)
-          final String? email,
-      @JsonKey(includeIfNull: true)
-          final String countryCode,
-      @JsonKey(includeIfNull: true)
-          final int totalVisa,
-      @JsonKey(includeIfNull: true)
-      @DateTimeOrNullConverter()
-          final DateTime? createdDate,
-      @JsonKey(includeIfNull: true)
-      @DateTimeOrNullConverter()
-          final DateTime? lastUpdatedDate,
-      @JsonKey(includeIfNull: true)
-          final bool outstandingAction}) = _$_CustomerModel;
+      {final String name,
+      final String? uid,
+      final String email,
+      final String countryCode,
+      final String mobileNumber,
+      final int totalVisa,
+      @DateTimeOrNullConverter() final DateTime? createdDate,
+      @DateTimeOrNullConverter() final DateTime? lastUpdatedDate,
+      final bool outstandingAction}) = _$_CustomerModel;
 
   factory _CustomerModel.fromJson(Map<String, dynamic> json) =
       _$_CustomerModel.fromJson;
 
   @override
-  @JsonKey(includeIfNull: true)
-  String? get name;
+  String get name;
   @override
-  @JsonKey(includeIfNull: true)
-  String? get email;
+  String? get uid;
   @override
-  @JsonKey(includeIfNull: true)
+  String get email;
+  @override
   String get countryCode;
   @override
-  @JsonKey(includeIfNull: true)
+  String get mobileNumber;
+  @override
   int get totalVisa;
   @override
-  @JsonKey(includeIfNull: true)
   @DateTimeOrNullConverter()
   DateTime? get createdDate;
   @override
-  @JsonKey(includeIfNull: true)
   @DateTimeOrNullConverter()
   DateTime? get lastUpdatedDate;
   @override
-  @JsonKey(includeIfNull: true)
   bool get outstandingAction;
   @override
   @JsonKey(ignore: true)
