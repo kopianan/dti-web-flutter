@@ -6,7 +6,7 @@ import 'package:injectable/injectable.dart';
 part 'global_user_state.dart';
 part 'global_user_cubit.freezed.dart';
 
-@singleton
+@lazySingleton
 class GlobalUserCubit extends Cubit<GlobalUserState> {
   GlobalUserCubit() : super(GlobalUserState.initial());
 

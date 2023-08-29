@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:dti_web/application/admin/cubit/admin_cubit.dart';
 import 'package:dti_web/application/app_list/app_list_cubit.dart';
+import 'package:dti_web/application/customer/cubit/customer_cubit.dart';
 import 'package:dti_web/application/document/document_cubit.dart';
 import 'package:dti_web/application/update_application/update_application_cubit.dart';
 import 'package:dti_web/core/mixin/navigate_mixin.dart';
@@ -19,6 +21,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import 'widgets/confirmation_section.dart';
+import 'widgets/message_button_with_icon.dart';
 
 @RoutePage()
 class ApplicationDetailPage extends StatefulWidget {
@@ -500,7 +505,7 @@ class _SuccessBodyState extends State<SuccessBody> with NavigateMixin {
                         );
                       },
                     ),
-
+                    //Application ID
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -524,13 +529,78 @@ class _SuccessBodyState extends State<SuccessBody> with NavigateMixin {
                         )
                       ],
                     ),
+                    //Action Button //
+                    Visibility(
+                      // visible:
+                      //     <GlobalUserCubit>().state.user.isAdmin(),
+                      child: MultiBlocProvider(
+                        providers: [
+                          BlocProvider(
+                            create: (context) => getIt<CustomerCubit>()
+                              ..getUserById(widget.visa.createdBy ?? ""),
+                          ),
+                          BlocProvider(
+                            create: (context) => getIt<AdminCubit>(),
+                          ),
+                        ],
+                        child: BlocBuilder<AdminCubit, AdminState>(
+                          builder: (context, state) {
+                            return BlocBuilder<CustomerCubit, CustomerState>(
+                              builder: (context, state) {
+                                return state.maybeMap(orElse: () {
+                                  return Container();
+                                }, getSingleCustomer: (user) {
+                                  return Row(
+                                    children: [
+                                      MessageButtonWithIcon(
+                                        iconPath: 'assets/icons/email.png',
+                                        label: "Email",
+                                        onPressed: () {
+                                          context.read<AdminCubit>().sendEmail(
+                                              widget.visa.title ?? "",
+                                              user.user.email);
+                                        },
+                                      ),
+                                      MessageButtonWithIcon(
+                                        iconPath: 'assets/icons/whatsapp.png',
+                                        label: "Whatsapp",
+                                        onPressed: () {
+                                          final phone = user.user.countryCode
+                                                  .replaceFirst("+", "") +
+                                              user.user.mobileNumber;
+
+                                          context
+                                              .read<AdminCubit>()
+                                              .sendWhatsapp(phone);
+                                        },
+                                      ),
+                                    ],
+                                  );
+                                });
+                              },
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                    Visibility(
+                      visible: widget.visa.status == "Submitted",
+                      child: Column(
+                        children: [
+                          const Divider(),
+                          const SizedBox(height: 20),
+                          ConfirmationSection(visa: widget.visa),
+                          const Divider(height: 40),
+                        ],
+                      ),
+                    ),
                     20.verticalSpace,
+                    //ONLY SHOW WHEN USER ONLY
                     Visibility(
                       visible: widget.visa.status?.toLowerCase() == 'draft',
                       child: termAndCondition(getColor),
                     ),
                     // REFERENCE NUMBER
-
                     20.verticalSpace,
                     Visibility(
                         visible:

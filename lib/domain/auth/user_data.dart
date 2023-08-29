@@ -35,4 +35,18 @@ class UserData with _$UserData {
     }
     return false;
   }
+
+  bool isAdmin() {
+    if (email == "team@doortoid.com") {
+      return true;
+    }
+    return false;
+  }
+
+  bool isUser() {
+    if (email != "team@doortoid.com" && !isAgent) {
+      return true;
+    }
+    return false;
+  }
 }

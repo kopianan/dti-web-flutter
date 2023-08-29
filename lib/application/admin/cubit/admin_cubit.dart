@@ -29,4 +29,8 @@ class AdminCubit extends Cubit<AdminState> {
 
     await launchUrl(emailLaunchUri);
   }
+
+  void sendWhatsapp(String number) async {
+    await launchUrl(Uri.parse("https://api.whatsapp.com/send/?phone=$number"));
+  }
 }

@@ -60,43 +60,39 @@ class AppWidget extends StatelessWidget {
             create: (context) => getIt<QuestionnaireCubit>(),
           ),
         ],
-        child: BlocBuilder<GlobalUserCubit, GlobalUserState>(
-          builder: (context, state) {
-            return MaterialApp.router(
-              routerConfig: _appRouter.config(
-                navigatorObservers: () => [AgentObserver()],
-              ),
-              supportedLocales: FormBuilderLocalizations.supportedLocales,
-              localizationsDelegates: const [
-                FormBuilderLocalizations.delegate,
-              ],
-              title: 'DoorToID',
-              builder: EasyLoading.init(),
-              theme: ThemeData(
-                  textTheme: GoogleFonts.latoTextTheme(),
-                  primaryColor: AppColor.primaryColor,
-                  inputDecorationTheme: const InputDecorationTheme(
-                    prefixIconColor: AppColor.primaryColor,
-                    focusColor: AppColor.primaryColor,
-                    labelStyle: TextStyle(
-                      fontSize: 17,
-                      color: AppColor.primaryColor,
-                    ),
-                    iconColor: AppColor.primaryColor,
-                    focusedErrorBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.red)),
-                    errorBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.red)),
-                    enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: AppColor.primaryColor),
-                    ),
-                    focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: AppColor.primaryColor)),
-                    border: UnderlineInputBorder(
-                        borderSide: BorderSide(color: AppColor.primaryColor)),
-                  )),
-            );
-          },
+        child: MaterialApp.router(
+          routerConfig: _appRouter.config(
+            navigatorObservers: () => [AgentObserver()],
+          ),
+          supportedLocales: FormBuilderLocalizations.supportedLocales,
+          localizationsDelegates: const [
+            FormBuilderLocalizations.delegate,
+          ],
+          title: 'DoorToID',
+          builder: EasyLoading.init(),
+          theme: ThemeData(
+              textTheme: GoogleFonts.latoTextTheme(),
+              primaryColor: AppColor.primaryColor,
+              inputDecorationTheme: const InputDecorationTheme(
+                prefixIconColor: AppColor.primaryColor,
+                focusColor: AppColor.primaryColor,
+                labelStyle: TextStyle(
+                  fontSize: 17,
+                  color: AppColor.primaryColor,
+                ),
+                iconColor: AppColor.primaryColor,
+                focusedErrorBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.red)),
+                errorBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.red)),
+                enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: AppColor.primaryColor),
+                ),
+                focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: AppColor.primaryColor)),
+                border: UnderlineInputBorder(
+                    borderSide: BorderSide(color: AppColor.primaryColor)),
+              )),
         ),
       ),
     );

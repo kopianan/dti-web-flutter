@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:dti_web/application/admin_application/cubit/admin_application_cubit.dart';
 import 'package:dti_web/domain/core/simple_visa_model.dart';
+import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/date_converter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -113,9 +114,12 @@ class _AdminApplicationPageState extends State<AdminApplicationPage> {
   DataRow applicationDataRow(SimpleVisaModel visa, int index) {
     return DataRow2(
       onTap: () {
-        // context.router.push(
-        //   ApplicationDetailRoute(firebaseDocId: firebaseDocId),
-        // );
+        final id = visa.firebaseDocId; 
+        if (id != null) {
+          context.router.push(
+            ApplicationDetailRoute(firebaseDocId: id),
+          );
+        }
       },
       color: index % 2 == 0
           ? MaterialStatePropertyAll(Colors.blue[100])

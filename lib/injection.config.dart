@@ -85,7 +85,7 @@ _i1.GetIt $initGetIt(
   gh.lazySingleton<_i8.DocumentCubit>(() => _i8.DocumentCubit());
   gh.lazySingleton<_i9.FirebaseAuth>(
       () => firebaseInjectableModule.firebaseAuth);
-  gh.singleton<_i10.GlobalUserCubit>(_i10.GlobalUserCubit());
+  gh.lazySingleton<_i10.GlobalUserCubit>(() => _i10.GlobalUserCubit());
   gh.lazySingleton<_i11.GoogleSignIn>(
       () => firebaseInjectableModule.googleSignIn);
   gh.lazySingleton<_i12.IAdminApplication>(
