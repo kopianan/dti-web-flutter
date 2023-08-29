@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:dti_web/application/admin_application/cubit/admin_application_cubit.dart';
+import 'package:dti_web/domain/core/apps_type.dart';
 import 'package:dti_web/domain/core/simple_visa_model.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/date_converter.dart';
@@ -88,7 +89,7 @@ class _AdminApplicationPageState extends State<AdminApplicationPage> {
                               columns: [
                                 applicationHeaderColumn(label: "Name"),
                                 applicationHeaderColumn(
-                                    label: "Submitted Date"),
+                                    label: "Created Date"),
                                 applicationHeaderColumn(label: "Title"),
                                 applicationHeaderColumn(label: "Subtitle"),
                                 applicationHeaderColumn(
@@ -103,7 +104,7 @@ class _AdminApplicationPageState extends State<AdminApplicationPage> {
                     );
                   },
                 )
-              ],
+         ,    SizedBox(height: 30.h),  ],
             ),
           );
         },
@@ -117,7 +118,7 @@ class _AdminApplicationPageState extends State<AdminApplicationPage> {
         final id = visa.firebaseDocId; 
         if (id != null) {
           context.router.push(
-            ApplicationDetailRoute(firebaseDocId: id),
+            ApplicationDetailRoute(firebaseDocId: id, appsType: AppsType.application),
           );
         }
       },
@@ -125,9 +126,9 @@ class _AdminApplicationPageState extends State<AdminApplicationPage> {
           ? MaterialStatePropertyAll(Colors.blue[100])
           : const MaterialStatePropertyAll(Colors.white),
       cells: [
-        DataCell(Text(visa.title ?? "")),
+        DataCell(Text(visa.userName ?? "")),
         DataCell(Text(DateConverter.convertDateDefault(
-            visa.usedByDate.toIso8601String()))),
+            visa.createdDate?.toIso8601String()))),
         DataCell(Text(visa.title ?? "")),
         DataCell(Text(visa.subTitle ?? "")),
         DataCell(Text(visa.status ?? "")),

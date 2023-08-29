@@ -12,6 +12,8 @@ abstract class IUpdateApplication {
       VisaApplicationModel visaApplicationModel);
   Future<Either<String, String>> updatePassportParticularData(
       VisaApplicationModel visaApplicationModel);
+  Future<Either<String, String>> rejectApplication(String firebaseDocId);
+  Future<Either<String, String>> pendingPaymentApplication(String firebaseDocId);
   Future<Either<String, String>> updateVoaData(
       VisaApplicationModel visaApplicationModel);
   Future<Either<String, String>> deleteSingleImage(

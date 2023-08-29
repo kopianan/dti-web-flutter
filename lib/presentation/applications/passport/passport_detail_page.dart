@@ -6,10 +6,10 @@ import 'package:dti_web/application/document/document_cubit.dart';
 import 'package:dti_web/application/update_application/update_application_cubit.dart';
 import 'package:dti_web/core/mixin/navigate_mixin.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
+import 'package:dti_web/domain/core/apps_type.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/injection.dart';
 import 'package:dti_web/presentation/questionnaire/photo_view_page.dart';
-import 'package:dti_web/presentation/questionnaire/widget/custom_second_header.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:dti_web/utils/converter.dart';
@@ -21,7 +21,7 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-@RoutePage()
+// @RoutePage()
 class PassportDetailPage extends StatefulWidget {
   static const String routeName = '/passport-detail/:id';
   const PassportDetailPage({
@@ -41,7 +41,7 @@ class _PassportDetailPageState extends State<PassportDetailPage>
     return Scaffold(
       body: BlocProvider(
         create: (context) => getIt<UpdateApplicationCubit>()
-          ..getUserPassportWithImages(widget.firebaseDocId),
+          ..getUserAppsWithImages(widget.firebaseDocId, AppsType.passport),
         child: BlocListener<UpdateApplicationCubit, UpdateApplicationState>(
           listener: (context, state) {
             state.maybeMap(
@@ -51,7 +51,7 @@ class _PassportDetailPageState extends State<PassportDetailPage>
                   maskType: EasyLoadingMaskType.black,
                 );
               },
-              onGetSinglePassportWithImage: (e) {
+              onGetSingleAppsWithImage: (e) {
                 getIt<DocumentCubit>()
                     .setupApplication(e.singleResponse.visaApplicationModel!);
               },
@@ -88,7 +88,7 @@ class _PassportDetailPageState extends State<PassportDetailPage>
                         ]),
                   );
                 },
-                onGetSinglePassportWithImage: (e) {
+                onGetSingleAppsWithImage: (e) {
                   return SuccessBody(
                     imagesUrl: e.singleResponse.documentUserApplicationUrl,
                     visa: e.singleResponse.visaApplicationModel!,
@@ -143,13 +143,6 @@ class _SuccessBodyState extends State<SuccessBody> with NavigateMixin {
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CustomSecondHeader(
-                          onBack: () {
-                            //remove the last item
-
-                            AutoRouter.of(context).pop();
-                          },
-                        ),
                         Text(
                           'Visa Detail Summary',
                           style: TextStyle(

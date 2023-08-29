@@ -22,7 +22,11 @@ class AdminApplicationCubit extends Cubit<AdminApplicationState> {
       (r) {
         var visa = r.toList();
 
-        visa.sort((a, b) => b.usedByDate.compareTo(a.usedByDate));
+        try {
+          visa.sort((a, b) => b.createdDate!.compareTo(a.createdDate!));
+        } on Exception {
+          // TODO
+        }
         emit(AdminApplicationState.getAllUserVisa(visa));
       },
     );

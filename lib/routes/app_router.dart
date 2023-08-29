@@ -4,6 +4,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:dti_web/application/dashboard/dashboard_cubit.dart';
 import 'package:dti_web/core/storage.dart';
+import 'package:dti_web/domain/core/apps_type.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/domain/core/document_data_model.dart';
 import 'package:dti_web/domain/questionnaire/result_model.dart';
@@ -134,8 +135,8 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
     AutoRoute(path: SelfiePage.routeName, page: SelfieRoute.page),
     AutoRoute(
         path: PassportPaymentPage.routeName, page: PassportPaymentRoute.page),
-    AutoRoute(
-        path: PassportDetailPage.routeName, page: PassportDetailRoute.page),
+    // AutoRoute(
+    //     path: PassportDetailPage.routeName, page: PassportDetailRoute.page),
     AutoRoute(
         path: ChoosePassportPage.routeName, page: ChoosePassportRoute.page),
     AutoRoute(

@@ -12,11 +12,11 @@ class SimpleVisaModel with _$SimpleVisaModel {
     String? status,
     String? bookingCode,
     String? title,
-    String? subTitle,
-    @DateTimeOrNullConverter() required DateTime usedByDate,
+    String? subTitle, 
+    @DateTimeOrNullConverter() DateTime? usedByDate,
     String? userName,
     int? lengthOfStay,
-    @DateTimeOrNullConverter() required DateTime createdDate,
+    @DateTimeOrNullConverter() DateTime? createdDate,
   }) = _SimpleVisaModel;
 
   factory SimpleVisaModel.empty() =>

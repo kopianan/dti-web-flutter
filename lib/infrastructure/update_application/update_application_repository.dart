@@ -653,4 +653,53 @@ class IUpdateApplicationRepository extends IUpdateApplication {
       return const Left("");
     }
   }
+
+  @override
+  Future<Either<String, String>> rejectApplication(String firebaseDocId) async {
+    dio = Dio();
+    final storage = Storage();
+    try {
+      final result = await dio!.get(
+        "${dotenv.env['BASE_URL']}/application/$firebaseDocId/reject",
+        options: Options(
+          headers: {
+            "Authorization": "Bearer ${storage.getToken()}",
+          },
+        ),
+      );
+      if (result.data['data'] == null) {
+        //ERROR
+        return Left(result.data['error']);
+      } else {
+        return Right(result.data['data']['message']);
+      }
+    } on Exception {
+      return const Left("");
+    }
+  }
+
+  @override
+  Future<Either<String, String>> pendingPaymentApplication(
+      String firebaseDocId) async {
+    dio = Dio();
+    final storage = Storage();
+    try {
+      final result = await dio!.get(
+        "${dotenv.env['BASE_URL']}/application/$firebaseDocId/pendingPayment",
+        options: Options(
+          headers: {
+            "Authorization": "Bearer ${storage.getToken()}",
+          },
+        ),
+      );
+      if (result.data['data'] == null) {
+        //ERROR
+        return Left(result.data['error']);
+      } else {
+        return Right(result.data['data']['message']);
+      }
+    } on Exception {
+      return const Left("");
+    }
+  }
 }

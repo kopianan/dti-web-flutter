@@ -22,12 +22,14 @@ class UpdateApplicationState with _$UpdateApplicationState {
   const factory UpdateApplicationState.onUpdateGuarantor() = _OnUpdateGuarantor;
   const factory UpdateApplicationState.onDeleteSingleImage(String message) =
       _OnDeleteSingleImage;
+  const factory UpdateApplicationState.onRejectApplication(String message) =
+      _OnRejectApplication;
+  const factory UpdateApplicationState.onPendingPaymentApplication(
+      String message) = _OnPendingPaymentApplication;
   const factory UpdateApplicationState.onGetSingleApplication(
       VisaApplicationModel visa) = _OnGetSingleApplication;
-  const factory UpdateApplicationState.onGetSingleApplicationWithImage(
-      SingleVisaResponse singleResponse) = _OnGetSingleApplicationWithImage;
-  const factory UpdateApplicationState.onGetSinglePassportWithImage(
-      SingleVisaResponse singleResponse) = _OnGetSinglePassportWithImage;
+  const factory UpdateApplicationState.onGetSingleAppsWithImage(
+      SingleVisaResponse singleResponse) = _OnGetSingleAppsWithImage; 
   const factory UpdateApplicationState.deleteApplication() = _DeleteApplication;
   const factory UpdateApplicationState.onUploadImageComplete(
       List<ImageUploadResponse> list) = _OnUploadImageComplete;

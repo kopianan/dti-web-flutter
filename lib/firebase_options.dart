@@ -17,7 +17,10 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -48,16 +51,6 @@ class DefaultFirebaseOptions {
         );
     }
   }
-
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDkCrB6O_oOyf4ajt3DcEYhckpbDUC0cgo',
-    appId: '1:58741229055:web:ff38b87aede41734f153ca',
-    messagingSenderId: '58741229055',
-    projectId: 'doortoid-mobile',
-    authDomain: 'doortoid-mobile.firebaseapp.com',
-    storageBucket: 'doortoid-mobile.appspot.com',
-    measurementId: 'G-N5Z1Y7YN6R',
-  );
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyC8Tym1o0lWbO5Bo_f6y5oaoLAH58X4ZLI',

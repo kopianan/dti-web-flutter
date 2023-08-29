@@ -1,7 +1,7 @@
 import 'package:dti_web/core/widgets/primary_button.dart';
+import 'package:dti_web/domain/core/apps_type.dart';
 import 'package:dti_web/presentation/questionnaire/widget/custom_second_header.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:country_code_picker/country_code_picker.dart';
 import 'package:dti_web/application/application_cubit.dart';
 import 'package:dti_web/application/update_application/update_application_cubit.dart';
 import 'package:dti_web/injection.dart';
@@ -42,7 +42,10 @@ class _PassportPersonalParticularPageState
     final AppRouter router = AppRouter();
     return BlocProvider(
         create: (context) => getIt<UpdateApplicationCubit>()
-          ..getUserPassportWithImages(widget.firebaseDocId),
+          ..getUserAppsWithImages(
+            widget.firebaseDocId,
+            AppsType.passport,
+          ),
         child: BlocConsumer<UpdateApplicationCubit, UpdateApplicationState>(
             listener: (context, updateState) {
           updateState.maybeMap(
@@ -61,7 +64,7 @@ class _PassportPersonalParticularPageState
               EasyLoading.dismiss();
               AutoRouter.of(context).navigate(const UploadDocumentRoute());
             },
-            onGetSinglePassportWithImage: (e) {
+            onGetSingleAppsWithImage: (e) {
               //close loading dialog
               EasyLoading.dismiss();
               initialDateOfBirth = DateConverter.convertDateDefault(
@@ -79,7 +82,7 @@ class _PassportPersonalParticularPageState
             orElse: () {
               return const LoadingPage();
             },
-            onGetSinglePassportWithImage: (e) {
+            onGetSingleAppsWithImage: (e) {
               return BlocBuilder<ApplicationCubit, ApplicationState>(
                 builder: (context, state) {
                   return Scaffold(

@@ -316,19 +316,6 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
-    PassportDetailRoute.name: (routeData) {
-      final pathParams = routeData.inheritedPathParams;
-      final args = routeData.argsAs<PassportDetailRouteArgs>(
-          orElse: () => PassportDetailRouteArgs(
-              firebaseDocId: pathParams.getString('id')));
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: PassportDetailPage(
-          key: args.key,
-          firebaseDocId: args.firebaseDocId,
-        ),
-      );
-    },
     PassportPersonalParticularRoute.name: (routeData) {
       final args = routeData.argsAs<PassportPersonalParticularRouteArgs>();
       return AutoRoutePage<dynamic>(
@@ -340,15 +327,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     ApplicationDetailRoute.name: (routeData) {
-      final pathParams = routeData.inheritedPathParams;
-      final args = routeData.argsAs<ApplicationDetailRouteArgs>(
-          orElse: () => ApplicationDetailRouteArgs(
-              firebaseDocId: pathParams.getString('id')));
+      final args = routeData.argsAs<ApplicationDetailRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: ApplicationDetailPage(
           key: args.key,
           firebaseDocId: args.firebaseDocId,
+          appsType: args.appsType,
         ),
       );
     },
@@ -1298,45 +1283,6 @@ class PassportPaymentRouteArgs {
 }
 
 /// generated route for
-/// [PassportDetailPage]
-class PassportDetailRoute extends PageRouteInfo<PassportDetailRouteArgs> {
-  PassportDetailRoute({
-    Key? key,
-    required String firebaseDocId,
-    List<PageRouteInfo>? children,
-  }) : super(
-          PassportDetailRoute.name,
-          args: PassportDetailRouteArgs(
-            key: key,
-            firebaseDocId: firebaseDocId,
-          ),
-          rawPathParams: {'id': firebaseDocId},
-          initialChildren: children,
-        );
-
-  static const String name = 'PassportDetailRoute';
-
-  static const PageInfo<PassportDetailRouteArgs> page =
-      PageInfo<PassportDetailRouteArgs>(name);
-}
-
-class PassportDetailRouteArgs {
-  const PassportDetailRouteArgs({
-    this.key,
-    required this.firebaseDocId,
-  });
-
-  final Key? key;
-
-  final String firebaseDocId;
-
-  @override
-  String toString() {
-    return 'PassportDetailRouteArgs{key: $key, firebaseDocId: $firebaseDocId}';
-  }
-}
-
-/// generated route for
 /// [PassportPersonalParticularPage]
 class PassportPersonalParticularRoute
     extends PageRouteInfo<PassportPersonalParticularRouteArgs> {
@@ -1381,12 +1327,14 @@ class ApplicationDetailRoute extends PageRouteInfo<ApplicationDetailRouteArgs> {
   ApplicationDetailRoute({
     Key? key,
     required String firebaseDocId,
+    required AppsType appsType,
     List<PageRouteInfo>? children,
   }) : super(
           ApplicationDetailRoute.name,
           args: ApplicationDetailRouteArgs(
             key: key,
             firebaseDocId: firebaseDocId,
+            appsType: appsType,
           ),
           rawPathParams: {'id': firebaseDocId},
           initialChildren: children,
@@ -1402,15 +1350,18 @@ class ApplicationDetailRouteArgs {
   const ApplicationDetailRouteArgs({
     this.key,
     required this.firebaseDocId,
+    required this.appsType,
   });
 
   final Key? key;
 
   final String firebaseDocId;
 
+  final AppsType appsType;
+
   @override
   String toString() {
-    return 'ApplicationDetailRouteArgs{key: $key, firebaseDocId: $firebaseDocId}';
+    return 'ApplicationDetailRouteArgs{key: $key, firebaseDocId: $firebaseDocId, appsType: $appsType}';
   }
 }
 

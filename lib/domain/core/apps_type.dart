@@ -1,0 +1,4 @@
+enum AppsType{
+  passport, 
+  application
+}

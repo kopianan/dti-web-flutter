@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:dti_web/application/application_cubit.dart';
 import 'package:dti_web/application/document/document_cubit.dart';
-import 'package:dti_web/application/other/other_cubit.dart';
 import 'package:dti_web/application/update_application/update_application_cubit.dart';
+import 'package:dti_web/domain/core/apps_type.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/injection.dart';
 import 'package:dti_web/presentation/applications/widgets/document_left_side.dart';
@@ -34,9 +34,15 @@ class _UploadDocumentPageState extends State<UploadDocumentPage> {
     cleanState();
     final tempVisaApps = getIt<ApplicationCubit>().state.visaApplicationModel!;
     if (tempVisaApps.subTitle!.toLowerCase().contains('passport')) {
-      updateAppsCubit.getUserPassportWithImages(tempVisaApps.firebaseDocId!);
+      updateAppsCubit.getUserAppsWithImages(
+        tempVisaApps.firebaseDocId!,
+        AppsType.passport,
+      );
     } else {
-      updateAppsCubit.getUserApplicationWithImages(tempVisaApps.firebaseDocId!);
+      updateAppsCubit.getUserAppsWithImages(
+        tempVisaApps.firebaseDocId!,
+        AppsType.application,
+      );
     }
     // initData();
   }
@@ -74,20 +80,7 @@ class _UploadDocumentPageState extends State<UploadDocumentPage> {
                   orElse: () {
                     EasyLoading.dismiss();
                   },
-                  onGetSinglePassportWithImage: (value) {
-                    EasyLoading.dismiss();
-                    getIt<ApplicationCubit>().setupApplication(
-                        value.singleResponse.visaApplicationModel!);
-                    getIt<ApplicationCubit>().setupDocumentsMasterData(
-                      value.singleResponse.documentUserApplicationUrl!,
-                    );
-
-                    initData(
-                      getIt<ApplicationCubit>().state.visaApplicationModel!,
-                      getIt<ApplicationCubit>().state.masterListData!,
-                    );
-                  },
-                  onGetSingleApplicationWithImage: (value) {
+                  onGetSingleAppsWithImage: (value) {
                     EasyLoading.dismiss();
                     getIt<ApplicationCubit>().setupApplication(
                         value.singleResponse.visaApplicationModel!);
@@ -110,10 +103,7 @@ class _UploadDocumentPageState extends State<UploadDocumentPage> {
                     orElse: () {
                       return Container();
                     },
-                    onGetSinglePassportWithImage: (e) {
-                      return const UploadDocumentCheckPage();
-                    },
-                    onGetSingleApplicationWithImage: (e) {
+                    onGetSingleAppsWithImage: (e) {
                       return const UploadDocumentCheckPage();
                     },
                   );

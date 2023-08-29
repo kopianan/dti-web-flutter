@@ -255,11 +255,8 @@ class _NumberRegistrationPageState extends State<NumberRegistrationPage>
                                                     'MobileNumberField'];
                                                 context
                                                     .read<OtherCubit>()
-                                                    .generateOtp(
-                                                      countryCode,
-                                                      phoneNumber!,
-                                                      channel,
-                                                    );
+                                                    .generateOtp(countryCode,
+                                                        phoneNumber!, channel);
                                               }
                                             },
                                             labelStyle:

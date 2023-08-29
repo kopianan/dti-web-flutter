@@ -4,6 +4,7 @@ import 'package:dti_web/application/app_list/app_list_cubit.dart';
 import 'package:dti_web/application/dashboard/dashboard_cubit.dart';
 import 'package:dti_web/core/widgets/application_card.dart';
 import 'package:dti_web/core/widgets/passport_card.dart';
+import 'package:dti_web/domain/core/apps_type.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:flutter/material.dart';
@@ -161,10 +162,10 @@ class _ApplicationCardPageState extends State<ApplicationCardPage> {
                                           } else {
                                             await AutoRouter.of(context).pop();
                                             AutoRouter.of(context).navigate(
-                                              PassportDetailRoute(
-                                                firebaseDocId: element
-                                                    .bodyData.firebaseDocId!,
-                                              ),
+                                              ApplicationDetailRoute(
+                                                  firebaseDocId: element
+                                                      .bodyData.firebaseDocId!,
+                                                  appsType: AppsType.passport),
                                             );
                                           }
                                         },
@@ -235,9 +236,10 @@ class _ApplicationCardPageState extends State<ApplicationCardPage> {
                                             await AutoRouter.of(context).pop();
                                             AutoRouter.of(context).navigate(
                                               ApplicationDetailRoute(
-                                                firebaseDocId: element
-                                                    .bodyData.firebaseDocId!,
-                                              ),
+                                                  firebaseDocId: element
+                                                      .bodyData.firebaseDocId!,
+                                                  appsType:
+                                                      AppsType.application),
                                             );
                                           }
                                         },

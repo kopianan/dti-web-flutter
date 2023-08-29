@@ -25,9 +25,11 @@ class AdminApplicationRepository extends IAdminApplication {
       final listData = (result.data['data'] as List)
           .map((e) => SimpleVisaModel.fromJson(e))
           .toList();
-      listData.sort(
-        (a, b) => a.createdDate.compareTo(b.createdDate),
-      );
+      try {
+        listData.sort((a, b) => a.createdDate!.compareTo(b.createdDate!));
+      } on Exception {
+        // TODO
+      }
       return Right(listData);
     } on Exception catch (e) {
       log(e.toString());

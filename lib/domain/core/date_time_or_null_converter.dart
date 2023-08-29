@@ -4,7 +4,7 @@ class DateTimeOrNullConverter implements JsonConverter<DateTime?, String?> {
   const DateTimeOrNullConverter();
 
   @override
-  DateTime? fromJson(String? stringDate) {
+  DateTime fromJson(String? stringDate) {
     return stringDate == null ? DateTime(1990) : DateTime.parse(stringDate);
   }
 

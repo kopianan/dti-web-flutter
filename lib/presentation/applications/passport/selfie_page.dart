@@ -4,6 +4,7 @@ import 'package:camera/camera.dart';
 import 'package:dti_web/application/document/document_cubit.dart';
 import 'package:dti_web/application/update_application/update_application_cubit.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
+import 'package:dti_web/domain/core/apps_type.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/injection.dart';
 import 'package:dti_web/presentation/questionnaire/widget/custom_second_header.dart';
@@ -76,9 +77,10 @@ class _SelfiePageState extends State<SelfiePage> {
                 //     );
                 //   },
                 // );
-                AutoRouter.of(context).push(PassportDetailRoute(
+                AutoRouter.of(context).push(ApplicationDetailRoute(
                     firebaseDocId:
-                        getIt<DocumentCubit>().state.visa!.firebaseDocId!));
+                        getIt<DocumentCubit>().state.visa!.firebaseDocId!,
+                    appsType: AppsType.passport));
               },
             );
           },
@@ -316,7 +318,8 @@ class UploadButton extends StatelessWidget {
                       onClick: () async {
                         //check deleted images
                         if (getIt<DocumentCubit>().state.selfie == null) {
-                          AutoRouter.of(context).push(PassportDetailRoute(
+                          AutoRouter.of(context).push(ApplicationDetailRoute(
+                              appsType: AppsType.passport,
                               firebaseDocId: getIt<DocumentCubit>()
                                   .state
                                   .visa!

@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:dti_web/application/document/document_cubit.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
+import 'package:dti_web/domain/core/apps_type.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:flutter/material.dart';
@@ -123,11 +124,11 @@ class _LeftSideState extends State<LeftSide> {
                                   AutoRouter.of(context)
                                       .push(const SelfieRoute());
                                 } else {
-                                  AutoRouter.of(context)
-                                      .push(ApplicationDetailRoute(
-                                    firebaseDocId:
-                                        docState.visa!.firebaseDocId!,
-                                  ));
+                                  AutoRouter.of(context).push(
+                                      ApplicationDetailRoute(
+                                          firebaseDocId:
+                                              docState.visa!.firebaseDocId!,
+                                          appsType: AppsType.application));
                                 }
                               });
                             },

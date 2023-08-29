@@ -1,11 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:data_table_2/data_table_2.dart';
-import 'package:dti_web/application/app_list/app_list_cubit.dart';
 import 'package:dti_web/application/feedback/cubit/feedback_cubit.dart';
 import 'package:dti_web/domain/feedback/feedback_model.dart';
 import 'package:dti_web/utils/date_converter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 @RoutePage()
@@ -19,14 +19,14 @@ class AdminFeedbackPage extends StatefulWidget {
 class _AdminFeedbackPageState extends State<AdminFeedbackPage> {
   @override
   void initState() {
-        context.read<FeedbackCubit>().getAllCustomer(); 
+    context.read<FeedbackCubit>().getAllFeedback();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocBuilder<FeedbackCubit, FeedbackState>(
-    
         builder: (context, feedbackState) {
           return Container(
             padding: const EdgeInsets.symmetric(horizontal: 40),
@@ -55,7 +55,7 @@ class _AdminFeedbackPageState extends State<AdminFeedbackPage> {
                         ),
                         icon: const Icon(Icons.refresh),
                         onPressed: () {
-                          context.read<AppListCubit>().getUserApplication();
+                          context.read<FeedbackCubit>().getAllFeedback();
                         },
                       ),
                     ),
@@ -81,16 +81,21 @@ class _AdminFeedbackPageState extends State<AdminFeedbackPage> {
                             style: BorderStyle.solid,
                           ),
                         ),
-                        onSelectAll: (e) {
-                          context
-                              .read<AppListCubit>()
-                              .updateAllSelected(e ?? false);
-                        },
+                        onSelectAll: (e) {},
                         columns: [
-                          applicationHeaderColumn(label: "Name"),
-                          applicationHeaderColumn(label: "Submitted Date", width: 150),
-                          applicationHeaderColumn(label: "Rating", width: 80),
-                          applicationHeaderColumn(label: "Comment", width: 400),
+                          applicationHeaderColumn(
+                            label: "Name",
+                          ),
+                          applicationHeaderColumn(
+                              label: "Submitted Date", width: 150),
+                          applicationHeaderColumn(
+                            label: "Rating",
+                            width: 230,
+                          ),
+                          applicationHeaderColumn(
+                            label: "Comment",
+                            width: 1000,
+                          ),
                         ],
                         rows: e.feedbacks
                             .map((value) => applicationDataRow(
@@ -118,7 +123,33 @@ class _AdminFeedbackPageState extends State<AdminFeedbackPage> {
         DataCell(Text(feedback.name)),
         DataCell(Text(DateConverter.convertDateDefault(
             feedback.createdDate.toIso8601String()))),
-        DataCell(Text(feedback.rating.toString())),
+        DataCell(
+          Row(
+            children: [
+              RatingBar(
+                itemCount: 5,
+                initialRating: double.parse(feedback.rating.toString()),
+                direction: Axis.horizontal,
+                itemSize: 30,
+                ratingWidget: RatingWidget(
+                  full: const Icon(Icons.star, color: Color(0xffD4AF37)),
+                  half: const Icon(Icons.star, color: Color(0xffD4AF37)),
+                  empty:
+                      const Icon(Icons.star_border, color: Color(0xffD4AF37)),
+                ),
+                onRatingUpdate: (e) {},
+              ),
+              const SizedBox(width: 5),
+              Text(
+                "(${feedback.rating})",
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              )
+            ],
+          ),
+        ),
         DataCell(Text(feedback.comment)),
       ],
     );

@@ -96,7 +96,8 @@ void drawText(PdfPage page, String documentType, VisaApplicationModel visa) {
     String signatureText =
         '${visa.cityDomicile}, ${DateFormat('dd MMMM yyyy').format(DateTime.now())}';
     String signatureName = '${visa.firstName} ${visa.lastName}';
-    String dateBirth = DateFormat('dd MMMM yyyy').format(DateTime.parse(visa.dateOfBirth!)); 
+    String dateBirth =
+        DateFormat('dd MMMM yyyy').format(DateTime.parse(visa.dateOfBirth!));
     String userDetails = '''
   I, the undersigned below
 
@@ -188,12 +189,13 @@ void drawText(PdfPage page, String documentType, VisaApplicationModel visa) {
           0,
           0,
         ));
-  } else {
+  } else if (documentType == "B4") {
     const titleText = 'STATEMENT LETTER';
     String signatureText =
         '${visa.cityDomicile}, ${DateFormat('dd MMMM yyyy').format(DateTime.now())}';
     String signatureName = '${visa.firstName} ${visa.lastName}';
-    String dateBirth = DateFormat('dd MMMM yyyy').format(DateTime.parse(visa.dateOfBirth!)); 
+    String dateBirth =
+        DateFormat('dd MMMM yyyy').format(DateTime.parse(visa.dateOfBirth!));
     String userDetails = '''
   I, the undersigned below
 
@@ -261,6 +263,104 @@ void drawText(PdfPage page, String documentType, VisaApplicationModel visa) {
 
     page.graphics.drawString(
         signatureText,
+        PdfStandardFont(
+          PdfFontFamily.helvetica,
+          12,
+        ),
+        format: PdfStringFormat(alignment: PdfTextAlignment.left),
+        bounds: Rect.fromLTWH(
+          pageSize.width - 500,
+          pageSize.height - 220,
+          0,
+          0,
+        ));
+    page.graphics.drawString(
+        signatureName,
+        PdfStandardFont(
+          PdfFontFamily.helvetica,
+          12,
+        ),
+        format: PdfStringFormat(alignment: PdfTextAlignment.left),
+        bounds: Rect.fromLTWH(
+          pageSize.width - 500,
+          pageSize.height - 140,
+          0,
+          0,
+        ));
+  } else {
+    const titleText = 'STATEMENT LETTER';
+    String signatureText =
+        '${visa.cityDomicile}, ${DateFormat('dd MMMM yyyy').format(DateTime.now())}';
+    String signatureTextCovid =
+        DateFormat('dd MMMM yyyy').format(DateTime.now());
+    String signatureName = '${visa.firstName} ${visa.lastName}';
+    String userDetails = '''
+  I, the undersigned below
+
+  ${'Name'.padRight(40)}:\t${visa.firstName} ${visa.lastName}
+
+  ${'Place And Date of Birth'.padRight(31)}:\t${visa.placeOfBirth}, ${DateFormat('dd MMMM yyyy').format(DateTime.parse(visa.dateOfBirth!))}
+
+  ${'Passport Number'.padRight(33)}:\t${visa.passportNumber}
+
+  ${'Citizenship'.padRight(40)}:\t${visa.nationality}
+  \n
+
+''';
+    const bodyText =
+        "\n\nI hereby state that I Will not be providing any health insurance certificate but instead will\npersonally cover any expense during my stay in Indonesia\n\nI believe that the facts stated in the witness statement are true.";
+
+    page.graphics.drawString(titleText,
+        PdfStandardFont(PdfFontFamily.helvetica, 14, style: PdfFontStyle.bold),
+        format: PdfStringFormat(alignment: PdfTextAlignment.left),
+        bounds: Rect.fromLTWH(
+          pageSize.width / 3,
+          pageSize.height - 700,
+          0,
+          0,
+        ));
+    page.graphics.drawString(
+        userDetails,
+        PdfStandardFont(
+          PdfFontFamily.helvetica,
+          12,
+        ),
+        format: PdfStringFormat(alignment: PdfTextAlignment.left),
+        bounds: Rect.fromLTWH(
+          pageSize.width - 500,
+          pageSize.height - 600,
+          0,
+          0,
+        ));
+    page.graphics.drawString(
+        userDetails,
+        PdfStandardFont(
+          PdfFontFamily.helvetica,
+          12,
+        ),
+        format: PdfStringFormat(alignment: PdfTextAlignment.left),
+        bounds: Rect.fromLTWH(
+          pageSize.width - 500,
+          pageSize.height - 600,
+          0,
+          0,
+        ));
+    page.graphics.drawString(
+        bodyText,
+        PdfStandardFont(
+          PdfFontFamily.helvetica,
+          12,
+        ),
+        format: PdfStringFormat(alignment: PdfTextAlignment.left),
+        bounds: Rect.fromLTWH(
+          pageSize.width - 500,
+          pageSize.height - 450,
+          0,
+          0,
+        ));
+
+    page.graphics.drawString(
+        signatureTextCovid,
         PdfStandardFont(
           PdfFontFamily.helvetica,
           12,

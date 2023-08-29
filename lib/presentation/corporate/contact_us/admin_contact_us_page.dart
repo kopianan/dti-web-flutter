@@ -107,6 +107,7 @@ class _AdminContactUsPageState extends State<AdminContactUsPage> {
                     ),
                   );
                 }),
+                SizedBox(height: 30.h),
               ],
             ),
           );
@@ -163,7 +164,8 @@ class _AdminContactUsPageState extends State<AdminContactUsPage> {
                               e.user.countryCode.replaceFirst('+', '') +
                                   e.user.mobileNumber;
                           print(phone);
-                          await launchUrl(Uri.parse("https://api.whatsapp.com/send/?phone=$phone"));
+                          await launchUrl(Uri.parse(
+                              "https://api.whatsapp.com/send/?phone=$phone"));
                         });
                       },
                       builder: (context, state) {

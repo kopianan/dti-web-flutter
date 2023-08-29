@@ -1,11 +1,12 @@
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
+import 'package:dartz/dartz.dart';
 import 'package:dti_web/core/storage.dart';
+import 'package:dti_web/domain/core/apps_type.dart';
 import 'package:dti_web/domain/core/document_data_model.dart';
 import 'package:dti_web/domain/core/single_visa_response.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
-import 'package:dti_web/domain/global/failures.dart';
 import 'package:dti_web/domain/questionnaire/questionnaire_model.dart';
 import 'package:dti_web/domain/update/i_update_application.dart';
 import 'package:dti_web/domain/update/image_upload_response.dart';
@@ -31,6 +32,25 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
     result.fold(
       (l) => emit(UpdateApplicationState.onError(l)),
       (r) => emit(UpdateApplicationState.onDeleteSingleImage(r)),
+    );
+  }
+
+  void rejectApplication(String firebaseDocId) async {
+    emit(const UpdateApplicationState.onLoading());
+    final result = await iUpdateApplication.rejectApplication(firebaseDocId);
+    result.fold(
+      (l) => emit(UpdateApplicationState.onError(l)),
+      (r) => emit(UpdateApplicationState.onRejectApplication(r)),
+    );
+  }
+
+  void pendingPayment(String firebaseDocId) async {
+    emit(const UpdateApplicationState.onLoading());
+    final result =
+        await iUpdateApplication.pendingPaymentApplication(firebaseDocId);
+    result.fold(
+      (l) => emit(UpdateApplicationState.onError(l)),
+      (r) => emit(UpdateApplicationState.onPendingPaymentApplication(r)),
     );
   }
 
@@ -246,7 +266,7 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
   }
 
   void getUserApplication(String firebaseDocId) async {
-    emit(UpdateApplicationState.onLoading());
+    emit(const UpdateApplicationState.onLoading());
 
     final result =
         await iUpdateApplication.getUserApplicationById(firebaseDocId);
@@ -256,30 +276,26 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
     );
   }
 
-  void getUserApplicationWithImages(String firebaseDocId) async {
+  void getUserAppsWithImages(
+      String firebaseDocId, AppsType appsType) async {
     emit(const UpdateApplicationState.onLoading());
+    late Either<String, SingleVisaResponse> result;
+    if (appsType == AppsType.application) {
+      result = await iUpdateApplication
+          .getUserApplicationByIdWithImages(firebaseDocId);
+    } else {
+      result =
+          await iUpdateApplication.getUserPassportByIdWithImages(firebaseDocId);
+    }
 
-    final result = await iUpdateApplication
-        .getUserApplicationByIdWithImages(firebaseDocId);
     result.fold(
       (l) => emit(UpdateApplicationState.onError(l)),
-      (r) => emit(UpdateApplicationState.onGetSingleApplicationWithImage(r)),
-    );
-  }
-
-  void getUserPassportWithImages(String firebaseDocId) async {
-    emit(const UpdateApplicationState.onLoading());
-
-    final result =
-        await iUpdateApplication.getUserPassportByIdWithImages(firebaseDocId);
-    result.fold(
-      (l) => emit(UpdateApplicationState.onError(l)),
-      (r) => emit(UpdateApplicationState.onGetSinglePassportWithImage(r)),
+      (r) => emit(UpdateApplicationState.onGetSingleAppsWithImage(r)),
     );
   }
 
   void submitVisaApps(String firebaseDocId) async {
-    emit(UpdateApplicationState.onLoading());
+    emit(const UpdateApplicationState.onLoading());
 
     final result = await iUpdateApplication.submitVisa(firebaseDocId);
     try {
@@ -293,7 +309,7 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
   }
 
   void submitPassportApps(String firebaseDocId) async {
-    emit(UpdateApplicationState.onLoading());
+    emit(const UpdateApplicationState.onLoading());
 
     final result = await iUpdateApplication.submitPassport(firebaseDocId);
     try {

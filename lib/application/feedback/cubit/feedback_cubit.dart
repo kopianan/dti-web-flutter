@@ -13,13 +13,13 @@ class FeedbackCubit extends Cubit<FeedbackState> {
 
   final IFeedback iFeedback;
 
-  void getAllCustomer() async {
+  void getAllFeedback() async {
     emit(const FeedbackState.loading());
     final result = await iFeedback.getAllFeedback();
     result.fold(
       (l) => emit(const FeedbackState.error()),
       (r) {
-        var feedbacks = r.toList(); 
+        var feedbacks = r.toList();
         feedbacks.sort((a, b) => b.createdDate.compareTo(a.createdDate));
         emit(FeedbackState.getAllFeedback(feedbacks));
       },

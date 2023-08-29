@@ -3,7 +3,6 @@ import 'package:data_table_2/data_table_2.dart';
 import 'package:dti_web/application/app_list/app_list_cubit.dart';
 import 'package:dti_web/application/customer/cubit/customer_cubit.dart';
 import 'package:dti_web/domain/core/customer_model.dart';
-import 'package:dti_web/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -69,42 +68,41 @@ class _AdminCustomerPageState extends State<AdminCustomerPage> {
                   getAllCustomer: (e) {
                     return Expanded(
                       child: SizedBox(
-                          width: double.infinity,
-                          child: DataTable2(
-                              minWidth: 2000,
-                              showCheckboxColumn: true,
-                              checkboxHorizontalMargin: 10,
-                              columnSpacing: 12,
-                              horizontalMargin: 12,
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: const Color.fromARGB(255, 49, 19, 19),
-                                  width: 1.0,
-                                  style: BorderStyle.solid,
-                                ),
-                              ),
-                              onSelectAll: (e) {
-                                context
-                                    .read<AppListCubit>()
-                                    .updateAllSelected(e ?? false);
-                              },
-                              columns: [
-                                applicationHeaderColumn(label: "First Name"),
-                                applicationHeaderColumn(label: "Last Name"),
-                                applicationHeaderColumn(label: "Phone Number"),
-                                applicationHeaderColumn(label: "Total Visa"),
-                              ],
-                              rows: e.customers
-                                  .map(
-                                    (value) => applicationDataRow(
-                                      value,
-                                      e.customers.indexOf(value),
-                                    ),
-                                  )
-                                  .toList())),
+                        width: double.infinity,
+                        child: DataTable2(
+                          minWidth: 2000,
+                          showCheckboxColumn: true,
+                          checkboxHorizontalMargin: 10,
+                          columnSpacing: 12,
+                          horizontalMargin: 12,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: const Color.fromARGB(255, 49, 19, 19),
+                              width: 1.0,
+                              style: BorderStyle.solid,
+                            ),
+                          ),
+                          onSelectAll: (e) {
+                            context
+                                .read<AppListCubit>()
+                                .updateAllSelected(e ?? false);
+                          },
+                          columns: [
+                            applicationHeaderColumn(label: "First Name"),
+                            applicationHeaderColumn(label: "Last Name"),
+                            applicationHeaderColumn(label: "Phone Number"),
+                            applicationHeaderColumn(label: "Total Visa"),
+                          ],
+                          rows: e.customers
+                              .map((value) => applicationDataRow(
+                                  value, e.customers.indexOf(value)))
+                              .toList(),
+                        ),
+                      ),
                     );
                   },
-                )
+                ),
+                SizedBox(height: 30.h),
               ],
             ),
           );
@@ -112,9 +110,7 @@ class _AdminCustomerPageState extends State<AdminCustomerPage> {
       ),
     );
   }
-
-  onOpenPressed() {}
-
+ 
   DataRow applicationDataRow(CustomerModel customer, int index) {
     return DataRow2(
       onTap: () {},
@@ -122,10 +118,10 @@ class _AdminCustomerPageState extends State<AdminCustomerPage> {
           ? MaterialStatePropertyAll(Colors.blue[100])
           : const MaterialStatePropertyAll(Colors.white),
       cells: [
-        DataCell(Text(customer.name ?? "")),
-        DataCell(Text(customer.name ?? "")),
-        DataCell(Text(customer.name ?? "")),
-        DataCell(Text(customer.name ?? "")),
+        DataCell(Text(customer.name.split(' ').first)),
+        DataCell(Text(customer.name.split(' ').last)),
+        DataCell(Text(customer.countryCode + customer.mobileNumber)),
+        DataCell(Text(customer.totalVisa.toString())),
       ],
     );
   }
@@ -141,7 +137,7 @@ class _AdminCustomerPageState extends State<AdminCustomerPage> {
           label,
           style: const TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 16.0,
+            fontSize: 20.0,
           ),
         ),
       ),

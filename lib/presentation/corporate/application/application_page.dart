@@ -3,6 +3,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:dti_web/application/agent/agent_cubit.dart';
 import 'package:dti_web/application/app_list/app_list_cubit.dart';
+import 'package:dti_web/domain/core/apps_type.dart';
 import 'package:dti_web/domain/core/simple_visa_model.dart';
 import 'package:dti_web/domain/global/data_list_model.dart';
 import 'package:dti_web/routes/app_router.dart';
@@ -217,8 +218,10 @@ class _ApplicationPageState extends State<ApplicationPage> {
               final status = visa.bodyData.status!;
               if (subtitle.toLowerCase().contains('passport')) {
                 if (_isOpenDetail(status)) {
-                  AutoRouter.of(context).push(PassportDetailRoute(
-                      firebaseDocId: visa.bodyData.firebaseDocId!));
+                  AutoRouter.of(context).push(ApplicationDetailRoute(
+                    firebaseDocId: visa.bodyData.firebaseDocId!,
+                    appsType: AppsType.passport,
+                  ));
                 } else {
                   AutoRouter.of(context).push(
                     PassportPersonalParticularRoute(
@@ -229,7 +232,8 @@ class _ApplicationPageState extends State<ApplicationPage> {
               } else {
                 if (_isOpenDetail(status)) {
                   AutoRouter.of(context).push(ApplicationDetailRoute(
-                      firebaseDocId: visa.bodyData.firebaseDocId!));
+                      firebaseDocId: visa.bodyData.firebaseDocId!,
+                      appsType: AppsType.application));
                 } else {
                   AutoRouter.of(context).push(PersonalInformation1Route(
                       firebaseDocId: visa.bodyData.firebaseDocId!));
@@ -241,8 +245,9 @@ class _ApplicationPageState extends State<ApplicationPage> {
           final status = visa.bodyData.status!;
           if (subtitle.toLowerCase().contains('passport')) {
             if (_isOpenDetail(status)) {
-              AutoRouter.of(context).push(PassportDetailRoute(
-                  firebaseDocId: visa.bodyData.firebaseDocId!));
+              AutoRouter.of(context).push(ApplicationDetailRoute(
+                  firebaseDocId: visa.bodyData.firebaseDocId!,
+                  appsType: AppsType.passport));
             } else {
               AutoRouter.of(context).push(
                 PassportPersonalParticularRoute(
@@ -253,7 +258,8 @@ class _ApplicationPageState extends State<ApplicationPage> {
           } else {
             if (_isOpenDetail(status)) {
               AutoRouter.of(context).push(ApplicationDetailRoute(
-                  firebaseDocId: visa.bodyData.firebaseDocId!));
+                  firebaseDocId: visa.bodyData.firebaseDocId!,
+                  appsType: AppsType.application));
             } else {
               AutoRouter.of(context).push(PersonalInformation1Route(
                   firebaseDocId: visa.bodyData.firebaseDocId!));

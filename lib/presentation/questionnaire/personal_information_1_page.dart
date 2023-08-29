@@ -1,4 +1,5 @@
 import 'package:dti_web/core/storage.dart';
+import 'package:dti_web/domain/core/apps_type.dart';
 import 'package:dti_web/presentation/questionnaire/widget/custom_second_header.dart';
 import 'package:dti_web/utils/date_time_child.dart';
 
@@ -46,10 +47,9 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
 
   @override
   Widget build(BuildContext context) {
-    final AppRouter router = AppRouter();
     return BlocProvider(
         create: (context) => getIt<UpdateApplicationCubit>()
-          ..getUserApplicationWithImages(widget.firebaseDocId),
+          ..getUserAppsWithImages(widget.firebaseDocId, AppsType.application),
         child: BlocConsumer<UpdateApplicationCubit, UpdateApplicationState>(
             listener: (context, updateState) {
           updateState.maybeMap(
@@ -64,7 +64,7 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
               //close loading dialog
               EasyLoading.dismiss();
             },
-            onGetSingleApplicationWithImage: (e) {
+            onGetSingleAppsWithImage: (e) {
               //close loading dialog
               EasyLoading.dismiss();
               context
@@ -80,7 +80,7 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
             orElse: () {
               return const LoadingPage();
             },
-            onGetSingleApplicationWithImage: (e) {
+            onGetSingleAppsWithImage: (e) {
               return BlocBuilder<ApplicationCubit, ApplicationState>(
                 builder: (context, state) {
                   return Scaffold(
