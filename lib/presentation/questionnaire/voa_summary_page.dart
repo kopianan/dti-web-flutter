@@ -3,6 +3,7 @@ import 'package:dti_web/application/application_cubit.dart';
 import 'package:dti_web/application/questionnaire_cubit.dart';
 import 'package:dti_web/application/update_application/update_application_cubit.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
+import 'package:dti_web/domain/core/channel_type.dart';
 import 'package:dti_web/domain/core/document_data_model.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/injection.dart';
@@ -39,15 +40,15 @@ class _VOASummaryPageState extends State<VOASummaryPage> {
 //get list data from storage.
 
     visa = VisaApplicationModel(
-      title: "Visit Visa",
-      subTitle: "Visa On Arrival",
-      entry: "Single Entry Visa",
-      price: 0,
-      currency: "Rp",
-      documents: "A3,A4,A6",
-      status: "Draft",
-      inIndonesia: false,
-    );
+        title: "Visit Visa",
+        subTitle: "Visa On Arrival",
+        entry: "Single Entry Visa",
+        price: 0,
+        currency: "Rp",
+        documents: "A3,A4,A6",
+        status: "Draft",
+        inIndonesia: false,
+        createdChannel: ChannelType.website.getChannelType);
     description =
         "This application is used for the issuance of e-VOA for foreigners who will enter Indonesia. Make sure to apply for a Visa in accordance with the intent of the Foreigner's activities in Indonesia. Foreigners who abuse their Visas and those who provide opportunities for Foreigners to misuse their Visas are subject to criminal sanctions as stipulated in Article 122 letters A and B of Law no. 6 of 2011 concerning Immigration.";
 
@@ -149,7 +150,7 @@ class _VOASummaryPageState extends State<VOASummaryPage> {
                                       child: Container(
                                         margin: EdgeInsets.only(
                                             right: 30.w, left: 30.w),
-                                        padding: EdgeInsets.only(bottom: 50),
+                                        padding: const EdgeInsets.only(bottom: 50),
                                         child: Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,

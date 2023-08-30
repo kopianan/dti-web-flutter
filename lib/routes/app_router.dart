@@ -10,7 +10,6 @@ import 'package:dti_web/domain/core/document_data_model.dart';
 import 'package:dti_web/domain/questionnaire/result_model.dart';
 import 'package:dti_web/presentation/applications/application_detail_page.dart';
 import 'package:dti_web/presentation/applications/passport/choose_passport_page.dart';
-import 'package:dti_web/presentation/applications/passport/passport_detail_page.dart';
 import 'package:dti_web/presentation/applications/passport/passport_payment_page.dart';
 import 'package:dti_web/presentation/applications/passport/passport_personal_particular_page.dart';
 import 'package:dti_web/presentation/applications/passport/selfie_page.dart';

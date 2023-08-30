@@ -3,6 +3,7 @@ import 'dart:math' as math;
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:dti_web/core/storage.dart';
+import 'package:dti_web/domain/core/channel_type.dart';
 import 'package:dti_web/domain/core/document_data_model.dart';
 import 'package:dti_web/domain/core/single_visa_response.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
@@ -257,7 +258,8 @@ class IUpdateApplicationRepository extends IUpdateApplication {
       "modeOfTransportation": visaApplicationModel.modeOfTransportation,
       "flightNumber": visaApplicationModel.flightNumber,
       "arrivalDate": visaApplicationModel.arrivalDate,
-      "guarantorDTI": true
+      "guarantorDTI": true,
+      "lastUpdatedChannel": ChannelType.website.getChannelType
     };
     try {
       final result = await dio!.post(
@@ -307,7 +309,8 @@ class IUpdateApplicationRepository extends IUpdateApplication {
       "cityDomicile": visaApplicationModel.cityDomicile,
       "district": visaApplicationModel.district,
       "inIndonesia": visaApplicationModel.inIndonesia,
-      "issuingCountry": visaApplicationModel.issuingCountry
+      "issuingCountry": visaApplicationModel.issuingCountry,
+      "lastUpdatedChannel": ChannelType.website.getChannelType
     };
     try {
       final result = await dio!.post(
@@ -586,6 +589,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
       price: 0,
       status: "Draft",
       documents: isNew ? "A6,P1,P2" : "A2,A3,A6,P1",
+      createdChannel: ChannelType.website.getChannelType,
       userName:
           storage.getLocalUserData()?.name ?? storage.getLocalUserData()?.email,
     );

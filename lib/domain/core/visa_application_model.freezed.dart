@@ -27,6 +27,8 @@ mixin _$VisaApplicationModel {
   String? get selfieImage => throw _privateConstructorUsedError;
   String? get newPassport => throw _privateConstructorUsedError;
   String? get motherName => throw _privateConstructorUsedError;
+  String get createdChannel => throw _privateConstructorUsedError;
+  String get lastUpdatedChannel => throw _privateConstructorUsedError;
   @JsonKey(name: 'rejectionNote')
   String? get rejectionNote => throw _privateConstructorUsedError;
   @JsonKey(name: 'entry')
@@ -158,6 +160,8 @@ abstract class $VisaApplicationModelCopyWith<$Res> {
       String? selfieImage,
       String? newPassport,
       String? motherName,
+      String createdChannel,
+      String lastUpdatedChannel,
       @JsonKey(name: 'rejectionNote')
           String? rejectionNote,
       @JsonKey(name: 'entry')
@@ -291,6 +295,8 @@ class _$VisaApplicationModelCopyWithImpl<$Res,
     Object? selfieImage = freezed,
     Object? newPassport = freezed,
     Object? motherName = freezed,
+    Object? createdChannel = null,
+    Object? lastUpdatedChannel = null,
     Object? rejectionNote = freezed,
     Object? entry = freezed,
     Object? lastName = freezed,
@@ -373,6 +379,14 @@ class _$VisaApplicationModelCopyWithImpl<$Res,
           ? _value.motherName
           : motherName // ignore: cast_nullable_to_non_nullable
               as String?,
+      createdChannel: null == createdChannel
+          ? _value.createdChannel
+          : createdChannel // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastUpdatedChannel: null == lastUpdatedChannel
+          ? _value.lastUpdatedChannel
+          : lastUpdatedChannel // ignore: cast_nullable_to_non_nullable
+              as String,
       rejectionNote: freezed == rejectionNote
           ? _value.rejectionNote
           : rejectionNote // ignore: cast_nullable_to_non_nullable
@@ -629,6 +643,8 @@ abstract class _$$_VisaApplicationModelCopyWith<$Res>
       String? selfieImage,
       String? newPassport,
       String? motherName,
+      String createdChannel,
+      String lastUpdatedChannel,
       @JsonKey(name: 'rejectionNote')
           String? rejectionNote,
       @JsonKey(name: 'entry')
@@ -760,6 +776,8 @@ class __$$_VisaApplicationModelCopyWithImpl<$Res>
     Object? selfieImage = freezed,
     Object? newPassport = freezed,
     Object? motherName = freezed,
+    Object? createdChannel = null,
+    Object? lastUpdatedChannel = null,
     Object? rejectionNote = freezed,
     Object? entry = freezed,
     Object? lastName = freezed,
@@ -842,6 +860,14 @@ class __$$_VisaApplicationModelCopyWithImpl<$Res>
           ? _value.motherName
           : motherName // ignore: cast_nullable_to_non_nullable
               as String?,
+      createdChannel: null == createdChannel
+          ? _value.createdChannel
+          : createdChannel // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastUpdatedChannel: null == lastUpdatedChannel
+          ? _value.lastUpdatedChannel
+          : lastUpdatedChannel // ignore: cast_nullable_to_non_nullable
+              as String,
       rejectionNote: freezed == rejectionNote
           ? _value.rejectionNote
           : rejectionNote // ignore: cast_nullable_to_non_nullable
@@ -1081,6 +1107,8 @@ class _$_VisaApplicationModel implements _VisaApplicationModel {
       this.selfieImage,
       this.newPassport,
       this.motherName,
+      this.createdChannel = 'Website',
+      this.lastUpdatedChannel = 'Website',
       @JsonKey(name: 'rejectionNote')
           this.rejectionNote,
       @JsonKey(name: 'entry')
@@ -1208,6 +1236,12 @@ class _$_VisaApplicationModel implements _VisaApplicationModel {
   final String? newPassport;
   @override
   final String? motherName;
+  @override
+  @JsonKey()
+  final String createdChannel;
+  @override
+  @JsonKey()
+  final String lastUpdatedChannel;
   @override
   @JsonKey(name: 'rejectionNote')
   final String? rejectionNote;
@@ -1384,7 +1418,7 @@ class _$_VisaApplicationModel implements _VisaApplicationModel {
 
   @override
   String toString() {
-    return 'VisaApplicationModel(bookingCode: $bookingCode, identityNumber: $identityNumber, type: $type, selfieImage: $selfieImage, newPassport: $newPassport, motherName: $motherName, rejectionNote: $rejectionNote, entry: $entry, lastName: $lastName, userName: $userName, nationality: $nationality, guarantorDTI: $guarantorDTI, passportNumber: $passportNumber, district: $district, overstayedFlag: $overstayedFlag, createdBy: $createdBy, xenditPaymentMethod: $xenditPaymentMethod, address: $address, city: $city, modeOfTransportation: $modeOfTransportation, flightNumber: $flightNumber, arrivalDate: $arrivalDate, xenditPaymentStatus: $xenditPaymentStatus, xenditPaymentGateway: $xenditPaymentGateway, xenditPaymentId: $xenditPaymentId, mobileNumber: $mobileNumber, status: $status, xenditPaymentDescription: $xenditPaymentDescription, submittedDate: $submittedDate, subTitle: $subTitle, documentsData: $documentsData, title: $title, lastUpdatedDate: $lastUpdatedDate, errorMessage: $errorMessage, firebaseDocId: $firebaseDocId, relationshipStatus: $relationshipStatus, dateOfExpiration: $dateOfExpiration, cityDomicile: $cityDomicile, applicationID: $applicationID, createdDate: $createdDate, xenditPaymentInvoiceUrl: $xenditPaymentInvoiceUrl, xenditPaymentCurrency: $xenditPaymentCurrency, placeOfBirth: $placeOfBirth, mobileDialCode: $mobileDialCode, currency: $currency, inIndonesia: $inIndonesia, xenditPaymentPaidAmount: $xenditPaymentPaidAmount, dateOfIssue: $dateOfIssue, lastUpdatedBy: $lastUpdatedBy, documents: $documents, firstName: $firstName, assistanceForPermit: $assistanceForPermit, issuingCountry: $issuingCountry, province: $province, xenditPaymentAmount: $xenditPaymentAmount, mobileCountryCode: $mobileCountryCode, gender: $gender, deportedFlag: $deportedFlag, xenditPaymentPaidAt: $xenditPaymentPaidAt, dateOfBirth: $dateOfBirth, price: $price, multiVisaDuration: $multiVisaDuration)';
+    return 'VisaApplicationModel(bookingCode: $bookingCode, identityNumber: $identityNumber, type: $type, selfieImage: $selfieImage, newPassport: $newPassport, motherName: $motherName, createdChannel: $createdChannel, lastUpdatedChannel: $lastUpdatedChannel, rejectionNote: $rejectionNote, entry: $entry, lastName: $lastName, userName: $userName, nationality: $nationality, guarantorDTI: $guarantorDTI, passportNumber: $passportNumber, district: $district, overstayedFlag: $overstayedFlag, createdBy: $createdBy, xenditPaymentMethod: $xenditPaymentMethod, address: $address, city: $city, modeOfTransportation: $modeOfTransportation, flightNumber: $flightNumber, arrivalDate: $arrivalDate, xenditPaymentStatus: $xenditPaymentStatus, xenditPaymentGateway: $xenditPaymentGateway, xenditPaymentId: $xenditPaymentId, mobileNumber: $mobileNumber, status: $status, xenditPaymentDescription: $xenditPaymentDescription, submittedDate: $submittedDate, subTitle: $subTitle, documentsData: $documentsData, title: $title, lastUpdatedDate: $lastUpdatedDate, errorMessage: $errorMessage, firebaseDocId: $firebaseDocId, relationshipStatus: $relationshipStatus, dateOfExpiration: $dateOfExpiration, cityDomicile: $cityDomicile, applicationID: $applicationID, createdDate: $createdDate, xenditPaymentInvoiceUrl: $xenditPaymentInvoiceUrl, xenditPaymentCurrency: $xenditPaymentCurrency, placeOfBirth: $placeOfBirth, mobileDialCode: $mobileDialCode, currency: $currency, inIndonesia: $inIndonesia, xenditPaymentPaidAmount: $xenditPaymentPaidAmount, dateOfIssue: $dateOfIssue, lastUpdatedBy: $lastUpdatedBy, documents: $documents, firstName: $firstName, assistanceForPermit: $assistanceForPermit, issuingCountry: $issuingCountry, province: $province, xenditPaymentAmount: $xenditPaymentAmount, mobileCountryCode: $mobileCountryCode, gender: $gender, deportedFlag: $deportedFlag, xenditPaymentPaidAt: $xenditPaymentPaidAt, dateOfBirth: $dateOfBirth, price: $price, multiVisaDuration: $multiVisaDuration)';
   }
 
   @override
@@ -1403,6 +1437,10 @@ class _$_VisaApplicationModel implements _VisaApplicationModel {
                 other.newPassport == newPassport) &&
             (identical(other.motherName, motherName) ||
                 other.motherName == motherName) &&
+            (identical(other.createdChannel, createdChannel) ||
+                other.createdChannel == createdChannel) &&
+            (identical(other.lastUpdatedChannel, lastUpdatedChannel) ||
+                other.lastUpdatedChannel == lastUpdatedChannel) &&
             (identical(other.rejectionNote, rejectionNote) ||
                 other.rejectionNote == rejectionNote) &&
             (identical(other.entry, entry) || other.entry == entry) &&
@@ -1474,10 +1512,8 @@ class _$_VisaApplicationModel implements _VisaApplicationModel {
                 other.placeOfBirth == placeOfBirth) &&
             (identical(other.mobileDialCode, mobileDialCode) ||
                 other.mobileDialCode == mobileDialCode) &&
-            (identical(other.currency, currency) ||
-                other.currency == currency) &&
-            (identical(other.inIndonesia, inIndonesia) ||
-                other.inIndonesia == inIndonesia) &&
+            (identical(other.currency, currency) || other.currency == currency) &&
+            (identical(other.inIndonesia, inIndonesia) || other.inIndonesia == inIndonesia) &&
             (identical(other.xenditPaymentPaidAmount, xenditPaymentPaidAmount) || other.xenditPaymentPaidAmount == xenditPaymentPaidAmount) &&
             (identical(other.dateOfIssue, dateOfIssue) || other.dateOfIssue == dateOfIssue) &&
             (identical(other.lastUpdatedBy, lastUpdatedBy) || other.lastUpdatedBy == lastUpdatedBy) &&
@@ -1506,6 +1542,8 @@ class _$_VisaApplicationModel implements _VisaApplicationModel {
         selfieImage,
         newPassport,
         motherName,
+        createdChannel,
+        lastUpdatedChannel,
         rejectionNote,
         entry,
         lastName,
@@ -1587,6 +1625,8 @@ abstract class _VisaApplicationModel implements VisaApplicationModel {
       final String? selfieImage,
       final String? newPassport,
       final String? motherName,
+      final String createdChannel,
+      final String lastUpdatedChannel,
       @JsonKey(name: 'rejectionNote')
           final String? rejectionNote,
       @JsonKey(name: 'entry')
@@ -1712,6 +1752,10 @@ abstract class _VisaApplicationModel implements VisaApplicationModel {
   String? get newPassport;
   @override
   String? get motherName;
+  @override
+  String get createdChannel;
+  @override
+  String get lastUpdatedChannel;
   @override
   @JsonKey(name: 'rejectionNote')
   String? get rejectionNote;

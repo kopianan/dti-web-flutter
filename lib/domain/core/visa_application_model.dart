@@ -16,6 +16,8 @@ class VisaApplicationModel with _$VisaApplicationModel {
     String? selfieImage,
     String? newPassport,
     String? motherName,
+    @Default('Website') String createdChannel,
+    @Default('Website') String lastUpdatedChannel,
     @JsonKey(name: 'rejectionNote') String? rejectionNote,
     @JsonKey(name: 'entry') String? entry,
     @JsonKey(name: 'lastName') String? lastName,
@@ -62,7 +64,7 @@ class VisaApplicationModel with _$VisaApplicationModel {
     @JsonKey(name: 'documents') String? documents,
     @JsonKey(name: 'firstName') String? firstName,
     @JsonKey(name: 'assistanceForPermit')
-        AssitanceForPermitModel? assistanceForPermit,
+    AssitanceForPermitModel? assistanceForPermit,
     @JsonKey(name: 'issuingCountry') String? issuingCountry,
     @JsonKey(name: 'province') String? province,
     @JsonKey(name: 'xenditPaymentAmount') int? xenditPaymentAmount,

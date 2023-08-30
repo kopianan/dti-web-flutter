@@ -105,6 +105,7 @@ class _AdminFeedbackPageState extends State<AdminFeedbackPage> {
                     ),
                   );
                 }),
+                SizedBox(height: 30.h),
               ],
             ),
           );
@@ -127,6 +128,7 @@ class _AdminFeedbackPageState extends State<AdminFeedbackPage> {
           Row(
             children: [
               RatingBar(
+                ignoreGestures: true,
                 itemCount: 5,
                 initialRating: double.parse(feedback.rating.toString()),
                 direction: Axis.horizontal,
@@ -138,6 +140,7 @@ class _AdminFeedbackPageState extends State<AdminFeedbackPage> {
                       const Icon(Icons.star_border, color: Color(0xffD4AF37)),
                 ),
                 onRatingUpdate: (e) {},
+                tapOnlyMode: false,
               ),
               const SizedBox(width: 5),
               Text(

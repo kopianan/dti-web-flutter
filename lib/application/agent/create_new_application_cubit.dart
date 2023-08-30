@@ -80,6 +80,7 @@ class CreateNewApplicationCubit extends Cubit<CreateNewApplicationState> {
         final body = row.bodyData;
 
         visa = VisaApplicationModel(
+          
           title: body[0]?.value.toString() ?? '',
           subTitle: body[1]?.value.toString() ?? '',
           entry: body[2]?.value.toString() ?? '',
