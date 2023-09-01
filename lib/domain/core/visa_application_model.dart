@@ -13,6 +13,7 @@ class VisaApplicationModel with _$VisaApplicationModel {
     String? bookingCode,
     String? identityNumber,
     String? type,
+    String? promoUsed,
     String? selfieImage,
     String? newPassport,
     String? motherName,

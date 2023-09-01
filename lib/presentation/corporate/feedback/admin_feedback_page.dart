@@ -1,10 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:data_table_2/data_table_2.dart';
+import 'package:dti_web/application/admin/admin_data/admin_data_cubit.dart';
 import 'package:dti_web/application/feedback/cubit/feedback_cubit.dart';
 import 'package:dti_web/domain/feedback/feedback_model.dart';
+import 'package:dti_web/presentation/corporate/widgets/table_page_header.dart';
 import 'package:dti_web/utils/date_converter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -23,95 +26,99 @@ class _AdminFeedbackPageState extends State<AdminFeedbackPage> {
     super.initState();
   }
 
+  var controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocBuilder<FeedbackCubit, FeedbackState>(
-        builder: (context, feedbackState) {
-          return Container(
-            padding: const EdgeInsets.symmetric(horizontal: 40),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: 10.h),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text(
-                      "Feedback",
-                      style: TextStyle(
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.grey,
-                      ),
-                    ),
-                    Container(
-                      constraints: BoxConstraints(minWidth: 100.w),
-                      height: 45.h,
-                      child: OutlinedButton.icon(
-                        label: Text(
-                          "Refresh",
-                          style: TextStyle(fontSize: 16.sp),
-                        ),
-                        icon: const Icon(Icons.refresh),
-                        onPressed: () {
+        body: BlocListener<FeedbackCubit, FeedbackState>(
+            listener: (context, feedbackState) {
+              feedbackState.maybeMap(
+                orElse: () {
+                  EasyLoading.dismiss();
+                },
+                getAllFeedback: (e) {
+                  EasyLoading.dismiss();
+                  context.read<AdminDataCubit>().setFeedbackData(e.feedbacks);
+                },
+                loading: (e) {
+                  EasyLoading.show();
+                },
+              );
+            },
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 40),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: 10.h),
+                  BlocBuilder<AdminDataCubit, AdminDataState>(
+                    builder: (context, state) {
+                      return TablePageHeader(
+                        onRefresh: () {
                           context.read<FeedbackCubit>().getAllFeedback();
+                        },
+                        controller: controller,
+                        label: "Feedback",
+                        onDelete: () {
+                          context.read<AdminDataCubit>().searchKeywoard("");
+                          controller.clear();
+                        },
+                        onSearch: (e) {
+                          context.read<AdminDataCubit>().searchKeywoard(e);
+                        },
+                      );
+                    },
+                  ),
+                  const SizedBox(height: 20),
+                  Expanded(
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: BlocBuilder<AdminDataCubit, AdminDataState>(
+                        builder: (context, state) {
+                          return DataTable2(
+                            minWidth: 2000,
+                            showCheckboxColumn: true,
+                            checkboxHorizontalMargin: 10,
+                            columnSpacing: 12,
+                            horizontalMargin: 12,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: const Color.fromARGB(255, 49, 19, 19),
+                                width: 1.0,
+                                style: BorderStyle.solid,
+                              ),
+                            ),
+                            onSelectAll: (e) {},
+                            columns: [
+                              applicationHeaderColumn(
+                                label: "Name",
+                              ),
+                              applicationHeaderColumn(
+                                  label: "Submitted Date", width: 150),
+                              applicationHeaderColumn(
+                                label: "Rating",
+                                width: 230,
+                              ),
+                              applicationHeaderColumn(
+                                label: "Comment",
+                                width: 1000,
+                              ),
+                            ],
+                            rows: state
+                                .getFeedbacks()
+                                .map((value) => applicationDataRow(
+                                    value, state.getFeedbacks().indexOf(value)))
+                                .toList(),
+                          );
                         },
                       ),
                     ),
-                  ],
-                ),
-                const SizedBox(height: 20),
-                feedbackState.maybeMap(orElse: () {
-                  return const SizedBox();
-                }, getAllFeedback: (e) {
-                  return Expanded(
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: DataTable2(
-                        minWidth: 2000,
-                        showCheckboxColumn: true,
-                        checkboxHorizontalMargin: 10,
-                        columnSpacing: 12,
-                        horizontalMargin: 12,
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: const Color.fromARGB(255, 49, 19, 19),
-                            width: 1.0,
-                            style: BorderStyle.solid,
-                          ),
-                        ),
-                        onSelectAll: (e) {},
-                        columns: [
-                          applicationHeaderColumn(
-                            label: "Name",
-                          ),
-                          applicationHeaderColumn(
-                              label: "Submitted Date", width: 150),
-                          applicationHeaderColumn(
-                            label: "Rating",
-                            width: 230,
-                          ),
-                          applicationHeaderColumn(
-                            label: "Comment",
-                            width: 1000,
-                          ),
-                        ],
-                        rows: e.feedbacks
-                            .map((value) => applicationDataRow(
-                                value, e.feedbacks.indexOf(value)))
-                            .toList(),
-                      ),
-                    ),
-                  );
-                }),
-                SizedBox(height: 30.h),
-              ],
-            ),
-          );
-        },
-      ),
-    );
+                  ),
+                  SizedBox(height: 30.h),
+                ],
+              ),
+            )));
   }
 
   DataRow applicationDataRow(FeedbackModel feedback, int index) {

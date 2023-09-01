@@ -4,7 +4,6 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:dti_web/core/storage.dart';
 import 'package:dti_web/domain/admin_application/i_admin_application.dart';
-import 'package:dti_web/domain/app_list/i_app_list.dart';
 import 'package:dti_web/domain/core/simple_visa_model.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:injectable/injectable.dart';

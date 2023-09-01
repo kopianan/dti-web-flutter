@@ -378,7 +378,7 @@ class ApplicationDetailWidget extends StatelessWidget {
               ],
             ),
 
-            50.verticalSpace,
+            
           ],
         ),
       ),

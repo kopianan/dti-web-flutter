@@ -12,6 +12,7 @@ _$_VisaApplicationModel _$$_VisaApplicationModelFromJson(
       bookingCode: json['bookingCode'] as String?,
       identityNumber: json['identityNumber'] as String?,
       type: json['type'] as String?,
+      promoUsed: json['promoUsed'] as String?,
       selfieImage: json['selfieImage'] as String?,
       newPassport: json['newPassport'] as String?,
       motherName: json['motherName'] as String?,
@@ -93,6 +94,7 @@ Map<String, dynamic> _$$_VisaApplicationModelToJson(
   writeNotNull('bookingCode', instance.bookingCode);
   writeNotNull('identityNumber', instance.identityNumber);
   writeNotNull('type', instance.type);
+  writeNotNull('promoUsed', instance.promoUsed);
   writeNotNull('selfieImage', instance.selfieImage);
   writeNotNull('newPassport', instance.newPassport);
   writeNotNull('motherName', instance.motherName);

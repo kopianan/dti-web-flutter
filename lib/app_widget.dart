@@ -73,13 +73,11 @@ class AppWidget extends StatelessWidget {
           theme: ThemeData(
               scrollbarTheme: const ScrollbarThemeData(
                 thumbColor: MaterialStatePropertyAll(AppColor.primaryColor),
-                trackBorderColor:
-                    MaterialStatePropertyAll(AppColor.primaryColor),
                 thumbVisibility: MaterialStatePropertyAll(true),
                 thickness: MaterialStatePropertyAll(15),
                 radius: Radius.circular(4),
-                trackVisibility: MaterialStatePropertyAll(true),
-                trackColor: MaterialStatePropertyAll(Color.fromARGB(255, 255, 255, 255)),
+                
+                trackColor: MaterialStatePropertyAll(Colors.transparent),
               ),
               textTheme: GoogleFonts.latoTextTheme(),
               primaryColor: AppColor.primaryColor,

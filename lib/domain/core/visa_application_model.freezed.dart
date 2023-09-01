@@ -24,6 +24,7 @@ mixin _$VisaApplicationModel {
   String? get bookingCode => throw _privateConstructorUsedError;
   String? get identityNumber => throw _privateConstructorUsedError;
   String? get type => throw _privateConstructorUsedError;
+  String? get promoUsed => throw _privateConstructorUsedError;
   String? get selfieImage => throw _privateConstructorUsedError;
   String? get newPassport => throw _privateConstructorUsedError;
   String? get motherName => throw _privateConstructorUsedError;
@@ -157,6 +158,7 @@ abstract class $VisaApplicationModelCopyWith<$Res> {
       {String? bookingCode,
       String? identityNumber,
       String? type,
+      String? promoUsed,
       String? selfieImage,
       String? newPassport,
       String? motherName,
@@ -292,6 +294,7 @@ class _$VisaApplicationModelCopyWithImpl<$Res,
     Object? bookingCode = freezed,
     Object? identityNumber = freezed,
     Object? type = freezed,
+    Object? promoUsed = freezed,
     Object? selfieImage = freezed,
     Object? newPassport = freezed,
     Object? motherName = freezed,
@@ -366,6 +369,10 @@ class _$VisaApplicationModelCopyWithImpl<$Res,
       type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
+              as String?,
+      promoUsed: freezed == promoUsed
+          ? _value.promoUsed
+          : promoUsed // ignore: cast_nullable_to_non_nullable
               as String?,
       selfieImage: freezed == selfieImage
           ? _value.selfieImage
@@ -640,6 +647,7 @@ abstract class _$$_VisaApplicationModelCopyWith<$Res>
       {String? bookingCode,
       String? identityNumber,
       String? type,
+      String? promoUsed,
       String? selfieImage,
       String? newPassport,
       String? motherName,
@@ -773,6 +781,7 @@ class __$$_VisaApplicationModelCopyWithImpl<$Res>
     Object? bookingCode = freezed,
     Object? identityNumber = freezed,
     Object? type = freezed,
+    Object? promoUsed = freezed,
     Object? selfieImage = freezed,
     Object? newPassport = freezed,
     Object? motherName = freezed,
@@ -847,6 +856,10 @@ class __$$_VisaApplicationModelCopyWithImpl<$Res>
       type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
+              as String?,
+      promoUsed: freezed == promoUsed
+          ? _value.promoUsed
+          : promoUsed // ignore: cast_nullable_to_non_nullable
               as String?,
       selfieImage: freezed == selfieImage
           ? _value.selfieImage
@@ -1104,6 +1117,7 @@ class _$_VisaApplicationModel implements _VisaApplicationModel {
       {this.bookingCode,
       this.identityNumber,
       this.type,
+      this.promoUsed,
       this.selfieImage,
       this.newPassport,
       this.motherName,
@@ -1230,6 +1244,8 @@ class _$_VisaApplicationModel implements _VisaApplicationModel {
   final String? identityNumber;
   @override
   final String? type;
+  @override
+  final String? promoUsed;
   @override
   final String? selfieImage;
   @override
@@ -1418,7 +1434,7 @@ class _$_VisaApplicationModel implements _VisaApplicationModel {
 
   @override
   String toString() {
-    return 'VisaApplicationModel(bookingCode: $bookingCode, identityNumber: $identityNumber, type: $type, selfieImage: $selfieImage, newPassport: $newPassport, motherName: $motherName, createdChannel: $createdChannel, lastUpdatedChannel: $lastUpdatedChannel, rejectionNote: $rejectionNote, entry: $entry, lastName: $lastName, userName: $userName, nationality: $nationality, guarantorDTI: $guarantorDTI, passportNumber: $passportNumber, district: $district, overstayedFlag: $overstayedFlag, createdBy: $createdBy, xenditPaymentMethod: $xenditPaymentMethod, address: $address, city: $city, modeOfTransportation: $modeOfTransportation, flightNumber: $flightNumber, arrivalDate: $arrivalDate, xenditPaymentStatus: $xenditPaymentStatus, xenditPaymentGateway: $xenditPaymentGateway, xenditPaymentId: $xenditPaymentId, mobileNumber: $mobileNumber, status: $status, xenditPaymentDescription: $xenditPaymentDescription, submittedDate: $submittedDate, subTitle: $subTitle, documentsData: $documentsData, title: $title, lastUpdatedDate: $lastUpdatedDate, errorMessage: $errorMessage, firebaseDocId: $firebaseDocId, relationshipStatus: $relationshipStatus, dateOfExpiration: $dateOfExpiration, cityDomicile: $cityDomicile, applicationID: $applicationID, createdDate: $createdDate, xenditPaymentInvoiceUrl: $xenditPaymentInvoiceUrl, xenditPaymentCurrency: $xenditPaymentCurrency, placeOfBirth: $placeOfBirth, mobileDialCode: $mobileDialCode, currency: $currency, inIndonesia: $inIndonesia, xenditPaymentPaidAmount: $xenditPaymentPaidAmount, dateOfIssue: $dateOfIssue, lastUpdatedBy: $lastUpdatedBy, documents: $documents, firstName: $firstName, assistanceForPermit: $assistanceForPermit, issuingCountry: $issuingCountry, province: $province, xenditPaymentAmount: $xenditPaymentAmount, mobileCountryCode: $mobileCountryCode, gender: $gender, deportedFlag: $deportedFlag, xenditPaymentPaidAt: $xenditPaymentPaidAt, dateOfBirth: $dateOfBirth, price: $price, multiVisaDuration: $multiVisaDuration)';
+    return 'VisaApplicationModel(bookingCode: $bookingCode, identityNumber: $identityNumber, type: $type, promoUsed: $promoUsed, selfieImage: $selfieImage, newPassport: $newPassport, motherName: $motherName, createdChannel: $createdChannel, lastUpdatedChannel: $lastUpdatedChannel, rejectionNote: $rejectionNote, entry: $entry, lastName: $lastName, userName: $userName, nationality: $nationality, guarantorDTI: $guarantorDTI, passportNumber: $passportNumber, district: $district, overstayedFlag: $overstayedFlag, createdBy: $createdBy, xenditPaymentMethod: $xenditPaymentMethod, address: $address, city: $city, modeOfTransportation: $modeOfTransportation, flightNumber: $flightNumber, arrivalDate: $arrivalDate, xenditPaymentStatus: $xenditPaymentStatus, xenditPaymentGateway: $xenditPaymentGateway, xenditPaymentId: $xenditPaymentId, mobileNumber: $mobileNumber, status: $status, xenditPaymentDescription: $xenditPaymentDescription, submittedDate: $submittedDate, subTitle: $subTitle, documentsData: $documentsData, title: $title, lastUpdatedDate: $lastUpdatedDate, errorMessage: $errorMessage, firebaseDocId: $firebaseDocId, relationshipStatus: $relationshipStatus, dateOfExpiration: $dateOfExpiration, cityDomicile: $cityDomicile, applicationID: $applicationID, createdDate: $createdDate, xenditPaymentInvoiceUrl: $xenditPaymentInvoiceUrl, xenditPaymentCurrency: $xenditPaymentCurrency, placeOfBirth: $placeOfBirth, mobileDialCode: $mobileDialCode, currency: $currency, inIndonesia: $inIndonesia, xenditPaymentPaidAmount: $xenditPaymentPaidAmount, dateOfIssue: $dateOfIssue, lastUpdatedBy: $lastUpdatedBy, documents: $documents, firstName: $firstName, assistanceForPermit: $assistanceForPermit, issuingCountry: $issuingCountry, province: $province, xenditPaymentAmount: $xenditPaymentAmount, mobileCountryCode: $mobileCountryCode, gender: $gender, deportedFlag: $deportedFlag, xenditPaymentPaidAt: $xenditPaymentPaidAt, dateOfBirth: $dateOfBirth, price: $price, multiVisaDuration: $multiVisaDuration)';
   }
 
   @override
@@ -1431,6 +1447,8 @@ class _$_VisaApplicationModel implements _VisaApplicationModel {
             (identical(other.identityNumber, identityNumber) ||
                 other.identityNumber == identityNumber) &&
             (identical(other.type, type) || other.type == type) &&
+            (identical(other.promoUsed, promoUsed) ||
+                other.promoUsed == promoUsed) &&
             (identical(other.selfieImage, selfieImage) ||
                 other.selfieImage == selfieImage) &&
             (identical(other.newPassport, newPassport) ||
@@ -1539,6 +1557,7 @@ class _$_VisaApplicationModel implements _VisaApplicationModel {
         bookingCode,
         identityNumber,
         type,
+        promoUsed,
         selfieImage,
         newPassport,
         motherName,
@@ -1622,6 +1641,7 @@ abstract class _VisaApplicationModel implements VisaApplicationModel {
       {final String? bookingCode,
       final String? identityNumber,
       final String? type,
+      final String? promoUsed,
       final String? selfieImage,
       final String? newPassport,
       final String? motherName,
@@ -1746,6 +1766,8 @@ abstract class _VisaApplicationModel implements VisaApplicationModel {
   String? get identityNumber;
   @override
   String? get type;
+  @override
+  String? get promoUsed;
   @override
   String? get selfieImage;
   @override

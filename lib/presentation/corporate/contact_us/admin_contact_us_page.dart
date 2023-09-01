@@ -1,11 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:data_table_2/data_table_2.dart';
+import 'package:dti_web/application/admin/admin_data/admin_data_cubit.dart';
 import 'package:dti_web/application/admin/cubit/admin_cubit.dart';
 import 'package:dti_web/application/app_list/app_list_cubit.dart';
 import 'package:dti_web/application/contact_us/cubit/contact_us_cubit.dart';
 import 'package:dti_web/application/customer/cubit/customer_cubit.dart';
 import 'package:dti_web/domain/contact_us/contact_us_model.dart';
 import 'package:dti_web/injection.dart';
+import 'package:dti_web/presentation/corporate/widgets/table_page_header.dart';
 import 'package:dti_web/utils/date_converter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,52 +30,56 @@ class _AdminContactUsPageState extends State<AdminContactUsPage> {
     super.initState();
   }
 
+  var controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocBuilder<ContactUsCubit, ContactUsState>(
-        builder: (context, feedbackState) {
-          return Container(
-            padding: const EdgeInsets.symmetric(horizontal: 40),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: 10.h),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text(
-                      "Contact Us",
-                      style: TextStyle(
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.grey,
-                      ),
-                    ),
-                    Container(
-                      constraints: BoxConstraints(minWidth: 100.w),
-                      height: 45.h,
-                      child: OutlinedButton.icon(
-                        label: Text(
-                          "Refresh",
-                          style: TextStyle(fontSize: 16.sp),
-                        ),
-                        icon: const Icon(Icons.refresh),
-                        onPressed: () {
-                          context.read<AppListCubit>().getUserApplication();
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 20),
-                feedbackState.maybeMap(orElse: () {
-                  return const SizedBox();
-                }, getAllContactUsData: (e) {
-                  return Expanded(
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: DataTable2(
+      body: BlocListener<ContactUsCubit, ContactUsState>(
+        listener: (context, state) {
+          state.maybeMap(
+            orElse: () {
+              EasyLoading.dismiss();
+            },
+            getAllContactUsData: (e) {
+              EasyLoading.dismiss();
+              context.read<AdminDataCubit>().setContactUsData(e.contacts);
+            },
+            loading: (e) {
+              EasyLoading.show();
+            },
+          );
+        },
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 40),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 10.h),
+              BlocBuilder<AdminDataCubit, AdminDataState>(
+                builder: (context, state) {
+                  return TablePageHeader(
+                    onRefresh: () {
+                      context.read<ContactUsCubit>().getAllCustomer();
+                    },
+                    controller: controller,
+                    label: "Contact Us",
+                    onDelete: () {
+                      context.read<AdminDataCubit>().searchKeywoard("");
+                      controller.clear();
+                    },
+                    onSearch: (e) {
+                      context.read<AdminDataCubit>().searchKeywoard(e);
+                    },
+                  );
+                },
+              ),
+              const SizedBox(height: 20),
+              Expanded(
+                child: SizedBox(
+                    width: double.infinity,
+                    child: BlocBuilder<AdminDataCubit, AdminDataState>(
+                        builder: (context, adminState) {
+                      return DataTable2(
                         minWidth: 2000,
                         showCheckboxColumn: true,
                         checkboxHorizontalMargin: 10,
@@ -99,19 +105,18 @@ class _AdminContactUsPageState extends State<AdminContactUsPage> {
                           applicationHeaderColumn(label: "Title", width: 300),
                           applicationHeaderColumn(label: "Contact", width: 400),
                         ],
-                        rows: e.contacts
-                            .map((value) => applicationDataRow(
-                                value, e.contacts.indexOf(value)))
+                        rows: adminState
+                            .getContactUs()
+                            .map((value) => applicationDataRow(value,
+                                adminState.getContactUs().indexOf(value)))
                             .toList(),
-                      ),
-                    ),
-                  );
-                }),
-                SizedBox(height: 30.h),
-              ],
-            ),
-          );
-        },
+                      );
+                    })),
+              ),
+              SizedBox(height: 30.h),
+            ],
+          ),
+        ),
       ),
     );
   }
