@@ -1,14 +1,17 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:dti_web/application/admin/admin_data/admin_data_cubit.dart';
+import 'package:dti_web/application/admin/cubit/admin_cubit.dart';
 import 'package:dti_web/application/app_list/app_list_cubit.dart';
 import 'package:dti_web/application/customer/cubit/customer_cubit.dart';
 import 'package:dti_web/domain/core/customer_model.dart';
+import 'package:dti_web/injection.dart';
 import 'package:dti_web/presentation/corporate/widgets/table_page_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 @RoutePage()
 class AdminCustomerPage extends StatefulWidget {
@@ -94,10 +97,14 @@ class _AdminCustomerPageState extends State<AdminCustomerPage> {
                             .updateAllSelected(e ?? false);
                       },
                       columns: [
-                        applicationHeaderColumn(label: "First Name"),
-                        applicationHeaderColumn(label: "Last Name"),
-                        applicationHeaderColumn(label: "Phone Number"),
+                        applicationHeaderColumn(
+                          label: "Name",
+                        ),
+                        applicationHeaderColumn(
+                          label: "Phone Number",
+                        ),
                         applicationHeaderColumn(label: "Total Visa"),
+                        applicationHeaderColumn(label: "Contact", width: 400),
                       ],
                       rows: state
                           .getCustomers()
@@ -123,10 +130,58 @@ class _AdminCustomerPageState extends State<AdminCustomerPage> {
           ? MaterialStatePropertyAll(Colors.blue[100])
           : const MaterialStatePropertyAll(Colors.white),
       cells: [
-        DataCell(Text(customer.name.split(' ').first)),
-        DataCell(Text(customer.name.split(' ').last)),
+        DataCell(Text(customer.name)),
         DataCell(Text(customer.countryCode + customer.mobileNumber)),
         DataCell(Text(customer.totalVisa.toString())),
+        DataCell(BlocProvider(
+          create: (context) => getIt<AdminCubit>(),
+          child: BlocBuilder<AdminCubit, AdminState>(
+            builder: (context, state) {
+              return Row(
+                children: [
+                  SizedBox(
+                    width: 30,
+                    height: 30,
+                    child: InkWell(
+                      child: Image.asset(
+                        'assets/icons/email.png',
+                      ),
+                      onTap: () {
+                        context.read<AdminCubit>().sendEmail(
+                            "DoortToID", customer.email,
+                            sbjct: "DoorToID");
+                      },
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  Visibility(
+                    visible: customer.mobileNumber.isNotEmpty &&
+                        customer.countryCode.isNotEmpty,
+                    child: SizedBox(
+                      width: 30,
+                      height: 30,
+                      child: InkWell(
+                        child: Image.asset(
+                          'assets/icons/whatsapp.png',
+                        ),
+                        onTap: () async {
+                          if (customer.mobileNumber.isNotEmpty &&
+                              customer.countryCode.isNotEmpty) {
+                            final phone =
+                                customer.countryCode.replaceFirst('+', '') +
+                                    customer.mobileNumber;
+                            await launchUrl(Uri.parse(
+                                "https://api.whatsapp.com/send/?phone=$phone"));
+                          }
+                        },
+                      ),
+                    ),
+                  )
+                ],
+              );
+            },
+          ),
+        )),
       ],
     );
   }

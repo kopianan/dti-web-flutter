@@ -1,7 +1,9 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:dti_web/application/document/document_cubit.dart';
 import 'package:dti_web/application/update_application/update_application_cubit.dart';
 import 'package:dti_web/core/mixin/core_mixin.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
+import 'package:dti_web/domain/core/apps_type.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/injection.dart';
 import 'package:dti_web/utils/app_color.dart';
@@ -14,7 +16,9 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 class ConfirmationSection extends StatefulWidget {
-  const ConfirmationSection({Key? key, required this.visa}) : super(key: key);
+  const ConfirmationSection({Key? key, required this.visa, required this.type})
+      : super(key: key);
+  final AppsType type;
   final VisaApplicationModel visa;
   // final AdminActionCubit reviewCubit;
   @override
@@ -49,20 +53,29 @@ class _ConfirmationSectionState extends State<ConfirmationSection>
               title: "Error",
               desc: e.error,
             );
-          }, onRejectApplication: (e) {
+          }, onRejectApplication: (e) async {
+            await Future.delayed(const Duration(seconds: 3));
             EasyLoading.dismiss();
-            showSuccessDialog(
-              context,
-              title: "Rejection",
-              desc: 'Success rejected application',
-            );
-          }, onPendingPaymentApplication: (e) {
+            showSuccessDialog(context,
+                title: "Rejection",
+                desc: 'Success rejected application', btnOkOnPress: () {
+              context.read<UpdateApplicationCubit>().getUserAppsWithImages(
+                  widget.visa.firebaseDocId!, widget.type);
+            });
+          }, onPendingPaymentApplication: (e) async {
+            await Future.delayed(const Duration(seconds: 3));
             EasyLoading.dismiss();
-            showSuccessDialog(
-              context,
-              title: "Pending Payment",
-              desc: 'Success update application to Pending Payemnt',
-            );
+            showSuccessDialog(context,
+                title: "Pending Payment",
+                desc: 'Success update application to Pending Payemnt',
+                btnOkOnPress: () {
+              context.read<UpdateApplicationCubit>().getUserAppsWithImages(
+                  widget.visa.firebaseDocId!, widget.type);
+            });
+          }, onGetSingleAppsWithImage: (e) async {
+            EasyLoading.dismiss();
+            getIt<DocumentCubit>()
+                .setupApplication(e.singleResponse.visaApplicationModel!);
           });
         },
         builder: (context, state) {
@@ -160,10 +173,11 @@ class _ConfirmationSectionState extends State<ConfirmationSection>
                         labelStyle: const TextStyle(fontSize: 20),
                         onClick: () async {
                           if (_priceKey.currentState!.validate()) {
-                            await paymentButton(
-                              context,
-                              double.parse(_priceController.text),
-                            );
+                            final price =
+                                double.tryParse(_priceController.text);
+                            if (price != null) {
+                              await paymentButton(context, price);
+                            }
                           }
                         },
                         label: 'Reviewed OK for Payment',
@@ -235,7 +249,9 @@ class _ConfirmationSectionState extends State<ConfirmationSection>
                                   context
                                       .read<UpdateApplicationCubit>()
                                       .rejectApplication(
-                                          widget.visa.firebaseDocId!);
+                                        widget.visa.firebaseDocId!,
+                                        _rejectController.text,
+                                      );
                                 },
                                 btnCancelOnPress: () {},
                                 btnCancelText: "Back",
@@ -273,9 +289,9 @@ class _ConfirmationSectionState extends State<ConfirmationSection>
       desc:
           'DoorToID will charge $symbol ${NumberFormat.currency(symbol: symbol, decimalDigits: 2, customPattern: "#,###,###").format(price)}  for this application. Are you sure?',
       btnOkOnPress: () {
-        context.read<UpdateApplicationCubit>().pendingPayment(
-              widget.visa.firebaseDocId!,
-            );
+        context
+            .read<UpdateApplicationCubit>()
+            .pendingPayment(widget.visa.firebaseDocId!, price);
       },
       btnOkColor: Colors.blue,
       btnCancelOnPress: () {},

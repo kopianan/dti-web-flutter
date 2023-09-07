@@ -149,7 +149,7 @@ class _AdminContactUsPageState extends State<AdminContactUsPage> {
                       onTap: () {
                         context
                             .read<AdminCubit>()
-                            .sendEmail(contact.title, contact.email);
+                            .sendEmail(contact.title, contact.email, sbjct: "[${contact.name}] ${contact.title}" );
                       },
                     ),
                   ),

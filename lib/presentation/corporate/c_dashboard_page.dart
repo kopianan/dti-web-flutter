@@ -5,6 +5,7 @@ import 'package:dti_web/application/other/other_cubit.dart';
 import 'package:dti_web/injection.dart';
 import 'package:dti_web/presentation/corporate/widgets/admin_dashboard_widget.dart';
 import 'package:dti_web/presentation/corporate/widgets/agent_dashboard_widget.dart';
+import 'package:dti_web/routes/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -33,7 +34,12 @@ class _CDashboardPageState extends State<CDashboardPage> {
       ],
       child: BlocBuilder<OtherCubit, OtherState>(
         builder: (context, state) {
-          return BlocBuilder<GlobalUserCubit, GlobalUserState>(
+          return BlocConsumer<GlobalUserCubit, GlobalUserState>(
+            listener: (context, state) {
+              if (state.logOut == true) {
+                AutoRouter.of(context).replaceAll([const SignInRoute()]);
+              }
+            },
             builder: (context, state) {
               if (state.user.isAgent) {
                 return const AgentDashboardWidget();

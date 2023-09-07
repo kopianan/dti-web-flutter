@@ -18,7 +18,8 @@ import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: IUpdateApplication)
 class IUpdateApplicationRepository extends IUpdateApplication {
-  Dio? dio;
+  IUpdateApplicationRepository(this.dio);
+  final Dio dio;
   bool isPassport(VisaApplicationModel visa) {
     if (visa.subTitle!.toLowerCase().contains('passport')) {
       return true;
@@ -31,7 +32,6 @@ class IUpdateApplicationRepository extends IUpdateApplication {
       VisaApplicationModel visa,
       Map<String, dynamic>? imageCollection,
       List<String> deletedImages) async {
-    final dio = Dio();
     final storage = Storage();
     try {
       String token = storage.getToken() ?? "";
@@ -99,7 +99,6 @@ class IUpdateApplicationRepository extends IUpdateApplication {
     List<String> deletedImages, {
     Map<String, dynamic>? imageCollection,
   }) async {
-    dio = Dio();
     final storage = Storage();
     try {
       String token = storage.getToken() ?? "";
@@ -133,14 +132,14 @@ class IUpdateApplicationRepository extends IUpdateApplication {
             });
             late Response<dynamic> dataImage;
             if (isPassport(visa)) {
-              dataImage = await dio!
-                  .post('${dotenv.env['BASE_URL']}/passport/file/upload',
-                      options: Options(headers: {
-                        'Authorization': 'Bearer $token',
-                      }),
-                      data: formData);
+              dataImage = await dio.post(
+                  '${dotenv.env['BASE_URL']}/passport/file/upload',
+                  options: Options(headers: {
+                    'Authorization': 'Bearer $token',
+                  }),
+                  data: formData);
             } else {
-              dataImage = await dio!.post(
+              dataImage = await dio.post(
                   '${dotenv.env['BASE_URL']}/application/file/upload',
                   options: Options(headers: {'Authorization': 'Bearer $token'}),
                   data: formData);
@@ -166,7 +165,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
         await Future.delayed(const Duration(seconds: 3));
         late Future<Response<dynamic>> result;
         if (isPassport(visa)) {
-          result = dio!.post(
+          result = dio.post(
             '${dotenv.env['BASE_URL']}/passport/file/delete',
             options: Options(
               headers: {'Authorization': 'Bearer ${storage.getToken()}'},
@@ -178,7 +177,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
             },
           );
         } else {
-          result = dio!.post(
+          result = dio.post(
             '${dotenv.env['BASE_URL']}/application/file/delete',
             options: Options(
               headers: {'Authorization': 'Bearer ${storage.getToken()}'},
@@ -204,9 +203,8 @@ class IUpdateApplicationRepository extends IUpdateApplication {
   @override
   Future<Either<String, String>> createNewApplicationDocument(
       VisaApplicationModel visaApplicationModel) async {
-    dio = Dio();
     final storage = Storage();
-    final result = await dio!.post('${dotenv.env['BASE_URL']}/application',
+    final result = await dio.post('${dotenv.env['BASE_URL']}/application',
         options: Options(
           headers: {'Authorization': 'Bearer ${storage.getToken()}'},
         ),
@@ -229,7 +227,6 @@ class IUpdateApplicationRepository extends IUpdateApplication {
   @override
   Future<Either<String, String>> updateVoaData(
       VisaApplicationModel visaApplicationModel) async {
-    dio = Dio();
     final storage = Storage();
     final jsonParams = {
       "firstName": visaApplicationModel.firstName,
@@ -262,7 +259,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
       "lastUpdatedChannel": ChannelType.website.getChannelType
     };
     try {
-      final result = await dio!.post(
+      final result = await dio.post(
           "${dotenv.env['BASE_URL']}/application/${visaApplicationModel.firebaseDocId}/",
           options: Options(
             headers: {
@@ -284,7 +281,6 @@ class IUpdateApplicationRepository extends IUpdateApplication {
   @override
   Future<Either<String, String>> updateParticularData(
       VisaApplicationModel visaApplicationModel) async {
-    dio = Dio();
     final storage = Storage();
     final jsonParams = {
       "firstName": visaApplicationModel.firstName,
@@ -313,7 +309,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
       "lastUpdatedChannel": ChannelType.website.getChannelType
     };
     try {
-      final result = await dio!.post(
+      final result = await dio.post(
           "${dotenv.env['BASE_URL']}/application/${visaApplicationModel.firebaseDocId}/",
           options: Options(
             headers: {
@@ -335,11 +331,10 @@ class IUpdateApplicationRepository extends IUpdateApplication {
   @override
   Future<Either<String, VisaApplicationModel>> getUserApplicationById(
       String firebaseDocId) async {
-    dio = Dio();
     final storage = Storage();
 
     try {
-      final result = await dio!.get(
+      final result = await dio.get(
           "${dotenv.env['BASE_URL']}/application/$firebaseDocId",
           options: Options(
               headers: {"Authorization": "Bearer ${storage.getToken()}"}));
@@ -357,11 +352,10 @@ class IUpdateApplicationRepository extends IUpdateApplication {
   @override
   Future<Either<String, String>> updateGuarantor(
       VisaApplicationModel visa) async {
-    dio = Dio();
     final storage = Storage();
 
     try {
-      final result = await dio!.post(
+      final result = await dio.post(
           "${dotenv.env['BASE_URL']}/application/guarantor/${visa.firebaseDocId}/",
           options: Options(
             headers: {
@@ -383,7 +377,6 @@ class IUpdateApplicationRepository extends IUpdateApplication {
 
   @override
   Future<Either<Failures, String>> submitPassport(String firebaseDocId) async {
-    final dio = Dio();
     final storage = Storage();
 
     try {
@@ -431,11 +424,10 @@ class IUpdateApplicationRepository extends IUpdateApplication {
 
   @override
   Future<Either<Failures, String>> submitVisa(String firebaseDocId) async {
-    dio = Dio();
     final storage = Storage();
 
     try {
-      final result = await dio!.get(
+      final result = await dio.get(
           "${dotenv.env['BASE_URL']}/application/$firebaseDocId/submit",
           options: Options(
               headers: {"Authorization": "Bearer ${storage.getToken()}"}));
@@ -480,10 +472,9 @@ class IUpdateApplicationRepository extends IUpdateApplication {
   @override
   Future<Either<String, SingleVisaResponse>> getUserApplicationByIdWithImages(
       String firebaseDocId) async {
-    dio = Dio();
     final storage = Storage();
     try {
-      final result = await dio!.get(
+      final result = await dio.get(
         "${dotenv.env['BASE_URL']}/application/$firebaseDocId",
         options: Options(
           headers: {
@@ -502,10 +493,9 @@ class IUpdateApplicationRepository extends IUpdateApplication {
   @override
   Future<Either<String, SingleVisaResponse>> getUserPassportByIdWithImages(
       String firebaseDocId) async {
-    dio = Dio();
     final storage = Storage();
     try {
-      final result = await dio!.get(
+      final result = await dio.get(
         "${dotenv.env['BASE_URL']}/passport/$firebaseDocId",
         options: Options(
           headers: {
@@ -529,7 +519,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
   ) async {
     final storage = Storage();
     try {
-      var result = await dio!.post(
+      var result = await dio.post(
         '${dotenv.env['BASE_URL']}/application/file/delete',
         options: Options(
           headers: {
@@ -554,11 +544,10 @@ class IUpdateApplicationRepository extends IUpdateApplication {
   @override
   Future<Either<String, String>> updateMultiVisa(
       String duration, String firebaseDocId) async {
-    dio = Dio();
     final storage = Storage();
 
     try {
-      final result = await dio!.post(
+      final result = await dio.post(
           "${dotenv.env['BASE_URL']}/application/multiVisaDuration/$firebaseDocId",
           options: Options(
             headers: {
@@ -581,7 +570,6 @@ class IUpdateApplicationRepository extends IUpdateApplication {
   @override
   Future<Either<String, String>> createUserPassport(bool isNew) async {
     final storage = Storage();
-    final dio = Dio();
     var newVisaApps = VisaApplicationModel(
       title: "Passport",
       subTitle: isNew ? "New Passport" : "Renew Passport",
@@ -613,11 +601,10 @@ class IUpdateApplicationRepository extends IUpdateApplication {
   @override
   Future<Either<String, VisaApplicationModel>> getPassportById(
       String firebaseDocId) async {
-    dio = Dio();
     final storage = Storage();
 
     try {
-      final result = await dio!.get(
+      final result = await dio.get(
           "${dotenv.env['BASE_URL']}/passport/$firebaseDocId",
           options: Options(
               headers: {"Authorization": "Bearer ${storage.getToken()}"}));
@@ -636,10 +623,9 @@ class IUpdateApplicationRepository extends IUpdateApplication {
   Future<Either<String, String>> updatePassportParticularData(
     VisaApplicationModel visaApplicationModel,
   ) async {
-    dio = Dio();
     final storage = Storage();
     try {
-      final result = await dio!.post(
+      final result = await dio.post(
           "${dotenv.env['BASE_URL']}/passport/${visaApplicationModel.firebaseDocId}/",
           options: Options(
             headers: {
@@ -659,12 +645,13 @@ class IUpdateApplicationRepository extends IUpdateApplication {
   }
 
   @override
-  Future<Either<String, String>> rejectApplication(String firebaseDocId) async {
-    dio = Dio();
+  Future<Either<String, String>> rejectApplication(
+      String firebaseDocId, String notes) async {
     final storage = Storage();
     try {
-      final result = await dio!.get(
+      final result = await dio.post(
         "${dotenv.env['BASE_URL']}/application/$firebaseDocId/reject",
+        data: {'rejectionNote': notes},
         options: Options(
           headers: {
             "Authorization": "Bearer ${storage.getToken()}",
@@ -684,12 +671,12 @@ class IUpdateApplicationRepository extends IUpdateApplication {
 
   @override
   Future<Either<String, String>> pendingPaymentApplication(
-      String firebaseDocId) async {
-    dio = Dio();
+      String firebaseDocId, double price) async {
     final storage = Storage();
     try {
-      final result = await dio!.get(
+      final result = await dio.post(
         "${dotenv.env['BASE_URL']}/application/$firebaseDocId/pendingPayment",
+        data: {'price': price},
         options: Options(
           headers: {
             "Authorization": "Bearer ${storage.getToken()}",
@@ -702,7 +689,8 @@ class IUpdateApplicationRepository extends IUpdateApplication {
       } else {
         return Right(result.data['data']['message']);
       }
-    } on Exception {
+    } on DioError catch (e) {
+      print(e);
       return const Left("");
     }
   }

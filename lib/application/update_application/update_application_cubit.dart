@@ -35,19 +35,19 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
     );
   }
 
-  void rejectApplication(String firebaseDocId) async {
+  void rejectApplication(String firebaseDocId, String note) async {
     emit(const UpdateApplicationState.onLoading());
-    final result = await iUpdateApplication.rejectApplication(firebaseDocId);
+    final result = await iUpdateApplication.rejectApplication(firebaseDocId, note);
     result.fold(
       (l) => emit(UpdateApplicationState.onError(l)),
       (r) => emit(UpdateApplicationState.onRejectApplication(r)),
     );
   }
 
-  void pendingPayment(String firebaseDocId) async {
+  void pendingPayment(String firebaseDocId, double price) async {
     emit(const UpdateApplicationState.onLoading());
-    final result =
-        await iUpdateApplication.pendingPaymentApplication(firebaseDocId);
+    final result = await iUpdateApplication.pendingPaymentApplication(
+        firebaseDocId, price);
     result.fold(
       (l) => emit(UpdateApplicationState.onError(l)),
       (r) => emit(UpdateApplicationState.onPendingPaymentApplication(r)),
@@ -276,8 +276,7 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
     );
   }
 
-  void getUserAppsWithImages(
-      String firebaseDocId, AppsType appsType) async {
+  void getUserAppsWithImages(String firebaseDocId, AppsType appsType) async {
     emit(const UpdateApplicationState.onLoading());
     late Either<String, SingleVisaResponse> result;
     if (appsType == AppsType.application) {

@@ -17,8 +17,13 @@ class AdminCubit extends Cubit<AdminState> {
         .join('&');
   }
 
-  void sendEmail(String title, String email) async {
-    String subject = "Pending Action $title";
+  void sendEmail(String title, String email, {String? sbjct}) async {
+    late String subject;
+    if (sbjct != null) {
+      subject = sbjct;
+    } else {
+      subject = "Pending Action $title";
+    }
 
     final Uri emailLaunchUri = Uri(
       scheme: 'mailto',

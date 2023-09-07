@@ -31,7 +31,7 @@ import 'widgets/message_button_with_icon.dart';
 @RoutePage()
 class ApplicationDetailPage extends StatelessWidget {
   static const String routeName = '/application-detail/:id';
-  const ApplicationDetailPage({
+  ApplicationDetailPage({
     super.key,
     @PathParam('id') required this.firebaseDocId,
     required this.appsType,
@@ -39,13 +39,14 @@ class ApplicationDetailPage extends StatelessWidget {
 
   final String firebaseDocId;
   final AppsType appsType;
+  final rootUpdateCubit = getIt<UpdateApplicationCubit>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocProvider(
-        create: (context) => getIt<UpdateApplicationCubit>()
-          ..getUserAppsWithImages(firebaseDocId, appsType),
+        create: (context) =>
+            rootUpdateCubit..getUserAppsWithImages(firebaseDocId, appsType),
         child: BlocListener<UpdateApplicationCubit, UpdateApplicationState>(
           listener: (context, state) {
             state.maybeMap(
@@ -261,16 +262,23 @@ class _SuccessBodyState extends State<SuccessBody> with NavigateMixin {
                         ),
                       ),
                     ),
-                    Visibility(
-                      visible: visa.status == "Submitted",
-                      child: Column(
-                        children: [
-                          const Divider(),
-                          const SizedBox(height: 20),
-                          ConfirmationSection(visa: visa),
-                          const Divider(height: 40),
-                        ],
-                      ),
+                    BlocBuilder<DocumentCubit, DocumentState>(
+                      builder: (context, state) {
+                        return Visibility(
+                          visible: state.visa!.status == "Submitted",
+                          child: Column(
+                            children: [
+                              const Divider(),
+                              const SizedBox(height: 20),
+                              ConfirmationSection(
+                                visa: visa,
+                                type: appsType,
+                              ),
+                              const Divider(height: 40),
+                            ],
+                          ),
+                        );
+                      },
                     ),
                     20.verticalSpace,
                     //ONLY SHOW WHEN USER ONLY
@@ -314,7 +322,7 @@ class _SuccessBodyState extends State<SuccessBody> with NavigateMixin {
                         )),
 
                     Visibility(
-                      visible: visa.status?.toLowerCase() == 'pending payment',
+                      visible: visa.status?.toLowerCase() == 'pending payment' && getIt<GlobalUserCubit>().state.user.isUser() ,
                       child: Column(
                         children: [
                           Row(
@@ -384,7 +392,7 @@ class _SuccessBodyState extends State<SuccessBody> with NavigateMixin {
                     ),
                   ],
                 ),
-              ), 
+              ),
               const SizedBox(height: 20)
             ],
           )),
@@ -582,27 +590,28 @@ class _SuccessBodyState extends State<SuccessBody> with NavigateMixin {
           child: BlocConsumer<UpdateApplicationCubit, UpdateApplicationState>(
             listener: (context, updateState) {
               updateState.maybeMap(
-                  orElse: () {},
-                  onLoading: (e) {},
-                  onSubmitApplication: (e) {
-                    AwesomeDialog(
-                      context: context,
-                      width: ScreenUtil().screenWidth / 4,
-                      title: "SUBMIT DOCUMENT",
-                      body: const Center(
-                        child: SelectableText(
-                          "Document Has Been Submitted",
-                          textAlign: TextAlign.center,
-                        ),
+                orElse: () {},
+                onLoading: (e) {},
+                onSubmitApplication: (e) {
+                  AwesomeDialog(
+                    context: context,
+                    width: ScreenUtil().screenWidth / 4,
+                    title: "SUBMIT DOCUMENT",
+                    body: const Center(
+                      child: SelectableText(
+                        "Document Has Been Submitted",
+                        textAlign: TextAlign.center,
                       ),
-                      btnOkText: "Continue",
-                      btnOkOnPress: () {
-                        context.read<AppListCubit>().getUserApplication();
+                    ),
+                    btnOkText: "Continue",
+                    btnOkOnPress: () {
+                      context.read<AppListCubit>().getUserApplication();
 
-                        backToDashboard(context);
-                      },
-                    ).show();
-                  });
+                      backToDashboard(context);
+                    },
+                  ).show();
+                },
+              );
             },
             builder: (context, updateState) {
               return updateState.maybeMap(orElse: () {

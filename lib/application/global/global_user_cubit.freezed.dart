@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$GlobalUserState {
   UserData get user => throw _privateConstructorUsedError;
   bool get isAgent => throw _privateConstructorUsedError;
+  bool get logOut => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $GlobalUserStateCopyWith<GlobalUserState> get copyWith =>
@@ -30,7 +31,7 @@ abstract class $GlobalUserStateCopyWith<$Res> {
           GlobalUserState value, $Res Function(GlobalUserState) then) =
       _$GlobalUserStateCopyWithImpl<$Res, GlobalUserState>;
   @useResult
-  $Res call({UserData user, bool isAgent});
+  $Res call({UserData user, bool isAgent, bool logOut});
 
   $UserDataCopyWith<$Res> get user;
 }
@@ -50,6 +51,7 @@ class _$GlobalUserStateCopyWithImpl<$Res, $Val extends GlobalUserState>
   $Res call({
     Object? user = null,
     Object? isAgent = null,
+    Object? logOut = null,
   }) {
     return _then(_value.copyWith(
       user: null == user
@@ -59,6 +61,10 @@ class _$GlobalUserStateCopyWithImpl<$Res, $Val extends GlobalUserState>
       isAgent: null == isAgent
           ? _value.isAgent
           : isAgent // ignore: cast_nullable_to_non_nullable
+              as bool,
+      logOut: null == logOut
+          ? _value.logOut
+          : logOut // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -80,7 +86,7 @@ abstract class _$$_GlobalUserStateCopyWith<$Res>
       __$$_GlobalUserStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({UserData user, bool isAgent});
+  $Res call({UserData user, bool isAgent, bool logOut});
 
   @override
   $UserDataCopyWith<$Res> get user;
@@ -99,6 +105,7 @@ class __$$_GlobalUserStateCopyWithImpl<$Res>
   $Res call({
     Object? user = null,
     Object? isAgent = null,
+    Object? logOut = null,
   }) {
     return _then(_$_GlobalUserState(
       user: null == user
@@ -109,6 +116,10 @@ class __$$_GlobalUserStateCopyWithImpl<$Res>
           ? _value.isAgent
           : isAgent // ignore: cast_nullable_to_non_nullable
               as bool,
+      logOut: null == logOut
+          ? _value.logOut
+          : logOut // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -116,16 +127,20 @@ class __$$_GlobalUserStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_GlobalUserState implements _GlobalUserState {
-  _$_GlobalUserState({required this.user, required this.isAgent});
+  _$_GlobalUserState(
+      {required this.user, required this.isAgent, this.logOut = false});
 
   @override
   final UserData user;
   @override
   final bool isAgent;
+  @override
+  @JsonKey()
+  final bool logOut;
 
   @override
   String toString() {
-    return 'GlobalUserState(user: $user, isAgent: $isAgent)';
+    return 'GlobalUserState(user: $user, isAgent: $isAgent, logOut: $logOut)';
   }
 
   @override
@@ -134,11 +149,12 @@ class _$_GlobalUserState implements _GlobalUserState {
         (other.runtimeType == runtimeType &&
             other is _$_GlobalUserState &&
             (identical(other.user, user) || other.user == user) &&
-            (identical(other.isAgent, isAgent) || other.isAgent == isAgent));
+            (identical(other.isAgent, isAgent) || other.isAgent == isAgent) &&
+            (identical(other.logOut, logOut) || other.logOut == logOut));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, user, isAgent);
+  int get hashCode => Object.hash(runtimeType, user, isAgent, logOut);
 
   @JsonKey(ignore: true)
   @override
@@ -150,12 +166,15 @@ class _$_GlobalUserState implements _GlobalUserState {
 abstract class _GlobalUserState implements GlobalUserState {
   factory _GlobalUserState(
       {required final UserData user,
-      required final bool isAgent}) = _$_GlobalUserState;
+      required final bool isAgent,
+      final bool logOut}) = _$_GlobalUserState;
 
   @override
   UserData get user;
   @override
   bool get isAgent;
+  @override
+  bool get logOut;
   @override
   @JsonKey(ignore: true)
   _$$_GlobalUserStateCopyWith<_$_GlobalUserState> get copyWith =>

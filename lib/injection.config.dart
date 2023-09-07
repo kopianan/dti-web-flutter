@@ -108,7 +108,7 @@ _i1.GetIt $initGetIt(
   gh.lazySingleton<_i29.IOther>(() => _i30.OtherRepository());
   gh.lazySingleton<_i31.IPayment>(() => _i32.PaymentRepository());
   gh.lazySingleton<_i33.IUpdateApplication>(
-      () => _i34.IUpdateApplicationRepository());
+      () => _i34.IUpdateApplicationRepository(gh<_i8.Dio>()));
   gh.factory<_i35.OtherCubit>(() => _i35.OtherCubit(gh<_i29.IOther>()));
   gh.factory<_i36.PaymentCubit>(() => _i36.PaymentCubit(gh<_i31.IPayment>()));
   gh.lazySingleton<_i37.QuestionnaireCubit>(() => _i37.QuestionnaireCubit());

@@ -40,8 +40,8 @@ class TablePageHeader extends StatelessWidget {
               controller: controller,
               onFieldSubmitted: onSearch,
               decoration: InputDecoration(
-                labelText: "Search",
-                hintText: "Search",
+                labelText: "Search by Name",
+                hintText: "Search by Name",
                 suffixIcon: IconButton(
                   onPressed: onDelete,
                   icon: const Icon(Icons.clear),
