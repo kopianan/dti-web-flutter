@@ -67,7 +67,7 @@ class _ConfirmationSectionState extends State<ConfirmationSection>
             EasyLoading.dismiss();
             showSuccessDialog(context,
                 title: "Pending Payment",
-                desc: 'Success update application to Pending Payemnt',
+                desc: 'Success update application to Pending Payment',
                 btnOkOnPress: () {
               context.read<UpdateApplicationCubit>().getUserAppsWithImages(
                   widget.visa.firebaseDocId!, widget.type);

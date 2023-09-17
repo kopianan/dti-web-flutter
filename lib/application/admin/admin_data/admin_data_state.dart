@@ -14,7 +14,7 @@ class AdminDataState with _$AdminDataState {
   factory AdminDataState.initial() => const AdminDataState();
 
   List<CustomerModel> getCustomers() {
-    if (searchType == SearchType.customer) {
+    if (searchType == SearchType.customer && searchKeywoard.isNotEmpty) {
       return users.where((element) {
         return element.name
             .toLowerCase()
@@ -24,8 +24,9 @@ class AdminDataState with _$AdminDataState {
     return users.toList();
   }
 
-  List<FeedbackModel> getFeedbacks() { print(searchType);
-    if (searchType == SearchType.feedback) {
+  List<FeedbackModel> getFeedbacks() {
+    print(searchType);
+    if (searchType == SearchType.feedback && searchKeywoard.isNotEmpty) {
       return feedbacks.where((element) {
         return element.name
             .toLowerCase()
@@ -36,8 +37,8 @@ class AdminDataState with _$AdminDataState {
   }
 
   List<SimpleVisaModel> getListApplication() {
-    if (searchType == SearchType.application) {
-      return application.where((element) {
+    if (searchType == SearchType.application && searchKeywoard.isNotEmpty) {
+      final filtered = application.where((element) {
         if (element.userName != null) {
           return element.userName!
               .toLowerCase()
@@ -45,13 +46,17 @@ class AdminDataState with _$AdminDataState {
         }
         return false;
       }).toList();
+
+      log("TOTAL + ${filtered.length}");
+
+      return filtered;
     }
+    log("TOTAL + ${application.length}");
     return application.toList();
   }
 
   List<ContactUsModel> getContactUs() {
-   
-    if (searchType == SearchType.contactUse) {
+    if (searchType == SearchType.contactUse && searchKeywoard.isNotEmpty) {
       return contacts.where((element) {
         return element.name
             .toLowerCase()
