@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:dio/dio.dart';
 import 'package:dti_web/domain/agent/i_agent.dart';
 import 'package:dti_web/domain/core/simple_visa_model.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
@@ -13,8 +12,7 @@ part 'agent_cubit.freezed.dart';
 @injectable
 class AgentCubit extends Cubit<AgentState> {
   AgentCubit(this.iAgent, this.iDashboard) : super(const AgentState.initial());
-
-  final dio = Dio();
+ 
   final IAgent iAgent;
   final IDashboard iDashboard;
 

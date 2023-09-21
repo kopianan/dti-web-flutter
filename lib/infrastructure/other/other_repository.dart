@@ -16,12 +16,13 @@ import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: IOther)
 class OtherRepository extends IOther {
+  OtherRepository(this.dio);
+  final Dio dio;
   @override
   Future<Either<String, String>> getImageUrl(
       {required String applicationId,
       required String documentId,
       required String fileName}) async {
-    Dio dio = Dio();
     Storage storage = Storage();
     try {
       final result = await dio.post('${dotenv.env['BASE_URL']}/downloadURL',
@@ -43,7 +44,6 @@ class OtherRepository extends IOther {
   @override
   Future<Either<Failures, QuestionnaireDataModel>>
       getQuestionnaireList() async {
-    Dio dio = Dio();
     Storage storage = Storage();
     try {
       final data =
@@ -79,7 +79,6 @@ class OtherRepository extends IOther {
     String phoneNumber,
     String channel,
   ) async {
-    final dio = Dio();
     Storage storage = Storage();
     var newNumber = phoneNumber;
 
@@ -114,7 +113,6 @@ class OtherRepository extends IOther {
       {required String phoneNumber,
       required String code,
       required CountryCode countryCode}) async {
-    Dio dio = Dio();
     Storage storage = Storage();
 
     var newNumber = phoneNumber;
@@ -160,7 +158,6 @@ class OtherRepository extends IOther {
   @override
   Future<Either<Failures, List<DocumentDataModel>>>
       getApplicationMasterData() async {
-    Dio dio = Dio();
     Storage storage = Storage();
     try {
       final data = await dio.get('${dotenv.env['BASE_URL']}/master/application',
@@ -195,7 +192,6 @@ class OtherRepository extends IOther {
 
   @override
   Future<Either<Failures, dynamic>> getLocation() async {
-    Dio dio = Dio();
     Storage storage = Storage();
     try {
       final data = await dio.get('${dotenv.env['BASE_URL']}/master/location',
@@ -237,7 +233,6 @@ class OtherRepository extends IOther {
 
   @override
   Future<Either<Failures, String>> contactUs(String name, String title) async {
-    final dio = Dio();
     Storage storage = Storage();
 
     try {
@@ -262,7 +257,6 @@ class OtherRepository extends IOther {
   @override
   Future<Either<Failures, dynamic>> sendFeedback(
       int rating, String comment) async {
-    final dio = Dio();
     Storage storage = Storage();
 
     try {
@@ -288,9 +282,8 @@ class OtherRepository extends IOther {
 
   @override
   Future<Either<Failures, String>> refreshToken() async {
-    final dio = Dio();
     Storage storage = Storage();
-
+   final  dio = Dio();
     try {
       var result = await dio.post(
           '${dotenv.env['BASE_URL']}/revokeRefreshTokens',

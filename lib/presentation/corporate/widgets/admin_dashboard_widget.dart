@@ -59,6 +59,9 @@ class AdminDashboardWidget extends StatelessWidget {
             return BlocBuilder<OtherCubit, OtherState>(
               builder: (context, state) {
                 return Scaffold(
+                  floatingActionButton: FloatingActionButton(onPressed: () {
+                    getIt<GlobalUserCubit>().state.needRefreshToken();
+                  }),
                   body: Column(
                     children: [
                       Card(

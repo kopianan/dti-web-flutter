@@ -9,7 +9,8 @@ import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: IPayment)
 class PaymentRepository extends IPayment {
-  PaymentRepository();
+  PaymentRepository(this.dio);
+  final Dio dio;
 
   // @override
   // Future<Either<String, double>> getCurrency() async {
@@ -26,12 +27,11 @@ class PaymentRepository extends IPayment {
   Future<Either<String, String>> createInvoice(
       VisaApplicationModel visaApplication,
       {double? discount}) async {
-    final _dio = Dio();
     double finalPrice = visaApplication.price!;
     if (discount != null) {
       finalPrice = finalPrice - discount;
     }
-    var _requst = {
+    var requst = {
       "externalID": visaApplication.applicationID,
       "description":
           "${visaApplication.title} - ${visaApplication.subTitle} - ${visaApplication.entry} - ${visaApplication.applicationID}",
@@ -39,8 +39,8 @@ class PaymentRepository extends IPayment {
       "documentID": visaApplication.firebaseDocId,
     };
     try {
-      var _result = await _dio.post('${dotenv.env['BASE_URL']}/createInvoice',
-          data: _requst);
+      var result = await dio.post('${dotenv.env['BASE_URL']}/createInvoice',
+          data: requst);
       //UPDATE PROMO CODE
       // var _collRef = _firebaseFirestore.userApplicationCollection();
 
@@ -48,8 +48,8 @@ class PaymentRepository extends IPayment {
       //     .doc(visaApplication.firebaseDocId)
       //     .update({'promoUsed': visaApplication.promoUsed});
 
-      var _url = _result.data['paymentInvoiceUrl'];
-      return right(_url);
+      var url = result.data['paymentInvoiceUrl'];
+      return right(url);
     } on Exception catch (e) {
       return left(e.toString());
     }
@@ -59,7 +59,6 @@ class PaymentRepository extends IPayment {
   Future<Either<String, String>> createPassportInvoice(
       VisaApplicationModel visaApplication,
       {double? discount}) async {
-    final dio = Dio();
     double finalPrice = visaApplication.price!;
     if (discount != null) {
       finalPrice = finalPrice - discount;
@@ -82,8 +81,8 @@ class PaymentRepository extends IPayment {
       //     .doc(visaApplication.firebaseDocId)
       //     .update({'promoUsed': visaApplication.promoUsed});
 
-      var _url = result.data['paymentInvoiceUrl'];
-      return right(_url);
+      var url = result.data['paymentInvoiceUrl'];
+      return right(url);
     } on Exception catch (e) {
       return left(e.toString());
     }
@@ -92,7 +91,7 @@ class PaymentRepository extends IPayment {
   // @override
   // Future<Either<String, String>> createInvoicePaypal(
   //     VisaApplication visaApplication) async {
-  //   final _dio = Dio();
+  //
   //   var _requst = {
   //     "externalID": visaApplication.applicationID,
   //     "description":

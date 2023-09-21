@@ -18,18 +18,17 @@ import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: IAuth)
 class AuthRepository extends IAuth {
-  AuthRepository(this._googleSignIn, this._firebaseAuth);
-  Dio? dio;
+  AuthRepository(this._googleSignIn, this._firebaseAuth, this.dio);
+  final Dio dio;
   final GoogleSignIn _googleSignIn;
   final FirebaseAuth _firebaseAuth;
 
   @override
   Future<Either<Failures, UserData>> getUserData() async {
     final storage = Storage();
-    dio = Dio();
 
     try {
-      final result = await dio!.get(
+      final result = await dio.get(
         "${dotenv.env['BASE_URL']}/user",
         options: Options(
           headers: {'Authorization': 'Bearer ${storage.getToken()}'},
@@ -75,7 +74,7 @@ class AuthRepository extends IAuth {
           await _firebaseAuth.signInWithCredential(credential);
 
       final newUser = isNewUser(userCreds.user!);
-      log("IS NEW USER ? ${newUser.toString()}"); 
+      log("IS NEW USER ? ${newUser.toString()}");
       final token = await userCreds.user!.getIdToken();
       return right(AuthResponse(isNewUser: newUser, token: token));
     } on PlatformException catch (e) {
@@ -108,10 +107,8 @@ class AuthRepository extends IAuth {
   @override
   Future<Either<String, String>> loginAndGetToken(
       {required String email, required String password}) async {
-    dio = Dio();
-
     try {
-      final result = await dio!.post("${dotenv.env['BASE_URL']}/login", data: {
+      final result = await dio.post("${dotenv.env['BASE_URL']}/login", data: {
         'email': email,
         'password': password,
       });
@@ -144,9 +141,8 @@ class AuthRepository extends IAuth {
     required String name,
     required String confirmPassword,
   }) async {
-    dio = Dio();
     try {
-      final result = await dio!.post("${dotenv.env['BASE_URL']}/signUp", data: {
+      final result = await dio.post("${dotenv.env['BASE_URL']}/signUp", data: {
         'email': email,
         'password': password,
         'confirmPassword': confirmPassword,
@@ -192,10 +188,9 @@ class AuthRepository extends IAuth {
   @override
   Future<Either<Failures, String>> resetPassword(
       {required String email}) async {
-    dio = Dio();
     try {
       final result =
-          await dio!.post("${dotenv.env['BASE_URL']}/resetPassword", data: {
+          await dio.post("${dotenv.env['BASE_URL']}/resetPassword", data: {
         'email': email,
       });
       if (result.data['data']['message'] != null) {
