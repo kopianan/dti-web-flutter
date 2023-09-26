@@ -26,9 +26,10 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   if (kIsWeb) {
+    print(dotenv.env['APP_ID'].toString()); 
     // initialiaze the facebook javascript SDK
     await FacebookAuth.i.webAndDesktopInitialize(
-      appId: "1224414981412498",
+      appId: dotenv.env['APP_ID'].toString(),
       cookie: true,
       xfbml: true,
       version: "v15.0",

@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:dti_web/domain/core/customer_model.dart';
 import 'package:dti_web/domain/customer/i_customer.dart';
+import 'package:dti_web/domain/global/failures.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
@@ -15,7 +18,7 @@ class CustomerCubit extends Cubit<CustomerState> {
     emit(const CustomerState.loading());
     final result = await iCustomer.getUserById(id);
     result.fold(
-      (l) => emit(const CustomerState.error()),
+      (l) => emit(CustomerState.onError(l)),
       (r) => emit(CustomerState.getSingleCustomer(r)),
     );
   }
@@ -24,8 +27,20 @@ class CustomerCubit extends Cubit<CustomerState> {
     emit(const CustomerState.loading());
     final result = await iCustomer.getAllUser();
     result.fold(
-      (l) => emit(const CustomerState.error()),
+      (l) => emit(CustomerState.onError(l)),
       (r) => emit(CustomerState.getAllCustomer(r)),
+    );
+  }
+
+  void errorAuth() async {
+    emit(const CustomerState.loading());
+    final result = await iCustomer.errorAuth();
+    result.fold(
+      (l) {
+        log("ERROR FROM CUBIT");
+        emit(CustomerState.onError(l));
+      },
+      (r) {},
     );
   }
 }

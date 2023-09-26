@@ -20,7 +20,7 @@ mixin _$CustomerState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() error,
+    required TResult Function(Failures error) onError,
     required TResult Function(List<CustomerModel> customers) getAllCustomer,
     required TResult Function(CustomerModel user) getSingleCustomer,
   }) =>
@@ -29,7 +29,7 @@ mixin _$CustomerState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? error,
+    TResult? Function(Failures error)? onError,
     TResult? Function(List<CustomerModel> customers)? getAllCustomer,
     TResult? Function(CustomerModel user)? getSingleCustomer,
   }) =>
@@ -38,7 +38,7 @@ mixin _$CustomerState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? error,
+    TResult Function(Failures error)? onError,
     TResult Function(List<CustomerModel> customers)? getAllCustomer,
     TResult Function(CustomerModel user)? getSingleCustomer,
     required TResult orElse(),
@@ -48,7 +48,7 @@ mixin _$CustomerState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Error value) error,
+    required TResult Function(_OnError value) onError,
     required TResult Function(_GetAllCustomer value) getAllCustomer,
     required TResult Function(_GetSingleCustomer value) getSingleCustomer,
   }) =>
@@ -57,7 +57,7 @@ mixin _$CustomerState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Error value)? error,
+    TResult? Function(_OnError value)? onError,
     TResult? Function(_GetAllCustomer value)? getAllCustomer,
     TResult? Function(_GetSingleCustomer value)? getSingleCustomer,
   }) =>
@@ -66,7 +66,7 @@ mixin _$CustomerState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
+    TResult Function(_OnError value)? onError,
     TResult Function(_GetAllCustomer value)? getAllCustomer,
     TResult Function(_GetSingleCustomer value)? getSingleCustomer,
     required TResult orElse(),
@@ -131,7 +131,7 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() error,
+    required TResult Function(Failures error) onError,
     required TResult Function(List<CustomerModel> customers) getAllCustomer,
     required TResult Function(CustomerModel user) getSingleCustomer,
   }) {
@@ -143,7 +143,7 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? error,
+    TResult? Function(Failures error)? onError,
     TResult? Function(List<CustomerModel> customers)? getAllCustomer,
     TResult? Function(CustomerModel user)? getSingleCustomer,
   }) {
@@ -155,7 +155,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? error,
+    TResult Function(Failures error)? onError,
     TResult Function(List<CustomerModel> customers)? getAllCustomer,
     TResult Function(CustomerModel user)? getSingleCustomer,
     required TResult orElse(),
@@ -171,7 +171,7 @@ class _$_Initial implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Error value) error,
+    required TResult Function(_OnError value) onError,
     required TResult Function(_GetAllCustomer value) getAllCustomer,
     required TResult Function(_GetSingleCustomer value) getSingleCustomer,
   }) {
@@ -183,7 +183,7 @@ class _$_Initial implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Error value)? error,
+    TResult? Function(_OnError value)? onError,
     TResult? Function(_GetAllCustomer value)? getAllCustomer,
     TResult? Function(_GetSingleCustomer value)? getSingleCustomer,
   }) {
@@ -195,7 +195,7 @@ class _$_Initial implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
+    TResult Function(_OnError value)? onError,
     TResult Function(_GetAllCustomer value)? getAllCustomer,
     TResult Function(_GetSingleCustomer value)? getSingleCustomer,
     required TResult orElse(),
@@ -250,7 +250,7 @@ class _$_Loading implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() error,
+    required TResult Function(Failures error) onError,
     required TResult Function(List<CustomerModel> customers) getAllCustomer,
     required TResult Function(CustomerModel user) getSingleCustomer,
   }) {
@@ -262,7 +262,7 @@ class _$_Loading implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? error,
+    TResult? Function(Failures error)? onError,
     TResult? Function(List<CustomerModel> customers)? getAllCustomer,
     TResult? Function(CustomerModel user)? getSingleCustomer,
   }) {
@@ -274,7 +274,7 @@ class _$_Loading implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? error,
+    TResult Function(Failures error)? onError,
     TResult Function(List<CustomerModel> customers)? getAllCustomer,
     TResult Function(CustomerModel user)? getSingleCustomer,
     required TResult orElse(),
@@ -290,7 +290,7 @@ class _$_Loading implements _Loading {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Error value) error,
+    required TResult Function(_OnError value) onError,
     required TResult Function(_GetAllCustomer value) getAllCustomer,
     required TResult Function(_GetSingleCustomer value) getSingleCustomer,
   }) {
@@ -302,7 +302,7 @@ class _$_Loading implements _Loading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Error value)? error,
+    TResult? Function(_OnError value)? onError,
     TResult? Function(_GetAllCustomer value)? getAllCustomer,
     TResult? Function(_GetSingleCustomer value)? getSingleCustomer,
   }) {
@@ -314,7 +314,7 @@ class _$_Loading implements _Loading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
+    TResult Function(_OnError value)? onError,
     TResult Function(_GetAllCustomer value)? getAllCustomer,
     TResult Function(_GetSingleCustomer value)? getSingleCustomer,
     required TResult orElse(),
@@ -331,48 +331,85 @@ abstract class _Loading implements CustomerState {
 }
 
 /// @nodoc
-abstract class _$$_ErrorCopyWith<$Res> {
-  factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
-      __$$_ErrorCopyWithImpl<$Res>;
+abstract class _$$_OnErrorCopyWith<$Res> {
+  factory _$$_OnErrorCopyWith(
+          _$_OnError value, $Res Function(_$_OnError) then) =
+      __$$_OnErrorCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Failures error});
+
+  $FailuresCopyWith<$Res> get error;
 }
 
 /// @nodoc
-class __$$_ErrorCopyWithImpl<$Res>
-    extends _$CustomerStateCopyWithImpl<$Res, _$_Error>
-    implements _$$_ErrorCopyWith<$Res> {
-  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
+class __$$_OnErrorCopyWithImpl<$Res>
+    extends _$CustomerStateCopyWithImpl<$Res, _$_OnError>
+    implements _$$_OnErrorCopyWith<$Res> {
+  __$$_OnErrorCopyWithImpl(_$_OnError _value, $Res Function(_$_OnError) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = null,
+  }) {
+    return _then(_$_OnError(
+      null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as Failures,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $FailuresCopyWith<$Res> get error {
+    return $FailuresCopyWith<$Res>(_value.error, (value) {
+      return _then(_value.copyWith(error: value));
+    });
+  }
 }
 
 /// @nodoc
 
-class _$_Error implements _Error {
-  const _$_Error();
+class _$_OnError implements _OnError {
+  const _$_OnError(this.error);
+
+  @override
+  final Failures error;
 
   @override
   String toString() {
-    return 'CustomerState.error()';
+    return 'CustomerState.onError(error: $error)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Error);
+        (other.runtimeType == runtimeType &&
+            other is _$_OnError &&
+            (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, error);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_OnErrorCopyWith<_$_OnError> get copyWith =>
+      __$$_OnErrorCopyWithImpl<_$_OnError>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() error,
+    required TResult Function(Failures error) onError,
     required TResult Function(List<CustomerModel> customers) getAllCustomer,
     required TResult Function(CustomerModel user) getSingleCustomer,
   }) {
-    return error();
+    return onError(error);
   }
 
   @override
@@ -380,11 +417,11 @@ class _$_Error implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? error,
+    TResult? Function(Failures error)? onError,
     TResult? Function(List<CustomerModel> customers)? getAllCustomer,
     TResult? Function(CustomerModel user)? getSingleCustomer,
   }) {
-    return error?.call();
+    return onError?.call(error);
   }
 
   @override
@@ -392,13 +429,13 @@ class _$_Error implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? error,
+    TResult Function(Failures error)? onError,
     TResult Function(List<CustomerModel> customers)? getAllCustomer,
     TResult Function(CustomerModel user)? getSingleCustomer,
     required TResult orElse(),
   }) {
-    if (error != null) {
-      return error();
+    if (onError != null) {
+      return onError(error);
     }
     return orElse();
   }
@@ -408,11 +445,11 @@ class _$_Error implements _Error {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Error value) error,
+    required TResult Function(_OnError value) onError,
     required TResult Function(_GetAllCustomer value) getAllCustomer,
     required TResult Function(_GetSingleCustomer value) getSingleCustomer,
   }) {
-    return error(this);
+    return onError(this);
   }
 
   @override
@@ -420,11 +457,11 @@ class _$_Error implements _Error {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Error value)? error,
+    TResult? Function(_OnError value)? onError,
     TResult? Function(_GetAllCustomer value)? getAllCustomer,
     TResult? Function(_GetSingleCustomer value)? getSingleCustomer,
   }) {
-    return error?.call(this);
+    return onError?.call(this);
   }
 
   @override
@@ -432,20 +469,25 @@ class _$_Error implements _Error {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
+    TResult Function(_OnError value)? onError,
     TResult Function(_GetAllCustomer value)? getAllCustomer,
     TResult Function(_GetSingleCustomer value)? getSingleCustomer,
     required TResult orElse(),
   }) {
-    if (error != null) {
-      return error(this);
+    if (onError != null) {
+      return onError(this);
     }
     return orElse();
   }
 }
 
-abstract class _Error implements CustomerState {
-  const factory _Error() = _$_Error;
+abstract class _OnError implements CustomerState {
+  const factory _OnError(final Failures error) = _$_OnError;
+
+  Failures get error;
+  @JsonKey(ignore: true)
+  _$$_OnErrorCopyWith<_$_OnError> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -522,7 +564,7 @@ class _$_GetAllCustomer implements _GetAllCustomer {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() error,
+    required TResult Function(Failures error) onError,
     required TResult Function(List<CustomerModel> customers) getAllCustomer,
     required TResult Function(CustomerModel user) getSingleCustomer,
   }) {
@@ -534,7 +576,7 @@ class _$_GetAllCustomer implements _GetAllCustomer {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? error,
+    TResult? Function(Failures error)? onError,
     TResult? Function(List<CustomerModel> customers)? getAllCustomer,
     TResult? Function(CustomerModel user)? getSingleCustomer,
   }) {
@@ -546,7 +588,7 @@ class _$_GetAllCustomer implements _GetAllCustomer {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? error,
+    TResult Function(Failures error)? onError,
     TResult Function(List<CustomerModel> customers)? getAllCustomer,
     TResult Function(CustomerModel user)? getSingleCustomer,
     required TResult orElse(),
@@ -562,7 +604,7 @@ class _$_GetAllCustomer implements _GetAllCustomer {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Error value) error,
+    required TResult Function(_OnError value) onError,
     required TResult Function(_GetAllCustomer value) getAllCustomer,
     required TResult Function(_GetSingleCustomer value) getSingleCustomer,
   }) {
@@ -574,7 +616,7 @@ class _$_GetAllCustomer implements _GetAllCustomer {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Error value)? error,
+    TResult? Function(_OnError value)? onError,
     TResult? Function(_GetAllCustomer value)? getAllCustomer,
     TResult? Function(_GetSingleCustomer value)? getSingleCustomer,
   }) {
@@ -586,7 +628,7 @@ class _$_GetAllCustomer implements _GetAllCustomer {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
+    TResult Function(_OnError value)? onError,
     TResult Function(_GetAllCustomer value)? getAllCustomer,
     TResult Function(_GetSingleCustomer value)? getSingleCustomer,
     required TResult orElse(),
@@ -685,7 +727,7 @@ class _$_GetSingleCustomer implements _GetSingleCustomer {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function() error,
+    required TResult Function(Failures error) onError,
     required TResult Function(List<CustomerModel> customers) getAllCustomer,
     required TResult Function(CustomerModel user) getSingleCustomer,
   }) {
@@ -697,7 +739,7 @@ class _$_GetSingleCustomer implements _GetSingleCustomer {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function()? error,
+    TResult? Function(Failures error)? onError,
     TResult? Function(List<CustomerModel> customers)? getAllCustomer,
     TResult? Function(CustomerModel user)? getSingleCustomer,
   }) {
@@ -709,7 +751,7 @@ class _$_GetSingleCustomer implements _GetSingleCustomer {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function()? error,
+    TResult Function(Failures error)? onError,
     TResult Function(List<CustomerModel> customers)? getAllCustomer,
     TResult Function(CustomerModel user)? getSingleCustomer,
     required TResult orElse(),
@@ -725,7 +767,7 @@ class _$_GetSingleCustomer implements _GetSingleCustomer {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
-    required TResult Function(_Error value) error,
+    required TResult Function(_OnError value) onError,
     required TResult Function(_GetAllCustomer value) getAllCustomer,
     required TResult Function(_GetSingleCustomer value) getSingleCustomer,
   }) {
@@ -737,7 +779,7 @@ class _$_GetSingleCustomer implements _GetSingleCustomer {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
-    TResult? Function(_Error value)? error,
+    TResult? Function(_OnError value)? onError,
     TResult? Function(_GetAllCustomer value)? getAllCustomer,
     TResult? Function(_GetSingleCustomer value)? getSingleCustomer,
   }) {
@@ -749,7 +791,7 @@ class _$_GetSingleCustomer implements _GetSingleCustomer {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
-    TResult Function(_Error value)? error,
+    TResult Function(_OnError value)? onError,
     TResult Function(_GetAllCustomer value)? getAllCustomer,
     TResult Function(_GetSingleCustomer value)? getSingleCustomer,
     required TResult orElse(),

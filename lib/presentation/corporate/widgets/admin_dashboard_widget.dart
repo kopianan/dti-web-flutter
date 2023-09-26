@@ -12,6 +12,7 @@ import 'package:dti_web/core/storage.dart';
 import 'package:dti_web/injection.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
+import 'package:dti_web/utils/error_handling.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -55,13 +56,25 @@ class AdminDashboardWidget extends StatelessWidget {
           ],
           builder: (context, child) {
             final tabsRouter = AutoTabsRouter.of(context);
-
             return BlocBuilder<OtherCubit, OtherState>(
               builder: (context, state) {
                 return Scaffold(
-                  floatingActionButton: FloatingActionButton(onPressed: () {
-                    getIt<GlobalUserCubit>().state.needRefreshToken();
-                  }),
+                  floatingActionButton:
+                      BlocListener<CustomerCubit, CustomerState>(
+                    listener: (context, state) {
+                      state.maybeMap(
+                        orElse: () {},
+                        onError: (e) {
+                          ErrorHandling().checkFailuresError(context, e.error);
+                        },
+                      );
+                    },
+                    child: FloatingActionButton(
+                      onPressed: () {
+                       context.read<CustomerCubit>().errorAuth();
+                      },
+                    ),
+                  ),
                   body: Column(
                     children: [
                       Card(
