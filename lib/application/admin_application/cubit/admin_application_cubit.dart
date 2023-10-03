@@ -13,7 +13,7 @@ class AdminApplicationCubit extends Cubit<AdminApplicationState> {
       : super(const AdminApplicationState.initial());
 
   final IAdminApplication iAdminApplication;
-
+  
   void getAllUserVisa() async {
     emit(const AdminApplicationState.loading());
     final result = await iAdminApplication.getAllUserApplication();

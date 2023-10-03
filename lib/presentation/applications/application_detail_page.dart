@@ -44,6 +44,7 @@ class ApplicationDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       body: BlocProvider(
         create: (context) =>
             rootUpdateCubit..getUserAppsWithImages(firebaseDocId, appsType),
@@ -322,7 +323,9 @@ class _SuccessBodyState extends State<SuccessBody> with NavigateMixin {
                         )),
 
                     Visibility(
-                      visible: visa.status?.toLowerCase() == 'pending payment' && getIt<GlobalUserCubit>().state.user.isUser() ,
+                      visible:
+                          visa.status?.toLowerCase() == 'pending payment' &&
+                              getIt<GlobalUserCubit>().state.user.isUser(),
                       child: Column(
                         children: [
                           Row(

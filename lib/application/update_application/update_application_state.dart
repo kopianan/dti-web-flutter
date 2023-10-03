@@ -5,7 +5,7 @@ class UpdateApplicationState with _$UpdateApplicationState {
   const factory UpdateApplicationState.initial() = _Initial;
 
   const factory UpdateApplicationState.onLoading() = _OnLoading;
-  const factory UpdateApplicationState.onError(String error) = _OnError;
+  const factory UpdateApplicationState.onError(Failures error) = _OnError;
   const factory UpdateApplicationState.onCreateApplication(
       VisaApplicationModel visaApps) = _OnCreateApplication;
   const factory UpdateApplicationState.onCreatePassport(
@@ -29,7 +29,7 @@ class UpdateApplicationState with _$UpdateApplicationState {
   const factory UpdateApplicationState.onGetSingleApplication(
       VisaApplicationModel visa) = _OnGetSingleApplication;
   const factory UpdateApplicationState.onGetSingleAppsWithImage(
-      SingleVisaResponse singleResponse) = _OnGetSingleAppsWithImage; 
+      SingleVisaResponse singleResponse) = _OnGetSingleAppsWithImage;
   const factory UpdateApplicationState.deleteApplication() = _DeleteApplication;
   const factory UpdateApplicationState.onUploadImageComplete(
       List<ImageUploadResponse> list) = _OnUploadImageComplete;

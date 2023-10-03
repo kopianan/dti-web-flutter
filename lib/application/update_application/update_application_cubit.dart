@@ -7,6 +7,7 @@ import 'package:dti_web/domain/core/apps_type.dart';
 import 'package:dti_web/domain/core/document_data_model.dart';
 import 'package:dti_web/domain/core/single_visa_response.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
+import 'package:dti_web/domain/global/failures.dart';
 import 'package:dti_web/domain/questionnaire/questionnaire_model.dart';
 import 'package:dti_web/domain/update/i_update_application.dart';
 import 'package:dti_web/domain/update/image_upload_response.dart';
@@ -37,7 +38,8 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
 
   void rejectApplication(String firebaseDocId, String note) async {
     emit(const UpdateApplicationState.onLoading());
-    final result = await iUpdateApplication.rejectApplication(firebaseDocId, note);
+    final result =
+        await iUpdateApplication.rejectApplication(firebaseDocId, note);
     result.fold(
       (l) => emit(UpdateApplicationState.onError(l)),
       (r) => emit(UpdateApplicationState.onRejectApplication(r)),
@@ -71,11 +73,11 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
         imageCollection: imageCollection,
       );
       data.fold(
-        (l) => emit(UpdateApplicationState.onError(l.toString())),
+        (l) => emit(UpdateApplicationState.onError(l)),
         (r) => emit(UpdateApplicationState.onUploadImageComplete(r)),
       );
-    } on Exception catch (e) {
-      emit(UpdateApplicationState.onError(e.toString()));
+    } on Exception {
+      emit(UpdateApplicationState.onError(Failures.serverError()));
     }
   }
 
@@ -94,11 +96,11 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
         deletedImages,
       );
       data.fold(
-        (l) => emit(UpdateApplicationState.onError(l.toString())),
+        (l) => emit(UpdateApplicationState.onError(l)),
         (r) => emit(UpdateApplicationState.onSelfieImageComplete(r)),
       );
-    } on Exception catch (e) {
-      emit(UpdateApplicationState.onError(e.toString()));
+    } on Exception {
+      emit(UpdateApplicationState.onError(Failures.serverError()));
     }
   }
 
@@ -145,13 +147,13 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
             try {
               final data = await _getUserApplicationById(r);
               emit(UpdateApplicationState.onCreateApplication(data));
-            } on Exception catch (e) {
-              emit(UpdateApplicationState.onError(e.toString()));
+            } on Exception {
+              emit(UpdateApplicationState.onError(Failures.serverError()));
             }
           },
         );
-      } on Exception catch (e) {
-        emit(UpdateApplicationState.onError(e.toString()));
+      } on Exception {
+        emit(UpdateApplicationState.onError(Failures.serverError()));
       }
     } else {}
 
@@ -175,13 +177,13 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
             try {
               final data = await _getUserApplicationById(r);
               emit(UpdateApplicationState.onCreateApplication(data));
-            } on Exception catch (e) {
-              emit(UpdateApplicationState.onError(e.toString()));
+            } on Exception {
+              emit(UpdateApplicationState.onError(Failures.serverError()));
             }
           },
         );
-      } on Exception catch (e) {
-        emit(UpdateApplicationState.onError(e.toString()));
+      } on Exception {
+        emit(UpdateApplicationState.onError(Failures.serverError()));
       }
     }
 
@@ -278,7 +280,7 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
 
   void getUserAppsWithImages(String firebaseDocId, AppsType appsType) async {
     emit(const UpdateApplicationState.onLoading());
-    late Either<String, SingleVisaResponse> result;
+    late Either<Failures, SingleVisaResponse> result;
     if (appsType == AppsType.application) {
       result = await iUpdateApplication
           .getUserApplicationByIdWithImages(firebaseDocId);
@@ -299,11 +301,11 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
     final result = await iUpdateApplication.submitVisa(firebaseDocId);
     try {
       result.fold(
-        (l) => emit(UpdateApplicationState.onError(l.toString())),
+        (l) => emit(UpdateApplicationState.onError(l)),
         (r) => emit(UpdateApplicationState.onSubmitApplication(r)),
       );
-    } on Exception catch (e) {
-      emit(UpdateApplicationState.onError(e.toString()));
+    } on Exception {
+      emit(UpdateApplicationState.onError(Failures.serverError()));
     }
   }
 
@@ -313,11 +315,11 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
     final result = await iUpdateApplication.submitPassport(firebaseDocId);
     try {
       result.fold(
-        (l) => emit(UpdateApplicationState.onError(l.toString())),
+        (l) => emit(UpdateApplicationState.onError(l)),
         (r) => emit(UpdateApplicationState.onSubmitPassport(r)),
       );
-    } on Exception catch (e) {
-      emit(UpdateApplicationState.onError(e.toString()));
+    } on Exception {
+      emit(UpdateApplicationState.onError(Failures.serverError()));
     }
   }
 }

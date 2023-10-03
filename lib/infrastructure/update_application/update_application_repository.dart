@@ -12,6 +12,7 @@ import 'package:dti_web/domain/update/i_update_application.dart';
 import 'package:dti_web/domain/update/image_upload_response.dart';
 
 import 'package:dti_web/infrastructure/core/error_response.dart';
+import 'package:dti_web/utils/error_handling.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:injectable/injectable.dart';
@@ -201,31 +202,23 @@ class IUpdateApplicationRepository extends IUpdateApplication {
   }
 
   @override
-  Future<Either<String, String>> createNewApplicationDocument(
+  Future<Either<Failures, String>> createNewApplicationDocument(
       VisaApplicationModel visaApplicationModel) async {
     final storage = Storage();
-    final result = await dio.post('${dotenv.env['BASE_URL']}/application',
-        options: Options(
-          headers: {'Authorization': 'Bearer ${storage.getToken()}'},
-        ),
-        data: visaApplicationModel.toJson()
-        // data: {
-        //   "title": visaApplicationModel.title,
-        //   "subTitle": visaApplicationModel.subTitle,
-        //   "entry": visaApplicationModel.entry,
-        //   "price": 0,
-        //   "currency": "Rp",
-        //   "documents": visaApplicationModel.documents,
-        //   "status": "Draft",
-        //   "inIndonesia": visaApplicationModel.inIndonesia
-        // },
-        );
-    log(visaApplicationModel.toJson().toString());
-    return Right(result.data['data']['firebaseDocId']);
+    try {
+      final result = await dio.post('${dotenv.env['BASE_URL']}/application',
+          options: Options(
+              headers: {'Authorization': 'Bearer ${storage.getToken()}'}),
+          data: visaApplicationModel.toJson());
+      log(visaApplicationModel.toJson().toString());
+      return Right(result.data['data']['firebaseDocId']);
+    } on DioError catch (e) {
+      return left(ErrorHandling().onDioErrorHandle(e));
+    }
   }
 
   @override
-  Future<Either<String, String>> updateVoaData(
+  Future<Either<Failures, String>> updateVoaData(
       VisaApplicationModel visaApplicationModel) async {
     final storage = Storage();
     final jsonParams = {
@@ -273,13 +266,15 @@ class IUpdateApplicationRepository extends IUpdateApplication {
       } else {
         return Right(result.data['data']['message']);
       }
+    } on DioError catch (e) {
+      return left(ErrorHandling().onDioErrorHandle(e));
     } on Exception {
-      return const Left("");
+      return left(Failures.serverError());
     }
   }
 
   @override
-  Future<Either<String, String>> updateParticularData(
+  Future<Either<Failures, String>> updateParticularData(
       VisaApplicationModel visaApplicationModel) async {
     final storage = Storage();
     final jsonParams = {
@@ -323,13 +318,15 @@ class IUpdateApplicationRepository extends IUpdateApplication {
       } else {
         return Right(result.data['data']['message']);
       }
+    } on DioError catch (e) {
+      return left(ErrorHandling().onDioErrorHandle(e));
     } on Exception {
-      return const Left("");
+      return left(Failures.serverError());
     }
   }
 
   @override
-  Future<Either<String, VisaApplicationModel>> getUserApplicationById(
+  Future<Either<Failures, VisaApplicationModel>> getUserApplicationById(
       String firebaseDocId) async {
     final storage = Storage();
 
@@ -338,19 +335,17 @@ class IUpdateApplicationRepository extends IUpdateApplication {
           "${dotenv.env['BASE_URL']}/application/$firebaseDocId",
           options: Options(
               headers: {"Authorization": "Bearer ${storage.getToken()}"}));
-      if (result.data['data'] != null) {
-        dynamic data = result.data['data'];
-        final visaApps = VisaApplicationModel.fromJson(data);
-        return Right(visaApps);
-      }
-      return Left(result.toString());
-    } on Exception catch (e) {
-      return Left(e.toString());
+
+      dynamic data = result.data['data'];
+      final visaApps = VisaApplicationModel.fromJson(data);
+      return Right(visaApps);
+    } on DioError catch (e) {
+      return left(ErrorHandling().onDioErrorHandle(e));
     }
   }
 
   @override
-  Future<Either<String, String>> updateGuarantor(
+  Future<Either<Failures, String>> updateGuarantor(
       VisaApplicationModel visa) async {
     final storage = Storage();
 
@@ -370,8 +365,10 @@ class IUpdateApplicationRepository extends IUpdateApplication {
       } else {
         return Right(result.data['data']['message']);
       }
+    } on DioError catch (e) {
+      return left(ErrorHandling().onDioErrorHandle(e));
     } on Exception {
-      return const Left("");
+      return left(Failures.serverError());
     }
   }
 
@@ -387,38 +384,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
 
       return Right(result.toString());
     } on DioError catch (e) {
-      switch (e.type) {
-        case DioErrorType.connectionTimeout:
-          // TODO: Handle this case.
-          break;
-        case DioErrorType.sendTimeout:
-          // TODO: Handle this case.
-          break;
-        case DioErrorType.receiveTimeout:
-          // TODO: Handle this case.
-          break;
-        case DioErrorType.badResponse:
-          if (e.response!.statusCode! == 404) {
-            if (e.response!.data['error'] != null) {
-              return Left(Failures.generalError(e.response!.data['error']));
-            }
-            return Left(Failures.generalError("Something wrong"));
-          }
-          break;
-        case DioErrorType.cancel:
-          // TODO: Handle this case.
-          break;
-        case DioErrorType.unknown:
-          // TODO: Handle this case.
-          break;
-        case DioErrorType.badCertificate:
-          // TODO: Handle this case.
-          break;
-        case DioErrorType.connectionError:
-          // TODO: Handle this case.
-          break;
-      }
-      return Left(Failures.serverError());
+      return left(ErrorHandling().onDioErrorHandle(e));
     }
   }
 
@@ -434,43 +400,12 @@ class IUpdateApplicationRepository extends IUpdateApplication {
 
       return Right(result.toString());
     } on DioError catch (e) {
-      switch (e.type) {
-        case DioErrorType.connectionTimeout:
-          // TODO: Handle this case.
-          break;
-        case DioErrorType.sendTimeout:
-          // TODO: Handle this case.
-          break;
-        case DioErrorType.receiveTimeout:
-          // TODO: Handle this case.
-          break;
-        case DioErrorType.badResponse:
-          if (e.response!.statusCode! == 404) {
-            if (e.response!.data['error'] != null) {
-              return Left(Failures.generalError(e.response!.data['error']));
-            }
-            return Left(Failures.generalError("Something wrong"));
-          }
-          break;
-        case DioErrorType.cancel:
-          // TODO: Handle this case.
-          break;
-        case DioErrorType.unknown:
-          // TODO: Handle this case.
-          break;
-        case DioErrorType.badCertificate:
-          // TODO: Handle this case.
-          break;
-        case DioErrorType.connectionError:
-          // TODO: Handle this case.
-          break;
-      }
-      return Left(Failures.serverError());
+      return left(ErrorHandling().onDioErrorHandle(e));
     }
   }
 
   @override
-  Future<Either<String, SingleVisaResponse>> getUserApplicationByIdWithImages(
+  Future<Either<Failures, SingleVisaResponse>> getUserApplicationByIdWithImages(
       String firebaseDocId) async {
     final storage = Storage();
     try {
@@ -485,13 +420,15 @@ class IUpdateApplicationRepository extends IUpdateApplication {
 
       final visaApps = SingleVisaResponse.fromJson(result.data);
       return Right(visaApps);
-    } on Exception catch (e) {
-      return Left(e.toString());
+    } on DioError catch (e) {
+      return left(ErrorHandling().onDioErrorHandle(e));
+    } on Exception {
+      return Left(Failures.serverError());
     }
   }
 
   @override
-  Future<Either<String, SingleVisaResponse>> getUserPassportByIdWithImages(
+  Future<Either<Failures, SingleVisaResponse>> getUserPassportByIdWithImages(
       String firebaseDocId) async {
     final storage = Storage();
     try {
@@ -506,13 +443,15 @@ class IUpdateApplicationRepository extends IUpdateApplication {
 
       final visaApps = SingleVisaResponse.fromJson(result.data);
       return Right(visaApps);
-    } on Exception catch (e) {
-      return Left(e.toString());
+    } on DioError catch (e) {
+      return left(ErrorHandling().onDioErrorHandle(e));
+    } on Exception {
+      return Left(Failures.serverError());
     }
   }
 
   @override
-  Future<Either<String, String>> deleteSingleImage(
+  Future<Either<Failures, String>> deleteSingleImage(
     String imageName,
     String docId,
     String appId,
@@ -536,13 +475,15 @@ class IUpdateApplicationRepository extends IUpdateApplication {
         return Right(result.data['message']);
       }
       return Left(result.data['message']);
+    } on DioError catch (e) {
+      return left(ErrorHandling().onDioErrorHandle(e));
     } on Exception {
-      return const Left("Something wrong");
+      return Left(Failures.serverError());
     }
   }
 
   @override
-  Future<Either<String, String>> updateMultiVisa(
+  Future<Either<Failures, String>> updateMultiVisa(
       String duration, String firebaseDocId) async {
     final storage = Storage();
 
@@ -562,13 +503,15 @@ class IUpdateApplicationRepository extends IUpdateApplication {
       } else {
         return Right(result.data['data']['message']);
       }
+    } on DioError catch (e) {
+      return left(ErrorHandling().onDioErrorHandle(e));
     } on Exception {
-      return const Left("");
+      return left(Failures.serverError());
     }
   }
 
   @override
-  Future<Either<String, String>> createUserPassport(bool isNew) async {
+  Future<Either<Failures, String>> createUserPassport(bool isNew) async {
     final storage = Storage();
     var newVisaApps = VisaApplicationModel(
       title: "Passport",
@@ -582,24 +525,27 @@ class IUpdateApplicationRepository extends IUpdateApplication {
           storage.getLocalUserData()?.name ?? storage.getLocalUserData()?.email,
     );
 
-    final result = await dio.post(
-      "${dotenv.env['BASE_URL']}/passport",
-      options: Options(
-        headers: {
-          "Authorization": "Bearer ${storage.getToken()}",
-        },
-      ),
-      data: newVisaApps.toJson(),
-    );
+    try {
+      final result = await dio.post(
+        "${dotenv.env['BASE_URL']}/passport",
+        options: Options(
+          headers: {
+            "Authorization": "Bearer ${storage.getToken()}",
+          },
+        ),
+        data: newVisaApps.toJson(),
+      );
 
-    if (result.data['data'] != null) {
       return Right(result.data['data']['firebaseDocId'].toString());
+    } on DioError catch (e) {
+      return left(ErrorHandling().onDioErrorHandle(e));
+    } on Exception {
+      return left(Failures.serverError());
     }
-    return Left(result.data['message'].toString());
   }
 
   @override
-  Future<Either<String, VisaApplicationModel>> getPassportById(
+  Future<Either<Failures, VisaApplicationModel>> getPassportById(
       String firebaseDocId) async {
     final storage = Storage();
 
@@ -608,19 +554,19 @@ class IUpdateApplicationRepository extends IUpdateApplication {
           "${dotenv.env['BASE_URL']}/passport/$firebaseDocId",
           options: Options(
               headers: {"Authorization": "Bearer ${storage.getToken()}"}));
-      if (result.data['data'] != null) {
-        dynamic data = result.data['data'];
-        final visaApps = VisaApplicationModel.fromJson(data);
-        return Right(visaApps);
-      }
-      return Left(result.toString());
-    } on Exception catch (e) {
-      return Left(e.toString());
+
+      dynamic data = result.data['data'];
+      final visaApps = VisaApplicationModel.fromJson(data);
+      return Right(visaApps);
+    } on DioError catch (e) {
+      return left(ErrorHandling().onDioErrorHandle(e));
+    } on Exception {
+      return left(Failures.serverError());
     }
   }
 
   @override
-  Future<Either<String, String>> updatePassportParticularData(
+  Future<Either<Failures, String>> updatePassportParticularData(
     VisaApplicationModel visaApplicationModel,
   ) async {
     final storage = Storage();
@@ -633,19 +579,17 @@ class IUpdateApplicationRepository extends IUpdateApplication {
             },
           ),
           data: visaApplicationModel.toJson());
-      if (result.data['data'] == null) {
-        //ERROR
-        return Left(result.data['data']['message']);
-      } else {
-        return Right(result.data['data']['message']);
-      }
+
+      return Right(result.data['data']['message']);
+    } on DioError catch (e) {
+      return left(ErrorHandling().onDioErrorHandle(e));
     } on Exception {
-      return const Left("");
+      return left(Failures.serverError());
     }
   }
 
   @override
-  Future<Either<String, String>> rejectApplication(
+  Future<Either<Failures, String>> rejectApplication(
       String firebaseDocId, String notes) async {
     final storage = Storage();
     try {
@@ -658,19 +602,17 @@ class IUpdateApplicationRepository extends IUpdateApplication {
           },
         ),
       );
-      if (result.data['data'] == null) {
-        //ERROR
-        return Left(result.data['error']);
-      } else {
-        return Right(result.data['data']['message']);
-      }
+
+      return Right(result.data['data']['message']);
+    } on DioError catch (e) {
+      return left(ErrorHandling().onDioErrorHandle(e));
     } on Exception {
-      return const Left("");
+      return left(Failures.serverError());
     }
   }
 
   @override
-  Future<Either<String, String>> pendingPaymentApplication(
+  Future<Either<Failures, String>> pendingPaymentApplication(
       String firebaseDocId, double price) async {
     final storage = Storage();
     try {
@@ -690,8 +632,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
         return Right(result.data['data']['message']);
       }
     } on DioError catch (e) {
-      print(e);
-      return const Left("");
+      return left(ErrorHandling().onDioErrorHandle(e));
     }
   }
 }

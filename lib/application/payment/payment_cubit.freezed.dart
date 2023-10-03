@@ -19,7 +19,7 @@ mixin _$PaymentState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(String? errorMessage) onError,
+    required TResult Function(Failures errorMessage) onError,
     required TResult Function() onLoading,
     required TResult Function(String url) onGetPaymentUrl,
   }) =>
@@ -27,7 +27,7 @@ mixin _$PaymentState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(String? errorMessage)? onError,
+    TResult? Function(Failures errorMessage)? onError,
     TResult? Function()? onLoading,
     TResult? Function(String url)? onGetPaymentUrl,
   }) =>
@@ -35,7 +35,7 @@ mixin _$PaymentState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(String? errorMessage)? onError,
+    TResult Function(Failures errorMessage)? onError,
     TResult Function()? onLoading,
     TResult Function(String url)? onGetPaymentUrl,
     required TResult orElse(),
@@ -124,7 +124,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(String? errorMessage) onError,
+    required TResult Function(Failures errorMessage) onError,
     required TResult Function() onLoading,
     required TResult Function(String url) onGetPaymentUrl,
   }) {
@@ -135,7 +135,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(String? errorMessage)? onError,
+    TResult? Function(Failures errorMessage)? onError,
     TResult? Function()? onLoading,
     TResult? Function(String url)? onGetPaymentUrl,
   }) {
@@ -146,7 +146,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(String? errorMessage)? onError,
+    TResult Function(Failures errorMessage)? onError,
     TResult Function()? onLoading,
     TResult Function(String url)? onGetPaymentUrl,
     required TResult orElse(),
@@ -205,7 +205,9 @@ abstract class _$$_OnErrorCopyWith<$Res> {
           _$_OnError value, $Res Function(_$_OnError) then) =
       __$$_OnErrorCopyWithImpl<$Res>;
   @useResult
-  $Res call({String? errorMessage});
+  $Res call({Failures errorMessage});
+
+  $FailuresCopyWith<$Res> get errorMessage;
 }
 
 /// @nodoc
@@ -218,24 +220,32 @@ class __$$_OnErrorCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? errorMessage = freezed,
+    Object? errorMessage = null,
   }) {
     return _then(_$_OnError(
-      errorMessage: freezed == errorMessage
+      null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Failures,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $FailuresCopyWith<$Res> get errorMessage {
+    return $FailuresCopyWith<$Res>(_value.errorMessage, (value) {
+      return _then(_value.copyWith(errorMessage: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$_OnError implements _OnError {
-  const _$_OnError({this.errorMessage});
+  const _$_OnError(this.errorMessage);
 
   @override
-  final String? errorMessage;
+  final Failures errorMessage;
 
   @override
   String toString() {
@@ -264,7 +274,7 @@ class _$_OnError implements _OnError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(String? errorMessage) onError,
+    required TResult Function(Failures errorMessage) onError,
     required TResult Function() onLoading,
     required TResult Function(String url) onGetPaymentUrl,
   }) {
@@ -275,7 +285,7 @@ class _$_OnError implements _OnError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(String? errorMessage)? onError,
+    TResult? Function(Failures errorMessage)? onError,
     TResult? Function()? onLoading,
     TResult? Function(String url)? onGetPaymentUrl,
   }) {
@@ -286,7 +296,7 @@ class _$_OnError implements _OnError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(String? errorMessage)? onError,
+    TResult Function(Failures errorMessage)? onError,
     TResult Function()? onLoading,
     TResult Function(String url)? onGetPaymentUrl,
     required TResult orElse(),
@@ -336,9 +346,9 @@ class _$_OnError implements _OnError {
 }
 
 abstract class _OnError implements PaymentState {
-  const factory _OnError({final String? errorMessage}) = _$_OnError;
+  const factory _OnError(final Failures errorMessage) = _$_OnError;
 
-  String? get errorMessage;
+  Failures get errorMessage;
   @JsonKey(ignore: true)
   _$$_OnErrorCopyWith<_$_OnError> get copyWith =>
       throw _privateConstructorUsedError;
@@ -383,7 +393,7 @@ class _$_OnLoading implements _OnLoading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(String? errorMessage) onError,
+    required TResult Function(Failures errorMessage) onError,
     required TResult Function() onLoading,
     required TResult Function(String url) onGetPaymentUrl,
   }) {
@@ -394,7 +404,7 @@ class _$_OnLoading implements _OnLoading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(String? errorMessage)? onError,
+    TResult? Function(Failures errorMessage)? onError,
     TResult? Function()? onLoading,
     TResult? Function(String url)? onGetPaymentUrl,
   }) {
@@ -405,7 +415,7 @@ class _$_OnLoading implements _OnLoading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(String? errorMessage)? onError,
+    TResult Function(Failures errorMessage)? onError,
     TResult Function()? onLoading,
     TResult Function(String url)? onGetPaymentUrl,
     required TResult orElse(),
@@ -523,7 +533,7 @@ class _$_OnGetPaymentUrl implements _OnGetPaymentUrl {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(String? errorMessage) onError,
+    required TResult Function(Failures errorMessage) onError,
     required TResult Function() onLoading,
     required TResult Function(String url) onGetPaymentUrl,
   }) {
@@ -534,7 +544,7 @@ class _$_OnGetPaymentUrl implements _OnGetPaymentUrl {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(String? errorMessage)? onError,
+    TResult? Function(Failures errorMessage)? onError,
     TResult? Function()? onLoading,
     TResult? Function(String url)? onGetPaymentUrl,
   }) {
@@ -545,7 +555,7 @@ class _$_OnGetPaymentUrl implements _OnGetPaymentUrl {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(String? errorMessage)? onError,
+    TResult Function(Failures errorMessage)? onError,
     TResult Function()? onLoading,
     TResult Function(String url)? onGetPaymentUrl,
     required TResult orElse(),

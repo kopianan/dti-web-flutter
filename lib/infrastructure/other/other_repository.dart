@@ -10,6 +10,7 @@ import 'package:dti_web/domain/core/document_data_model.dart';
 import 'package:dti_web/domain/global/failures.dart';
 import 'package:dti_web/domain/other/i_other.dart';
 import 'package:dti_web/domain/questionnaire/questionnaire_data_model.dart';
+import 'package:dti_web/utils/error_handling.dart';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:injectable/injectable.dart';
@@ -58,18 +59,7 @@ class OtherRepository extends IOther {
       }
       return Left(Failures.generalError("Something Wrong"));
     } on DioError catch (e) {
-      if (e.type == DioErrorType.badResponse) {
-        if (e.response!.statusCode! == 404) {
-          if (e.response!.data['error'] != null) {
-            return Left(Failures.generalError(e.response!.data['error']));
-          }
-          return Left(Failures.generalError("Something wrong"));
-        } else if (e.response?.statusCode! == 403) {
-          //authorization
-          return Left(Failures.apiExpired());
-        }
-      }
-      return Left(Failures.serverError());
+      return left(ErrorHandling().onDioErrorHandle(e));
     }
   }
 
@@ -148,10 +138,7 @@ class OtherRepository extends IOther {
 
       return Left(Failures.generalError("Failed"));
     } on DioError catch (e) {
-      if (e.response!.statusCode! >= 400 && e.response!.statusCode! < 500) {
-        return left(Failures.generalError(e.response!.data['error']));
-      }
-      return left(Failures.serverError());
+      return left(ErrorHandling().onDioErrorHandle(e));
     }
   }
 
@@ -175,18 +162,7 @@ class OtherRepository extends IOther {
       }
       return Left(Failures.generalError("Something Wrong"));
     } on DioError catch (e) {
-      if (e.type == DioErrorType.badResponse) {
-        if (e.response!.statusCode! == 404) {
-          if (e.response!.data['error'] != null) {
-            return Left(Failures.generalError(e.response!.data['error']));
-          }
-          return Left(Failures.generalError("Something wrong"));
-        } else if (e.response?.statusCode! == 403) {
-          //authorization
-          return Left(Failures.apiExpired());
-        }
-      }
-      return Left(Failures.serverError());
+      return left(ErrorHandling().onDioErrorHandle(e));
     }
   }
 
@@ -216,17 +192,8 @@ class OtherRepository extends IOther {
       }
       return Left(Failures.generalError("Something Wrong"));
     } on DioError catch (e) {
-      if (e.type == DioErrorType.badResponse) {
-        if (e.response!.statusCode! == 404) {
-          if (e.response!.data['error'] != null) {
-            return Left(Failures.generalError(e.response!.data['error']));
-          }
-          return Left(Failures.generalError("Something wrong"));
-        } else if (e.response?.statusCode! == 403) {
-          //authorization
-          return Left(Failures.apiExpired());
-        }
-      }
+      return left(ErrorHandling().onDioErrorHandle(e));
+    } on Exception {
       return Left(Failures.serverError());
     }
   }
@@ -283,7 +250,7 @@ class OtherRepository extends IOther {
   @override
   Future<Either<Failures, String>> refreshToken() async {
     Storage storage = Storage();
-   final  dio = Dio();
+    final dio = Dio();
     try {
       var result = await dio.post(
           '${dotenv.env['BASE_URL']}/revokeRefreshTokens',

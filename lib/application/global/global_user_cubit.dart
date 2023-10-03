@@ -31,8 +31,8 @@ class GlobalUserCubit extends Cubit<GlobalUserState> {
     );
   }
 
-  void logOutUser() async {
-    await Storage().deleteStorage();
-    emit(state.copyWith(logOut: true));
+  void logOutUserBecauseTokenExpired() async {
+    emit(state.copyWith(
+        logOut: true, message: "Token was expired, Please re-login"));
   }
 }

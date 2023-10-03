@@ -32,16 +32,17 @@ mixin CoreMixin {
         .show();
   }
 
-  void showErrDialog(
+  Future<void> showErrDialog(
     BuildContext context, {
     required String title,
     required String desc,
     String? okText,
     String? cancelText,
+    bool? dismissOnTouchOutside,
     Function()? btnOkOnPress,
     Function()? btnCancelOnPress,
-  }) {
-    AwesomeDialog(
+  }) async {
+    await AwesomeDialog(
             width: 400,
             context: context,
             dialogType: DialogType.error,
@@ -52,6 +53,7 @@ mixin CoreMixin {
             headerAnimationLoop: true,
             title: title,
             desc: desc,
+            dismissOnTouchOutside: dismissOnTouchOutside ?? true,
             btnOkOnPress: btnOkOnPress ?? () {},
             btnOkColor: Colors.red,
             btnOkText: okText ?? "OK",

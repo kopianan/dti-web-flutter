@@ -34,7 +34,7 @@ class AppListCubit extends Cubit<AppListState> {
     emit(state.copyWith(status: AppListStatus.loading));
     final result = await iAppList.getUserVisaApplication(isAgent);
     result.fold(
-      (l) => emit(state.copyWith(status: AppListStatus.error, errorMessage: l)),
+      (l) => emit(state.copyWith(status: AppListStatus.error, errorMessage: "Something wrong")),
       (r) {
         final newData =
             r.map((e) => DataListModel(bodyData: e, selected: false)).toList();

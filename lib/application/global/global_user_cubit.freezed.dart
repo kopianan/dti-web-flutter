@@ -20,6 +20,7 @@ mixin _$GlobalUserState {
   bool get isAgent => throw _privateConstructorUsedError;
   String? get token => throw _privateConstructorUsedError;
   bool get logOut => throw _privateConstructorUsedError;
+  String? get message => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $GlobalUserStateCopyWith<GlobalUserState> get copyWith =>
@@ -32,7 +33,12 @@ abstract class $GlobalUserStateCopyWith<$Res> {
           GlobalUserState value, $Res Function(GlobalUserState) then) =
       _$GlobalUserStateCopyWithImpl<$Res, GlobalUserState>;
   @useResult
-  $Res call({UserData user, bool isAgent, String? token, bool logOut});
+  $Res call(
+      {UserData user,
+      bool isAgent,
+      String? token,
+      bool logOut,
+      String? message});
 
   $UserDataCopyWith<$Res> get user;
 }
@@ -54,6 +60,7 @@ class _$GlobalUserStateCopyWithImpl<$Res, $Val extends GlobalUserState>
     Object? isAgent = null,
     Object? token = freezed,
     Object? logOut = null,
+    Object? message = freezed,
   }) {
     return _then(_value.copyWith(
       user: null == user
@@ -72,6 +79,10 @@ class _$GlobalUserStateCopyWithImpl<$Res, $Val extends GlobalUserState>
           ? _value.logOut
           : logOut // ignore: cast_nullable_to_non_nullable
               as bool,
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -92,7 +103,12 @@ abstract class _$$_GlobalUserStateCopyWith<$Res>
       __$$_GlobalUserStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({UserData user, bool isAgent, String? token, bool logOut});
+  $Res call(
+      {UserData user,
+      bool isAgent,
+      String? token,
+      bool logOut,
+      String? message});
 
   @override
   $UserDataCopyWith<$Res> get user;
@@ -113,6 +129,7 @@ class __$$_GlobalUserStateCopyWithImpl<$Res>
     Object? isAgent = null,
     Object? token = freezed,
     Object? logOut = null,
+    Object? message = freezed,
   }) {
     return _then(_$_GlobalUserState(
       user: null == user
@@ -131,6 +148,10 @@ class __$$_GlobalUserStateCopyWithImpl<$Res>
           ? _value.logOut
           : logOut // ignore: cast_nullable_to_non_nullable
               as bool,
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -142,7 +163,8 @@ class _$_GlobalUserState extends _GlobalUserState {
       {required this.user,
       required this.isAgent,
       required this.token,
-      this.logOut = false})
+      this.logOut = false,
+      this.message})
       : super._();
 
   @override
@@ -154,10 +176,12 @@ class _$_GlobalUserState extends _GlobalUserState {
   @override
   @JsonKey()
   final bool logOut;
+  @override
+  final String? message;
 
   @override
   String toString() {
-    return 'GlobalUserState(user: $user, isAgent: $isAgent, token: $token, logOut: $logOut)';
+    return 'GlobalUserState(user: $user, isAgent: $isAgent, token: $token, logOut: $logOut, message: $message)';
   }
 
   @override
@@ -168,11 +192,13 @@ class _$_GlobalUserState extends _GlobalUserState {
             (identical(other.user, user) || other.user == user) &&
             (identical(other.isAgent, isAgent) || other.isAgent == isAgent) &&
             (identical(other.token, token) || other.token == token) &&
-            (identical(other.logOut, logOut) || other.logOut == logOut));
+            (identical(other.logOut, logOut) || other.logOut == logOut) &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, user, isAgent, token, logOut);
+  int get hashCode =>
+      Object.hash(runtimeType, user, isAgent, token, logOut, message);
 
   @JsonKey(ignore: true)
   @override
@@ -186,7 +212,8 @@ abstract class _GlobalUserState extends GlobalUserState {
       {required final UserData user,
       required final bool isAgent,
       required final String? token,
-      final bool logOut}) = _$_GlobalUserState;
+      final bool logOut,
+      final String? message}) = _$_GlobalUserState;
   _GlobalUserState._() : super._();
 
   @override
@@ -197,6 +224,8 @@ abstract class _GlobalUserState extends GlobalUserState {
   String? get token;
   @override
   bool get logOut;
+  @override
+  String? get message;
   @override
   @JsonKey(ignore: true)
   _$$_GlobalUserStateCopyWith<_$_GlobalUserState> get copyWith =>

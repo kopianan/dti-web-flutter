@@ -4,7 +4,7 @@ part of 'payment_cubit.dart';
 class PaymentState with _$PaymentState {
   const factory PaymentState.initial() = _Initial;
 
-  const factory PaymentState.onError({String? errorMessage}) = _OnError;
+  const factory PaymentState.onError(Failures errorMessage) = _OnError;
   const factory PaymentState.onLoading() = _OnLoading;
   //CURRENCY
   // const factory PaymentState.onGetCurrency(double total) = _OnGetCurrency;

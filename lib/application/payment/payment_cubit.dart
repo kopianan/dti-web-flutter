@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
+import 'package:dti_web/domain/global/failures.dart';
 import 'package:dti_web/domain/payment/i_payment.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -37,10 +38,10 @@ class PaymentCubit extends Cubit<PaymentState> {
   void makePayment(VisaApplicationModel visaApplication,
       {double? discount}) async {
     emit(const PaymentState.onLoading());
-    final _result =
+    final result =
         await iPayment.createInvoice(visaApplication, discount: discount);
-    _result.fold(
-      (left) => emit(const PaymentState.onError()),
+    result.fold(
+      (left) => emit(PaymentState.onError(left)),
       (right) => emit(PaymentState.onGetPaymentUrl(right)),
     );
   }
@@ -48,10 +49,10 @@ class PaymentCubit extends Cubit<PaymentState> {
   void makePassportPayment(VisaApplicationModel visaApplication,
       {double? discount}) async {
     emit(const PaymentState.onLoading());
-    final _result = await iPayment.createPassportInvoice(visaApplication,
+    final result = await iPayment.createPassportInvoice(visaApplication,
         discount: discount);
-    _result.fold(
-      (left) => emit(const PaymentState.onError()),
+    result.fold(
+      (left) => emit(PaymentState.onError(left)),
       (right) => emit(PaymentState.onGetPaymentUrl(right)),
     );
   }

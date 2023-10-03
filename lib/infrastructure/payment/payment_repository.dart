@@ -1,9 +1,10 @@
-import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
+import 'package:dti_web/domain/global/failures.dart';
 import 'package:dti_web/domain/payment/i_payment.dart';
+import 'package:dti_web/utils/error_handling.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:injectable/injectable.dart';
 
@@ -12,19 +13,8 @@ class PaymentRepository extends IPayment {
   PaymentRepository(this.dio);
   final Dio dio;
 
-  // @override
-  // Future<Either<String, double>> getCurrency() async {
-  //   try {
-  //     var _result = await _firebaseFirestore.currectyMaster().get();
-  //     var _currency = (_result.data() as dynamic)['USD_IDR'] as num;
-  //     return right(_currency.toDouble());
-  //   } on Exception {
-  //     return left("Something wrong");
-  //   }
-  // }
-
   @override
-  Future<Either<String, String>> createInvoice(
+  Future<Either<Failures, String>> createInvoice(
       VisaApplicationModel visaApplication,
       {double? discount}) async {
     double finalPrice = visaApplication.price!;
@@ -50,13 +40,15 @@ class PaymentRepository extends IPayment {
 
       var url = result.data['paymentInvoiceUrl'];
       return right(url);
-    } on Exception catch (e) {
-      return left(e.toString());
+    } on DioError catch (e) {
+      return left(ErrorHandling().onDioErrorHandle(e));
+    } on Exception {
+      return left(Failures.serverError());
     }
   }
 
   @override
-  Future<Either<String, String>> createPassportInvoice(
+  Future<Either<Failures, String>> createPassportInvoice(
       VisaApplicationModel visaApplication,
       {double? discount}) async {
     double finalPrice = visaApplication.price!;
@@ -83,8 +75,10 @@ class PaymentRepository extends IPayment {
 
       var url = result.data['paymentInvoiceUrl'];
       return right(url);
-    } on Exception catch (e) {
-      return left(e.toString());
+    } on DioError catch (e) {
+      return left(ErrorHandling().onDioErrorHandle(e));
+    } on Exception {
+      return left(Failures.apiExpired());
     }
   }
 

@@ -6,21 +6,23 @@ import 'package:dti_web/domain/global/failures.dart';
 import 'package:dti_web/domain/update/image_upload_response.dart';
 
 abstract class IUpdateApplication {
-  Future<Either<String, String>> createNewApplicationDocument(
+  Future<Either<Failures, String>> createNewApplicationDocument(
       VisaApplicationModel visaApplicationModel);
-  Future<Either<String, String>> updateParticularData(
+  Future<Either<Failures, String>> updateParticularData(
       VisaApplicationModel visaApplicationModel);
-  Future<Either<String, String>> updatePassportParticularData(
+  Future<Either<Failures, String>> updatePassportParticularData(
       VisaApplicationModel visaApplicationModel);
-  Future<Either<String, String>> rejectApplication(String firebaseDocId, String notes);
-  Future<Either<String, String>> pendingPaymentApplication(String firebaseDocId, double price);
-  Future<Either<String, String>> updateVoaData(
+  Future<Either<Failures, String>> rejectApplication(
+      String firebaseDocId, String notes);
+  Future<Either<Failures, String>> pendingPaymentApplication(
+      String firebaseDocId, double price);
+  Future<Either<Failures, String>> updateVoaData(
       VisaApplicationModel visaApplicationModel);
-  Future<Either<String, String>> deleteSingleImage(
+  Future<Either<Failures, String>> deleteSingleImage(
       String imageName, String docId, String appId);
-  Future<Either<String, String>> createUserPassport(bool isNew);
-  Future<Either<String, String>> updateGuarantor(VisaApplicationModel visa);
-  Future<Either<String, String>> updateMultiVisa(
+  Future<Either<Failures, String>> createUserPassport(bool isNew);
+  Future<Either<Failures, String>> updateGuarantor(VisaApplicationModel visa);
+  Future<Either<Failures, String>> updateMultiVisa(
       String duration, String firebaseDocId);
   Future<Either<Failures, List<ImageUploadResponse>>> uploadImagesAndUpdateData(
       VisaApplicationModel visa,
@@ -33,12 +35,12 @@ abstract class IUpdateApplication {
       List<String> deletedImages);
   Future<Either<Failures, String>> submitVisa(String firebaseDocId);
   Future<Either<Failures, String>> submitPassport(String firebaseDocId);
-  Future<Either<String, VisaApplicationModel>> getUserApplicationById(
+  Future<Either<Failures, VisaApplicationModel>> getUserApplicationById(
       String firebaseDocId);
-  Future<Either<String, VisaApplicationModel>> getPassportById(
+  Future<Either<Failures, VisaApplicationModel>> getPassportById(
       String firebaseDocId);
-  Future<Either<String, SingleVisaResponse>> getUserApplicationByIdWithImages(
+  Future<Either<Failures, SingleVisaResponse>> getUserApplicationByIdWithImages(
       String firebaseDocId);
-  Future<Either<String, SingleVisaResponse>> getUserPassportByIdWithImages(
+  Future<Either<Failures, SingleVisaResponse>> getUserPassportByIdWithImages(
       String firebaseDocId);
 }

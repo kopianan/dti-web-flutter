@@ -5,6 +5,8 @@ import 'package:dio/dio.dart';
 import 'package:dti_web/core/storage.dart';
 import 'package:dti_web/domain/admin_application/i_admin_application.dart';
 import 'package:dti_web/domain/core/simple_visa_model.dart';
+import 'package:dti_web/domain/global/failures.dart';
+import 'package:dti_web/utils/error_handling.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:injectable/injectable.dart';
 
@@ -14,7 +16,8 @@ class AdminApplicationRepository extends IAdminApplication {
   final Dio dio;
   final storage = Storage();
   @override
-  Future<Either<String, List<SimpleVisaModel>>> getAllUserApplication() async {
+  Future<Either<Failures, List<SimpleVisaModel>>>
+      getAllUserApplication() async {
     try {
       final result = await dio.get('${dotenv.env['BASE_URL']}/applications',
           options: Options(
@@ -30,9 +33,10 @@ class AdminApplicationRepository extends IAdminApplication {
         // TODO
       }
       return Right(listData);
-    } on Exception catch (e) {
-      log(e.toString());
-      return left("");
+    } on DioError catch (e) {
+      return left(ErrorHandling().onDioErrorHandle(e));
+    } on Exception {
+      return left(Failures.serverError());
     }
   }
 }

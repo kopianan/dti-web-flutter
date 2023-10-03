@@ -1,7 +1,9 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:dti_web/application/admin_application/cubit/admin_application_cubit.dart';
 import 'package:dti_web/application/document/document_cubit.dart';
 import 'package:dti_web/application/update_application/update_application_cubit.dart';
 import 'package:dti_web/core/mixin/core_mixin.dart';
+import 'package:dti_web/core/mixin/navigate_mixin.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
 import 'package:dti_web/domain/core/apps_type.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
@@ -26,7 +28,7 @@ class ConfirmationSection extends StatefulWidget {
 }
 
 class _ConfirmationSectionState extends State<ConfirmationSection>
-    with CoreMixin {
+    with CoreMixin, NavigateMixin {
   final _priceController = TextEditingController();
 
   final _rejectController = TextEditingController();
@@ -48,20 +50,41 @@ class _ConfirmationSectionState extends State<ConfirmationSection>
             EasyLoading.show();
           }, onError: (e) {
             EasyLoading.dismiss();
+            late String errorMessage;
+            e.error.maybeMap(serverError: (err) {
+              errorMessage = 'Server Error';
+            }, apiExpired: (err) {
+              errorMessage = "Api Expired";
+            }, generalError: (err) {
+              errorMessage = err.err;
+            }, noData: (err) {
+              errorMessage = err.err;
+            }, timeOut: (err) {
+              errorMessage = err.err;
+            }, authError: (err) {
+              errorMessage = err.message;
+            }, orElse: () {
+              errorMessage = "Something Wrong";
+            });
             showErrDialog(
               context,
               title: "Error",
-              desc: e.error,
+              desc: errorMessage,
             );
           }, onRejectApplication: (e) async {
             await Future.delayed(const Duration(seconds: 3));
             EasyLoading.dismiss();
-            showSuccessDialog(context,
-                title: "Rejection",
-                desc: 'Success rejected application', btnOkOnPress: () {
-              context.read<UpdateApplicationCubit>().getUserAppsWithImages(
-                  widget.visa.firebaseDocId!, widget.type);
-            });
+            showSuccessDialog(
+              context,
+              title: "Rejection",
+              desc: 'Success rejected application',
+              btnOkOnPress: () {
+                backToDashboard(context);
+                context.read<AdminApplicationCubit>().getAllUserVisa();
+                // context.read<UpdateApplicationCubit>().getUserAppsWithImages(
+                //     widget.visa.firebaseDocId!, widget.type);
+              },
+            );
           }, onPendingPaymentApplication: (e) async {
             await Future.delayed(const Duration(seconds: 3));
             EasyLoading.dismiss();
@@ -69,8 +92,12 @@ class _ConfirmationSectionState extends State<ConfirmationSection>
                 title: "Pending Payment",
                 desc: 'Success update application to Pending Payment',
                 btnOkOnPress: () {
-              context.read<UpdateApplicationCubit>().getUserAppsWithImages(
-                  widget.visa.firebaseDocId!, widget.type);
+              backToDashboard(context);
+              context.read<AdminApplicationCubit>().getAllUserVisa();
+              // context.read<UpdateApplicationCubit>().getUserAppsWithImages(
+              //       widget.visa.firebaseDocId!,
+              //       widget.type,
+              //     );
             });
           }, onGetSingleAppsWithImage: (e) async {
             EasyLoading.dismiss();

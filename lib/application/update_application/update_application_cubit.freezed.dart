@@ -20,7 +20,7 @@ mixin _$UpdateApplicationState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() onLoading,
-    required TResult Function(String error) onError,
+    required TResult Function(Failures error) onError,
     required TResult Function(VisaApplicationModel visaApps)
         onCreateApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
@@ -46,7 +46,7 @@ mixin _$UpdateApplicationState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? onLoading,
-    TResult? Function(String error)? onError,
+    TResult? Function(Failures error)? onError,
     TResult? Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
@@ -70,7 +70,7 @@ mixin _$UpdateApplicationState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? onLoading,
-    TResult Function(String error)? onError,
+    TResult Function(Failures error)? onError,
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
@@ -229,7 +229,7 @@ class _$_Initial implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() onLoading,
-    required TResult Function(String error) onError,
+    required TResult Function(Failures error) onError,
     required TResult Function(VisaApplicationModel visaApps)
         onCreateApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
@@ -258,7 +258,7 @@ class _$_Initial implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? onLoading,
-    TResult? Function(String error)? onError,
+    TResult? Function(Failures error)? onError,
     TResult? Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
@@ -285,7 +285,7 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? onLoading,
-    TResult Function(String error)? onError,
+    TResult Function(Failures error)? onError,
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
@@ -446,7 +446,7 @@ class _$_OnLoading implements _OnLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() onLoading,
-    required TResult Function(String error) onError,
+    required TResult Function(Failures error) onError,
     required TResult Function(VisaApplicationModel visaApps)
         onCreateApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
@@ -475,7 +475,7 @@ class _$_OnLoading implements _OnLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? onLoading,
-    TResult? Function(String error)? onError,
+    TResult? Function(Failures error)? onError,
     TResult? Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
@@ -502,7 +502,7 @@ class _$_OnLoading implements _OnLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? onLoading,
-    TResult Function(String error)? onError,
+    TResult Function(Failures error)? onError,
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
@@ -629,7 +629,9 @@ abstract class _$$_OnErrorCopyWith<$Res> {
           _$_OnError value, $Res Function(_$_OnError) then) =
       __$$_OnErrorCopyWithImpl<$Res>;
   @useResult
-  $Res call({String error});
+  $Res call({Failures error});
+
+  $FailuresCopyWith<$Res> get error;
 }
 
 /// @nodoc
@@ -648,8 +650,16 @@ class __$$_OnErrorCopyWithImpl<$Res>
       null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Failures,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $FailuresCopyWith<$Res> get error {
+    return $FailuresCopyWith<$Res>(_value.error, (value) {
+      return _then(_value.copyWith(error: value));
+    });
   }
 }
 
@@ -659,7 +669,7 @@ class _$_OnError implements _OnError {
   const _$_OnError(this.error);
 
   @override
-  final String error;
+  final Failures error;
 
   @override
   String toString() {
@@ -688,7 +698,7 @@ class _$_OnError implements _OnError {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() onLoading,
-    required TResult Function(String error) onError,
+    required TResult Function(Failures error) onError,
     required TResult Function(VisaApplicationModel visaApps)
         onCreateApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
@@ -717,7 +727,7 @@ class _$_OnError implements _OnError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? onLoading,
-    TResult? Function(String error)? onError,
+    TResult? Function(Failures error)? onError,
     TResult? Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
@@ -744,7 +754,7 @@ class _$_OnError implements _OnError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? onLoading,
-    TResult Function(String error)? onError,
+    TResult Function(Failures error)? onError,
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
@@ -862,9 +872,9 @@ class _$_OnError implements _OnError {
 }
 
 abstract class _OnError implements UpdateApplicationState {
-  const factory _OnError(final String error) = _$_OnError;
+  const factory _OnError(final Failures error) = _$_OnError;
 
-  String get error;
+  Failures get error;
   @JsonKey(ignore: true)
   _$$_OnErrorCopyWith<_$_OnError> get copyWith =>
       throw _privateConstructorUsedError;
@@ -948,7 +958,7 @@ class _$_OnCreateApplication implements _OnCreateApplication {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() onLoading,
-    required TResult Function(String error) onError,
+    required TResult Function(Failures error) onError,
     required TResult Function(VisaApplicationModel visaApps)
         onCreateApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
@@ -977,7 +987,7 @@ class _$_OnCreateApplication implements _OnCreateApplication {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? onLoading,
-    TResult? Function(String error)? onError,
+    TResult? Function(Failures error)? onError,
     TResult? Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
@@ -1004,7 +1014,7 @@ class _$_OnCreateApplication implements _OnCreateApplication {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? onLoading,
-    TResult Function(String error)? onError,
+    TResult Function(Failures error)? onError,
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
@@ -1208,7 +1218,7 @@ class _$_OnCreatePassport implements _OnCreatePassport {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() onLoading,
-    required TResult Function(String error) onError,
+    required TResult Function(Failures error) onError,
     required TResult Function(VisaApplicationModel visaApps)
         onCreateApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
@@ -1237,7 +1247,7 @@ class _$_OnCreatePassport implements _OnCreatePassport {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? onLoading,
-    TResult? Function(String error)? onError,
+    TResult? Function(Failures error)? onError,
     TResult? Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
@@ -1264,7 +1274,7 @@ class _$_OnCreatePassport implements _OnCreatePassport {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? onLoading,
-    TResult Function(String error)? onError,
+    TResult Function(Failures error)? onError,
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
@@ -1459,7 +1469,7 @@ class _$_OnSubmitApplication implements _OnSubmitApplication {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() onLoading,
-    required TResult Function(String error) onError,
+    required TResult Function(Failures error) onError,
     required TResult Function(VisaApplicationModel visaApps)
         onCreateApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
@@ -1488,7 +1498,7 @@ class _$_OnSubmitApplication implements _OnSubmitApplication {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? onLoading,
-    TResult? Function(String error)? onError,
+    TResult? Function(Failures error)? onError,
     TResult? Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
@@ -1515,7 +1525,7 @@ class _$_OnSubmitApplication implements _OnSubmitApplication {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? onLoading,
-    TResult Function(String error)? onError,
+    TResult Function(Failures error)? onError,
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
@@ -1709,7 +1719,7 @@ class _$_OnSubmitPassport implements _OnSubmitPassport {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() onLoading,
-    required TResult Function(String error) onError,
+    required TResult Function(Failures error) onError,
     required TResult Function(VisaApplicationModel visaApps)
         onCreateApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
@@ -1738,7 +1748,7 @@ class _$_OnSubmitPassport implements _OnSubmitPassport {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? onLoading,
-    TResult? Function(String error)? onError,
+    TResult? Function(Failures error)? onError,
     TResult? Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
@@ -1765,7 +1775,7 @@ class _$_OnSubmitPassport implements _OnSubmitPassport {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? onLoading,
-    TResult Function(String error)? onError,
+    TResult Function(Failures error)? onError,
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
@@ -1932,7 +1942,7 @@ class _$_OnUpdateApplication implements _OnUpdateApplication {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() onLoading,
-    required TResult Function(String error) onError,
+    required TResult Function(Failures error) onError,
     required TResult Function(VisaApplicationModel visaApps)
         onCreateApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
@@ -1961,7 +1971,7 @@ class _$_OnUpdateApplication implements _OnUpdateApplication {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? onLoading,
-    TResult? Function(String error)? onError,
+    TResult? Function(Failures error)? onError,
     TResult? Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
@@ -1988,7 +1998,7 @@ class _$_OnUpdateApplication implements _OnUpdateApplication {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? onLoading,
-    TResult Function(String error)? onError,
+    TResult Function(Failures error)? onError,
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
@@ -2149,7 +2159,7 @@ class _$_OnUpdatePassport implements _OnUpdatePassport {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() onLoading,
-    required TResult Function(String error) onError,
+    required TResult Function(Failures error) onError,
     required TResult Function(VisaApplicationModel visaApps)
         onCreateApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
@@ -2178,7 +2188,7 @@ class _$_OnUpdatePassport implements _OnUpdatePassport {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? onLoading,
-    TResult? Function(String error)? onError,
+    TResult? Function(Failures error)? onError,
     TResult? Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
@@ -2205,7 +2215,7 @@ class _$_OnUpdatePassport implements _OnUpdatePassport {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? onLoading,
-    TResult Function(String error)? onError,
+    TResult Function(Failures error)? onError,
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
@@ -2393,7 +2403,7 @@ class _$_OnUpdateMultiVisa implements _OnUpdateMultiVisa {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() onLoading,
-    required TResult Function(String error) onError,
+    required TResult Function(Failures error) onError,
     required TResult Function(VisaApplicationModel visaApps)
         onCreateApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
@@ -2422,7 +2432,7 @@ class _$_OnUpdateMultiVisa implements _OnUpdateMultiVisa {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? onLoading,
-    TResult? Function(String error)? onError,
+    TResult? Function(Failures error)? onError,
     TResult? Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
@@ -2449,7 +2459,7 @@ class _$_OnUpdateMultiVisa implements _OnUpdateMultiVisa {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? onLoading,
-    TResult Function(String error)? onError,
+    TResult Function(Failures error)? onError,
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
@@ -2615,7 +2625,7 @@ class _$_OnUpdateGuarantor implements _OnUpdateGuarantor {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() onLoading,
-    required TResult Function(String error) onError,
+    required TResult Function(Failures error) onError,
     required TResult Function(VisaApplicationModel visaApps)
         onCreateApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
@@ -2644,7 +2654,7 @@ class _$_OnUpdateGuarantor implements _OnUpdateGuarantor {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? onLoading,
-    TResult? Function(String error)? onError,
+    TResult? Function(Failures error)? onError,
     TResult? Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
@@ -2671,7 +2681,7 @@ class _$_OnUpdateGuarantor implements _OnUpdateGuarantor {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? onLoading,
-    TResult Function(String error)? onError,
+    TResult Function(Failures error)? onError,
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
@@ -2859,7 +2869,7 @@ class _$_OnDeleteSingleImage implements _OnDeleteSingleImage {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() onLoading,
-    required TResult Function(String error) onError,
+    required TResult Function(Failures error) onError,
     required TResult Function(VisaApplicationModel visaApps)
         onCreateApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
@@ -2888,7 +2898,7 @@ class _$_OnDeleteSingleImage implements _OnDeleteSingleImage {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? onLoading,
-    TResult? Function(String error)? onError,
+    TResult? Function(Failures error)? onError,
     TResult? Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
@@ -2915,7 +2925,7 @@ class _$_OnDeleteSingleImage implements _OnDeleteSingleImage {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? onLoading,
-    TResult Function(String error)? onError,
+    TResult Function(Failures error)? onError,
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
@@ -3109,7 +3119,7 @@ class _$_OnRejectApplication implements _OnRejectApplication {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() onLoading,
-    required TResult Function(String error) onError,
+    required TResult Function(Failures error) onError,
     required TResult Function(VisaApplicationModel visaApps)
         onCreateApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
@@ -3138,7 +3148,7 @@ class _$_OnRejectApplication implements _OnRejectApplication {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? onLoading,
-    TResult? Function(String error)? onError,
+    TResult? Function(Failures error)? onError,
     TResult? Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
@@ -3165,7 +3175,7 @@ class _$_OnRejectApplication implements _OnRejectApplication {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? onLoading,
-    TResult Function(String error)? onError,
+    TResult Function(Failures error)? onError,
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
@@ -3362,7 +3372,7 @@ class _$_OnPendingPaymentApplication implements _OnPendingPaymentApplication {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() onLoading,
-    required TResult Function(String error) onError,
+    required TResult Function(Failures error) onError,
     required TResult Function(VisaApplicationModel visaApps)
         onCreateApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
@@ -3391,7 +3401,7 @@ class _$_OnPendingPaymentApplication implements _OnPendingPaymentApplication {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? onLoading,
-    TResult? Function(String error)? onError,
+    TResult? Function(Failures error)? onError,
     TResult? Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
@@ -3418,7 +3428,7 @@ class _$_OnPendingPaymentApplication implements _OnPendingPaymentApplication {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? onLoading,
-    TResult Function(String error)? onError,
+    TResult Function(Failures error)? onError,
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
@@ -3623,7 +3633,7 @@ class _$_OnGetSingleApplication implements _OnGetSingleApplication {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() onLoading,
-    required TResult Function(String error) onError,
+    required TResult Function(Failures error) onError,
     required TResult Function(VisaApplicationModel visaApps)
         onCreateApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
@@ -3652,7 +3662,7 @@ class _$_OnGetSingleApplication implements _OnGetSingleApplication {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? onLoading,
-    TResult? Function(String error)? onError,
+    TResult? Function(Failures error)? onError,
     TResult? Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
@@ -3679,7 +3689,7 @@ class _$_OnGetSingleApplication implements _OnGetSingleApplication {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? onLoading,
-    TResult Function(String error)? onError,
+    TResult Function(Failures error)? onError,
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
@@ -3886,7 +3896,7 @@ class _$_OnGetSingleAppsWithImage implements _OnGetSingleAppsWithImage {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() onLoading,
-    required TResult Function(String error) onError,
+    required TResult Function(Failures error) onError,
     required TResult Function(VisaApplicationModel visaApps)
         onCreateApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
@@ -3915,7 +3925,7 @@ class _$_OnGetSingleAppsWithImage implements _OnGetSingleAppsWithImage {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? onLoading,
-    TResult? Function(String error)? onError,
+    TResult? Function(Failures error)? onError,
     TResult? Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
@@ -3942,7 +3952,7 @@ class _$_OnGetSingleAppsWithImage implements _OnGetSingleAppsWithImage {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? onLoading,
-    TResult Function(String error)? onError,
+    TResult Function(Failures error)? onError,
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
@@ -4109,7 +4119,7 @@ class _$_DeleteApplication implements _DeleteApplication {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() onLoading,
-    required TResult Function(String error) onError,
+    required TResult Function(Failures error) onError,
     required TResult Function(VisaApplicationModel visaApps)
         onCreateApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
@@ -4138,7 +4148,7 @@ class _$_DeleteApplication implements _DeleteApplication {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? onLoading,
-    TResult? Function(String error)? onError,
+    TResult? Function(Failures error)? onError,
     TResult? Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
@@ -4165,7 +4175,7 @@ class _$_DeleteApplication implements _DeleteApplication {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? onLoading,
-    TResult Function(String error)? onError,
+    TResult Function(Failures error)? onError,
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
@@ -4360,7 +4370,7 @@ class _$_OnUploadImageComplete implements _OnUploadImageComplete {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() onLoading,
-    required TResult Function(String error) onError,
+    required TResult Function(Failures error) onError,
     required TResult Function(VisaApplicationModel visaApps)
         onCreateApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
@@ -4389,7 +4399,7 @@ class _$_OnUploadImageComplete implements _OnUploadImageComplete {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? onLoading,
-    TResult? Function(String error)? onError,
+    TResult? Function(Failures error)? onError,
     TResult? Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
@@ -4416,7 +4426,7 @@ class _$_OnUploadImageComplete implements _OnUploadImageComplete {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? onLoading,
-    TResult Function(String error)? onError,
+    TResult Function(Failures error)? onError,
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
@@ -4620,7 +4630,7 @@ class _$_OnSelfieImageComplete implements _OnSelfieImageComplete {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() onLoading,
-    required TResult Function(String error) onError,
+    required TResult Function(Failures error) onError,
     required TResult Function(VisaApplicationModel visaApps)
         onCreateApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
@@ -4649,7 +4659,7 @@ class _$_OnSelfieImageComplete implements _OnSelfieImageComplete {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? onLoading,
-    TResult? Function(String error)? onError,
+    TResult? Function(Failures error)? onError,
     TResult? Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
@@ -4676,7 +4686,7 @@ class _$_OnSelfieImageComplete implements _OnSelfieImageComplete {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? onLoading,
-    TResult Function(String error)? onError,
+    TResult Function(Failures error)? onError,
     TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,

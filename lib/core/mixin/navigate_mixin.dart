@@ -10,6 +10,7 @@ mixin NavigateMixin {
 
     if (user.adminOrAgent()) {
       AutoRouter.of(context).replaceAll([const CDashboardRoute()]);
+    
     } else {
       AutoRouter.of(context).replaceAll([const DashboardRoute()]);
     }

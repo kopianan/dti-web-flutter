@@ -15,6 +15,7 @@ class DashboardCubit extends Cubit<DashboardState> {
   final IDashboard iDashboard;
 
   void getLastPassportAndApplicationData() async {
+
     emit(const DashboardState.loading());
     try {
       final data = await iDashboard.getLastPassportAndApplication();
@@ -61,7 +62,7 @@ class DashboardCubit extends Cubit<DashboardState> {
         (l) => emit(DashboardState.error(l)),
         (r) => emit(DashboardState.onDeleteSingleData(visa, appsType)),
       );
-    } on Exception catch (e) {
+    } on Exception {
       emit(DashboardState.error(Failures.serverError()));
     }
   }
@@ -74,7 +75,7 @@ class DashboardCubit extends Cubit<DashboardState> {
         (l) => emit(DashboardState.error(l)),
         (r) => emit(DashboardState.onDeletePassport(visa, appType)),
       );
-    } on Exception catch (e) {
+    } on Exception {
       emit(DashboardState.error(Failures.serverError()));
     }
   }

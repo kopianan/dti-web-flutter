@@ -1,10 +1,11 @@
-import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:dti_web/core/storage.dart';
 import 'package:dti_web/domain/app_list/i_app_list.dart';
 import 'package:dti_web/domain/core/simple_visa_model.dart';
+import 'package:dti_web/domain/global/failures.dart';
+import 'package:dti_web/utils/error_handling.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:injectable/injectable.dart';
 
@@ -14,7 +15,7 @@ class AppListRepository extends IAppList {
   final Dio dio;
   final storage = Storage();
   @override
-  Future<Either<String, List<SimpleVisaModel>>> getUserVisaApplication(
+  Future<Either<Failures, List<SimpleVisaModel>>> getUserVisaApplication(
       bool isAgent) async {
     //ONLY GET APPLICATION, NOT PASSPORT
     // final result =
@@ -42,9 +43,10 @@ class AppListRepository extends IAppList {
         (a, b) => a.createdDate!.compareTo(b.createdDate!),
       );
       return Right(listData);
-    } on Exception catch (e) {
-      log(e.toString());
-      return left("");
+    } on DioError catch (e) {
+      return left(ErrorHandling().onDioErrorHandle(e));
+    } on Exception {
+      return left(Failures.serverError());
     }
   }
 

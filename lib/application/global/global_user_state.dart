@@ -8,6 +8,7 @@ class GlobalUserState with _$GlobalUserState {
     required bool isAgent,
     required String? token,
     @Default(false) bool logOut,
+    String? message,
   }) = _GlobalUserState;
   factory GlobalUserState.initial() => GlobalUserState(
         user: UserData.empty(),

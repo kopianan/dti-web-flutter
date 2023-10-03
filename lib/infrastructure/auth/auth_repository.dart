@@ -7,6 +7,7 @@ import 'package:dti_web/domain/auth/auth_response.dart';
 import 'package:dti_web/domain/auth/i_auth.dart';
 import 'package:dti_web/domain/auth/user_data.dart';
 import 'package:dti_web/domain/global/failures.dart';
+import 'package:dti_web/utils/error_handling.dart';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -43,10 +44,7 @@ class AuthRepository extends IAuth {
         return Left(Failures.generalError("Something wrong"));
       }
     } on DioError catch (e) {
-      if (e.response!.statusCode == 404) {
-        return Left(Failures.generalError("Data not found"));
-      }
-      return Left(Failures.generalError("Something wrong"));
+      return left(ErrorHandling().onDioErrorHandle(e));
     } on Exception {
       return Left(Failures.generalError("Something wrong"));
     }
@@ -153,35 +151,7 @@ class AuthRepository extends IAuth {
       }
       return Left(Failures.noData("Something wrong"));
     } on DioError catch (e) {
-      switch (e.type) {
-        case DioErrorType.connectionTimeout:
-          // TODO: Handle this case.
-          break;
-        case DioErrorType.sendTimeout:
-          // TODO: Handle this case.
-          break;
-        case DioErrorType.receiveTimeout:
-          // TODO: Handle this case.
-          break;
-        case DioErrorType.badResponse:
-          if (e.response!.statusCode == 400) {
-            return Left(Failures.generalError(e.response!.data.toString()));
-          }
-          break;
-        case DioErrorType.cancel:
-          // TODO: Handle this case.
-          break;
-        case DioErrorType.unknown:
-          // TODO: Handle this case.
-          break;
-        case DioErrorType.badCertificate:
-          // TODO: Handle this case.
-          break;
-        case DioErrorType.connectionError:
-          // TODO: Handle this case.
-          break;
-      }
-      return Left(Failures.serverError());
+      return left(ErrorHandling().onDioErrorHandle(e));
     }
   }
 
@@ -198,38 +168,7 @@ class AuthRepository extends IAuth {
       }
       return Left(Failures.noData("Something wrong"));
     } on DioError catch (e) {
-      switch (e.type) {
-        case DioErrorType.connectionTimeout:
-          // TODO: Handle this case.
-          break;
-        case DioErrorType.sendTimeout:
-          // TODO: Handle this case.
-          break;
-        case DioErrorType.receiveTimeout:
-          // TODO: Handle this case.
-          break;
-        case DioErrorType.badResponse:
-          if (e.response!.statusCode == 400) {
-            return Left(Failures.generalError(e.response!.data.toString()));
-          }
-          if (e.response!.statusCode == 404) {
-            return Left(Failures.generalError(e.response!.data['error']));
-          }
-          break;
-        case DioErrorType.cancel:
-          // TODO: Handle this case.
-          break;
-        case DioErrorType.unknown:
-          // TODO: Handle this case.
-          break;
-        case DioErrorType.badCertificate:
-          // TODO: Handle this case.
-          break;
-        case DioErrorType.connectionError:
-          // TODO: Handle this case.
-          break;
-      }
-      return Left(Failures.serverError());
+      return left(ErrorHandling().onDioErrorHandle(e));
     }
   }
 
