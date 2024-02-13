@@ -12,7 +12,7 @@ part of 'customer_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 CustomerModel _$CustomerModelFromJson(Map<String, dynamic> json) {
   return _CustomerModel.fromJson(json);
@@ -121,11 +121,11 @@ class _$CustomerModelCopyWithImpl<$Res, $Val extends CustomerModel>
 }
 
 /// @nodoc
-abstract class _$$_CustomerModelCopyWith<$Res>
+abstract class _$$CustomerModelImplCopyWith<$Res>
     implements $CustomerModelCopyWith<$Res> {
-  factory _$$_CustomerModelCopyWith(
-          _$_CustomerModel value, $Res Function(_$_CustomerModel) then) =
-      __$$_CustomerModelCopyWithImpl<$Res>;
+  factory _$$CustomerModelImplCopyWith(
+          _$CustomerModelImpl value, $Res Function(_$CustomerModelImpl) then) =
+      __$$CustomerModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -141,11 +141,11 @@ abstract class _$$_CustomerModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CustomerModelCopyWithImpl<$Res>
-    extends _$CustomerModelCopyWithImpl<$Res, _$_CustomerModel>
-    implements _$$_CustomerModelCopyWith<$Res> {
-  __$$_CustomerModelCopyWithImpl(
-      _$_CustomerModel _value, $Res Function(_$_CustomerModel) _then)
+class __$$CustomerModelImplCopyWithImpl<$Res>
+    extends _$CustomerModelCopyWithImpl<$Res, _$CustomerModelImpl>
+    implements _$$CustomerModelImplCopyWith<$Res> {
+  __$$CustomerModelImplCopyWithImpl(
+      _$CustomerModelImpl _value, $Res Function(_$CustomerModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -161,7 +161,7 @@ class __$$_CustomerModelCopyWithImpl<$Res>
     Object? lastUpdatedDate = freezed,
     Object? outstandingAction = null,
   }) {
-    return _then(_$_CustomerModel(
+    return _then(_$CustomerModelImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -204,8 +204,8 @@ class __$$_CustomerModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_CustomerModel implements _CustomerModel {
-  _$_CustomerModel(
+class _$CustomerModelImpl implements _CustomerModel {
+  _$CustomerModelImpl(
       {this.name = "",
       this.uid,
       this.email = "",
@@ -216,8 +216,8 @@ class _$_CustomerModel implements _CustomerModel {
       @DateTimeOrNullConverter() this.lastUpdatedDate,
       this.outstandingAction = false});
 
-  factory _$_CustomerModel.fromJson(Map<String, dynamic> json) =>
-      _$$_CustomerModelFromJson(json);
+  factory _$CustomerModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CustomerModelImplFromJson(json);
 
   @override
   @JsonKey()
@@ -252,10 +252,10 @@ class _$_CustomerModel implements _CustomerModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CustomerModel &&
+            other is _$CustomerModelImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.uid, uid) || other.uid == uid) &&
             (identical(other.email, email) || other.email == email) &&
@@ -281,12 +281,12 @@ class _$_CustomerModel implements _CustomerModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CustomerModelCopyWith<_$_CustomerModel> get copyWith =>
-      __$$_CustomerModelCopyWithImpl<_$_CustomerModel>(this, _$identity);
+  _$$CustomerModelImplCopyWith<_$CustomerModelImpl> get copyWith =>
+      __$$CustomerModelImplCopyWithImpl<_$CustomerModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CustomerModelToJson(
+    return _$$CustomerModelImplToJson(
       this,
     );
   }
@@ -302,10 +302,10 @@ abstract class _CustomerModel implements CustomerModel {
       final int totalVisa,
       @DateTimeOrNullConverter() final DateTime? createdDate,
       @DateTimeOrNullConverter() final DateTime? lastUpdatedDate,
-      final bool outstandingAction}) = _$_CustomerModel;
+      final bool outstandingAction}) = _$CustomerModelImpl;
 
   factory _CustomerModel.fromJson(Map<String, dynamic> json) =
-      _$_CustomerModel.fromJson;
+      _$CustomerModelImpl.fromJson;
 
   @override
   String get name;
@@ -329,6 +329,6 @@ abstract class _CustomerModel implements CustomerModel {
   bool get outstandingAction;
   @override
   @JsonKey(ignore: true)
-  _$$_CustomerModelCopyWith<_$_CustomerModel> get copyWith =>
+  _$$CustomerModelImplCopyWith<_$CustomerModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

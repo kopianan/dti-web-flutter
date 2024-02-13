@@ -12,7 +12,7 @@ part of 'single_visa_response.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 SingleVisaResponse _$SingleVisaResponseFromJson(Map<String, dynamic> json) {
   return _SingleVisaResponse.fromJson(json);
@@ -40,10 +40,9 @@ abstract class $SingleVisaResponseCopyWith<$Res> {
       _$SingleVisaResponseCopyWithImpl<$Res, SingleVisaResponse>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'data')
-          VisaApplicationModel? visaApplicationModel,
+      {@JsonKey(name: 'data') VisaApplicationModel? visaApplicationModel,
       @JsonKey(name: 'documentUserUrl')
-          List<Map<String, dynamic>>? documentUserApplicationUrl});
+      List<Map<String, dynamic>>? documentUserApplicationUrl});
 
   $VisaApplicationModelCopyWith<$Res>? get visaApplicationModel;
 }
@@ -91,29 +90,28 @@ class _$SingleVisaResponseCopyWithImpl<$Res, $Val extends SingleVisaResponse>
 }
 
 /// @nodoc
-abstract class _$$_SingleVisaResponseCopyWith<$Res>
+abstract class _$$SingleVisaResponseImplCopyWith<$Res>
     implements $SingleVisaResponseCopyWith<$Res> {
-  factory _$$_SingleVisaResponseCopyWith(_$_SingleVisaResponse value,
-          $Res Function(_$_SingleVisaResponse) then) =
-      __$$_SingleVisaResponseCopyWithImpl<$Res>;
+  factory _$$SingleVisaResponseImplCopyWith(_$SingleVisaResponseImpl value,
+          $Res Function(_$SingleVisaResponseImpl) then) =
+      __$$SingleVisaResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'data')
-          VisaApplicationModel? visaApplicationModel,
+      {@JsonKey(name: 'data') VisaApplicationModel? visaApplicationModel,
       @JsonKey(name: 'documentUserUrl')
-          List<Map<String, dynamic>>? documentUserApplicationUrl});
+      List<Map<String, dynamic>>? documentUserApplicationUrl});
 
   @override
   $VisaApplicationModelCopyWith<$Res>? get visaApplicationModel;
 }
 
 /// @nodoc
-class __$$_SingleVisaResponseCopyWithImpl<$Res>
-    extends _$SingleVisaResponseCopyWithImpl<$Res, _$_SingleVisaResponse>
-    implements _$$_SingleVisaResponseCopyWith<$Res> {
-  __$$_SingleVisaResponseCopyWithImpl(
-      _$_SingleVisaResponse _value, $Res Function(_$_SingleVisaResponse) _then)
+class __$$SingleVisaResponseImplCopyWithImpl<$Res>
+    extends _$SingleVisaResponseCopyWithImpl<$Res, _$SingleVisaResponseImpl>
+    implements _$$SingleVisaResponseImplCopyWith<$Res> {
+  __$$SingleVisaResponseImplCopyWithImpl(_$SingleVisaResponseImpl _value,
+      $Res Function(_$SingleVisaResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -122,7 +120,7 @@ class __$$_SingleVisaResponseCopyWithImpl<$Res>
     Object? visaApplicationModel = freezed,
     Object? documentUserApplicationUrl = freezed,
   }) {
-    return _then(_$_SingleVisaResponse(
+    return _then(_$SingleVisaResponseImpl(
       visaApplicationModel: freezed == visaApplicationModel
           ? _value.visaApplicationModel
           : visaApplicationModel // ignore: cast_nullable_to_non_nullable
@@ -137,16 +135,15 @@ class __$$_SingleVisaResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SingleVisaResponse implements _SingleVisaResponse {
-  _$_SingleVisaResponse(
-      {@JsonKey(name: 'data')
-          this.visaApplicationModel,
+class _$SingleVisaResponseImpl implements _SingleVisaResponse {
+  _$SingleVisaResponseImpl(
+      {@JsonKey(name: 'data') this.visaApplicationModel,
       @JsonKey(name: 'documentUserUrl')
-          final List<Map<String, dynamic>>? documentUserApplicationUrl})
+      final List<Map<String, dynamic>>? documentUserApplicationUrl})
       : _documentUserApplicationUrl = documentUserApplicationUrl;
 
-  factory _$_SingleVisaResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_SingleVisaResponseFromJson(json);
+  factory _$SingleVisaResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SingleVisaResponseImplFromJson(json);
 
   @override
   @JsonKey(name: 'data')
@@ -169,10 +166,10 @@ class _$_SingleVisaResponse implements _SingleVisaResponse {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SingleVisaResponse &&
+            other is _$SingleVisaResponseImpl &&
             (identical(other.visaApplicationModel, visaApplicationModel) ||
                 other.visaApplicationModel == visaApplicationModel) &&
             const DeepCollectionEquality().equals(
@@ -188,13 +185,13 @@ class _$_SingleVisaResponse implements _SingleVisaResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SingleVisaResponseCopyWith<_$_SingleVisaResponse> get copyWith =>
-      __$$_SingleVisaResponseCopyWithImpl<_$_SingleVisaResponse>(
+  _$$SingleVisaResponseImplCopyWith<_$SingleVisaResponseImpl> get copyWith =>
+      __$$SingleVisaResponseImplCopyWithImpl<_$SingleVisaResponseImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SingleVisaResponseToJson(
+    return _$$SingleVisaResponseImplToJson(
       this,
     );
   }
@@ -202,14 +199,13 @@ class _$_SingleVisaResponse implements _SingleVisaResponse {
 
 abstract class _SingleVisaResponse implements SingleVisaResponse {
   factory _SingleVisaResponse(
-          {@JsonKey(name: 'data')
-              final VisaApplicationModel? visaApplicationModel,
-          @JsonKey(name: 'documentUserUrl')
-              final List<Map<String, dynamic>>? documentUserApplicationUrl}) =
-      _$_SingleVisaResponse;
+      {@JsonKey(name: 'data') final VisaApplicationModel? visaApplicationModel,
+      @JsonKey(name: 'documentUserUrl')
+      final List<Map<String, dynamic>>?
+          documentUserApplicationUrl}) = _$SingleVisaResponseImpl;
 
   factory _SingleVisaResponse.fromJson(Map<String, dynamic> json) =
-      _$_SingleVisaResponse.fromJson;
+      _$SingleVisaResponseImpl.fromJson;
 
   @override
   @JsonKey(name: 'data')
@@ -219,6 +215,6 @@ abstract class _SingleVisaResponse implements SingleVisaResponse {
   List<Map<String, dynamic>>? get documentUserApplicationUrl;
   @override
   @JsonKey(ignore: true)
-  _$$_SingleVisaResponseCopyWith<_$_SingleVisaResponse> get copyWith =>
+  _$$SingleVisaResponseImplCopyWith<_$SingleVisaResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

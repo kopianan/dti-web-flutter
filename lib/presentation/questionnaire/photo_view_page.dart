@@ -52,16 +52,20 @@ class _PhotoViewPageState extends State<PhotoViewPage> {
                     child: Stack(
                       children: <Widget>[
                         widget.isNetwork
-                            ? Image.network(item,
-                                fit: BoxFit.contain, width: 1000.0)
+                            ? Image(
+                                image: NetworkImage(item),
+                                fit: BoxFit.contain,
+                                width: 1000.0)
                             : widget.isAsset
                                 ? Image.asset(
                                     item,
                                     fit: BoxFit.cover,
                                   )
                                 : kIsWeb
-                                    ? Image.network(item,
-                                        fit: BoxFit.contain, width: 1000.0)
+                                    ? Image(
+                                        image: NetworkImage(item),
+                                        fit: BoxFit.contain,
+                                        width: 1000.0)
                                     : Image.file(File(item),
                                         fit: BoxFit.contain, width: 1000.0)
                       ],
@@ -89,7 +93,7 @@ class _PhotoViewPageState extends State<PhotoViewPage> {
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
-                  Text(
+                  const Text(
                     "Download",
                     style: TextStyle(
                         fontSize: 17,
@@ -97,7 +101,7 @@ class _PhotoViewPageState extends State<PhotoViewPage> {
                         color: AppColor.primaryColor),
                   ),
                   10.horizontalSpace,
-                  Icon(
+                  const Icon(
                     Icons.download,
                     color: AppColor.primaryColor,
                   ),
@@ -133,7 +137,7 @@ class _PhotoViewPageState extends State<PhotoViewPage> {
               child: Container(
                 width: 12.0,
                 height: 12.0,
-                margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+                margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: (Theme.of(context).brightness == Brightness.dark

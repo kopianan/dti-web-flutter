@@ -12,7 +12,7 @@ part of 'timer_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$TimerState {
@@ -57,22 +57,22 @@ class _$TimerStateCopyWithImpl<$Res, $Val extends TimerState>
 }
 
 /// @nodoc
-abstract class _$$_TimerStateCopyWith<$Res>
+abstract class _$$TimerStateImplCopyWith<$Res>
     implements $TimerStateCopyWith<$Res> {
-  factory _$$_TimerStateCopyWith(
-          _$_TimerState value, $Res Function(_$_TimerState) then) =
-      __$$_TimerStateCopyWithImpl<$Res>;
+  factory _$$TimerStateImplCopyWith(
+          _$TimerStateImpl value, $Res Function(_$TimerStateImpl) then) =
+      __$$TimerStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Timer? timer});
 }
 
 /// @nodoc
-class __$$_TimerStateCopyWithImpl<$Res>
-    extends _$TimerStateCopyWithImpl<$Res, _$_TimerState>
-    implements _$$_TimerStateCopyWith<$Res> {
-  __$$_TimerStateCopyWithImpl(
-      _$_TimerState _value, $Res Function(_$_TimerState) _then)
+class __$$TimerStateImplCopyWithImpl<$Res>
+    extends _$TimerStateCopyWithImpl<$Res, _$TimerStateImpl>
+    implements _$$TimerStateImplCopyWith<$Res> {
+  __$$TimerStateImplCopyWithImpl(
+      _$TimerStateImpl _value, $Res Function(_$TimerStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -80,7 +80,7 @@ class __$$_TimerStateCopyWithImpl<$Res>
   $Res call({
     Object? timer = freezed,
   }) {
-    return _then(_$_TimerState(
+    return _then(_$TimerStateImpl(
       timer: freezed == timer
           ? _value.timer
           : timer // ignore: cast_nullable_to_non_nullable
@@ -91,8 +91,8 @@ class __$$_TimerStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TimerState implements _TimerState {
-  const _$_TimerState({this.timer});
+class _$TimerStateImpl implements _TimerState {
+  const _$TimerStateImpl({this.timer});
 
   @override
   final Timer? timer;
@@ -103,10 +103,10 @@ class _$_TimerState implements _TimerState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TimerState &&
+            other is _$TimerStateImpl &&
             (identical(other.timer, timer) || other.timer == timer));
   }
 
@@ -116,17 +116,17 @@ class _$_TimerState implements _TimerState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TimerStateCopyWith<_$_TimerState> get copyWith =>
-      __$$_TimerStateCopyWithImpl<_$_TimerState>(this, _$identity);
+  _$$TimerStateImplCopyWith<_$TimerStateImpl> get copyWith =>
+      __$$TimerStateImplCopyWithImpl<_$TimerStateImpl>(this, _$identity);
 }
 
 abstract class _TimerState implements TimerState {
-  const factory _TimerState({final Timer? timer}) = _$_TimerState;
+  const factory _TimerState({final Timer? timer}) = _$TimerStateImpl;
 
   @override
   Timer? get timer;
   @override
   @JsonKey(ignore: true)
-  _$$_TimerStateCopyWith<_$_TimerState> get copyWith =>
+  _$$TimerStateImplCopyWith<_$TimerStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

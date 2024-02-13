@@ -6,12 +6,13 @@ part of 'visa_price_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_VisaPriceModel _$$_VisaPriceModelFromJson(Map<String, dynamic> json) =>
-    _$_VisaPriceModel(
+_$VisaPriceModelImpl _$$VisaPriceModelImplFromJson(Map<String, dynamic> json) =>
+    _$VisaPriceModelImpl(
       usd: json['usd'] as int?,
     );
 
-Map<String, dynamic> _$$_VisaPriceModelToJson(_$_VisaPriceModel instance) =>
+Map<String, dynamic> _$$VisaPriceModelImplToJson(
+        _$VisaPriceModelImpl instance) =>
     <String, dynamic>{
       'usd': instance.usd,
     };

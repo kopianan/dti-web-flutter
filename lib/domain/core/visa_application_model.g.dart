@@ -6,9 +6,9 @@ part of 'visa_application_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_VisaApplicationModel _$$_VisaApplicationModelFromJson(
+_$VisaApplicationModelImpl _$$VisaApplicationModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$_VisaApplicationModel(
+    _$VisaApplicationModelImpl(
       bookingCode: json['bookingCode'] as String?,
       identityNumber: json['identityNumber'] as String?,
       type: json['type'] as String?,
@@ -81,8 +81,8 @@ _$_VisaApplicationModel _$$_VisaApplicationModelFromJson(
       multiVisaDuration: json['multiVisaDuration'] as String?,
     );
 
-Map<String, dynamic> _$$_VisaApplicationModelToJson(
-    _$_VisaApplicationModel instance) {
+Map<String, dynamic> _$$VisaApplicationModelImplToJson(
+    _$VisaApplicationModelImpl instance) {
   final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {

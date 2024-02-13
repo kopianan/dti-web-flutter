@@ -12,7 +12,7 @@ part of 'questionnaire_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$QuestionnaireState {
@@ -73,11 +73,11 @@ class _$QuestionnaireStateCopyWithImpl<$Res, $Val extends QuestionnaireState>
 }
 
 /// @nodoc
-abstract class _$$_QuestionnaireStateCopyWith<$Res>
+abstract class _$$QuestionnaireStateImplCopyWith<$Res>
     implements $QuestionnaireStateCopyWith<$Res> {
-  factory _$$_QuestionnaireStateCopyWith(_$_QuestionnaireState value,
-          $Res Function(_$_QuestionnaireState) then) =
-      __$$_QuestionnaireStateCopyWithImpl<$Res>;
+  factory _$$QuestionnaireStateImplCopyWith(_$QuestionnaireStateImpl value,
+          $Res Function(_$QuestionnaireStateImpl) then) =
+      __$$QuestionnaireStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -87,11 +87,11 @@ abstract class _$$_QuestionnaireStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_QuestionnaireStateCopyWithImpl<$Res>
-    extends _$QuestionnaireStateCopyWithImpl<$Res, _$_QuestionnaireState>
-    implements _$$_QuestionnaireStateCopyWith<$Res> {
-  __$$_QuestionnaireStateCopyWithImpl(
-      _$_QuestionnaireState _value, $Res Function(_$_QuestionnaireState) _then)
+class __$$QuestionnaireStateImplCopyWithImpl<$Res>
+    extends _$QuestionnaireStateCopyWithImpl<$Res, _$QuestionnaireStateImpl>
+    implements _$$QuestionnaireStateImplCopyWith<$Res> {
+  __$$QuestionnaireStateImplCopyWithImpl(_$QuestionnaireStateImpl _value,
+      $Res Function(_$QuestionnaireStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -101,7 +101,7 @@ class __$$_QuestionnaireStateCopyWithImpl<$Res>
     Object? importantNotes = freezed,
     Object? description = freezed,
   }) {
-    return _then(_$_QuestionnaireState(
+    return _then(_$QuestionnaireStateImpl(
       listQuestionnaire: freezed == listQuestionnaire
           ? _value.listQuestionnaire
           : listQuestionnaire // ignore: cast_nullable_to_non_nullable
@@ -120,8 +120,8 @@ class __$$_QuestionnaireStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_QuestionnaireState implements _QuestionnaireState {
-  _$_QuestionnaireState(
+class _$QuestionnaireStateImpl implements _QuestionnaireState {
+  _$QuestionnaireStateImpl(
       {this.listQuestionnaire, this.importantNotes, this.description});
 
   @override
@@ -137,10 +137,10 @@ class _$_QuestionnaireState implements _QuestionnaireState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_QuestionnaireState &&
+            other is _$QuestionnaireStateImpl &&
             const DeepCollectionEquality()
                 .equals(other.listQuestionnaire, listQuestionnaire) &&
             const DeepCollectionEquality()
@@ -159,8 +159,8 @@ class _$_QuestionnaireState implements _QuestionnaireState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_QuestionnaireStateCopyWith<_$_QuestionnaireState> get copyWith =>
-      __$$_QuestionnaireStateCopyWithImpl<_$_QuestionnaireState>(
+  _$$QuestionnaireStateImplCopyWith<_$QuestionnaireStateImpl> get copyWith =>
+      __$$QuestionnaireStateImplCopyWithImpl<_$QuestionnaireStateImpl>(
           this, _$identity);
 }
 
@@ -168,7 +168,7 @@ abstract class _QuestionnaireState implements QuestionnaireState {
   factory _QuestionnaireState(
       {final List<QuestionnaireModel>? listQuestionnaire,
       final List<String>? importantNotes,
-      final List<String>? description}) = _$_QuestionnaireState;
+      final List<String>? description}) = _$QuestionnaireStateImpl;
 
   @override
   List<QuestionnaireModel>? get listQuestionnaire;
@@ -178,6 +178,6 @@ abstract class _QuestionnaireState implements QuestionnaireState {
   List<String>? get description;
   @override
   @JsonKey(ignore: true)
-  _$$_QuestionnaireStateCopyWith<_$_QuestionnaireState> get copyWith =>
+  _$$QuestionnaireStateImplCopyWith<_$QuestionnaireStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

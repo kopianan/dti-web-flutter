@@ -12,7 +12,7 @@ part of 'dashboard_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$DashboardState {
@@ -105,24 +105,25 @@ class _$DashboardStateCopyWithImpl<$Res, $Val extends DashboardState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$DashboardStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$DashboardStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -130,9 +131,9 @@ class _$_Initial implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -232,28 +233,29 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements DashboardState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoadingCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(
-          _$_Loading value, $Res Function(_$_Loading) then) =
-      __$$_LoadingCopyWithImpl<$Res>;
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res>
-    extends _$DashboardStateCopyWithImpl<$Res, _$_Loading>
-    implements _$$_LoadingCopyWith<$Res> {
-  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$DashboardStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Loading implements _Loading {
-  const _$_Loading();
+class _$LoadingImpl implements _Loading {
+  const _$LoadingImpl();
 
   @override
   String toString() {
@@ -261,9 +263,9 @@ class _$_Loading implements _Loading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Loading);
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
   }
 
   @override
@@ -363,13 +365,14 @@ class _$_Loading implements _Loading {
 }
 
 abstract class _Loading implements DashboardState {
-  const factory _Loading() = _$_Loading;
+  const factory _Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$_ErrorCopyWith<$Res> {
-  factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
-      __$$_ErrorCopyWithImpl<$Res>;
+abstract class _$$ErrorImplCopyWith<$Res> {
+  factory _$$ErrorImplCopyWith(
+          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
+      __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Failures err});
 
@@ -377,10 +380,11 @@ abstract class _$$_ErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ErrorCopyWithImpl<$Res>
-    extends _$DashboardStateCopyWithImpl<$Res, _$_Error>
-    implements _$$_ErrorCopyWith<$Res> {
-  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
+class __$$ErrorImplCopyWithImpl<$Res>
+    extends _$DashboardStateCopyWithImpl<$Res, _$ErrorImpl>
+    implements _$$ErrorImplCopyWith<$Res> {
+  __$$ErrorImplCopyWithImpl(
+      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -388,7 +392,7 @@ class __$$_ErrorCopyWithImpl<$Res>
   $Res call({
     Object? err = null,
   }) {
-    return _then(_$_Error(
+    return _then(_$ErrorImpl(
       null == err
           ? _value.err
           : err // ignore: cast_nullable_to_non_nullable
@@ -407,8 +411,8 @@ class __$$_ErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Error implements _Error {
-  const _$_Error(this.err);
+class _$ErrorImpl implements _Error {
+  const _$ErrorImpl(this.err);
 
   @override
   final Failures err;
@@ -419,10 +423,10 @@ class _$_Error implements _Error {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Error &&
+            other is _$ErrorImpl &&
             (identical(other.err, err) || other.err == err));
   }
 
@@ -432,8 +436,8 @@ class _$_Error implements _Error {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ErrorCopyWith<_$_Error> get copyWith =>
-      __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -529,19 +533,19 @@ class _$_Error implements _Error {
 }
 
 abstract class _Error implements DashboardState {
-  const factory _Error(final Failures err) = _$_Error;
+  const factory _Error(final Failures err) = _$ErrorImpl;
 
   Failures get err;
   @JsonKey(ignore: true)
-  _$$_ErrorCopyWith<_$_Error> get copyWith =>
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_OnGetSingleDataCopyWith<$Res> {
-  factory _$$_OnGetSingleDataCopyWith(
-          _$_OnGetSingleData value, $Res Function(_$_OnGetSingleData) then) =
-      __$$_OnGetSingleDataCopyWithImpl<$Res>;
+abstract class _$$OnGetSingleDataImplCopyWith<$Res> {
+  factory _$$OnGetSingleDataImplCopyWith(_$OnGetSingleDataImpl value,
+          $Res Function(_$OnGetSingleDataImpl) then) =
+      __$$OnGetSingleDataImplCopyWithImpl<$Res>;
   @useResult
   $Res call({SimpleVisaModel visa});
 
@@ -549,11 +553,11 @@ abstract class _$$_OnGetSingleDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_OnGetSingleDataCopyWithImpl<$Res>
-    extends _$DashboardStateCopyWithImpl<$Res, _$_OnGetSingleData>
-    implements _$$_OnGetSingleDataCopyWith<$Res> {
-  __$$_OnGetSingleDataCopyWithImpl(
-      _$_OnGetSingleData _value, $Res Function(_$_OnGetSingleData) _then)
+class __$$OnGetSingleDataImplCopyWithImpl<$Res>
+    extends _$DashboardStateCopyWithImpl<$Res, _$OnGetSingleDataImpl>
+    implements _$$OnGetSingleDataImplCopyWith<$Res> {
+  __$$OnGetSingleDataImplCopyWithImpl(
+      _$OnGetSingleDataImpl _value, $Res Function(_$OnGetSingleDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -561,7 +565,7 @@ class __$$_OnGetSingleDataCopyWithImpl<$Res>
   $Res call({
     Object? visa = null,
   }) {
-    return _then(_$_OnGetSingleData(
+    return _then(_$OnGetSingleDataImpl(
       null == visa
           ? _value.visa
           : visa // ignore: cast_nullable_to_non_nullable
@@ -580,8 +584,8 @@ class __$$_OnGetSingleDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OnGetSingleData implements _OnGetSingleData {
-  const _$_OnGetSingleData(this.visa);
+class _$OnGetSingleDataImpl implements _OnGetSingleData {
+  const _$OnGetSingleDataImpl(this.visa);
 
   @override
   final SimpleVisaModel visa;
@@ -592,10 +596,10 @@ class _$_OnGetSingleData implements _OnGetSingleData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnGetSingleData &&
+            other is _$OnGetSingleDataImpl &&
             (identical(other.visa, visa) || other.visa == visa));
   }
 
@@ -605,8 +609,9 @@ class _$_OnGetSingleData implements _OnGetSingleData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnGetSingleDataCopyWith<_$_OnGetSingleData> get copyWith =>
-      __$$_OnGetSingleDataCopyWithImpl<_$_OnGetSingleData>(this, _$identity);
+  _$$OnGetSingleDataImplCopyWith<_$OnGetSingleDataImpl> get copyWith =>
+      __$$OnGetSingleDataImplCopyWithImpl<_$OnGetSingleDataImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -703,19 +708,19 @@ class _$_OnGetSingleData implements _OnGetSingleData {
 
 abstract class _OnGetSingleData implements DashboardState {
   const factory _OnGetSingleData(final SimpleVisaModel visa) =
-      _$_OnGetSingleData;
+      _$OnGetSingleDataImpl;
 
   SimpleVisaModel get visa;
   @JsonKey(ignore: true)
-  _$$_OnGetSingleDataCopyWith<_$_OnGetSingleData> get copyWith =>
+  _$$OnGetSingleDataImplCopyWith<_$OnGetSingleDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_OnDeleteSingleDataCopyWith<$Res> {
-  factory _$$_OnDeleteSingleDataCopyWith(_$_OnDeleteSingleData value,
-          $Res Function(_$_OnDeleteSingleData) then) =
-      __$$_OnDeleteSingleDataCopyWithImpl<$Res>;
+abstract class _$$OnDeleteSingleDataImplCopyWith<$Res> {
+  factory _$$OnDeleteSingleDataImplCopyWith(_$OnDeleteSingleDataImpl value,
+          $Res Function(_$OnDeleteSingleDataImpl) then) =
+      __$$OnDeleteSingleDataImplCopyWithImpl<$Res>;
   @useResult
   $Res call({SimpleVisaModel deletedVisa, int appType});
 
@@ -723,11 +728,11 @@ abstract class _$$_OnDeleteSingleDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_OnDeleteSingleDataCopyWithImpl<$Res>
-    extends _$DashboardStateCopyWithImpl<$Res, _$_OnDeleteSingleData>
-    implements _$$_OnDeleteSingleDataCopyWith<$Res> {
-  __$$_OnDeleteSingleDataCopyWithImpl(
-      _$_OnDeleteSingleData _value, $Res Function(_$_OnDeleteSingleData) _then)
+class __$$OnDeleteSingleDataImplCopyWithImpl<$Res>
+    extends _$DashboardStateCopyWithImpl<$Res, _$OnDeleteSingleDataImpl>
+    implements _$$OnDeleteSingleDataImplCopyWith<$Res> {
+  __$$OnDeleteSingleDataImplCopyWithImpl(_$OnDeleteSingleDataImpl _value,
+      $Res Function(_$OnDeleteSingleDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -736,7 +741,7 @@ class __$$_OnDeleteSingleDataCopyWithImpl<$Res>
     Object? deletedVisa = null,
     Object? appType = null,
   }) {
-    return _then(_$_OnDeleteSingleData(
+    return _then(_$OnDeleteSingleDataImpl(
       null == deletedVisa
           ? _value.deletedVisa
           : deletedVisa // ignore: cast_nullable_to_non_nullable
@@ -759,8 +764,8 @@ class __$$_OnDeleteSingleDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OnDeleteSingleData implements _OnDeleteSingleData {
-  const _$_OnDeleteSingleData(this.deletedVisa, this.appType);
+class _$OnDeleteSingleDataImpl implements _OnDeleteSingleData {
+  const _$OnDeleteSingleDataImpl(this.deletedVisa, this.appType);
 
   @override
   final SimpleVisaModel deletedVisa;
@@ -773,10 +778,10 @@ class _$_OnDeleteSingleData implements _OnDeleteSingleData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnDeleteSingleData &&
+            other is _$OnDeleteSingleDataImpl &&
             (identical(other.deletedVisa, deletedVisa) ||
                 other.deletedVisa == deletedVisa) &&
             (identical(other.appType, appType) || other.appType == appType));
@@ -788,8 +793,8 @@ class _$_OnDeleteSingleData implements _OnDeleteSingleData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnDeleteSingleDataCopyWith<_$_OnDeleteSingleData> get copyWith =>
-      __$$_OnDeleteSingleDataCopyWithImpl<_$_OnDeleteSingleData>(
+  _$$OnDeleteSingleDataImplCopyWith<_$OnDeleteSingleDataImpl> get copyWith =>
+      __$$OnDeleteSingleDataImplCopyWithImpl<_$OnDeleteSingleDataImpl>(
           this, _$identity);
 
   @override
@@ -888,20 +893,20 @@ class _$_OnDeleteSingleData implements _OnDeleteSingleData {
 abstract class _OnDeleteSingleData implements DashboardState {
   const factory _OnDeleteSingleData(
           final SimpleVisaModel deletedVisa, final int appType) =
-      _$_OnDeleteSingleData;
+      _$OnDeleteSingleDataImpl;
 
   SimpleVisaModel get deletedVisa;
   int get appType;
   @JsonKey(ignore: true)
-  _$$_OnDeleteSingleDataCopyWith<_$_OnDeleteSingleData> get copyWith =>
+  _$$OnDeleteSingleDataImplCopyWith<_$OnDeleteSingleDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_OnDeletePassportCopyWith<$Res> {
-  factory _$$_OnDeletePassportCopyWith(
-          _$_OnDeletePassport value, $Res Function(_$_OnDeletePassport) then) =
-      __$$_OnDeletePassportCopyWithImpl<$Res>;
+abstract class _$$OnDeletePassportImplCopyWith<$Res> {
+  factory _$$OnDeletePassportImplCopyWith(_$OnDeletePassportImpl value,
+          $Res Function(_$OnDeletePassportImpl) then) =
+      __$$OnDeletePassportImplCopyWithImpl<$Res>;
   @useResult
   $Res call({SimpleVisaModel deletedVisa, int appType});
 
@@ -909,11 +914,11 @@ abstract class _$$_OnDeletePassportCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_OnDeletePassportCopyWithImpl<$Res>
-    extends _$DashboardStateCopyWithImpl<$Res, _$_OnDeletePassport>
-    implements _$$_OnDeletePassportCopyWith<$Res> {
-  __$$_OnDeletePassportCopyWithImpl(
-      _$_OnDeletePassport _value, $Res Function(_$_OnDeletePassport) _then)
+class __$$OnDeletePassportImplCopyWithImpl<$Res>
+    extends _$DashboardStateCopyWithImpl<$Res, _$OnDeletePassportImpl>
+    implements _$$OnDeletePassportImplCopyWith<$Res> {
+  __$$OnDeletePassportImplCopyWithImpl(_$OnDeletePassportImpl _value,
+      $Res Function(_$OnDeletePassportImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -922,7 +927,7 @@ class __$$_OnDeletePassportCopyWithImpl<$Res>
     Object? deletedVisa = null,
     Object? appType = null,
   }) {
-    return _then(_$_OnDeletePassport(
+    return _then(_$OnDeletePassportImpl(
       null == deletedVisa
           ? _value.deletedVisa
           : deletedVisa // ignore: cast_nullable_to_non_nullable
@@ -945,8 +950,8 @@ class __$$_OnDeletePassportCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OnDeletePassport implements _OnDeletePassport {
-  const _$_OnDeletePassport(this.deletedVisa, this.appType);
+class _$OnDeletePassportImpl implements _OnDeletePassport {
+  const _$OnDeletePassportImpl(this.deletedVisa, this.appType);
 
   @override
   final SimpleVisaModel deletedVisa;
@@ -959,10 +964,10 @@ class _$_OnDeletePassport implements _OnDeletePassport {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnDeletePassport &&
+            other is _$OnDeletePassportImpl &&
             (identical(other.deletedVisa, deletedVisa) ||
                 other.deletedVisa == deletedVisa) &&
             (identical(other.appType, appType) || other.appType == appType));
@@ -974,8 +979,9 @@ class _$_OnDeletePassport implements _OnDeletePassport {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnDeletePassportCopyWith<_$_OnDeletePassport> get copyWith =>
-      __$$_OnDeletePassportCopyWithImpl<_$_OnDeletePassport>(this, _$identity);
+  _$$OnDeletePassportImplCopyWith<_$OnDeletePassportImpl> get copyWith =>
+      __$$OnDeletePassportImplCopyWithImpl<_$OnDeletePassportImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1073,11 +1079,11 @@ class _$_OnDeletePassport implements _OnDeletePassport {
 abstract class _OnDeletePassport implements DashboardState {
   const factory _OnDeletePassport(
           final SimpleVisaModel deletedVisa, final int appType) =
-      _$_OnDeletePassport;
+      _$OnDeletePassportImpl;
 
   SimpleVisaModel get deletedVisa;
   int get appType;
   @JsonKey(ignore: true)
-  _$$_OnDeletePassportCopyWith<_$_OnDeletePassport> get copyWith =>
+  _$$OnDeletePassportImplCopyWith<_$OnDeletePassportImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

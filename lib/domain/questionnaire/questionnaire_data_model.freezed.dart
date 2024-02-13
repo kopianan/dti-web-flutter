@@ -12,7 +12,7 @@ part of 'questionnaire_data_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 QuestionnaireDataModel _$QuestionnaireDataModelFromJson(
     Map<String, dynamic> json) {
@@ -65,23 +65,25 @@ class _$QuestionnaireDataModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_QuestionnaireDataModelCopyWith<$Res>
+abstract class _$$QuestionnaireDataModelImplCopyWith<$Res>
     implements $QuestionnaireDataModelCopyWith<$Res> {
-  factory _$$_QuestionnaireDataModelCopyWith(_$_QuestionnaireDataModel value,
-          $Res Function(_$_QuestionnaireDataModel) then) =
-      __$$_QuestionnaireDataModelCopyWithImpl<$Res>;
+  factory _$$QuestionnaireDataModelImplCopyWith(
+          _$QuestionnaireDataModelImpl value,
+          $Res Function(_$QuestionnaireDataModelImpl) then) =
+      __$$QuestionnaireDataModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<QuestionnaireModel> questionnaire});
 }
 
 /// @nodoc
-class __$$_QuestionnaireDataModelCopyWithImpl<$Res>
+class __$$QuestionnaireDataModelImplCopyWithImpl<$Res>
     extends _$QuestionnaireDataModelCopyWithImpl<$Res,
-        _$_QuestionnaireDataModel>
-    implements _$$_QuestionnaireDataModelCopyWith<$Res> {
-  __$$_QuestionnaireDataModelCopyWithImpl(_$_QuestionnaireDataModel _value,
-      $Res Function(_$_QuestionnaireDataModel) _then)
+        _$QuestionnaireDataModelImpl>
+    implements _$$QuestionnaireDataModelImplCopyWith<$Res> {
+  __$$QuestionnaireDataModelImplCopyWithImpl(
+      _$QuestionnaireDataModelImpl _value,
+      $Res Function(_$QuestionnaireDataModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -89,7 +91,7 @@ class __$$_QuestionnaireDataModelCopyWithImpl<$Res>
   $Res call({
     Object? questionnaire = null,
   }) {
-    return _then(_$_QuestionnaireDataModel(
+    return _then(_$QuestionnaireDataModelImpl(
       null == questionnaire
           ? _value._questionnaire
           : questionnaire // ignore: cast_nullable_to_non_nullable
@@ -100,12 +102,12 @@ class __$$_QuestionnaireDataModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_QuestionnaireDataModel implements _QuestionnaireDataModel {
-  _$_QuestionnaireDataModel(final List<QuestionnaireModel> questionnaire)
+class _$QuestionnaireDataModelImpl implements _QuestionnaireDataModel {
+  _$QuestionnaireDataModelImpl(final List<QuestionnaireModel> questionnaire)
       : _questionnaire = questionnaire;
 
-  factory _$_QuestionnaireDataModel.fromJson(Map<String, dynamic> json) =>
-      _$$_QuestionnaireDataModelFromJson(json);
+  factory _$QuestionnaireDataModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$QuestionnaireDataModelImplFromJson(json);
 
   final List<QuestionnaireModel> _questionnaire;
   @override
@@ -121,10 +123,10 @@ class _$_QuestionnaireDataModel implements _QuestionnaireDataModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_QuestionnaireDataModel &&
+            other is _$QuestionnaireDataModelImpl &&
             const DeepCollectionEquality()
                 .equals(other._questionnaire, _questionnaire));
   }
@@ -137,13 +139,13 @@ class _$_QuestionnaireDataModel implements _QuestionnaireDataModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_QuestionnaireDataModelCopyWith<_$_QuestionnaireDataModel> get copyWith =>
-      __$$_QuestionnaireDataModelCopyWithImpl<_$_QuestionnaireDataModel>(
-          this, _$identity);
+  _$$QuestionnaireDataModelImplCopyWith<_$QuestionnaireDataModelImpl>
+      get copyWith => __$$QuestionnaireDataModelImplCopyWithImpl<
+          _$QuestionnaireDataModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_QuestionnaireDataModelToJson(
+    return _$$QuestionnaireDataModelImplToJson(
       this,
     );
   }
@@ -151,15 +153,16 @@ class _$_QuestionnaireDataModel implements _QuestionnaireDataModel {
 
 abstract class _QuestionnaireDataModel implements QuestionnaireDataModel {
   factory _QuestionnaireDataModel(
-      final List<QuestionnaireModel> questionnaire) = _$_QuestionnaireDataModel;
+          final List<QuestionnaireModel> questionnaire) =
+      _$QuestionnaireDataModelImpl;
 
   factory _QuestionnaireDataModel.fromJson(Map<String, dynamic> json) =
-      _$_QuestionnaireDataModel.fromJson;
+      _$QuestionnaireDataModelImpl.fromJson;
 
   @override
   List<QuestionnaireModel> get questionnaire;
   @override
   @JsonKey(ignore: true)
-  _$$_QuestionnaireDataModelCopyWith<_$_QuestionnaireDataModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$QuestionnaireDataModelImplCopyWith<_$QuestionnaireDataModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

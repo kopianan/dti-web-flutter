@@ -12,7 +12,7 @@ part of 'startup_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$StartupState {
@@ -128,11 +128,11 @@ class _$StartupStateCopyWithImpl<$Res, $Val extends StartupState>
 }
 
 /// @nodoc
-abstract class _$$_StartupStateCopyWith<$Res>
+abstract class _$$StartupStateImplCopyWith<$Res>
     implements $StartupStateCopyWith<$Res> {
-  factory _$$_StartupStateCopyWith(
-          _$_StartupState value, $Res Function(_$_StartupState) then) =
-      __$$_StartupStateCopyWithImpl<$Res>;
+  factory _$$StartupStateImplCopyWith(
+          _$StartupStateImpl value, $Res Function(_$StartupStateImpl) then) =
+      __$$StartupStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -150,11 +150,11 @@ abstract class _$$_StartupStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_StartupStateCopyWithImpl<$Res>
-    extends _$StartupStateCopyWithImpl<$Res, _$_StartupState>
-    implements _$$_StartupStateCopyWith<$Res> {
-  __$$_StartupStateCopyWithImpl(
-      _$_StartupState _value, $Res Function(_$_StartupState) _then)
+class __$$StartupStateImplCopyWithImpl<$Res>
+    extends _$StartupStateCopyWithImpl<$Res, _$StartupStateImpl>
+    implements _$$StartupStateImplCopyWith<$Res> {
+  __$$StartupStateImplCopyWithImpl(
+      _$StartupStateImpl _value, $Res Function(_$StartupStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -172,7 +172,7 @@ class __$$_StartupStateCopyWithImpl<$Res>
     Object? isSuccess = null,
     Object? isError = null,
   }) {
-    return _then(_$_StartupState(
+    return _then(_$StartupStateImpl(
       provinces: freezed == provinces
           ? _value._provinces
           : provinces // ignore: cast_nullable_to_non_nullable
@@ -223,8 +223,8 @@ class __$$_StartupStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_StartupState implements _StartupState {
-  _$_StartupState(
+class _$StartupStateImpl implements _StartupState {
+  _$StartupStateImpl(
       {final List<Province>? provinces,
       final List<City>? cities,
       final List<District>? districts,
@@ -316,10 +316,10 @@ class _$_StartupState implements _StartupState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_StartupState &&
+            other is _$StartupStateImpl &&
             const DeepCollectionEquality()
                 .equals(other._provinces, _provinces) &&
             const DeepCollectionEquality().equals(other._cities, _cities) &&
@@ -360,8 +360,8 @@ class _$_StartupState implements _StartupState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StartupStateCopyWith<_$_StartupState> get copyWith =>
-      __$$_StartupStateCopyWithImpl<_$_StartupState>(this, _$identity);
+  _$$StartupStateImplCopyWith<_$StartupStateImpl> get copyWith =>
+      __$$StartupStateImplCopyWithImpl<_$StartupStateImpl>(this, _$identity);
 }
 
 abstract class _StartupState implements StartupState {
@@ -376,7 +376,7 @@ abstract class _StartupState implements StartupState {
       final District? selectedDistrict,
       final bool isLoading,
       final bool isSuccess,
-      final bool isError}) = _$_StartupState;
+      final bool isError}) = _$StartupStateImpl;
 
   @override
   List<Province>? get provinces;
@@ -402,6 +402,6 @@ abstract class _StartupState implements StartupState {
   bool get isError;
   @override
   @JsonKey(ignore: true)
-  _$$_StartupStateCopyWith<_$_StartupState> get copyWith =>
+  _$$StartupStateImplCopyWith<_$StartupStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

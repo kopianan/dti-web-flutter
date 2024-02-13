@@ -12,7 +12,7 @@ part of 'document_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$DocumentState {
@@ -172,11 +172,11 @@ class _$DocumentStateCopyWithImpl<$Res, $Val extends DocumentState>
 }
 
 /// @nodoc
-abstract class _$$_DocumentStateCopyWith<$Res>
+abstract class _$$DocumentStateImplCopyWith<$Res>
     implements $DocumentStateCopyWith<$Res> {
-  factory _$$_DocumentStateCopyWith(
-          _$_DocumentState value, $Res Function(_$_DocumentState) then) =
-      __$$_DocumentStateCopyWithImpl<$Res>;
+  factory _$$DocumentStateImplCopyWith(
+          _$DocumentStateImpl value, $Res Function(_$DocumentStateImpl) then) =
+      __$$DocumentStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -201,11 +201,11 @@ abstract class _$$_DocumentStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_DocumentStateCopyWithImpl<$Res>
-    extends _$DocumentStateCopyWithImpl<$Res, _$_DocumentState>
-    implements _$$_DocumentStateCopyWith<$Res> {
-  __$$_DocumentStateCopyWithImpl(
-      _$_DocumentState _value, $Res Function(_$_DocumentState) _then)
+class __$$DocumentStateImplCopyWithImpl<$Res>
+    extends _$DocumentStateCopyWithImpl<$Res, _$DocumentStateImpl>
+    implements _$$DocumentStateImplCopyWith<$Res> {
+  __$$DocumentStateImplCopyWithImpl(
+      _$DocumentStateImpl _value, $Res Function(_$DocumentStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -225,7 +225,7 @@ class __$$_DocumentStateCopyWithImpl<$Res>
     Object? selectedDataType = freezed,
     Object? isAllRead = null,
   }) {
-    return _then(_$_DocumentState(
+    return _then(_$DocumentStateImpl(
       visa: freezed == visa
           ? _value.visa
           : visa // ignore: cast_nullable_to_non_nullable
@@ -284,8 +284,10 @@ class __$$_DocumentStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_DocumentState with DiagnosticableTreeMixin implements _DocumentState {
-  _$_DocumentState(
+class _$DocumentStateImpl
+    with DiagnosticableTreeMixin
+    implements _DocumentState {
+  _$DocumentStateImpl(
       {this.visa,
       this.docs,
       this.initialDocs = const [],
@@ -358,10 +360,10 @@ class _$_DocumentState with DiagnosticableTreeMixin implements _DocumentState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DocumentState &&
+            other is _$DocumentStateImpl &&
             (identical(other.visa, visa) || other.visa == visa) &&
             const DeepCollectionEquality().equals(other.docs, docs) &&
             const DeepCollectionEquality()
@@ -407,8 +409,8 @@ class _$_DocumentState with DiagnosticableTreeMixin implements _DocumentState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DocumentStateCopyWith<_$_DocumentState> get copyWith =>
-      __$$_DocumentStateCopyWithImpl<_$_DocumentState>(this, _$identity);
+  _$$DocumentStateImplCopyWith<_$DocumentStateImpl> get copyWith =>
+      __$$DocumentStateImplCopyWithImpl<_$DocumentStateImpl>(this, _$identity);
 }
 
 abstract class _DocumentState implements DocumentState {
@@ -425,7 +427,7 @@ abstract class _DocumentState implements DocumentState {
       final Map<String, dynamic>? selfie,
       final String? deletedSelfiePhoto,
       final int? selectedDataType,
-      final bool isAllRead}) = _$_DocumentState;
+      final bool isAllRead}) = _$DocumentStateImpl;
 
   @override
   VisaApplicationModel? get visa;
@@ -455,6 +457,6 @@ abstract class _DocumentState implements DocumentState {
   bool get isAllRead;
   @override
   @JsonKey(ignore: true)
-  _$$_DocumentStateCopyWith<_$_DocumentState> get copyWith =>
+  _$$DocumentStateImplCopyWith<_$DocumentStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

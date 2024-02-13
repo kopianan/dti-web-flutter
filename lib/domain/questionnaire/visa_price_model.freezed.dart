@@ -12,7 +12,7 @@ part of 'visa_price_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 VisaPriceModel _$VisaPriceModelFromJson(Map<String, dynamic> json) {
   return _VisaPriceModel.fromJson(json);
@@ -62,22 +62,22 @@ class _$VisaPriceModelCopyWithImpl<$Res, $Val extends VisaPriceModel>
 }
 
 /// @nodoc
-abstract class _$$_VisaPriceModelCopyWith<$Res>
+abstract class _$$VisaPriceModelImplCopyWith<$Res>
     implements $VisaPriceModelCopyWith<$Res> {
-  factory _$$_VisaPriceModelCopyWith(
-          _$_VisaPriceModel value, $Res Function(_$_VisaPriceModel) then) =
-      __$$_VisaPriceModelCopyWithImpl<$Res>;
+  factory _$$VisaPriceModelImplCopyWith(_$VisaPriceModelImpl value,
+          $Res Function(_$VisaPriceModelImpl) then) =
+      __$$VisaPriceModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int? usd});
 }
 
 /// @nodoc
-class __$$_VisaPriceModelCopyWithImpl<$Res>
-    extends _$VisaPriceModelCopyWithImpl<$Res, _$_VisaPriceModel>
-    implements _$$_VisaPriceModelCopyWith<$Res> {
-  __$$_VisaPriceModelCopyWithImpl(
-      _$_VisaPriceModel _value, $Res Function(_$_VisaPriceModel) _then)
+class __$$VisaPriceModelImplCopyWithImpl<$Res>
+    extends _$VisaPriceModelCopyWithImpl<$Res, _$VisaPriceModelImpl>
+    implements _$$VisaPriceModelImplCopyWith<$Res> {
+  __$$VisaPriceModelImplCopyWithImpl(
+      _$VisaPriceModelImpl _value, $Res Function(_$VisaPriceModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -85,7 +85,7 @@ class __$$_VisaPriceModelCopyWithImpl<$Res>
   $Res call({
     Object? usd = freezed,
   }) {
-    return _then(_$_VisaPriceModel(
+    return _then(_$VisaPriceModelImpl(
       usd: freezed == usd
           ? _value.usd
           : usd // ignore: cast_nullable_to_non_nullable
@@ -96,11 +96,11 @@ class __$$_VisaPriceModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_VisaPriceModel implements _VisaPriceModel {
-  _$_VisaPriceModel({this.usd});
+class _$VisaPriceModelImpl implements _VisaPriceModel {
+  _$VisaPriceModelImpl({this.usd});
 
-  factory _$_VisaPriceModel.fromJson(Map<String, dynamic> json) =>
-      _$$_VisaPriceModelFromJson(json);
+  factory _$VisaPriceModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$VisaPriceModelImplFromJson(json);
 
   @override
   final int? usd;
@@ -111,10 +111,10 @@ class _$_VisaPriceModel implements _VisaPriceModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_VisaPriceModel &&
+            other is _$VisaPriceModelImpl &&
             (identical(other.usd, usd) || other.usd == usd));
   }
 
@@ -125,27 +125,28 @@ class _$_VisaPriceModel implements _VisaPriceModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_VisaPriceModelCopyWith<_$_VisaPriceModel> get copyWith =>
-      __$$_VisaPriceModelCopyWithImpl<_$_VisaPriceModel>(this, _$identity);
+  _$$VisaPriceModelImplCopyWith<_$VisaPriceModelImpl> get copyWith =>
+      __$$VisaPriceModelImplCopyWithImpl<_$VisaPriceModelImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_VisaPriceModelToJson(
+    return _$$VisaPriceModelImplToJson(
       this,
     );
   }
 }
 
 abstract class _VisaPriceModel implements VisaPriceModel {
-  factory _VisaPriceModel({final int? usd}) = _$_VisaPriceModel;
+  factory _VisaPriceModel({final int? usd}) = _$VisaPriceModelImpl;
 
   factory _VisaPriceModel.fromJson(Map<String, dynamic> json) =
-      _$_VisaPriceModel.fromJson;
+      _$VisaPriceModelImpl.fromJson;
 
   @override
   int? get usd;
   @override
   @JsonKey(ignore: true)
-  _$$_VisaPriceModelCopyWith<_$_VisaPriceModel> get copyWith =>
+  _$$VisaPriceModelImplCopyWith<_$VisaPriceModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

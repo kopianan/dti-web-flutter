@@ -32,6 +32,7 @@ dependencies:
   build_web_compilers: ^3.2.7
   camera: ^0.10.3+2
   carousel_slider: ^4.1.1
+  community_charts_flutter: ^1.0.2
   country_code_picker: ^3.0.0
   country_codes: ^2.2.0
   country_picker: ^2.0.16

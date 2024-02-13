@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:dti_web/application/application_cubit.dart';
+import 'package:dti_web/application/dashboard/dashboard_cubit.dart';
 import 'package:dti_web/application/questionnaire_cubit.dart';
 import 'package:dti_web/application/update_application/update_application_cubit.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
@@ -87,7 +88,7 @@ class _VOASummaryPageState extends State<VOASummaryPage> {
                 context
                     .read<ApplicationCubit>()
                     .setupApplication(value.visaApps);
-
+                getIt<DashboardCubit>().getLastPassportAndApplicationData();
                 AutoRouter.of(context).navigate(PersonalInformation1Route(
                     firebaseDocId: value.visaApps.firebaseDocId!));
               },
@@ -150,7 +151,8 @@ class _VOASummaryPageState extends State<VOASummaryPage> {
                                       child: Container(
                                         margin: EdgeInsets.only(
                                             right: 30.w, left: 30.w),
-                                        padding: const EdgeInsets.only(bottom: 50),
+                                        padding:
+                                            const EdgeInsets.only(bottom: 50),
                                         child: Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,

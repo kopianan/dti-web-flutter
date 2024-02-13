@@ -35,8 +35,8 @@ class _FeedbackSectionState extends State<FeedbackSection> {
             AwesomeDialog(
               context: context,
               width: ScreenUtil().screenWidth / 3,
-              dialogType: DialogType.SUCCES,
-              animType: AnimType.SCALE,
+              dialogType: DialogType.success,
+              animType: AnimType.scale,
               headerAnimationLoop: true,
               title: 'Thankyou',
               desc:

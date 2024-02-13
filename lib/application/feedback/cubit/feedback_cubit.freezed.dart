@@ -12,7 +12,7 @@ part of 'feedback_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$FeedbackState {
@@ -87,24 +87,25 @@ class _$FeedbackStateCopyWithImpl<$Res, $Val extends FeedbackState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$FeedbackStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$FeedbackStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -112,9 +113,9 @@ class _$_Initial implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -196,28 +197,29 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements FeedbackState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoadingCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(
-          _$_Loading value, $Res Function(_$_Loading) then) =
-      __$$_LoadingCopyWithImpl<$Res>;
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res>
-    extends _$FeedbackStateCopyWithImpl<$Res, _$_Loading>
-    implements _$$_LoadingCopyWith<$Res> {
-  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$FeedbackStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Loading implements _Loading {
-  const _$_Loading();
+class _$LoadingImpl implements _Loading {
+  const _$LoadingImpl();
 
   @override
   String toString() {
@@ -225,9 +227,9 @@ class _$_Loading implements _Loading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Loading);
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
   }
 
   @override
@@ -309,27 +311,29 @@ class _$_Loading implements _Loading {
 }
 
 abstract class _Loading implements FeedbackState {
-  const factory _Loading() = _$_Loading;
+  const factory _Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$_ErrorCopyWith<$Res> {
-  factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
-      __$$_ErrorCopyWithImpl<$Res>;
+abstract class _$$ErrorImplCopyWith<$Res> {
+  factory _$$ErrorImplCopyWith(
+          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
+      __$$ErrorImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ErrorCopyWithImpl<$Res>
-    extends _$FeedbackStateCopyWithImpl<$Res, _$_Error>
-    implements _$$_ErrorCopyWith<$Res> {
-  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
+class __$$ErrorImplCopyWithImpl<$Res>
+    extends _$FeedbackStateCopyWithImpl<$Res, _$ErrorImpl>
+    implements _$$ErrorImplCopyWith<$Res> {
+  __$$ErrorImplCopyWithImpl(
+      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Error implements _Error {
-  const _$_Error();
+class _$ErrorImpl implements _Error {
+  const _$ErrorImpl();
 
   @override
   String toString() {
@@ -337,9 +341,9 @@ class _$_Error implements _Error {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Error);
+        (other.runtimeType == runtimeType && other is _$ErrorImpl);
   }
 
   @override
@@ -421,24 +425,24 @@ class _$_Error implements _Error {
 }
 
 abstract class _Error implements FeedbackState {
-  const factory _Error() = _$_Error;
+  const factory _Error() = _$ErrorImpl;
 }
 
 /// @nodoc
-abstract class _$$_GetAllFeedbackCopyWith<$Res> {
-  factory _$$_GetAllFeedbackCopyWith(
-          _$_GetAllFeedback value, $Res Function(_$_GetAllFeedback) then) =
-      __$$_GetAllFeedbackCopyWithImpl<$Res>;
+abstract class _$$GetAllFeedbackImplCopyWith<$Res> {
+  factory _$$GetAllFeedbackImplCopyWith(_$GetAllFeedbackImpl value,
+          $Res Function(_$GetAllFeedbackImpl) then) =
+      __$$GetAllFeedbackImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<FeedbackModel> feedbacks});
 }
 
 /// @nodoc
-class __$$_GetAllFeedbackCopyWithImpl<$Res>
-    extends _$FeedbackStateCopyWithImpl<$Res, _$_GetAllFeedback>
-    implements _$$_GetAllFeedbackCopyWith<$Res> {
-  __$$_GetAllFeedbackCopyWithImpl(
-      _$_GetAllFeedback _value, $Res Function(_$_GetAllFeedback) _then)
+class __$$GetAllFeedbackImplCopyWithImpl<$Res>
+    extends _$FeedbackStateCopyWithImpl<$Res, _$GetAllFeedbackImpl>
+    implements _$$GetAllFeedbackImplCopyWith<$Res> {
+  __$$GetAllFeedbackImplCopyWithImpl(
+      _$GetAllFeedbackImpl _value, $Res Function(_$GetAllFeedbackImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -446,7 +450,7 @@ class __$$_GetAllFeedbackCopyWithImpl<$Res>
   $Res call({
     Object? feedbacks = null,
   }) {
-    return _then(_$_GetAllFeedback(
+    return _then(_$GetAllFeedbackImpl(
       null == feedbacks
           ? _value._feedbacks
           : feedbacks // ignore: cast_nullable_to_non_nullable
@@ -457,8 +461,8 @@ class __$$_GetAllFeedbackCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GetAllFeedback implements _GetAllFeedback {
-  const _$_GetAllFeedback(final List<FeedbackModel> feedbacks)
+class _$GetAllFeedbackImpl implements _GetAllFeedback {
+  const _$GetAllFeedbackImpl(final List<FeedbackModel> feedbacks)
       : _feedbacks = feedbacks;
 
   final List<FeedbackModel> _feedbacks;
@@ -475,10 +479,10 @@ class _$_GetAllFeedback implements _GetAllFeedback {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GetAllFeedback &&
+            other is _$GetAllFeedbackImpl &&
             const DeepCollectionEquality()
                 .equals(other._feedbacks, _feedbacks));
   }
@@ -490,8 +494,9 @@ class _$_GetAllFeedback implements _GetAllFeedback {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GetAllFeedbackCopyWith<_$_GetAllFeedback> get copyWith =>
-      __$$_GetAllFeedbackCopyWithImpl<_$_GetAllFeedback>(this, _$identity);
+  _$$GetAllFeedbackImplCopyWith<_$GetAllFeedbackImpl> get copyWith =>
+      __$$GetAllFeedbackImplCopyWithImpl<_$GetAllFeedbackImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -570,10 +575,10 @@ class _$_GetAllFeedback implements _GetAllFeedback {
 
 abstract class _GetAllFeedback implements FeedbackState {
   const factory _GetAllFeedback(final List<FeedbackModel> feedbacks) =
-      _$_GetAllFeedback;
+      _$GetAllFeedbackImpl;
 
   List<FeedbackModel> get feedbacks;
   @JsonKey(ignore: true)
-  _$$_GetAllFeedbackCopyWith<_$_GetAllFeedback> get copyWith =>
+  _$$GetAllFeedbackImplCopyWith<_$GetAllFeedbackImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -12,7 +12,7 @@ part of 'contact_us_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ContactUsModel _$ContactUsModelFromJson(Map<String, dynamic> json) {
   return _ContactUsModel.fromJson(json);
@@ -92,11 +92,11 @@ class _$ContactUsModelCopyWithImpl<$Res, $Val extends ContactUsModel>
 }
 
 /// @nodoc
-abstract class _$$_ContactUsModelCopyWith<$Res>
+abstract class _$$ContactUsModelImplCopyWith<$Res>
     implements $ContactUsModelCopyWith<$Res> {
-  factory _$$_ContactUsModelCopyWith(
-          _$_ContactUsModel value, $Res Function(_$_ContactUsModel) then) =
-      __$$_ContactUsModelCopyWithImpl<$Res>;
+  factory _$$ContactUsModelImplCopyWith(_$ContactUsModelImpl value,
+          $Res Function(_$ContactUsModelImpl) then) =
+      __$$ContactUsModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -108,11 +108,11 @@ abstract class _$$_ContactUsModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ContactUsModelCopyWithImpl<$Res>
-    extends _$ContactUsModelCopyWithImpl<$Res, _$_ContactUsModel>
-    implements _$$_ContactUsModelCopyWith<$Res> {
-  __$$_ContactUsModelCopyWithImpl(
-      _$_ContactUsModel _value, $Res Function(_$_ContactUsModel) _then)
+class __$$ContactUsModelImplCopyWithImpl<$Res>
+    extends _$ContactUsModelCopyWithImpl<$Res, _$ContactUsModelImpl>
+    implements _$$ContactUsModelImplCopyWith<$Res> {
+  __$$ContactUsModelImplCopyWithImpl(
+      _$ContactUsModelImpl _value, $Res Function(_$ContactUsModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -124,7 +124,7 @@ class __$$_ContactUsModelCopyWithImpl<$Res>
     Object? title = null,
     Object? email = null,
   }) {
-    return _then(_$_ContactUsModel(
+    return _then(_$ContactUsModelImpl(
       createdDate: null == createdDate
           ? _value.createdDate
           : createdDate // ignore: cast_nullable_to_non_nullable
@@ -151,16 +151,16 @@ class __$$_ContactUsModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ContactUsModel implements _ContactUsModel {
-  _$_ContactUsModel(
+class _$ContactUsModelImpl implements _ContactUsModel {
+  _$ContactUsModelImpl(
       {@DateTimeOrNullConverter() required this.createdDate,
       this.createdBy = '',
       this.name = '',
       this.title = '',
       this.email = ''});
 
-  factory _$_ContactUsModel.fromJson(Map<String, dynamic> json) =>
-      _$$_ContactUsModelFromJson(json);
+  factory _$ContactUsModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ContactUsModelImplFromJson(json);
 
   @override
   @DateTimeOrNullConverter()
@@ -184,10 +184,10 @@ class _$_ContactUsModel implements _ContactUsModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ContactUsModel &&
+            other is _$ContactUsModelImpl &&
             (identical(other.createdDate, createdDate) ||
                 other.createdDate == createdDate) &&
             (identical(other.createdBy, createdBy) ||
@@ -205,12 +205,13 @@ class _$_ContactUsModel implements _ContactUsModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ContactUsModelCopyWith<_$_ContactUsModel> get copyWith =>
-      __$$_ContactUsModelCopyWithImpl<_$_ContactUsModel>(this, _$identity);
+  _$$ContactUsModelImplCopyWith<_$ContactUsModelImpl> get copyWith =>
+      __$$ContactUsModelImplCopyWithImpl<_$ContactUsModelImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ContactUsModelToJson(
+    return _$$ContactUsModelImplToJson(
       this,
     );
   }
@@ -222,10 +223,10 @@ abstract class _ContactUsModel implements ContactUsModel {
       final String createdBy,
       final String name,
       final String title,
-      final String email}) = _$_ContactUsModel;
+      final String email}) = _$ContactUsModelImpl;
 
   factory _ContactUsModel.fromJson(Map<String, dynamic> json) =
-      _$_ContactUsModel.fromJson;
+      _$ContactUsModelImpl.fromJson;
 
   @override
   @DateTimeOrNullConverter()
@@ -240,6 +241,6 @@ abstract class _ContactUsModel implements ContactUsModel {
   String get email;
   @override
   @JsonKey(ignore: true)
-  _$$_ContactUsModelCopyWith<_$_ContactUsModel> get copyWith =>
+  _$$ContactUsModelImplCopyWith<_$ContactUsModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -74,7 +74,7 @@ class AuthRepository extends IAuth {
       final newUser = isNewUser(userCreds.user!);
       log("IS NEW USER ? ${newUser.toString()}");
       final token = await userCreds.user!.getIdToken();
-      return right(AuthResponse(isNewUser: newUser, token: token));
+      return right(AuthResponse(isNewUser: newUser, token: token ?? ""));
     } on PlatformException catch (e) {
       switch (e.code) {
         case "popup_closed_by_user":
@@ -117,8 +117,8 @@ class AuthRepository extends IAuth {
       }
       // return
       return const Left("Something wrong");
-    } on DioError catch (e) {
-      if (e.type == DioErrorType.badResponse) {
+    } on DioException catch (e) {
+      if (e.type == DioExceptionType.badResponse) {
         if (e.response != null) {
           if (e.response!.statusCode == 403) {
             return Left(e.response!.data!['error']);
@@ -150,7 +150,7 @@ class AuthRepository extends IAuth {
         return Right(result.data['data']['token'].toString());
       }
       return Left(Failures.noData("Something wrong"));
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       return left(ErrorHandling().onDioErrorHandle(e));
     }
   }
@@ -198,7 +198,7 @@ class AuthRepository extends IAuth {
         );
         final newUser = isNewUser(userCreds.user!);
         final token = await userCreds.user!.getIdToken();
-        return right(AuthResponse(isNewUser: newUser, token: token));
+        return right(AuthResponse(isNewUser: newUser, token: token ?? ""));
       } else {
         return left(Failures.authError("No user found"));
       }

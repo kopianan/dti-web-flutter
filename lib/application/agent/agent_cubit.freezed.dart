@@ -12,7 +12,7 @@ part of 'agent_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AgentState {
@@ -94,24 +94,25 @@ class _$AgentStateCopyWithImpl<$Res, $Val extends AgentState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$AgentStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$AgentStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -119,9 +120,9 @@ class _$_Initial implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -210,22 +211,24 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements AgentState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_ErrorCopyWith<$Res> {
-  factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
-      __$$_ErrorCopyWithImpl<$Res>;
+abstract class _$$ErrorImplCopyWith<$Res> {
+  factory _$$ErrorImplCopyWith(
+          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
+      __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$_ErrorCopyWithImpl<$Res>
-    extends _$AgentStateCopyWithImpl<$Res, _$_Error>
-    implements _$$_ErrorCopyWith<$Res> {
-  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
+class __$$ErrorImplCopyWithImpl<$Res>
+    extends _$AgentStateCopyWithImpl<$Res, _$ErrorImpl>
+    implements _$$ErrorImplCopyWith<$Res> {
+  __$$ErrorImplCopyWithImpl(
+      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -233,7 +236,7 @@ class __$$_ErrorCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$_Error(
+    return _then(_$ErrorImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -244,8 +247,8 @@ class __$$_ErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Error implements _Error {
-  const _$_Error(this.message);
+class _$ErrorImpl implements _Error {
+  const _$ErrorImpl(this.message);
 
   @override
   final String message;
@@ -256,10 +259,10 @@ class _$_Error implements _Error {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Error &&
+            other is _$ErrorImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -269,8 +272,8 @@ class _$_Error implements _Error {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ErrorCopyWith<_$_Error> get copyWith =>
-      __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -355,33 +358,34 @@ class _$_Error implements _Error {
 }
 
 abstract class _Error implements AgentState {
-  const factory _Error(final String message) = _$_Error;
+  const factory _Error(final String message) = _$ErrorImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$_ErrorCopyWith<_$_Error> get copyWith =>
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_LoadingCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(
-          _$_Loading value, $Res Function(_$_Loading) then) =
-      __$$_LoadingCopyWithImpl<$Res>;
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res>
-    extends _$AgentStateCopyWithImpl<$Res, _$_Loading>
-    implements _$$_LoadingCopyWith<$Res> {
-  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$AgentStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Loading implements _Loading {
-  const _$_Loading();
+class _$LoadingImpl implements _Loading {
+  const _$LoadingImpl();
 
   @override
   String toString() {
@@ -389,9 +393,9 @@ class _$_Loading implements _Loading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Loading);
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
   }
 
   @override
@@ -480,24 +484,26 @@ class _$_Loading implements _Loading {
 }
 
 abstract class _Loading implements AgentState {
-  const factory _Loading() = _$_Loading;
+  const factory _Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$_OnCreateBulkVisaSuccessCopyWith<$Res> {
-  factory _$$_OnCreateBulkVisaSuccessCopyWith(_$_OnCreateBulkVisaSuccess value,
-          $Res Function(_$_OnCreateBulkVisaSuccess) then) =
-      __$$_OnCreateBulkVisaSuccessCopyWithImpl<$Res>;
+abstract class _$$OnCreateBulkVisaSuccessImplCopyWith<$Res> {
+  factory _$$OnCreateBulkVisaSuccessImplCopyWith(
+          _$OnCreateBulkVisaSuccessImpl value,
+          $Res Function(_$OnCreateBulkVisaSuccessImpl) then) =
+      __$$OnCreateBulkVisaSuccessImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$_OnCreateBulkVisaSuccessCopyWithImpl<$Res>
-    extends _$AgentStateCopyWithImpl<$Res, _$_OnCreateBulkVisaSuccess>
-    implements _$$_OnCreateBulkVisaSuccessCopyWith<$Res> {
-  __$$_OnCreateBulkVisaSuccessCopyWithImpl(_$_OnCreateBulkVisaSuccess _value,
-      $Res Function(_$_OnCreateBulkVisaSuccess) _then)
+class __$$OnCreateBulkVisaSuccessImplCopyWithImpl<$Res>
+    extends _$AgentStateCopyWithImpl<$Res, _$OnCreateBulkVisaSuccessImpl>
+    implements _$$OnCreateBulkVisaSuccessImplCopyWith<$Res> {
+  __$$OnCreateBulkVisaSuccessImplCopyWithImpl(
+      _$OnCreateBulkVisaSuccessImpl _value,
+      $Res Function(_$OnCreateBulkVisaSuccessImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -505,7 +511,7 @@ class __$$_OnCreateBulkVisaSuccessCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$_OnCreateBulkVisaSuccess(
+    return _then(_$OnCreateBulkVisaSuccessImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -516,8 +522,8 @@ class __$$_OnCreateBulkVisaSuccessCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OnCreateBulkVisaSuccess implements _OnCreateBulkVisaSuccess {
-  const _$_OnCreateBulkVisaSuccess(this.message);
+class _$OnCreateBulkVisaSuccessImpl implements _OnCreateBulkVisaSuccess {
+  const _$OnCreateBulkVisaSuccessImpl(this.message);
 
   @override
   final String message;
@@ -528,10 +534,10 @@ class _$_OnCreateBulkVisaSuccess implements _OnCreateBulkVisaSuccess {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnCreateBulkVisaSuccess &&
+            other is _$OnCreateBulkVisaSuccessImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -541,10 +547,9 @@ class _$_OnCreateBulkVisaSuccess implements _OnCreateBulkVisaSuccess {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnCreateBulkVisaSuccessCopyWith<_$_OnCreateBulkVisaSuccess>
-      get copyWith =>
-          __$$_OnCreateBulkVisaSuccessCopyWithImpl<_$_OnCreateBulkVisaSuccess>(
-              this, _$identity);
+  _$$OnCreateBulkVisaSuccessImplCopyWith<_$OnCreateBulkVisaSuccessImpl>
+      get copyWith => __$$OnCreateBulkVisaSuccessImplCopyWithImpl<
+          _$OnCreateBulkVisaSuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -630,34 +635,34 @@ class _$_OnCreateBulkVisaSuccess implements _OnCreateBulkVisaSuccess {
 
 abstract class _OnCreateBulkVisaSuccess implements AgentState {
   const factory _OnCreateBulkVisaSuccess(final String message) =
-      _$_OnCreateBulkVisaSuccess;
+      _$OnCreateBulkVisaSuccessImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$_OnCreateBulkVisaSuccessCopyWith<_$_OnCreateBulkVisaSuccess>
+  _$$OnCreateBulkVisaSuccessImplCopyWith<_$OnCreateBulkVisaSuccessImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_OnDeleteBulkSuccessCopyWith<$Res> {
-  factory _$$_OnDeleteBulkSuccessCopyWith(_$_OnDeleteBulkSuccess value,
-          $Res Function(_$_OnDeleteBulkSuccess) then) =
-      __$$_OnDeleteBulkSuccessCopyWithImpl<$Res>;
+abstract class _$$OnDeleteBulkSuccessImplCopyWith<$Res> {
+  factory _$$OnDeleteBulkSuccessImplCopyWith(_$OnDeleteBulkSuccessImpl value,
+          $Res Function(_$OnDeleteBulkSuccessImpl) then) =
+      __$$OnDeleteBulkSuccessImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_OnDeleteBulkSuccessCopyWithImpl<$Res>
-    extends _$AgentStateCopyWithImpl<$Res, _$_OnDeleteBulkSuccess>
-    implements _$$_OnDeleteBulkSuccessCopyWith<$Res> {
-  __$$_OnDeleteBulkSuccessCopyWithImpl(_$_OnDeleteBulkSuccess _value,
-      $Res Function(_$_OnDeleteBulkSuccess) _then)
+class __$$OnDeleteBulkSuccessImplCopyWithImpl<$Res>
+    extends _$AgentStateCopyWithImpl<$Res, _$OnDeleteBulkSuccessImpl>
+    implements _$$OnDeleteBulkSuccessImplCopyWith<$Res> {
+  __$$OnDeleteBulkSuccessImplCopyWithImpl(_$OnDeleteBulkSuccessImpl _value,
+      $Res Function(_$OnDeleteBulkSuccessImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_OnDeleteBulkSuccess implements _OnDeleteBulkSuccess {
-  const _$_OnDeleteBulkSuccess();
+class _$OnDeleteBulkSuccessImpl implements _OnDeleteBulkSuccess {
+  const _$OnDeleteBulkSuccessImpl();
 
   @override
   String toString() {
@@ -665,9 +670,10 @@ class _$_OnDeleteBulkSuccess implements _OnDeleteBulkSuccess {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_OnDeleteBulkSuccess);
+        (other.runtimeType == runtimeType &&
+            other is _$OnDeleteBulkSuccessImpl);
   }
 
   @override
@@ -756,5 +762,5 @@ class _$_OnDeleteBulkSuccess implements _OnDeleteBulkSuccess {
 }
 
 abstract class _OnDeleteBulkSuccess implements AgentState {
-  const factory _OnDeleteBulkSuccess() = _$_OnDeleteBulkSuccess;
+  const factory _OnDeleteBulkSuccess() = _$OnDeleteBulkSuccessImpl;
 }

@@ -4,7 +4,9 @@
 
 list(APPEND FLUTTER_PLUGIN_LIST
   file_saver
-  flutter_secure_storage_windows
+  firebase_auth
+  firebase_core
+  rive_common
   smart_auth
   syncfusion_pdfviewer_windows
   url_launcher_windows

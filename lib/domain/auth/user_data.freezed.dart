@@ -12,7 +12,7 @@ part of 'user_data.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 UserData _$UserDataFromJson(Map<String, dynamic> json) {
   return _UserData.fromJson(json);
@@ -174,10 +174,11 @@ class _$UserDataCopyWithImpl<$Res, $Val extends UserData>
 }
 
 /// @nodoc
-abstract class _$$_UserDataCopyWith<$Res> implements $UserDataCopyWith<$Res> {
-  factory _$$_UserDataCopyWith(
-          _$_UserData value, $Res Function(_$_UserData) then) =
-      __$$_UserDataCopyWithImpl<$Res>;
+abstract class _$$UserDataImplCopyWith<$Res>
+    implements $UserDataCopyWith<$Res> {
+  factory _$$UserDataImplCopyWith(
+          _$UserDataImpl value, $Res Function(_$UserDataImpl) then) =
+      __$$UserDataImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -201,11 +202,11 @@ abstract class _$$_UserDataCopyWith<$Res> implements $UserDataCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_UserDataCopyWithImpl<$Res>
-    extends _$UserDataCopyWithImpl<$Res, _$_UserData>
-    implements _$$_UserDataCopyWith<$Res> {
-  __$$_UserDataCopyWithImpl(
-      _$_UserData _value, $Res Function(_$_UserData) _then)
+class __$$UserDataImplCopyWithImpl<$Res>
+    extends _$UserDataCopyWithImpl<$Res, _$UserDataImpl>
+    implements _$$UserDataImplCopyWith<$Res> {
+  __$$UserDataImplCopyWithImpl(
+      _$UserDataImpl _value, $Res Function(_$UserDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -229,7 +230,7 @@ class __$$_UserDataCopyWithImpl<$Res>
     Object? countryCode = freezed,
     Object? userReferral = freezed,
   }) {
-    return _then(_$_UserData(
+    return _then(_$UserDataImpl(
       usedReferralCodeFlag: freezed == usedReferralCodeFlag
           ? _value.usedReferralCodeFlag
           : usedReferralCodeFlag // ignore: cast_nullable_to_non_nullable
@@ -304,8 +305,8 @@ class __$$_UserDataCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_UserData extends _UserData {
-  _$_UserData(
+class _$UserDataImpl extends _UserData {
+  _$UserDataImpl(
       {this.usedReferralCodeFlag,
       this.selfReferralCode,
       this.userId,
@@ -325,8 +326,8 @@ class _$_UserData extends _UserData {
       this.userReferral})
       : super._();
 
-  factory _$_UserData.fromJson(Map<String, dynamic> json) =>
-      _$$_UserDataFromJson(json);
+  factory _$UserDataImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UserDataImplFromJson(json);
 
   @override
   final bool? usedReferralCodeFlag;
@@ -370,10 +371,10 @@ class _$_UserData extends _UserData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UserData &&
+            other is _$UserDataImpl &&
             (identical(other.usedReferralCodeFlag, usedReferralCodeFlag) ||
                 other.usedReferralCodeFlag == usedReferralCodeFlag) &&
             (identical(other.selfReferralCode, selfReferralCode) ||
@@ -430,12 +431,12 @@ class _$_UserData extends _UserData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UserDataCopyWith<_$_UserData> get copyWith =>
-      __$$_UserDataCopyWithImpl<_$_UserData>(this, _$identity);
+  _$$UserDataImplCopyWith<_$UserDataImpl> get copyWith =>
+      __$$UserDataImplCopyWithImpl<_$UserDataImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserDataToJson(
+    return _$$UserDataImplToJson(
       this,
     );
   }
@@ -459,10 +460,11 @@ abstract class _UserData extends UserData {
       final String? usedReferralCode,
       final int? totalVisa,
       final String? countryCode,
-      final String? userReferral}) = _$_UserData;
+      final String? userReferral}) = _$UserDataImpl;
   _UserData._() : super._();
 
-  factory _UserData.fromJson(Map<String, dynamic> json) = _$_UserData.fromJson;
+  factory _UserData.fromJson(Map<String, dynamic> json) =
+      _$UserDataImpl.fromJson;
 
   @override
   bool? get usedReferralCodeFlag;
@@ -500,6 +502,6 @@ abstract class _UserData extends UserData {
   String? get userReferral;
   @override
   @JsonKey(ignore: true)
-  _$$_UserDataCopyWith<_$_UserData> get copyWith =>
+  _$$UserDataImplCopyWith<_$UserDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

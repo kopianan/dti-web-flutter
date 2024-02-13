@@ -12,7 +12,7 @@ part of 'create_new_application_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$CreateNewApplicationState {
@@ -87,12 +87,12 @@ class _$CreateNewApplicationStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_CreateNewApplicationCubitCopyWith<$Res>
+abstract class _$$CreateNewApplicationCubitImplCopyWith<$Res>
     implements $CreateNewApplicationStateCopyWith<$Res> {
-  factory _$$_CreateNewApplicationCubitCopyWith(
-          _$_CreateNewApplicationCubit value,
-          $Res Function(_$_CreateNewApplicationCubit) then) =
-      __$$_CreateNewApplicationCubitCopyWithImpl<$Res>;
+  factory _$$CreateNewApplicationCubitImplCopyWith(
+          _$CreateNewApplicationCubitImpl value,
+          $Res Function(_$CreateNewApplicationCubitImpl) then) =
+      __$$CreateNewApplicationCubitImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -104,13 +104,13 @@ abstract class _$$_CreateNewApplicationCubitCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CreateNewApplicationCubitCopyWithImpl<$Res>
+class __$$CreateNewApplicationCubitImplCopyWithImpl<$Res>
     extends _$CreateNewApplicationStateCopyWithImpl<$Res,
-        _$_CreateNewApplicationCubit>
-    implements _$$_CreateNewApplicationCubitCopyWith<$Res> {
-  __$$_CreateNewApplicationCubitCopyWithImpl(
-      _$_CreateNewApplicationCubit _value,
-      $Res Function(_$_CreateNewApplicationCubit) _then)
+        _$CreateNewApplicationCubitImpl>
+    implements _$$CreateNewApplicationCubitImplCopyWith<$Res> {
+  __$$CreateNewApplicationCubitImplCopyWithImpl(
+      _$CreateNewApplicationCubitImpl _value,
+      $Res Function(_$CreateNewApplicationCubitImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -122,7 +122,7 @@ class __$$_CreateNewApplicationCubitCopyWithImpl<$Res>
     Object? error = null,
     Object? body = null,
   }) {
-    return _then(_$_CreateNewApplicationCubit(
+    return _then(_$CreateNewApplicationCubitImpl(
       pickedFile: freezed == pickedFile
           ? _value.pickedFile
           : pickedFile // ignore: cast_nullable_to_non_nullable
@@ -149,9 +149,9 @@ class __$$_CreateNewApplicationCubitCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CreateNewApplicationCubit extends _CreateNewApplicationCubit
+class _$CreateNewApplicationCubitImpl extends _CreateNewApplicationCubit
     with DiagnosticableTreeMixin {
-  _$_CreateNewApplicationCubit(
+  _$CreateNewApplicationCubitImpl(
       {this.pickedFile,
       this.excelBytes,
       required final List<Data?> header,
@@ -201,10 +201,10 @@ class _$_CreateNewApplicationCubit extends _CreateNewApplicationCubit
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CreateNewApplicationCubit &&
+            other is _$CreateNewApplicationCubitImpl &&
             (identical(other.pickedFile, pickedFile) ||
                 other.pickedFile == pickedFile) &&
             const DeepCollectionEquality()
@@ -226,18 +226,19 @@ class _$_CreateNewApplicationCubit extends _CreateNewApplicationCubit
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CreateNewApplicationCubitCopyWith<_$_CreateNewApplicationCubit>
-      get copyWith => __$$_CreateNewApplicationCubitCopyWithImpl<
-          _$_CreateNewApplicationCubit>(this, _$identity);
+  _$$CreateNewApplicationCubitImplCopyWith<_$CreateNewApplicationCubitImpl>
+      get copyWith => __$$CreateNewApplicationCubitImplCopyWithImpl<
+          _$CreateNewApplicationCubitImpl>(this, _$identity);
 }
 
 abstract class _CreateNewApplicationCubit extends CreateNewApplicationState {
   factory _CreateNewApplicationCubit(
-      {final FilePickerResult? pickedFile,
-      final Uint8List? excelBytes,
-      required final List<Data?> header,
-      required final bool error,
-      required final List<DataTableModel> body}) = _$_CreateNewApplicationCubit;
+          {final FilePickerResult? pickedFile,
+          final Uint8List? excelBytes,
+          required final List<Data?> header,
+          required final bool error,
+          required final List<DataTableModel> body}) =
+      _$CreateNewApplicationCubitImpl;
   _CreateNewApplicationCubit._() : super._();
 
   @override
@@ -252,6 +253,6 @@ abstract class _CreateNewApplicationCubit extends CreateNewApplicationState {
   List<DataTableModel> get body;
   @override
   @JsonKey(ignore: true)
-  _$$_CreateNewApplicationCubitCopyWith<_$_CreateNewApplicationCubit>
+  _$$CreateNewApplicationCubitImplCopyWith<_$CreateNewApplicationCubitImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

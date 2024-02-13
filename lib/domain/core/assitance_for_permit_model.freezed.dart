@@ -12,7 +12,7 @@ part of 'assitance_for_permit_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 AssitanceForPermitModel _$AssitanceForPermitModelFromJson(
     Map<String, dynamic> json) {
@@ -84,11 +84,12 @@ class _$AssitanceForPermitModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_AssitanceForPermitModelCopyWith<$Res>
+abstract class _$$AssitanceForPermitModelImplCopyWith<$Res>
     implements $AssitanceForPermitModelCopyWith<$Res> {
-  factory _$$_AssitanceForPermitModelCopyWith(_$_AssitanceForPermitModel value,
-          $Res Function(_$_AssitanceForPermitModel) then) =
-      __$$_AssitanceForPermitModelCopyWithImpl<$Res>;
+  factory _$$AssitanceForPermitModelImplCopyWith(
+          _$AssitanceForPermitModelImpl value,
+          $Res Function(_$AssitanceForPermitModelImpl) then) =
+      __$$AssitanceForPermitModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool? isActive, AssistancePermitDetailModel? data});
@@ -98,12 +99,13 @@ abstract class _$$_AssitanceForPermitModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AssitanceForPermitModelCopyWithImpl<$Res>
+class __$$AssitanceForPermitModelImplCopyWithImpl<$Res>
     extends _$AssitanceForPermitModelCopyWithImpl<$Res,
-        _$_AssitanceForPermitModel>
-    implements _$$_AssitanceForPermitModelCopyWith<$Res> {
-  __$$_AssitanceForPermitModelCopyWithImpl(_$_AssitanceForPermitModel _value,
-      $Res Function(_$_AssitanceForPermitModel) _then)
+        _$AssitanceForPermitModelImpl>
+    implements _$$AssitanceForPermitModelImplCopyWith<$Res> {
+  __$$AssitanceForPermitModelImplCopyWithImpl(
+      _$AssitanceForPermitModelImpl _value,
+      $Res Function(_$AssitanceForPermitModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -112,7 +114,7 @@ class __$$_AssitanceForPermitModelCopyWithImpl<$Res>
     Object? isActive = freezed,
     Object? data = freezed,
   }) {
-    return _then(_$_AssitanceForPermitModel(
+    return _then(_$AssitanceForPermitModelImpl(
       isActive: freezed == isActive
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
@@ -127,11 +129,11 @@ class __$$_AssitanceForPermitModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AssitanceForPermitModel implements _AssitanceForPermitModel {
-  _$_AssitanceForPermitModel({this.isActive, this.data});
+class _$AssitanceForPermitModelImpl implements _AssitanceForPermitModel {
+  _$AssitanceForPermitModelImpl({this.isActive, this.data});
 
-  factory _$_AssitanceForPermitModel.fromJson(Map<String, dynamic> json) =>
-      _$$_AssitanceForPermitModelFromJson(json);
+  factory _$AssitanceForPermitModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AssitanceForPermitModelImplFromJson(json);
 
   @override
   final bool? isActive;
@@ -144,10 +146,10 @@ class _$_AssitanceForPermitModel implements _AssitanceForPermitModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AssitanceForPermitModel &&
+            other is _$AssitanceForPermitModelImpl &&
             (identical(other.isActive, isActive) ||
                 other.isActive == isActive) &&
             (identical(other.data, data) || other.data == data));
@@ -160,14 +162,13 @@ class _$_AssitanceForPermitModel implements _AssitanceForPermitModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AssitanceForPermitModelCopyWith<_$_AssitanceForPermitModel>
-      get copyWith =>
-          __$$_AssitanceForPermitModelCopyWithImpl<_$_AssitanceForPermitModel>(
-              this, _$identity);
+  _$$AssitanceForPermitModelImplCopyWith<_$AssitanceForPermitModelImpl>
+      get copyWith => __$$AssitanceForPermitModelImplCopyWithImpl<
+          _$AssitanceForPermitModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AssitanceForPermitModelToJson(
+    return _$$AssitanceForPermitModelImplToJson(
       this,
     );
   }
@@ -176,10 +177,10 @@ class _$_AssitanceForPermitModel implements _AssitanceForPermitModel {
 abstract class _AssitanceForPermitModel implements AssitanceForPermitModel {
   factory _AssitanceForPermitModel(
       {final bool? isActive,
-      final AssistancePermitDetailModel? data}) = _$_AssitanceForPermitModel;
+      final AssistancePermitDetailModel? data}) = _$AssitanceForPermitModelImpl;
 
   factory _AssitanceForPermitModel.fromJson(Map<String, dynamic> json) =
-      _$_AssitanceForPermitModel.fromJson;
+      _$AssitanceForPermitModelImpl.fromJson;
 
   @override
   bool? get isActive;
@@ -187,6 +188,6 @@ abstract class _AssitanceForPermitModel implements AssitanceForPermitModel {
   AssistancePermitDetailModel? get data;
   @override
   @JsonKey(ignore: true)
-  _$$_AssitanceForPermitModelCopyWith<_$_AssitanceForPermitModel>
+  _$$AssitanceForPermitModelImplCopyWith<_$AssitanceForPermitModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -1,0 +1,174 @@
+{
+  "project_info": {
+    "project_number": "58741229055",
+    "project_id": "doortoid-mobile",
+    "storage_bucket": "doortoid-mobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:58741229055:android:25fafcbd52462913f153ca",
+        "android_client_info": {
+          "package_name": "com.example.doortoid_mobile_apps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "58741229055-4de80uh73i6a4qfgtlf54duno7j0kg59.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.doortoid_mobile_apps",
+            "certificate_hash": "f45d222beec011e2e098b0d45734fcfa97d296e2"
+          }
+        },
+        {
+          "client_id": "58741229055-6b8f1lrnugtmnotkqg5i8ortsfbsv8nn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.doortoid_mobile_apps",
+            "certificate_hash": "06c70b26b623bab79454408fee7768440cda44a9"
+          }
+        },
+        {
+          "client_id": "58741229055-dm47if5g0hrpfnin83vatq83ghhqrjh4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.doortoid_mobile_apps",
+            "certificate_hash": "101c4acbada0df8cb1b8995adf194a01b38ea193"
+          }
+        },
+        {
+          "client_id": "58741229055-fq846vn5bbtqiglnctb7dqb2jg50a2d9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.doortoid_mobile_apps",
+            "certificate_hash": "7a469c18befcd623854e22bed1f4f5836c0d47d1"
+          }
+        },
+        {
+          "client_id": "58741229055-s049udghkkef0nkffbe2edk05n4d59rb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.doortoid_mobile_apps",
+            "certificate_hash": "4160ba1e9a59a34eab7c14362277739bd2f0d1e8"
+          }
+        },
+        {
+          "client_id": "58741229055-527l2510mpvj7ndrqgeqsp8kjuvp1pdt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoycEId3dnp5nljjlFibezgdUF8WWynUg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "58741229055-527l2510mpvj7ndrqgeqsp8kjuvp1pdt.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "58741229055-bvkdon6qdp6kusb58a5drsgg8ki559if.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.doortoidMobileApps"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:58741229055:android:c5ebbbbe138d11fdf153ca",
+        "android_client_info": {
+          "package_name": "com.example.doortoid_mobile_apps_admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "58741229055-8ji87doae5cfpr76lg5780c5v5b8ohtu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.doortoid_mobile_apps_admin",
+            "certificate_hash": "7a469c18befcd623854e22bed1f4f5836c0d47d1"
+          }
+        },
+        {
+          "client_id": "58741229055-hgvpplt2u0sbh6fkg7et9572b0fcfodu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.doortoid_mobile_apps_admin",
+            "certificate_hash": "4160ba1e9a59a34eab7c14362277739bd2f0d1e8"
+          }
+        },
+        {
+          "client_id": "58741229055-527l2510mpvj7ndrqgeqsp8kjuvp1pdt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoycEId3dnp5nljjlFibezgdUF8WWynUg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "58741229055-527l2510mpvj7ndrqgeqsp8kjuvp1pdt.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "58741229055-bvkdon6qdp6kusb58a5drsgg8ki559if.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.doortoidMobileApps"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:58741229055:android:d8306faa6155b58ff153ca",
+        "android_client_info": {
+          "package_name": "com.example.dti_web"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "58741229055-527l2510mpvj7ndrqgeqsp8kjuvp1pdt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoycEId3dnp5nljjlFibezgdUF8WWynUg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "58741229055-527l2510mpvj7ndrqgeqsp8kjuvp1pdt.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "58741229055-bvkdon6qdp6kusb58a5drsgg8ki559if.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.doortoidMobileApps"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

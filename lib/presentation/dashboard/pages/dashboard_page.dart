@@ -2,8 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dti_web/application/auth/auth_cubit.dart';
 import 'package:dti_web/application/dashboard/dashboard_cubit.dart';
+import 'package:dti_web/application/global/global_user_cubit.dart';
 import 'package:dti_web/application/other/other_cubit.dart';
-import 'package:dti_web/application/timer/timer_cubit.dart';
 import 'package:dti_web/core/widgets/application_card.dart';
 import 'package:dti_web/core/widgets/passport_card.dart';
 import 'package:dti_web/core/widgets/social_button_widget.dart';
@@ -48,6 +48,7 @@ class _DashboardPageState extends State<DashboardPage> {
             ..getLocation()
             ..getDocumentsData(),
         ),
+        BlocProvider(create: (context) => getIt<GlobalUserCubit>()),
       ],
       child: BlocBuilder<OtherCubit, OtherState>(
         builder: (context, state) {
@@ -186,7 +187,8 @@ class _DashboardPageState extends State<DashboardPage> {
                         state.maybeMap(
                           orElse: () {},
                           onSignOut: (e) {
-                            AutoRouter.of(context).replaceAll([const SignInRoute()]);
+                            AutoRouter.of(context)
+                                .replaceAll([const SignInRoute()]);
                           },
                         );
                       },
@@ -412,7 +414,8 @@ class _DashboardPageState extends State<DashboardPage> {
                                                         ),
                                                       ),
                                                     ),
-                                                    const Expanded(child: SizedBox()),
+                                                    const Expanded(
+                                                        child: SizedBox()),
                                                   ],
                                                 ),
                                               ],

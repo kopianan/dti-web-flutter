@@ -12,7 +12,7 @@ part of 'image_upload_response.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ImageUploadResponse _$ImageUploadResponseFromJson(Map<String, dynamic> json) {
   return _ImageUploadResponse.fromJson(json);
@@ -93,11 +93,11 @@ class _$ImageUploadResponseCopyWithImpl<$Res, $Val extends ImageUploadResponse>
 }
 
 /// @nodoc
-abstract class _$$_ImageUploadResponseCopyWith<$Res>
+abstract class _$$ImageUploadResponseImplCopyWith<$Res>
     implements $ImageUploadResponseCopyWith<$Res> {
-  factory _$$_ImageUploadResponseCopyWith(_$_ImageUploadResponse value,
-          $Res Function(_$_ImageUploadResponse) then) =
-      __$$_ImageUploadResponseCopyWithImpl<$Res>;
+  factory _$$ImageUploadResponseImplCopyWith(_$ImageUploadResponseImpl value,
+          $Res Function(_$ImageUploadResponseImpl) then) =
+      __$$ImageUploadResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -109,11 +109,11 @@ abstract class _$$_ImageUploadResponseCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ImageUploadResponseCopyWithImpl<$Res>
-    extends _$ImageUploadResponseCopyWithImpl<$Res, _$_ImageUploadResponse>
-    implements _$$_ImageUploadResponseCopyWith<$Res> {
-  __$$_ImageUploadResponseCopyWithImpl(_$_ImageUploadResponse _value,
-      $Res Function(_$_ImageUploadResponse) _then)
+class __$$ImageUploadResponseImplCopyWithImpl<$Res>
+    extends _$ImageUploadResponseCopyWithImpl<$Res, _$ImageUploadResponseImpl>
+    implements _$$ImageUploadResponseImplCopyWith<$Res> {
+  __$$ImageUploadResponseImplCopyWithImpl(_$ImageUploadResponseImpl _value,
+      $Res Function(_$ImageUploadResponseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -125,7 +125,7 @@ class __$$_ImageUploadResponseCopyWithImpl<$Res>
     Object? appId = freezed,
     Object? docId = freezed,
   }) {
-    return _then(_$_ImageUploadResponse(
+    return _then(_$ImageUploadResponseImpl(
       fileName: null == fileName
           ? _value.fileName
           : fileName // ignore: cast_nullable_to_non_nullable
@@ -152,16 +152,16 @@ class __$$_ImageUploadResponseCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ImageUploadResponse implements _ImageUploadResponse {
-  _$_ImageUploadResponse(
+class _$ImageUploadResponseImpl implements _ImageUploadResponse {
+  _$ImageUploadResponseImpl(
       {required this.fileName,
       this.oldFileName,
       required this.downloadUrl,
       @JsonKey(nullable: true) this.appId,
       @JsonKey(nullable: true) this.docId});
 
-  factory _$_ImageUploadResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_ImageUploadResponseFromJson(json);
+  factory _$ImageUploadResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ImageUploadResponseImplFromJson(json);
 
   @override
   final String fileName;
@@ -182,10 +182,10 @@ class _$_ImageUploadResponse implements _ImageUploadResponse {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ImageUploadResponse &&
+            other is _$ImageUploadResponseImpl &&
             (identical(other.fileName, fileName) ||
                 other.fileName == fileName) &&
             (identical(other.oldFileName, oldFileName) ||
@@ -204,13 +204,13 @@ class _$_ImageUploadResponse implements _ImageUploadResponse {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ImageUploadResponseCopyWith<_$_ImageUploadResponse> get copyWith =>
-      __$$_ImageUploadResponseCopyWithImpl<_$_ImageUploadResponse>(
+  _$$ImageUploadResponseImplCopyWith<_$ImageUploadResponseImpl> get copyWith =>
+      __$$ImageUploadResponseImplCopyWithImpl<_$ImageUploadResponseImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ImageUploadResponseToJson(
+    return _$$ImageUploadResponseImplToJson(
       this,
     );
   }
@@ -218,14 +218,15 @@ class _$_ImageUploadResponse implements _ImageUploadResponse {
 
 abstract class _ImageUploadResponse implements ImageUploadResponse {
   factory _ImageUploadResponse(
-      {required final String fileName,
-      final String? oldFileName,
-      required final String downloadUrl,
-      @JsonKey(nullable: true) final String? appId,
-      @JsonKey(nullable: true) final String? docId}) = _$_ImageUploadResponse;
+          {required final String fileName,
+          final String? oldFileName,
+          required final String downloadUrl,
+          @JsonKey(nullable: true) final String? appId,
+          @JsonKey(nullable: true) final String? docId}) =
+      _$ImageUploadResponseImpl;
 
   factory _ImageUploadResponse.fromJson(Map<String, dynamic> json) =
-      _$_ImageUploadResponse.fromJson;
+      _$ImageUploadResponseImpl.fromJson;
 
   @override
   String get fileName;
@@ -241,6 +242,6 @@ abstract class _ImageUploadResponse implements ImageUploadResponse {
   String? get docId;
   @override
   @JsonKey(ignore: true)
-  _$$_ImageUploadResponseCopyWith<_$_ImageUploadResponse> get copyWith =>
+  _$$ImageUploadResponseImplCopyWith<_$ImageUploadResponseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -6,9 +6,9 @@ part of 'image_upload_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ImageUploadResponse _$$_ImageUploadResponseFromJson(
+_$ImageUploadResponseImpl _$$ImageUploadResponseImplFromJson(
         Map<String, dynamic> json) =>
-    _$_ImageUploadResponse(
+    _$ImageUploadResponseImpl(
       fileName: json['fileName'] as String,
       oldFileName: json['oldFileName'] as String?,
       downloadUrl: json['downloadUrl'] as String,
@@ -16,8 +16,8 @@ _$_ImageUploadResponse _$$_ImageUploadResponseFromJson(
       docId: json['docId'] as String?,
     );
 
-Map<String, dynamic> _$$_ImageUploadResponseToJson(
-        _$_ImageUploadResponse instance) =>
+Map<String, dynamic> _$$ImageUploadResponseImplToJson(
+        _$ImageUploadResponseImpl instance) =>
     <String, dynamic>{
       'fileName': instance.fileName,
       'oldFileName': instance.oldFileName,

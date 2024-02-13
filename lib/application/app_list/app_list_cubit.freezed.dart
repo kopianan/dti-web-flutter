@@ -12,7 +12,7 @@ part of 'app_list_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AppListState {
@@ -70,11 +70,11 @@ class _$AppListStateCopyWithImpl<$Res, $Val extends AppListState>
 }
 
 /// @nodoc
-abstract class _$$_AppListStateCopyWith<$Res>
+abstract class _$$AppListStateImplCopyWith<$Res>
     implements $AppListStateCopyWith<$Res> {
-  factory _$$_AppListStateCopyWith(
-          _$_AppListState value, $Res Function(_$_AppListState) then) =
-      __$$_AppListStateCopyWithImpl<$Res>;
+  factory _$$AppListStateImplCopyWith(
+          _$AppListStateImpl value, $Res Function(_$AppListStateImpl) then) =
+      __$$AppListStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -82,11 +82,11 @@ abstract class _$$_AppListStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AppListStateCopyWithImpl<$Res>
-    extends _$AppListStateCopyWithImpl<$Res, _$_AppListState>
-    implements _$$_AppListStateCopyWith<$Res> {
-  __$$_AppListStateCopyWithImpl(
-      _$_AppListState _value, $Res Function(_$_AppListState) _then)
+class __$$AppListStateImplCopyWithImpl<$Res>
+    extends _$AppListStateCopyWithImpl<$Res, _$AppListStateImpl>
+    implements _$$AppListStateImplCopyWith<$Res> {
+  __$$AppListStateImplCopyWithImpl(
+      _$AppListStateImpl _value, $Res Function(_$AppListStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -96,7 +96,7 @@ class __$$_AppListStateCopyWithImpl<$Res>
     Object? errorMessage = freezed,
     Object? apps = null,
   }) {
-    return _then(_$_AppListState(
+    return _then(_$AppListStateImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -115,8 +115,8 @@ class __$$_AppListStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AppListState extends _AppListState {
-  const _$_AppListState(
+class _$AppListStateImpl extends _AppListState {
+  const _$AppListStateImpl(
       {required this.status,
       this.errorMessage,
       final List<DataListModel> apps = const []})
@@ -142,10 +142,10 @@ class _$_AppListState extends _AppListState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AppListState &&
+            other is _$AppListStateImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
@@ -159,15 +159,15 @@ class _$_AppListState extends _AppListState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AppListStateCopyWith<_$_AppListState> get copyWith =>
-      __$$_AppListStateCopyWithImpl<_$_AppListState>(this, _$identity);
+  _$$AppListStateImplCopyWith<_$AppListStateImpl> get copyWith =>
+      __$$AppListStateImplCopyWithImpl<_$AppListStateImpl>(this, _$identity);
 }
 
 abstract class _AppListState extends AppListState {
   const factory _AppListState(
       {required final AppListStatus status,
       final String? errorMessage,
-      final List<DataListModel> apps}) = _$_AppListState;
+      final List<DataListModel> apps}) = _$AppListStateImpl;
   const _AppListState._() : super._();
 
   @override
@@ -178,6 +178,6 @@ abstract class _AppListState extends AppListState {
   List<DataListModel> get apps;
   @override
   @JsonKey(ignore: true)
-  _$$_AppListStateCopyWith<_$_AppListState> get copyWith =>
+  _$$AppListStateImplCopyWith<_$AppListStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

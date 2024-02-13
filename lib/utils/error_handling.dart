@@ -4,6 +4,7 @@ import 'package:dti_web/domain/global/failures.dart';
 
 class ErrorHandling with CoreMixin {
   Failures onDioErrorHandle(DioError err) {
+    print(err); 
     if (err.error == DioErrorType.sendTimeout) {
       return Failures.apiExpired();
     } else if (err.error == DioErrorType.badResponse) {

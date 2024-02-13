@@ -12,7 +12,7 @@ part of 'assistance_permit_detail_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 AssistancePermitDetailModel _$AssistancePermitDetailModelFromJson(
     Map<String, dynamic> json) {
@@ -78,25 +78,25 @@ class _$AssistancePermitDetailModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_AssistancePermitDetailModelCopyWith<$Res>
+abstract class _$$AssistancePermitDetailModelImplCopyWith<$Res>
     implements $AssistancePermitDetailModelCopyWith<$Res> {
-  factory _$$_AssistancePermitDetailModelCopyWith(
-          _$_AssistancePermitDetailModel value,
-          $Res Function(_$_AssistancePermitDetailModel) then) =
-      __$$_AssistancePermitDetailModelCopyWithImpl<$Res>;
+  factory _$$AssistancePermitDetailModelImplCopyWith(
+          _$AssistancePermitDetailModelImpl value,
+          $Res Function(_$AssistancePermitDetailModelImpl) then) =
+      __$$AssistancePermitDetailModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? expiredDate, String? dateOfPermit, String? permitPhoto});
 }
 
 /// @nodoc
-class __$$_AssistancePermitDetailModelCopyWithImpl<$Res>
+class __$$AssistancePermitDetailModelImplCopyWithImpl<$Res>
     extends _$AssistancePermitDetailModelCopyWithImpl<$Res,
-        _$_AssistancePermitDetailModel>
-    implements _$$_AssistancePermitDetailModelCopyWith<$Res> {
-  __$$_AssistancePermitDetailModelCopyWithImpl(
-      _$_AssistancePermitDetailModel _value,
-      $Res Function(_$_AssistancePermitDetailModel) _then)
+        _$AssistancePermitDetailModelImpl>
+    implements _$$AssistancePermitDetailModelImplCopyWith<$Res> {
+  __$$AssistancePermitDetailModelImplCopyWithImpl(
+      _$AssistancePermitDetailModelImpl _value,
+      $Res Function(_$AssistancePermitDetailModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -106,7 +106,7 @@ class __$$_AssistancePermitDetailModelCopyWithImpl<$Res>
     Object? dateOfPermit = freezed,
     Object? permitPhoto = freezed,
   }) {
-    return _then(_$_AssistancePermitDetailModel(
+    return _then(_$AssistancePermitDetailModelImpl(
       expiredDate: freezed == expiredDate
           ? _value.expiredDate
           : expiredDate // ignore: cast_nullable_to_non_nullable
@@ -125,12 +125,14 @@ class __$$_AssistancePermitDetailModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AssistancePermitDetailModel implements _AssistancePermitDetailModel {
-  _$_AssistancePermitDetailModel(
+class _$AssistancePermitDetailModelImpl
+    implements _AssistancePermitDetailModel {
+  _$AssistancePermitDetailModelImpl(
       {this.expiredDate, this.dateOfPermit, this.permitPhoto});
 
-  factory _$_AssistancePermitDetailModel.fromJson(Map<String, dynamic> json) =>
-      _$$_AssistancePermitDetailModelFromJson(json);
+  factory _$AssistancePermitDetailModelImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$AssistancePermitDetailModelImplFromJson(json);
 
   @override
   final String? expiredDate;
@@ -145,10 +147,10 @@ class _$_AssistancePermitDetailModel implements _AssistancePermitDetailModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AssistancePermitDetailModel &&
+            other is _$AssistancePermitDetailModelImpl &&
             (identical(other.expiredDate, expiredDate) ||
                 other.expiredDate == expiredDate) &&
             (identical(other.dateOfPermit, dateOfPermit) ||
@@ -165,13 +167,13 @@ class _$_AssistancePermitDetailModel implements _AssistancePermitDetailModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AssistancePermitDetailModelCopyWith<_$_AssistancePermitDetailModel>
-      get copyWith => __$$_AssistancePermitDetailModelCopyWithImpl<
-          _$_AssistancePermitDetailModel>(this, _$identity);
+  _$$AssistancePermitDetailModelImplCopyWith<_$AssistancePermitDetailModelImpl>
+      get copyWith => __$$AssistancePermitDetailModelImplCopyWithImpl<
+          _$AssistancePermitDetailModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AssistancePermitDetailModelToJson(
+    return _$$AssistancePermitDetailModelImplToJson(
       this,
     );
   }
@@ -182,10 +184,10 @@ abstract class _AssistancePermitDetailModel
   factory _AssistancePermitDetailModel(
       {final String? expiredDate,
       final String? dateOfPermit,
-      final String? permitPhoto}) = _$_AssistancePermitDetailModel;
+      final String? permitPhoto}) = _$AssistancePermitDetailModelImpl;
 
   factory _AssistancePermitDetailModel.fromJson(Map<String, dynamic> json) =
-      _$_AssistancePermitDetailModel.fromJson;
+      _$AssistancePermitDetailModelImpl.fromJson;
 
   @override
   String? get expiredDate;
@@ -195,6 +197,6 @@ abstract class _AssistancePermitDetailModel
   String? get permitPhoto;
   @override
   @JsonKey(ignore: true)
-  _$$_AssistancePermitDetailModelCopyWith<_$_AssistancePermitDetailModel>
+  _$$AssistancePermitDetailModelImplCopyWith<_$AssistancePermitDetailModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

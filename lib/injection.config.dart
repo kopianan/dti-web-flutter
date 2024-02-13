@@ -4,8 +4,7 @@
 // InjectableConfigGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_lambdas
-// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: type=lint
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
@@ -63,8 +62,6 @@ import 'infrastructure/payment/payment_repository.dart' as _i31;
 import 'infrastructure/update_application/update_application_repository.dart'
     as _i33;
 
-// ignore_for_file: unnecessary_lambdas
-// ignore_for_file: lines_longer_than_80_chars
 // initializes the registration of main-scope dependencies inside of GetIt
 _i1.GetIt $initGetIt(
   _i1.GetIt getIt, {
@@ -128,7 +125,7 @@ _i1.GetIt $initGetIt(
       () => _i44.ContactUsCubit(gh<_i20.IContactUs>()));
   gh.factory<_i45.CustomerCubit>(
       () => _i45.CustomerCubit(gh<_i22.ICustomer>()));
-  gh.factory<_i46.DashboardCubit>(
+  gh.lazySingleton<_i46.DashboardCubit>(
       () => _i46.DashboardCubit(gh<_i24.IDashboard>()));
   gh.factory<_i47.FeedbackCubit>(
       () => _i47.FeedbackCubit(gh<_i26.IFeedback>()));

@@ -12,7 +12,7 @@ part of 'visa_application_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 VisaApplicationModel _$VisaApplicationModelFromJson(Map<String, dynamic> json) {
   return _VisaApplicationModel.fromJson(json);
@@ -164,115 +164,64 @@ abstract class $VisaApplicationModelCopyWith<$Res> {
       String? motherName,
       String createdChannel,
       String lastUpdatedChannel,
-      @JsonKey(name: 'rejectionNote')
-          String? rejectionNote,
-      @JsonKey(name: 'entry')
-          String? entry,
-      @JsonKey(name: 'lastName')
-          String? lastName,
-      @JsonKey(name: 'userName')
-          String? userName,
-      @JsonKey(name: 'nationality')
-          String? nationality,
-      @JsonKey(name: 'guarantorDTI')
-          bool? guarantorDTI,
-      @JsonKey(name: 'passportNumber')
-          String? passportNumber,
-      @JsonKey(name: 'district')
-          String? district,
-      @JsonKey(name: 'overstayedFlag')
-          bool? overstayedFlag,
-      @JsonKey(name: 'createdBy')
-          String? createdBy,
-      @JsonKey(name: 'xenditPaymentMethod')
-          String? xenditPaymentMethod,
-      @JsonKey(name: 'address')
-          String? address,
-      @JsonKey(name: 'city')
-          String? city,
+      @JsonKey(name: 'rejectionNote') String? rejectionNote,
+      @JsonKey(name: 'entry') String? entry,
+      @JsonKey(name: 'lastName') String? lastName,
+      @JsonKey(name: 'userName') String? userName,
+      @JsonKey(name: 'nationality') String? nationality,
+      @JsonKey(name: 'guarantorDTI') bool? guarantorDTI,
+      @JsonKey(name: 'passportNumber') String? passportNumber,
+      @JsonKey(name: 'district') String? district,
+      @JsonKey(name: 'overstayedFlag') bool? overstayedFlag,
+      @JsonKey(name: 'createdBy') String? createdBy,
+      @JsonKey(name: 'xenditPaymentMethod') String? xenditPaymentMethod,
+      @JsonKey(name: 'address') String? address,
+      @JsonKey(name: 'city') String? city,
       String? modeOfTransportation,
       String? flightNumber,
       String? arrivalDate,
-      @JsonKey(name: 'xenditPaymentStatus')
-          String? xenditPaymentStatus,
-      @JsonKey(name: 'xenditPaymentGateway')
-          String? xenditPaymentGateway,
-      @JsonKey(name: 'xenditPaymentId')
-          String? xenditPaymentId,
-      @JsonKey(name: 'mobileNumber')
-          String? mobileNumber,
-      @JsonKey(name: 'status')
-          String? status,
+      @JsonKey(name: 'xenditPaymentStatus') String? xenditPaymentStatus,
+      @JsonKey(name: 'xenditPaymentGateway') String? xenditPaymentGateway,
+      @JsonKey(name: 'xenditPaymentId') String? xenditPaymentId,
+      @JsonKey(name: 'mobileNumber') String? mobileNumber,
+      @JsonKey(name: 'status') String? status,
       @JsonKey(name: 'xenditPaymentDescription')
-          String? xenditPaymentDescription,
-      @JsonKey(name: 'submittedDate')
-          String? submittedDate,
-      @JsonKey(name: 'subTitle')
-          String? subTitle,
-      @JsonKey(name: 'documents_data')
-          List<DocumentDataModel>? documentsData,
-      @JsonKey(name: 'title')
-          String? title,
-      @JsonKey(name: 'lastUpdatedDate')
-          String? lastUpdatedDate,
-      @JsonKey(name: 'errorMessage')
-          String? errorMessage,
-      @JsonKey(name: 'firebaseDocId')
-          String? firebaseDocId,
-      @JsonKey(name: 'relationshipStatus')
-          String? relationshipStatus,
-      @JsonKey(name: 'dateOfExpiration')
-          String? dateOfExpiration,
-      @JsonKey(name: 'cityDomicile')
-          String? cityDomicile,
-      @JsonKey(name: 'applicationID')
-          String? applicationID,
-      @JsonKey(name: 'createdDate')
-          String? createdDate,
-      @JsonKey(name: 'xenditPaymentInvoiceUrl')
-          String? xenditPaymentInvoiceUrl,
-      @JsonKey(name: 'xenditPaymentCurrency')
-          String? xenditPaymentCurrency,
-      @JsonKey(name: 'placeOfBirth')
-          String? placeOfBirth,
-      @JsonKey(name: 'mobileDialCode')
-          String? mobileDialCode,
-      @JsonKey(name: 'currency')
-          String? currency,
-      @JsonKey(name: 'inIndonesia')
-          bool? inIndonesia,
-      @JsonKey(name: 'xenditPaymentPaidAmount')
-          int? xenditPaymentPaidAmount,
-      @JsonKey(name: 'dateOfIssue')
-          String? dateOfIssue,
-      @JsonKey(name: 'lastUpdatedBy')
-          String? lastUpdatedBy,
-      @JsonKey(name: 'documents')
-          String? documents,
-      @JsonKey(name: 'firstName')
-          String? firstName,
+      String? xenditPaymentDescription,
+      @JsonKey(name: 'submittedDate') String? submittedDate,
+      @JsonKey(name: 'subTitle') String? subTitle,
+      @JsonKey(name: 'documents_data') List<DocumentDataModel>? documentsData,
+      @JsonKey(name: 'title') String? title,
+      @JsonKey(name: 'lastUpdatedDate') String? lastUpdatedDate,
+      @JsonKey(name: 'errorMessage') String? errorMessage,
+      @JsonKey(name: 'firebaseDocId') String? firebaseDocId,
+      @JsonKey(name: 'relationshipStatus') String? relationshipStatus,
+      @JsonKey(name: 'dateOfExpiration') String? dateOfExpiration,
+      @JsonKey(name: 'cityDomicile') String? cityDomicile,
+      @JsonKey(name: 'applicationID') String? applicationID,
+      @JsonKey(name: 'createdDate') String? createdDate,
+      @JsonKey(name: 'xenditPaymentInvoiceUrl') String? xenditPaymentInvoiceUrl,
+      @JsonKey(name: 'xenditPaymentCurrency') String? xenditPaymentCurrency,
+      @JsonKey(name: 'placeOfBirth') String? placeOfBirth,
+      @JsonKey(name: 'mobileDialCode') String? mobileDialCode,
+      @JsonKey(name: 'currency') String? currency,
+      @JsonKey(name: 'inIndonesia') bool? inIndonesia,
+      @JsonKey(name: 'xenditPaymentPaidAmount') int? xenditPaymentPaidAmount,
+      @JsonKey(name: 'dateOfIssue') String? dateOfIssue,
+      @JsonKey(name: 'lastUpdatedBy') String? lastUpdatedBy,
+      @JsonKey(name: 'documents') String? documents,
+      @JsonKey(name: 'firstName') String? firstName,
       @JsonKey(name: 'assistanceForPermit')
-          AssitanceForPermitModel? assistanceForPermit,
-      @JsonKey(name: 'issuingCountry')
-          String? issuingCountry,
-      @JsonKey(name: 'province')
-          String? province,
-      @JsonKey(name: 'xenditPaymentAmount')
-          int? xenditPaymentAmount,
-      @JsonKey(name: 'mobileCountryCode')
-          String? mobileCountryCode,
-      @JsonKey(name: 'gender')
-          String? gender,
-      @JsonKey(name: 'deportedFlag')
-          bool? deportedFlag,
-      @JsonKey(name: 'xenditPaymentPaidAt')
-          String? xenditPaymentPaidAt,
-      @JsonKey(name: 'dateOfBirth')
-          String? dateOfBirth,
-      @JsonKey(name: 'price')
-          double? price,
-      @JsonKey(name: 'multiVisaDuration')
-          String? multiVisaDuration});
+      AssitanceForPermitModel? assistanceForPermit,
+      @JsonKey(name: 'issuingCountry') String? issuingCountry,
+      @JsonKey(name: 'province') String? province,
+      @JsonKey(name: 'xenditPaymentAmount') int? xenditPaymentAmount,
+      @JsonKey(name: 'mobileCountryCode') String? mobileCountryCode,
+      @JsonKey(name: 'gender') String? gender,
+      @JsonKey(name: 'deportedFlag') bool? deportedFlag,
+      @JsonKey(name: 'xenditPaymentPaidAt') String? xenditPaymentPaidAt,
+      @JsonKey(name: 'dateOfBirth') String? dateOfBirth,
+      @JsonKey(name: 'price') double? price,
+      @JsonKey(name: 'multiVisaDuration') String? multiVisaDuration});
 
   $AssitanceForPermitModelCopyWith<$Res>? get assistanceForPermit;
 }
@@ -636,11 +585,11 @@ class _$VisaApplicationModelCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_VisaApplicationModelCopyWith<$Res>
+abstract class _$$VisaApplicationModelImplCopyWith<$Res>
     implements $VisaApplicationModelCopyWith<$Res> {
-  factory _$$_VisaApplicationModelCopyWith(_$_VisaApplicationModel value,
-          $Res Function(_$_VisaApplicationModel) then) =
-      __$$_VisaApplicationModelCopyWithImpl<$Res>;
+  factory _$$VisaApplicationModelImplCopyWith(_$VisaApplicationModelImpl value,
+          $Res Function(_$VisaApplicationModelImpl) then) =
+      __$$VisaApplicationModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -653,126 +602,75 @@ abstract class _$$_VisaApplicationModelCopyWith<$Res>
       String? motherName,
       String createdChannel,
       String lastUpdatedChannel,
-      @JsonKey(name: 'rejectionNote')
-          String? rejectionNote,
-      @JsonKey(name: 'entry')
-          String? entry,
-      @JsonKey(name: 'lastName')
-          String? lastName,
-      @JsonKey(name: 'userName')
-          String? userName,
-      @JsonKey(name: 'nationality')
-          String? nationality,
-      @JsonKey(name: 'guarantorDTI')
-          bool? guarantorDTI,
-      @JsonKey(name: 'passportNumber')
-          String? passportNumber,
-      @JsonKey(name: 'district')
-          String? district,
-      @JsonKey(name: 'overstayedFlag')
-          bool? overstayedFlag,
-      @JsonKey(name: 'createdBy')
-          String? createdBy,
-      @JsonKey(name: 'xenditPaymentMethod')
-          String? xenditPaymentMethod,
-      @JsonKey(name: 'address')
-          String? address,
-      @JsonKey(name: 'city')
-          String? city,
+      @JsonKey(name: 'rejectionNote') String? rejectionNote,
+      @JsonKey(name: 'entry') String? entry,
+      @JsonKey(name: 'lastName') String? lastName,
+      @JsonKey(name: 'userName') String? userName,
+      @JsonKey(name: 'nationality') String? nationality,
+      @JsonKey(name: 'guarantorDTI') bool? guarantorDTI,
+      @JsonKey(name: 'passportNumber') String? passportNumber,
+      @JsonKey(name: 'district') String? district,
+      @JsonKey(name: 'overstayedFlag') bool? overstayedFlag,
+      @JsonKey(name: 'createdBy') String? createdBy,
+      @JsonKey(name: 'xenditPaymentMethod') String? xenditPaymentMethod,
+      @JsonKey(name: 'address') String? address,
+      @JsonKey(name: 'city') String? city,
       String? modeOfTransportation,
       String? flightNumber,
       String? arrivalDate,
-      @JsonKey(name: 'xenditPaymentStatus')
-          String? xenditPaymentStatus,
-      @JsonKey(name: 'xenditPaymentGateway')
-          String? xenditPaymentGateway,
-      @JsonKey(name: 'xenditPaymentId')
-          String? xenditPaymentId,
-      @JsonKey(name: 'mobileNumber')
-          String? mobileNumber,
-      @JsonKey(name: 'status')
-          String? status,
+      @JsonKey(name: 'xenditPaymentStatus') String? xenditPaymentStatus,
+      @JsonKey(name: 'xenditPaymentGateway') String? xenditPaymentGateway,
+      @JsonKey(name: 'xenditPaymentId') String? xenditPaymentId,
+      @JsonKey(name: 'mobileNumber') String? mobileNumber,
+      @JsonKey(name: 'status') String? status,
       @JsonKey(name: 'xenditPaymentDescription')
-          String? xenditPaymentDescription,
-      @JsonKey(name: 'submittedDate')
-          String? submittedDate,
-      @JsonKey(name: 'subTitle')
-          String? subTitle,
-      @JsonKey(name: 'documents_data')
-          List<DocumentDataModel>? documentsData,
-      @JsonKey(name: 'title')
-          String? title,
-      @JsonKey(name: 'lastUpdatedDate')
-          String? lastUpdatedDate,
-      @JsonKey(name: 'errorMessage')
-          String? errorMessage,
-      @JsonKey(name: 'firebaseDocId')
-          String? firebaseDocId,
-      @JsonKey(name: 'relationshipStatus')
-          String? relationshipStatus,
-      @JsonKey(name: 'dateOfExpiration')
-          String? dateOfExpiration,
-      @JsonKey(name: 'cityDomicile')
-          String? cityDomicile,
-      @JsonKey(name: 'applicationID')
-          String? applicationID,
-      @JsonKey(name: 'createdDate')
-          String? createdDate,
-      @JsonKey(name: 'xenditPaymentInvoiceUrl')
-          String? xenditPaymentInvoiceUrl,
-      @JsonKey(name: 'xenditPaymentCurrency')
-          String? xenditPaymentCurrency,
-      @JsonKey(name: 'placeOfBirth')
-          String? placeOfBirth,
-      @JsonKey(name: 'mobileDialCode')
-          String? mobileDialCode,
-      @JsonKey(name: 'currency')
-          String? currency,
-      @JsonKey(name: 'inIndonesia')
-          bool? inIndonesia,
-      @JsonKey(name: 'xenditPaymentPaidAmount')
-          int? xenditPaymentPaidAmount,
-      @JsonKey(name: 'dateOfIssue')
-          String? dateOfIssue,
-      @JsonKey(name: 'lastUpdatedBy')
-          String? lastUpdatedBy,
-      @JsonKey(name: 'documents')
-          String? documents,
-      @JsonKey(name: 'firstName')
-          String? firstName,
+      String? xenditPaymentDescription,
+      @JsonKey(name: 'submittedDate') String? submittedDate,
+      @JsonKey(name: 'subTitle') String? subTitle,
+      @JsonKey(name: 'documents_data') List<DocumentDataModel>? documentsData,
+      @JsonKey(name: 'title') String? title,
+      @JsonKey(name: 'lastUpdatedDate') String? lastUpdatedDate,
+      @JsonKey(name: 'errorMessage') String? errorMessage,
+      @JsonKey(name: 'firebaseDocId') String? firebaseDocId,
+      @JsonKey(name: 'relationshipStatus') String? relationshipStatus,
+      @JsonKey(name: 'dateOfExpiration') String? dateOfExpiration,
+      @JsonKey(name: 'cityDomicile') String? cityDomicile,
+      @JsonKey(name: 'applicationID') String? applicationID,
+      @JsonKey(name: 'createdDate') String? createdDate,
+      @JsonKey(name: 'xenditPaymentInvoiceUrl') String? xenditPaymentInvoiceUrl,
+      @JsonKey(name: 'xenditPaymentCurrency') String? xenditPaymentCurrency,
+      @JsonKey(name: 'placeOfBirth') String? placeOfBirth,
+      @JsonKey(name: 'mobileDialCode') String? mobileDialCode,
+      @JsonKey(name: 'currency') String? currency,
+      @JsonKey(name: 'inIndonesia') bool? inIndonesia,
+      @JsonKey(name: 'xenditPaymentPaidAmount') int? xenditPaymentPaidAmount,
+      @JsonKey(name: 'dateOfIssue') String? dateOfIssue,
+      @JsonKey(name: 'lastUpdatedBy') String? lastUpdatedBy,
+      @JsonKey(name: 'documents') String? documents,
+      @JsonKey(name: 'firstName') String? firstName,
       @JsonKey(name: 'assistanceForPermit')
-          AssitanceForPermitModel? assistanceForPermit,
-      @JsonKey(name: 'issuingCountry')
-          String? issuingCountry,
-      @JsonKey(name: 'province')
-          String? province,
-      @JsonKey(name: 'xenditPaymentAmount')
-          int? xenditPaymentAmount,
-      @JsonKey(name: 'mobileCountryCode')
-          String? mobileCountryCode,
-      @JsonKey(name: 'gender')
-          String? gender,
-      @JsonKey(name: 'deportedFlag')
-          bool? deportedFlag,
-      @JsonKey(name: 'xenditPaymentPaidAt')
-          String? xenditPaymentPaidAt,
-      @JsonKey(name: 'dateOfBirth')
-          String? dateOfBirth,
-      @JsonKey(name: 'price')
-          double? price,
-      @JsonKey(name: 'multiVisaDuration')
-          String? multiVisaDuration});
+      AssitanceForPermitModel? assistanceForPermit,
+      @JsonKey(name: 'issuingCountry') String? issuingCountry,
+      @JsonKey(name: 'province') String? province,
+      @JsonKey(name: 'xenditPaymentAmount') int? xenditPaymentAmount,
+      @JsonKey(name: 'mobileCountryCode') String? mobileCountryCode,
+      @JsonKey(name: 'gender') String? gender,
+      @JsonKey(name: 'deportedFlag') bool? deportedFlag,
+      @JsonKey(name: 'xenditPaymentPaidAt') String? xenditPaymentPaidAt,
+      @JsonKey(name: 'dateOfBirth') String? dateOfBirth,
+      @JsonKey(name: 'price') double? price,
+      @JsonKey(name: 'multiVisaDuration') String? multiVisaDuration});
 
   @override
   $AssitanceForPermitModelCopyWith<$Res>? get assistanceForPermit;
 }
 
 /// @nodoc
-class __$$_VisaApplicationModelCopyWithImpl<$Res>
-    extends _$VisaApplicationModelCopyWithImpl<$Res, _$_VisaApplicationModel>
-    implements _$$_VisaApplicationModelCopyWith<$Res> {
-  __$$_VisaApplicationModelCopyWithImpl(_$_VisaApplicationModel _value,
-      $Res Function(_$_VisaApplicationModel) _then)
+class __$$VisaApplicationModelImplCopyWithImpl<$Res>
+    extends _$VisaApplicationModelCopyWithImpl<$Res, _$VisaApplicationModelImpl>
+    implements _$$VisaApplicationModelImplCopyWith<$Res> {
+  __$$VisaApplicationModelImplCopyWithImpl(_$VisaApplicationModelImpl _value,
+      $Res Function(_$VisaApplicationModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -844,7 +742,7 @@ class __$$_VisaApplicationModelCopyWithImpl<$Res>
     Object? price = freezed,
     Object? multiVisaDuration = freezed,
   }) {
-    return _then(_$_VisaApplicationModel(
+    return _then(_$VisaApplicationModelImpl(
       bookingCode: freezed == bookingCode
           ? _value.bookingCode
           : bookingCode // ignore: cast_nullable_to_non_nullable
@@ -1112,8 +1010,8 @@ class __$$_VisaApplicationModelCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
-class _$_VisaApplicationModel implements _VisaApplicationModel {
-  _$_VisaApplicationModel(
+class _$VisaApplicationModelImpl implements _VisaApplicationModel {
+  _$VisaApplicationModelImpl(
       {this.bookingCode,
       this.identityNumber,
       this.type,
@@ -1123,119 +1021,67 @@ class _$_VisaApplicationModel implements _VisaApplicationModel {
       this.motherName,
       this.createdChannel = 'Website',
       this.lastUpdatedChannel = 'Website',
-      @JsonKey(name: 'rejectionNote')
-          this.rejectionNote,
-      @JsonKey(name: 'entry')
-          this.entry,
-      @JsonKey(name: 'lastName')
-          this.lastName,
-      @JsonKey(name: 'userName')
-          this.userName,
-      @JsonKey(name: 'nationality')
-          this.nationality,
-      @JsonKey(name: 'guarantorDTI')
-          this.guarantorDTI,
-      @JsonKey(name: 'passportNumber')
-          this.passportNumber,
-      @JsonKey(name: 'district')
-          this.district,
-      @JsonKey(name: 'overstayedFlag')
-          this.overstayedFlag,
-      @JsonKey(name: 'createdBy')
-          this.createdBy,
-      @JsonKey(name: 'xenditPaymentMethod')
-          this.xenditPaymentMethod,
-      @JsonKey(name: 'address')
-          this.address,
-      @JsonKey(name: 'city')
-          this.city,
+      @JsonKey(name: 'rejectionNote') this.rejectionNote,
+      @JsonKey(name: 'entry') this.entry,
+      @JsonKey(name: 'lastName') this.lastName,
+      @JsonKey(name: 'userName') this.userName,
+      @JsonKey(name: 'nationality') this.nationality,
+      @JsonKey(name: 'guarantorDTI') this.guarantorDTI,
+      @JsonKey(name: 'passportNumber') this.passportNumber,
+      @JsonKey(name: 'district') this.district,
+      @JsonKey(name: 'overstayedFlag') this.overstayedFlag,
+      @JsonKey(name: 'createdBy') this.createdBy,
+      @JsonKey(name: 'xenditPaymentMethod') this.xenditPaymentMethod,
+      @JsonKey(name: 'address') this.address,
+      @JsonKey(name: 'city') this.city,
       this.modeOfTransportation,
       this.flightNumber,
       this.arrivalDate,
-      @JsonKey(name: 'xenditPaymentStatus')
-          this.xenditPaymentStatus,
-      @JsonKey(name: 'xenditPaymentGateway')
-          this.xenditPaymentGateway,
-      @JsonKey(name: 'xenditPaymentId')
-          this.xenditPaymentId,
-      @JsonKey(name: 'mobileNumber')
-          this.mobileNumber,
-      @JsonKey(name: 'status')
-          this.status,
-      @JsonKey(name: 'xenditPaymentDescription')
-          this.xenditPaymentDescription,
-      @JsonKey(name: 'submittedDate')
-          this.submittedDate,
-      @JsonKey(name: 'subTitle')
-          this.subTitle,
+      @JsonKey(name: 'xenditPaymentStatus') this.xenditPaymentStatus,
+      @JsonKey(name: 'xenditPaymentGateway') this.xenditPaymentGateway,
+      @JsonKey(name: 'xenditPaymentId') this.xenditPaymentId,
+      @JsonKey(name: 'mobileNumber') this.mobileNumber,
+      @JsonKey(name: 'status') this.status,
+      @JsonKey(name: 'xenditPaymentDescription') this.xenditPaymentDescription,
+      @JsonKey(name: 'submittedDate') this.submittedDate,
+      @JsonKey(name: 'subTitle') this.subTitle,
       @JsonKey(name: 'documents_data')
-          final List<DocumentDataModel>? documentsData,
-      @JsonKey(name: 'title')
-          this.title,
-      @JsonKey(name: 'lastUpdatedDate')
-          this.lastUpdatedDate,
-      @JsonKey(name: 'errorMessage')
-          this.errorMessage,
-      @JsonKey(name: 'firebaseDocId')
-          this.firebaseDocId,
-      @JsonKey(name: 'relationshipStatus')
-          this.relationshipStatus,
-      @JsonKey(name: 'dateOfExpiration')
-          this.dateOfExpiration,
-      @JsonKey(name: 'cityDomicile')
-          this.cityDomicile,
-      @JsonKey(name: 'applicationID')
-          this.applicationID,
-      @JsonKey(name: 'createdDate')
-          this.createdDate,
-      @JsonKey(name: 'xenditPaymentInvoiceUrl')
-          this.xenditPaymentInvoiceUrl,
-      @JsonKey(name: 'xenditPaymentCurrency')
-          this.xenditPaymentCurrency,
-      @JsonKey(name: 'placeOfBirth')
-          this.placeOfBirth,
-      @JsonKey(name: 'mobileDialCode')
-          this.mobileDialCode,
-      @JsonKey(name: 'currency')
-          this.currency,
-      @JsonKey(name: 'inIndonesia')
-          this.inIndonesia,
-      @JsonKey(name: 'xenditPaymentPaidAmount')
-          this.xenditPaymentPaidAmount,
-      @JsonKey(name: 'dateOfIssue')
-          this.dateOfIssue,
-      @JsonKey(name: 'lastUpdatedBy')
-          this.lastUpdatedBy,
-      @JsonKey(name: 'documents')
-          this.documents,
-      @JsonKey(name: 'firstName')
-          this.firstName,
-      @JsonKey(name: 'assistanceForPermit')
-          this.assistanceForPermit,
-      @JsonKey(name: 'issuingCountry')
-          this.issuingCountry,
-      @JsonKey(name: 'province')
-          this.province,
-      @JsonKey(name: 'xenditPaymentAmount')
-          this.xenditPaymentAmount,
-      @JsonKey(name: 'mobileCountryCode')
-          this.mobileCountryCode,
-      @JsonKey(name: 'gender')
-          this.gender,
-      @JsonKey(name: 'deportedFlag')
-          this.deportedFlag,
-      @JsonKey(name: 'xenditPaymentPaidAt')
-          this.xenditPaymentPaidAt,
-      @JsonKey(name: 'dateOfBirth')
-          this.dateOfBirth,
-      @JsonKey(name: 'price')
-          this.price,
-      @JsonKey(name: 'multiVisaDuration')
-          this.multiVisaDuration})
+      final List<DocumentDataModel>? documentsData,
+      @JsonKey(name: 'title') this.title,
+      @JsonKey(name: 'lastUpdatedDate') this.lastUpdatedDate,
+      @JsonKey(name: 'errorMessage') this.errorMessage,
+      @JsonKey(name: 'firebaseDocId') this.firebaseDocId,
+      @JsonKey(name: 'relationshipStatus') this.relationshipStatus,
+      @JsonKey(name: 'dateOfExpiration') this.dateOfExpiration,
+      @JsonKey(name: 'cityDomicile') this.cityDomicile,
+      @JsonKey(name: 'applicationID') this.applicationID,
+      @JsonKey(name: 'createdDate') this.createdDate,
+      @JsonKey(name: 'xenditPaymentInvoiceUrl') this.xenditPaymentInvoiceUrl,
+      @JsonKey(name: 'xenditPaymentCurrency') this.xenditPaymentCurrency,
+      @JsonKey(name: 'placeOfBirth') this.placeOfBirth,
+      @JsonKey(name: 'mobileDialCode') this.mobileDialCode,
+      @JsonKey(name: 'currency') this.currency,
+      @JsonKey(name: 'inIndonesia') this.inIndonesia,
+      @JsonKey(name: 'xenditPaymentPaidAmount') this.xenditPaymentPaidAmount,
+      @JsonKey(name: 'dateOfIssue') this.dateOfIssue,
+      @JsonKey(name: 'lastUpdatedBy') this.lastUpdatedBy,
+      @JsonKey(name: 'documents') this.documents,
+      @JsonKey(name: 'firstName') this.firstName,
+      @JsonKey(name: 'assistanceForPermit') this.assistanceForPermit,
+      @JsonKey(name: 'issuingCountry') this.issuingCountry,
+      @JsonKey(name: 'province') this.province,
+      @JsonKey(name: 'xenditPaymentAmount') this.xenditPaymentAmount,
+      @JsonKey(name: 'mobileCountryCode') this.mobileCountryCode,
+      @JsonKey(name: 'gender') this.gender,
+      @JsonKey(name: 'deportedFlag') this.deportedFlag,
+      @JsonKey(name: 'xenditPaymentPaidAt') this.xenditPaymentPaidAt,
+      @JsonKey(name: 'dateOfBirth') this.dateOfBirth,
+      @JsonKey(name: 'price') this.price,
+      @JsonKey(name: 'multiVisaDuration') this.multiVisaDuration})
       : _documentsData = documentsData;
 
-  factory _$_VisaApplicationModel.fromJson(Map<String, dynamic> json) =>
-      _$$_VisaApplicationModelFromJson(json);
+  factory _$VisaApplicationModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$VisaApplicationModelImplFromJson(json);
 
 //Passport exclusive
   @override
@@ -1438,10 +1284,10 @@ class _$_VisaApplicationModel implements _VisaApplicationModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_VisaApplicationModel &&
+            other is _$VisaApplicationModelImpl &&
             (identical(other.bookingCode, bookingCode) ||
                 other.bookingCode == bookingCode) &&
             (identical(other.identityNumber, identityNumber) ||
@@ -1624,13 +1470,14 @@ class _$_VisaApplicationModel implements _VisaApplicationModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_VisaApplicationModelCopyWith<_$_VisaApplicationModel> get copyWith =>
-      __$$_VisaApplicationModelCopyWithImpl<_$_VisaApplicationModel>(
-          this, _$identity);
+  _$$VisaApplicationModelImplCopyWith<_$VisaApplicationModelImpl>
+      get copyWith =>
+          __$$VisaApplicationModelImplCopyWithImpl<_$VisaApplicationModelImpl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_VisaApplicationModelToJson(
+    return _$$VisaApplicationModelImplToJson(
       this,
     );
   }
@@ -1647,118 +1494,72 @@ abstract class _VisaApplicationModel implements VisaApplicationModel {
       final String? motherName,
       final String createdChannel,
       final String lastUpdatedChannel,
-      @JsonKey(name: 'rejectionNote')
-          final String? rejectionNote,
-      @JsonKey(name: 'entry')
-          final String? entry,
-      @JsonKey(name: 'lastName')
-          final String? lastName,
-      @JsonKey(name: 'userName')
-          final String? userName,
-      @JsonKey(name: 'nationality')
-          final String? nationality,
-      @JsonKey(name: 'guarantorDTI')
-          final bool? guarantorDTI,
-      @JsonKey(name: 'passportNumber')
-          final String? passportNumber,
-      @JsonKey(name: 'district')
-          final String? district,
-      @JsonKey(name: 'overstayedFlag')
-          final bool? overstayedFlag,
-      @JsonKey(name: 'createdBy')
-          final String? createdBy,
-      @JsonKey(name: 'xenditPaymentMethod')
-          final String? xenditPaymentMethod,
-      @JsonKey(name: 'address')
-          final String? address,
-      @JsonKey(name: 'city')
-          final String? city,
+      @JsonKey(name: 'rejectionNote') final String? rejectionNote,
+      @JsonKey(name: 'entry') final String? entry,
+      @JsonKey(name: 'lastName') final String? lastName,
+      @JsonKey(name: 'userName') final String? userName,
+      @JsonKey(name: 'nationality') final String? nationality,
+      @JsonKey(name: 'guarantorDTI') final bool? guarantorDTI,
+      @JsonKey(name: 'passportNumber') final String? passportNumber,
+      @JsonKey(name: 'district') final String? district,
+      @JsonKey(name: 'overstayedFlag') final bool? overstayedFlag,
+      @JsonKey(name: 'createdBy') final String? createdBy,
+      @JsonKey(name: 'xenditPaymentMethod') final String? xenditPaymentMethod,
+      @JsonKey(name: 'address') final String? address,
+      @JsonKey(name: 'city') final String? city,
       final String? modeOfTransportation,
       final String? flightNumber,
       final String? arrivalDate,
-      @JsonKey(name: 'xenditPaymentStatus')
-          final String? xenditPaymentStatus,
-      @JsonKey(name: 'xenditPaymentGateway')
-          final String? xenditPaymentGateway,
-      @JsonKey(name: 'xenditPaymentId')
-          final String? xenditPaymentId,
-      @JsonKey(name: 'mobileNumber')
-          final String? mobileNumber,
-      @JsonKey(name: 'status')
-          final String? status,
+      @JsonKey(name: 'xenditPaymentStatus') final String? xenditPaymentStatus,
+      @JsonKey(name: 'xenditPaymentGateway') final String? xenditPaymentGateway,
+      @JsonKey(name: 'xenditPaymentId') final String? xenditPaymentId,
+      @JsonKey(name: 'mobileNumber') final String? mobileNumber,
+      @JsonKey(name: 'status') final String? status,
       @JsonKey(name: 'xenditPaymentDescription')
-          final String? xenditPaymentDescription,
-      @JsonKey(name: 'submittedDate')
-          final String? submittedDate,
-      @JsonKey(name: 'subTitle')
-          final String? subTitle,
+      final String? xenditPaymentDescription,
+      @JsonKey(name: 'submittedDate') final String? submittedDate,
+      @JsonKey(name: 'subTitle') final String? subTitle,
       @JsonKey(name: 'documents_data')
-          final List<DocumentDataModel>? documentsData,
-      @JsonKey(name: 'title')
-          final String? title,
-      @JsonKey(name: 'lastUpdatedDate')
-          final String? lastUpdatedDate,
-      @JsonKey(name: 'errorMessage')
-          final String? errorMessage,
-      @JsonKey(name: 'firebaseDocId')
-          final String? firebaseDocId,
-      @JsonKey(name: 'relationshipStatus')
-          final String? relationshipStatus,
-      @JsonKey(name: 'dateOfExpiration')
-          final String? dateOfExpiration,
-      @JsonKey(name: 'cityDomicile')
-          final String? cityDomicile,
-      @JsonKey(name: 'applicationID')
-          final String? applicationID,
-      @JsonKey(name: 'createdDate')
-          final String? createdDate,
+      final List<DocumentDataModel>? documentsData,
+      @JsonKey(name: 'title') final String? title,
+      @JsonKey(name: 'lastUpdatedDate') final String? lastUpdatedDate,
+      @JsonKey(name: 'errorMessage') final String? errorMessage,
+      @JsonKey(name: 'firebaseDocId') final String? firebaseDocId,
+      @JsonKey(name: 'relationshipStatus') final String? relationshipStatus,
+      @JsonKey(name: 'dateOfExpiration') final String? dateOfExpiration,
+      @JsonKey(name: 'cityDomicile') final String? cityDomicile,
+      @JsonKey(name: 'applicationID') final String? applicationID,
+      @JsonKey(name: 'createdDate') final String? createdDate,
       @JsonKey(name: 'xenditPaymentInvoiceUrl')
-          final String? xenditPaymentInvoiceUrl,
+      final String? xenditPaymentInvoiceUrl,
       @JsonKey(name: 'xenditPaymentCurrency')
-          final String? xenditPaymentCurrency,
-      @JsonKey(name: 'placeOfBirth')
-          final String? placeOfBirth,
-      @JsonKey(name: 'mobileDialCode')
-          final String? mobileDialCode,
-      @JsonKey(name: 'currency')
-          final String? currency,
-      @JsonKey(name: 'inIndonesia')
-          final bool? inIndonesia,
+      final String? xenditPaymentCurrency,
+      @JsonKey(name: 'placeOfBirth') final String? placeOfBirth,
+      @JsonKey(name: 'mobileDialCode') final String? mobileDialCode,
+      @JsonKey(name: 'currency') final String? currency,
+      @JsonKey(name: 'inIndonesia') final bool? inIndonesia,
       @JsonKey(name: 'xenditPaymentPaidAmount')
-          final int? xenditPaymentPaidAmount,
-      @JsonKey(name: 'dateOfIssue')
-          final String? dateOfIssue,
-      @JsonKey(name: 'lastUpdatedBy')
-          final String? lastUpdatedBy,
-      @JsonKey(name: 'documents')
-          final String? documents,
-      @JsonKey(name: 'firstName')
-          final String? firstName,
+      final int? xenditPaymentPaidAmount,
+      @JsonKey(name: 'dateOfIssue') final String? dateOfIssue,
+      @JsonKey(name: 'lastUpdatedBy') final String? lastUpdatedBy,
+      @JsonKey(name: 'documents') final String? documents,
+      @JsonKey(name: 'firstName') final String? firstName,
       @JsonKey(name: 'assistanceForPermit')
-          final AssitanceForPermitModel? assistanceForPermit,
-      @JsonKey(name: 'issuingCountry')
-          final String? issuingCountry,
-      @JsonKey(name: 'province')
-          final String? province,
-      @JsonKey(name: 'xenditPaymentAmount')
-          final int? xenditPaymentAmount,
-      @JsonKey(name: 'mobileCountryCode')
-          final String? mobileCountryCode,
-      @JsonKey(name: 'gender')
-          final String? gender,
-      @JsonKey(name: 'deportedFlag')
-          final bool? deportedFlag,
-      @JsonKey(name: 'xenditPaymentPaidAt')
-          final String? xenditPaymentPaidAt,
-      @JsonKey(name: 'dateOfBirth')
-          final String? dateOfBirth,
-      @JsonKey(name: 'price')
-          final double? price,
+      final AssitanceForPermitModel? assistanceForPermit,
+      @JsonKey(name: 'issuingCountry') final String? issuingCountry,
+      @JsonKey(name: 'province') final String? province,
+      @JsonKey(name: 'xenditPaymentAmount') final int? xenditPaymentAmount,
+      @JsonKey(name: 'mobileCountryCode') final String? mobileCountryCode,
+      @JsonKey(name: 'gender') final String? gender,
+      @JsonKey(name: 'deportedFlag') final bool? deportedFlag,
+      @JsonKey(name: 'xenditPaymentPaidAt') final String? xenditPaymentPaidAt,
+      @JsonKey(name: 'dateOfBirth') final String? dateOfBirth,
+      @JsonKey(name: 'price') final double? price,
       @JsonKey(name: 'multiVisaDuration')
-          final String? multiVisaDuration}) = _$_VisaApplicationModel;
+      final String? multiVisaDuration}) = _$VisaApplicationModelImpl;
 
   factory _VisaApplicationModel.fromJson(Map<String, dynamic> json) =
-      _$_VisaApplicationModel.fromJson;
+      _$VisaApplicationModelImpl.fromJson;
 
   @override //Passport exclusive
   String? get bookingCode;
@@ -1945,6 +1746,6 @@ abstract class _VisaApplicationModel implements VisaApplicationModel {
   String? get multiVisaDuration;
   @override
   @JsonKey(ignore: true)
-  _$$_VisaApplicationModelCopyWith<_$_VisaApplicationModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$VisaApplicationModelImplCopyWith<_$VisaApplicationModelImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

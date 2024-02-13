@@ -6,7 +6,8 @@ part of 'user_data.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_UserData _$$_UserDataFromJson(Map<String, dynamic> json) => _$_UserData(
+_$UserDataImpl _$$UserDataImplFromJson(Map<String, dynamic> json) =>
+    _$UserDataImpl(
       usedReferralCodeFlag: json['usedReferralCodeFlag'] as bool?,
       selfReferralCode: json['selfReferralCode'] as String?,
       userId: json['userId'] as String?,
@@ -26,7 +27,7 @@ _$_UserData _$$_UserDataFromJson(Map<String, dynamic> json) => _$_UserData(
       userReferral: json['userReferral'] as String?,
     );
 
-Map<String, dynamic> _$$_UserDataToJson(_$_UserData instance) =>
+Map<String, dynamic> _$$UserDataImplToJson(_$UserDataImpl instance) =>
     <String, dynamic>{
       'usedReferralCodeFlag': instance.usedReferralCodeFlag,
       'selfReferralCode': instance.selfReferralCode,

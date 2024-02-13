@@ -12,7 +12,7 @@ part of 'contact_us_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ContactUsState {
@@ -88,24 +88,25 @@ class _$ContactUsStateCopyWithImpl<$Res, $Val extends ContactUsState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$ContactUsStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$ContactUsStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -113,9 +114,9 @@ class _$_Initial implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -198,28 +199,29 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements ContactUsState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoadingCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(
-          _$_Loading value, $Res Function(_$_Loading) then) =
-      __$$_LoadingCopyWithImpl<$Res>;
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res>
-    extends _$ContactUsStateCopyWithImpl<$Res, _$_Loading>
-    implements _$$_LoadingCopyWith<$Res> {
-  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$ContactUsStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Loading implements _Loading {
-  const _$_Loading();
+class _$LoadingImpl implements _Loading {
+  const _$LoadingImpl();
 
   @override
   String toString() {
@@ -227,9 +229,9 @@ class _$_Loading implements _Loading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Loading);
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
   }
 
   @override
@@ -312,27 +314,29 @@ class _$_Loading implements _Loading {
 }
 
 abstract class _Loading implements ContactUsState {
-  const factory _Loading() = _$_Loading;
+  const factory _Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$_ErrorCopyWith<$Res> {
-  factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
-      __$$_ErrorCopyWithImpl<$Res>;
+abstract class _$$ErrorImplCopyWith<$Res> {
+  factory _$$ErrorImplCopyWith(
+          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
+      __$$ErrorImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ErrorCopyWithImpl<$Res>
-    extends _$ContactUsStateCopyWithImpl<$Res, _$_Error>
-    implements _$$_ErrorCopyWith<$Res> {
-  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
+class __$$ErrorImplCopyWithImpl<$Res>
+    extends _$ContactUsStateCopyWithImpl<$Res, _$ErrorImpl>
+    implements _$$ErrorImplCopyWith<$Res> {
+  __$$ErrorImplCopyWithImpl(
+      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Error implements _Error {
-  const _$_Error();
+class _$ErrorImpl implements _Error {
+  const _$ErrorImpl();
 
   @override
   String toString() {
@@ -340,9 +344,9 @@ class _$_Error implements _Error {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Error);
+        (other.runtimeType == runtimeType && other is _$ErrorImpl);
   }
 
   @override
@@ -425,24 +429,24 @@ class _$_Error implements _Error {
 }
 
 abstract class _Error implements ContactUsState {
-  const factory _Error() = _$_Error;
+  const factory _Error() = _$ErrorImpl;
 }
 
 /// @nodoc
-abstract class _$$_GetAllContactUsDataCopyWith<$Res> {
-  factory _$$_GetAllContactUsDataCopyWith(_$_GetAllContactUsData value,
-          $Res Function(_$_GetAllContactUsData) then) =
-      __$$_GetAllContactUsDataCopyWithImpl<$Res>;
+abstract class _$$GetAllContactUsDataImplCopyWith<$Res> {
+  factory _$$GetAllContactUsDataImplCopyWith(_$GetAllContactUsDataImpl value,
+          $Res Function(_$GetAllContactUsDataImpl) then) =
+      __$$GetAllContactUsDataImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<ContactUsModel> contacts});
 }
 
 /// @nodoc
-class __$$_GetAllContactUsDataCopyWithImpl<$Res>
-    extends _$ContactUsStateCopyWithImpl<$Res, _$_GetAllContactUsData>
-    implements _$$_GetAllContactUsDataCopyWith<$Res> {
-  __$$_GetAllContactUsDataCopyWithImpl(_$_GetAllContactUsData _value,
-      $Res Function(_$_GetAllContactUsData) _then)
+class __$$GetAllContactUsDataImplCopyWithImpl<$Res>
+    extends _$ContactUsStateCopyWithImpl<$Res, _$GetAllContactUsDataImpl>
+    implements _$$GetAllContactUsDataImplCopyWith<$Res> {
+  __$$GetAllContactUsDataImplCopyWithImpl(_$GetAllContactUsDataImpl _value,
+      $Res Function(_$GetAllContactUsDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -450,7 +454,7 @@ class __$$_GetAllContactUsDataCopyWithImpl<$Res>
   $Res call({
     Object? contacts = null,
   }) {
-    return _then(_$_GetAllContactUsData(
+    return _then(_$GetAllContactUsDataImpl(
       null == contacts
           ? _value._contacts
           : contacts // ignore: cast_nullable_to_non_nullable
@@ -461,8 +465,8 @@ class __$$_GetAllContactUsDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GetAllContactUsData implements _GetAllContactUsData {
-  const _$_GetAllContactUsData(final List<ContactUsModel> contacts)
+class _$GetAllContactUsDataImpl implements _GetAllContactUsData {
+  const _$GetAllContactUsDataImpl(final List<ContactUsModel> contacts)
       : _contacts = contacts;
 
   final List<ContactUsModel> _contacts;
@@ -479,10 +483,10 @@ class _$_GetAllContactUsData implements _GetAllContactUsData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GetAllContactUsData &&
+            other is _$GetAllContactUsDataImpl &&
             const DeepCollectionEquality().equals(other._contacts, _contacts));
   }
 
@@ -493,8 +497,8 @@ class _$_GetAllContactUsData implements _GetAllContactUsData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GetAllContactUsDataCopyWith<_$_GetAllContactUsData> get copyWith =>
-      __$$_GetAllContactUsDataCopyWithImpl<_$_GetAllContactUsData>(
+  _$$GetAllContactUsDataImplCopyWith<_$GetAllContactUsDataImpl> get copyWith =>
+      __$$GetAllContactUsDataImplCopyWithImpl<_$GetAllContactUsDataImpl>(
           this, _$identity);
 
   @override
@@ -575,10 +579,10 @@ class _$_GetAllContactUsData implements _GetAllContactUsData {
 
 abstract class _GetAllContactUsData implements ContactUsState {
   const factory _GetAllContactUsData(final List<ContactUsModel> contacts) =
-      _$_GetAllContactUsData;
+      _$GetAllContactUsDataImpl;
 
   List<ContactUsModel> get contacts;
   @JsonKey(ignore: true)
-  _$$_GetAllContactUsDataCopyWith<_$_GetAllContactUsData> get copyWith =>
+  _$$GetAllContactUsDataImplCopyWith<_$GetAllContactUsDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

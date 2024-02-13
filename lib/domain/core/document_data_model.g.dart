@@ -6,8 +6,9 @@ part of 'document_data_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_DocumentDataModel _$$_DocumentDataModelFromJson(Map<String, dynamic> json) =>
-    _$_DocumentDataModel(
+_$DocumentDataModelImpl _$$DocumentDataModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$DocumentDataModelImpl(
       header: json['header'] as String?,
       imageList: (json['imageList'] as List<dynamic>?)
           ?.map((e) => e as String?)
@@ -20,8 +21,8 @@ _$_DocumentDataModel _$$_DocumentDataModelFromJson(Map<String, dynamic> json) =>
       numberOfDocs: json['numberOfDocs'] as int?,
     );
 
-Map<String, dynamic> _$$_DocumentDataModelToJson(
-        _$_DocumentDataModel instance) =>
+Map<String, dynamic> _$$DocumentDataModelImplToJson(
+        _$DocumentDataModelImpl instance) =>
     <String, dynamic>{
       'header': instance.header,
       'imageList': instance.imageList,

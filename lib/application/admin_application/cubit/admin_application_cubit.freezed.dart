@@ -12,7 +12,7 @@ part of 'admin_application_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AdminApplicationState {
@@ -88,24 +88,25 @@ class _$AdminApplicationStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$AdminApplicationStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$AdminApplicationStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -113,9 +114,9 @@ class _$_Initial implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -197,28 +198,29 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements AdminApplicationState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoadingCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(
-          _$_Loading value, $Res Function(_$_Loading) then) =
-      __$$_LoadingCopyWithImpl<$Res>;
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res>
-    extends _$AdminApplicationStateCopyWithImpl<$Res, _$_Loading>
-    implements _$$_LoadingCopyWith<$Res> {
-  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$AdminApplicationStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Loading implements _Loading {
-  const _$_Loading();
+class _$LoadingImpl implements _Loading {
+  const _$LoadingImpl();
 
   @override
   String toString() {
@@ -226,9 +228,9 @@ class _$_Loading implements _Loading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Loading);
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
   }
 
   @override
@@ -310,27 +312,29 @@ class _$_Loading implements _Loading {
 }
 
 abstract class _Loading implements AdminApplicationState {
-  const factory _Loading() = _$_Loading;
+  const factory _Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$_ErrorCopyWith<$Res> {
-  factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
-      __$$_ErrorCopyWithImpl<$Res>;
+abstract class _$$ErrorImplCopyWith<$Res> {
+  factory _$$ErrorImplCopyWith(
+          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
+      __$$ErrorImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ErrorCopyWithImpl<$Res>
-    extends _$AdminApplicationStateCopyWithImpl<$Res, _$_Error>
-    implements _$$_ErrorCopyWith<$Res> {
-  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
+class __$$ErrorImplCopyWithImpl<$Res>
+    extends _$AdminApplicationStateCopyWithImpl<$Res, _$ErrorImpl>
+    implements _$$ErrorImplCopyWith<$Res> {
+  __$$ErrorImplCopyWithImpl(
+      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Error implements _Error {
-  const _$_Error();
+class _$ErrorImpl implements _Error {
+  const _$ErrorImpl();
 
   @override
   String toString() {
@@ -338,9 +342,9 @@ class _$_Error implements _Error {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Error);
+        (other.runtimeType == runtimeType && other is _$ErrorImpl);
   }
 
   @override
@@ -422,24 +426,24 @@ class _$_Error implements _Error {
 }
 
 abstract class _Error implements AdminApplicationState {
-  const factory _Error() = _$_Error;
+  const factory _Error() = _$ErrorImpl;
 }
 
 /// @nodoc
-abstract class _$$_GetAllUserVisaCopyWith<$Res> {
-  factory _$$_GetAllUserVisaCopyWith(
-          _$_GetAllUserVisa value, $Res Function(_$_GetAllUserVisa) then) =
-      __$$_GetAllUserVisaCopyWithImpl<$Res>;
+abstract class _$$GetAllUserVisaImplCopyWith<$Res> {
+  factory _$$GetAllUserVisaImplCopyWith(_$GetAllUserVisaImpl value,
+          $Res Function(_$GetAllUserVisaImpl) then) =
+      __$$GetAllUserVisaImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<SimpleVisaModel> visas});
 }
 
 /// @nodoc
-class __$$_GetAllUserVisaCopyWithImpl<$Res>
-    extends _$AdminApplicationStateCopyWithImpl<$Res, _$_GetAllUserVisa>
-    implements _$$_GetAllUserVisaCopyWith<$Res> {
-  __$$_GetAllUserVisaCopyWithImpl(
-      _$_GetAllUserVisa _value, $Res Function(_$_GetAllUserVisa) _then)
+class __$$GetAllUserVisaImplCopyWithImpl<$Res>
+    extends _$AdminApplicationStateCopyWithImpl<$Res, _$GetAllUserVisaImpl>
+    implements _$$GetAllUserVisaImplCopyWith<$Res> {
+  __$$GetAllUserVisaImplCopyWithImpl(
+      _$GetAllUserVisaImpl _value, $Res Function(_$GetAllUserVisaImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -447,7 +451,7 @@ class __$$_GetAllUserVisaCopyWithImpl<$Res>
   $Res call({
     Object? visas = null,
   }) {
-    return _then(_$_GetAllUserVisa(
+    return _then(_$GetAllUserVisaImpl(
       null == visas
           ? _value._visas
           : visas // ignore: cast_nullable_to_non_nullable
@@ -458,8 +462,9 @@ class __$$_GetAllUserVisaCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GetAllUserVisa implements _GetAllUserVisa {
-  const _$_GetAllUserVisa(final List<SimpleVisaModel> visas) : _visas = visas;
+class _$GetAllUserVisaImpl implements _GetAllUserVisa {
+  const _$GetAllUserVisaImpl(final List<SimpleVisaModel> visas)
+      : _visas = visas;
 
   final List<SimpleVisaModel> _visas;
   @override
@@ -475,10 +480,10 @@ class _$_GetAllUserVisa implements _GetAllUserVisa {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GetAllUserVisa &&
+            other is _$GetAllUserVisaImpl &&
             const DeepCollectionEquality().equals(other._visas, _visas));
   }
 
@@ -489,8 +494,9 @@ class _$_GetAllUserVisa implements _GetAllUserVisa {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GetAllUserVisaCopyWith<_$_GetAllUserVisa> get copyWith =>
-      __$$_GetAllUserVisaCopyWithImpl<_$_GetAllUserVisa>(this, _$identity);
+  _$$GetAllUserVisaImplCopyWith<_$GetAllUserVisaImpl> get copyWith =>
+      __$$GetAllUserVisaImplCopyWithImpl<_$GetAllUserVisaImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -569,10 +575,10 @@ class _$_GetAllUserVisa implements _GetAllUserVisa {
 
 abstract class _GetAllUserVisa implements AdminApplicationState {
   const factory _GetAllUserVisa(final List<SimpleVisaModel> visas) =
-      _$_GetAllUserVisa;
+      _$GetAllUserVisaImpl;
 
   List<SimpleVisaModel> get visas;
   @JsonKey(ignore: true)
-  _$$_GetAllUserVisaCopyWith<_$_GetAllUserVisa> get copyWith =>
+  _$$GetAllUserVisaImplCopyWith<_$GetAllUserVisaImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

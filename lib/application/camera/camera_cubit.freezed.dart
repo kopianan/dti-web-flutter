@@ -12,7 +12,7 @@ part of 'camera_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$CameraState {
@@ -86,11 +86,11 @@ class _$CameraStateCopyWithImpl<$Res, $Val extends CameraState>
 }
 
 /// @nodoc
-abstract class _$$_CameraStateCopyWith<$Res>
+abstract class _$$CameraStateImplCopyWith<$Res>
     implements $CameraStateCopyWith<$Res> {
-  factory _$$_CameraStateCopyWith(
-          _$_CameraState value, $Res Function(_$_CameraState) then) =
-      __$$_CameraStateCopyWithImpl<$Res>;
+  factory _$$CameraStateImplCopyWith(
+          _$CameraStateImpl value, $Res Function(_$CameraStateImpl) then) =
+      __$$CameraStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -102,11 +102,11 @@ abstract class _$$_CameraStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CameraStateCopyWithImpl<$Res>
-    extends _$CameraStateCopyWithImpl<$Res, _$_CameraState>
-    implements _$$_CameraStateCopyWith<$Res> {
-  __$$_CameraStateCopyWithImpl(
-      _$_CameraState _value, $Res Function(_$_CameraState) _then)
+class __$$CameraStateImplCopyWithImpl<$Res>
+    extends _$CameraStateCopyWithImpl<$Res, _$CameraStateImpl>
+    implements _$$CameraStateImplCopyWith<$Res> {
+  __$$CameraStateImplCopyWithImpl(
+      _$CameraStateImpl _value, $Res Function(_$CameraStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -118,7 +118,7 @@ class __$$_CameraStateCopyWithImpl<$Res>
     Object? cameraError = null,
     Object? cameras = null,
   }) {
-    return _then(_$_CameraState(
+    return _then(_$CameraStateImpl(
       file: freezed == file
           ? _value.file
           : file // ignore: cast_nullable_to_non_nullable
@@ -145,8 +145,8 @@ class __$$_CameraStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CameraState with DiagnosticableTreeMixin implements _CameraState {
-  _$_CameraState(
+class _$CameraStateImpl with DiagnosticableTreeMixin implements _CameraState {
+  _$CameraStateImpl(
       {this.file,
       required this.status,
       this.bytes,
@@ -190,10 +190,10 @@ class _$_CameraState with DiagnosticableTreeMixin implements _CameraState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CameraState &&
+            other is _$CameraStateImpl &&
             (identical(other.file, file) || other.file == file) &&
             (identical(other.status, status) || other.status == status) &&
             const DeepCollectionEquality().equals(other.bytes, bytes) &&
@@ -214,8 +214,8 @@ class _$_CameraState with DiagnosticableTreeMixin implements _CameraState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CameraStateCopyWith<_$_CameraState> get copyWith =>
-      __$$_CameraStateCopyWithImpl<_$_CameraState>(this, _$identity);
+  _$$CameraStateImplCopyWith<_$CameraStateImpl> get copyWith =>
+      __$$CameraStateImplCopyWithImpl<_$CameraStateImpl>(this, _$identity);
 }
 
 abstract class _CameraState implements CameraState {
@@ -224,7 +224,7 @@ abstract class _CameraState implements CameraState {
       required final CameraStatus status,
       final Uint8List? bytes,
       final String cameraError,
-      final List<CameraDescription> cameras}) = _$_CameraState;
+      final List<CameraDescription> cameras}) = _$CameraStateImpl;
 
   @override
   XFile? get file;
@@ -238,6 +238,6 @@ abstract class _CameraState implements CameraState {
   List<CameraDescription> get cameras;
   @override
   @JsonKey(ignore: true)
-  _$$_CameraStateCopyWith<_$_CameraState> get copyWith =>
+  _$$CameraStateImplCopyWith<_$CameraStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

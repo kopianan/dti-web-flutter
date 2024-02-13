@@ -12,7 +12,7 @@ part of 'result_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ResultModel _$ResultModelFromJson(Map<String, dynamic> json) {
   return _ResultModel.fromJson(json);
@@ -112,11 +112,11 @@ class _$ResultModelCopyWithImpl<$Res, $Val extends ResultModel>
 }
 
 /// @nodoc
-abstract class _$$_ResultModelCopyWith<$Res>
+abstract class _$$ResultModelImplCopyWith<$Res>
     implements $ResultModelCopyWith<$Res> {
-  factory _$$_ResultModelCopyWith(
-          _$_ResultModel value, $Res Function(_$_ResultModel) then) =
-      __$$_ResultModelCopyWithImpl<$Res>;
+  factory _$$ResultModelImplCopyWith(
+          _$ResultModelImpl value, $Res Function(_$ResultModelImpl) then) =
+      __$$ResultModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -132,11 +132,11 @@ abstract class _$$_ResultModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ResultModelCopyWithImpl<$Res>
-    extends _$ResultModelCopyWithImpl<$Res, _$_ResultModel>
-    implements _$$_ResultModelCopyWith<$Res> {
-  __$$_ResultModelCopyWithImpl(
-      _$_ResultModel _value, $Res Function(_$_ResultModel) _then)
+class __$$ResultModelImplCopyWithImpl<$Res>
+    extends _$ResultModelCopyWithImpl<$Res, _$ResultModelImpl>
+    implements _$$ResultModelImplCopyWith<$Res> {
+  __$$ResultModelImplCopyWithImpl(
+      _$ResultModelImpl _value, $Res Function(_$ResultModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -149,7 +149,7 @@ class __$$_ResultModelCopyWithImpl<$Res>
     Object? visaTitle = freezed,
     Object? visaSubTitle = freezed,
   }) {
-    return _then(_$_ResultModel(
+    return _then(_$ResultModelImpl(
       contactUs: freezed == contactUs
           ? _value.contactUs
           : contactUs // ignore: cast_nullable_to_non_nullable
@@ -180,8 +180,8 @@ class __$$_ResultModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ResultModel implements _ResultModel {
-  _$_ResultModel(
+class _$ResultModelImpl implements _ResultModel {
+  _$ResultModelImpl(
       {this.contactUs,
       this.visaPrice,
       this.visaEntry,
@@ -189,8 +189,8 @@ class _$_ResultModel implements _ResultModel {
       this.visaTitle,
       this.visaSubTitle});
 
-  factory _$_ResultModel.fromJson(Map<String, dynamic> json) =>
-      _$$_ResultModelFromJson(json);
+  factory _$ResultModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ResultModelImplFromJson(json);
 
   @override
   final bool? contactUs;
@@ -211,10 +211,10 @@ class _$_ResultModel implements _ResultModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ResultModel &&
+            other is _$ResultModelImpl &&
             (identical(other.contactUs, contactUs) ||
                 other.contactUs == contactUs) &&
             (identical(other.visaPrice, visaPrice) ||
@@ -237,12 +237,12 @@ class _$_ResultModel implements _ResultModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ResultModelCopyWith<_$_ResultModel> get copyWith =>
-      __$$_ResultModelCopyWithImpl<_$_ResultModel>(this, _$identity);
+  _$$ResultModelImplCopyWith<_$ResultModelImpl> get copyWith =>
+      __$$ResultModelImplCopyWithImpl<_$ResultModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ResultModelToJson(
+    return _$$ResultModelImplToJson(
       this,
     );
   }
@@ -255,10 +255,10 @@ abstract class _ResultModel implements ResultModel {
       final String? visaEntry,
       final String? documents,
       final String? visaTitle,
-      final String? visaSubTitle}) = _$_ResultModel;
+      final String? visaSubTitle}) = _$ResultModelImpl;
 
   factory _ResultModel.fromJson(Map<String, dynamic> json) =
-      _$_ResultModel.fromJson;
+      _$ResultModelImpl.fromJson;
 
   @override
   bool? get contactUs;
@@ -274,6 +274,6 @@ abstract class _ResultModel implements ResultModel {
   String? get visaSubTitle;
   @override
   @JsonKey(ignore: true)
-  _$$_ResultModelCopyWith<_$_ResultModel> get copyWith =>
+  _$$ResultModelImplCopyWith<_$ResultModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

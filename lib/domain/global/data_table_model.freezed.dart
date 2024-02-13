@@ -12,7 +12,7 @@ part of 'data_table_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$DataTableModel {
@@ -63,22 +63,22 @@ class _$DataTableModelCopyWithImpl<$Res, $Val extends DataTableModel>
 }
 
 /// @nodoc
-abstract class _$$_DataTableModelCopyWith<$Res>
+abstract class _$$DataTableModelImplCopyWith<$Res>
     implements $DataTableModelCopyWith<$Res> {
-  factory _$$_DataTableModelCopyWith(
-          _$_DataTableModel value, $Res Function(_$_DataTableModel) then) =
-      __$$_DataTableModelCopyWithImpl<$Res>;
+  factory _$$DataTableModelImplCopyWith(_$DataTableModelImpl value,
+          $Res Function(_$DataTableModelImpl) then) =
+      __$$DataTableModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<Data?> bodyData, bool selected});
 }
 
 /// @nodoc
-class __$$_DataTableModelCopyWithImpl<$Res>
-    extends _$DataTableModelCopyWithImpl<$Res, _$_DataTableModel>
-    implements _$$_DataTableModelCopyWith<$Res> {
-  __$$_DataTableModelCopyWithImpl(
-      _$_DataTableModel _value, $Res Function(_$_DataTableModel) _then)
+class __$$DataTableModelImplCopyWithImpl<$Res>
+    extends _$DataTableModelCopyWithImpl<$Res, _$DataTableModelImpl>
+    implements _$$DataTableModelImplCopyWith<$Res> {
+  __$$DataTableModelImplCopyWithImpl(
+      _$DataTableModelImpl _value, $Res Function(_$DataTableModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +87,7 @@ class __$$_DataTableModelCopyWithImpl<$Res>
     Object? bodyData = null,
     Object? selected = null,
   }) {
-    return _then(_$_DataTableModel(
+    return _then(_$DataTableModelImpl(
       bodyData: null == bodyData
           ? _value._bodyData
           : bodyData // ignore: cast_nullable_to_non_nullable
@@ -102,8 +102,8 @@ class __$$_DataTableModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_DataTableModel implements _DataTableModel {
-  _$_DataTableModel(
+class _$DataTableModelImpl implements _DataTableModel {
+  _$DataTableModelImpl(
       {final List<Data?> bodyData = const [], this.selected = false})
       : _bodyData = bodyData;
 
@@ -126,10 +126,10 @@ class _$_DataTableModel implements _DataTableModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DataTableModel &&
+            other is _$DataTableModelImpl &&
             const DeepCollectionEquality().equals(other._bodyData, _bodyData) &&
             (identical(other.selected, selected) ||
                 other.selected == selected));
@@ -142,13 +142,14 @@ class _$_DataTableModel implements _DataTableModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DataTableModelCopyWith<_$_DataTableModel> get copyWith =>
-      __$$_DataTableModelCopyWithImpl<_$_DataTableModel>(this, _$identity);
+  _$$DataTableModelImplCopyWith<_$DataTableModelImpl> get copyWith =>
+      __$$DataTableModelImplCopyWithImpl<_$DataTableModelImpl>(
+          this, _$identity);
 }
 
 abstract class _DataTableModel implements DataTableModel {
   factory _DataTableModel({final List<Data?> bodyData, final bool selected}) =
-      _$_DataTableModel;
+      _$DataTableModelImpl;
 
   @override
   List<Data?> get bodyData;
@@ -156,6 +157,6 @@ abstract class _DataTableModel implements DataTableModel {
   bool get selected;
   @override
   @JsonKey(ignore: true)
-  _$$_DataTableModelCopyWith<_$_DataTableModel> get copyWith =>
+  _$$DataTableModelImplCopyWith<_$DataTableModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

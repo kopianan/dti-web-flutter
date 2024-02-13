@@ -6,9 +6,9 @@ part of 'questionnaire_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_QuestionnaireModel _$$_QuestionnaireModelFromJson(
+_$QuestionnaireModelImpl _$$QuestionnaireModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$_QuestionnaireModel(
+    _$QuestionnaireModelImpl(
       subQuestionnaire: (json['subQuestionnaire'] as List<dynamic>?)
           ?.map((e) => QuestionnaireModel.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -23,8 +23,8 @@ _$_QuestionnaireModel _$$_QuestionnaireModelFromJson(
           : ResultModel.fromJson(json['results'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_QuestionnaireModelToJson(
-        _$_QuestionnaireModel instance) =>
+Map<String, dynamic> _$$QuestionnaireModelImplToJson(
+        _$QuestionnaireModelImpl instance) =>
     <String, dynamic>{
       'subQuestionnaire': instance.subQuestionnaire,
       'footer': instance.footer,

@@ -12,7 +12,7 @@ part of 'simple_visa_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 SimpleVisaModel _$SimpleVisaModelFromJson(Map<String, dynamic> json) {
   return _SimpleVisaModel.fromJson(json);
@@ -128,11 +128,11 @@ class _$SimpleVisaModelCopyWithImpl<$Res, $Val extends SimpleVisaModel>
 }
 
 /// @nodoc
-abstract class _$$_SimpleVisaModelCopyWith<$Res>
+abstract class _$$SimpleVisaModelImplCopyWith<$Res>
     implements $SimpleVisaModelCopyWith<$Res> {
-  factory _$$_SimpleVisaModelCopyWith(
-          _$_SimpleVisaModel value, $Res Function(_$_SimpleVisaModel) then) =
-      __$$_SimpleVisaModelCopyWithImpl<$Res>;
+  factory _$$SimpleVisaModelImplCopyWith(_$SimpleVisaModelImpl value,
+          $Res Function(_$SimpleVisaModelImpl) then) =
+      __$$SimpleVisaModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -149,11 +149,11 @@ abstract class _$$_SimpleVisaModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SimpleVisaModelCopyWithImpl<$Res>
-    extends _$SimpleVisaModelCopyWithImpl<$Res, _$_SimpleVisaModel>
-    implements _$$_SimpleVisaModelCopyWith<$Res> {
-  __$$_SimpleVisaModelCopyWithImpl(
-      _$_SimpleVisaModel _value, $Res Function(_$_SimpleVisaModel) _then)
+class __$$SimpleVisaModelImplCopyWithImpl<$Res>
+    extends _$SimpleVisaModelCopyWithImpl<$Res, _$SimpleVisaModelImpl>
+    implements _$$SimpleVisaModelImplCopyWith<$Res> {
+  __$$SimpleVisaModelImplCopyWithImpl(
+      _$SimpleVisaModelImpl _value, $Res Function(_$SimpleVisaModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -170,7 +170,7 @@ class __$$_SimpleVisaModelCopyWithImpl<$Res>
     Object? lengthOfStay = freezed,
     Object? createdDate = freezed,
   }) {
-    return _then(_$_SimpleVisaModel(
+    return _then(_$SimpleVisaModelImpl(
       firebaseDocId: freezed == firebaseDocId
           ? _value.firebaseDocId
           : firebaseDocId // ignore: cast_nullable_to_non_nullable
@@ -217,8 +217,8 @@ class __$$_SimpleVisaModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SimpleVisaModel implements _SimpleVisaModel {
-  _$_SimpleVisaModel(
+class _$SimpleVisaModelImpl implements _SimpleVisaModel {
+  _$SimpleVisaModelImpl(
       {this.firebaseDocId,
       this.applicationID,
       this.status,
@@ -230,8 +230,8 @@ class _$_SimpleVisaModel implements _SimpleVisaModel {
       this.lengthOfStay,
       @DateTimeOrNullConverter() this.createdDate});
 
-  factory _$_SimpleVisaModel.fromJson(Map<String, dynamic> json) =>
-      _$$_SimpleVisaModelFromJson(json);
+  factory _$SimpleVisaModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SimpleVisaModelImplFromJson(json);
 
   @override
   final String? firebaseDocId;
@@ -262,10 +262,10 @@ class _$_SimpleVisaModel implements _SimpleVisaModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SimpleVisaModel &&
+            other is _$SimpleVisaModelImpl &&
             (identical(other.firebaseDocId, firebaseDocId) ||
                 other.firebaseDocId == firebaseDocId) &&
             (identical(other.applicationID, applicationID) ||
@@ -304,12 +304,13 @@ class _$_SimpleVisaModel implements _SimpleVisaModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SimpleVisaModelCopyWith<_$_SimpleVisaModel> get copyWith =>
-      __$$_SimpleVisaModelCopyWithImpl<_$_SimpleVisaModel>(this, _$identity);
+  _$$SimpleVisaModelImplCopyWith<_$SimpleVisaModelImpl> get copyWith =>
+      __$$SimpleVisaModelImplCopyWithImpl<_$SimpleVisaModelImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SimpleVisaModelToJson(
+    return _$$SimpleVisaModelImplToJson(
       this,
     );
   }
@@ -327,10 +328,10 @@ abstract class _SimpleVisaModel implements SimpleVisaModel {
           final String? userName,
           final int? lengthOfStay,
           @DateTimeOrNullConverter() final DateTime? createdDate}) =
-      _$_SimpleVisaModel;
+      _$SimpleVisaModelImpl;
 
   factory _SimpleVisaModel.fromJson(Map<String, dynamic> json) =
-      _$_SimpleVisaModel.fromJson;
+      _$SimpleVisaModelImpl.fromJson;
 
   @override
   String? get firebaseDocId;
@@ -356,6 +357,6 @@ abstract class _SimpleVisaModel implements SimpleVisaModel {
   DateTime? get createdDate;
   @override
   @JsonKey(ignore: true)
-  _$$_SimpleVisaModelCopyWith<_$_SimpleVisaModel> get copyWith =>
+  _$$SimpleVisaModelImplCopyWith<_$SimpleVisaModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

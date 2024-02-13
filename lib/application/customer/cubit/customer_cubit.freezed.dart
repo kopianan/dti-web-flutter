@@ -12,7 +12,7 @@ part of 'customer_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$CustomerState {
@@ -93,24 +93,25 @@ class _$CustomerStateCopyWithImpl<$Res, $Val extends CustomerState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$CustomerStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$CustomerStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -118,9 +119,9 @@ class _$_Initial implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -208,28 +209,29 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements CustomerState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoadingCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(
-          _$_Loading value, $Res Function(_$_Loading) then) =
-      __$$_LoadingCopyWithImpl<$Res>;
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res>
-    extends _$CustomerStateCopyWithImpl<$Res, _$_Loading>
-    implements _$$_LoadingCopyWith<$Res> {
-  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$CustomerStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Loading implements _Loading {
-  const _$_Loading();
+class _$LoadingImpl implements _Loading {
+  const _$LoadingImpl();
 
   @override
   String toString() {
@@ -237,9 +239,9 @@ class _$_Loading implements _Loading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Loading);
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
   }
 
   @override
@@ -327,14 +329,14 @@ class _$_Loading implements _Loading {
 }
 
 abstract class _Loading implements CustomerState {
-  const factory _Loading() = _$_Loading;
+  const factory _Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$_OnErrorCopyWith<$Res> {
-  factory _$$_OnErrorCopyWith(
-          _$_OnError value, $Res Function(_$_OnError) then) =
-      __$$_OnErrorCopyWithImpl<$Res>;
+abstract class _$$OnErrorImplCopyWith<$Res> {
+  factory _$$OnErrorImplCopyWith(
+          _$OnErrorImpl value, $Res Function(_$OnErrorImpl) then) =
+      __$$OnErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Failures error});
 
@@ -342,10 +344,11 @@ abstract class _$$_OnErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_OnErrorCopyWithImpl<$Res>
-    extends _$CustomerStateCopyWithImpl<$Res, _$_OnError>
-    implements _$$_OnErrorCopyWith<$Res> {
-  __$$_OnErrorCopyWithImpl(_$_OnError _value, $Res Function(_$_OnError) _then)
+class __$$OnErrorImplCopyWithImpl<$Res>
+    extends _$CustomerStateCopyWithImpl<$Res, _$OnErrorImpl>
+    implements _$$OnErrorImplCopyWith<$Res> {
+  __$$OnErrorImplCopyWithImpl(
+      _$OnErrorImpl _value, $Res Function(_$OnErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -353,7 +356,7 @@ class __$$_OnErrorCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$_OnError(
+    return _then(_$OnErrorImpl(
       null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -372,8 +375,8 @@ class __$$_OnErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OnError implements _OnError {
-  const _$_OnError(this.error);
+class _$OnErrorImpl implements _OnError {
+  const _$OnErrorImpl(this.error);
 
   @override
   final Failures error;
@@ -384,10 +387,10 @@ class _$_OnError implements _OnError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnError &&
+            other is _$OnErrorImpl &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -397,8 +400,8 @@ class _$_OnError implements _OnError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnErrorCopyWith<_$_OnError> get copyWith =>
-      __$$_OnErrorCopyWithImpl<_$_OnError>(this, _$identity);
+  _$$OnErrorImplCopyWith<_$OnErrorImpl> get copyWith =>
+      __$$OnErrorImplCopyWithImpl<_$OnErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -482,29 +485,29 @@ class _$_OnError implements _OnError {
 }
 
 abstract class _OnError implements CustomerState {
-  const factory _OnError(final Failures error) = _$_OnError;
+  const factory _OnError(final Failures error) = _$OnErrorImpl;
 
   Failures get error;
   @JsonKey(ignore: true)
-  _$$_OnErrorCopyWith<_$_OnError> get copyWith =>
+  _$$OnErrorImplCopyWith<_$OnErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_GetAllCustomerCopyWith<$Res> {
-  factory _$$_GetAllCustomerCopyWith(
-          _$_GetAllCustomer value, $Res Function(_$_GetAllCustomer) then) =
-      __$$_GetAllCustomerCopyWithImpl<$Res>;
+abstract class _$$GetAllCustomerImplCopyWith<$Res> {
+  factory _$$GetAllCustomerImplCopyWith(_$GetAllCustomerImpl value,
+          $Res Function(_$GetAllCustomerImpl) then) =
+      __$$GetAllCustomerImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<CustomerModel> customers});
 }
 
 /// @nodoc
-class __$$_GetAllCustomerCopyWithImpl<$Res>
-    extends _$CustomerStateCopyWithImpl<$Res, _$_GetAllCustomer>
-    implements _$$_GetAllCustomerCopyWith<$Res> {
-  __$$_GetAllCustomerCopyWithImpl(
-      _$_GetAllCustomer _value, $Res Function(_$_GetAllCustomer) _then)
+class __$$GetAllCustomerImplCopyWithImpl<$Res>
+    extends _$CustomerStateCopyWithImpl<$Res, _$GetAllCustomerImpl>
+    implements _$$GetAllCustomerImplCopyWith<$Res> {
+  __$$GetAllCustomerImplCopyWithImpl(
+      _$GetAllCustomerImpl _value, $Res Function(_$GetAllCustomerImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -512,7 +515,7 @@ class __$$_GetAllCustomerCopyWithImpl<$Res>
   $Res call({
     Object? customers = null,
   }) {
-    return _then(_$_GetAllCustomer(
+    return _then(_$GetAllCustomerImpl(
       null == customers
           ? _value._customers
           : customers // ignore: cast_nullable_to_non_nullable
@@ -523,8 +526,8 @@ class __$$_GetAllCustomerCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GetAllCustomer implements _GetAllCustomer {
-  const _$_GetAllCustomer(final List<CustomerModel> customers)
+class _$GetAllCustomerImpl implements _GetAllCustomer {
+  const _$GetAllCustomerImpl(final List<CustomerModel> customers)
       : _customers = customers;
 
   final List<CustomerModel> _customers;
@@ -541,10 +544,10 @@ class _$_GetAllCustomer implements _GetAllCustomer {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GetAllCustomer &&
+            other is _$GetAllCustomerImpl &&
             const DeepCollectionEquality()
                 .equals(other._customers, _customers));
   }
@@ -556,8 +559,9 @@ class _$_GetAllCustomer implements _GetAllCustomer {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GetAllCustomerCopyWith<_$_GetAllCustomer> get copyWith =>
-      __$$_GetAllCustomerCopyWithImpl<_$_GetAllCustomer>(this, _$identity);
+  _$$GetAllCustomerImplCopyWith<_$GetAllCustomerImpl> get copyWith =>
+      __$$GetAllCustomerImplCopyWithImpl<_$GetAllCustomerImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -642,19 +646,19 @@ class _$_GetAllCustomer implements _GetAllCustomer {
 
 abstract class _GetAllCustomer implements CustomerState {
   const factory _GetAllCustomer(final List<CustomerModel> customers) =
-      _$_GetAllCustomer;
+      _$GetAllCustomerImpl;
 
   List<CustomerModel> get customers;
   @JsonKey(ignore: true)
-  _$$_GetAllCustomerCopyWith<_$_GetAllCustomer> get copyWith =>
+  _$$GetAllCustomerImplCopyWith<_$GetAllCustomerImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_GetSingleCustomerCopyWith<$Res> {
-  factory _$$_GetSingleCustomerCopyWith(_$_GetSingleCustomer value,
-          $Res Function(_$_GetSingleCustomer) then) =
-      __$$_GetSingleCustomerCopyWithImpl<$Res>;
+abstract class _$$GetSingleCustomerImplCopyWith<$Res> {
+  factory _$$GetSingleCustomerImplCopyWith(_$GetSingleCustomerImpl value,
+          $Res Function(_$GetSingleCustomerImpl) then) =
+      __$$GetSingleCustomerImplCopyWithImpl<$Res>;
   @useResult
   $Res call({CustomerModel user});
 
@@ -662,11 +666,11 @@ abstract class _$$_GetSingleCustomerCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_GetSingleCustomerCopyWithImpl<$Res>
-    extends _$CustomerStateCopyWithImpl<$Res, _$_GetSingleCustomer>
-    implements _$$_GetSingleCustomerCopyWith<$Res> {
-  __$$_GetSingleCustomerCopyWithImpl(
-      _$_GetSingleCustomer _value, $Res Function(_$_GetSingleCustomer) _then)
+class __$$GetSingleCustomerImplCopyWithImpl<$Res>
+    extends _$CustomerStateCopyWithImpl<$Res, _$GetSingleCustomerImpl>
+    implements _$$GetSingleCustomerImplCopyWith<$Res> {
+  __$$GetSingleCustomerImplCopyWithImpl(_$GetSingleCustomerImpl _value,
+      $Res Function(_$GetSingleCustomerImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -674,7 +678,7 @@ class __$$_GetSingleCustomerCopyWithImpl<$Res>
   $Res call({
     Object? user = null,
   }) {
-    return _then(_$_GetSingleCustomer(
+    return _then(_$GetSingleCustomerImpl(
       null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -693,8 +697,8 @@ class __$$_GetSingleCustomerCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GetSingleCustomer implements _GetSingleCustomer {
-  const _$_GetSingleCustomer(this.user);
+class _$GetSingleCustomerImpl implements _GetSingleCustomer {
+  const _$GetSingleCustomerImpl(this.user);
 
   @override
   final CustomerModel user;
@@ -705,10 +709,10 @@ class _$_GetSingleCustomer implements _GetSingleCustomer {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GetSingleCustomer &&
+            other is _$GetSingleCustomerImpl &&
             (identical(other.user, user) || other.user == user));
   }
 
@@ -718,8 +722,8 @@ class _$_GetSingleCustomer implements _GetSingleCustomer {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GetSingleCustomerCopyWith<_$_GetSingleCustomer> get copyWith =>
-      __$$_GetSingleCustomerCopyWithImpl<_$_GetSingleCustomer>(
+  _$$GetSingleCustomerImplCopyWith<_$GetSingleCustomerImpl> get copyWith =>
+      __$$GetSingleCustomerImplCopyWithImpl<_$GetSingleCustomerImpl>(
           this, _$identity);
 
   @override
@@ -805,10 +809,10 @@ class _$_GetSingleCustomer implements _GetSingleCustomer {
 
 abstract class _GetSingleCustomer implements CustomerState {
   const factory _GetSingleCustomer(final CustomerModel user) =
-      _$_GetSingleCustomer;
+      _$GetSingleCustomerImpl;
 
   CustomerModel get user;
   @JsonKey(ignore: true)
-  _$$_GetSingleCustomerCopyWith<_$_GetSingleCustomer> get copyWith =>
+  _$$GetSingleCustomerImplCopyWith<_$GetSingleCustomerImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

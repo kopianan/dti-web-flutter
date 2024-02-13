@@ -12,7 +12,7 @@ part of 'global_user_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$GlobalUserState {
@@ -96,11 +96,11 @@ class _$GlobalUserStateCopyWithImpl<$Res, $Val extends GlobalUserState>
 }
 
 /// @nodoc
-abstract class _$$_GlobalUserStateCopyWith<$Res>
+abstract class _$$GlobalUserStateImplCopyWith<$Res>
     implements $GlobalUserStateCopyWith<$Res> {
-  factory _$$_GlobalUserStateCopyWith(
-          _$_GlobalUserState value, $Res Function(_$_GlobalUserState) then) =
-      __$$_GlobalUserStateCopyWithImpl<$Res>;
+  factory _$$GlobalUserStateImplCopyWith(_$GlobalUserStateImpl value,
+          $Res Function(_$GlobalUserStateImpl) then) =
+      __$$GlobalUserStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -115,11 +115,11 @@ abstract class _$$_GlobalUserStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_GlobalUserStateCopyWithImpl<$Res>
-    extends _$GlobalUserStateCopyWithImpl<$Res, _$_GlobalUserState>
-    implements _$$_GlobalUserStateCopyWith<$Res> {
-  __$$_GlobalUserStateCopyWithImpl(
-      _$_GlobalUserState _value, $Res Function(_$_GlobalUserState) _then)
+class __$$GlobalUserStateImplCopyWithImpl<$Res>
+    extends _$GlobalUserStateCopyWithImpl<$Res, _$GlobalUserStateImpl>
+    implements _$$GlobalUserStateImplCopyWith<$Res> {
+  __$$GlobalUserStateImplCopyWithImpl(
+      _$GlobalUserStateImpl _value, $Res Function(_$GlobalUserStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -131,7 +131,7 @@ class __$$_GlobalUserStateCopyWithImpl<$Res>
     Object? logOut = null,
     Object? message = freezed,
   }) {
-    return _then(_$_GlobalUserState(
+    return _then(_$GlobalUserStateImpl(
       user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -158,8 +158,8 @@ class __$$_GlobalUserStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GlobalUserState extends _GlobalUserState {
-  _$_GlobalUserState(
+class _$GlobalUserStateImpl extends _GlobalUserState {
+  _$GlobalUserStateImpl(
       {required this.user,
       required this.isAgent,
       required this.token,
@@ -185,10 +185,10 @@ class _$_GlobalUserState extends _GlobalUserState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GlobalUserState &&
+            other is _$GlobalUserStateImpl &&
             (identical(other.user, user) || other.user == user) &&
             (identical(other.isAgent, isAgent) || other.isAgent == isAgent) &&
             (identical(other.token, token) || other.token == token) &&
@@ -203,8 +203,9 @@ class _$_GlobalUserState extends _GlobalUserState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GlobalUserStateCopyWith<_$_GlobalUserState> get copyWith =>
-      __$$_GlobalUserStateCopyWithImpl<_$_GlobalUserState>(this, _$identity);
+  _$$GlobalUserStateImplCopyWith<_$GlobalUserStateImpl> get copyWith =>
+      __$$GlobalUserStateImplCopyWithImpl<_$GlobalUserStateImpl>(
+          this, _$identity);
 }
 
 abstract class _GlobalUserState extends GlobalUserState {
@@ -213,7 +214,7 @@ abstract class _GlobalUserState extends GlobalUserState {
       required final bool isAgent,
       required final String? token,
       final bool logOut,
-      final String? message}) = _$_GlobalUserState;
+      final String? message}) = _$GlobalUserStateImpl;
   _GlobalUserState._() : super._();
 
   @override
@@ -228,6 +229,6 @@ abstract class _GlobalUserState extends GlobalUserState {
   String? get message;
   @override
   @JsonKey(ignore: true)
-  _$$_GlobalUserStateCopyWith<_$_GlobalUserState> get copyWith =>
+  _$$GlobalUserStateImplCopyWith<_$GlobalUserStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

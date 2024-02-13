@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:dti_web/application/application_cubit.dart';
+import 'package:dti_web/application/dashboard/dashboard_cubit.dart';
 import 'package:dti_web/application/questionnaire_cubit.dart';
 import 'package:dti_web/application/update_application/update_application_cubit.dart';
-import 'package:dti_web/core/storage.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
 import 'package:dti_web/domain/core/document_data_model.dart';
 import 'package:dti_web/domain/questionnaire/raw_data.dart';
@@ -62,6 +62,7 @@ class _QuestionnaireSummaryPageState extends State<QuestionnaireSummaryPage> {
                   context
                       .read<ApplicationCubit>()
                       .setupApplication(value.visaApps);
+                  getIt<DashboardCubit>().getLastPassportAndApplicationData();
 
                   AutoRouter.of(context).navigate(PersonalInformation1Route(
                       firebaseDocId: value.visaApps.firebaseDocId!));
@@ -84,7 +85,7 @@ class _QuestionnaireSummaryPageState extends State<QuestionnaireSummaryPage> {
                           ),
                           decoration: BoxDecoration(
                             color: Colors.white.withAlpha(230),
-                            borderRadius: BorderRadius.horizontal(
+                            borderRadius: const BorderRadius.horizontal(
                                 right: Radius.circular(10)),
                           ),
                           child: Column(
@@ -128,7 +129,8 @@ class _QuestionnaireSummaryPageState extends State<QuestionnaireSummaryPage> {
                                       child: Container(
                                         margin: EdgeInsets.only(
                                             right: 30.w, left: 30.w),
-                                        padding: EdgeInsets.only(bottom: 50),
+                                        padding:
+                                            const EdgeInsets.only(bottom: 50),
                                         child: Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
@@ -165,7 +167,7 @@ class _QuestionnaireSummaryPageState extends State<QuestionnaireSummaryPage> {
                                                           QuestionnaireCubit>()
                                                       .getDescriptions()
                                                       .map((e) => Text(
-                                                            "- " + e,
+                                                            "- $e",
                                                             style: TextStyle(
                                                                 fontSize: 16.sp,
                                                                 fontWeight:
@@ -205,7 +207,7 @@ class _QuestionnaireSummaryPageState extends State<QuestionnaireSummaryPage> {
                                                       MainAxisSize.min,
                                                   children: listData
                                                       .map((e) => Text(
-                                                            "- " + e.header!,
+                                                            "- ${e.header!}",
                                                             style: TextStyle(
                                                                 fontSize:
                                                                     16.sp),
@@ -239,7 +241,7 @@ class _QuestionnaireSummaryPageState extends State<QuestionnaireSummaryPage> {
                                                           QuestionnaireCubit>()
                                                       .getImportant()
                                                       .map((e) => Text(
-                                                            "- " + e,
+                                                            "- $e",
                                                             style: TextStyle(
                                                                 fontSize:
                                                                     16.sp),

@@ -6,16 +6,16 @@ part of 'questionnaire_data_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_QuestionnaireDataModel _$$_QuestionnaireDataModelFromJson(
+_$QuestionnaireDataModelImpl _$$QuestionnaireDataModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$_QuestionnaireDataModel(
+    _$QuestionnaireDataModelImpl(
       (json['questionnaire'] as List<dynamic>)
           .map((e) => QuestionnaireModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$$_QuestionnaireDataModelToJson(
-        _$_QuestionnaireDataModel instance) =>
+Map<String, dynamic> _$$QuestionnaireDataModelImplToJson(
+        _$QuestionnaireDataModelImpl instance) =>
     <String, dynamic>{
       'questionnaire': instance.questionnaire,
     };

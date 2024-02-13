@@ -12,7 +12,7 @@ part of 'document_data_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 DocumentDataModel _$DocumentDataModelFromJson(Map<String, dynamic> json) {
   return _DocumentDataModel.fromJson(json);
@@ -112,11 +112,11 @@ class _$DocumentDataModelCopyWithImpl<$Res, $Val extends DocumentDataModel>
 }
 
 /// @nodoc
-abstract class _$$_DocumentDataModelCopyWith<$Res>
+abstract class _$$DocumentDataModelImplCopyWith<$Res>
     implements $DocumentDataModelCopyWith<$Res> {
-  factory _$$_DocumentDataModelCopyWith(_$_DocumentDataModel value,
-          $Res Function(_$_DocumentDataModel) then) =
-      __$$_DocumentDataModelCopyWithImpl<$Res>;
+  factory _$$DocumentDataModelImplCopyWith(_$DocumentDataModelImpl value,
+          $Res Function(_$DocumentDataModelImpl) then) =
+      __$$DocumentDataModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -131,11 +131,11 @@ abstract class _$$_DocumentDataModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_DocumentDataModelCopyWithImpl<$Res>
-    extends _$DocumentDataModelCopyWithImpl<$Res, _$_DocumentDataModel>
-    implements _$$_DocumentDataModelCopyWith<$Res> {
-  __$$_DocumentDataModelCopyWithImpl(
-      _$_DocumentDataModel _value, $Res Function(_$_DocumentDataModel) _then)
+class __$$DocumentDataModelImplCopyWithImpl<$Res>
+    extends _$DocumentDataModelCopyWithImpl<$Res, _$DocumentDataModelImpl>
+    implements _$$DocumentDataModelImplCopyWith<$Res> {
+  __$$DocumentDataModelImplCopyWithImpl(_$DocumentDataModelImpl _value,
+      $Res Function(_$DocumentDataModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -150,7 +150,7 @@ class __$$_DocumentDataModelCopyWithImpl<$Res>
     Object? header = freezed,
     Object? imageList = freezed,
   }) {
-    return _then(_$_DocumentDataModel(
+    return _then(_$DocumentDataModelImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -189,8 +189,8 @@ class __$$_DocumentDataModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_DocumentDataModel implements _DocumentDataModel {
-  _$_DocumentDataModel(
+class _$DocumentDataModelImpl implements _DocumentDataModel {
+  _$DocumentDataModelImpl(
       {this.id,
       this.previewImage,
       this.isSubmited,
@@ -201,8 +201,8 @@ class _$_DocumentDataModel implements _DocumentDataModel {
       final List<String>? imageList})
       : _imageList = imageList;
 
-  factory _$_DocumentDataModel.fromJson(Map<String, dynamic> json) =>
-      _$$_DocumentDataModelFromJson(json);
+  factory _$DocumentDataModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DocumentDataModelImplFromJson(json);
 
   @override
   final String? id;
@@ -234,10 +234,10 @@ class _$_DocumentDataModel implements _DocumentDataModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_DocumentDataModel &&
+            other is _$DocumentDataModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.previewImage, previewImage) ||
                 other.previewImage == previewImage) &&
@@ -269,13 +269,13 @@ class _$_DocumentDataModel implements _DocumentDataModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DocumentDataModelCopyWith<_$_DocumentDataModel> get copyWith =>
-      __$$_DocumentDataModelCopyWithImpl<_$_DocumentDataModel>(
+  _$$DocumentDataModelImplCopyWith<_$DocumentDataModelImpl> get copyWith =>
+      __$$DocumentDataModelImplCopyWithImpl<_$DocumentDataModelImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DocumentDataModelToJson(
+    return _$$DocumentDataModelImplToJson(
       this,
     );
   }
@@ -290,10 +290,10 @@ abstract class _DocumentDataModel implements DocumentDataModel {
       final String? attachment,
       final int? numberOfDocs,
       final String? header,
-      final List<String>? imageList}) = _$_DocumentDataModel;
+      final List<String>? imageList}) = _$DocumentDataModelImpl;
 
   factory _DocumentDataModel.fromJson(Map<String, dynamic> json) =
-      _$_DocumentDataModel.fromJson;
+      _$DocumentDataModelImpl.fromJson;
 
   @override
   String? get id;
@@ -313,6 +313,6 @@ abstract class _DocumentDataModel implements DocumentDataModel {
   List<String>? get imageList;
   @override
   @JsonKey(ignore: true)
-  _$$_DocumentDataModelCopyWith<_$_DocumentDataModel> get copyWith =>
+  _$$DocumentDataModelImplCopyWith<_$DocumentDataModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

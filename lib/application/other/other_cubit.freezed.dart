@@ -12,7 +12,7 @@ part of 'other_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$OtherState {
@@ -144,24 +144,25 @@ class _$OtherStateCopyWithImpl<$Res, $Val extends OtherState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$OtherStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$OtherStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -169,9 +170,9 @@ class _$_Initial implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -310,28 +311,29 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements OtherState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_LoadingCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(
-          _$_Loading value, $Res Function(_$_Loading) then) =
-      __$$_LoadingCopyWithImpl<$Res>;
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadingCopyWithImpl<$Res>
-    extends _$OtherStateCopyWithImpl<$Res, _$_Loading>
-    implements _$$_LoadingCopyWith<$Res> {
-  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$OtherStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Loading implements _Loading {
-  const _$_Loading();
+class _$LoadingImpl implements _Loading {
+  const _$LoadingImpl();
 
   @override
   String toString() {
@@ -339,9 +341,9 @@ class _$_Loading implements _Loading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Loading);
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
   }
 
   @override
@@ -480,27 +482,29 @@ class _$_Loading implements _Loading {
 }
 
 abstract class _Loading implements OtherState {
-  const factory _Loading() = _$_Loading;
+  const factory _Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$_ErrorCopyWith<$Res> {
-  factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
-      __$$_ErrorCopyWithImpl<$Res>;
+abstract class _$$ErrorImplCopyWith<$Res> {
+  factory _$$ErrorImplCopyWith(
+          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
+      __$$ErrorImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ErrorCopyWithImpl<$Res>
-    extends _$OtherStateCopyWithImpl<$Res, _$_Error>
-    implements _$$_ErrorCopyWith<$Res> {
-  __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
+class __$$ErrorImplCopyWithImpl<$Res>
+    extends _$OtherStateCopyWithImpl<$Res, _$ErrorImpl>
+    implements _$$ErrorImplCopyWith<$Res> {
+  __$$ErrorImplCopyWithImpl(
+      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Error implements _Error {
-  const _$_Error();
+class _$ErrorImpl implements _Error {
+  const _$ErrorImpl();
 
   @override
   String toString() {
@@ -508,9 +512,9 @@ class _$_Error implements _Error {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Error);
+        (other.runtimeType == runtimeType && other is _$ErrorImpl);
   }
 
   @override
@@ -649,14 +653,14 @@ class _$_Error implements _Error {
 }
 
 abstract class _Error implements OtherState {
-  const factory _Error() = _$_Error;
+  const factory _Error() = _$ErrorImpl;
 }
 
 /// @nodoc
-abstract class _$$_ErrorStateCopyWith<$Res> {
-  factory _$$_ErrorStateCopyWith(
-          _$_ErrorState value, $Res Function(_$_ErrorState) then) =
-      __$$_ErrorStateCopyWithImpl<$Res>;
+abstract class _$$ErrorStateImplCopyWith<$Res> {
+  factory _$$ErrorStateImplCopyWith(
+          _$ErrorStateImpl value, $Res Function(_$ErrorStateImpl) then) =
+      __$$ErrorStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Failures failures});
 
@@ -664,11 +668,11 @@ abstract class _$$_ErrorStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_ErrorStateCopyWithImpl<$Res>
-    extends _$OtherStateCopyWithImpl<$Res, _$_ErrorState>
-    implements _$$_ErrorStateCopyWith<$Res> {
-  __$$_ErrorStateCopyWithImpl(
-      _$_ErrorState _value, $Res Function(_$_ErrorState) _then)
+class __$$ErrorStateImplCopyWithImpl<$Res>
+    extends _$OtherStateCopyWithImpl<$Res, _$ErrorStateImpl>
+    implements _$$ErrorStateImplCopyWith<$Res> {
+  __$$ErrorStateImplCopyWithImpl(
+      _$ErrorStateImpl _value, $Res Function(_$ErrorStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -676,7 +680,7 @@ class __$$_ErrorStateCopyWithImpl<$Res>
   $Res call({
     Object? failures = null,
   }) {
-    return _then(_$_ErrorState(
+    return _then(_$ErrorStateImpl(
       null == failures
           ? _value.failures
           : failures // ignore: cast_nullable_to_non_nullable
@@ -695,8 +699,8 @@ class __$$_ErrorStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ErrorState implements _ErrorState {
-  const _$_ErrorState(this.failures);
+class _$ErrorStateImpl implements _ErrorState {
+  const _$ErrorStateImpl(this.failures);
 
   @override
   final Failures failures;
@@ -707,10 +711,10 @@ class _$_ErrorState implements _ErrorState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ErrorState &&
+            other is _$ErrorStateImpl &&
             (identical(other.failures, failures) ||
                 other.failures == failures));
   }
@@ -721,8 +725,8 @@ class _$_ErrorState implements _ErrorState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ErrorStateCopyWith<_$_ErrorState> get copyWith =>
-      __$$_ErrorStateCopyWithImpl<_$_ErrorState>(this, _$identity);
+  _$$ErrorStateImplCopyWith<_$ErrorStateImpl> get copyWith =>
+      __$$ErrorStateImplCopyWithImpl<_$ErrorStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -857,34 +861,34 @@ class _$_ErrorState implements _ErrorState {
 }
 
 abstract class _ErrorState implements OtherState {
-  const factory _ErrorState(final Failures failures) = _$_ErrorState;
+  const factory _ErrorState(final Failures failures) = _$ErrorStateImpl;
 
   Failures get failures;
   @JsonKey(ignore: true)
-  _$$_ErrorStateCopyWith<_$_ErrorState> get copyWith =>
+  _$$ErrorStateImplCopyWith<_$ErrorStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_NullImageCopyWith<$Res> {
-  factory _$$_NullImageCopyWith(
-          _$_NullImage value, $Res Function(_$_NullImage) then) =
-      __$$_NullImageCopyWithImpl<$Res>;
+abstract class _$$NullImageImplCopyWith<$Res> {
+  factory _$$NullImageImplCopyWith(
+          _$NullImageImpl value, $Res Function(_$NullImageImpl) then) =
+      __$$NullImageImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_NullImageCopyWithImpl<$Res>
-    extends _$OtherStateCopyWithImpl<$Res, _$_NullImage>
-    implements _$$_NullImageCopyWith<$Res> {
-  __$$_NullImageCopyWithImpl(
-      _$_NullImage _value, $Res Function(_$_NullImage) _then)
+class __$$NullImageImplCopyWithImpl<$Res>
+    extends _$OtherStateCopyWithImpl<$Res, _$NullImageImpl>
+    implements _$$NullImageImplCopyWith<$Res> {
+  __$$NullImageImplCopyWithImpl(
+      _$NullImageImpl _value, $Res Function(_$NullImageImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_NullImage implements _NullImage {
-  const _$_NullImage();
+class _$NullImageImpl implements _NullImage {
+  const _$NullImageImpl();
 
   @override
   String toString() {
@@ -892,9 +896,9 @@ class _$_NullImage implements _NullImage {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_NullImage);
+        (other.runtimeType == runtimeType && other is _$NullImageImpl);
   }
 
   @override
@@ -1033,24 +1037,24 @@ class _$_NullImage implements _NullImage {
 }
 
 abstract class _NullImage implements OtherState {
-  const factory _NullImage() = _$_NullImage;
+  const factory _NullImage() = _$NullImageImpl;
 }
 
 /// @nodoc
-abstract class _$$_ImageLocalCopyWith<$Res> {
-  factory _$$_ImageLocalCopyWith(
-          _$_ImageLocal value, $Res Function(_$_ImageLocal) then) =
-      __$$_ImageLocalCopyWithImpl<$Res>;
+abstract class _$$ImageLocalImplCopyWith<$Res> {
+  factory _$$ImageLocalImplCopyWith(
+          _$ImageLocalImpl value, $Res Function(_$ImageLocalImpl) then) =
+      __$$ImageLocalImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String url});
 }
 
 /// @nodoc
-class __$$_ImageLocalCopyWithImpl<$Res>
-    extends _$OtherStateCopyWithImpl<$Res, _$_ImageLocal>
-    implements _$$_ImageLocalCopyWith<$Res> {
-  __$$_ImageLocalCopyWithImpl(
-      _$_ImageLocal _value, $Res Function(_$_ImageLocal) _then)
+class __$$ImageLocalImplCopyWithImpl<$Res>
+    extends _$OtherStateCopyWithImpl<$Res, _$ImageLocalImpl>
+    implements _$$ImageLocalImplCopyWith<$Res> {
+  __$$ImageLocalImplCopyWithImpl(
+      _$ImageLocalImpl _value, $Res Function(_$ImageLocalImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1058,7 +1062,7 @@ class __$$_ImageLocalCopyWithImpl<$Res>
   $Res call({
     Object? url = null,
   }) {
-    return _then(_$_ImageLocal(
+    return _then(_$ImageLocalImpl(
       null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
@@ -1069,8 +1073,8 @@ class __$$_ImageLocalCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ImageLocal implements _ImageLocal {
-  const _$_ImageLocal(this.url);
+class _$ImageLocalImpl implements _ImageLocal {
+  const _$ImageLocalImpl(this.url);
 
   @override
   final String url;
@@ -1081,10 +1085,10 @@ class _$_ImageLocal implements _ImageLocal {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ImageLocal &&
+            other is _$ImageLocalImpl &&
             (identical(other.url, url) || other.url == url));
   }
 
@@ -1094,8 +1098,8 @@ class _$_ImageLocal implements _ImageLocal {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ImageLocalCopyWith<_$_ImageLocal> get copyWith =>
-      __$$_ImageLocalCopyWithImpl<_$_ImageLocal>(this, _$identity);
+  _$$ImageLocalImplCopyWith<_$ImageLocalImpl> get copyWith =>
+      __$$ImageLocalImplCopyWithImpl<_$ImageLocalImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1230,29 +1234,29 @@ class _$_ImageLocal implements _ImageLocal {
 }
 
 abstract class _ImageLocal implements OtherState {
-  const factory _ImageLocal(final String url) = _$_ImageLocal;
+  const factory _ImageLocal(final String url) = _$ImageLocalImpl;
 
   String get url;
   @JsonKey(ignore: true)
-  _$$_ImageLocalCopyWith<_$_ImageLocal> get copyWith =>
+  _$$ImageLocalImplCopyWith<_$ImageLocalImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_OnContactUsCopyWith<$Res> {
-  factory _$$_OnContactUsCopyWith(
-          _$_OnContactUs value, $Res Function(_$_OnContactUs) then) =
-      __$$_OnContactUsCopyWithImpl<$Res>;
+abstract class _$$OnContactUsImplCopyWith<$Res> {
+  factory _$$OnContactUsImplCopyWith(
+          _$OnContactUsImpl value, $Res Function(_$OnContactUsImpl) then) =
+      __$$OnContactUsImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$_OnContactUsCopyWithImpl<$Res>
-    extends _$OtherStateCopyWithImpl<$Res, _$_OnContactUs>
-    implements _$$_OnContactUsCopyWith<$Res> {
-  __$$_OnContactUsCopyWithImpl(
-      _$_OnContactUs _value, $Res Function(_$_OnContactUs) _then)
+class __$$OnContactUsImplCopyWithImpl<$Res>
+    extends _$OtherStateCopyWithImpl<$Res, _$OnContactUsImpl>
+    implements _$$OnContactUsImplCopyWith<$Res> {
+  __$$OnContactUsImplCopyWithImpl(
+      _$OnContactUsImpl _value, $Res Function(_$OnContactUsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1260,7 +1264,7 @@ class __$$_OnContactUsCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$_OnContactUs(
+    return _then(_$OnContactUsImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -1271,8 +1275,8 @@ class __$$_OnContactUsCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OnContactUs implements _OnContactUs {
-  const _$_OnContactUs(this.message);
+class _$OnContactUsImpl implements _OnContactUs {
+  const _$OnContactUsImpl(this.message);
 
   @override
   final String message;
@@ -1283,10 +1287,10 @@ class _$_OnContactUs implements _OnContactUs {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnContactUs &&
+            other is _$OnContactUsImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -1296,8 +1300,8 @@ class _$_OnContactUs implements _OnContactUs {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnContactUsCopyWith<_$_OnContactUs> get copyWith =>
-      __$$_OnContactUsCopyWithImpl<_$_OnContactUs>(this, _$identity);
+  _$$OnContactUsImplCopyWith<_$OnContactUsImpl> get copyWith =>
+      __$$OnContactUsImplCopyWithImpl<_$OnContactUsImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1432,29 +1436,29 @@ class _$_OnContactUs implements _OnContactUs {
 }
 
 abstract class _OnContactUs implements OtherState {
-  const factory _OnContactUs(final String message) = _$_OnContactUs;
+  const factory _OnContactUs(final String message) = _$OnContactUsImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$_OnContactUsCopyWith<_$_OnContactUs> get copyWith =>
+  _$$OnContactUsImplCopyWith<_$OnContactUsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_OnFeedbackSentCopyWith<$Res> {
-  factory _$$_OnFeedbackSentCopyWith(
-          _$_OnFeedbackSent value, $Res Function(_$_OnFeedbackSent) then) =
-      __$$_OnFeedbackSentCopyWithImpl<$Res>;
+abstract class _$$OnFeedbackSentImplCopyWith<$Res> {
+  factory _$$OnFeedbackSentImplCopyWith(_$OnFeedbackSentImpl value,
+          $Res Function(_$OnFeedbackSentImpl) then) =
+      __$$OnFeedbackSentImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$_OnFeedbackSentCopyWithImpl<$Res>
-    extends _$OtherStateCopyWithImpl<$Res, _$_OnFeedbackSent>
-    implements _$$_OnFeedbackSentCopyWith<$Res> {
-  __$$_OnFeedbackSentCopyWithImpl(
-      _$_OnFeedbackSent _value, $Res Function(_$_OnFeedbackSent) _then)
+class __$$OnFeedbackSentImplCopyWithImpl<$Res>
+    extends _$OtherStateCopyWithImpl<$Res, _$OnFeedbackSentImpl>
+    implements _$$OnFeedbackSentImplCopyWith<$Res> {
+  __$$OnFeedbackSentImplCopyWithImpl(
+      _$OnFeedbackSentImpl _value, $Res Function(_$OnFeedbackSentImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1462,7 +1466,7 @@ class __$$_OnFeedbackSentCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$_OnFeedbackSent(
+    return _then(_$OnFeedbackSentImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -1473,8 +1477,8 @@ class __$$_OnFeedbackSentCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OnFeedbackSent implements _OnFeedbackSent {
-  const _$_OnFeedbackSent(this.message);
+class _$OnFeedbackSentImpl implements _OnFeedbackSent {
+  const _$OnFeedbackSentImpl(this.message);
 
   @override
   final String message;
@@ -1485,10 +1489,10 @@ class _$_OnFeedbackSent implements _OnFeedbackSent {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnFeedbackSent &&
+            other is _$OnFeedbackSentImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -1498,8 +1502,9 @@ class _$_OnFeedbackSent implements _OnFeedbackSent {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnFeedbackSentCopyWith<_$_OnFeedbackSent> get copyWith =>
-      __$$_OnFeedbackSentCopyWithImpl<_$_OnFeedbackSent>(this, _$identity);
+  _$$OnFeedbackSentImplCopyWith<_$OnFeedbackSentImpl> get copyWith =>
+      __$$OnFeedbackSentImplCopyWithImpl<_$OnFeedbackSentImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1634,29 +1639,29 @@ class _$_OnFeedbackSent implements _OnFeedbackSent {
 }
 
 abstract class _OnFeedbackSent implements OtherState {
-  const factory _OnFeedbackSent(final String message) = _$_OnFeedbackSent;
+  const factory _OnFeedbackSent(final String message) = _$OnFeedbackSentImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$_OnFeedbackSentCopyWith<_$_OnFeedbackSent> get copyWith =>
+  _$$OnFeedbackSentImplCopyWith<_$OnFeedbackSentImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_OnOTPGeneratedCopyWith<$Res> {
-  factory _$$_OnOTPGeneratedCopyWith(
-          _$_OnOTPGenerated value, $Res Function(_$_OnOTPGenerated) then) =
-      __$$_OnOTPGeneratedCopyWithImpl<$Res>;
+abstract class _$$OnOTPGeneratedImplCopyWith<$Res> {
+  factory _$$OnOTPGeneratedImplCopyWith(_$OnOTPGeneratedImpl value,
+          $Res Function(_$OnOTPGeneratedImpl) then) =
+      __$$OnOTPGeneratedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$_OnOTPGeneratedCopyWithImpl<$Res>
-    extends _$OtherStateCopyWithImpl<$Res, _$_OnOTPGenerated>
-    implements _$$_OnOTPGeneratedCopyWith<$Res> {
-  __$$_OnOTPGeneratedCopyWithImpl(
-      _$_OnOTPGenerated _value, $Res Function(_$_OnOTPGenerated) _then)
+class __$$OnOTPGeneratedImplCopyWithImpl<$Res>
+    extends _$OtherStateCopyWithImpl<$Res, _$OnOTPGeneratedImpl>
+    implements _$$OnOTPGeneratedImplCopyWith<$Res> {
+  __$$OnOTPGeneratedImplCopyWithImpl(
+      _$OnOTPGeneratedImpl _value, $Res Function(_$OnOTPGeneratedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1664,7 +1669,7 @@ class __$$_OnOTPGeneratedCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$_OnOTPGenerated(
+    return _then(_$OnOTPGeneratedImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -1675,8 +1680,8 @@ class __$$_OnOTPGeneratedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OnOTPGenerated implements _OnOTPGenerated {
-  const _$_OnOTPGenerated(this.message);
+class _$OnOTPGeneratedImpl implements _OnOTPGenerated {
+  const _$OnOTPGeneratedImpl(this.message);
 
   @override
   final String message;
@@ -1687,10 +1692,10 @@ class _$_OnOTPGenerated implements _OnOTPGenerated {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnOTPGenerated &&
+            other is _$OnOTPGeneratedImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -1700,8 +1705,9 @@ class _$_OnOTPGenerated implements _OnOTPGenerated {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnOTPGeneratedCopyWith<_$_OnOTPGenerated> get copyWith =>
-      __$$_OnOTPGeneratedCopyWithImpl<_$_OnOTPGenerated>(this, _$identity);
+  _$$OnOTPGeneratedImplCopyWith<_$OnOTPGeneratedImpl> get copyWith =>
+      __$$OnOTPGeneratedImplCopyWithImpl<_$OnOTPGeneratedImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1836,29 +1842,29 @@ class _$_OnOTPGenerated implements _OnOTPGenerated {
 }
 
 abstract class _OnOTPGenerated implements OtherState {
-  const factory _OnOTPGenerated(final String message) = _$_OnOTPGenerated;
+  const factory _OnOTPGenerated(final String message) = _$OnOTPGeneratedImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$_OnOTPGeneratedCopyWith<_$_OnOTPGenerated> get copyWith =>
+  _$$OnOTPGeneratedImplCopyWith<_$OnOTPGeneratedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_OnOTPVerifiedCopyWith<$Res> {
-  factory _$$_OnOTPVerifiedCopyWith(
-          _$_OnOTPVerified value, $Res Function(_$_OnOTPVerified) then) =
-      __$$_OnOTPVerifiedCopyWithImpl<$Res>;
+abstract class _$$OnOTPVerifiedImplCopyWith<$Res> {
+  factory _$$OnOTPVerifiedImplCopyWith(
+          _$OnOTPVerifiedImpl value, $Res Function(_$OnOTPVerifiedImpl) then) =
+      __$$OnOTPVerifiedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$_OnOTPVerifiedCopyWithImpl<$Res>
-    extends _$OtherStateCopyWithImpl<$Res, _$_OnOTPVerified>
-    implements _$$_OnOTPVerifiedCopyWith<$Res> {
-  __$$_OnOTPVerifiedCopyWithImpl(
-      _$_OnOTPVerified _value, $Res Function(_$_OnOTPVerified) _then)
+class __$$OnOTPVerifiedImplCopyWithImpl<$Res>
+    extends _$OtherStateCopyWithImpl<$Res, _$OnOTPVerifiedImpl>
+    implements _$$OnOTPVerifiedImplCopyWith<$Res> {
+  __$$OnOTPVerifiedImplCopyWithImpl(
+      _$OnOTPVerifiedImpl _value, $Res Function(_$OnOTPVerifiedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1866,7 +1872,7 @@ class __$$_OnOTPVerifiedCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$_OnOTPVerified(
+    return _then(_$OnOTPVerifiedImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -1877,8 +1883,8 @@ class __$$_OnOTPVerifiedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OnOTPVerified implements _OnOTPVerified {
-  const _$_OnOTPVerified(this.message);
+class _$OnOTPVerifiedImpl implements _OnOTPVerified {
+  const _$OnOTPVerifiedImpl(this.message);
 
   @override
   final String message;
@@ -1889,10 +1895,10 @@ class _$_OnOTPVerified implements _OnOTPVerified {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnOTPVerified &&
+            other is _$OnOTPVerifiedImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -1902,8 +1908,8 @@ class _$_OnOTPVerified implements _OnOTPVerified {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnOTPVerifiedCopyWith<_$_OnOTPVerified> get copyWith =>
-      __$$_OnOTPVerifiedCopyWithImpl<_$_OnOTPVerified>(this, _$identity);
+  _$$OnOTPVerifiedImplCopyWith<_$OnOTPVerifiedImpl> get copyWith =>
+      __$$OnOTPVerifiedImplCopyWithImpl<_$OnOTPVerifiedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2038,29 +2044,29 @@ class _$_OnOTPVerified implements _OnOTPVerified {
 }
 
 abstract class _OnOTPVerified implements OtherState {
-  const factory _OnOTPVerified(final String message) = _$_OnOTPVerified;
+  const factory _OnOTPVerified(final String message) = _$OnOTPVerifiedImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$_OnOTPVerifiedCopyWith<_$_OnOTPVerified> get copyWith =>
+  _$$OnOTPVerifiedImplCopyWith<_$OnOTPVerifiedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_OnGetImageUrlCopyWith<$Res> {
-  factory _$$_OnGetImageUrlCopyWith(
-          _$_OnGetImageUrl value, $Res Function(_$_OnGetImageUrl) then) =
-      __$$_OnGetImageUrlCopyWithImpl<$Res>;
+abstract class _$$OnGetImageUrlImplCopyWith<$Res> {
+  factory _$$OnGetImageUrlImplCopyWith(
+          _$OnGetImageUrlImpl value, $Res Function(_$OnGetImageUrlImpl) then) =
+      __$$OnGetImageUrlImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String url});
 }
 
 /// @nodoc
-class __$$_OnGetImageUrlCopyWithImpl<$Res>
-    extends _$OtherStateCopyWithImpl<$Res, _$_OnGetImageUrl>
-    implements _$$_OnGetImageUrlCopyWith<$Res> {
-  __$$_OnGetImageUrlCopyWithImpl(
-      _$_OnGetImageUrl _value, $Res Function(_$_OnGetImageUrl) _then)
+class __$$OnGetImageUrlImplCopyWithImpl<$Res>
+    extends _$OtherStateCopyWithImpl<$Res, _$OnGetImageUrlImpl>
+    implements _$$OnGetImageUrlImplCopyWith<$Res> {
+  __$$OnGetImageUrlImplCopyWithImpl(
+      _$OnGetImageUrlImpl _value, $Res Function(_$OnGetImageUrlImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2068,7 +2074,7 @@ class __$$_OnGetImageUrlCopyWithImpl<$Res>
   $Res call({
     Object? url = null,
   }) {
-    return _then(_$_OnGetImageUrl(
+    return _then(_$OnGetImageUrlImpl(
       null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
@@ -2079,8 +2085,8 @@ class __$$_OnGetImageUrlCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OnGetImageUrl implements _OnGetImageUrl {
-  const _$_OnGetImageUrl(this.url);
+class _$OnGetImageUrlImpl implements _OnGetImageUrl {
+  const _$OnGetImageUrlImpl(this.url);
 
   @override
   final String url;
@@ -2091,10 +2097,10 @@ class _$_OnGetImageUrl implements _OnGetImageUrl {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnGetImageUrl &&
+            other is _$OnGetImageUrlImpl &&
             (identical(other.url, url) || other.url == url));
   }
 
@@ -2104,8 +2110,8 @@ class _$_OnGetImageUrl implements _OnGetImageUrl {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnGetImageUrlCopyWith<_$_OnGetImageUrl> get copyWith =>
-      __$$_OnGetImageUrlCopyWithImpl<_$_OnGetImageUrl>(this, _$identity);
+  _$$OnGetImageUrlImplCopyWith<_$OnGetImageUrlImpl> get copyWith =>
+      __$$OnGetImageUrlImplCopyWithImpl<_$OnGetImageUrlImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2240,19 +2246,19 @@ class _$_OnGetImageUrl implements _OnGetImageUrl {
 }
 
 abstract class _OnGetImageUrl implements OtherState {
-  const factory _OnGetImageUrl(final String url) = _$_OnGetImageUrl;
+  const factory _OnGetImageUrl(final String url) = _$OnGetImageUrlImpl;
 
   String get url;
   @JsonKey(ignore: true)
-  _$$_OnGetImageUrlCopyWith<_$_OnGetImageUrl> get copyWith =>
+  _$$OnGetImageUrlImplCopyWith<_$OnGetImageUrlImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_GetAllQuestionnaireCopyWith<$Res> {
-  factory _$$_GetAllQuestionnaireCopyWith(_$_GetAllQuestionnaire value,
-          $Res Function(_$_GetAllQuestionnaire) then) =
-      __$$_GetAllQuestionnaireCopyWithImpl<$Res>;
+abstract class _$$GetAllQuestionnaireImplCopyWith<$Res> {
+  factory _$$GetAllQuestionnaireImplCopyWith(_$GetAllQuestionnaireImpl value,
+          $Res Function(_$GetAllQuestionnaireImpl) then) =
+      __$$GetAllQuestionnaireImplCopyWithImpl<$Res>;
   @useResult
   $Res call({QuestionnaireDataModel questionnaire});
 
@@ -2260,11 +2266,11 @@ abstract class _$$_GetAllQuestionnaireCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_GetAllQuestionnaireCopyWithImpl<$Res>
-    extends _$OtherStateCopyWithImpl<$Res, _$_GetAllQuestionnaire>
-    implements _$$_GetAllQuestionnaireCopyWith<$Res> {
-  __$$_GetAllQuestionnaireCopyWithImpl(_$_GetAllQuestionnaire _value,
-      $Res Function(_$_GetAllQuestionnaire) _then)
+class __$$GetAllQuestionnaireImplCopyWithImpl<$Res>
+    extends _$OtherStateCopyWithImpl<$Res, _$GetAllQuestionnaireImpl>
+    implements _$$GetAllQuestionnaireImplCopyWith<$Res> {
+  __$$GetAllQuestionnaireImplCopyWithImpl(_$GetAllQuestionnaireImpl _value,
+      $Res Function(_$GetAllQuestionnaireImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2272,7 +2278,7 @@ class __$$_GetAllQuestionnaireCopyWithImpl<$Res>
   $Res call({
     Object? questionnaire = null,
   }) {
-    return _then(_$_GetAllQuestionnaire(
+    return _then(_$GetAllQuestionnaireImpl(
       null == questionnaire
           ? _value.questionnaire
           : questionnaire // ignore: cast_nullable_to_non_nullable
@@ -2291,8 +2297,8 @@ class __$$_GetAllQuestionnaireCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GetAllQuestionnaire implements _GetAllQuestionnaire {
-  const _$_GetAllQuestionnaire(this.questionnaire);
+class _$GetAllQuestionnaireImpl implements _GetAllQuestionnaire {
+  const _$GetAllQuestionnaireImpl(this.questionnaire);
 
   @override
   final QuestionnaireDataModel questionnaire;
@@ -2303,10 +2309,10 @@ class _$_GetAllQuestionnaire implements _GetAllQuestionnaire {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GetAllQuestionnaire &&
+            other is _$GetAllQuestionnaireImpl &&
             (identical(other.questionnaire, questionnaire) ||
                 other.questionnaire == questionnaire));
   }
@@ -2317,8 +2323,8 @@ class _$_GetAllQuestionnaire implements _GetAllQuestionnaire {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GetAllQuestionnaireCopyWith<_$_GetAllQuestionnaire> get copyWith =>
-      __$$_GetAllQuestionnaireCopyWithImpl<_$_GetAllQuestionnaire>(
+  _$$GetAllQuestionnaireImplCopyWith<_$GetAllQuestionnaireImpl> get copyWith =>
+      __$$GetAllQuestionnaireImplCopyWithImpl<_$GetAllQuestionnaireImpl>(
           this, _$identity);
 
   @override
@@ -2455,29 +2461,29 @@ class _$_GetAllQuestionnaire implements _GetAllQuestionnaire {
 
 abstract class _GetAllQuestionnaire implements OtherState {
   const factory _GetAllQuestionnaire(
-      final QuestionnaireDataModel questionnaire) = _$_GetAllQuestionnaire;
+      final QuestionnaireDataModel questionnaire) = _$GetAllQuestionnaireImpl;
 
   QuestionnaireDataModel get questionnaire;
   @JsonKey(ignore: true)
-  _$$_GetAllQuestionnaireCopyWith<_$_GetAllQuestionnaire> get copyWith =>
+  _$$GetAllQuestionnaireImplCopyWith<_$GetAllQuestionnaireImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_GetAllDocumentDataCopyWith<$Res> {
-  factory _$$_GetAllDocumentDataCopyWith(_$_GetAllDocumentData value,
-          $Res Function(_$_GetAllDocumentData) then) =
-      __$$_GetAllDocumentDataCopyWithImpl<$Res>;
+abstract class _$$GetAllDocumentDataImplCopyWith<$Res> {
+  factory _$$GetAllDocumentDataImplCopyWith(_$GetAllDocumentDataImpl value,
+          $Res Function(_$GetAllDocumentDataImpl) then) =
+      __$$GetAllDocumentDataImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<DocumentDataModel> documents});
 }
 
 /// @nodoc
-class __$$_GetAllDocumentDataCopyWithImpl<$Res>
-    extends _$OtherStateCopyWithImpl<$Res, _$_GetAllDocumentData>
-    implements _$$_GetAllDocumentDataCopyWith<$Res> {
-  __$$_GetAllDocumentDataCopyWithImpl(
-      _$_GetAllDocumentData _value, $Res Function(_$_GetAllDocumentData) _then)
+class __$$GetAllDocumentDataImplCopyWithImpl<$Res>
+    extends _$OtherStateCopyWithImpl<$Res, _$GetAllDocumentDataImpl>
+    implements _$$GetAllDocumentDataImplCopyWith<$Res> {
+  __$$GetAllDocumentDataImplCopyWithImpl(_$GetAllDocumentDataImpl _value,
+      $Res Function(_$GetAllDocumentDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2485,7 +2491,7 @@ class __$$_GetAllDocumentDataCopyWithImpl<$Res>
   $Res call({
     Object? documents = null,
   }) {
-    return _then(_$_GetAllDocumentData(
+    return _then(_$GetAllDocumentDataImpl(
       null == documents
           ? _value._documents
           : documents // ignore: cast_nullable_to_non_nullable
@@ -2496,8 +2502,8 @@ class __$$_GetAllDocumentDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GetAllDocumentData implements _GetAllDocumentData {
-  const _$_GetAllDocumentData(final List<DocumentDataModel> documents)
+class _$GetAllDocumentDataImpl implements _GetAllDocumentData {
+  const _$GetAllDocumentDataImpl(final List<DocumentDataModel> documents)
       : _documents = documents;
 
   final List<DocumentDataModel> _documents;
@@ -2514,10 +2520,10 @@ class _$_GetAllDocumentData implements _GetAllDocumentData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GetAllDocumentData &&
+            other is _$GetAllDocumentDataImpl &&
             const DeepCollectionEquality()
                 .equals(other._documents, _documents));
   }
@@ -2529,8 +2535,8 @@ class _$_GetAllDocumentData implements _GetAllDocumentData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GetAllDocumentDataCopyWith<_$_GetAllDocumentData> get copyWith =>
-      __$$_GetAllDocumentDataCopyWithImpl<_$_GetAllDocumentData>(
+  _$$GetAllDocumentDataImplCopyWith<_$GetAllDocumentDataImpl> get copyWith =>
+      __$$GetAllDocumentDataImplCopyWithImpl<_$GetAllDocumentDataImpl>(
           this, _$identity);
 
   @override
@@ -2667,10 +2673,10 @@ class _$_GetAllDocumentData implements _GetAllDocumentData {
 
 abstract class _GetAllDocumentData implements OtherState {
   const factory _GetAllDocumentData(final List<DocumentDataModel> documents) =
-      _$_GetAllDocumentData;
+      _$GetAllDocumentDataImpl;
 
   List<DocumentDataModel> get documents;
   @JsonKey(ignore: true)
-  _$$_GetAllDocumentDataCopyWith<_$_GetAllDocumentData> get copyWith =>
+  _$$GetAllDocumentDataImplCopyWith<_$GetAllDocumentDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

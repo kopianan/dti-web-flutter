@@ -12,7 +12,7 @@ part of 'admin_data_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AdminDataState {
@@ -22,6 +22,10 @@ mixin _$AdminDataState {
   List<FeedbackModel> get feedbacks => throw _privateConstructorUsedError;
   SearchType get searchType => throw _privateConstructorUsedError;
   String get searchKeywoard => throw _privateConstructorUsedError;
+  List<ChartFilterModel> get usersChartFilter =>
+      throw _privateConstructorUsedError;
+  List<ChartFilterModel> get appsChartFilter =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AdminDataStateCopyWith<AdminDataState> get copyWith =>
@@ -40,7 +44,9 @@ abstract class $AdminDataStateCopyWith<$Res> {
       List<CustomerModel> users,
       List<FeedbackModel> feedbacks,
       SearchType searchType,
-      String searchKeywoard});
+      String searchKeywoard,
+      List<ChartFilterModel> usersChartFilter,
+      List<ChartFilterModel> appsChartFilter});
 }
 
 /// @nodoc
@@ -62,6 +68,8 @@ class _$AdminDataStateCopyWithImpl<$Res, $Val extends AdminDataState>
     Object? feedbacks = null,
     Object? searchType = null,
     Object? searchKeywoard = null,
+    Object? usersChartFilter = null,
+    Object? appsChartFilter = null,
   }) {
     return _then(_value.copyWith(
       application: null == application
@@ -88,16 +96,24 @@ class _$AdminDataStateCopyWithImpl<$Res, $Val extends AdminDataState>
           ? _value.searchKeywoard
           : searchKeywoard // ignore: cast_nullable_to_non_nullable
               as String,
+      usersChartFilter: null == usersChartFilter
+          ? _value.usersChartFilter
+          : usersChartFilter // ignore: cast_nullable_to_non_nullable
+              as List<ChartFilterModel>,
+      appsChartFilter: null == appsChartFilter
+          ? _value.appsChartFilter
+          : appsChartFilter // ignore: cast_nullable_to_non_nullable
+              as List<ChartFilterModel>,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_AdminDataStateCopyWith<$Res>
+abstract class _$$AdminDataStateImplCopyWith<$Res>
     implements $AdminDataStateCopyWith<$Res> {
-  factory _$$_AdminDataStateCopyWith(
-          _$_AdminDataState value, $Res Function(_$_AdminDataState) then) =
-      __$$_AdminDataStateCopyWithImpl<$Res>;
+  factory _$$AdminDataStateImplCopyWith(_$AdminDataStateImpl value,
+          $Res Function(_$AdminDataStateImpl) then) =
+      __$$AdminDataStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -106,15 +122,17 @@ abstract class _$$_AdminDataStateCopyWith<$Res>
       List<CustomerModel> users,
       List<FeedbackModel> feedbacks,
       SearchType searchType,
-      String searchKeywoard});
+      String searchKeywoard,
+      List<ChartFilterModel> usersChartFilter,
+      List<ChartFilterModel> appsChartFilter});
 }
 
 /// @nodoc
-class __$$_AdminDataStateCopyWithImpl<$Res>
-    extends _$AdminDataStateCopyWithImpl<$Res, _$_AdminDataState>
-    implements _$$_AdminDataStateCopyWith<$Res> {
-  __$$_AdminDataStateCopyWithImpl(
-      _$_AdminDataState _value, $Res Function(_$_AdminDataState) _then)
+class __$$AdminDataStateImplCopyWithImpl<$Res>
+    extends _$AdminDataStateCopyWithImpl<$Res, _$AdminDataStateImpl>
+    implements _$$AdminDataStateImplCopyWith<$Res> {
+  __$$AdminDataStateImplCopyWithImpl(
+      _$AdminDataStateImpl _value, $Res Function(_$AdminDataStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -126,22 +144,24 @@ class __$$_AdminDataStateCopyWithImpl<$Res>
     Object? feedbacks = null,
     Object? searchType = null,
     Object? searchKeywoard = null,
+    Object? usersChartFilter = null,
+    Object? appsChartFilter = null,
   }) {
-    return _then(_$_AdminDataState(
+    return _then(_$AdminDataStateImpl(
       application: null == application
-          ? _value._application
+          ? _value.application
           : application // ignore: cast_nullable_to_non_nullable
               as List<SimpleVisaModel>,
       contacts: null == contacts
-          ? _value._contacts
+          ? _value.contacts
           : contacts // ignore: cast_nullable_to_non_nullable
               as List<ContactUsModel>,
       users: null == users
-          ? _value._users
+          ? _value.users
           : users // ignore: cast_nullable_to_non_nullable
               as List<CustomerModel>,
       feedbacks: null == feedbacks
-          ? _value._feedbacks
+          ? _value.feedbacks
           : feedbacks // ignore: cast_nullable_to_non_nullable
               as List<FeedbackModel>,
       searchType: null == searchType
@@ -152,116 +172,111 @@ class __$$_AdminDataStateCopyWithImpl<$Res>
           ? _value.searchKeywoard
           : searchKeywoard // ignore: cast_nullable_to_non_nullable
               as String,
+      usersChartFilter: null == usersChartFilter
+          ? _value.usersChartFilter
+          : usersChartFilter // ignore: cast_nullable_to_non_nullable
+              as List<ChartFilterModel>,
+      appsChartFilter: null == appsChartFilter
+          ? _value.appsChartFilter
+          : appsChartFilter // ignore: cast_nullable_to_non_nullable
+              as List<ChartFilterModel>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_AdminDataState extends _AdminDataState {
-  const _$_AdminDataState(
-      {final List<SimpleVisaModel> application = const [],
-      final List<ContactUsModel> contacts = const [],
-      final List<CustomerModel> users = const [],
-      final List<FeedbackModel> feedbacks = const [],
+class _$AdminDataStateImpl extends _AdminDataState {
+  const _$AdminDataStateImpl(
+      {this.application = const [],
+      this.contacts = const [],
+      this.users = const [],
+      this.feedbacks = const [],
       this.searchType = SearchType.application,
-      this.searchKeywoard = ""})
-      : _application = application,
-        _contacts = contacts,
-        _users = users,
-        _feedbacks = feedbacks,
-        super._();
+      this.searchKeywoard = "",
+      required this.usersChartFilter,
+      required this.appsChartFilter})
+      : super._();
 
-  final List<SimpleVisaModel> _application;
   @override
   @JsonKey()
-  List<SimpleVisaModel> get application {
-    if (_application is EqualUnmodifiableListView) return _application;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_application);
-  }
-
-  final List<ContactUsModel> _contacts;
+  final List<SimpleVisaModel> application;
   @override
   @JsonKey()
-  List<ContactUsModel> get contacts {
-    if (_contacts is EqualUnmodifiableListView) return _contacts;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_contacts);
-  }
-
-  final List<CustomerModel> _users;
+  final List<ContactUsModel> contacts;
   @override
   @JsonKey()
-  List<CustomerModel> get users {
-    if (_users is EqualUnmodifiableListView) return _users;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_users);
-  }
-
-  final List<FeedbackModel> _feedbacks;
+  final List<CustomerModel> users;
   @override
   @JsonKey()
-  List<FeedbackModel> get feedbacks {
-    if (_feedbacks is EqualUnmodifiableListView) return _feedbacks;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_feedbacks);
-  }
-
+  final List<FeedbackModel> feedbacks;
   @override
   @JsonKey()
   final SearchType searchType;
   @override
   @JsonKey()
   final String searchKeywoard;
+  @override
+  final List<ChartFilterModel> usersChartFilter;
+  @override
+  final List<ChartFilterModel> appsChartFilter;
 
   @override
   String toString() {
-    return 'AdminDataState(application: $application, contacts: $contacts, users: $users, feedbacks: $feedbacks, searchType: $searchType, searchKeywoard: $searchKeywoard)';
+    return 'AdminDataState(application: $application, contacts: $contacts, users: $users, feedbacks: $feedbacks, searchType: $searchType, searchKeywoard: $searchKeywoard, usersChartFilter: $usersChartFilter, appsChartFilter: $appsChartFilter)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AdminDataState &&
+            other is _$AdminDataStateImpl &&
             const DeepCollectionEquality()
-                .equals(other._application, _application) &&
-            const DeepCollectionEquality().equals(other._contacts, _contacts) &&
-            const DeepCollectionEquality().equals(other._users, _users) &&
-            const DeepCollectionEquality()
-                .equals(other._feedbacks, _feedbacks) &&
+                .equals(other.application, application) &&
+            const DeepCollectionEquality().equals(other.contacts, contacts) &&
+            const DeepCollectionEquality().equals(other.users, users) &&
+            const DeepCollectionEquality().equals(other.feedbacks, feedbacks) &&
             (identical(other.searchType, searchType) ||
                 other.searchType == searchType) &&
             (identical(other.searchKeywoard, searchKeywoard) ||
-                other.searchKeywoard == searchKeywoard));
+                other.searchKeywoard == searchKeywoard) &&
+            const DeepCollectionEquality()
+                .equals(other.usersChartFilter, usersChartFilter) &&
+            const DeepCollectionEquality()
+                .equals(other.appsChartFilter, appsChartFilter));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(_application),
-      const DeepCollectionEquality().hash(_contacts),
-      const DeepCollectionEquality().hash(_users),
-      const DeepCollectionEquality().hash(_feedbacks),
+      const DeepCollectionEquality().hash(application),
+      const DeepCollectionEquality().hash(contacts),
+      const DeepCollectionEquality().hash(users),
+      const DeepCollectionEquality().hash(feedbacks),
       searchType,
-      searchKeywoard);
+      searchKeywoard,
+      const DeepCollectionEquality().hash(usersChartFilter),
+      const DeepCollectionEquality().hash(appsChartFilter));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AdminDataStateCopyWith<_$_AdminDataState> get copyWith =>
-      __$$_AdminDataStateCopyWithImpl<_$_AdminDataState>(this, _$identity);
+  _$$AdminDataStateImplCopyWith<_$AdminDataStateImpl> get copyWith =>
+      __$$AdminDataStateImplCopyWithImpl<_$AdminDataStateImpl>(
+          this, _$identity);
 }
 
 abstract class _AdminDataState extends AdminDataState {
   const factory _AdminDataState(
-      {final List<SimpleVisaModel> application,
-      final List<ContactUsModel> contacts,
-      final List<CustomerModel> users,
-      final List<FeedbackModel> feedbacks,
-      final SearchType searchType,
-      final String searchKeywoard}) = _$_AdminDataState;
+          {final List<SimpleVisaModel> application,
+          final List<ContactUsModel> contacts,
+          final List<CustomerModel> users,
+          final List<FeedbackModel> feedbacks,
+          final SearchType searchType,
+          final String searchKeywoard,
+          required final List<ChartFilterModel> usersChartFilter,
+          required final List<ChartFilterModel> appsChartFilter}) =
+      _$AdminDataStateImpl;
   const _AdminDataState._() : super._();
 
   @override
@@ -277,7 +292,11 @@ abstract class _AdminDataState extends AdminDataState {
   @override
   String get searchKeywoard;
   @override
+  List<ChartFilterModel> get usersChartFilter;
+  @override
+  List<ChartFilterModel> get appsChartFilter;
+  @override
   @JsonKey(ignore: true)
-  _$$_AdminDataStateCopyWith<_$_AdminDataState> get copyWith =>
+  _$$AdminDataStateImplCopyWith<_$AdminDataStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

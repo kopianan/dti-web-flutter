@@ -12,7 +12,7 @@ part of 'failures.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$Failures {
@@ -104,25 +104,25 @@ class _$FailuresCopyWithImpl<$Res, $Val extends Failures>
 }
 
 /// @nodoc
-abstract class _$$_ServerErrorCopyWith<$Res> {
-  factory _$$_ServerErrorCopyWith(
-          _$_ServerError value, $Res Function(_$_ServerError) then) =
-      __$$_ServerErrorCopyWithImpl<$Res>;
+abstract class _$$ServerErrorImplCopyWith<$Res> {
+  factory _$$ServerErrorImplCopyWith(
+          _$ServerErrorImpl value, $Res Function(_$ServerErrorImpl) then) =
+      __$$ServerErrorImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ServerErrorCopyWithImpl<$Res>
-    extends _$FailuresCopyWithImpl<$Res, _$_ServerError>
-    implements _$$_ServerErrorCopyWith<$Res> {
-  __$$_ServerErrorCopyWithImpl(
-      _$_ServerError _value, $Res Function(_$_ServerError) _then)
+class __$$ServerErrorImplCopyWithImpl<$Res>
+    extends _$FailuresCopyWithImpl<$Res, _$ServerErrorImpl>
+    implements _$$ServerErrorImplCopyWith<$Res> {
+  __$$ServerErrorImplCopyWithImpl(
+      _$ServerErrorImpl _value, $Res Function(_$ServerErrorImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_ServerError implements _ServerError {
-  _$_ServerError();
+class _$ServerErrorImpl implements _ServerError {
+  _$ServerErrorImpl();
 
   @override
   String toString() {
@@ -130,9 +130,9 @@ class _$_ServerError implements _ServerError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ServerError);
+        (other.runtimeType == runtimeType && other is _$ServerErrorImpl);
   }
 
   @override
@@ -232,29 +232,29 @@ class _$_ServerError implements _ServerError {
 }
 
 abstract class _ServerError implements Failures {
-  factory _ServerError() = _$_ServerError;
+  factory _ServerError() = _$ServerErrorImpl;
 }
 
 /// @nodoc
-abstract class _$$_ApiExpiredCopyWith<$Res> {
-  factory _$$_ApiExpiredCopyWith(
-          _$_ApiExpired value, $Res Function(_$_ApiExpired) then) =
-      __$$_ApiExpiredCopyWithImpl<$Res>;
+abstract class _$$ApiExpiredImplCopyWith<$Res> {
+  factory _$$ApiExpiredImplCopyWith(
+          _$ApiExpiredImpl value, $Res Function(_$ApiExpiredImpl) then) =
+      __$$ApiExpiredImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ApiExpiredCopyWithImpl<$Res>
-    extends _$FailuresCopyWithImpl<$Res, _$_ApiExpired>
-    implements _$$_ApiExpiredCopyWith<$Res> {
-  __$$_ApiExpiredCopyWithImpl(
-      _$_ApiExpired _value, $Res Function(_$_ApiExpired) _then)
+class __$$ApiExpiredImplCopyWithImpl<$Res>
+    extends _$FailuresCopyWithImpl<$Res, _$ApiExpiredImpl>
+    implements _$$ApiExpiredImplCopyWith<$Res> {
+  __$$ApiExpiredImplCopyWithImpl(
+      _$ApiExpiredImpl _value, $Res Function(_$ApiExpiredImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_ApiExpired implements _ApiExpired {
-  _$_ApiExpired();
+class _$ApiExpiredImpl implements _ApiExpired {
+  _$ApiExpiredImpl();
 
   @override
   String toString() {
@@ -262,9 +262,9 @@ class _$_ApiExpired implements _ApiExpired {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ApiExpired);
+        (other.runtimeType == runtimeType && other is _$ApiExpiredImpl);
   }
 
   @override
@@ -364,24 +364,24 @@ class _$_ApiExpired implements _ApiExpired {
 }
 
 abstract class _ApiExpired implements Failures {
-  factory _ApiExpired() = _$_ApiExpired;
+  factory _ApiExpired() = _$ApiExpiredImpl;
 }
 
 /// @nodoc
-abstract class _$$_GeneralErrorCopyWith<$Res> {
-  factory _$$_GeneralErrorCopyWith(
-          _$_GeneralError value, $Res Function(_$_GeneralError) then) =
-      __$$_GeneralErrorCopyWithImpl<$Res>;
+abstract class _$$GeneralErrorImplCopyWith<$Res> {
+  factory _$$GeneralErrorImplCopyWith(
+          _$GeneralErrorImpl value, $Res Function(_$GeneralErrorImpl) then) =
+      __$$GeneralErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String err});
 }
 
 /// @nodoc
-class __$$_GeneralErrorCopyWithImpl<$Res>
-    extends _$FailuresCopyWithImpl<$Res, _$_GeneralError>
-    implements _$$_GeneralErrorCopyWith<$Res> {
-  __$$_GeneralErrorCopyWithImpl(
-      _$_GeneralError _value, $Res Function(_$_GeneralError) _then)
+class __$$GeneralErrorImplCopyWithImpl<$Res>
+    extends _$FailuresCopyWithImpl<$Res, _$GeneralErrorImpl>
+    implements _$$GeneralErrorImplCopyWith<$Res> {
+  __$$GeneralErrorImplCopyWithImpl(
+      _$GeneralErrorImpl _value, $Res Function(_$GeneralErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -389,7 +389,7 @@ class __$$_GeneralErrorCopyWithImpl<$Res>
   $Res call({
     Object? err = null,
   }) {
-    return _then(_$_GeneralError(
+    return _then(_$GeneralErrorImpl(
       null == err
           ? _value.err
           : err // ignore: cast_nullable_to_non_nullable
@@ -400,8 +400,8 @@ class __$$_GeneralErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GeneralError implements _GeneralError {
-  _$_GeneralError(this.err);
+class _$GeneralErrorImpl implements _GeneralError {
+  _$GeneralErrorImpl(this.err);
 
   @override
   final String err;
@@ -412,10 +412,10 @@ class _$_GeneralError implements _GeneralError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GeneralError &&
+            other is _$GeneralErrorImpl &&
             (identical(other.err, err) || other.err == err));
   }
 
@@ -425,8 +425,8 @@ class _$_GeneralError implements _GeneralError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GeneralErrorCopyWith<_$_GeneralError> get copyWith =>
-      __$$_GeneralErrorCopyWithImpl<_$_GeneralError>(this, _$identity);
+  _$$GeneralErrorImplCopyWith<_$GeneralErrorImpl> get copyWith =>
+      __$$GeneralErrorImplCopyWithImpl<_$GeneralErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -522,27 +522,29 @@ class _$_GeneralError implements _GeneralError {
 }
 
 abstract class _GeneralError implements Failures {
-  factory _GeneralError(final String err) = _$_GeneralError;
+  factory _GeneralError(final String err) = _$GeneralErrorImpl;
 
   String get err;
   @JsonKey(ignore: true)
-  _$$_GeneralErrorCopyWith<_$_GeneralError> get copyWith =>
+  _$$GeneralErrorImplCopyWith<_$GeneralErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_NoDataCopyWith<$Res> {
-  factory _$$_NoDataCopyWith(_$_NoData value, $Res Function(_$_NoData) then) =
-      __$$_NoDataCopyWithImpl<$Res>;
+abstract class _$$NoDataImplCopyWith<$Res> {
+  factory _$$NoDataImplCopyWith(
+          _$NoDataImpl value, $Res Function(_$NoDataImpl) then) =
+      __$$NoDataImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String err});
 }
 
 /// @nodoc
-class __$$_NoDataCopyWithImpl<$Res>
-    extends _$FailuresCopyWithImpl<$Res, _$_NoData>
-    implements _$$_NoDataCopyWith<$Res> {
-  __$$_NoDataCopyWithImpl(_$_NoData _value, $Res Function(_$_NoData) _then)
+class __$$NoDataImplCopyWithImpl<$Res>
+    extends _$FailuresCopyWithImpl<$Res, _$NoDataImpl>
+    implements _$$NoDataImplCopyWith<$Res> {
+  __$$NoDataImplCopyWithImpl(
+      _$NoDataImpl _value, $Res Function(_$NoDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -550,7 +552,7 @@ class __$$_NoDataCopyWithImpl<$Res>
   $Res call({
     Object? err = null,
   }) {
-    return _then(_$_NoData(
+    return _then(_$NoDataImpl(
       null == err
           ? _value.err
           : err // ignore: cast_nullable_to_non_nullable
@@ -561,8 +563,8 @@ class __$$_NoDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_NoData implements _NoData {
-  _$_NoData(this.err);
+class _$NoDataImpl implements _NoData {
+  _$NoDataImpl(this.err);
 
   @override
   final String err;
@@ -573,10 +575,10 @@ class _$_NoData implements _NoData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NoData &&
+            other is _$NoDataImpl &&
             (identical(other.err, err) || other.err == err));
   }
 
@@ -586,8 +588,8 @@ class _$_NoData implements _NoData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NoDataCopyWith<_$_NoData> get copyWith =>
-      __$$_NoDataCopyWithImpl<_$_NoData>(this, _$identity);
+  _$$NoDataImplCopyWith<_$NoDataImpl> get copyWith =>
+      __$$NoDataImplCopyWithImpl<_$NoDataImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -683,28 +685,29 @@ class _$_NoData implements _NoData {
 }
 
 abstract class _NoData implements Failures {
-  factory _NoData(final String err) = _$_NoData;
+  factory _NoData(final String err) = _$NoDataImpl;
 
   String get err;
   @JsonKey(ignore: true)
-  _$$_NoDataCopyWith<_$_NoData> get copyWith =>
+  _$$NoDataImplCopyWith<_$NoDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_TimeOutCopyWith<$Res> {
-  factory _$$_TimeOutCopyWith(
-          _$_TimeOut value, $Res Function(_$_TimeOut) then) =
-      __$$_TimeOutCopyWithImpl<$Res>;
+abstract class _$$TimeOutImplCopyWith<$Res> {
+  factory _$$TimeOutImplCopyWith(
+          _$TimeOutImpl value, $Res Function(_$TimeOutImpl) then) =
+      __$$TimeOutImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String err});
 }
 
 /// @nodoc
-class __$$_TimeOutCopyWithImpl<$Res>
-    extends _$FailuresCopyWithImpl<$Res, _$_TimeOut>
-    implements _$$_TimeOutCopyWith<$Res> {
-  __$$_TimeOutCopyWithImpl(_$_TimeOut _value, $Res Function(_$_TimeOut) _then)
+class __$$TimeOutImplCopyWithImpl<$Res>
+    extends _$FailuresCopyWithImpl<$Res, _$TimeOutImpl>
+    implements _$$TimeOutImplCopyWith<$Res> {
+  __$$TimeOutImplCopyWithImpl(
+      _$TimeOutImpl _value, $Res Function(_$TimeOutImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -712,7 +715,7 @@ class __$$_TimeOutCopyWithImpl<$Res>
   $Res call({
     Object? err = null,
   }) {
-    return _then(_$_TimeOut(
+    return _then(_$TimeOutImpl(
       null == err
           ? _value.err
           : err // ignore: cast_nullable_to_non_nullable
@@ -723,8 +726,8 @@ class __$$_TimeOutCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_TimeOut implements _TimeOut {
-  _$_TimeOut(this.err);
+class _$TimeOutImpl implements _TimeOut {
+  _$TimeOutImpl(this.err);
 
   @override
   final String err;
@@ -735,10 +738,10 @@ class _$_TimeOut implements _TimeOut {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TimeOut &&
+            other is _$TimeOutImpl &&
             (identical(other.err, err) || other.err == err));
   }
 
@@ -748,8 +751,8 @@ class _$_TimeOut implements _TimeOut {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TimeOutCopyWith<_$_TimeOut> get copyWith =>
-      __$$_TimeOutCopyWithImpl<_$_TimeOut>(this, _$identity);
+  _$$TimeOutImplCopyWith<_$TimeOutImpl> get copyWith =>
+      __$$TimeOutImplCopyWithImpl<_$TimeOutImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -845,29 +848,29 @@ class _$_TimeOut implements _TimeOut {
 }
 
 abstract class _TimeOut implements Failures {
-  factory _TimeOut(final String err) = _$_TimeOut;
+  factory _TimeOut(final String err) = _$TimeOutImpl;
 
   String get err;
   @JsonKey(ignore: true)
-  _$$_TimeOutCopyWith<_$_TimeOut> get copyWith =>
+  _$$TimeOutImplCopyWith<_$TimeOutImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_AuthErrorCopyWith<$Res> {
-  factory _$$_AuthErrorCopyWith(
-          _$_AuthError value, $Res Function(_$_AuthError) then) =
-      __$$_AuthErrorCopyWithImpl<$Res>;
+abstract class _$$AuthErrorImplCopyWith<$Res> {
+  factory _$$AuthErrorImplCopyWith(
+          _$AuthErrorImpl value, $Res Function(_$AuthErrorImpl) then) =
+      __$$AuthErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$_AuthErrorCopyWithImpl<$Res>
-    extends _$FailuresCopyWithImpl<$Res, _$_AuthError>
-    implements _$$_AuthErrorCopyWith<$Res> {
-  __$$_AuthErrorCopyWithImpl(
-      _$_AuthError _value, $Res Function(_$_AuthError) _then)
+class __$$AuthErrorImplCopyWithImpl<$Res>
+    extends _$FailuresCopyWithImpl<$Res, _$AuthErrorImpl>
+    implements _$$AuthErrorImplCopyWith<$Res> {
+  __$$AuthErrorImplCopyWithImpl(
+      _$AuthErrorImpl _value, $Res Function(_$AuthErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -875,7 +878,7 @@ class __$$_AuthErrorCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$_AuthError(
+    return _then(_$AuthErrorImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -886,8 +889,8 @@ class __$$_AuthErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AuthError implements _AuthError {
-  _$_AuthError(this.message);
+class _$AuthErrorImpl implements _AuthError {
+  _$AuthErrorImpl(this.message);
 
   @override
   final String message;
@@ -898,10 +901,10 @@ class _$_AuthError implements _AuthError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AuthError &&
+            other is _$AuthErrorImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -911,8 +914,8 @@ class _$_AuthError implements _AuthError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AuthErrorCopyWith<_$_AuthError> get copyWith =>
-      __$$_AuthErrorCopyWithImpl<_$_AuthError>(this, _$identity);
+  _$$AuthErrorImplCopyWith<_$AuthErrorImpl> get copyWith =>
+      __$$AuthErrorImplCopyWithImpl<_$AuthErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1008,34 +1011,34 @@ class _$_AuthError implements _AuthError {
 }
 
 abstract class _AuthError implements Failures {
-  factory _AuthError(final String message) = _$_AuthError;
+  factory _AuthError(final String message) = _$AuthErrorImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$_AuthErrorCopyWith<_$_AuthError> get copyWith =>
+  _$$AuthErrorImplCopyWith<_$AuthErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_BrowserIsSafariCopyWith<$Res> {
-  factory _$$_BrowserIsSafariCopyWith(
-          _$_BrowserIsSafari value, $Res Function(_$_BrowserIsSafari) then) =
-      __$$_BrowserIsSafariCopyWithImpl<$Res>;
+abstract class _$$BrowserIsSafariImplCopyWith<$Res> {
+  factory _$$BrowserIsSafariImplCopyWith(_$BrowserIsSafariImpl value,
+          $Res Function(_$BrowserIsSafariImpl) then) =
+      __$$BrowserIsSafariImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_BrowserIsSafariCopyWithImpl<$Res>
-    extends _$FailuresCopyWithImpl<$Res, _$_BrowserIsSafari>
-    implements _$$_BrowserIsSafariCopyWith<$Res> {
-  __$$_BrowserIsSafariCopyWithImpl(
-      _$_BrowserIsSafari _value, $Res Function(_$_BrowserIsSafari) _then)
+class __$$BrowserIsSafariImplCopyWithImpl<$Res>
+    extends _$FailuresCopyWithImpl<$Res, _$BrowserIsSafariImpl>
+    implements _$$BrowserIsSafariImplCopyWith<$Res> {
+  __$$BrowserIsSafariImplCopyWithImpl(
+      _$BrowserIsSafariImpl _value, $Res Function(_$BrowserIsSafariImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_BrowserIsSafari implements _BrowserIsSafari {
-  _$_BrowserIsSafari();
+class _$BrowserIsSafariImpl implements _BrowserIsSafari {
+  _$BrowserIsSafariImpl();
 
   @override
   String toString() {
@@ -1043,9 +1046,9 @@ class _$_BrowserIsSafari implements _BrowserIsSafari {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_BrowserIsSafari);
+        (other.runtimeType == runtimeType && other is _$BrowserIsSafariImpl);
   }
 
   @override
@@ -1145,5 +1148,5 @@ class _$_BrowserIsSafari implements _BrowserIsSafari {
 }
 
 abstract class _BrowserIsSafari implements Failures {
-  factory _BrowserIsSafari() = _$_BrowserIsSafari;
+  factory _BrowserIsSafari() = _$BrowserIsSafariImpl;
 }

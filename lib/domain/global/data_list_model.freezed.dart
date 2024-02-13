@@ -12,7 +12,7 @@ part of 'data_list_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$DataListModel {
@@ -75,11 +75,11 @@ class _$DataListModelCopyWithImpl<$Res, $Val extends DataListModel>
 }
 
 /// @nodoc
-abstract class _$$_DataListModelCopyWith<$Res>
+abstract class _$$DataListModelImplCopyWith<$Res>
     implements $DataListModelCopyWith<$Res> {
-  factory _$$_DataListModelCopyWith(
-          _$_DataListModel value, $Res Function(_$_DataListModel) then) =
-      __$$_DataListModelCopyWithImpl<$Res>;
+  factory _$$DataListModelImplCopyWith(
+          _$DataListModelImpl value, $Res Function(_$DataListModelImpl) then) =
+      __$$DataListModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({SimpleVisaModel bodyData, bool selected});
@@ -89,11 +89,11 @@ abstract class _$$_DataListModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_DataListModelCopyWithImpl<$Res>
-    extends _$DataListModelCopyWithImpl<$Res, _$_DataListModel>
-    implements _$$_DataListModelCopyWith<$Res> {
-  __$$_DataListModelCopyWithImpl(
-      _$_DataListModel _value, $Res Function(_$_DataListModel) _then)
+class __$$DataListModelImplCopyWithImpl<$Res>
+    extends _$DataListModelCopyWithImpl<$Res, _$DataListModelImpl>
+    implements _$$DataListModelImplCopyWith<$Res> {
+  __$$DataListModelImplCopyWithImpl(
+      _$DataListModelImpl _value, $Res Function(_$DataListModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -102,7 +102,7 @@ class __$$_DataListModelCopyWithImpl<$Res>
     Object? bodyData = null,
     Object? selected = null,
   }) {
-    return _then(_$_DataListModel(
+    return _then(_$DataListModelImpl(
       bodyData: null == bodyData
           ? _value.bodyData
           : bodyData // ignore: cast_nullable_to_non_nullable
@@ -117,8 +117,8 @@ class __$$_DataListModelCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_DataListModel implements _DataListModel {
-  _$_DataListModel({required this.bodyData, this.selected = false});
+class _$DataListModelImpl implements _DataListModel {
+  _$DataListModelImpl({required this.bodyData, this.selected = false});
 
   @override
   SimpleVisaModel bodyData;
@@ -134,13 +134,13 @@ class _$_DataListModel implements _DataListModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DataListModelCopyWith<_$_DataListModel> get copyWith =>
-      __$$_DataListModelCopyWithImpl<_$_DataListModel>(this, _$identity);
+  _$$DataListModelImplCopyWith<_$DataListModelImpl> get copyWith =>
+      __$$DataListModelImplCopyWithImpl<_$DataListModelImpl>(this, _$identity);
 }
 
 abstract class _DataListModel implements DataListModel {
   factory _DataListModel({required SimpleVisaModel bodyData, bool selected}) =
-      _$_DataListModel;
+      _$DataListModelImpl;
 
   @override
   SimpleVisaModel get bodyData;
@@ -150,6 +150,6 @@ abstract class _DataListModel implements DataListModel {
   set selected(bool value);
   @override
   @JsonKey(ignore: true)
-  _$$_DataListModelCopyWith<_$_DataListModel> get copyWith =>
+  _$$DataListModelImplCopyWith<_$DataListModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

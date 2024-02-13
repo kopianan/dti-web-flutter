@@ -6,8 +6,8 @@ part of 'result_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ResultModel _$$_ResultModelFromJson(Map<String, dynamic> json) =>
-    _$_ResultModel(
+_$ResultModelImpl _$$ResultModelImplFromJson(Map<String, dynamic> json) =>
+    _$ResultModelImpl(
       contactUs: json['contactUs'] as bool?,
       visaPrice: json['visaPrice'] == null
           ? null
@@ -18,7 +18,7 @@ _$_ResultModel _$$_ResultModelFromJson(Map<String, dynamic> json) =>
       visaSubTitle: json['visaSubTitle'] as String?,
     );
 
-Map<String, dynamic> _$$_ResultModelToJson(_$_ResultModel instance) =>
+Map<String, dynamic> _$$ResultModelImplToJson(_$ResultModelImpl instance) =>
     <String, dynamic>{
       'contactUs': instance.contactUs,
       'visaPrice': instance.visaPrice,

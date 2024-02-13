@@ -6,8 +6,9 @@ part of 'simple_visa_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SimpleVisaModel _$$_SimpleVisaModelFromJson(Map<String, dynamic> json) =>
-    _$_SimpleVisaModel(
+_$SimpleVisaModelImpl _$$SimpleVisaModelImplFromJson(
+        Map<String, dynamic> json) =>
+    _$SimpleVisaModelImpl(
       firebaseDocId: json['firebaseDocId'] as String?,
       applicationID: json['applicationID'] as String?,
       status: json['status'] as String?,
@@ -22,7 +23,8 @@ _$_SimpleVisaModel _$$_SimpleVisaModelFromJson(Map<String, dynamic> json) =>
           .fromJson(json['createdDate'] as String?),
     );
 
-Map<String, dynamic> _$$_SimpleVisaModelToJson(_$_SimpleVisaModel instance) =>
+Map<String, dynamic> _$$SimpleVisaModelImplToJson(
+        _$SimpleVisaModelImpl instance) =>
     <String, dynamic>{
       'firebaseDocId': instance.firebaseDocId,
       'applicationID': instance.applicationID,

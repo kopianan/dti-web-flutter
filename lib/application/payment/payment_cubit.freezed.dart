@@ -12,7 +12,7 @@ part of 'payment_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$PaymentState {
@@ -87,24 +87,25 @@ class _$PaymentStateCopyWithImpl<$Res, $Val extends PaymentState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$PaymentStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$PaymentStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -112,9 +113,9 @@ class _$_Initial implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -196,14 +197,14 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements PaymentState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_OnErrorCopyWith<$Res> {
-  factory _$$_OnErrorCopyWith(
-          _$_OnError value, $Res Function(_$_OnError) then) =
-      __$$_OnErrorCopyWithImpl<$Res>;
+abstract class _$$OnErrorImplCopyWith<$Res> {
+  factory _$$OnErrorImplCopyWith(
+          _$OnErrorImpl value, $Res Function(_$OnErrorImpl) then) =
+      __$$OnErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Failures errorMessage});
 
@@ -211,10 +212,11 @@ abstract class _$$_OnErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_OnErrorCopyWithImpl<$Res>
-    extends _$PaymentStateCopyWithImpl<$Res, _$_OnError>
-    implements _$$_OnErrorCopyWith<$Res> {
-  __$$_OnErrorCopyWithImpl(_$_OnError _value, $Res Function(_$_OnError) _then)
+class __$$OnErrorImplCopyWithImpl<$Res>
+    extends _$PaymentStateCopyWithImpl<$Res, _$OnErrorImpl>
+    implements _$$OnErrorImplCopyWith<$Res> {
+  __$$OnErrorImplCopyWithImpl(
+      _$OnErrorImpl _value, $Res Function(_$OnErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -222,7 +224,7 @@ class __$$_OnErrorCopyWithImpl<$Res>
   $Res call({
     Object? errorMessage = null,
   }) {
-    return _then(_$_OnError(
+    return _then(_$OnErrorImpl(
       null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -241,8 +243,8 @@ class __$$_OnErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OnError implements _OnError {
-  const _$_OnError(this.errorMessage);
+class _$OnErrorImpl implements _OnError {
+  const _$OnErrorImpl(this.errorMessage);
 
   @override
   final Failures errorMessage;
@@ -253,10 +255,10 @@ class _$_OnError implements _OnError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnError &&
+            other is _$OnErrorImpl &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage));
   }
@@ -267,8 +269,8 @@ class _$_OnError implements _OnError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnErrorCopyWith<_$_OnError> get copyWith =>
-      __$$_OnErrorCopyWithImpl<_$_OnError>(this, _$identity);
+  _$$OnErrorImplCopyWith<_$OnErrorImpl> get copyWith =>
+      __$$OnErrorImplCopyWithImpl<_$OnErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -346,34 +348,34 @@ class _$_OnError implements _OnError {
 }
 
 abstract class _OnError implements PaymentState {
-  const factory _OnError(final Failures errorMessage) = _$_OnError;
+  const factory _OnError(final Failures errorMessage) = _$OnErrorImpl;
 
   Failures get errorMessage;
   @JsonKey(ignore: true)
-  _$$_OnErrorCopyWith<_$_OnError> get copyWith =>
+  _$$OnErrorImplCopyWith<_$OnErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_OnLoadingCopyWith<$Res> {
-  factory _$$_OnLoadingCopyWith(
-          _$_OnLoading value, $Res Function(_$_OnLoading) then) =
-      __$$_OnLoadingCopyWithImpl<$Res>;
+abstract class _$$OnLoadingImplCopyWith<$Res> {
+  factory _$$OnLoadingImplCopyWith(
+          _$OnLoadingImpl value, $Res Function(_$OnLoadingImpl) then) =
+      __$$OnLoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_OnLoadingCopyWithImpl<$Res>
-    extends _$PaymentStateCopyWithImpl<$Res, _$_OnLoading>
-    implements _$$_OnLoadingCopyWith<$Res> {
-  __$$_OnLoadingCopyWithImpl(
-      _$_OnLoading _value, $Res Function(_$_OnLoading) _then)
+class __$$OnLoadingImplCopyWithImpl<$Res>
+    extends _$PaymentStateCopyWithImpl<$Res, _$OnLoadingImpl>
+    implements _$$OnLoadingImplCopyWith<$Res> {
+  __$$OnLoadingImplCopyWithImpl(
+      _$OnLoadingImpl _value, $Res Function(_$OnLoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_OnLoading implements _OnLoading {
-  const _$_OnLoading();
+class _$OnLoadingImpl implements _OnLoading {
+  const _$OnLoadingImpl();
 
   @override
   String toString() {
@@ -381,9 +383,9 @@ class _$_OnLoading implements _OnLoading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_OnLoading);
+        (other.runtimeType == runtimeType && other is _$OnLoadingImpl);
   }
 
   @override
@@ -465,24 +467,24 @@ class _$_OnLoading implements _OnLoading {
 }
 
 abstract class _OnLoading implements PaymentState {
-  const factory _OnLoading() = _$_OnLoading;
+  const factory _OnLoading() = _$OnLoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$_OnGetPaymentUrlCopyWith<$Res> {
-  factory _$$_OnGetPaymentUrlCopyWith(
-          _$_OnGetPaymentUrl value, $Res Function(_$_OnGetPaymentUrl) then) =
-      __$$_OnGetPaymentUrlCopyWithImpl<$Res>;
+abstract class _$$OnGetPaymentUrlImplCopyWith<$Res> {
+  factory _$$OnGetPaymentUrlImplCopyWith(_$OnGetPaymentUrlImpl value,
+          $Res Function(_$OnGetPaymentUrlImpl) then) =
+      __$$OnGetPaymentUrlImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String url});
 }
 
 /// @nodoc
-class __$$_OnGetPaymentUrlCopyWithImpl<$Res>
-    extends _$PaymentStateCopyWithImpl<$Res, _$_OnGetPaymentUrl>
-    implements _$$_OnGetPaymentUrlCopyWith<$Res> {
-  __$$_OnGetPaymentUrlCopyWithImpl(
-      _$_OnGetPaymentUrl _value, $Res Function(_$_OnGetPaymentUrl) _then)
+class __$$OnGetPaymentUrlImplCopyWithImpl<$Res>
+    extends _$PaymentStateCopyWithImpl<$Res, _$OnGetPaymentUrlImpl>
+    implements _$$OnGetPaymentUrlImplCopyWith<$Res> {
+  __$$OnGetPaymentUrlImplCopyWithImpl(
+      _$OnGetPaymentUrlImpl _value, $Res Function(_$OnGetPaymentUrlImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -490,7 +492,7 @@ class __$$_OnGetPaymentUrlCopyWithImpl<$Res>
   $Res call({
     Object? url = null,
   }) {
-    return _then(_$_OnGetPaymentUrl(
+    return _then(_$OnGetPaymentUrlImpl(
       null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
@@ -501,8 +503,8 @@ class __$$_OnGetPaymentUrlCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OnGetPaymentUrl implements _OnGetPaymentUrl {
-  const _$_OnGetPaymentUrl(this.url);
+class _$OnGetPaymentUrlImpl implements _OnGetPaymentUrl {
+  const _$OnGetPaymentUrlImpl(this.url);
 
   @override
   final String url;
@@ -513,10 +515,10 @@ class _$_OnGetPaymentUrl implements _OnGetPaymentUrl {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnGetPaymentUrl &&
+            other is _$OnGetPaymentUrlImpl &&
             (identical(other.url, url) || other.url == url));
   }
 
@@ -526,8 +528,9 @@ class _$_OnGetPaymentUrl implements _OnGetPaymentUrl {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnGetPaymentUrlCopyWith<_$_OnGetPaymentUrl> get copyWith =>
-      __$$_OnGetPaymentUrlCopyWithImpl<_$_OnGetPaymentUrl>(this, _$identity);
+  _$$OnGetPaymentUrlImplCopyWith<_$OnGetPaymentUrlImpl> get copyWith =>
+      __$$OnGetPaymentUrlImplCopyWithImpl<_$OnGetPaymentUrlImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -605,10 +608,10 @@ class _$_OnGetPaymentUrl implements _OnGetPaymentUrl {
 }
 
 abstract class _OnGetPaymentUrl implements PaymentState {
-  const factory _OnGetPaymentUrl(final String url) = _$_OnGetPaymentUrl;
+  const factory _OnGetPaymentUrl(final String url) = _$OnGetPaymentUrlImpl;
 
   String get url;
   @JsonKey(ignore: true)
-  _$$_OnGetPaymentUrlCopyWith<_$_OnGetPaymentUrl> get copyWith =>
+  _$$OnGetPaymentUrlImplCopyWith<_$OnGetPaymentUrlImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

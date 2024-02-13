@@ -3,6 +3,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dti_web/application/admin/cubit/admin_cubit.dart';
 import 'package:dti_web/application/app_list/app_list_cubit.dart';
 import 'package:dti_web/application/customer/cubit/customer_cubit.dart';
+import 'package:dti_web/application/dashboard/dashboard_cubit.dart';
 import 'package:dti_web/application/document/document_cubit.dart';
 import 'package:dti_web/application/global/global_user_cubit.dart';
 import 'package:dti_web/application/update_application/update_application_cubit.dart';
@@ -44,7 +45,6 @@ class ApplicationDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: BlocProvider(
         create: (context) =>
             rootUpdateCubit..getUserAppsWithImages(firebaseDocId, appsType),
@@ -263,23 +263,26 @@ class _SuccessBodyState extends State<SuccessBody> with NavigateMixin {
                         ),
                       ),
                     ),
-                    BlocBuilder<DocumentCubit, DocumentState>(
-                      builder: (context, state) {
-                        return Visibility(
-                          visible: state.visa!.status == "Submitted",
-                          child: Column(
-                            children: [
-                              const Divider(),
-                              const SizedBox(height: 20),
-                              ConfirmationSection(
-                                visa: visa,
-                                type: appsType,
-                              ),
-                              const Divider(height: 40),
-                            ],
-                          ),
-                        );
-                      },
+                    Visibility(
+                      visible: getIt<GlobalUserCubit>().state.user.isAdmin(),
+                      child: BlocBuilder<DocumentCubit, DocumentState>(
+                        builder: (context, state) {
+                          return Visibility(
+                            visible: state.visa!.status == "Submitted",
+                            child: Column(
+                              children: [
+                                const Divider(),
+                                const SizedBox(height: 20),
+                                ConfirmationSection(
+                                  visa: visa,
+                                  type: appsType,
+                                ),
+                                const Divider(height: 40),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
                     ),
                     20.verticalSpace,
                     //ONLY SHOW WHEN USER ONLY
@@ -596,6 +599,9 @@ class _SuccessBodyState extends State<SuccessBody> with NavigateMixin {
                 orElse: () {},
                 onLoading: (e) {},
                 onSubmitApplication: (e) {
+                  Future.delayed(const Duration(seconds: 3)).then((value) {
+                    getIt<DashboardCubit>().getLastPassportAndApplicationData();
+                  });
                   AwesomeDialog(
                     context: context,
                     width: ScreenUtil().screenWidth / 4,

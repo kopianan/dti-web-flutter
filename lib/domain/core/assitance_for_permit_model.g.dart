@@ -6,9 +6,9 @@ part of 'assitance_for_permit_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_AssitanceForPermitModel _$$_AssitanceForPermitModelFromJson(
+_$AssitanceForPermitModelImpl _$$AssitanceForPermitModelImplFromJson(
         Map<String, dynamic> json) =>
-    _$_AssitanceForPermitModel(
+    _$AssitanceForPermitModelImpl(
       isActive: json['isActive'] as bool?,
       data: json['data'] == null
           ? null
@@ -16,8 +16,8 @@ _$_AssitanceForPermitModel _$$_AssitanceForPermitModelFromJson(
               json['data'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_AssitanceForPermitModelToJson(
-        _$_AssitanceForPermitModel instance) =>
+Map<String, dynamic> _$$AssitanceForPermitModelImplToJson(
+        _$AssitanceForPermitModelImpl instance) =>
     <String, dynamic>{
       'isActive': instance.isActive,
       'data': instance.data,

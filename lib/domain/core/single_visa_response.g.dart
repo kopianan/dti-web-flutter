@@ -6,9 +6,9 @@ part of 'single_visa_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SingleVisaResponse _$$_SingleVisaResponseFromJson(
+_$SingleVisaResponseImpl _$$SingleVisaResponseImplFromJson(
         Map<String, dynamic> json) =>
-    _$_SingleVisaResponse(
+    _$SingleVisaResponseImpl(
       visaApplicationModel: json['data'] == null
           ? null
           : VisaApplicationModel.fromJson(json['data'] as Map<String, dynamic>),
@@ -17,8 +17,8 @@ _$_SingleVisaResponse _$$_SingleVisaResponseFromJson(
           .toList(),
     );
 
-Map<String, dynamic> _$$_SingleVisaResponseToJson(
-        _$_SingleVisaResponse instance) =>
+Map<String, dynamic> _$$SingleVisaResponseImplToJson(
+        _$SingleVisaResponseImpl instance) =>
     <String, dynamic>{
       'data': instance.visaApplicationModel,
       'documentUserUrl': instance.documentUserApplicationUrl,

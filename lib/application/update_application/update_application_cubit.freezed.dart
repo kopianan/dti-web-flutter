@@ -12,7 +12,7 @@ part of 'update_application_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$UpdateApplicationState {
@@ -191,24 +191,25 @@ class _$UpdateApplicationStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$UpdateApplicationStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$UpdateApplicationStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial();
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -216,9 +217,9 @@ class _$_Initial implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -403,29 +404,29 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements UpdateApplicationState {
-  const factory _Initial() = _$_Initial;
+  const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$_OnLoadingCopyWith<$Res> {
-  factory _$$_OnLoadingCopyWith(
-          _$_OnLoading value, $Res Function(_$_OnLoading) then) =
-      __$$_OnLoadingCopyWithImpl<$Res>;
+abstract class _$$OnLoadingImplCopyWith<$Res> {
+  factory _$$OnLoadingImplCopyWith(
+          _$OnLoadingImpl value, $Res Function(_$OnLoadingImpl) then) =
+      __$$OnLoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_OnLoadingCopyWithImpl<$Res>
-    extends _$UpdateApplicationStateCopyWithImpl<$Res, _$_OnLoading>
-    implements _$$_OnLoadingCopyWith<$Res> {
-  __$$_OnLoadingCopyWithImpl(
-      _$_OnLoading _value, $Res Function(_$_OnLoading) _then)
+class __$$OnLoadingImplCopyWithImpl<$Res>
+    extends _$UpdateApplicationStateCopyWithImpl<$Res, _$OnLoadingImpl>
+    implements _$$OnLoadingImplCopyWith<$Res> {
+  __$$OnLoadingImplCopyWithImpl(
+      _$OnLoadingImpl _value, $Res Function(_$OnLoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_OnLoading implements _OnLoading {
-  const _$_OnLoading();
+class _$OnLoadingImpl implements _OnLoading {
+  const _$OnLoadingImpl();
 
   @override
   String toString() {
@@ -433,9 +434,9 @@ class _$_OnLoading implements _OnLoading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_OnLoading);
+        (other.runtimeType == runtimeType && other is _$OnLoadingImpl);
   }
 
   @override
@@ -620,14 +621,14 @@ class _$_OnLoading implements _OnLoading {
 }
 
 abstract class _OnLoading implements UpdateApplicationState {
-  const factory _OnLoading() = _$_OnLoading;
+  const factory _OnLoading() = _$OnLoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$_OnErrorCopyWith<$Res> {
-  factory _$$_OnErrorCopyWith(
-          _$_OnError value, $Res Function(_$_OnError) then) =
-      __$$_OnErrorCopyWithImpl<$Res>;
+abstract class _$$OnErrorImplCopyWith<$Res> {
+  factory _$$OnErrorImplCopyWith(
+          _$OnErrorImpl value, $Res Function(_$OnErrorImpl) then) =
+      __$$OnErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Failures error});
 
@@ -635,10 +636,11 @@ abstract class _$$_OnErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_OnErrorCopyWithImpl<$Res>
-    extends _$UpdateApplicationStateCopyWithImpl<$Res, _$_OnError>
-    implements _$$_OnErrorCopyWith<$Res> {
-  __$$_OnErrorCopyWithImpl(_$_OnError _value, $Res Function(_$_OnError) _then)
+class __$$OnErrorImplCopyWithImpl<$Res>
+    extends _$UpdateApplicationStateCopyWithImpl<$Res, _$OnErrorImpl>
+    implements _$$OnErrorImplCopyWith<$Res> {
+  __$$OnErrorImplCopyWithImpl(
+      _$OnErrorImpl _value, $Res Function(_$OnErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -646,7 +648,7 @@ class __$$_OnErrorCopyWithImpl<$Res>
   $Res call({
     Object? error = null,
   }) {
-    return _then(_$_OnError(
+    return _then(_$OnErrorImpl(
       null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -665,8 +667,8 @@ class __$$_OnErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OnError implements _OnError {
-  const _$_OnError(this.error);
+class _$OnErrorImpl implements _OnError {
+  const _$OnErrorImpl(this.error);
 
   @override
   final Failures error;
@@ -677,10 +679,10 @@ class _$_OnError implements _OnError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnError &&
+            other is _$OnErrorImpl &&
             (identical(other.error, error) || other.error == error));
   }
 
@@ -690,8 +692,8 @@ class _$_OnError implements _OnError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnErrorCopyWith<_$_OnError> get copyWith =>
-      __$$_OnErrorCopyWithImpl<_$_OnError>(this, _$identity);
+  _$$OnErrorImplCopyWith<_$OnErrorImpl> get copyWith =>
+      __$$OnErrorImplCopyWithImpl<_$OnErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -872,19 +874,19 @@ class _$_OnError implements _OnError {
 }
 
 abstract class _OnError implements UpdateApplicationState {
-  const factory _OnError(final Failures error) = _$_OnError;
+  const factory _OnError(final Failures error) = _$OnErrorImpl;
 
   Failures get error;
   @JsonKey(ignore: true)
-  _$$_OnErrorCopyWith<_$_OnError> get copyWith =>
+  _$$OnErrorImplCopyWith<_$OnErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_OnCreateApplicationCopyWith<$Res> {
-  factory _$$_OnCreateApplicationCopyWith(_$_OnCreateApplication value,
-          $Res Function(_$_OnCreateApplication) then) =
-      __$$_OnCreateApplicationCopyWithImpl<$Res>;
+abstract class _$$OnCreateApplicationImplCopyWith<$Res> {
+  factory _$$OnCreateApplicationImplCopyWith(_$OnCreateApplicationImpl value,
+          $Res Function(_$OnCreateApplicationImpl) then) =
+      __$$OnCreateApplicationImplCopyWithImpl<$Res>;
   @useResult
   $Res call({VisaApplicationModel visaApps});
 
@@ -892,11 +894,12 @@ abstract class _$$_OnCreateApplicationCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_OnCreateApplicationCopyWithImpl<$Res>
-    extends _$UpdateApplicationStateCopyWithImpl<$Res, _$_OnCreateApplication>
-    implements _$$_OnCreateApplicationCopyWith<$Res> {
-  __$$_OnCreateApplicationCopyWithImpl(_$_OnCreateApplication _value,
-      $Res Function(_$_OnCreateApplication) _then)
+class __$$OnCreateApplicationImplCopyWithImpl<$Res>
+    extends _$UpdateApplicationStateCopyWithImpl<$Res,
+        _$OnCreateApplicationImpl>
+    implements _$$OnCreateApplicationImplCopyWith<$Res> {
+  __$$OnCreateApplicationImplCopyWithImpl(_$OnCreateApplicationImpl _value,
+      $Res Function(_$OnCreateApplicationImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -904,7 +907,7 @@ class __$$_OnCreateApplicationCopyWithImpl<$Res>
   $Res call({
     Object? visaApps = null,
   }) {
-    return _then(_$_OnCreateApplication(
+    return _then(_$OnCreateApplicationImpl(
       null == visaApps
           ? _value.visaApps
           : visaApps // ignore: cast_nullable_to_non_nullable
@@ -923,8 +926,8 @@ class __$$_OnCreateApplicationCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OnCreateApplication implements _OnCreateApplication {
-  const _$_OnCreateApplication(this.visaApps);
+class _$OnCreateApplicationImpl implements _OnCreateApplication {
+  const _$OnCreateApplicationImpl(this.visaApps);
 
   @override
   final VisaApplicationModel visaApps;
@@ -935,10 +938,10 @@ class _$_OnCreateApplication implements _OnCreateApplication {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnCreateApplication &&
+            other is _$OnCreateApplicationImpl &&
             (identical(other.visaApps, visaApps) ||
                 other.visaApps == visaApps));
   }
@@ -949,8 +952,8 @@ class _$_OnCreateApplication implements _OnCreateApplication {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnCreateApplicationCopyWith<_$_OnCreateApplication> get copyWith =>
-      __$$_OnCreateApplicationCopyWithImpl<_$_OnCreateApplication>(
+  _$$OnCreateApplicationImplCopyWith<_$OnCreateApplicationImpl> get copyWith =>
+      __$$OnCreateApplicationImplCopyWithImpl<_$OnCreateApplicationImpl>(
           this, _$identity);
 
   @override
@@ -1133,19 +1136,19 @@ class _$_OnCreateApplication implements _OnCreateApplication {
 
 abstract class _OnCreateApplication implements UpdateApplicationState {
   const factory _OnCreateApplication(final VisaApplicationModel visaApps) =
-      _$_OnCreateApplication;
+      _$OnCreateApplicationImpl;
 
   VisaApplicationModel get visaApps;
   @JsonKey(ignore: true)
-  _$$_OnCreateApplicationCopyWith<_$_OnCreateApplication> get copyWith =>
+  _$$OnCreateApplicationImplCopyWith<_$OnCreateApplicationImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_OnCreatePassportCopyWith<$Res> {
-  factory _$$_OnCreatePassportCopyWith(
-          _$_OnCreatePassport value, $Res Function(_$_OnCreatePassport) then) =
-      __$$_OnCreatePassportCopyWithImpl<$Res>;
+abstract class _$$OnCreatePassportImplCopyWith<$Res> {
+  factory _$$OnCreatePassportImplCopyWith(_$OnCreatePassportImpl value,
+          $Res Function(_$OnCreatePassportImpl) then) =
+      __$$OnCreatePassportImplCopyWithImpl<$Res>;
   @useResult
   $Res call({VisaApplicationModel visaApps});
 
@@ -1153,11 +1156,11 @@ abstract class _$$_OnCreatePassportCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_OnCreatePassportCopyWithImpl<$Res>
-    extends _$UpdateApplicationStateCopyWithImpl<$Res, _$_OnCreatePassport>
-    implements _$$_OnCreatePassportCopyWith<$Res> {
-  __$$_OnCreatePassportCopyWithImpl(
-      _$_OnCreatePassport _value, $Res Function(_$_OnCreatePassport) _then)
+class __$$OnCreatePassportImplCopyWithImpl<$Res>
+    extends _$UpdateApplicationStateCopyWithImpl<$Res, _$OnCreatePassportImpl>
+    implements _$$OnCreatePassportImplCopyWith<$Res> {
+  __$$OnCreatePassportImplCopyWithImpl(_$OnCreatePassportImpl _value,
+      $Res Function(_$OnCreatePassportImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1165,7 +1168,7 @@ class __$$_OnCreatePassportCopyWithImpl<$Res>
   $Res call({
     Object? visaApps = null,
   }) {
-    return _then(_$_OnCreatePassport(
+    return _then(_$OnCreatePassportImpl(
       null == visaApps
           ? _value.visaApps
           : visaApps // ignore: cast_nullable_to_non_nullable
@@ -1184,8 +1187,8 @@ class __$$_OnCreatePassportCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OnCreatePassport implements _OnCreatePassport {
-  const _$_OnCreatePassport(this.visaApps);
+class _$OnCreatePassportImpl implements _OnCreatePassport {
+  const _$OnCreatePassportImpl(this.visaApps);
 
   @override
   final VisaApplicationModel visaApps;
@@ -1196,10 +1199,10 @@ class _$_OnCreatePassport implements _OnCreatePassport {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnCreatePassport &&
+            other is _$OnCreatePassportImpl &&
             (identical(other.visaApps, visaApps) ||
                 other.visaApps == visaApps));
   }
@@ -1210,8 +1213,9 @@ class _$_OnCreatePassport implements _OnCreatePassport {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnCreatePassportCopyWith<_$_OnCreatePassport> get copyWith =>
-      __$$_OnCreatePassportCopyWithImpl<_$_OnCreatePassport>(this, _$identity);
+  _$$OnCreatePassportImplCopyWith<_$OnCreatePassportImpl> get copyWith =>
+      __$$OnCreatePassportImplCopyWithImpl<_$OnCreatePassportImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1393,29 +1397,30 @@ class _$_OnCreatePassport implements _OnCreatePassport {
 
 abstract class _OnCreatePassport implements UpdateApplicationState {
   const factory _OnCreatePassport(final VisaApplicationModel visaApps) =
-      _$_OnCreatePassport;
+      _$OnCreatePassportImpl;
 
   VisaApplicationModel get visaApps;
   @JsonKey(ignore: true)
-  _$$_OnCreatePassportCopyWith<_$_OnCreatePassport> get copyWith =>
+  _$$OnCreatePassportImplCopyWith<_$OnCreatePassportImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_OnSubmitApplicationCopyWith<$Res> {
-  factory _$$_OnSubmitApplicationCopyWith(_$_OnSubmitApplication value,
-          $Res Function(_$_OnSubmitApplication) then) =
-      __$$_OnSubmitApplicationCopyWithImpl<$Res>;
+abstract class _$$OnSubmitApplicationImplCopyWith<$Res> {
+  factory _$$OnSubmitApplicationImplCopyWith(_$OnSubmitApplicationImpl value,
+          $Res Function(_$OnSubmitApplicationImpl) then) =
+      __$$OnSubmitApplicationImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String firebaseDocId});
 }
 
 /// @nodoc
-class __$$_OnSubmitApplicationCopyWithImpl<$Res>
-    extends _$UpdateApplicationStateCopyWithImpl<$Res, _$_OnSubmitApplication>
-    implements _$$_OnSubmitApplicationCopyWith<$Res> {
-  __$$_OnSubmitApplicationCopyWithImpl(_$_OnSubmitApplication _value,
-      $Res Function(_$_OnSubmitApplication) _then)
+class __$$OnSubmitApplicationImplCopyWithImpl<$Res>
+    extends _$UpdateApplicationStateCopyWithImpl<$Res,
+        _$OnSubmitApplicationImpl>
+    implements _$$OnSubmitApplicationImplCopyWith<$Res> {
+  __$$OnSubmitApplicationImplCopyWithImpl(_$OnSubmitApplicationImpl _value,
+      $Res Function(_$OnSubmitApplicationImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1423,7 +1428,7 @@ class __$$_OnSubmitApplicationCopyWithImpl<$Res>
   $Res call({
     Object? firebaseDocId = null,
   }) {
-    return _then(_$_OnSubmitApplication(
+    return _then(_$OnSubmitApplicationImpl(
       null == firebaseDocId
           ? _value.firebaseDocId
           : firebaseDocId // ignore: cast_nullable_to_non_nullable
@@ -1434,8 +1439,8 @@ class __$$_OnSubmitApplicationCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OnSubmitApplication implements _OnSubmitApplication {
-  const _$_OnSubmitApplication(this.firebaseDocId);
+class _$OnSubmitApplicationImpl implements _OnSubmitApplication {
+  const _$OnSubmitApplicationImpl(this.firebaseDocId);
 
   @override
   final String firebaseDocId;
@@ -1446,10 +1451,10 @@ class _$_OnSubmitApplication implements _OnSubmitApplication {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnSubmitApplication &&
+            other is _$OnSubmitApplicationImpl &&
             (identical(other.firebaseDocId, firebaseDocId) ||
                 other.firebaseDocId == firebaseDocId));
   }
@@ -1460,8 +1465,8 @@ class _$_OnSubmitApplication implements _OnSubmitApplication {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnSubmitApplicationCopyWith<_$_OnSubmitApplication> get copyWith =>
-      __$$_OnSubmitApplicationCopyWithImpl<_$_OnSubmitApplication>(
+  _$$OnSubmitApplicationImplCopyWith<_$OnSubmitApplicationImpl> get copyWith =>
+      __$$OnSubmitApplicationImplCopyWithImpl<_$OnSubmitApplicationImpl>(
           this, _$identity);
 
   @override
@@ -1644,29 +1649,29 @@ class _$_OnSubmitApplication implements _OnSubmitApplication {
 
 abstract class _OnSubmitApplication implements UpdateApplicationState {
   const factory _OnSubmitApplication(final String firebaseDocId) =
-      _$_OnSubmitApplication;
+      _$OnSubmitApplicationImpl;
 
   String get firebaseDocId;
   @JsonKey(ignore: true)
-  _$$_OnSubmitApplicationCopyWith<_$_OnSubmitApplication> get copyWith =>
+  _$$OnSubmitApplicationImplCopyWith<_$OnSubmitApplicationImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_OnSubmitPassportCopyWith<$Res> {
-  factory _$$_OnSubmitPassportCopyWith(
-          _$_OnSubmitPassport value, $Res Function(_$_OnSubmitPassport) then) =
-      __$$_OnSubmitPassportCopyWithImpl<$Res>;
+abstract class _$$OnSubmitPassportImplCopyWith<$Res> {
+  factory _$$OnSubmitPassportImplCopyWith(_$OnSubmitPassportImpl value,
+          $Res Function(_$OnSubmitPassportImpl) then) =
+      __$$OnSubmitPassportImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String firebaseDocId});
 }
 
 /// @nodoc
-class __$$_OnSubmitPassportCopyWithImpl<$Res>
-    extends _$UpdateApplicationStateCopyWithImpl<$Res, _$_OnSubmitPassport>
-    implements _$$_OnSubmitPassportCopyWith<$Res> {
-  __$$_OnSubmitPassportCopyWithImpl(
-      _$_OnSubmitPassport _value, $Res Function(_$_OnSubmitPassport) _then)
+class __$$OnSubmitPassportImplCopyWithImpl<$Res>
+    extends _$UpdateApplicationStateCopyWithImpl<$Res, _$OnSubmitPassportImpl>
+    implements _$$OnSubmitPassportImplCopyWith<$Res> {
+  __$$OnSubmitPassportImplCopyWithImpl(_$OnSubmitPassportImpl _value,
+      $Res Function(_$OnSubmitPassportImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1674,7 +1679,7 @@ class __$$_OnSubmitPassportCopyWithImpl<$Res>
   $Res call({
     Object? firebaseDocId = null,
   }) {
-    return _then(_$_OnSubmitPassport(
+    return _then(_$OnSubmitPassportImpl(
       null == firebaseDocId
           ? _value.firebaseDocId
           : firebaseDocId // ignore: cast_nullable_to_non_nullable
@@ -1685,8 +1690,8 @@ class __$$_OnSubmitPassportCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OnSubmitPassport implements _OnSubmitPassport {
-  const _$_OnSubmitPassport(this.firebaseDocId);
+class _$OnSubmitPassportImpl implements _OnSubmitPassport {
+  const _$OnSubmitPassportImpl(this.firebaseDocId);
 
   @override
   final String firebaseDocId;
@@ -1697,10 +1702,10 @@ class _$_OnSubmitPassport implements _OnSubmitPassport {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnSubmitPassport &&
+            other is _$OnSubmitPassportImpl &&
             (identical(other.firebaseDocId, firebaseDocId) ||
                 other.firebaseDocId == firebaseDocId));
   }
@@ -1711,8 +1716,9 @@ class _$_OnSubmitPassport implements _OnSubmitPassport {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnSubmitPassportCopyWith<_$_OnSubmitPassport> get copyWith =>
-      __$$_OnSubmitPassportCopyWithImpl<_$_OnSubmitPassport>(this, _$identity);
+  _$$OnSubmitPassportImplCopyWith<_$OnSubmitPassportImpl> get copyWith =>
+      __$$OnSubmitPassportImplCopyWithImpl<_$OnSubmitPassportImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1894,34 +1900,35 @@ class _$_OnSubmitPassport implements _OnSubmitPassport {
 
 abstract class _OnSubmitPassport implements UpdateApplicationState {
   const factory _OnSubmitPassport(final String firebaseDocId) =
-      _$_OnSubmitPassport;
+      _$OnSubmitPassportImpl;
 
   String get firebaseDocId;
   @JsonKey(ignore: true)
-  _$$_OnSubmitPassportCopyWith<_$_OnSubmitPassport> get copyWith =>
+  _$$OnSubmitPassportImplCopyWith<_$OnSubmitPassportImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_OnUpdateApplicationCopyWith<$Res> {
-  factory _$$_OnUpdateApplicationCopyWith(_$_OnUpdateApplication value,
-          $Res Function(_$_OnUpdateApplication) then) =
-      __$$_OnUpdateApplicationCopyWithImpl<$Res>;
+abstract class _$$OnUpdateApplicationImplCopyWith<$Res> {
+  factory _$$OnUpdateApplicationImplCopyWith(_$OnUpdateApplicationImpl value,
+          $Res Function(_$OnUpdateApplicationImpl) then) =
+      __$$OnUpdateApplicationImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_OnUpdateApplicationCopyWithImpl<$Res>
-    extends _$UpdateApplicationStateCopyWithImpl<$Res, _$_OnUpdateApplication>
-    implements _$$_OnUpdateApplicationCopyWith<$Res> {
-  __$$_OnUpdateApplicationCopyWithImpl(_$_OnUpdateApplication _value,
-      $Res Function(_$_OnUpdateApplication) _then)
+class __$$OnUpdateApplicationImplCopyWithImpl<$Res>
+    extends _$UpdateApplicationStateCopyWithImpl<$Res,
+        _$OnUpdateApplicationImpl>
+    implements _$$OnUpdateApplicationImplCopyWith<$Res> {
+  __$$OnUpdateApplicationImplCopyWithImpl(_$OnUpdateApplicationImpl _value,
+      $Res Function(_$OnUpdateApplicationImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_OnUpdateApplication implements _OnUpdateApplication {
-  const _$_OnUpdateApplication();
+class _$OnUpdateApplicationImpl implements _OnUpdateApplication {
+  const _$OnUpdateApplicationImpl();
 
   @override
   String toString() {
@@ -1929,9 +1936,10 @@ class _$_OnUpdateApplication implements _OnUpdateApplication {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_OnUpdateApplication);
+        (other.runtimeType == runtimeType &&
+            other is _$OnUpdateApplicationImpl);
   }
 
   @override
@@ -2116,29 +2124,29 @@ class _$_OnUpdateApplication implements _OnUpdateApplication {
 }
 
 abstract class _OnUpdateApplication implements UpdateApplicationState {
-  const factory _OnUpdateApplication() = _$_OnUpdateApplication;
+  const factory _OnUpdateApplication() = _$OnUpdateApplicationImpl;
 }
 
 /// @nodoc
-abstract class _$$_OnUpdatePassportCopyWith<$Res> {
-  factory _$$_OnUpdatePassportCopyWith(
-          _$_OnUpdatePassport value, $Res Function(_$_OnUpdatePassport) then) =
-      __$$_OnUpdatePassportCopyWithImpl<$Res>;
+abstract class _$$OnUpdatePassportImplCopyWith<$Res> {
+  factory _$$OnUpdatePassportImplCopyWith(_$OnUpdatePassportImpl value,
+          $Res Function(_$OnUpdatePassportImpl) then) =
+      __$$OnUpdatePassportImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_OnUpdatePassportCopyWithImpl<$Res>
-    extends _$UpdateApplicationStateCopyWithImpl<$Res, _$_OnUpdatePassport>
-    implements _$$_OnUpdatePassportCopyWith<$Res> {
-  __$$_OnUpdatePassportCopyWithImpl(
-      _$_OnUpdatePassport _value, $Res Function(_$_OnUpdatePassport) _then)
+class __$$OnUpdatePassportImplCopyWithImpl<$Res>
+    extends _$UpdateApplicationStateCopyWithImpl<$Res, _$OnUpdatePassportImpl>
+    implements _$$OnUpdatePassportImplCopyWith<$Res> {
+  __$$OnUpdatePassportImplCopyWithImpl(_$OnUpdatePassportImpl _value,
+      $Res Function(_$OnUpdatePassportImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_OnUpdatePassport implements _OnUpdatePassport {
-  const _$_OnUpdatePassport();
+class _$OnUpdatePassportImpl implements _OnUpdatePassport {
+  const _$OnUpdatePassportImpl();
 
   @override
   String toString() {
@@ -2146,9 +2154,9 @@ class _$_OnUpdatePassport implements _OnUpdatePassport {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_OnUpdatePassport);
+        (other.runtimeType == runtimeType && other is _$OnUpdatePassportImpl);
   }
 
   @override
@@ -2333,24 +2341,24 @@ class _$_OnUpdatePassport implements _OnUpdatePassport {
 }
 
 abstract class _OnUpdatePassport implements UpdateApplicationState {
-  const factory _OnUpdatePassport() = _$_OnUpdatePassport;
+  const factory _OnUpdatePassport() = _$OnUpdatePassportImpl;
 }
 
 /// @nodoc
-abstract class _$$_OnUpdateMultiVisaCopyWith<$Res> {
-  factory _$$_OnUpdateMultiVisaCopyWith(_$_OnUpdateMultiVisa value,
-          $Res Function(_$_OnUpdateMultiVisa) then) =
-      __$$_OnUpdateMultiVisaCopyWithImpl<$Res>;
+abstract class _$$OnUpdateMultiVisaImplCopyWith<$Res> {
+  factory _$$OnUpdateMultiVisaImplCopyWith(_$OnUpdateMultiVisaImpl value,
+          $Res Function(_$OnUpdateMultiVisaImpl) then) =
+      __$$OnUpdateMultiVisaImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$_OnUpdateMultiVisaCopyWithImpl<$Res>
-    extends _$UpdateApplicationStateCopyWithImpl<$Res, _$_OnUpdateMultiVisa>
-    implements _$$_OnUpdateMultiVisaCopyWith<$Res> {
-  __$$_OnUpdateMultiVisaCopyWithImpl(
-      _$_OnUpdateMultiVisa _value, $Res Function(_$_OnUpdateMultiVisa) _then)
+class __$$OnUpdateMultiVisaImplCopyWithImpl<$Res>
+    extends _$UpdateApplicationStateCopyWithImpl<$Res, _$OnUpdateMultiVisaImpl>
+    implements _$$OnUpdateMultiVisaImplCopyWith<$Res> {
+  __$$OnUpdateMultiVisaImplCopyWithImpl(_$OnUpdateMultiVisaImpl _value,
+      $Res Function(_$OnUpdateMultiVisaImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2358,7 +2366,7 @@ class __$$_OnUpdateMultiVisaCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$_OnUpdateMultiVisa(
+    return _then(_$OnUpdateMultiVisaImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -2369,8 +2377,8 @@ class __$$_OnUpdateMultiVisaCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OnUpdateMultiVisa implements _OnUpdateMultiVisa {
-  const _$_OnUpdateMultiVisa(this.message);
+class _$OnUpdateMultiVisaImpl implements _OnUpdateMultiVisa {
+  const _$OnUpdateMultiVisaImpl(this.message);
 
   @override
   final String message;
@@ -2381,10 +2389,10 @@ class _$_OnUpdateMultiVisa implements _OnUpdateMultiVisa {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnUpdateMultiVisa &&
+            other is _$OnUpdateMultiVisaImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -2394,8 +2402,8 @@ class _$_OnUpdateMultiVisa implements _OnUpdateMultiVisa {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnUpdateMultiVisaCopyWith<_$_OnUpdateMultiVisa> get copyWith =>
-      __$$_OnUpdateMultiVisaCopyWithImpl<_$_OnUpdateMultiVisa>(
+  _$$OnUpdateMultiVisaImplCopyWith<_$OnUpdateMultiVisaImpl> get copyWith =>
+      __$$OnUpdateMultiVisaImplCopyWithImpl<_$OnUpdateMultiVisaImpl>(
           this, _$identity);
 
   @override
@@ -2577,34 +2585,35 @@ class _$_OnUpdateMultiVisa implements _OnUpdateMultiVisa {
 }
 
 abstract class _OnUpdateMultiVisa implements UpdateApplicationState {
-  const factory _OnUpdateMultiVisa(final String message) = _$_OnUpdateMultiVisa;
+  const factory _OnUpdateMultiVisa(final String message) =
+      _$OnUpdateMultiVisaImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$_OnUpdateMultiVisaCopyWith<_$_OnUpdateMultiVisa> get copyWith =>
+  _$$OnUpdateMultiVisaImplCopyWith<_$OnUpdateMultiVisaImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_OnUpdateGuarantorCopyWith<$Res> {
-  factory _$$_OnUpdateGuarantorCopyWith(_$_OnUpdateGuarantor value,
-          $Res Function(_$_OnUpdateGuarantor) then) =
-      __$$_OnUpdateGuarantorCopyWithImpl<$Res>;
+abstract class _$$OnUpdateGuarantorImplCopyWith<$Res> {
+  factory _$$OnUpdateGuarantorImplCopyWith(_$OnUpdateGuarantorImpl value,
+          $Res Function(_$OnUpdateGuarantorImpl) then) =
+      __$$OnUpdateGuarantorImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_OnUpdateGuarantorCopyWithImpl<$Res>
-    extends _$UpdateApplicationStateCopyWithImpl<$Res, _$_OnUpdateGuarantor>
-    implements _$$_OnUpdateGuarantorCopyWith<$Res> {
-  __$$_OnUpdateGuarantorCopyWithImpl(
-      _$_OnUpdateGuarantor _value, $Res Function(_$_OnUpdateGuarantor) _then)
+class __$$OnUpdateGuarantorImplCopyWithImpl<$Res>
+    extends _$UpdateApplicationStateCopyWithImpl<$Res, _$OnUpdateGuarantorImpl>
+    implements _$$OnUpdateGuarantorImplCopyWith<$Res> {
+  __$$OnUpdateGuarantorImplCopyWithImpl(_$OnUpdateGuarantorImpl _value,
+      $Res Function(_$OnUpdateGuarantorImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_OnUpdateGuarantor implements _OnUpdateGuarantor {
-  const _$_OnUpdateGuarantor();
+class _$OnUpdateGuarantorImpl implements _OnUpdateGuarantor {
+  const _$OnUpdateGuarantorImpl();
 
   @override
   String toString() {
@@ -2612,9 +2621,9 @@ class _$_OnUpdateGuarantor implements _OnUpdateGuarantor {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_OnUpdateGuarantor);
+        (other.runtimeType == runtimeType && other is _$OnUpdateGuarantorImpl);
   }
 
   @override
@@ -2799,24 +2808,25 @@ class _$_OnUpdateGuarantor implements _OnUpdateGuarantor {
 }
 
 abstract class _OnUpdateGuarantor implements UpdateApplicationState {
-  const factory _OnUpdateGuarantor() = _$_OnUpdateGuarantor;
+  const factory _OnUpdateGuarantor() = _$OnUpdateGuarantorImpl;
 }
 
 /// @nodoc
-abstract class _$$_OnDeleteSingleImageCopyWith<$Res> {
-  factory _$$_OnDeleteSingleImageCopyWith(_$_OnDeleteSingleImage value,
-          $Res Function(_$_OnDeleteSingleImage) then) =
-      __$$_OnDeleteSingleImageCopyWithImpl<$Res>;
+abstract class _$$OnDeleteSingleImageImplCopyWith<$Res> {
+  factory _$$OnDeleteSingleImageImplCopyWith(_$OnDeleteSingleImageImpl value,
+          $Res Function(_$OnDeleteSingleImageImpl) then) =
+      __$$OnDeleteSingleImageImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$_OnDeleteSingleImageCopyWithImpl<$Res>
-    extends _$UpdateApplicationStateCopyWithImpl<$Res, _$_OnDeleteSingleImage>
-    implements _$$_OnDeleteSingleImageCopyWith<$Res> {
-  __$$_OnDeleteSingleImageCopyWithImpl(_$_OnDeleteSingleImage _value,
-      $Res Function(_$_OnDeleteSingleImage) _then)
+class __$$OnDeleteSingleImageImplCopyWithImpl<$Res>
+    extends _$UpdateApplicationStateCopyWithImpl<$Res,
+        _$OnDeleteSingleImageImpl>
+    implements _$$OnDeleteSingleImageImplCopyWith<$Res> {
+  __$$OnDeleteSingleImageImplCopyWithImpl(_$OnDeleteSingleImageImpl _value,
+      $Res Function(_$OnDeleteSingleImageImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2824,7 +2834,7 @@ class __$$_OnDeleteSingleImageCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$_OnDeleteSingleImage(
+    return _then(_$OnDeleteSingleImageImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -2835,8 +2845,8 @@ class __$$_OnDeleteSingleImageCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OnDeleteSingleImage implements _OnDeleteSingleImage {
-  const _$_OnDeleteSingleImage(this.message);
+class _$OnDeleteSingleImageImpl implements _OnDeleteSingleImage {
+  const _$OnDeleteSingleImageImpl(this.message);
 
   @override
   final String message;
@@ -2847,10 +2857,10 @@ class _$_OnDeleteSingleImage implements _OnDeleteSingleImage {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnDeleteSingleImage &&
+            other is _$OnDeleteSingleImageImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -2860,8 +2870,8 @@ class _$_OnDeleteSingleImage implements _OnDeleteSingleImage {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnDeleteSingleImageCopyWith<_$_OnDeleteSingleImage> get copyWith =>
-      __$$_OnDeleteSingleImageCopyWithImpl<_$_OnDeleteSingleImage>(
+  _$$OnDeleteSingleImageImplCopyWith<_$OnDeleteSingleImageImpl> get copyWith =>
+      __$$OnDeleteSingleImageImplCopyWithImpl<_$OnDeleteSingleImageImpl>(
           this, _$identity);
 
   @override
@@ -3044,29 +3054,30 @@ class _$_OnDeleteSingleImage implements _OnDeleteSingleImage {
 
 abstract class _OnDeleteSingleImage implements UpdateApplicationState {
   const factory _OnDeleteSingleImage(final String message) =
-      _$_OnDeleteSingleImage;
+      _$OnDeleteSingleImageImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$_OnDeleteSingleImageCopyWith<_$_OnDeleteSingleImage> get copyWith =>
+  _$$OnDeleteSingleImageImplCopyWith<_$OnDeleteSingleImageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_OnRejectApplicationCopyWith<$Res> {
-  factory _$$_OnRejectApplicationCopyWith(_$_OnRejectApplication value,
-          $Res Function(_$_OnRejectApplication) then) =
-      __$$_OnRejectApplicationCopyWithImpl<$Res>;
+abstract class _$$OnRejectApplicationImplCopyWith<$Res> {
+  factory _$$OnRejectApplicationImplCopyWith(_$OnRejectApplicationImpl value,
+          $Res Function(_$OnRejectApplicationImpl) then) =
+      __$$OnRejectApplicationImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$_OnRejectApplicationCopyWithImpl<$Res>
-    extends _$UpdateApplicationStateCopyWithImpl<$Res, _$_OnRejectApplication>
-    implements _$$_OnRejectApplicationCopyWith<$Res> {
-  __$$_OnRejectApplicationCopyWithImpl(_$_OnRejectApplication _value,
-      $Res Function(_$_OnRejectApplication) _then)
+class __$$OnRejectApplicationImplCopyWithImpl<$Res>
+    extends _$UpdateApplicationStateCopyWithImpl<$Res,
+        _$OnRejectApplicationImpl>
+    implements _$$OnRejectApplicationImplCopyWith<$Res> {
+  __$$OnRejectApplicationImplCopyWithImpl(_$OnRejectApplicationImpl _value,
+      $Res Function(_$OnRejectApplicationImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -3074,7 +3085,7 @@ class __$$_OnRejectApplicationCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$_OnRejectApplication(
+    return _then(_$OnRejectApplicationImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -3085,8 +3096,8 @@ class __$$_OnRejectApplicationCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OnRejectApplication implements _OnRejectApplication {
-  const _$_OnRejectApplication(this.message);
+class _$OnRejectApplicationImpl implements _OnRejectApplication {
+  const _$OnRejectApplicationImpl(this.message);
 
   @override
   final String message;
@@ -3097,10 +3108,10 @@ class _$_OnRejectApplication implements _OnRejectApplication {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnRejectApplication &&
+            other is _$OnRejectApplicationImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -3110,8 +3121,8 @@ class _$_OnRejectApplication implements _OnRejectApplication {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnRejectApplicationCopyWith<_$_OnRejectApplication> get copyWith =>
-      __$$_OnRejectApplicationCopyWithImpl<_$_OnRejectApplication>(
+  _$$OnRejectApplicationImplCopyWith<_$OnRejectApplicationImpl> get copyWith =>
+      __$$OnRejectApplicationImplCopyWithImpl<_$OnRejectApplicationImpl>(
           this, _$identity);
 
   @override
@@ -3294,32 +3305,32 @@ class _$_OnRejectApplication implements _OnRejectApplication {
 
 abstract class _OnRejectApplication implements UpdateApplicationState {
   const factory _OnRejectApplication(final String message) =
-      _$_OnRejectApplication;
+      _$OnRejectApplicationImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$_OnRejectApplicationCopyWith<_$_OnRejectApplication> get copyWith =>
+  _$$OnRejectApplicationImplCopyWith<_$OnRejectApplicationImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_OnPendingPaymentApplicationCopyWith<$Res> {
-  factory _$$_OnPendingPaymentApplicationCopyWith(
-          _$_OnPendingPaymentApplication value,
-          $Res Function(_$_OnPendingPaymentApplication) then) =
-      __$$_OnPendingPaymentApplicationCopyWithImpl<$Res>;
+abstract class _$$OnPendingPaymentApplicationImplCopyWith<$Res> {
+  factory _$$OnPendingPaymentApplicationImplCopyWith(
+          _$OnPendingPaymentApplicationImpl value,
+          $Res Function(_$OnPendingPaymentApplicationImpl) then) =
+      __$$OnPendingPaymentApplicationImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$_OnPendingPaymentApplicationCopyWithImpl<$Res>
+class __$$OnPendingPaymentApplicationImplCopyWithImpl<$Res>
     extends _$UpdateApplicationStateCopyWithImpl<$Res,
-        _$_OnPendingPaymentApplication>
-    implements _$$_OnPendingPaymentApplicationCopyWith<$Res> {
-  __$$_OnPendingPaymentApplicationCopyWithImpl(
-      _$_OnPendingPaymentApplication _value,
-      $Res Function(_$_OnPendingPaymentApplication) _then)
+        _$OnPendingPaymentApplicationImpl>
+    implements _$$OnPendingPaymentApplicationImplCopyWith<$Res> {
+  __$$OnPendingPaymentApplicationImplCopyWithImpl(
+      _$OnPendingPaymentApplicationImpl _value,
+      $Res Function(_$OnPendingPaymentApplicationImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -3327,7 +3338,7 @@ class __$$_OnPendingPaymentApplicationCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$_OnPendingPaymentApplication(
+    return _then(_$OnPendingPaymentApplicationImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -3338,8 +3349,9 @@ class __$$_OnPendingPaymentApplicationCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OnPendingPaymentApplication implements _OnPendingPaymentApplication {
-  const _$_OnPendingPaymentApplication(this.message);
+class _$OnPendingPaymentApplicationImpl
+    implements _OnPendingPaymentApplication {
+  const _$OnPendingPaymentApplicationImpl(this.message);
 
   @override
   final String message;
@@ -3350,10 +3362,10 @@ class _$_OnPendingPaymentApplication implements _OnPendingPaymentApplication {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnPendingPaymentApplication &&
+            other is _$OnPendingPaymentApplicationImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -3363,9 +3375,9 @@ class _$_OnPendingPaymentApplication implements _OnPendingPaymentApplication {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnPendingPaymentApplicationCopyWith<_$_OnPendingPaymentApplication>
-      get copyWith => __$$_OnPendingPaymentApplicationCopyWithImpl<
-          _$_OnPendingPaymentApplication>(this, _$identity);
+  _$$OnPendingPaymentApplicationImplCopyWith<_$OnPendingPaymentApplicationImpl>
+      get copyWith => __$$OnPendingPaymentApplicationImplCopyWithImpl<
+          _$OnPendingPaymentApplicationImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -3547,19 +3559,20 @@ class _$_OnPendingPaymentApplication implements _OnPendingPaymentApplication {
 
 abstract class _OnPendingPaymentApplication implements UpdateApplicationState {
   const factory _OnPendingPaymentApplication(final String message) =
-      _$_OnPendingPaymentApplication;
+      _$OnPendingPaymentApplicationImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$_OnPendingPaymentApplicationCopyWith<_$_OnPendingPaymentApplication>
+  _$$OnPendingPaymentApplicationImplCopyWith<_$OnPendingPaymentApplicationImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_OnGetSingleApplicationCopyWith<$Res> {
-  factory _$$_OnGetSingleApplicationCopyWith(_$_OnGetSingleApplication value,
-          $Res Function(_$_OnGetSingleApplication) then) =
-      __$$_OnGetSingleApplicationCopyWithImpl<$Res>;
+abstract class _$$OnGetSingleApplicationImplCopyWith<$Res> {
+  factory _$$OnGetSingleApplicationImplCopyWith(
+          _$OnGetSingleApplicationImpl value,
+          $Res Function(_$OnGetSingleApplicationImpl) then) =
+      __$$OnGetSingleApplicationImplCopyWithImpl<$Res>;
   @useResult
   $Res call({VisaApplicationModel visa});
 
@@ -3567,12 +3580,13 @@ abstract class _$$_OnGetSingleApplicationCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_OnGetSingleApplicationCopyWithImpl<$Res>
+class __$$OnGetSingleApplicationImplCopyWithImpl<$Res>
     extends _$UpdateApplicationStateCopyWithImpl<$Res,
-        _$_OnGetSingleApplication>
-    implements _$$_OnGetSingleApplicationCopyWith<$Res> {
-  __$$_OnGetSingleApplicationCopyWithImpl(_$_OnGetSingleApplication _value,
-      $Res Function(_$_OnGetSingleApplication) _then)
+        _$OnGetSingleApplicationImpl>
+    implements _$$OnGetSingleApplicationImplCopyWith<$Res> {
+  __$$OnGetSingleApplicationImplCopyWithImpl(
+      _$OnGetSingleApplicationImpl _value,
+      $Res Function(_$OnGetSingleApplicationImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -3580,7 +3594,7 @@ class __$$_OnGetSingleApplicationCopyWithImpl<$Res>
   $Res call({
     Object? visa = null,
   }) {
-    return _then(_$_OnGetSingleApplication(
+    return _then(_$OnGetSingleApplicationImpl(
       null == visa
           ? _value.visa
           : visa // ignore: cast_nullable_to_non_nullable
@@ -3599,8 +3613,8 @@ class __$$_OnGetSingleApplicationCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OnGetSingleApplication implements _OnGetSingleApplication {
-  const _$_OnGetSingleApplication(this.visa);
+class _$OnGetSingleApplicationImpl implements _OnGetSingleApplication {
+  const _$OnGetSingleApplicationImpl(this.visa);
 
   @override
   final VisaApplicationModel visa;
@@ -3611,10 +3625,10 @@ class _$_OnGetSingleApplication implements _OnGetSingleApplication {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnGetSingleApplication &&
+            other is _$OnGetSingleApplicationImpl &&
             (identical(other.visa, visa) || other.visa == visa));
   }
 
@@ -3624,9 +3638,9 @@ class _$_OnGetSingleApplication implements _OnGetSingleApplication {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnGetSingleApplicationCopyWith<_$_OnGetSingleApplication> get copyWith =>
-      __$$_OnGetSingleApplicationCopyWithImpl<_$_OnGetSingleApplication>(
-          this, _$identity);
+  _$$OnGetSingleApplicationImplCopyWith<_$OnGetSingleApplicationImpl>
+      get copyWith => __$$OnGetSingleApplicationImplCopyWithImpl<
+          _$OnGetSingleApplicationImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -3808,20 +3822,20 @@ class _$_OnGetSingleApplication implements _OnGetSingleApplication {
 
 abstract class _OnGetSingleApplication implements UpdateApplicationState {
   const factory _OnGetSingleApplication(final VisaApplicationModel visa) =
-      _$_OnGetSingleApplication;
+      _$OnGetSingleApplicationImpl;
 
   VisaApplicationModel get visa;
   @JsonKey(ignore: true)
-  _$$_OnGetSingleApplicationCopyWith<_$_OnGetSingleApplication> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$OnGetSingleApplicationImplCopyWith<_$OnGetSingleApplicationImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_OnGetSingleAppsWithImageCopyWith<$Res> {
-  factory _$$_OnGetSingleAppsWithImageCopyWith(
-          _$_OnGetSingleAppsWithImage value,
-          $Res Function(_$_OnGetSingleAppsWithImage) then) =
-      __$$_OnGetSingleAppsWithImageCopyWithImpl<$Res>;
+abstract class _$$OnGetSingleAppsWithImageImplCopyWith<$Res> {
+  factory _$$OnGetSingleAppsWithImageImplCopyWith(
+          _$OnGetSingleAppsWithImageImpl value,
+          $Res Function(_$OnGetSingleAppsWithImageImpl) then) =
+      __$$OnGetSingleAppsWithImageImplCopyWithImpl<$Res>;
   @useResult
   $Res call({SingleVisaResponse singleResponse});
 
@@ -3829,12 +3843,13 @@ abstract class _$$_OnGetSingleAppsWithImageCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_OnGetSingleAppsWithImageCopyWithImpl<$Res>
+class __$$OnGetSingleAppsWithImageImplCopyWithImpl<$Res>
     extends _$UpdateApplicationStateCopyWithImpl<$Res,
-        _$_OnGetSingleAppsWithImage>
-    implements _$$_OnGetSingleAppsWithImageCopyWith<$Res> {
-  __$$_OnGetSingleAppsWithImageCopyWithImpl(_$_OnGetSingleAppsWithImage _value,
-      $Res Function(_$_OnGetSingleAppsWithImage) _then)
+        _$OnGetSingleAppsWithImageImpl>
+    implements _$$OnGetSingleAppsWithImageImplCopyWith<$Res> {
+  __$$OnGetSingleAppsWithImageImplCopyWithImpl(
+      _$OnGetSingleAppsWithImageImpl _value,
+      $Res Function(_$OnGetSingleAppsWithImageImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -3842,7 +3857,7 @@ class __$$_OnGetSingleAppsWithImageCopyWithImpl<$Res>
   $Res call({
     Object? singleResponse = null,
   }) {
-    return _then(_$_OnGetSingleAppsWithImage(
+    return _then(_$OnGetSingleAppsWithImageImpl(
       null == singleResponse
           ? _value.singleResponse
           : singleResponse // ignore: cast_nullable_to_non_nullable
@@ -3861,8 +3876,8 @@ class __$$_OnGetSingleAppsWithImageCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OnGetSingleAppsWithImage implements _OnGetSingleAppsWithImage {
-  const _$_OnGetSingleAppsWithImage(this.singleResponse);
+class _$OnGetSingleAppsWithImageImpl implements _OnGetSingleAppsWithImage {
+  const _$OnGetSingleAppsWithImageImpl(this.singleResponse);
 
   @override
   final SingleVisaResponse singleResponse;
@@ -3873,10 +3888,10 @@ class _$_OnGetSingleAppsWithImage implements _OnGetSingleAppsWithImage {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnGetSingleAppsWithImage &&
+            other is _$OnGetSingleAppsWithImageImpl &&
             (identical(other.singleResponse, singleResponse) ||
                 other.singleResponse == singleResponse));
   }
@@ -3887,9 +3902,9 @@ class _$_OnGetSingleAppsWithImage implements _OnGetSingleAppsWithImage {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnGetSingleAppsWithImageCopyWith<_$_OnGetSingleAppsWithImage>
-      get copyWith => __$$_OnGetSingleAppsWithImageCopyWithImpl<
-          _$_OnGetSingleAppsWithImage>(this, _$identity);
+  _$$OnGetSingleAppsWithImageImplCopyWith<_$OnGetSingleAppsWithImageImpl>
+      get copyWith => __$$OnGetSingleAppsWithImageImplCopyWithImpl<
+          _$OnGetSingleAppsWithImageImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -4071,34 +4086,34 @@ class _$_OnGetSingleAppsWithImage implements _OnGetSingleAppsWithImage {
 
 abstract class _OnGetSingleAppsWithImage implements UpdateApplicationState {
   const factory _OnGetSingleAppsWithImage(
-      final SingleVisaResponse singleResponse) = _$_OnGetSingleAppsWithImage;
+      final SingleVisaResponse singleResponse) = _$OnGetSingleAppsWithImageImpl;
 
   SingleVisaResponse get singleResponse;
   @JsonKey(ignore: true)
-  _$$_OnGetSingleAppsWithImageCopyWith<_$_OnGetSingleAppsWithImage>
+  _$$OnGetSingleAppsWithImageImplCopyWith<_$OnGetSingleAppsWithImageImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_DeleteApplicationCopyWith<$Res> {
-  factory _$$_DeleteApplicationCopyWith(_$_DeleteApplication value,
-          $Res Function(_$_DeleteApplication) then) =
-      __$$_DeleteApplicationCopyWithImpl<$Res>;
+abstract class _$$DeleteApplicationImplCopyWith<$Res> {
+  factory _$$DeleteApplicationImplCopyWith(_$DeleteApplicationImpl value,
+          $Res Function(_$DeleteApplicationImpl) then) =
+      __$$DeleteApplicationImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_DeleteApplicationCopyWithImpl<$Res>
-    extends _$UpdateApplicationStateCopyWithImpl<$Res, _$_DeleteApplication>
-    implements _$$_DeleteApplicationCopyWith<$Res> {
-  __$$_DeleteApplicationCopyWithImpl(
-      _$_DeleteApplication _value, $Res Function(_$_DeleteApplication) _then)
+class __$$DeleteApplicationImplCopyWithImpl<$Res>
+    extends _$UpdateApplicationStateCopyWithImpl<$Res, _$DeleteApplicationImpl>
+    implements _$$DeleteApplicationImplCopyWith<$Res> {
+  __$$DeleteApplicationImplCopyWithImpl(_$DeleteApplicationImpl _value,
+      $Res Function(_$DeleteApplicationImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_DeleteApplication implements _DeleteApplication {
-  const _$_DeleteApplication();
+class _$DeleteApplicationImpl implements _DeleteApplication {
+  const _$DeleteApplicationImpl();
 
   @override
   String toString() {
@@ -4106,9 +4121,9 @@ class _$_DeleteApplication implements _DeleteApplication {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_DeleteApplication);
+        (other.runtimeType == runtimeType && other is _$DeleteApplicationImpl);
   }
 
   @override
@@ -4293,24 +4308,26 @@ class _$_DeleteApplication implements _DeleteApplication {
 }
 
 abstract class _DeleteApplication implements UpdateApplicationState {
-  const factory _DeleteApplication() = _$_DeleteApplication;
+  const factory _DeleteApplication() = _$DeleteApplicationImpl;
 }
 
 /// @nodoc
-abstract class _$$_OnUploadImageCompleteCopyWith<$Res> {
-  factory _$$_OnUploadImageCompleteCopyWith(_$_OnUploadImageComplete value,
-          $Res Function(_$_OnUploadImageComplete) then) =
-      __$$_OnUploadImageCompleteCopyWithImpl<$Res>;
+abstract class _$$OnUploadImageCompleteImplCopyWith<$Res> {
+  factory _$$OnUploadImageCompleteImplCopyWith(
+          _$OnUploadImageCompleteImpl value,
+          $Res Function(_$OnUploadImageCompleteImpl) then) =
+      __$$OnUploadImageCompleteImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<ImageUploadResponse> list});
 }
 
 /// @nodoc
-class __$$_OnUploadImageCompleteCopyWithImpl<$Res>
-    extends _$UpdateApplicationStateCopyWithImpl<$Res, _$_OnUploadImageComplete>
-    implements _$$_OnUploadImageCompleteCopyWith<$Res> {
-  __$$_OnUploadImageCompleteCopyWithImpl(_$_OnUploadImageComplete _value,
-      $Res Function(_$_OnUploadImageComplete) _then)
+class __$$OnUploadImageCompleteImplCopyWithImpl<$Res>
+    extends _$UpdateApplicationStateCopyWithImpl<$Res,
+        _$OnUploadImageCompleteImpl>
+    implements _$$OnUploadImageCompleteImplCopyWith<$Res> {
+  __$$OnUploadImageCompleteImplCopyWithImpl(_$OnUploadImageCompleteImpl _value,
+      $Res Function(_$OnUploadImageCompleteImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -4318,7 +4335,7 @@ class __$$_OnUploadImageCompleteCopyWithImpl<$Res>
   $Res call({
     Object? list = null,
   }) {
-    return _then(_$_OnUploadImageComplete(
+    return _then(_$OnUploadImageCompleteImpl(
       null == list
           ? _value._list
           : list // ignore: cast_nullable_to_non_nullable
@@ -4329,8 +4346,8 @@ class __$$_OnUploadImageCompleteCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OnUploadImageComplete implements _OnUploadImageComplete {
-  const _$_OnUploadImageComplete(final List<ImageUploadResponse> list)
+class _$OnUploadImageCompleteImpl implements _OnUploadImageComplete {
+  const _$OnUploadImageCompleteImpl(final List<ImageUploadResponse> list)
       : _list = list;
 
   final List<ImageUploadResponse> _list;
@@ -4347,10 +4364,10 @@ class _$_OnUploadImageComplete implements _OnUploadImageComplete {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnUploadImageComplete &&
+            other is _$OnUploadImageCompleteImpl &&
             const DeepCollectionEquality().equals(other._list, _list));
   }
 
@@ -4361,9 +4378,9 @@ class _$_OnUploadImageComplete implements _OnUploadImageComplete {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnUploadImageCompleteCopyWith<_$_OnUploadImageComplete> get copyWith =>
-      __$$_OnUploadImageCompleteCopyWithImpl<_$_OnUploadImageComplete>(
-          this, _$identity);
+  _$$OnUploadImageCompleteImplCopyWith<_$OnUploadImageCompleteImpl>
+      get copyWith => __$$OnUploadImageCompleteImplCopyWithImpl<
+          _$OnUploadImageCompleteImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -4545,19 +4562,20 @@ class _$_OnUploadImageComplete implements _OnUploadImageComplete {
 
 abstract class _OnUploadImageComplete implements UpdateApplicationState {
   const factory _OnUploadImageComplete(final List<ImageUploadResponse> list) =
-      _$_OnUploadImageComplete;
+      _$OnUploadImageCompleteImpl;
 
   List<ImageUploadResponse> get list;
   @JsonKey(ignore: true)
-  _$$_OnUploadImageCompleteCopyWith<_$_OnUploadImageComplete> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$OnUploadImageCompleteImplCopyWith<_$OnUploadImageCompleteImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_OnSelfieImageCompleteCopyWith<$Res> {
-  factory _$$_OnSelfieImageCompleteCopyWith(_$_OnSelfieImageComplete value,
-          $Res Function(_$_OnSelfieImageComplete) then) =
-      __$$_OnSelfieImageCompleteCopyWithImpl<$Res>;
+abstract class _$$OnSelfieImageCompleteImplCopyWith<$Res> {
+  factory _$$OnSelfieImageCompleteImplCopyWith(
+          _$OnSelfieImageCompleteImpl value,
+          $Res Function(_$OnSelfieImageCompleteImpl) then) =
+      __$$OnSelfieImageCompleteImplCopyWithImpl<$Res>;
   @useResult
   $Res call({ImageUploadResponse resp});
 
@@ -4565,11 +4583,12 @@ abstract class _$$_OnSelfieImageCompleteCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_OnSelfieImageCompleteCopyWithImpl<$Res>
-    extends _$UpdateApplicationStateCopyWithImpl<$Res, _$_OnSelfieImageComplete>
-    implements _$$_OnSelfieImageCompleteCopyWith<$Res> {
-  __$$_OnSelfieImageCompleteCopyWithImpl(_$_OnSelfieImageComplete _value,
-      $Res Function(_$_OnSelfieImageComplete) _then)
+class __$$OnSelfieImageCompleteImplCopyWithImpl<$Res>
+    extends _$UpdateApplicationStateCopyWithImpl<$Res,
+        _$OnSelfieImageCompleteImpl>
+    implements _$$OnSelfieImageCompleteImplCopyWith<$Res> {
+  __$$OnSelfieImageCompleteImplCopyWithImpl(_$OnSelfieImageCompleteImpl _value,
+      $Res Function(_$OnSelfieImageCompleteImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -4577,7 +4596,7 @@ class __$$_OnSelfieImageCompleteCopyWithImpl<$Res>
   $Res call({
     Object? resp = null,
   }) {
-    return _then(_$_OnSelfieImageComplete(
+    return _then(_$OnSelfieImageCompleteImpl(
       null == resp
           ? _value.resp
           : resp // ignore: cast_nullable_to_non_nullable
@@ -4596,8 +4615,8 @@ class __$$_OnSelfieImageCompleteCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_OnSelfieImageComplete implements _OnSelfieImageComplete {
-  const _$_OnSelfieImageComplete(this.resp);
+class _$OnSelfieImageCompleteImpl implements _OnSelfieImageComplete {
+  const _$OnSelfieImageCompleteImpl(this.resp);
 
   @override
   final ImageUploadResponse resp;
@@ -4608,10 +4627,10 @@ class _$_OnSelfieImageComplete implements _OnSelfieImageComplete {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OnSelfieImageComplete &&
+            other is _$OnSelfieImageCompleteImpl &&
             (identical(other.resp, resp) || other.resp == resp));
   }
 
@@ -4621,9 +4640,9 @@ class _$_OnSelfieImageComplete implements _OnSelfieImageComplete {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OnSelfieImageCompleteCopyWith<_$_OnSelfieImageComplete> get copyWith =>
-      __$$_OnSelfieImageCompleteCopyWithImpl<_$_OnSelfieImageComplete>(
-          this, _$identity);
+  _$$OnSelfieImageCompleteImplCopyWith<_$OnSelfieImageCompleteImpl>
+      get copyWith => __$$OnSelfieImageCompleteImplCopyWithImpl<
+          _$OnSelfieImageCompleteImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -4805,10 +4824,10 @@ class _$_OnSelfieImageComplete implements _OnSelfieImageComplete {
 
 abstract class _OnSelfieImageComplete implements UpdateApplicationState {
   const factory _OnSelfieImageComplete(final ImageUploadResponse resp) =
-      _$_OnSelfieImageComplete;
+      _$OnSelfieImageCompleteImpl;
 
   ImageUploadResponse get resp;
   @JsonKey(ignore: true)
-  _$$_OnSelfieImageCompleteCopyWith<_$_OnSelfieImageComplete> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$OnSelfieImageCompleteImplCopyWith<_$OnSelfieImageCompleteImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

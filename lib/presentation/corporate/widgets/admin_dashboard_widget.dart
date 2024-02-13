@@ -48,6 +48,7 @@ class AdminDashboardWidget extends StatelessWidget with CoreMixin {
       child: AutoTabsRouter(
         inheritNavigatorObservers: true,
         routes: const [
+          AdminStatisticRoute(),
           AdminApplicationRoute(),
           AdminCustomerRoute(),
           AdminFeedbackRoute(),
@@ -175,6 +176,14 @@ class AdminDashboardWidget extends StatelessWidget with CoreMixin {
   }
 
   List<NavigationRailDestination> _menuList() => [
+        const NavigationRailDestination(
+          icon: Icon(Icons.dashboard, size: 30),
+          selectedIcon: Icon(Icons.home, size: 30),
+          label: Text(
+            'Dashboard',
+            style: TextStyle(fontSize: 20, color: Colors.white),
+          ),
+        ),
         const NavigationRailDestination(
           icon: Icon(Icons.home_outlined, size: 30),
           selectedIcon: Icon(Icons.home, size: 30),

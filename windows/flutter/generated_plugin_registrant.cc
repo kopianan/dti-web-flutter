@@ -7,7 +7,9 @@
 #include "generated_plugin_registrant.h"
 
 #include <file_saver/file_saver_plugin.h>
-#include <flutter_secure_storage_windows/flutter_secure_storage_windows_plugin.h>
+#include <firebase_auth/firebase_auth_plugin_c_api.h>
+#include <firebase_core/firebase_core_plugin_c_api.h>
+#include <rive_common/rive_plugin.h>
 #include <smart_auth/smart_auth_plugin.h>
 #include <syncfusion_pdfviewer_windows/syncfusion_pdfviewer_windows_plugin.h>
 #include <url_launcher_windows/url_launcher_windows.h>
@@ -15,8 +17,12 @@
 void RegisterPlugins(flutter::PluginRegistry* registry) {
   FileSaverPluginRegisterWithRegistrar(
       registry->GetRegistrarForPlugin("FileSaverPlugin"));
-  FlutterSecureStorageWindowsPluginRegisterWithRegistrar(
-      registry->GetRegistrarForPlugin("FlutterSecureStorageWindowsPlugin"));
+  FirebaseAuthPluginCApiRegisterWithRegistrar(
+      registry->GetRegistrarForPlugin("FirebaseAuthPluginCApi"));
+  FirebaseCorePluginCApiRegisterWithRegistrar(
+      registry->GetRegistrarForPlugin("FirebaseCorePluginCApi"));
+  RivePluginRegisterWithRegistrar(
+      registry->GetRegistrarForPlugin("RivePlugin"));
   SmartAuthPluginRegisterWithRegistrar(
       registry->GetRegistrarForPlugin("SmartAuthPlugin"));
   SyncfusionPdfviewerWindowsPluginRegisterWithRegistrar(
