@@ -80,6 +80,19 @@ class AdminDataState with _$AdminDataState {
     return contacts.toList();
   }
 
+  List<CustomerModel> getUserListInTime(int days) {
+    try {
+      return users
+          .where((userData) =>
+              userData.createdDate!
+                  .isAfter(DateTime.now().subtract(Duration(days: 7))) &&
+              userData.createdDate!.isBefore(DateTime.now()))
+          .toList();
+    } on Exception catch (e) {
+      return [];
+    }
+  }
+
   //get customer series
   List<charts.Series<GraphCoordinate, String>> getApplicationsSeries() {
     Map<String, int> statusCount = {};
@@ -140,25 +153,31 @@ class AdminDataState with _$AdminDataState {
   List<charts.Series<TimeSeriesCoordinate, DateTime>>
       getApplicationLineSeries() {
     List<TimeSeriesCoordinate> data = [];
-    DateTime now = DateTime.now();
     final filter = getSelectedAppsChartFilter();
-    int month = filter.totalDays;
-    if (month.isNegative) {
-      month = application.length;
+    DateTime endDate = DateTime.now();
+    DateTime startDate = DateTime.now();
+    startDate = endDate.subtract(Duration(days: filter.totalDays));
+    if (filter.totalDays == -1) {
+      final firstDate = application.reduce((oldest, current) =>
+          oldest.createdDate!.isBefore(current.createdDate!)
+              ? oldest
+              : current);
+      final days = DateTime.now().difference(firstDate.createdDate!).inDays;
+      startDate = endDate.subtract(Duration(days: days));
     }
 
-    for (int i = month - 1; i >= 0; i--) {
-      DateTime startDate = DateTime(now.year, now.month - i, 1);
-      DateTime endDate = DateTime(now.year, now.month - i + 1, 0);
+    for (DateTime date = startDate;
+        date.isBefore(endDate) || date.isAtSameMomentAs(endDate);
+        date = date.add(const Duration(days: 1))) {
       int count = application
           .where((visa) =>
               visa.createdDate != null &&
-              visa.createdDate!.isAfter(startDate) &&
-              visa.createdDate!.isBefore(endDate))
+              visa.createdDate!.year == date.year &&
+              visa.createdDate!.month == date.month &&
+              visa.createdDate!.day == date.day)
           .length;
-      data.add(TimeSeriesCoordinate(startDate, count));
+      data.add(TimeSeriesCoordinate(date, count));
     }
-
     return [
       charts.Series<TimeSeriesCoordinate, DateTime>(
         id: 'Applications',
@@ -173,26 +192,32 @@ class AdminDataState with _$AdminDataState {
   // get customer series by month
   List<charts.Series<TimeSeriesCoordinate, DateTime>> getCustomerLineSeries() {
     List<TimeSeriesCoordinate> data = [];
+
     final filter = getSelectedUserChartFilter();
-
-    DateTime now = DateTime.now();
-    int month = filter.totalDays;
-    if (month.isNegative) {
-      month = users.length;
+    DateTime endDate = DateTime.now();
+    DateTime startDate = DateTime.now();
+    startDate = endDate.subtract(Duration(days: filter.totalDays));
+    if (filter.totalDays == -1) {
+      final firstDate = users.reduce((oldest, current) =>
+          oldest.createdDate!.isBefore(current.createdDate!)
+              ? oldest
+              : current);
+      final days = DateTime.now().difference(firstDate.createdDate!).inDays;
+      startDate = endDate.subtract(Duration(days: days));
     }
 
-    for (int i = month - 1; i >= 0; i--) {
-      DateTime startDate = DateTime(now.year, now.month - i, 1);
-      DateTime endDate = DateTime(now.year, now.month - i + 1, 0);
+    for (DateTime date = startDate;
+        date.isBefore(endDate) || date.isAtSameMomentAs(endDate);
+        date = date.add(const Duration(days: 1))) {
       int count = users
-          .where((data) =>
-              data.createdDate != null &&
-              data.createdDate!.isAfter(startDate) &&
-              data.createdDate!.isBefore(endDate))
+          .where((visa) =>
+              visa.createdDate != null &&
+              visa.createdDate!.year == date.year &&
+              visa.createdDate!.month == date.month &&
+              visa.createdDate!.day == date.day)
           .length;
-      data.add(TimeSeriesCoordinate(startDate, count));
+      data.add(TimeSeriesCoordinate(date, count));
     }
-
     return [
       charts.Series<TimeSeriesCoordinate, DateTime>(
         id: 'Customers',

@@ -6,7 +6,7 @@ class ChartUtil {
   List<ChartFilterModel> getUserChartFilter() {
     return [
       ChartFilterModel(
-          name: "7 Days", label: "7D", active: false, totalDays: 7),
+          name: "7 Days", label: "7D", active: true, totalDays: 7),
       ChartFilterModel(
         name: "1 Month",
         label: "1M",
@@ -34,7 +34,7 @@ class ChartUtil {
       ChartFilterModel(
         name: "All",
         label: "ALL",
-        active: true,
+        active: false,
         totalDays: -1,
       ),
     ];

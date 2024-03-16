@@ -21,9 +21,15 @@ class DefaultFirebaseOptions {
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
-        return android;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for android - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.iOS:
-        return ios;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for ios - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.macOS:
         return macos;
       case TargetPlatform.windows:
@@ -51,25 +57,6 @@ class DefaultFirebaseOptions {
     authDomain: 'doortoid-mobile.firebaseapp.com',
     storageBucket: 'doortoid-mobile.appspot.com',
     measurementId: 'G-N5Z1Y7YN6R',
-  );
-
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDoycEId3dnp5nljjlFibezgdUF8WWynUg',
-    appId: '1:58741229055:android:d8306faa6155b58ff153ca',
-    messagingSenderId: '58741229055',
-    projectId: 'doortoid-mobile',
-    storageBucket: 'doortoid-mobile.appspot.com',
-  );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyC8Tym1o0lWbO5Bo_f6y5oaoLAH58X4ZLI',
-    appId: '1:58741229055:ios:b54572a46214a786f153ca',
-    messagingSenderId: '58741229055',
-    projectId: 'doortoid-mobile',
-    storageBucket: 'doortoid-mobile.appspot.com',
-    androidClientId: '58741229055-4de80uh73i6a4qfgtlf54duno7j0kg59.apps.googleusercontent.com',
-    iosClientId: '58741229055-p66k1t1d82t94vbh8hnlr1a9kusbcjml.apps.googleusercontent.com',
-    iosBundleId: 'com.example.dtiWeb',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(

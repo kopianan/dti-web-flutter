@@ -4,5 +4,5 @@
 BASE_URL = 'https://us-central1-doortoid-mobile.cloudfunctions.net/api'
 APP_ID =  '1224414981412498'
 #PROD
-#BASE_URL = 'https://us-central1-doortoid.cloudfunctions.net/api'
-#APP_ID =  '474513857750668'
+# BASE_URL = 'https://us-central1-doortoid.cloudfunctions.net/api'
+# APP_ID =  '474513857750668'

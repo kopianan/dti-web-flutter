@@ -76,37 +76,110 @@ class _AdminStatisticPageState extends State<AdminStatisticPage> {
               margin: const EdgeInsets.symmetric(horizontal: 30),
               width: double.infinity,
               height: 500,
-              child: Card(
-                elevation: 6,
-                shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
-                child: Column(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 20),
-                      child: const Text(
-                        "Total Application",
-                        style: TextStyle(
-                            fontSize: 30, fontWeight: FontWeight.bold),
+              child: Row(
+                children: [
+                  Expanded(child: BlocBuilder<AdminDataCubit, AdminDataState>(
+                    builder: (context, state) {
+                      return Card(
+                        elevation: 6,
+                        shape: const RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10))),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 30, vertical: 30),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                "User Data",
+                                style: TextStyle(
+                                    fontSize: 30, fontWeight: FontWeight.bold),
+                              ),
+                              const SizedBox(
+                                height: 30,
+                              ),
+                              Table(
+                                  border: TableBorder.all(
+                                    style: BorderStyle.solid,
+                                    width: 1,
+                                  ),
+                                  children: [
+                                    TableRow(
+                                      children: [
+                                        const TableItemWidget(
+                                            label: "Total User"),
+                                        TableItemWidget(
+                                            label:
+                                                state.users.length.toString()),
+                                      ],
+                                    ),
+                                    TableRow(
+                                      children: [
+                                        const TableItemWidget(
+                                            label: "Total New User In 7 Days"),
+                                        TableItemWidget(
+                                            label: state
+                                                .getUserListInTime(7)
+                                                .length
+                                                .toString()),
+                                      ],
+                                    ),
+                                    TableRow(
+                                      children: [
+                                        const TableItemWidget(
+                                            label:
+                                                "Total New User In 1 Months"),
+                                        TableItemWidget(
+                                            label: state
+                                                .getUserListInTime(30)
+                                                .length
+                                                .toString()),
+                                      ],
+                                    ),
+                                  ]),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  )),
+                  const SizedBox(width: 30),
+                  Expanded(
+                    child: Card(
+                      elevation: 6,
+                      shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                      child: Column(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 20, vertical: 20),
+                            child: const Text(
+                              "Total Application",
+                              style: TextStyle(
+                                  fontSize: 30, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          Expanded(
+                            child: BlocBuilder<AdminDataCubit, AdminDataState>(
+                              builder: (context, state) {
+                                return charts.PieChart<Object>(
+                                  state.getApplicationsSeries(),
+                                  defaultRenderer: charts.ArcRendererConfig(
+                                      arcRendererDecorators: [
+                                        charts.ArcLabelDecorator()
+                                      ]),
+                                  animate: false,
+                                );
+                              },
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    Expanded(
-                      child: BlocBuilder<AdminDataCubit, AdminDataState>(
-                        builder: (context, state) {
-                          return charts.PieChart<Object>(
-                            state.getApplicationsSeries(),
-                            defaultRenderer: charts.ArcRendererConfig(
-                                arcRendererDecorators: [
-                                  charts.ArcLabelDecorator()
-                                ]),
-                            animate: false,
-                          );
-                        },
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               )),
           const SizedBox(height: 20),
           Container(
@@ -239,6 +312,24 @@ class _AdminStatisticPageState extends State<AdminStatisticPage> {
         ],
       )),
     );
+  }
+}
+
+class TableItemWidget extends StatelessWidget {
+  const TableItemWidget({
+    super.key,
+    required this.label,
+  });
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+        child: Text(
+          label,
+          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        ));
   }
 }
 
