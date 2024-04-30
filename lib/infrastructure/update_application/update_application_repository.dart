@@ -6,6 +6,7 @@ import 'package:dti_web/core/storage.dart';
 import 'package:dti_web/domain/core/channel_type.dart';
 import 'package:dti_web/domain/core/document_data_model.dart';
 import 'package:dti_web/domain/core/single_visa_response.dart';
+import 'package:dti_web/domain/core/visa_application_corp.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/domain/global/failures.dart';
 import 'package:dti_web/domain/update/i_update_application.dart';
@@ -632,6 +633,42 @@ class IUpdateApplicationRepository extends IUpdateApplication {
         return Right(result.data['data']['message']);
       }
     } on DioError catch (e) {
+      return left(ErrorHandling().onDioErrorHandle(e));
+    }
+  }
+
+  @override
+  Future<Either<Failures, VisaApplicationCorp>> getUserCorpApplicationById(
+      String firebaseDocId) async {
+    final storage = Storage();
+
+    try {
+      final result = await dio.get(
+          "${dotenv.env['BASE_URL']}/corporateApplication/$firebaseDocId",
+          options: Options(
+              headers: {"Authorization": "Bearer ${storage.getToken()}"}));
+
+      dynamic data = result.data['data'];
+      final visaApps = VisaApplicationCorp.fromJson(data);
+      return Right(visaApps);
+    } on DioException catch (e) {
+      return left(ErrorHandling().onDioErrorHandle(e));
+    }
+  }
+
+  @override
+  Future<Either<Failures, String>> createNewCorpApplication(
+      VisaApplicationCorp visaCorp) async {
+    final storage = Storage();
+    try {
+      final result = await dio.post(
+          '${dotenv.env['BASE_URL']}/corporateApplication',
+          options: Options(
+              headers: {'Authorization': 'Bearer ${storage.getToken()}'}),
+          data: visaCorp.toJson());
+
+      return Right(result.data['data']['firebaseDocId']);
+    } on DioException catch (e) {
       return left(ErrorHandling().onDioErrorHandle(e));
     }
   }

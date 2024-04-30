@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:dti_web/domain/core/document_data_model.dart';
 import 'package:dti_web/domain/core/single_visa_response.dart';
+import 'package:dti_web/domain/core/visa_application_corp.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/domain/global/failures.dart';
 import 'package:dti_web/domain/update/image_upload_response.dart';
@@ -8,8 +9,12 @@ import 'package:dti_web/domain/update/image_upload_response.dart';
 abstract class IUpdateApplication {
   Future<Either<Failures, String>> createNewApplicationDocument(
       VisaApplicationModel visaApplicationModel);
+  Future<Either<Failures, String>> createNewCorpApplication(
+      VisaApplicationCorp visaCorp);
   Future<Either<Failures, String>> updateParticularData(
       VisaApplicationModel visaApplicationModel);
+  Future<Either<Failures, String>> updateCorporateApplication(
+      VisaApplicationCorp visaCorp);
   Future<Either<Failures, String>> updatePassportParticularData(
       VisaApplicationModel visaApplicationModel);
   Future<Either<Failures, String>> rejectApplication(
@@ -36,6 +41,8 @@ abstract class IUpdateApplication {
   Future<Either<Failures, String>> submitVisa(String firebaseDocId);
   Future<Either<Failures, String>> submitPassport(String firebaseDocId);
   Future<Either<Failures, VisaApplicationModel>> getUserApplicationById(
+      String firebaseDocId);
+  Future<Either<Failures, VisaApplicationCorp>> getUserCorpApplicationById(
       String firebaseDocId);
   Future<Either<Failures, VisaApplicationModel>> getPassportById(
       String firebaseDocId);

@@ -33,7 +33,7 @@ class DashboardRepository extends IDashboard {
         }
       }
       return Left(Failures.generalError(result.toString()));
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       ErrorResponse err = ErrorResponse();
       return Left(err.dioErrorChecker(e));
     }
@@ -61,7 +61,7 @@ class DashboardRepository extends IDashboard {
         }
       }
       return Left(Failures.generalError(result.toString()));
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       ErrorResponse err = ErrorResponse();
       return Left(err.dioErrorChecker(e));
     }
@@ -85,7 +85,7 @@ class DashboardRepository extends IDashboard {
       }
 
       return Left(Failures.generalError(result.toString()));
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       ErrorResponse err = ErrorResponse();
       return Left(err.dioErrorChecker(e));
     }
@@ -109,7 +109,7 @@ class DashboardRepository extends IDashboard {
       }
 
       return Left(Failures.generalError(result.toString()));
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       ErrorResponse err = ErrorResponse();
       return Left(err.dioErrorChecker(e));
     }
@@ -135,7 +135,34 @@ class DashboardRepository extends IDashboard {
         }
       }
       return Left(Failures.generalError(result.toString()));
-    } on DioError catch (e) {
+    } on DioException catch (e) {
+      ErrorResponse err = ErrorResponse();
+      return Left(err.dioErrorChecker(e));
+    }
+  }
+
+  @override
+  Future<Either<Failures, SimpleVisaModel>>
+      getLastCorporationApplication() async {
+    final dio = Dio();
+    final storage = Storage();
+    try {
+      final result =
+          await dio.get("${dotenv.env['BASE_URL']}/corporateApplicationsByUser/1",
+              options: Options(
+                headers: {'Authorization': 'Bearer ${storage.getToken()}'},
+              ));
+      if (result.data['data'] != null) {
+        List listData = result.data['data'];
+        if (listData.isEmpty) {
+          return Left(Failures.noData("EMPTY"));
+        } else {
+          final modelData = SimpleVisaModel.fromJson(listData.first);
+          return Right(modelData);
+        }
+      }
+      return Left(Failures.generalError(result.toString()));
+    } on DioException catch (e) {
       ErrorResponse err = ErrorResponse();
       return Left(err.dioErrorChecker(e));
     }

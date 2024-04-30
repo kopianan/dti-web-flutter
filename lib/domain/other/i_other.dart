@@ -1,5 +1,6 @@
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:dartz/dartz.dart';
+import 'package:dti_web/domain/core/corp_enum.dart';
 import 'package:dti_web/domain/core/document_data_model.dart';
 import 'package:dti_web/domain/global/failures.dart';
 import 'package:dti_web/domain/questionnaire/questionnaire_data_model.dart';
@@ -11,6 +12,8 @@ abstract class IOther {
       required String documentId,
       required String fileName});
   Future<Either<Failures, QuestionnaireDataModel>> getQuestionnaireList();
+  Future<Either<Failures, List<QuestionnaireModel>>> getQuestionnaireCorpList(
+      CorpEnum questName);
   Future<Either<Failures, dynamic>> getLocation();
   Future<Either<Failures, String>> refreshToken();
   Future<Either<Failures, dynamic>> sendFeedback(int rating, String comment);

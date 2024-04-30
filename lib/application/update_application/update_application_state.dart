@@ -8,6 +8,8 @@ class UpdateApplicationState with _$UpdateApplicationState {
   const factory UpdateApplicationState.onError(Failures error) = _OnError;
   const factory UpdateApplicationState.onCreateApplication(
       VisaApplicationModel visaApps) = _OnCreateApplication;
+  const factory UpdateApplicationState.onCreateCorpApplication(
+      String firebaseDocId) = _OnCreateCorpApplication;
   const factory UpdateApplicationState.onCreatePassport(
       VisaApplicationModel visaApps) = _OnCreatePassport;
   const factory UpdateApplicationState.onSubmitApplication(
@@ -16,6 +18,8 @@ class UpdateApplicationState with _$UpdateApplicationState {
       _OnSubmitPassport;
   const factory UpdateApplicationState.onUpdateApplication() =
       _OnUpdateApplication;
+  const factory UpdateApplicationState.onUpdateCorpApplication() =
+      _OnUpdateCorpApplication;
   const factory UpdateApplicationState.onUpdatePassport() = _OnUpdatePassport;
   const factory UpdateApplicationState.onUpdateMultiVisa(String message) =
       _OnUpdateMultiVisa;
@@ -28,6 +32,8 @@ class UpdateApplicationState with _$UpdateApplicationState {
       String message) = _OnPendingPaymentApplication;
   const factory UpdateApplicationState.onGetSingleApplication(
       VisaApplicationModel visa) = _OnGetSingleApplication;
+  const factory UpdateApplicationState.onGetSingleCorpApplication(
+      VisaApplicationCorp corpVisa) = _OnGetSingleCorpApplication;
   const factory UpdateApplicationState.onGetSingleAppsWithImage(
       SingleVisaResponse singleResponse) = _OnGetSingleAppsWithImage;
   const factory UpdateApplicationState.deleteApplication() = _DeleteApplication;

@@ -5,6 +5,7 @@ import 'package:dti_web/domain/global/failures.dart';
 
 abstract class IDashboard {
   Future<Either<Failures, SimpleVisaModel>> getLastPassportAndApplication();
+  Future<Either<Failures, SimpleVisaModel>> getLastCorporationApplication();
   Future<Either<Failures, SimpleVisaModel>> getSingleData();
   Future<Either<Failures, SimpleVisaModel>> getSinglePassport();
   Future<Either<Failures, String>> deleteSinglePassport(String firebaseDocId);

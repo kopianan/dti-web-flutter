@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:dti_web/core/storage.dart';
+import 'package:dti_web/domain/core/corp_enum.dart';
 import 'package:dti_web/domain/core/document_data_model.dart';
 import 'package:dti_web/domain/global/failures.dart';
 import 'package:dti_web/domain/other/i_other.dart';
@@ -67,6 +68,15 @@ class OtherCubit extends Cubit<OtherState> {
     );
   }
 
+  void getQuestionnaireCorpList(CorpEnum corp) async {
+    emit(const OtherState.loading());
+    final data = await iOther.getQuestionnaireCorpList(corp);
+    data.fold(
+      (l) => emit(OtherState.errorState(l)),
+      (r) => emit(OtherState.getCorpQuestionnaire(r)),
+    );
+  }
+
   void getDocumentsData() async {
     emit(const OtherState.loading());
     final data = await iOther.getApplicationMasterData();
@@ -96,10 +106,10 @@ class OtherCubit extends Cubit<OtherState> {
     String docId,
     String? filename,
   ) async {
-    emit(OtherState.loading());
+    emit(const OtherState.loading());
 
     if (filename == null) {
-      emit(OtherState.nullImage());
+      emit(const OtherState.nullImage());
     } else {
       if (filename.contains('/')) {
         emit(OtherState.imageLocal(filename));
@@ -108,7 +118,7 @@ class OtherCubit extends Cubit<OtherState> {
             applicationId: appId, documentId: docId, fileName: filename);
 
         result.fold(
-          (l) => emit(OtherState.error()),
+          (l) => emit(const OtherState.error()),
           (r) => emit(OtherState.onGetImageUrl(r)),
         );
       }

@@ -5,11 +5,13 @@ import 'package:country_code_picker/country_code_picker.dart';
 import 'package:dio/dio.dart';
 import 'package:dti_web/core/storage.dart';
 import 'package:dartz/dartz.dart';
+import 'package:dti_web/domain/core/corp_enum.dart';
 import 'package:dti_web/domain/core/country_nationality.dart';
 import 'package:dti_web/domain/core/document_data_model.dart';
 import 'package:dti_web/domain/global/failures.dart';
 import 'package:dti_web/domain/other/i_other.dart';
 import 'package:dti_web/domain/questionnaire/questionnaire_data_model.dart';
+import 'package:dti_web/domain/questionnaire/questionnaire_model.dart';
 import 'package:dti_web/utils/error_handling.dart';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -266,6 +268,35 @@ class OtherRepository extends IOther {
       return left(Failures.generalError(data['error']));
     } on Exception {
       return left(Failures.serverError());
+    }
+  }
+
+  @override
+  Future<Either<Failures, List<QuestionnaireModel>>> getQuestionnaireCorpList(
+      CorpEnum questName) async {
+    // https://us-central1-doortoid-mobile.cloudfunctions.net/api/master/corporate_quest
+    Storage storage = Storage();
+    try {
+      final data =
+          await dio.get('${dotenv.env['BASE_URL']}/master/corporate_quest',
+              options: Options(
+                headers: {'Authorization': 'Bearer ${storage.getToken()}'},
+              ));
+
+      if (data.data['data'] != null) {
+        if (questName == CorpEnum.company) {
+          List rawData = data.data['data']['company'];
+          return right(
+              rawData.map((e) => QuestionnaireModel.fromJson(e)).toList());
+        } else {
+          final rawData = data.data['data']['foreigner'];
+          return right(
+              rawData.map((e) => QuestionnaireModel.fromJson(e)).toList());
+        }
+      }
+      return Left(Failures.generalError("Something Wrong"));
+    } on DioException catch (e) {
+      return left(ErrorHandling().onDioErrorHandle(e));
     }
   }
 }

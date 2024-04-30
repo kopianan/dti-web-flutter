@@ -8,13 +8,12 @@ import 'package:injectable/injectable.dart';
 part 'dashboard_state.dart';
 part 'dashboard_cubit.freezed.dart';
 
-@LazySingleton()
+@Singleton()
 class DashboardCubit extends Cubit<DashboardState> {
   DashboardCubit(this.iDashboard) : super(const DashboardState.initial());
   final IDashboard iDashboard;
 
   void getLastPassportAndApplicationData() async {
-
     emit(const DashboardState.loading());
     try {
       final data = await iDashboard.getLastPassportAndApplication();
@@ -27,18 +26,18 @@ class DashboardCubit extends Cubit<DashboardState> {
     }
   }
 
-  // void getLastData() async {
-  //   emit(const DashboardState.loading());
-  //   try {
-  //     final data = await iDashboard.getSingleData();
-  //     data.fold(
-  //       (l) => emit(DashboardState.error(l)),
-  //       (r) => emit(DashboardState.onGetSingleData(r)),
-  //     );
-  //   } on Exception {
-  //     emit(DashboardState.error(Failures.serverError()));
-  //   }
-  // }
+  void getLastCorporateApplication() async {
+    emit(const DashboardState.loading());
+    try {
+      final data = await iDashboard.getLastCorporationApplication();
+      data.fold(
+        (l) => emit(DashboardState.error(l)),
+        (r) => emit(DashboardState.onGetSingleData(r)),
+      );
+    } on Exception {
+      emit(DashboardState.error(Failures.serverError()));
+    }
+  }
 
   void getLastPassport() async {
     emit(const DashboardState.loading());

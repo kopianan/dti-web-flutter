@@ -61,6 +61,16 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    ApplicationCorpFormForeignerRoute.name: (routeData) {
+      final args = routeData.argsAs<ApplicationCorpFormForeignerRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ApplicationCorpFormForeignerPage(
+          key: args.key,
+          firebaseDocId: args.firebaseDocId,
+        ),
+      );
+    },
     ApplicationDetailRoute.name: (routeData) {
       final args = routeData.argsAs<ApplicationDetailRouteArgs>();
       return AutoRoutePage<dynamic>(
@@ -264,6 +274,18 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const PlatformPage(),
       );
     },
+    QuestionnaireCorp1Route.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const QuestionnaireCorp1Page(),
+      );
+    },
+    QuestionnaireCorp2Route.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const QuestionnaireCorp2Page(),
+      );
+    },
     QuestionnaireRoute.name: (routeData) {
       final args = routeData.argsAs<QuestionnaireRouteArgs>(
           orElse: () => const QuestionnaireRouteArgs());
@@ -275,6 +297,21 @@ abstract class _$AppRouter extends RootStackRouter {
           title: args.title,
           subtitle: args.subtitle,
           boolIsInit: args.boolIsInit,
+        ),
+      );
+    },
+    QuestionnaireSummaryCorpRoute.name: (routeData) {
+      final args = routeData.argsAs<QuestionnaireSummaryCorpRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: QuestionnaireSummaryCorpPage(
+          key: args.key,
+          questionnare: args.questionnare,
+          desc: args.desc,
+          title: args.title,
+          document: args.document,
+          notes: args.notes,
+          corpEnum: args.corpEnum,
         ),
       );
     },
@@ -477,6 +514,45 @@ class ApplicationCardRouteArgs {
   @override
   String toString() {
     return 'ApplicationCardRouteArgs{key: $key, dashboardCubit: $dashboardCubit}';
+  }
+}
+
+/// generated route for
+/// [ApplicationCorpFormForeignerPage]
+class ApplicationCorpFormForeignerRoute
+    extends PageRouteInfo<ApplicationCorpFormForeignerRouteArgs> {
+  ApplicationCorpFormForeignerRoute({
+    Key? key,
+    required String firebaseDocId,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ApplicationCorpFormForeignerRoute.name,
+          args: ApplicationCorpFormForeignerRouteArgs(
+            key: key,
+            firebaseDocId: firebaseDocId,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ApplicationCorpFormForeignerRoute';
+
+  static const PageInfo<ApplicationCorpFormForeignerRouteArgs> page =
+      PageInfo<ApplicationCorpFormForeignerRouteArgs>(name);
+}
+
+class ApplicationCorpFormForeignerRouteArgs {
+  const ApplicationCorpFormForeignerRouteArgs({
+    this.key,
+    required this.firebaseDocId,
+  });
+
+  final Key? key;
+
+  final String firebaseDocId;
+
+  @override
+  String toString() {
+    return 'ApplicationCorpFormForeignerRouteArgs{key: $key, firebaseDocId: $firebaseDocId}';
   }
 }
 
@@ -1144,6 +1220,34 @@ class PlatformRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [QuestionnaireCorp1Page]
+class QuestionnaireCorp1Route extends PageRouteInfo<void> {
+  const QuestionnaireCorp1Route({List<PageRouteInfo>? children})
+      : super(
+          QuestionnaireCorp1Route.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'QuestionnaireCorp1Route';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [QuestionnaireCorp2Page]
+class QuestionnaireCorp2Route extends PageRouteInfo<void> {
+  const QuestionnaireCorp2Route({List<PageRouteInfo>? children})
+      : super(
+          QuestionnaireCorp2Route.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'QuestionnaireCorp2Route';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [QuestionnairePage]
 class QuestionnaireRoute extends PageRouteInfo<QuestionnaireRouteArgs> {
   QuestionnaireRoute({
@@ -1193,6 +1297,70 @@ class QuestionnaireRouteArgs {
   @override
   String toString() {
     return 'QuestionnaireRouteArgs{key: $key, question: $question, title: $title, subtitle: $subtitle, boolIsInit: $boolIsInit}';
+  }
+}
+
+/// generated route for
+/// [QuestionnaireSummaryCorpPage]
+class QuestionnaireSummaryCorpRoute
+    extends PageRouteInfo<QuestionnaireSummaryCorpRouteArgs> {
+  QuestionnaireSummaryCorpRoute({
+    Key? key,
+    required QuestionnaireModel questionnare,
+    required String desc,
+    required String title,
+    required String document,
+    required String notes,
+    required CorpEnum corpEnum,
+    List<PageRouteInfo>? children,
+  }) : super(
+          QuestionnaireSummaryCorpRoute.name,
+          args: QuestionnaireSummaryCorpRouteArgs(
+            key: key,
+            questionnare: questionnare,
+            desc: desc,
+            title: title,
+            document: document,
+            notes: notes,
+            corpEnum: corpEnum,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'QuestionnaireSummaryCorpRoute';
+
+  static const PageInfo<QuestionnaireSummaryCorpRouteArgs> page =
+      PageInfo<QuestionnaireSummaryCorpRouteArgs>(name);
+}
+
+class QuestionnaireSummaryCorpRouteArgs {
+  const QuestionnaireSummaryCorpRouteArgs({
+    this.key,
+    required this.questionnare,
+    required this.desc,
+    required this.title,
+    required this.document,
+    required this.notes,
+    required this.corpEnum,
+  });
+
+  final Key? key;
+
+  final QuestionnaireModel questionnare;
+
+  final String desc;
+
+  final String title;
+
+  final String document;
+
+  final String notes;
+
+  final CorpEnum corpEnum;
+
+  @override
+  String toString() {
+    return 'QuestionnaireSummaryCorpRouteArgs{key: $key, questionnare: $questionnare, desc: $desc, title: $title, document: $document, notes: $notes, corpEnum: $corpEnum}';
   }
 }
 

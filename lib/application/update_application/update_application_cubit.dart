@@ -6,6 +6,7 @@ import 'package:dti_web/core/storage.dart';
 import 'package:dti_web/domain/core/apps_type.dart';
 import 'package:dti_web/domain/core/document_data_model.dart';
 import 'package:dti_web/domain/core/single_visa_response.dart';
+import 'package:dti_web/domain/core/visa_application_corp.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/domain/global/failures.dart';
 import 'package:dti_web/domain/questionnaire/questionnaire_model.dart';
@@ -190,6 +191,54 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
     //update result
   }
 
+  void createCorporateApplication(VisaApplicationCorp visaCorp) async {
+    emit(const UpdateApplicationState.onLoading());
+    final user = Storage().getLocalUserData();
+    if (user != null) {
+      final newVisa = visaCorp.copyWith(
+        title: visaCorp.title,
+        subTitle: visaCorp.subTitle,
+        entry: "",
+        price: 0,
+        currency: 'Rp',
+        status: 'Draft',
+        guarantor: "Agent",
+        userName: user.name ?? user.email,
+      );
+
+      try {
+        final data = await iUpdateApplication.createNewCorpApplication(newVisa);
+        log(data.toString());
+        data.fold(
+          (l) {
+            emit(UpdateApplicationState.onError(l));
+          },
+          (r) {
+            emit(UpdateApplicationState.onCreateCorpApplication(r));
+          },
+        );
+      } on Exception {
+        emit(UpdateApplicationState.onError(Failures.serverError()));
+      }
+    } else {}
+
+    //update result
+  }
+
+  void updateCorporateApplcation(VisaApplicationCorp visaCorps) async {
+    //remove null
+
+    final jsonData = visaCorps.toJson();
+    jsonData.removeWhere((key, value) => value == null);
+    emit(const UpdateApplicationState.onLoading());
+    final result =
+        await iUpdateApplication.updateCorporateApplication(visaCorps);
+    result.fold(
+      (l) => emit(UpdateApplicationState.onError(l)),
+      (r) => emit(const UpdateApplicationState.onUpdateCorpApplication()),
+    );
+  }
+
   void updateMultiVisaDuration(String duration, String firebaseDocId) async {
     emit(const UpdateApplicationState.onLoading());
     final result =
@@ -275,6 +324,17 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
     result.fold(
       (l) => emit(UpdateApplicationState.onError(l)),
       (r) => emit(UpdateApplicationState.onGetSingleApplication(r)),
+    );
+  }
+
+  void getUserCorporateApplication(String firebaseDocId) async {
+    emit(const UpdateApplicationState.onLoading());
+
+    final result =
+        await iUpdateApplication.getUserCorpApplicationById(firebaseDocId);
+    result.fold(
+      (l) => emit(UpdateApplicationState.onError(l)),
+      (r) => emit(UpdateApplicationState.onGetSingleCorpApplication(r)),
     );
   }
 

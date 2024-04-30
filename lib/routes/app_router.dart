@@ -5,6 +5,7 @@ import 'package:country_code_picker/country_code_picker.dart';
 import 'package:dti_web/application/dashboard/dashboard_cubit.dart';
 import 'package:dti_web/core/storage.dart';
 import 'package:dti_web/domain/core/apps_type.dart';
+import 'package:dti_web/domain/core/corp_enum.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/domain/core/document_data_model.dart';
 import 'package:dti_web/domain/questionnaire/result_model.dart';
@@ -30,13 +31,17 @@ import 'package:dti_web/presentation/corporate/home/agent_home_page.dart';
 import 'package:dti_web/presentation/corporate/stat/admin_statistic_page.dart';
 import 'package:dti_web/presentation/dashboard/pages/application_card_page.dart';
 import 'package:dti_web/presentation/payment/payment_page.dart';
+import 'package:dti_web/presentation/questionnaire/application_corp_form_foreigner_page.dart';
 import 'package:dti_web/presentation/questionnaire/guarantor_page.dart';
 import 'package:dti_web/presentation/questionnaire/personal_information_1_page.dart';
 import 'package:dti_web/presentation/questionnaire/personal_information_3_page.dart';
 import 'package:dti_web/presentation/questionnaire/personal_information_4_page.dart';
 import 'package:dti_web/presentation/questionnaire/personal_information_4b_page.dart';
 import 'package:dti_web/presentation/questionnaire/photo_view_page.dart';
+import 'package:dti_web/presentation/questionnaire/questionnaire_corp_1_page.dart';
+import 'package:dti_web/presentation/questionnaire/questionnaire_corp_2_page.dart';
 import 'package:dti_web/presentation/questionnaire/questionnaire_page.dart';
+import 'package:dti_web/presentation/questionnaire/questionnaire_summary_corp_page.dart';
 import 'package:dti_web/presentation/questionnaire/questionnaire_summary_page.dart';
 import 'package:dti_web/presentation/questionnaire/user_domicile_page.dart';
 import 'package:dti_web/presentation/questionnaire/voa_summary_page.dart';
@@ -138,6 +143,9 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
     ),
     AutoRoute(path: SelfiePage.routeName, page: SelfieRoute.page),
     AutoRoute(
+        path: ApplicationCorpFormForeignerPage.routeName,
+        page: ApplicationCorpFormForeignerRoute.page),
+    AutoRoute(
         path: PassportPaymentPage.routeName, page: PassportPaymentRoute.page),
     // AutoRoute(
     //     path: PassportDetailPage.routeName, page: PassportDetailRoute.page),
@@ -191,6 +199,18 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
         page: QuestionnaireSummaryRoute.page,
         path: QuestionnaireSummaryPage.routeName),
     AutoRoute(page: QuestionnaireRoute.page, path: QuestionnairePage.routeName),
+    AutoRoute(
+      page: QuestionnaireCorp1Route.page,
+      path: '/QuestionnaireCorp1Route',
+    ),
+    AutoRoute(
+      page: QuestionnaireCorp2Route.page,
+      path: '/QuestionnaireCorp2Route',
+    ),
+    AutoRoute(
+      page: QuestionnaireSummaryCorpRoute.page,
+      path: QuestionnaireSummaryCorpPage.routeName,
+    ),
     AutoRoute(page: SignUpRoute.page, path: SignUpPage.routeName),
     AutoRoute(page: ResetRoute.page, path: ResetPage.routeName),
     AutoRoute(page: OTPRoute.page, path: OTPPage.routeName),
