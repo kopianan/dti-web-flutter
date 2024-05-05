@@ -672,4 +672,23 @@ class IUpdateApplicationRepository extends IUpdateApplication {
       return left(ErrorHandling().onDioErrorHandle(e));
     }
   }
+
+  @override
+  Future<Either<Failures, String>> updateCorporateApplication(
+      VisaApplicationCorp visaCorp) async {
+    final storage = Storage();
+    final jsonData = visaCorp.toJson();
+    jsonData.removeWhere((key, value) => value == null);
+    try {
+      final result = await dio.post(
+          '${dotenv.env['BASE_URL']}/corporateApplication/${visaCorp.firebaseDocId}',
+          options: Options(
+              headers: {'Authorization': 'Bearer ${storage.getToken()}'}),
+          data: jsonData);
+
+      return Right(result.data['data']['firebaseDocId']);
+    } on DioException catch (e) {
+      return left(ErrorHandling().onDioErrorHandle(e));
+    }
+  }
 }

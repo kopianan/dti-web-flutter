@@ -61,6 +61,29 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    ApplicationCorpDetailRoute.name: (routeData) {
+      final pathParams = routeData.inheritedPathParams;
+      final args = routeData.argsAs<ApplicationCorpDetailRouteArgs>(
+          orElse: () => ApplicationCorpDetailRouteArgs(
+              firebaseDocId: pathParams.getString('id')));
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ApplicationCorpDetailPage(
+          key: args.key,
+          firebaseDocId: args.firebaseDocId,
+        ),
+      );
+    },
+    ApplicationCorpFormCompanyRoute.name: (routeData) {
+      final args = routeData.argsAs<ApplicationCorpFormCompanyRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ApplicationCorpFormCompanyPage(
+          key: args.key,
+          firebaseDocId: args.firebaseDocId,
+        ),
+      );
+    },
     ApplicationCorpFormForeignerRoute.name: (routeData) {
       final args = routeData.argsAs<ApplicationCorpFormForeignerRouteArgs>();
       return AutoRoutePage<dynamic>(
@@ -514,6 +537,85 @@ class ApplicationCardRouteArgs {
   @override
   String toString() {
     return 'ApplicationCardRouteArgs{key: $key, dashboardCubit: $dashboardCubit}';
+  }
+}
+
+/// generated route for
+/// [ApplicationCorpDetailPage]
+class ApplicationCorpDetailRoute
+    extends PageRouteInfo<ApplicationCorpDetailRouteArgs> {
+  ApplicationCorpDetailRoute({
+    Key? key,
+    required String firebaseDocId,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ApplicationCorpDetailRoute.name,
+          args: ApplicationCorpDetailRouteArgs(
+            key: key,
+            firebaseDocId: firebaseDocId,
+          ),
+          rawPathParams: {'id': firebaseDocId},
+          initialChildren: children,
+        );
+
+  static const String name = 'ApplicationCorpDetailRoute';
+
+  static const PageInfo<ApplicationCorpDetailRouteArgs> page =
+      PageInfo<ApplicationCorpDetailRouteArgs>(name);
+}
+
+class ApplicationCorpDetailRouteArgs {
+  const ApplicationCorpDetailRouteArgs({
+    this.key,
+    required this.firebaseDocId,
+  });
+
+  final Key? key;
+
+  final String firebaseDocId;
+
+  @override
+  String toString() {
+    return 'ApplicationCorpDetailRouteArgs{key: $key, firebaseDocId: $firebaseDocId}';
+  }
+}
+
+/// generated route for
+/// [ApplicationCorpFormCompanyPage]
+class ApplicationCorpFormCompanyRoute
+    extends PageRouteInfo<ApplicationCorpFormCompanyRouteArgs> {
+  ApplicationCorpFormCompanyRoute({
+    Key? key,
+    required String firebaseDocId,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ApplicationCorpFormCompanyRoute.name,
+          args: ApplicationCorpFormCompanyRouteArgs(
+            key: key,
+            firebaseDocId: firebaseDocId,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ApplicationCorpFormCompanyRoute';
+
+  static const PageInfo<ApplicationCorpFormCompanyRouteArgs> page =
+      PageInfo<ApplicationCorpFormCompanyRouteArgs>(name);
+}
+
+class ApplicationCorpFormCompanyRouteArgs {
+  const ApplicationCorpFormCompanyRouteArgs({
+    this.key,
+    required this.firebaseDocId,
+  });
+
+  final Key? key;
+
+  final String firebaseDocId;
+
+  @override
+  String toString() {
+    return 'ApplicationCorpFormCompanyRouteArgs{key: $key, firebaseDocId: $firebaseDocId}';
   }
 }
 

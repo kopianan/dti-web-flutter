@@ -20,7 +20,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class QuestionnaireCorp2Page extends StatelessWidget {
   const QuestionnaireCorp2Page({super.key});
 
-  final String title = "Apply Foreigner Work Permit";
+  final String title = "Foreigner Work Permit";
 
   @override
   Widget build(BuildContext context) {
@@ -99,13 +99,15 @@ class QuestionnaireCorp2Page extends StatelessWidget {
                                           String notes =
                                               '''If you're unsure about the required documents or process, don't worry. Feel free to contact us for assistance. We're here to ensure a smooth experience for you. ''';
 
-                                          // context.router.push(
-                                          //     QuestionnaireSummaryCorpRoute(
-                                          //         title: title,
-                                          //         questionnaire: e,
-                                          //         desc: desc,
-                                          //         document: doc,
-                                          //         notes: notes));
+                                          context.router.push(
+                                              QuestionnaireSummaryCorpRoute(
+                                            title: title,
+                                            desc: desc,
+                                            document: doc,
+                                            notes: notes,
+                                            questionnare: e,
+                                            corpEnum: CorpEnum.company,
+                                          ));
                                         },
                                         child: QuestionnaireItemCard(
                                             questionnaireModel: e),

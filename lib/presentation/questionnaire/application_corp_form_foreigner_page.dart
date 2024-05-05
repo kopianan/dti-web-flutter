@@ -5,7 +5,9 @@ import 'package:dti_web/application/update_application/update_application_cubit.
 import 'package:dti_web/core/widgets/primary_button.dart';
 import 'package:dti_web/injection.dart';
 import 'package:dti_web/presentation/widgets/loading_page.dart';
+import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
+import 'package:dti_web/utils/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -170,6 +172,33 @@ class _ApplicationCorpFormForeignerPageState
                                                 ),
                                               ),
 
+                                              20.verticalSpace,
+                                              FormBuilderDropdown(
+                                                name: "IndustryTypeField",
+                                                initialValue:
+                                                    visaCorp.industryType,
+                                                validator: FormBuilderValidators
+                                                    .required(),
+                                                items:
+                                                    Constant.getIndustryType()
+                                                        .map(
+                                                          (e) =>
+                                                              DropdownMenuItem(
+                                                            value: e,
+                                                            child: Text(e),
+                                                          ),
+                                                        )
+                                                        .toList(),
+                                                decoration:
+                                                    const InputDecoration(
+                                                  labelText: 'Industry Type',
+                                                  hintStyle: TextStyle(
+                                                    color: Colors.grey,
+                                                  ),
+                                                  hintText: "Industry Type",
+                                                  fillColor: Colors.white70,
+                                                ),
+                                              ),
                                               20.verticalSpace,
                                               FormBuilderTextField(
                                                 name: 'CompanyAddressField',
@@ -390,15 +419,14 @@ class _ApplicationCorpFormForeignerPageState
                                                     UpdateApplicationCubit,
                                                     UpdateApplicationState>(
                                                   listener: (context, state) {
-                                                    state.maybeMap(
-                                                        orElse: () {},
-                                                        onLoading: (e) {
-                                                          EasyLoading.show();
-                                                        },
-                                                        onUpdateCorpApplication:
-                                                            (e) {
-                                                          EasyLoading.dismiss();
-                                                        });
+                                                    state.maybeMap(orElse: () {
+                                                      EasyLoading.dismiss();
+                                                    }, onLoading: (e) {
+                                                      EasyLoading.show();
+                                                    }, onUpdateCorpApplication:
+                                                        (e) {
+                                                      EasyLoading.dismiss();
+                                                    });
                                                   },
                                                   builder: (context, state) {
                                                     return SizedBox(
@@ -407,7 +435,7 @@ class _ApplicationCorpFormForeignerPageState
                                                       child: PrimaryButton(
                                                         labelStyle: TextStyle(
                                                             fontSize: 15.sp),
-                                                        onClick: () async {
+                                                        onClick: () {
                                                           final validationSuccess =
                                                               _formKey
                                                                   .currentState!
@@ -450,12 +478,18 @@ class _ApplicationCorpFormForeignerPageState
                                                               mobileDialCode:
                                                                   dialCode,
                                                             );
+                                                            print(curr);
+                                                            context.router.push(
+                                                                ApplicationCorpDetailRoute(
+                                                              firebaseDocId: curr
+                                                                  .firebaseDocId,
+                                                            ));
 
-                                                            context
-                                                                .read<
-                                                                    UpdateApplicationCubit>()
-                                                                .updateCorporateApplcation(
-                                                                    curr);
+                                                            // context
+                                                            //     .read<
+                                                            //         UpdateApplicationCubit>()
+                                                            //     .updateCorporateApplcation(
+                                                            //         curr);
                                                           }
                                                         },
                                                         label: "Continue",

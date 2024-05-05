@@ -228,8 +228,6 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
   void updateCorporateApplcation(VisaApplicationCorp visaCorps) async {
     //remove null
 
-    final jsonData = visaCorps.toJson();
-    jsonData.removeWhere((key, value) => value == null);
     emit(const UpdateApplicationState.onLoading());
     final result =
         await iUpdateApplication.updateCorporateApplication(visaCorps);

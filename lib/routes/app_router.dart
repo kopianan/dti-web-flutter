@@ -9,6 +9,7 @@ import 'package:dti_web/domain/core/corp_enum.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/domain/core/document_data_model.dart';
 import 'package:dti_web/domain/questionnaire/result_model.dart';
+import 'package:dti_web/presentation/applications/application_corp_detail_page.dart';
 import 'package:dti_web/presentation/applications/application_detail_page.dart';
 import 'package:dti_web/presentation/applications/passport/choose_passport_page.dart';
 import 'package:dti_web/presentation/applications/passport/passport_payment_page.dart';
@@ -31,6 +32,7 @@ import 'package:dti_web/presentation/corporate/home/agent_home_page.dart';
 import 'package:dti_web/presentation/corporate/stat/admin_statistic_page.dart';
 import 'package:dti_web/presentation/dashboard/pages/application_card_page.dart';
 import 'package:dti_web/presentation/payment/payment_page.dart';
+import 'package:dti_web/presentation/questionnaire/application_corp_form_company_page.dart';
 import 'package:dti_web/presentation/questionnaire/application_corp_form_foreigner_page.dart';
 import 'package:dti_web/presentation/questionnaire/guarantor_page.dart';
 import 'package:dti_web/presentation/questionnaire/personal_information_1_page.dart';
@@ -175,6 +177,12 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
     AutoRoute(
         page: PersonalInformation4bRoute.page,
         path: PersonalInformation4bPage.routeName),
+    AutoRoute(
+        page: ApplicationCorpFormCompanyRoute.page,
+        path: ApplicationCorpFormCompanyPage.routeName),
+    AutoRoute(
+        page: ApplicationCorpDetailRoute.page,
+        path: ApplicationCorpDetailPage.routeName),
     AutoRoute(
         page: ApplicationCardRoute.page, path: ApplicationCardPage.routeName),
     AutoRoute(page: PaymentRoute.page, path: PaymentPage.routeName),

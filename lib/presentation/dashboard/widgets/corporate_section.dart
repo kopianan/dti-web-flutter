@@ -1,9 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:dti_web/application/dashboard/cubit/dashboard_application_cubit.dart';
 import 'package:dti_web/application/dashboard/dashboard_cubit.dart';
 import 'package:dti_web/core/widgets/application_card.dart';
 import 'package:dti_web/core/widgets/passport_card.dart';
 import 'package:dti_web/injection.dart';
 import 'package:dti_web/presentation/dashboard/widgets/visa_application_corp_card.dart';
+import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -92,7 +94,14 @@ class _CorporateSectionState extends State<CorporateSection> {
                   );
                 },
                 onGetCorporateApplication: (e) {
-                  return VisaApplicationCorpCard(visa: e.visa);
+                  return VisaApplicationCorpCard(
+                      onCardClick: () {
+                        // context.router.push(ApplicationCorpFormForeignerRoute(
+                        //     firebaseDocId: e.visa.firebaseDocId ?? ""));
+                        context.router.push(ApplicationCorpFormCompanyRoute(
+                            firebaseDocId: e.visa.firebaseDocId ?? ""));
+                      },
+                      visa: e.visa);
                 },
               );
             },

@@ -63,7 +63,7 @@ class _QuestionnaireSummaryCorpPageState
               EasyLoading.dismiss();
 
               if (widget.corpEnum == CorpEnum.company) {
-                context.router.push(ApplicationCorpFormForeignerRoute(
+                context.router.push(ApplicationCorpFormCompanyRoute(
                     firebaseDocId: e.firebaseDocId));
               } else {
                 context.router.push(ApplicationCorpFormForeignerRoute(
