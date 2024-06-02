@@ -575,7 +575,12 @@ class _ApplicationCorpFormCompanyPageState
                                         },
                                         readOnly: true,
                                         name: 'ToDate',
-                                        initialValue: initialDateTo,
+                                        initialValue: visaCorp
+                                                    .expectedTimelineTo ==
+                                                null
+                                            ? ''
+                                            : DateConverter.convertDateDefault(
+                                                visaCorp.expectedTimelineTo),
                                         validator:
                                             FormBuilderValidators.compose(
                                           [

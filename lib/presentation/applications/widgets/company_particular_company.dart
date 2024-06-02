@@ -26,8 +26,7 @@ class CompanyParticularCompany extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SubtitleWidget(label: "Company Particular"),
-            20.verticalSpace,
+         
             Table(
               children: [
                 TableRow(

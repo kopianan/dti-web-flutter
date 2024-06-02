@@ -1,4 +1,3 @@
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:dti_web/core/storage.dart';
@@ -48,6 +47,41 @@ class AppListRepository extends IAppList {
     } on Exception {
       return left(Failures.serverError());
     }
+  }
+
+  @override
+  Future<Either<Failures, List<SimpleVisaModel>>> getCorporateApplications()async {
+   //ONLY GET APPLICATION, NOT PASSPORT
+    // final result =
+    // await dio!.get('${dotenv.env['BASE_URL']}/applicationsByUser',
+    //     options: Options(
+    //       headers: {'Authorization': 'Bearer ${storage.getToken()}'},
+    //     ));
+    try {
+      final result = (isAgent)
+          //AGENT
+          ? await dio.get('${dotenv.env['BASE_URL']}/overallApplicationsByUser',
+              options: Options(
+                headers: {'Authorization': 'Bearer ${storage.getToken()}'},
+              ))
+          //ADMIN
+          : await dio.get('${dotenv.env['BASE_URL']}/applications',
+              options: Options(
+                headers: {'Authorization': 'Bearer ${storage.getToken()}'},
+              ));
+
+      final listData = (result.data['data'] as List)
+          .map((e) => SimpleVisaModel.fromJson(e))
+          .toList();
+      listData.sort(
+        (a, b) => a.createdDate!.compareTo(b.createdDate!),
+      );
+      return Right(listData);
+    } on DioError catch (e) {
+      return left(ErrorHandling().onDioErrorHandle(e));
+    } on Exception {
+      return left(Failures.serverError());
+    }ƒ
   }
 
 //   @override
