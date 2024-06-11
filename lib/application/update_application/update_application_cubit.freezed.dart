@@ -26,9 +26,11 @@ mixin _$UpdateApplicationState {
     required TResult Function(String firebaseDocId) onCreateCorpApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
     required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId)
+        onSubmitCorporateApplication,
     required TResult Function(String firebaseDocId) onSubmitPassport,
     required TResult Function() onUpdateApplication,
-    required TResult Function() onUpdateCorpApplication,
+    required TResult Function(String firebaseDocId) onUpdateCorpApplication,
     required TResult Function() onUpdatePassport,
     required TResult Function(String message) onUpdateMultiVisa,
     required TResult Function() onUpdateGuarantor,
@@ -55,9 +57,10 @@ mixin _$UpdateApplicationState {
     TResult? Function(String firebaseDocId)? onCreateCorpApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
+    TResult? Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult? Function(String firebaseDocId)? onSubmitPassport,
     TResult? Function()? onUpdateApplication,
-    TResult? Function()? onUpdateCorpApplication,
+    TResult? Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult? Function()? onUpdatePassport,
     TResult? Function(String message)? onUpdateMultiVisa,
     TResult? Function()? onUpdateGuarantor,
@@ -82,9 +85,10 @@ mixin _$UpdateApplicationState {
     TResult Function(String firebaseDocId)? onCreateCorpApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
-    TResult Function()? onUpdateCorpApplication,
+    TResult Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
@@ -111,6 +115,8 @@ mixin _$UpdateApplicationState {
         onCreateCorpApplication,
     required TResult Function(_OnCreatePassport value) onCreatePassport,
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitCorporateApplication value)
+        onSubmitCorporateApplication,
     required TResult Function(_OnSubmitPassport value) onSubmitPassport,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
     required TResult Function(_OnUpdateCorpApplication value)
@@ -144,6 +150,8 @@ mixin _$UpdateApplicationState {
     TResult? Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult? Function(_OnCreatePassport value)? onCreatePassport,
     TResult? Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult? Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult? Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult? Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult? Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -173,6 +181,8 @@ mixin _$UpdateApplicationState {
     TResult Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -260,9 +270,11 @@ class _$InitialImpl implements _Initial {
     required TResult Function(String firebaseDocId) onCreateCorpApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
     required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId)
+        onSubmitCorporateApplication,
     required TResult Function(String firebaseDocId) onSubmitPassport,
     required TResult Function() onUpdateApplication,
-    required TResult Function() onUpdateCorpApplication,
+    required TResult Function(String firebaseDocId) onUpdateCorpApplication,
     required TResult Function() onUpdatePassport,
     required TResult Function(String message) onUpdateMultiVisa,
     required TResult Function() onUpdateGuarantor,
@@ -292,9 +304,10 @@ class _$InitialImpl implements _Initial {
     TResult? Function(String firebaseDocId)? onCreateCorpApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
+    TResult? Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult? Function(String firebaseDocId)? onSubmitPassport,
     TResult? Function()? onUpdateApplication,
-    TResult? Function()? onUpdateCorpApplication,
+    TResult? Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult? Function()? onUpdatePassport,
     TResult? Function(String message)? onUpdateMultiVisa,
     TResult? Function()? onUpdateGuarantor,
@@ -322,9 +335,10 @@ class _$InitialImpl implements _Initial {
     TResult Function(String firebaseDocId)? onCreateCorpApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
-    TResult Function()? onUpdateCorpApplication,
+    TResult Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
@@ -357,6 +371,8 @@ class _$InitialImpl implements _Initial {
         onCreateCorpApplication,
     required TResult Function(_OnCreatePassport value) onCreatePassport,
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitCorporateApplication value)
+        onSubmitCorporateApplication,
     required TResult Function(_OnSubmitPassport value) onSubmitPassport,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
     required TResult Function(_OnUpdateCorpApplication value)
@@ -393,6 +409,8 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult? Function(_OnCreatePassport value)? onCreatePassport,
     TResult? Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult? Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult? Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult? Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult? Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -425,6 +443,8 @@ class _$InitialImpl implements _Initial {
     TResult Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -501,9 +521,11 @@ class _$OnLoadingImpl implements _OnLoading {
     required TResult Function(String firebaseDocId) onCreateCorpApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
     required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId)
+        onSubmitCorporateApplication,
     required TResult Function(String firebaseDocId) onSubmitPassport,
     required TResult Function() onUpdateApplication,
-    required TResult Function() onUpdateCorpApplication,
+    required TResult Function(String firebaseDocId) onUpdateCorpApplication,
     required TResult Function() onUpdatePassport,
     required TResult Function(String message) onUpdateMultiVisa,
     required TResult Function() onUpdateGuarantor,
@@ -533,9 +555,10 @@ class _$OnLoadingImpl implements _OnLoading {
     TResult? Function(String firebaseDocId)? onCreateCorpApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
+    TResult? Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult? Function(String firebaseDocId)? onSubmitPassport,
     TResult? Function()? onUpdateApplication,
-    TResult? Function()? onUpdateCorpApplication,
+    TResult? Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult? Function()? onUpdatePassport,
     TResult? Function(String message)? onUpdateMultiVisa,
     TResult? Function()? onUpdateGuarantor,
@@ -563,9 +586,10 @@ class _$OnLoadingImpl implements _OnLoading {
     TResult Function(String firebaseDocId)? onCreateCorpApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
-    TResult Function()? onUpdateCorpApplication,
+    TResult Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
@@ -598,6 +622,8 @@ class _$OnLoadingImpl implements _OnLoading {
         onCreateCorpApplication,
     required TResult Function(_OnCreatePassport value) onCreatePassport,
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitCorporateApplication value)
+        onSubmitCorporateApplication,
     required TResult Function(_OnSubmitPassport value) onSubmitPassport,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
     required TResult Function(_OnUpdateCorpApplication value)
@@ -634,6 +660,8 @@ class _$OnLoadingImpl implements _OnLoading {
     TResult? Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult? Function(_OnCreatePassport value)? onCreatePassport,
     TResult? Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult? Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult? Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult? Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult? Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -666,6 +694,8 @@ class _$OnLoadingImpl implements _OnLoading {
     TResult Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -778,9 +808,11 @@ class _$OnErrorImpl implements _OnError {
     required TResult Function(String firebaseDocId) onCreateCorpApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
     required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId)
+        onSubmitCorporateApplication,
     required TResult Function(String firebaseDocId) onSubmitPassport,
     required TResult Function() onUpdateApplication,
-    required TResult Function() onUpdateCorpApplication,
+    required TResult Function(String firebaseDocId) onUpdateCorpApplication,
     required TResult Function() onUpdatePassport,
     required TResult Function(String message) onUpdateMultiVisa,
     required TResult Function() onUpdateGuarantor,
@@ -810,9 +842,10 @@ class _$OnErrorImpl implements _OnError {
     TResult? Function(String firebaseDocId)? onCreateCorpApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
+    TResult? Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult? Function(String firebaseDocId)? onSubmitPassport,
     TResult? Function()? onUpdateApplication,
-    TResult? Function()? onUpdateCorpApplication,
+    TResult? Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult? Function()? onUpdatePassport,
     TResult? Function(String message)? onUpdateMultiVisa,
     TResult? Function()? onUpdateGuarantor,
@@ -840,9 +873,10 @@ class _$OnErrorImpl implements _OnError {
     TResult Function(String firebaseDocId)? onCreateCorpApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
-    TResult Function()? onUpdateCorpApplication,
+    TResult Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
@@ -875,6 +909,8 @@ class _$OnErrorImpl implements _OnError {
         onCreateCorpApplication,
     required TResult Function(_OnCreatePassport value) onCreatePassport,
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitCorporateApplication value)
+        onSubmitCorporateApplication,
     required TResult Function(_OnSubmitPassport value) onSubmitPassport,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
     required TResult Function(_OnUpdateCorpApplication value)
@@ -911,6 +947,8 @@ class _$OnErrorImpl implements _OnError {
     TResult? Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult? Function(_OnCreatePassport value)? onCreatePassport,
     TResult? Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult? Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult? Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult? Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult? Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -943,6 +981,8 @@ class _$OnErrorImpl implements _OnError {
     TResult Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -1063,9 +1103,11 @@ class _$OnCreateApplicationImpl implements _OnCreateApplication {
     required TResult Function(String firebaseDocId) onCreateCorpApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
     required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId)
+        onSubmitCorporateApplication,
     required TResult Function(String firebaseDocId) onSubmitPassport,
     required TResult Function() onUpdateApplication,
-    required TResult Function() onUpdateCorpApplication,
+    required TResult Function(String firebaseDocId) onUpdateCorpApplication,
     required TResult Function() onUpdatePassport,
     required TResult Function(String message) onUpdateMultiVisa,
     required TResult Function() onUpdateGuarantor,
@@ -1095,9 +1137,10 @@ class _$OnCreateApplicationImpl implements _OnCreateApplication {
     TResult? Function(String firebaseDocId)? onCreateCorpApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
+    TResult? Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult? Function(String firebaseDocId)? onSubmitPassport,
     TResult? Function()? onUpdateApplication,
-    TResult? Function()? onUpdateCorpApplication,
+    TResult? Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult? Function()? onUpdatePassport,
     TResult? Function(String message)? onUpdateMultiVisa,
     TResult? Function()? onUpdateGuarantor,
@@ -1125,9 +1168,10 @@ class _$OnCreateApplicationImpl implements _OnCreateApplication {
     TResult Function(String firebaseDocId)? onCreateCorpApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
-    TResult Function()? onUpdateCorpApplication,
+    TResult Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
@@ -1160,6 +1204,8 @@ class _$OnCreateApplicationImpl implements _OnCreateApplication {
         onCreateCorpApplication,
     required TResult Function(_OnCreatePassport value) onCreatePassport,
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitCorporateApplication value)
+        onSubmitCorporateApplication,
     required TResult Function(_OnSubmitPassport value) onSubmitPassport,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
     required TResult Function(_OnUpdateCorpApplication value)
@@ -1196,6 +1242,8 @@ class _$OnCreateApplicationImpl implements _OnCreateApplication {
     TResult? Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult? Function(_OnCreatePassport value)? onCreatePassport,
     TResult? Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult? Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult? Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult? Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult? Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -1228,6 +1276,8 @@ class _$OnCreateApplicationImpl implements _OnCreateApplication {
     TResult Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -1341,9 +1391,11 @@ class _$OnCreateCorpApplicationImpl implements _OnCreateCorpApplication {
     required TResult Function(String firebaseDocId) onCreateCorpApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
     required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId)
+        onSubmitCorporateApplication,
     required TResult Function(String firebaseDocId) onSubmitPassport,
     required TResult Function() onUpdateApplication,
-    required TResult Function() onUpdateCorpApplication,
+    required TResult Function(String firebaseDocId) onUpdateCorpApplication,
     required TResult Function() onUpdatePassport,
     required TResult Function(String message) onUpdateMultiVisa,
     required TResult Function() onUpdateGuarantor,
@@ -1373,9 +1425,10 @@ class _$OnCreateCorpApplicationImpl implements _OnCreateCorpApplication {
     TResult? Function(String firebaseDocId)? onCreateCorpApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
+    TResult? Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult? Function(String firebaseDocId)? onSubmitPassport,
     TResult? Function()? onUpdateApplication,
-    TResult? Function()? onUpdateCorpApplication,
+    TResult? Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult? Function()? onUpdatePassport,
     TResult? Function(String message)? onUpdateMultiVisa,
     TResult? Function()? onUpdateGuarantor,
@@ -1403,9 +1456,10 @@ class _$OnCreateCorpApplicationImpl implements _OnCreateCorpApplication {
     TResult Function(String firebaseDocId)? onCreateCorpApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
-    TResult Function()? onUpdateCorpApplication,
+    TResult Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
@@ -1438,6 +1492,8 @@ class _$OnCreateCorpApplicationImpl implements _OnCreateCorpApplication {
         onCreateCorpApplication,
     required TResult Function(_OnCreatePassport value) onCreatePassport,
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitCorporateApplication value)
+        onSubmitCorporateApplication,
     required TResult Function(_OnSubmitPassport value) onSubmitPassport,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
     required TResult Function(_OnUpdateCorpApplication value)
@@ -1474,6 +1530,8 @@ class _$OnCreateCorpApplicationImpl implements _OnCreateCorpApplication {
     TResult? Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult? Function(_OnCreatePassport value)? onCreatePassport,
     TResult? Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult? Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult? Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult? Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult? Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -1506,6 +1564,8 @@ class _$OnCreateCorpApplicationImpl implements _OnCreateCorpApplication {
     TResult Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -1626,9 +1686,11 @@ class _$OnCreatePassportImpl implements _OnCreatePassport {
     required TResult Function(String firebaseDocId) onCreateCorpApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
     required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId)
+        onSubmitCorporateApplication,
     required TResult Function(String firebaseDocId) onSubmitPassport,
     required TResult Function() onUpdateApplication,
-    required TResult Function() onUpdateCorpApplication,
+    required TResult Function(String firebaseDocId) onUpdateCorpApplication,
     required TResult Function() onUpdatePassport,
     required TResult Function(String message) onUpdateMultiVisa,
     required TResult Function() onUpdateGuarantor,
@@ -1658,9 +1720,10 @@ class _$OnCreatePassportImpl implements _OnCreatePassport {
     TResult? Function(String firebaseDocId)? onCreateCorpApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
+    TResult? Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult? Function(String firebaseDocId)? onSubmitPassport,
     TResult? Function()? onUpdateApplication,
-    TResult? Function()? onUpdateCorpApplication,
+    TResult? Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult? Function()? onUpdatePassport,
     TResult? Function(String message)? onUpdateMultiVisa,
     TResult? Function()? onUpdateGuarantor,
@@ -1688,9 +1751,10 @@ class _$OnCreatePassportImpl implements _OnCreatePassport {
     TResult Function(String firebaseDocId)? onCreateCorpApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
-    TResult Function()? onUpdateCorpApplication,
+    TResult Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
@@ -1723,6 +1787,8 @@ class _$OnCreatePassportImpl implements _OnCreatePassport {
         onCreateCorpApplication,
     required TResult Function(_OnCreatePassport value) onCreatePassport,
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitCorporateApplication value)
+        onSubmitCorporateApplication,
     required TResult Function(_OnSubmitPassport value) onSubmitPassport,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
     required TResult Function(_OnUpdateCorpApplication value)
@@ -1759,6 +1825,8 @@ class _$OnCreatePassportImpl implements _OnCreatePassport {
     TResult? Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult? Function(_OnCreatePassport value)? onCreatePassport,
     TResult? Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult? Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult? Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult? Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult? Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -1791,6 +1859,8 @@ class _$OnCreatePassportImpl implements _OnCreatePassport {
     TResult Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -1902,9 +1972,11 @@ class _$OnSubmitApplicationImpl implements _OnSubmitApplication {
     required TResult Function(String firebaseDocId) onCreateCorpApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
     required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId)
+        onSubmitCorporateApplication,
     required TResult Function(String firebaseDocId) onSubmitPassport,
     required TResult Function() onUpdateApplication,
-    required TResult Function() onUpdateCorpApplication,
+    required TResult Function(String firebaseDocId) onUpdateCorpApplication,
     required TResult Function() onUpdatePassport,
     required TResult Function(String message) onUpdateMultiVisa,
     required TResult Function() onUpdateGuarantor,
@@ -1934,9 +2006,10 @@ class _$OnSubmitApplicationImpl implements _OnSubmitApplication {
     TResult? Function(String firebaseDocId)? onCreateCorpApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
+    TResult? Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult? Function(String firebaseDocId)? onSubmitPassport,
     TResult? Function()? onUpdateApplication,
-    TResult? Function()? onUpdateCorpApplication,
+    TResult? Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult? Function()? onUpdatePassport,
     TResult? Function(String message)? onUpdateMultiVisa,
     TResult? Function()? onUpdateGuarantor,
@@ -1964,9 +2037,10 @@ class _$OnSubmitApplicationImpl implements _OnSubmitApplication {
     TResult Function(String firebaseDocId)? onCreateCorpApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
-    TResult Function()? onUpdateCorpApplication,
+    TResult Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
@@ -1999,6 +2073,8 @@ class _$OnSubmitApplicationImpl implements _OnSubmitApplication {
         onCreateCorpApplication,
     required TResult Function(_OnCreatePassport value) onCreatePassport,
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitCorporateApplication value)
+        onSubmitCorporateApplication,
     required TResult Function(_OnSubmitPassport value) onSubmitPassport,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
     required TResult Function(_OnUpdateCorpApplication value)
@@ -2035,6 +2111,8 @@ class _$OnSubmitApplicationImpl implements _OnSubmitApplication {
     TResult? Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult? Function(_OnCreatePassport value)? onCreatePassport,
     TResult? Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult? Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult? Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult? Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult? Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -2067,6 +2145,8 @@ class _$OnSubmitApplicationImpl implements _OnSubmitApplication {
     TResult Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -2101,6 +2181,297 @@ abstract class _OnSubmitApplication implements UpdateApplicationState {
   @JsonKey(ignore: true)
   _$$OnSubmitApplicationImplCopyWith<_$OnSubmitApplicationImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$OnSubmitCorporateApplicationImplCopyWith<$Res> {
+  factory _$$OnSubmitCorporateApplicationImplCopyWith(
+          _$OnSubmitCorporateApplicationImpl value,
+          $Res Function(_$OnSubmitCorporateApplicationImpl) then) =
+      __$$OnSubmitCorporateApplicationImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String firebaseDocId});
+}
+
+/// @nodoc
+class __$$OnSubmitCorporateApplicationImplCopyWithImpl<$Res>
+    extends _$UpdateApplicationStateCopyWithImpl<$Res,
+        _$OnSubmitCorporateApplicationImpl>
+    implements _$$OnSubmitCorporateApplicationImplCopyWith<$Res> {
+  __$$OnSubmitCorporateApplicationImplCopyWithImpl(
+      _$OnSubmitCorporateApplicationImpl _value,
+      $Res Function(_$OnSubmitCorporateApplicationImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? firebaseDocId = null,
+  }) {
+    return _then(_$OnSubmitCorporateApplicationImpl(
+      null == firebaseDocId
+          ? _value.firebaseDocId
+          : firebaseDocId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$OnSubmitCorporateApplicationImpl
+    implements _OnSubmitCorporateApplication {
+  const _$OnSubmitCorporateApplicationImpl(this.firebaseDocId);
+
+  @override
+  final String firebaseDocId;
+
+  @override
+  String toString() {
+    return 'UpdateApplicationState.onSubmitCorporateApplication(firebaseDocId: $firebaseDocId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OnSubmitCorporateApplicationImpl &&
+            (identical(other.firebaseDocId, firebaseDocId) ||
+                other.firebaseDocId == firebaseDocId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, firebaseDocId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OnSubmitCorporateApplicationImplCopyWith<
+          _$OnSubmitCorporateApplicationImpl>
+      get copyWith => __$$OnSubmitCorporateApplicationImplCopyWithImpl<
+          _$OnSubmitCorporateApplicationImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() onLoading,
+    required TResult Function(Failures error) onError,
+    required TResult Function(VisaApplicationModel visaApps)
+        onCreateApplication,
+    required TResult Function(String firebaseDocId) onCreateCorpApplication,
+    required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
+    required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId)
+        onSubmitCorporateApplication,
+    required TResult Function(String firebaseDocId) onSubmitPassport,
+    required TResult Function() onUpdateApplication,
+    required TResult Function(String firebaseDocId) onUpdateCorpApplication,
+    required TResult Function() onUpdatePassport,
+    required TResult Function(String message) onUpdateMultiVisa,
+    required TResult Function() onUpdateGuarantor,
+    required TResult Function(String message) onDeleteSingleImage,
+    required TResult Function(String message) onRejectApplication,
+    required TResult Function(String message) onPendingPaymentApplication,
+    required TResult Function(VisaApplicationModel visa) onGetSingleApplication,
+    required TResult Function(VisaApplicationCorp corpVisa)
+        onGetSingleCorpApplication,
+    required TResult Function(SingleVisaResponse singleResponse)
+        onGetSingleAppsWithImage,
+    required TResult Function() deleteApplication,
+    required TResult Function(List<ImageUploadResponse> list)
+        onUploadImageComplete,
+    required TResult Function(ImageUploadResponse resp) onSelfieImageComplete,
+  }) {
+    return onSubmitCorporateApplication(firebaseDocId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? onLoading,
+    TResult? Function(Failures error)? onError,
+    TResult? Function(VisaApplicationModel visaApps)? onCreateApplication,
+    TResult? Function(String firebaseDocId)? onCreateCorpApplication,
+    TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
+    TResult? Function(String firebaseDocId)? onSubmitApplication,
+    TResult? Function(String firebaseDocId)? onSubmitCorporateApplication,
+    TResult? Function(String firebaseDocId)? onSubmitPassport,
+    TResult? Function()? onUpdateApplication,
+    TResult? Function(String firebaseDocId)? onUpdateCorpApplication,
+    TResult? Function()? onUpdatePassport,
+    TResult? Function(String message)? onUpdateMultiVisa,
+    TResult? Function()? onUpdateGuarantor,
+    TResult? Function(String message)? onDeleteSingleImage,
+    TResult? Function(String message)? onRejectApplication,
+    TResult? Function(String message)? onPendingPaymentApplication,
+    TResult? Function(VisaApplicationModel visa)? onGetSingleApplication,
+    TResult? Function(VisaApplicationCorp corpVisa)? onGetSingleCorpApplication,
+    TResult? Function(SingleVisaResponse singleResponse)?
+        onGetSingleAppsWithImage,
+    TResult? Function()? deleteApplication,
+    TResult? Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult? Function(ImageUploadResponse resp)? onSelfieImageComplete,
+  }) {
+    return onSubmitCorporateApplication?.call(firebaseDocId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? onLoading,
+    TResult Function(Failures error)? onError,
+    TResult Function(VisaApplicationModel visaApps)? onCreateApplication,
+    TResult Function(String firebaseDocId)? onCreateCorpApplication,
+    TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
+    TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitCorporateApplication,
+    TResult Function(String firebaseDocId)? onSubmitPassport,
+    TResult Function()? onUpdateApplication,
+    TResult Function(String firebaseDocId)? onUpdateCorpApplication,
+    TResult Function()? onUpdatePassport,
+    TResult Function(String message)? onUpdateMultiVisa,
+    TResult Function()? onUpdateGuarantor,
+    TResult Function(String message)? onDeleteSingleImage,
+    TResult Function(String message)? onRejectApplication,
+    TResult Function(String message)? onPendingPaymentApplication,
+    TResult Function(VisaApplicationModel visa)? onGetSingleApplication,
+    TResult Function(VisaApplicationCorp corpVisa)? onGetSingleCorpApplication,
+    TResult Function(SingleVisaResponse singleResponse)?
+        onGetSingleAppsWithImage,
+    TResult Function()? deleteApplication,
+    TResult Function(List<ImageUploadResponse> list)? onUploadImageComplete,
+    TResult Function(ImageUploadResponse resp)? onSelfieImageComplete,
+    required TResult orElse(),
+  }) {
+    if (onSubmitCorporateApplication != null) {
+      return onSubmitCorporateApplication(firebaseDocId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_OnLoading value) onLoading,
+    required TResult Function(_OnError value) onError,
+    required TResult Function(_OnCreateApplication value) onCreateApplication,
+    required TResult Function(_OnCreateCorpApplication value)
+        onCreateCorpApplication,
+    required TResult Function(_OnCreatePassport value) onCreatePassport,
+    required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitCorporateApplication value)
+        onSubmitCorporateApplication,
+    required TResult Function(_OnSubmitPassport value) onSubmitPassport,
+    required TResult Function(_OnUpdateApplication value) onUpdateApplication,
+    required TResult Function(_OnUpdateCorpApplication value)
+        onUpdateCorpApplication,
+    required TResult Function(_OnUpdatePassport value) onUpdatePassport,
+    required TResult Function(_OnUpdateMultiVisa value) onUpdateMultiVisa,
+    required TResult Function(_OnUpdateGuarantor value) onUpdateGuarantor,
+    required TResult Function(_OnDeleteSingleImage value) onDeleteSingleImage,
+    required TResult Function(_OnRejectApplication value) onRejectApplication,
+    required TResult Function(_OnPendingPaymentApplication value)
+        onPendingPaymentApplication,
+    required TResult Function(_OnGetSingleApplication value)
+        onGetSingleApplication,
+    required TResult Function(_OnGetSingleCorpApplication value)
+        onGetSingleCorpApplication,
+    required TResult Function(_OnGetSingleAppsWithImage value)
+        onGetSingleAppsWithImage,
+    required TResult Function(_DeleteApplication value) deleteApplication,
+    required TResult Function(_OnUploadImageComplete value)
+        onUploadImageComplete,
+    required TResult Function(_OnSelfieImageComplete value)
+        onSelfieImageComplete,
+  }) {
+    return onSubmitCorporateApplication(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_OnLoading value)? onLoading,
+    TResult? Function(_OnError value)? onError,
+    TResult? Function(_OnCreateApplication value)? onCreateApplication,
+    TResult? Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
+    TResult? Function(_OnCreatePassport value)? onCreatePassport,
+    TResult? Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult? Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
+    TResult? Function(_OnSubmitPassport value)? onSubmitPassport,
+    TResult? Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult? Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
+    TResult? Function(_OnUpdatePassport value)? onUpdatePassport,
+    TResult? Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
+    TResult? Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
+    TResult? Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
+    TResult? Function(_OnRejectApplication value)? onRejectApplication,
+    TResult? Function(_OnPendingPaymentApplication value)?
+        onPendingPaymentApplication,
+    TResult? Function(_OnGetSingleApplication value)? onGetSingleApplication,
+    TResult? Function(_OnGetSingleCorpApplication value)?
+        onGetSingleCorpApplication,
+    TResult? Function(_OnGetSingleAppsWithImage value)?
+        onGetSingleAppsWithImage,
+    TResult? Function(_DeleteApplication value)? deleteApplication,
+    TResult? Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult? Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
+  }) {
+    return onSubmitCorporateApplication?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_OnLoading value)? onLoading,
+    TResult Function(_OnError value)? onError,
+    TResult Function(_OnCreateApplication value)? onCreateApplication,
+    TResult Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
+    TResult Function(_OnCreatePassport value)? onCreatePassport,
+    TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
+    TResult Function(_OnSubmitPassport value)? onSubmitPassport,
+    TResult Function(_OnUpdateApplication value)? onUpdateApplication,
+    TResult Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
+    TResult Function(_OnUpdatePassport value)? onUpdatePassport,
+    TResult Function(_OnUpdateMultiVisa value)? onUpdateMultiVisa,
+    TResult Function(_OnUpdateGuarantor value)? onUpdateGuarantor,
+    TResult Function(_OnDeleteSingleImage value)? onDeleteSingleImage,
+    TResult Function(_OnRejectApplication value)? onRejectApplication,
+    TResult Function(_OnPendingPaymentApplication value)?
+        onPendingPaymentApplication,
+    TResult Function(_OnGetSingleApplication value)? onGetSingleApplication,
+    TResult Function(_OnGetSingleCorpApplication value)?
+        onGetSingleCorpApplication,
+    TResult Function(_OnGetSingleAppsWithImage value)? onGetSingleAppsWithImage,
+    TResult Function(_DeleteApplication value)? deleteApplication,
+    TResult Function(_OnUploadImageComplete value)? onUploadImageComplete,
+    TResult Function(_OnSelfieImageComplete value)? onSelfieImageComplete,
+    required TResult orElse(),
+  }) {
+    if (onSubmitCorporateApplication != null) {
+      return onSubmitCorporateApplication(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OnSubmitCorporateApplication implements UpdateApplicationState {
+  const factory _OnSubmitCorporateApplication(final String firebaseDocId) =
+      _$OnSubmitCorporateApplicationImpl;
+
+  String get firebaseDocId;
+  @JsonKey(ignore: true)
+  _$$OnSubmitCorporateApplicationImplCopyWith<
+          _$OnSubmitCorporateApplicationImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2177,9 +2548,11 @@ class _$OnSubmitPassportImpl implements _OnSubmitPassport {
     required TResult Function(String firebaseDocId) onCreateCorpApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
     required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId)
+        onSubmitCorporateApplication,
     required TResult Function(String firebaseDocId) onSubmitPassport,
     required TResult Function() onUpdateApplication,
-    required TResult Function() onUpdateCorpApplication,
+    required TResult Function(String firebaseDocId) onUpdateCorpApplication,
     required TResult Function() onUpdatePassport,
     required TResult Function(String message) onUpdateMultiVisa,
     required TResult Function() onUpdateGuarantor,
@@ -2209,9 +2582,10 @@ class _$OnSubmitPassportImpl implements _OnSubmitPassport {
     TResult? Function(String firebaseDocId)? onCreateCorpApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
+    TResult? Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult? Function(String firebaseDocId)? onSubmitPassport,
     TResult? Function()? onUpdateApplication,
-    TResult? Function()? onUpdateCorpApplication,
+    TResult? Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult? Function()? onUpdatePassport,
     TResult? Function(String message)? onUpdateMultiVisa,
     TResult? Function()? onUpdateGuarantor,
@@ -2239,9 +2613,10 @@ class _$OnSubmitPassportImpl implements _OnSubmitPassport {
     TResult Function(String firebaseDocId)? onCreateCorpApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
-    TResult Function()? onUpdateCorpApplication,
+    TResult Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
@@ -2274,6 +2649,8 @@ class _$OnSubmitPassportImpl implements _OnSubmitPassport {
         onCreateCorpApplication,
     required TResult Function(_OnCreatePassport value) onCreatePassport,
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitCorporateApplication value)
+        onSubmitCorporateApplication,
     required TResult Function(_OnSubmitPassport value) onSubmitPassport,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
     required TResult Function(_OnUpdateCorpApplication value)
@@ -2310,6 +2687,8 @@ class _$OnSubmitPassportImpl implements _OnSubmitPassport {
     TResult? Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult? Function(_OnCreatePassport value)? onCreatePassport,
     TResult? Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult? Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult? Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult? Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult? Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -2342,6 +2721,8 @@ class _$OnSubmitPassportImpl implements _OnSubmitPassport {
     TResult Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -2426,9 +2807,11 @@ class _$OnUpdateApplicationImpl implements _OnUpdateApplication {
     required TResult Function(String firebaseDocId) onCreateCorpApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
     required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId)
+        onSubmitCorporateApplication,
     required TResult Function(String firebaseDocId) onSubmitPassport,
     required TResult Function() onUpdateApplication,
-    required TResult Function() onUpdateCorpApplication,
+    required TResult Function(String firebaseDocId) onUpdateCorpApplication,
     required TResult Function() onUpdatePassport,
     required TResult Function(String message) onUpdateMultiVisa,
     required TResult Function() onUpdateGuarantor,
@@ -2458,9 +2841,10 @@ class _$OnUpdateApplicationImpl implements _OnUpdateApplication {
     TResult? Function(String firebaseDocId)? onCreateCorpApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
+    TResult? Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult? Function(String firebaseDocId)? onSubmitPassport,
     TResult? Function()? onUpdateApplication,
-    TResult? Function()? onUpdateCorpApplication,
+    TResult? Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult? Function()? onUpdatePassport,
     TResult? Function(String message)? onUpdateMultiVisa,
     TResult? Function()? onUpdateGuarantor,
@@ -2488,9 +2872,10 @@ class _$OnUpdateApplicationImpl implements _OnUpdateApplication {
     TResult Function(String firebaseDocId)? onCreateCorpApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
-    TResult Function()? onUpdateCorpApplication,
+    TResult Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
@@ -2523,6 +2908,8 @@ class _$OnUpdateApplicationImpl implements _OnUpdateApplication {
         onCreateCorpApplication,
     required TResult Function(_OnCreatePassport value) onCreatePassport,
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitCorporateApplication value)
+        onSubmitCorporateApplication,
     required TResult Function(_OnSubmitPassport value) onSubmitPassport,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
     required TResult Function(_OnUpdateCorpApplication value)
@@ -2559,6 +2946,8 @@ class _$OnUpdateApplicationImpl implements _OnUpdateApplication {
     TResult? Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult? Function(_OnCreatePassport value)? onCreatePassport,
     TResult? Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult? Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult? Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult? Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult? Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -2591,6 +2980,8 @@ class _$OnUpdateApplicationImpl implements _OnUpdateApplication {
     TResult Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -2627,6 +3018,8 @@ abstract class _$$OnUpdateCorpApplicationImplCopyWith<$Res> {
           _$OnUpdateCorpApplicationImpl value,
           $Res Function(_$OnUpdateCorpApplicationImpl) then) =
       __$$OnUpdateCorpApplicationImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String firebaseDocId});
 }
 
 /// @nodoc
@@ -2638,27 +3031,52 @@ class __$$OnUpdateCorpApplicationImplCopyWithImpl<$Res>
       _$OnUpdateCorpApplicationImpl _value,
       $Res Function(_$OnUpdateCorpApplicationImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? firebaseDocId = null,
+  }) {
+    return _then(_$OnUpdateCorpApplicationImpl(
+      null == firebaseDocId
+          ? _value.firebaseDocId
+          : firebaseDocId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$OnUpdateCorpApplicationImpl implements _OnUpdateCorpApplication {
-  const _$OnUpdateCorpApplicationImpl();
+  const _$OnUpdateCorpApplicationImpl(this.firebaseDocId);
+
+  @override
+  final String firebaseDocId;
 
   @override
   String toString() {
-    return 'UpdateApplicationState.onUpdateCorpApplication()';
+    return 'UpdateApplicationState.onUpdateCorpApplication(firebaseDocId: $firebaseDocId)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$OnUpdateCorpApplicationImpl);
+            other is _$OnUpdateCorpApplicationImpl &&
+            (identical(other.firebaseDocId, firebaseDocId) ||
+                other.firebaseDocId == firebaseDocId));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, firebaseDocId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OnUpdateCorpApplicationImplCopyWith<_$OnUpdateCorpApplicationImpl>
+      get copyWith => __$$OnUpdateCorpApplicationImplCopyWithImpl<
+          _$OnUpdateCorpApplicationImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2671,9 +3089,11 @@ class _$OnUpdateCorpApplicationImpl implements _OnUpdateCorpApplication {
     required TResult Function(String firebaseDocId) onCreateCorpApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
     required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId)
+        onSubmitCorporateApplication,
     required TResult Function(String firebaseDocId) onSubmitPassport,
     required TResult Function() onUpdateApplication,
-    required TResult Function() onUpdateCorpApplication,
+    required TResult Function(String firebaseDocId) onUpdateCorpApplication,
     required TResult Function() onUpdatePassport,
     required TResult Function(String message) onUpdateMultiVisa,
     required TResult Function() onUpdateGuarantor,
@@ -2690,7 +3110,7 @@ class _$OnUpdateCorpApplicationImpl implements _OnUpdateCorpApplication {
         onUploadImageComplete,
     required TResult Function(ImageUploadResponse resp) onSelfieImageComplete,
   }) {
-    return onUpdateCorpApplication();
+    return onUpdateCorpApplication(firebaseDocId);
   }
 
   @override
@@ -2703,9 +3123,10 @@ class _$OnUpdateCorpApplicationImpl implements _OnUpdateCorpApplication {
     TResult? Function(String firebaseDocId)? onCreateCorpApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
+    TResult? Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult? Function(String firebaseDocId)? onSubmitPassport,
     TResult? Function()? onUpdateApplication,
-    TResult? Function()? onUpdateCorpApplication,
+    TResult? Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult? Function()? onUpdatePassport,
     TResult? Function(String message)? onUpdateMultiVisa,
     TResult? Function()? onUpdateGuarantor,
@@ -2720,7 +3141,7 @@ class _$OnUpdateCorpApplicationImpl implements _OnUpdateCorpApplication {
     TResult? Function(List<ImageUploadResponse> list)? onUploadImageComplete,
     TResult? Function(ImageUploadResponse resp)? onSelfieImageComplete,
   }) {
-    return onUpdateCorpApplication?.call();
+    return onUpdateCorpApplication?.call(firebaseDocId);
   }
 
   @override
@@ -2733,9 +3154,10 @@ class _$OnUpdateCorpApplicationImpl implements _OnUpdateCorpApplication {
     TResult Function(String firebaseDocId)? onCreateCorpApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
-    TResult Function()? onUpdateCorpApplication,
+    TResult Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
@@ -2752,7 +3174,7 @@ class _$OnUpdateCorpApplicationImpl implements _OnUpdateCorpApplication {
     required TResult orElse(),
   }) {
     if (onUpdateCorpApplication != null) {
-      return onUpdateCorpApplication();
+      return onUpdateCorpApplication(firebaseDocId);
     }
     return orElse();
   }
@@ -2768,6 +3190,8 @@ class _$OnUpdateCorpApplicationImpl implements _OnUpdateCorpApplication {
         onCreateCorpApplication,
     required TResult Function(_OnCreatePassport value) onCreatePassport,
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitCorporateApplication value)
+        onSubmitCorporateApplication,
     required TResult Function(_OnSubmitPassport value) onSubmitPassport,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
     required TResult Function(_OnUpdateCorpApplication value)
@@ -2804,6 +3228,8 @@ class _$OnUpdateCorpApplicationImpl implements _OnUpdateCorpApplication {
     TResult? Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult? Function(_OnCreatePassport value)? onCreatePassport,
     TResult? Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult? Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult? Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult? Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult? Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -2836,6 +3262,8 @@ class _$OnUpdateCorpApplicationImpl implements _OnUpdateCorpApplication {
     TResult Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -2863,7 +3291,13 @@ class _$OnUpdateCorpApplicationImpl implements _OnUpdateCorpApplication {
 }
 
 abstract class _OnUpdateCorpApplication implements UpdateApplicationState {
-  const factory _OnUpdateCorpApplication() = _$OnUpdateCorpApplicationImpl;
+  const factory _OnUpdateCorpApplication(final String firebaseDocId) =
+      _$OnUpdateCorpApplicationImpl;
+
+  String get firebaseDocId;
+  @JsonKey(ignore: true)
+  _$$OnUpdateCorpApplicationImplCopyWith<_$OnUpdateCorpApplicationImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2912,9 +3346,11 @@ class _$OnUpdatePassportImpl implements _OnUpdatePassport {
     required TResult Function(String firebaseDocId) onCreateCorpApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
     required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId)
+        onSubmitCorporateApplication,
     required TResult Function(String firebaseDocId) onSubmitPassport,
     required TResult Function() onUpdateApplication,
-    required TResult Function() onUpdateCorpApplication,
+    required TResult Function(String firebaseDocId) onUpdateCorpApplication,
     required TResult Function() onUpdatePassport,
     required TResult Function(String message) onUpdateMultiVisa,
     required TResult Function() onUpdateGuarantor,
@@ -2944,9 +3380,10 @@ class _$OnUpdatePassportImpl implements _OnUpdatePassport {
     TResult? Function(String firebaseDocId)? onCreateCorpApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
+    TResult? Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult? Function(String firebaseDocId)? onSubmitPassport,
     TResult? Function()? onUpdateApplication,
-    TResult? Function()? onUpdateCorpApplication,
+    TResult? Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult? Function()? onUpdatePassport,
     TResult? Function(String message)? onUpdateMultiVisa,
     TResult? Function()? onUpdateGuarantor,
@@ -2974,9 +3411,10 @@ class _$OnUpdatePassportImpl implements _OnUpdatePassport {
     TResult Function(String firebaseDocId)? onCreateCorpApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
-    TResult Function()? onUpdateCorpApplication,
+    TResult Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
@@ -3009,6 +3447,8 @@ class _$OnUpdatePassportImpl implements _OnUpdatePassport {
         onCreateCorpApplication,
     required TResult Function(_OnCreatePassport value) onCreatePassport,
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitCorporateApplication value)
+        onSubmitCorporateApplication,
     required TResult Function(_OnSubmitPassport value) onSubmitPassport,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
     required TResult Function(_OnUpdateCorpApplication value)
@@ -3045,6 +3485,8 @@ class _$OnUpdatePassportImpl implements _OnUpdatePassport {
     TResult? Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult? Function(_OnCreatePassport value)? onCreatePassport,
     TResult? Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult? Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult? Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult? Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult? Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -3077,6 +3519,8 @@ class _$OnUpdatePassportImpl implements _OnUpdatePassport {
     TResult Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -3180,9 +3624,11 @@ class _$OnUpdateMultiVisaImpl implements _OnUpdateMultiVisa {
     required TResult Function(String firebaseDocId) onCreateCorpApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
     required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId)
+        onSubmitCorporateApplication,
     required TResult Function(String firebaseDocId) onSubmitPassport,
     required TResult Function() onUpdateApplication,
-    required TResult Function() onUpdateCorpApplication,
+    required TResult Function(String firebaseDocId) onUpdateCorpApplication,
     required TResult Function() onUpdatePassport,
     required TResult Function(String message) onUpdateMultiVisa,
     required TResult Function() onUpdateGuarantor,
@@ -3212,9 +3658,10 @@ class _$OnUpdateMultiVisaImpl implements _OnUpdateMultiVisa {
     TResult? Function(String firebaseDocId)? onCreateCorpApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
+    TResult? Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult? Function(String firebaseDocId)? onSubmitPassport,
     TResult? Function()? onUpdateApplication,
-    TResult? Function()? onUpdateCorpApplication,
+    TResult? Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult? Function()? onUpdatePassport,
     TResult? Function(String message)? onUpdateMultiVisa,
     TResult? Function()? onUpdateGuarantor,
@@ -3242,9 +3689,10 @@ class _$OnUpdateMultiVisaImpl implements _OnUpdateMultiVisa {
     TResult Function(String firebaseDocId)? onCreateCorpApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
-    TResult Function()? onUpdateCorpApplication,
+    TResult Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
@@ -3277,6 +3725,8 @@ class _$OnUpdateMultiVisaImpl implements _OnUpdateMultiVisa {
         onCreateCorpApplication,
     required TResult Function(_OnCreatePassport value) onCreatePassport,
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitCorporateApplication value)
+        onSubmitCorporateApplication,
     required TResult Function(_OnSubmitPassport value) onSubmitPassport,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
     required TResult Function(_OnUpdateCorpApplication value)
@@ -3313,6 +3763,8 @@ class _$OnUpdateMultiVisaImpl implements _OnUpdateMultiVisa {
     TResult? Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult? Function(_OnCreatePassport value)? onCreatePassport,
     TResult? Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult? Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult? Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult? Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult? Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -3345,6 +3797,8 @@ class _$OnUpdateMultiVisaImpl implements _OnUpdateMultiVisa {
     TResult Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -3427,9 +3881,11 @@ class _$OnUpdateGuarantorImpl implements _OnUpdateGuarantor {
     required TResult Function(String firebaseDocId) onCreateCorpApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
     required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId)
+        onSubmitCorporateApplication,
     required TResult Function(String firebaseDocId) onSubmitPassport,
     required TResult Function() onUpdateApplication,
-    required TResult Function() onUpdateCorpApplication,
+    required TResult Function(String firebaseDocId) onUpdateCorpApplication,
     required TResult Function() onUpdatePassport,
     required TResult Function(String message) onUpdateMultiVisa,
     required TResult Function() onUpdateGuarantor,
@@ -3459,9 +3915,10 @@ class _$OnUpdateGuarantorImpl implements _OnUpdateGuarantor {
     TResult? Function(String firebaseDocId)? onCreateCorpApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
+    TResult? Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult? Function(String firebaseDocId)? onSubmitPassport,
     TResult? Function()? onUpdateApplication,
-    TResult? Function()? onUpdateCorpApplication,
+    TResult? Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult? Function()? onUpdatePassport,
     TResult? Function(String message)? onUpdateMultiVisa,
     TResult? Function()? onUpdateGuarantor,
@@ -3489,9 +3946,10 @@ class _$OnUpdateGuarantorImpl implements _OnUpdateGuarantor {
     TResult Function(String firebaseDocId)? onCreateCorpApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
-    TResult Function()? onUpdateCorpApplication,
+    TResult Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
@@ -3524,6 +3982,8 @@ class _$OnUpdateGuarantorImpl implements _OnUpdateGuarantor {
         onCreateCorpApplication,
     required TResult Function(_OnCreatePassport value) onCreatePassport,
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitCorporateApplication value)
+        onSubmitCorporateApplication,
     required TResult Function(_OnSubmitPassport value) onSubmitPassport,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
     required TResult Function(_OnUpdateCorpApplication value)
@@ -3560,6 +4020,8 @@ class _$OnUpdateGuarantorImpl implements _OnUpdateGuarantor {
     TResult? Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult? Function(_OnCreatePassport value)? onCreatePassport,
     TResult? Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult? Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult? Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult? Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult? Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -3592,6 +4054,8 @@ class _$OnUpdateGuarantorImpl implements _OnUpdateGuarantor {
     TResult Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -3696,9 +4160,11 @@ class _$OnDeleteSingleImageImpl implements _OnDeleteSingleImage {
     required TResult Function(String firebaseDocId) onCreateCorpApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
     required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId)
+        onSubmitCorporateApplication,
     required TResult Function(String firebaseDocId) onSubmitPassport,
     required TResult Function() onUpdateApplication,
-    required TResult Function() onUpdateCorpApplication,
+    required TResult Function(String firebaseDocId) onUpdateCorpApplication,
     required TResult Function() onUpdatePassport,
     required TResult Function(String message) onUpdateMultiVisa,
     required TResult Function() onUpdateGuarantor,
@@ -3728,9 +4194,10 @@ class _$OnDeleteSingleImageImpl implements _OnDeleteSingleImage {
     TResult? Function(String firebaseDocId)? onCreateCorpApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
+    TResult? Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult? Function(String firebaseDocId)? onSubmitPassport,
     TResult? Function()? onUpdateApplication,
-    TResult? Function()? onUpdateCorpApplication,
+    TResult? Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult? Function()? onUpdatePassport,
     TResult? Function(String message)? onUpdateMultiVisa,
     TResult? Function()? onUpdateGuarantor,
@@ -3758,9 +4225,10 @@ class _$OnDeleteSingleImageImpl implements _OnDeleteSingleImage {
     TResult Function(String firebaseDocId)? onCreateCorpApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
-    TResult Function()? onUpdateCorpApplication,
+    TResult Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
@@ -3793,6 +4261,8 @@ class _$OnDeleteSingleImageImpl implements _OnDeleteSingleImage {
         onCreateCorpApplication,
     required TResult Function(_OnCreatePassport value) onCreatePassport,
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitCorporateApplication value)
+        onSubmitCorporateApplication,
     required TResult Function(_OnSubmitPassport value) onSubmitPassport,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
     required TResult Function(_OnUpdateCorpApplication value)
@@ -3829,6 +4299,8 @@ class _$OnDeleteSingleImageImpl implements _OnDeleteSingleImage {
     TResult? Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult? Function(_OnCreatePassport value)? onCreatePassport,
     TResult? Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult? Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult? Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult? Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult? Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -3861,6 +4333,8 @@ class _$OnDeleteSingleImageImpl implements _OnDeleteSingleImage {
     TResult Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -3971,9 +4445,11 @@ class _$OnRejectApplicationImpl implements _OnRejectApplication {
     required TResult Function(String firebaseDocId) onCreateCorpApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
     required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId)
+        onSubmitCorporateApplication,
     required TResult Function(String firebaseDocId) onSubmitPassport,
     required TResult Function() onUpdateApplication,
-    required TResult Function() onUpdateCorpApplication,
+    required TResult Function(String firebaseDocId) onUpdateCorpApplication,
     required TResult Function() onUpdatePassport,
     required TResult Function(String message) onUpdateMultiVisa,
     required TResult Function() onUpdateGuarantor,
@@ -4003,9 +4479,10 @@ class _$OnRejectApplicationImpl implements _OnRejectApplication {
     TResult? Function(String firebaseDocId)? onCreateCorpApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
+    TResult? Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult? Function(String firebaseDocId)? onSubmitPassport,
     TResult? Function()? onUpdateApplication,
-    TResult? Function()? onUpdateCorpApplication,
+    TResult? Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult? Function()? onUpdatePassport,
     TResult? Function(String message)? onUpdateMultiVisa,
     TResult? Function()? onUpdateGuarantor,
@@ -4033,9 +4510,10 @@ class _$OnRejectApplicationImpl implements _OnRejectApplication {
     TResult Function(String firebaseDocId)? onCreateCorpApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
-    TResult Function()? onUpdateCorpApplication,
+    TResult Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
@@ -4068,6 +4546,8 @@ class _$OnRejectApplicationImpl implements _OnRejectApplication {
         onCreateCorpApplication,
     required TResult Function(_OnCreatePassport value) onCreatePassport,
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitCorporateApplication value)
+        onSubmitCorporateApplication,
     required TResult Function(_OnSubmitPassport value) onSubmitPassport,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
     required TResult Function(_OnUpdateCorpApplication value)
@@ -4104,6 +4584,8 @@ class _$OnRejectApplicationImpl implements _OnRejectApplication {
     TResult? Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult? Function(_OnCreatePassport value)? onCreatePassport,
     TResult? Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult? Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult? Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult? Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult? Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -4136,6 +4618,8 @@ class _$OnRejectApplicationImpl implements _OnRejectApplication {
     TResult Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -4249,9 +4733,11 @@ class _$OnPendingPaymentApplicationImpl
     required TResult Function(String firebaseDocId) onCreateCorpApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
     required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId)
+        onSubmitCorporateApplication,
     required TResult Function(String firebaseDocId) onSubmitPassport,
     required TResult Function() onUpdateApplication,
-    required TResult Function() onUpdateCorpApplication,
+    required TResult Function(String firebaseDocId) onUpdateCorpApplication,
     required TResult Function() onUpdatePassport,
     required TResult Function(String message) onUpdateMultiVisa,
     required TResult Function() onUpdateGuarantor,
@@ -4281,9 +4767,10 @@ class _$OnPendingPaymentApplicationImpl
     TResult? Function(String firebaseDocId)? onCreateCorpApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
+    TResult? Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult? Function(String firebaseDocId)? onSubmitPassport,
     TResult? Function()? onUpdateApplication,
-    TResult? Function()? onUpdateCorpApplication,
+    TResult? Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult? Function()? onUpdatePassport,
     TResult? Function(String message)? onUpdateMultiVisa,
     TResult? Function()? onUpdateGuarantor,
@@ -4311,9 +4798,10 @@ class _$OnPendingPaymentApplicationImpl
     TResult Function(String firebaseDocId)? onCreateCorpApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
-    TResult Function()? onUpdateCorpApplication,
+    TResult Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
@@ -4346,6 +4834,8 @@ class _$OnPendingPaymentApplicationImpl
         onCreateCorpApplication,
     required TResult Function(_OnCreatePassport value) onCreatePassport,
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitCorporateApplication value)
+        onSubmitCorporateApplication,
     required TResult Function(_OnSubmitPassport value) onSubmitPassport,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
     required TResult Function(_OnUpdateCorpApplication value)
@@ -4382,6 +4872,8 @@ class _$OnPendingPaymentApplicationImpl
     TResult? Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult? Function(_OnCreatePassport value)? onCreatePassport,
     TResult? Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult? Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult? Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult? Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult? Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -4414,6 +4906,8 @@ class _$OnPendingPaymentApplicationImpl
     TResult Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -4536,9 +5030,11 @@ class _$OnGetSingleApplicationImpl implements _OnGetSingleApplication {
     required TResult Function(String firebaseDocId) onCreateCorpApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
     required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId)
+        onSubmitCorporateApplication,
     required TResult Function(String firebaseDocId) onSubmitPassport,
     required TResult Function() onUpdateApplication,
-    required TResult Function() onUpdateCorpApplication,
+    required TResult Function(String firebaseDocId) onUpdateCorpApplication,
     required TResult Function() onUpdatePassport,
     required TResult Function(String message) onUpdateMultiVisa,
     required TResult Function() onUpdateGuarantor,
@@ -4568,9 +5064,10 @@ class _$OnGetSingleApplicationImpl implements _OnGetSingleApplication {
     TResult? Function(String firebaseDocId)? onCreateCorpApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
+    TResult? Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult? Function(String firebaseDocId)? onSubmitPassport,
     TResult? Function()? onUpdateApplication,
-    TResult? Function()? onUpdateCorpApplication,
+    TResult? Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult? Function()? onUpdatePassport,
     TResult? Function(String message)? onUpdateMultiVisa,
     TResult? Function()? onUpdateGuarantor,
@@ -4598,9 +5095,10 @@ class _$OnGetSingleApplicationImpl implements _OnGetSingleApplication {
     TResult Function(String firebaseDocId)? onCreateCorpApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
-    TResult Function()? onUpdateCorpApplication,
+    TResult Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
@@ -4633,6 +5131,8 @@ class _$OnGetSingleApplicationImpl implements _OnGetSingleApplication {
         onCreateCorpApplication,
     required TResult Function(_OnCreatePassport value) onCreatePassport,
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitCorporateApplication value)
+        onSubmitCorporateApplication,
     required TResult Function(_OnSubmitPassport value) onSubmitPassport,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
     required TResult Function(_OnUpdateCorpApplication value)
@@ -4669,6 +5169,8 @@ class _$OnGetSingleApplicationImpl implements _OnGetSingleApplication {
     TResult? Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult? Function(_OnCreatePassport value)? onCreatePassport,
     TResult? Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult? Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult? Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult? Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult? Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -4701,6 +5203,8 @@ class _$OnGetSingleApplicationImpl implements _OnGetSingleApplication {
     TResult Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -4824,9 +5328,11 @@ class _$OnGetSingleCorpApplicationImpl implements _OnGetSingleCorpApplication {
     required TResult Function(String firebaseDocId) onCreateCorpApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
     required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId)
+        onSubmitCorporateApplication,
     required TResult Function(String firebaseDocId) onSubmitPassport,
     required TResult Function() onUpdateApplication,
-    required TResult Function() onUpdateCorpApplication,
+    required TResult Function(String firebaseDocId) onUpdateCorpApplication,
     required TResult Function() onUpdatePassport,
     required TResult Function(String message) onUpdateMultiVisa,
     required TResult Function() onUpdateGuarantor,
@@ -4856,9 +5362,10 @@ class _$OnGetSingleCorpApplicationImpl implements _OnGetSingleCorpApplication {
     TResult? Function(String firebaseDocId)? onCreateCorpApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
+    TResult? Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult? Function(String firebaseDocId)? onSubmitPassport,
     TResult? Function()? onUpdateApplication,
-    TResult? Function()? onUpdateCorpApplication,
+    TResult? Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult? Function()? onUpdatePassport,
     TResult? Function(String message)? onUpdateMultiVisa,
     TResult? Function()? onUpdateGuarantor,
@@ -4886,9 +5393,10 @@ class _$OnGetSingleCorpApplicationImpl implements _OnGetSingleCorpApplication {
     TResult Function(String firebaseDocId)? onCreateCorpApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
-    TResult Function()? onUpdateCorpApplication,
+    TResult Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
@@ -4921,6 +5429,8 @@ class _$OnGetSingleCorpApplicationImpl implements _OnGetSingleCorpApplication {
         onCreateCorpApplication,
     required TResult Function(_OnCreatePassport value) onCreatePassport,
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitCorporateApplication value)
+        onSubmitCorporateApplication,
     required TResult Function(_OnSubmitPassport value) onSubmitPassport,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
     required TResult Function(_OnUpdateCorpApplication value)
@@ -4957,6 +5467,8 @@ class _$OnGetSingleCorpApplicationImpl implements _OnGetSingleCorpApplication {
     TResult? Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult? Function(_OnCreatePassport value)? onCreatePassport,
     TResult? Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult? Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult? Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult? Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult? Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -4989,6 +5501,8 @@ class _$OnGetSingleCorpApplicationImpl implements _OnGetSingleCorpApplication {
     TResult Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -5112,9 +5626,11 @@ class _$OnGetSingleAppsWithImageImpl implements _OnGetSingleAppsWithImage {
     required TResult Function(String firebaseDocId) onCreateCorpApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
     required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId)
+        onSubmitCorporateApplication,
     required TResult Function(String firebaseDocId) onSubmitPassport,
     required TResult Function() onUpdateApplication,
-    required TResult Function() onUpdateCorpApplication,
+    required TResult Function(String firebaseDocId) onUpdateCorpApplication,
     required TResult Function() onUpdatePassport,
     required TResult Function(String message) onUpdateMultiVisa,
     required TResult Function() onUpdateGuarantor,
@@ -5144,9 +5660,10 @@ class _$OnGetSingleAppsWithImageImpl implements _OnGetSingleAppsWithImage {
     TResult? Function(String firebaseDocId)? onCreateCorpApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
+    TResult? Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult? Function(String firebaseDocId)? onSubmitPassport,
     TResult? Function()? onUpdateApplication,
-    TResult? Function()? onUpdateCorpApplication,
+    TResult? Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult? Function()? onUpdatePassport,
     TResult? Function(String message)? onUpdateMultiVisa,
     TResult? Function()? onUpdateGuarantor,
@@ -5174,9 +5691,10 @@ class _$OnGetSingleAppsWithImageImpl implements _OnGetSingleAppsWithImage {
     TResult Function(String firebaseDocId)? onCreateCorpApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
-    TResult Function()? onUpdateCorpApplication,
+    TResult Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
@@ -5209,6 +5727,8 @@ class _$OnGetSingleAppsWithImageImpl implements _OnGetSingleAppsWithImage {
         onCreateCorpApplication,
     required TResult Function(_OnCreatePassport value) onCreatePassport,
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitCorporateApplication value)
+        onSubmitCorporateApplication,
     required TResult Function(_OnSubmitPassport value) onSubmitPassport,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
     required TResult Function(_OnUpdateCorpApplication value)
@@ -5245,6 +5765,8 @@ class _$OnGetSingleAppsWithImageImpl implements _OnGetSingleAppsWithImage {
     TResult? Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult? Function(_OnCreatePassport value)? onCreatePassport,
     TResult? Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult? Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult? Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult? Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult? Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -5277,6 +5799,8 @@ class _$OnGetSingleAppsWithImageImpl implements _OnGetSingleAppsWithImage {
     TResult Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -5359,9 +5883,11 @@ class _$DeleteApplicationImpl implements _DeleteApplication {
     required TResult Function(String firebaseDocId) onCreateCorpApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
     required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId)
+        onSubmitCorporateApplication,
     required TResult Function(String firebaseDocId) onSubmitPassport,
     required TResult Function() onUpdateApplication,
-    required TResult Function() onUpdateCorpApplication,
+    required TResult Function(String firebaseDocId) onUpdateCorpApplication,
     required TResult Function() onUpdatePassport,
     required TResult Function(String message) onUpdateMultiVisa,
     required TResult Function() onUpdateGuarantor,
@@ -5391,9 +5917,10 @@ class _$DeleteApplicationImpl implements _DeleteApplication {
     TResult? Function(String firebaseDocId)? onCreateCorpApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
+    TResult? Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult? Function(String firebaseDocId)? onSubmitPassport,
     TResult? Function()? onUpdateApplication,
-    TResult? Function()? onUpdateCorpApplication,
+    TResult? Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult? Function()? onUpdatePassport,
     TResult? Function(String message)? onUpdateMultiVisa,
     TResult? Function()? onUpdateGuarantor,
@@ -5421,9 +5948,10 @@ class _$DeleteApplicationImpl implements _DeleteApplication {
     TResult Function(String firebaseDocId)? onCreateCorpApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
-    TResult Function()? onUpdateCorpApplication,
+    TResult Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
@@ -5456,6 +5984,8 @@ class _$DeleteApplicationImpl implements _DeleteApplication {
         onCreateCorpApplication,
     required TResult Function(_OnCreatePassport value) onCreatePassport,
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitCorporateApplication value)
+        onSubmitCorporateApplication,
     required TResult Function(_OnSubmitPassport value) onSubmitPassport,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
     required TResult Function(_OnUpdateCorpApplication value)
@@ -5492,6 +6022,8 @@ class _$DeleteApplicationImpl implements _DeleteApplication {
     TResult? Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult? Function(_OnCreatePassport value)? onCreatePassport,
     TResult? Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult? Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult? Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult? Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult? Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -5524,6 +6056,8 @@ class _$DeleteApplicationImpl implements _DeleteApplication {
     TResult Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -5636,9 +6170,11 @@ class _$OnUploadImageCompleteImpl implements _OnUploadImageComplete {
     required TResult Function(String firebaseDocId) onCreateCorpApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
     required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId)
+        onSubmitCorporateApplication,
     required TResult Function(String firebaseDocId) onSubmitPassport,
     required TResult Function() onUpdateApplication,
-    required TResult Function() onUpdateCorpApplication,
+    required TResult Function(String firebaseDocId) onUpdateCorpApplication,
     required TResult Function() onUpdatePassport,
     required TResult Function(String message) onUpdateMultiVisa,
     required TResult Function() onUpdateGuarantor,
@@ -5668,9 +6204,10 @@ class _$OnUploadImageCompleteImpl implements _OnUploadImageComplete {
     TResult? Function(String firebaseDocId)? onCreateCorpApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
+    TResult? Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult? Function(String firebaseDocId)? onSubmitPassport,
     TResult? Function()? onUpdateApplication,
-    TResult? Function()? onUpdateCorpApplication,
+    TResult? Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult? Function()? onUpdatePassport,
     TResult? Function(String message)? onUpdateMultiVisa,
     TResult? Function()? onUpdateGuarantor,
@@ -5698,9 +6235,10 @@ class _$OnUploadImageCompleteImpl implements _OnUploadImageComplete {
     TResult Function(String firebaseDocId)? onCreateCorpApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
-    TResult Function()? onUpdateCorpApplication,
+    TResult Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
@@ -5733,6 +6271,8 @@ class _$OnUploadImageCompleteImpl implements _OnUploadImageComplete {
         onCreateCorpApplication,
     required TResult Function(_OnCreatePassport value) onCreatePassport,
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitCorporateApplication value)
+        onSubmitCorporateApplication,
     required TResult Function(_OnSubmitPassport value) onSubmitPassport,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
     required TResult Function(_OnUpdateCorpApplication value)
@@ -5769,6 +6309,8 @@ class _$OnUploadImageCompleteImpl implements _OnUploadImageComplete {
     TResult? Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult? Function(_OnCreatePassport value)? onCreatePassport,
     TResult? Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult? Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult? Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult? Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult? Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -5801,6 +6343,8 @@ class _$OnUploadImageCompleteImpl implements _OnUploadImageComplete {
     TResult Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -5922,9 +6466,11 @@ class _$OnSelfieImageCompleteImpl implements _OnSelfieImageComplete {
     required TResult Function(String firebaseDocId) onCreateCorpApplication,
     required TResult Function(VisaApplicationModel visaApps) onCreatePassport,
     required TResult Function(String firebaseDocId) onSubmitApplication,
+    required TResult Function(String firebaseDocId)
+        onSubmitCorporateApplication,
     required TResult Function(String firebaseDocId) onSubmitPassport,
     required TResult Function() onUpdateApplication,
-    required TResult Function() onUpdateCorpApplication,
+    required TResult Function(String firebaseDocId) onUpdateCorpApplication,
     required TResult Function() onUpdatePassport,
     required TResult Function(String message) onUpdateMultiVisa,
     required TResult Function() onUpdateGuarantor,
@@ -5954,9 +6500,10 @@ class _$OnSelfieImageCompleteImpl implements _OnSelfieImageComplete {
     TResult? Function(String firebaseDocId)? onCreateCorpApplication,
     TResult? Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult? Function(String firebaseDocId)? onSubmitApplication,
+    TResult? Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult? Function(String firebaseDocId)? onSubmitPassport,
     TResult? Function()? onUpdateApplication,
-    TResult? Function()? onUpdateCorpApplication,
+    TResult? Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult? Function()? onUpdatePassport,
     TResult? Function(String message)? onUpdateMultiVisa,
     TResult? Function()? onUpdateGuarantor,
@@ -5984,9 +6531,10 @@ class _$OnSelfieImageCompleteImpl implements _OnSelfieImageComplete {
     TResult Function(String firebaseDocId)? onCreateCorpApplication,
     TResult Function(VisaApplicationModel visaApps)? onCreatePassport,
     TResult Function(String firebaseDocId)? onSubmitApplication,
+    TResult Function(String firebaseDocId)? onSubmitCorporateApplication,
     TResult Function(String firebaseDocId)? onSubmitPassport,
     TResult Function()? onUpdateApplication,
-    TResult Function()? onUpdateCorpApplication,
+    TResult Function(String firebaseDocId)? onUpdateCorpApplication,
     TResult Function()? onUpdatePassport,
     TResult Function(String message)? onUpdateMultiVisa,
     TResult Function()? onUpdateGuarantor,
@@ -6019,6 +6567,8 @@ class _$OnSelfieImageCompleteImpl implements _OnSelfieImageComplete {
         onCreateCorpApplication,
     required TResult Function(_OnCreatePassport value) onCreatePassport,
     required TResult Function(_OnSubmitApplication value) onSubmitApplication,
+    required TResult Function(_OnSubmitCorporateApplication value)
+        onSubmitCorporateApplication,
     required TResult Function(_OnSubmitPassport value) onSubmitPassport,
     required TResult Function(_OnUpdateApplication value) onUpdateApplication,
     required TResult Function(_OnUpdateCorpApplication value)
@@ -6055,6 +6605,8 @@ class _$OnSelfieImageCompleteImpl implements _OnSelfieImageComplete {
     TResult? Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult? Function(_OnCreatePassport value)? onCreatePassport,
     TResult? Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult? Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult? Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult? Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult? Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,
@@ -6087,6 +6639,8 @@ class _$OnSelfieImageCompleteImpl implements _OnSelfieImageComplete {
     TResult Function(_OnCreateCorpApplication value)? onCreateCorpApplication,
     TResult Function(_OnCreatePassport value)? onCreatePassport,
     TResult Function(_OnSubmitApplication value)? onSubmitApplication,
+    TResult Function(_OnSubmitCorporateApplication value)?
+        onSubmitCorporateApplication,
     TResult Function(_OnSubmitPassport value)? onSubmitPassport,
     TResult Function(_OnUpdateApplication value)? onUpdateApplication,
     TResult Function(_OnUpdateCorpApplication value)? onUpdateCorpApplication,

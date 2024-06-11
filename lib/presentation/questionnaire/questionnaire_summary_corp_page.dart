@@ -191,22 +191,28 @@ class _QuestionnaireSummaryCorpPageState
                           ],
                         ),
                       ),
-                      PrimaryButton(
-                        onClick: () {
-                          final current = VisaApplicationCorp(
-                            title: checkTitle(),
-                            subTitle: checkSubtitle(),
-                            entry: "",
-                            price: 0,
-                            currency: "Rp",
-                            status: "Draft",
-                          );
-                          context
-                              .read<UpdateApplicationCubit>()
-                              .createCorporateApplication(current);
-                        },
-                        label: "Continue",
-                      ),
+                      Container(
+                        color: Colors.white,
+                        width: double.infinity,
+                        margin: const EdgeInsets.symmetric(horizontal: 20),
+                        height: 45.h,
+                        child: PrimaryButton(
+                            label: "Continue",
+                            labelStyle: TextStyle(fontSize: 15.sp),
+                            onClick: () {
+                              final current = VisaApplicationCorp(
+                                title: checkTitle(),
+                                subTitle: checkSubtitle(),
+                                entry: "",
+                                price: 0,
+                                currency: "Rp",
+                                status: "Draft",
+                              );
+                              context
+                                  .read<UpdateApplicationCubit>()
+                                  .createCorporateApplication(current);
+                            }),
+                      )
                     ],
                   ),
                 ),

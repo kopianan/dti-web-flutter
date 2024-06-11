@@ -47,7 +47,7 @@ class DashboardRepository extends IDashboard {
     log(storage.getToken().toString());
     try {
       final result =
-          await dio.get("${dotenv.env['BASE_URL']}/overallApplicationsByUser/1",
+          await dio.get("${dotenv.env['BASE_URL']}/applicationsByUser/1",
               options: Options(
                 headers: {'Authorization': 'Bearer ${storage.getToken()}'},
               ));
@@ -147,11 +147,11 @@ class DashboardRepository extends IDashboard {
     final dio = Dio();
     final storage = Storage();
     try {
-      final result =
-          await dio.get("${dotenv.env['BASE_URL']}/corporateApplicationsByUser/1",
-              options: Options(
-                headers: {'Authorization': 'Bearer ${storage.getToken()}'},
-              ));
+      final result = await dio.get(
+          "${dotenv.env['BASE_URL']}/corporateApplicationsByUser/1",
+          options: Options(
+            headers: {'Authorization': 'Bearer ${storage.getToken()}'},
+          ));
       if (result.data['data'] != null) {
         List listData = result.data['data'];
         if (listData.isEmpty) {
@@ -161,6 +161,30 @@ class DashboardRepository extends IDashboard {
           return Right(modelData);
         }
       }
+      return Left(Failures.generalError(result.toString()));
+    } on DioException catch (e) {
+      ErrorResponse err = ErrorResponse();
+      return Left(err.dioErrorChecker(e));
+    }
+  }
+
+  @override
+  Future<Either<Failures, String>> deleteCorporation(
+      String firebaseDocId) async {
+    final dio = Dio();
+    final storage = Storage();
+
+    try {
+      final result = await dio.get(
+          "${dotenv.env['BASE_URL']}/corporateApplication/$firebaseDocId/delete",
+          options: Options(
+              headers: {'Authorization': 'Bearer ${storage.getToken()}'}));
+      if (result.data['data'] != null) {
+        //SUCCESS
+        log(result.toString());
+        return Right(result.data['data']['message']);
+      }
+
       return Left(Failures.generalError(result.toString()));
     } on DioException catch (e) {
       ErrorResponse err = ErrorResponse();

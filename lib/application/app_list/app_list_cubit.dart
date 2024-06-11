@@ -44,9 +44,9 @@ class AppListCubit extends Cubit<AppListState> {
     );
   }
 
-  void getCorpApplication() async {
+  void getCorpApplication({bool isAgent = true}) async {
     emit(state.copyWith(status: AppListStatus.loading));
-    final result = await iAppList.getUserVisaApplication(isAgent);
+    final result = await iAppList.getCorporateApplications(isAgent);
     result.fold(
       (l) => emit(state.copyWith(
           status: AppListStatus.error, errorMessage: "Something wrong")),

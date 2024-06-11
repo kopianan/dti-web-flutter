@@ -27,7 +27,7 @@ class QuestionnaireCorp2Page extends StatelessWidget {
     return Scaffold(
         body: BlocProvider(
             create: (context) =>
-                getIt<OtherCubit>()..getQuestionnaireCorpList(CorpEnum.company),
+                getIt<OtherCubit>()..getQuestionnaireCorpList(CorpEnum.foreigner),
             child: BlocListener<OtherCubit, OtherState>(
                 listener: (context, state) {
               state.maybeMap(
@@ -106,7 +106,7 @@ class QuestionnaireCorp2Page extends StatelessWidget {
                                             document: doc,
                                             notes: notes,
                                             questionnare: e,
-                                            corpEnum: CorpEnum.company,
+                                            corpEnum: CorpEnum.foreigner,
                                           ));
                                         },
                                         child: QuestionnaireItemCard(

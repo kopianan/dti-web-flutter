@@ -10,4 +10,5 @@ abstract class IDashboard {
   Future<Either<Failures, SimpleVisaModel>> getSinglePassport();
   Future<Either<Failures, String>> deleteSinglePassport(String firebaseDocId);
   Future<Either<Failures, String>> deleteApplication(String firebaseDocId);
+  Future<Either<Failures, String>> deleteCorporation(String firebaseDocId);
 }

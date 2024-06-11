@@ -122,6 +122,12 @@ class _ApplicationCorpFormCompanyPageState
               //close loading dialog
               EasyLoading.dismiss();
             },
+            onUpdateCorpApplication: (value) {
+              EasyLoading.dismiss();
+
+              context.router.push(ApplicationCorpDetailRoute(
+                  firebaseDocId: value.firebaseDocId));
+            },
             onGetSingleCorpApplication: (e) {
               if (e.corpVisa.mobileCountryCode != null) {
                 countrycode = e.corpVisa.mobileCountryCode;
@@ -320,7 +326,7 @@ class _ApplicationCorpFormCompanyPageState
                                         name: 'ContactPersonEmailField',
                                         enableSuggestions: false,
                                         autocorrect: false,
-                                        initialValue: visaCorp.cpEMail,
+                                        initialValue: visaCorp.cpEmail,
                                         validator: (value) {
                                           if (value!.isEmpty) {
                                             return 'Please enter an email address';
@@ -643,7 +649,7 @@ class _ApplicationCorpFormCompanyPageState
                                                     "CompanyAddressField"],
                                                 cpName: formData[
                                                     "ContactPersonNameField"],
-                                                cpEMail: formData[
+                                                cpEmail: formData[
                                                     "ContactPersonEmailField"],
                                                 cpPhoneNumber: formData[
                                                     "ContactPersonPhoneField"],
@@ -653,15 +659,11 @@ class _ApplicationCorpFormCompanyPageState
                                                 mobileCountryCode: countrycode,
                                                 mobileDialCode: dialCode,
                                               );
-                                              // context
-                                              //     .read<
-                                              //         ApplicationDocumentCubit>()
-                                              //     .updateCorporateApplication(
-                                              //         curr);
-                                              context.router.push(
-                                                  ApplicationCorpDetailRoute(
-                                                      firebaseDocId:
-                                                          curr.firebaseDocId));
+                                              context
+                                                  .read<
+                                                      UpdateApplicationCubit>()
+                                                  .updateCorporateApplcation(
+                                                      curr);
                                             }
                                           },
                                           label: "Continue"),

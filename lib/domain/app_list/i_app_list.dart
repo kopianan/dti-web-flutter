@@ -5,5 +5,6 @@ import 'package:dti_web/domain/global/failures.dart';
 abstract class IAppList {
   Future<Either<Failures, List<SimpleVisaModel>>> getUserVisaApplication(
       bool isAgent);
-  Future<Either<Failures, List<SimpleVisaModel>>> getCorporateApplications();
+  Future<Either<Failures, List<SimpleVisaModel>>> getCorporateApplications(
+      bool isAgent);
 }

@@ -50,8 +50,9 @@ class AppListRepository extends IAppList {
   }
 
   @override
-  Future<Either<Failures, List<SimpleVisaModel>>> getCorporateApplications()async {
-   //ONLY GET APPLICATION, NOT PASSPORT
+  Future<Either<Failures, List<SimpleVisaModel>>> getCorporateApplications(
+      bool isAgent) async {
+    //ONLY GET APPLICATION, NOT PASSPORT
     // final result =
     // await dio!.get('${dotenv.env['BASE_URL']}/applicationsByUser',
     //     options: Options(
@@ -60,12 +61,12 @@ class AppListRepository extends IAppList {
     try {
       final result = (isAgent)
           //AGENT
-          ? await dio.get('${dotenv.env['BASE_URL']}/overallApplicationsByUser',
+          ? await dio.get('${dotenv.env['BASE_URL']}/corporateApplicationsByUser',
               options: Options(
                 headers: {'Authorization': 'Bearer ${storage.getToken()}'},
               ))
           //ADMIN
-          : await dio.get('${dotenv.env['BASE_URL']}/applications',
+          : await dio.get('${dotenv.env['BASE_URL']}/corporateApplicationsByUser',
               options: Options(
                 headers: {'Authorization': 'Bearer ${storage.getToken()}'},
               ));
@@ -81,7 +82,7 @@ class AppListRepository extends IAppList {
       return left(ErrorHandling().onDioErrorHandle(e));
     } on Exception {
       return left(Failures.serverError());
-    }ƒ
+    }
   }
 
 //   @override

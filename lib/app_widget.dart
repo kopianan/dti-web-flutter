@@ -1,6 +1,7 @@
 import 'package:dti_web/application/app_list/app_list_cubit.dart';
 import 'package:dti_web/application/application_cubit.dart';
 import 'package:dti_web/application/auth/auth_cubit.dart';
+import 'package:dti_web/application/dashboard/cubit/dashboard_application_cubit.dart';
 import 'package:dti_web/application/document/document_cubit.dart';
 import 'package:dti_web/application/global/global_user_cubit.dart';
 import 'package:dti_web/application/questionnaire_cubit.dart';
@@ -40,6 +41,9 @@ class AppWidget extends StatelessWidget with CoreMixin {
               create: (context) => getIt<UpdateApplicationCubit>(),
             ),
             BlocProvider(
+              create: (context) => getIt<DashboardApplicationCubit>(),
+            ),
+            BlocProvider(
               create: (context) => getIt<GlobalUserCubit>(),
             ),
             BlocProvider(
@@ -71,7 +75,9 @@ class AppWidget extends StatelessWidget with CoreMixin {
             ],
             title: 'DoorToID',
             builder: EasyLoading.init(),
+
             theme: ThemeData(
+              useMaterial3: false,
                 scrollbarTheme: const ScrollbarThemeData(
                   thumbColor: MaterialStatePropertyAll(AppColor.primaryColor),
                   thumbVisibility: MaterialStatePropertyAll(true),

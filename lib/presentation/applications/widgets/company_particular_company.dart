@@ -26,7 +26,6 @@ class CompanyParticularCompany extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-         
             Table(
               children: [
                 TableRow(
@@ -70,7 +69,7 @@ class CompanyParticularCompany extends StatelessWidget {
                 TableRow(
                   children: [
                     Text(
-                      visaCorp.industryType,
+                      visaCorp.industryType ?? "",
                       style: const TextStyle(
                         color: AppColor.primaryColor,
                         fontSize: 18,
@@ -124,7 +123,7 @@ class CompanyParticularCompany extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      visaCorp.cpEMail,
+                      visaCorp.cpEmail,
                       style: const TextStyle(
                         color: AppColor.primaryColor,
                         fontSize: 18,

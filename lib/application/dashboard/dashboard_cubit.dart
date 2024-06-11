@@ -8,7 +8,7 @@ import 'package:injectable/injectable.dart';
 part 'dashboard_state.dart';
 part 'dashboard_cubit.freezed.dart';
 
-@Singleton()
+@injectable
 class DashboardCubit extends Cubit<DashboardState> {
   DashboardCubit(this.iDashboard) : super(const DashboardState.initial());
   final IDashboard iDashboard;
@@ -19,7 +19,7 @@ class DashboardCubit extends Cubit<DashboardState> {
       final data = await iDashboard.getLastPassportAndApplication();
       data.fold(
         (l) => emit(DashboardState.error(l)),
-        (r) => emit(DashboardState.onGetSingleData(r)),
+        (r) => emit(DashboardState.onGetSingleAppsData(r)),
       );
     } on Exception {
       emit(DashboardState.error(Failures.serverError()));
@@ -32,7 +32,7 @@ class DashboardCubit extends Cubit<DashboardState> {
       final data = await iDashboard.getLastCorporationApplication();
       data.fold(
         (l) => emit(DashboardState.error(l)),
-        (r) => emit(DashboardState.onGetSingleData(r)),
+        (r) => emit(DashboardState.onGetSingleCorpData(r)),
       );
     } on Exception {
       emit(DashboardState.error(Failures.serverError()));
@@ -45,7 +45,7 @@ class DashboardCubit extends Cubit<DashboardState> {
       final data = await iDashboard.getSinglePassport();
       data.fold(
         (l) => emit(DashboardState.error(l)),
-        (r) => emit(DashboardState.onGetSingleData(r)),
+        (r) => emit(DashboardState.onGetSinglePassportData(r)),
       );
     } on Exception {
       emit(DashboardState.error(Failures.serverError()));
@@ -59,6 +59,18 @@ class DashboardCubit extends Cubit<DashboardState> {
       data.fold(
         (l) => emit(DashboardState.error(l)),
         (r) => emit(DashboardState.onDeleteSingleData(visa, appsType)),
+      );
+    } on Exception {
+      emit(DashboardState.error(Failures.serverError()));
+    }
+  }
+  void deleteCorporateData(SimpleVisaModel visa, int appsType) async {
+    emit(const DashboardState.loading());
+    try {
+      final data = await iDashboard.deleteCorporation(visa.firebaseDocId!);
+      data.fold(
+        (l) => emit(DashboardState.error(l)),
+        (r) => emit(DashboardState.onDeleteCorporateApps(visa, appsType)),
       );
     } on Exception {
       emit(DashboardState.error(Failures.serverError()));

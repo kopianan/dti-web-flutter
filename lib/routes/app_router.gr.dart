@@ -61,6 +61,16 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    ApplicationCorpCardRoute.name: (routeData) {
+      final args = routeData.argsAs<ApplicationCorpCardRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: ApplicationCorpCardPage(
+          key: args.key,
+          dashboardCubit: args.dashboardCubit,
+        ),
+      );
+    },
     ApplicationCorpDetailRoute.name: (routeData) {
       final pathParams = routeData.inheritedPathParams;
       final args = routeData.argsAs<ApplicationCorpDetailRouteArgs>(
@@ -537,6 +547,45 @@ class ApplicationCardRouteArgs {
   @override
   String toString() {
     return 'ApplicationCardRouteArgs{key: $key, dashboardCubit: $dashboardCubit}';
+  }
+}
+
+/// generated route for
+/// [ApplicationCorpCardPage]
+class ApplicationCorpCardRoute
+    extends PageRouteInfo<ApplicationCorpCardRouteArgs> {
+  ApplicationCorpCardRoute({
+    Key? key,
+    required DashboardCubit dashboardCubit,
+    List<PageRouteInfo>? children,
+  }) : super(
+          ApplicationCorpCardRoute.name,
+          args: ApplicationCorpCardRouteArgs(
+            key: key,
+            dashboardCubit: dashboardCubit,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ApplicationCorpCardRoute';
+
+  static const PageInfo<ApplicationCorpCardRouteArgs> page =
+      PageInfo<ApplicationCorpCardRouteArgs>(name);
+}
+
+class ApplicationCorpCardRouteArgs {
+  const ApplicationCorpCardRouteArgs({
+    this.key,
+    required this.dashboardCubit,
+  });
+
+  final Key? key;
+
+  final DashboardCubit dashboardCubit;
+
+  @override
+  String toString() {
+    return 'ApplicationCorpCardRouteArgs{key: $key, dashboardCubit: $dashboardCubit}';
   }
 }
 

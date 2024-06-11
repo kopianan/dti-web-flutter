@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 import 'dart:math' as math;
 import 'package:dartz/dartz.dart';
@@ -352,13 +353,16 @@ class IUpdateApplicationRepository extends IUpdateApplication {
 
     try {
       final result = await dio.post(
-          "${dotenv.env['BASE_URL']}/application/guarantor/${visa.firebaseDocId}/",
+          "${dotenv.env['BASE_URL']}/application/guarantor/${visa.firebaseDocId}",
           options: Options(
             headers: {
               "Authorization": "Bearer ${storage.getToken()}",
             },
           ),
-          data: {"guarantorDTI": visa.guarantorDTI});
+          data: {
+            "guarantorDTI": visa.guarantorDTI,
+            "lastUpdatedChannel": "Website"
+          });
 
       if (result.data['data'] == null) {
         //ERROR
@@ -370,6 +374,22 @@ class IUpdateApplicationRepository extends IUpdateApplication {
       return left(ErrorHandling().onDioErrorHandle(e));
     } on Exception {
       return left(Failures.serverError());
+    }
+  }
+
+  @override
+  Future<Either<Failures, String>> submitCorpVisa(String firebaseDocId) async {
+    final storage = Storage();
+
+    try {
+      final result = await dio.get(
+          "${dotenv.env['BASE_URL']}/corporateApplication/$firebaseDocId/submit",
+          options: Options(
+              headers: {"Authorization": "Bearer ${storage.getToken()}"}));
+
+      return Right(result.toString());
+    } on DioError catch (e) {
+      return left(ErrorHandling().onDioErrorHandle(e));
     }
   }
 
@@ -679,6 +699,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
     final storage = Storage();
     final jsonData = visaCorp.toJson();
     jsonData.removeWhere((key, value) => value == null);
+    print(json.encode(jsonData));
     try {
       final result = await dio.post(
           '${dotenv.env['BASE_URL']}/corporateApplication/${visaCorp.firebaseDocId}',
@@ -686,7 +707,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
               headers: {'Authorization': 'Bearer ${storage.getToken()}'}),
           data: jsonData);
 
-      return Right(result.data['data']['firebaseDocId']);
+      return Right(result.data['data']['message']);
     } on DioException catch (e) {
       return left(ErrorHandling().onDioErrorHandle(e));
     }

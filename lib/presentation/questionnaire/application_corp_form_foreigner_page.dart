@@ -56,6 +56,12 @@ class _ApplicationCorpFormForeignerPageState
               //close loading dialog
               EasyLoading.dismiss();
             },
+            onUpdateCorpApplication: (value) {
+              EasyLoading.dismiss();
+
+              context.router.push(ApplicationCorpDetailRoute(
+                  firebaseDocId: value.firebaseDocId));
+            },
             onGetSingleCorpApplication: (e) {
               if (e.corpVisa.mobileCountryCode != null) {
                 countrycode = e.corpVisa.mobileCountryCode;
@@ -261,7 +267,7 @@ class _ApplicationCorpFormForeignerPageState
                                                 name: 'ContactPersonEmailField',
                                                 enableSuggestions: false,
                                                 autocorrect: false,
-                                                initialValue: visaCorp.cpEMail,
+                                                initialValue: visaCorp.cpEmail,
                                                 validator: (value) {
                                                   if (value!.isEmpty) {
                                                     return 'Please enter an email address';
@@ -412,90 +418,62 @@ class _ApplicationCorpFormForeignerPageState
                                               ),
                                               20.verticalSpace,
 
-                                              BlocProvider(
-                                                create: (context) => getIt<
-                                                    UpdateApplicationCubit>(),
-                                                child: BlocConsumer<
-                                                    UpdateApplicationCubit,
-                                                    UpdateApplicationState>(
-                                                  listener: (context, state) {
-                                                    state.maybeMap(orElse: () {
-                                                      EasyLoading.dismiss();
-                                                    }, onLoading: (e) {
-                                                      EasyLoading.show();
-                                                    }, onUpdateCorpApplication:
-                                                        (e) {
-                                                      EasyLoading.dismiss();
-                                                    });
-                                                  },
-                                                  builder: (context, state) {
-                                                    return SizedBox(
-                                                      width: double.infinity,
-                                                      height: 45.h,
-                                                      child: PrimaryButton(
-                                                        labelStyle: TextStyle(
-                                                            fontSize: 15.sp),
-                                                        onClick: () {
-                                                          final validationSuccess =
-                                                              _formKey
-                                                                  .currentState!
-                                                                  .validate();
-                                                          if (validationSuccess) {
-                                                            _formKey
-                                                                .currentState!
-                                                                .save();
-                                                            final formData =
-                                                                _formKey
-                                                                    .currentState!
-                                                                    .value;
-                                                            var curr = visaCorp
-                                                                .copyWith(
-                                                              companyName: formData[
-                                                                  "CompanyNameField"],
-                                                              industryType:
-                                                                  formData[
-                                                                      "IndustryTypeField"],
-                                                              companyWebsite:
-                                                                  formData[
-                                                                      "CompanyWebsiteField"],
-                                                              companyAddress:
-                                                                  formData[
-                                                                      "CompanyAddressField"],
-                                                              cpName: formData[
-                                                                  "ContactPersonNameField"],
-                                                              cpEMail: formData[
-                                                                  "ContactPersonEmailField"],
-                                                              cpPhoneNumber:
-                                                                  formData[
-                                                                      "ContactPersonPhoneField"],
-                                                              mobileCountryCode:
-                                                                  countrycode,
-                                                              numberForeigner:
-                                                                  int.tryParse(
-                                                                          formData[
-                                                                              'NumberOfForeigner']) ??
-                                                                      0,
-                                                              mobileDialCode:
-                                                                  dialCode,
-                                                            );
-                                                            print(curr);
-                                                            context.router.push(
-                                                                ApplicationCorpDetailRoute(
-                                                              firebaseDocId: curr
-                                                                  .firebaseDocId,
-                                                            ));
+                                              SizedBox(
+                                                width: double.infinity,
+                                                height: 45.h,
+                                                child: PrimaryButton(
+                                                  labelStyle: TextStyle(
+                                                      fontSize: 15.sp),
+                                                  onClick: () {
+                                                    final validationSuccess =
+                                                        _formKey.currentState!
+                                                            .validate();
+                                                    if (validationSuccess) {
+                                                      _formKey.currentState!
+                                                          .save();
+                                                      final formData = _formKey
+                                                          .currentState!.value;
+                                                      var curr =
+                                                          visaCorp.copyWith(
+                                                        companyName: formData[
+                                                            "CompanyNameField"],
+                                                        industryType: formData[
+                                                            "IndustryTypeField"],
+                                                        companyWebsite: formData[
+                                                            "CompanyWebsiteField"],
+                                                        companyAddress: formData[
+                                                            "CompanyAddressField"],
+                                                        cpName: formData[
+                                                            "ContactPersonNameField"],
+                                                        cpEmail: formData[
+                                                            "ContactPersonEmailField"],
+                                                        cpPhoneNumber: formData[
+                                                            "ContactPersonPhoneField"],
+                                                        mobileCountryCode:
+                                                            countrycode,
+                                                        province: '',
+                                                        numberForeigner:
+                                                            int.tryParse(formData[
+                                                                    'NumberOfForeigner']) ??
+                                                                0,
+                                                        mobileDialCode:
+                                                            dialCode,
+                                                      );
+                                                      print(curr);
+                                                      // context.router.push(
+                                                      //     ApplicationCorpDetailRoute(
+                                                      //   firebaseDocId: curr
+                                                      //       .firebaseDocId,
+                                                      // ));
 
-                                                            // context
-                                                            //     .read<
-                                                            //         UpdateApplicationCubit>()
-                                                            //     .updateCorporateApplcation(
-                                                            //         curr);
-                                                          }
-                                                        },
-                                                        label: "Continue",
-                                                      ),
-                                                    );
+                                                      context
+                                                          .read<
+                                                              UpdateApplicationCubit>()
+                                                          .updateCorporateApplcation(
+                                                              curr);
+                                                    }
                                                   },
+                                                  label: "Continue",
                                                 ),
                                               ),
                                               20.verticalSpace,

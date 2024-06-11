@@ -289,7 +289,7 @@ class OtherRepository extends IOther {
           return right(
               rawData.map((e) => QuestionnaireModel.fromJson(e)).toList());
         } else {
-          final rawData = data.data['data']['foreigner'];
+          List rawData = data.data['data']['foreigner'];
           return right(
               rawData.map((e) => QuestionnaireModel.fromJson(e)).toList());
         }

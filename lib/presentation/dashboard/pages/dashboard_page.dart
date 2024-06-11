@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dti_web/application/auth/auth_cubit.dart';
+import 'package:dti_web/application/dashboard/cubit/dashboard_application_cubit.dart';
 import 'package:dti_web/application/dashboard/dashboard_cubit.dart';
 import 'package:dti_web/application/global/global_user_cubit.dart';
 import 'package:dti_web/application/other/other_cubit.dart';
@@ -11,7 +12,9 @@ import 'package:dti_web/domain/core/simple_visa_model.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/injection.dart';
 import 'package:dti_web/presentation/dashboard/pages/application_card_page.dart';
+import 'package:dti_web/presentation/dashboard/pages/application_corp_card_page.dart';
 import 'package:dti_web/presentation/dashboard/pages/section/feedback_section.dart';
+import 'package:dti_web/presentation/dashboard/widgets/application_section.dart';
 import 'package:dti_web/presentation/dashboard/widgets/corporate_section.dart';
 import 'package:dti_web/routes/app_router.dart';
 
@@ -64,6 +67,31 @@ class _DashboardPageState extends State<DashboardPage> {
                       AutoRouter.of(context).replaceAll([const SignInRoute()]);
                     },
                   );
+                },
+                onDeleteCorporateApps: (value) {
+                  dashboardCubit.getLastCorporateApplication();
+                  if (value.deletedVisa.title?.contains('company') ?? false) {
+                    AutoRouter.of(context)
+                        .push(const QuestionnaireCorp1Route());
+                  } else {
+                    AutoRouter.of(context)
+                        .push(const QuestionnaireCorp2Route());
+                  }
+                },
+                onGetSingleCorpData: (value) {
+                  context
+                      .read<DashboardApplicationCubit>()
+                      .setLastCorporate(value.visa);
+                },
+                onGetSingleAppsData: (value) {
+                  context
+                      .read<DashboardApplicationCubit>()
+                      .setLastApps(value.visa);
+                },
+                onGetSinglePassportData: (value) {
+                  context
+                      .read<DashboardApplicationCubit>()
+                      .setLastApps(value.visa);
                 },
                 onDeletePassport: (e) {
                   dashboardCubit.getLastPassportAndApplicationData();
@@ -289,113 +317,48 @@ class _DashboardPageState extends State<DashboardPage> {
                                   },
                                 ),
                                 20.verticalSpace,
-                                Column(
-                                  children: [
-                                    InkWell(
-                                      onTap: () {
-                                        // context.router.push(ApplicationCardRoute());
-                                        showDialog(
-                                          context: context,
-                                          builder: (context) {
-                                            return Container(
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                                color: Colors.white,
-                                              ),
-                                              margin:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 100,
-                                                      vertical: 100),
-                                              width: width,
-                                              height: height,
-                                              child: ApplicationCardPage(
-                                                dashboardCubit: dashboardCubit,
-                                              ),
-                                            );
-                                          },
-                                        );
-                                      },
-                                      child: Container(
-                                        margin: const EdgeInsets.symmetric(
-                                            horizontal: 20),
-                                        alignment: Alignment.centerLeft,
-                                        child: Text(
-                                          "See All",
-                                          style: TextStyle(
-                                              fontSize: 17.sp,
-                                              color: AppColor.primaryColor,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ),
-                                    ),
-                                    BlocBuilder<DashboardCubit, DashboardState>(
-                                      builder: (context, state) {
-                                        return state.maybeMap(
-                                          orElse: () {
-                                            return Text(
-                                              "No Application Found",
-                                              style: TextStyle(fontSize: 20.sp),
-                                            );
-                                          },
-                                          loading: (e) {
-                                            return const Card(
-                                              child: SizedBox(
-                                                width: double.infinity,
-                                                height: 180,
-                                                child: Center(
-                                                  child:
-                                                      CircularProgressIndicator(),
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                          error: (e) {
-                                            return Container(
-                                              height: 200,
-                                              alignment: Alignment.center,
-                                              child: Text(
-                                                "No Application. Make Your First Application",
-                                                style: TextStyle(
-                                                    fontSize: 20.sp,
-                                                    fontWeight: FontWeight.bold,
-                                                    color:
-                                                        AppColor.primaryColor),
-                                              ),
-                                            );
-                                          },
-                                          onGetSingleData: (e) {
-                                            if (e.visa.subTitle!
-                                                .toLowerCase()
-                                                .contains('passport')) {
-                                              return PassportCard(
-                                                visaApps: e.visa,
-                                                onCardClick: () {
-                                                  onPassportCardClicked(context,
-                                                      e.visa, width, height);
-                                                },
-                                              );
-                                            } else {
-                                              return VisaApplicationCard(
-                                                visaApps: e.visa,
-                                                onCardClick: () {
-                                                  onVisaCardApplicationClicked(
-                                                    context,
-                                                    e.visa,
-                                                    width,
-                                                    height,
-                                                  );
-                                                },
-                                              );
-                                            }
-                                          },
-                                        );
-                                      },
-                                    ),
-                                  ],
+                                ApplicationSection(
+                                    onPassportClick: (e) {
+                                      onPassportCardClicked(
+                                        context,
+                                        e,
+                                        width,
+                                        height,
+                                      );
+                                    },
+                                    onApplicationClick: (e) {
+                                      onVisaCardApplicationClicked(
+                                        context,
+                                        e,
+                                        width,
+                                        height,
+                                      );
+                                    },
+                                    dashboardCubit: dashboardCubit),
+                                SizedBox(
+                                  height: 20.sp,
                                 ),
-                                SizedBox(height: 20.sp,),
-                                const CorporateSection()
+                                CorporateSection(
+                                    dashboardCubit: dashboardCubit,
+                                    onCardClick: (e) {
+                                      onCorporateAppsClicked(
+                                        e,
+                                        width,
+                                        height,
+                                      );
+                                      // if (e.title?.contains('company') ??
+                                      //     false) {
+                                      //   context.router.push(
+                                      //       ApplicationCorpFormCompanyRoute(
+                                      //           firebaseDocId:
+                                      //               e.firebaseDocId ?? ""));
+                                      // } else {
+                                      //   context.router.push(
+                                      //       ApplicationCorpFormForeignerRoute(
+                                      //           firebaseDocId:
+                                      //               e.firebaseDocId ?? ""));
+                                      // }
+                                    })
                               ],
                             ),
                           ),
@@ -435,7 +398,29 @@ class _DashboardPageState extends State<DashboardPage> {
           children: [
             InkWell(
               onTap: () {
-                context.router.push(const QuestionnaireCorp2Route());
+                final singleCorp =
+                    getIt<DashboardApplicationCubit>().state.corporateApps;
+                if (singleCorp.status == "Draft") {
+                  //show pop up
+                  AwesomeDialog(
+                    context: context,
+                    width: ScreenUtil().screenWidth / 4,
+                    title: "Draft Application",
+                    desc:
+                        "You have Incomplete ${singleCorp.title}. Do you want to continue from your latest draft?",
+                    btnOkText: "Continue",
+                    btnCancelText: "Delete",
+                    btnOkOnPress: () {
+                      context.pushRoute(ApplicationCorpFormForeignerRoute(
+                          firebaseDocId: singleCorp.firebaseDocId ?? ""));
+                    },
+                    btnCancelOnPress: () {
+                      dashboardCubit.deleteCorporateData(singleCorp, 0);
+                    },
+                  ).show();
+                } else {
+                  context.router.push(const QuestionnaireCorp2Route());
+                }
               },
               child: const ServiceMenuItem(
                 label: "Foreigner Visa",
@@ -445,7 +430,31 @@ class _DashboardPageState extends State<DashboardPage> {
             ),
             InkWell(
               onTap: () {
-                context.router.push(const QuestionnaireCorp1Route());
+                final singleCorp =
+                    getIt<DashboardApplicationCubit>().state.corporateApps;
+                if (singleCorp.status == "Draft") {
+                  //show pop up
+                  AwesomeDialog(
+                    context: context,
+                    width: ScreenUtil().screenWidth / 4,
+                    title: "Draft Application",
+                    desc:
+                        "You have Incomplete ${singleCorp.title}. Do you want to continue from your latest draft?",
+                    btnOkText: "Continue",
+                    btnCancelText: "Delete",
+                    btnOkOnPress: () {
+                      context.pushRoute(
+                        ApplicationCorpFormCompanyRoute(
+                            firebaseDocId: singleCorp.firebaseDocId ?? ""),
+                      );
+                    },
+                    btnCancelOnPress: () {
+                      dashboardCubit.deleteCorporateData(singleCorp, 0);
+                    },
+                  ).show();
+                } else {
+                  context.router.push(const QuestionnaireCorp1Route());
+                }
               },
               child: const ServiceMenuItem(
                 label: "Company",
@@ -562,6 +571,57 @@ class _DashboardPageState extends State<DashboardPage> {
     }
   }
 
+  void onCorporateAppsClicked(
+    SimpleVisaModel visaCorp,
+    double width,
+    double height,
+  ) {
+    if (visaCorp.status == "Draft") {
+      //show pop up
+      AwesomeDialog(
+        context: context,
+        width: ScreenUtil().screenWidth / 4,
+        title: "Draft Application",
+        desc:
+            "You have Incomplete ${visaCorp.title}. Do you want to continue from your latest draft?",
+        btnOkText: "Continue",
+        btnCancelText: "Delete",
+        btnOkOnPress: () {
+          if (visaCorp.title?.toLowerCase().contains("company") ?? false) {
+            context.pushRoute(
+              ApplicationCorpFormCompanyRoute(
+                  firebaseDocId: visaCorp.firebaseDocId ?? ""),
+            );
+          } else {
+            context.pushRoute(ApplicationCorpFormForeignerRoute(
+                firebaseDocId: visaCorp.firebaseDocId ?? ""));
+          }
+        },
+        btnCancelOnPress: () {
+          dashboardCubit.deleteCorporateData(visaCorp, 0);
+        },
+      ).show();
+    } else {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: Colors.white,
+            ),
+            margin: const EdgeInsets.symmetric(horizontal: 100, vertical: 100),
+            width: width,
+            height: height,
+            child: ApplicationCorpCardPage(
+              dashboardCubit: dashboardCubit,
+            ),
+          );
+        },
+      );
+    }
+  }
+
   void onPassportCardClicked(
     BuildContext context,
     SimpleVisaModel visa,
@@ -624,7 +684,7 @@ class _DashboardPageState extends State<DashboardPage> {
       orElse: () {
         AutoRouter.of(context).push(const VOASummaryRoute());
       },
-      onGetSingleData: (e) {
+      onGetSingleAppsData: (e) {
         if (e.visa.status!.toLowerCase() == 'draft') {
           AwesomeDialog(
               context: context,
@@ -670,7 +730,7 @@ class _DashboardPageState extends State<DashboardPage> {
       orElse: () {
         AutoRouter.of(context).push(ChoosePassportRoute());
       },
-      onGetSingleData: (e) {
+      onGetSinglePassportData: (e) {
         if (e.visa.status!.toLowerCase() == 'draft') {
           AwesomeDialog(
               context: context,
@@ -724,7 +784,7 @@ class _DashboardPageState extends State<DashboardPage> {
       orElse: () {
         AutoRouter.of(context).push(QuestionnaireRoute(boolIsInit: true));
       },
-      onGetSingleData: (e) {
+      onGetSingleAppsData: (e) {
         if (e.visa.status!.toLowerCase() == 'draft') {
           AwesomeDialog(
               context: context,

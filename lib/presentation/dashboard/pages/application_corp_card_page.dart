@@ -26,7 +26,7 @@ class ApplicationCorpCardPage extends StatefulWidget {
 class _ApplicationCorpCardPageState extends State<ApplicationCorpCardPage> {
   @override
   void initState() {
-    BlocProvider.of<AppListCubit>(context).getUserApplication();
+    BlocProvider.of<AppListCubit>(context).getCorpApplication();
     super.initState();
   }
 

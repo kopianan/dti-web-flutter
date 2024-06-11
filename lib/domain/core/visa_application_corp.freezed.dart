@@ -27,13 +27,17 @@ mixin _$VisaApplicationCorp {
   String get currency => throw _privateConstructorUsedError;
   String get status => throw _privateConstructorUsedError;
   String? get userName => throw _privateConstructorUsedError; //FORM
+  String get createdChannel => throw _privateConstructorUsedError;
+  String get lastUpdatedChannel => throw _privateConstructorUsedError;
   String get companyName => throw _privateConstructorUsedError;
   String get createdBy => throw _privateConstructorUsedError;
   String get companyWebsite => throw _privateConstructorUsedError;
-  String get industryType => throw _privateConstructorUsedError;
+  String? get industryType => throw _privateConstructorUsedError;
+  @JsonKey(name: "cpAddress")
   String get companyAddress => throw _privateConstructorUsedError;
   String get cpName => throw _privateConstructorUsedError;
-  String get cpEMail => throw _privateConstructorUsedError;
+  @JsonKey(name: "cpEmail")
+  String get cpEmail => throw _privateConstructorUsedError;
   String get cpPhoneNumber => throw _privateConstructorUsedError;
   String? get mobileCountryCode => throw _privateConstructorUsedError;
   String? get mobileDialCode => throw _privateConstructorUsedError;
@@ -72,13 +76,15 @@ abstract class $VisaApplicationCorpCopyWith<$Res> {
       String currency,
       String status,
       String? userName,
+      String createdChannel,
+      String lastUpdatedChannel,
       String companyName,
       String createdBy,
       String companyWebsite,
-      String industryType,
-      String companyAddress,
+      String? industryType,
+      @JsonKey(name: "cpAddress") String companyAddress,
       String cpName,
-      String cpEMail,
+      @JsonKey(name: "cpEmail") String cpEmail,
       String cpPhoneNumber,
       String? mobileCountryCode,
       String? mobileDialCode,
@@ -118,13 +124,15 @@ class _$VisaApplicationCorpCopyWithImpl<$Res, $Val extends VisaApplicationCorp>
     Object? currency = null,
     Object? status = null,
     Object? userName = freezed,
+    Object? createdChannel = null,
+    Object? lastUpdatedChannel = null,
     Object? companyName = null,
     Object? createdBy = null,
     Object? companyWebsite = null,
-    Object? industryType = null,
+    Object? industryType = freezed,
     Object? companyAddress = null,
     Object? cpName = null,
-    Object? cpEMail = null,
+    Object? cpEmail = null,
     Object? cpPhoneNumber = null,
     Object? mobileCountryCode = freezed,
     Object? mobileDialCode = freezed,
@@ -172,6 +180,14 @@ class _$VisaApplicationCorpCopyWithImpl<$Res, $Val extends VisaApplicationCorp>
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
               as String?,
+      createdChannel: null == createdChannel
+          ? _value.createdChannel
+          : createdChannel // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastUpdatedChannel: null == lastUpdatedChannel
+          ? _value.lastUpdatedChannel
+          : lastUpdatedChannel // ignore: cast_nullable_to_non_nullable
+              as String,
       companyName: null == companyName
           ? _value.companyName
           : companyName // ignore: cast_nullable_to_non_nullable
@@ -184,10 +200,10 @@ class _$VisaApplicationCorpCopyWithImpl<$Res, $Val extends VisaApplicationCorp>
           ? _value.companyWebsite
           : companyWebsite // ignore: cast_nullable_to_non_nullable
               as String,
-      industryType: null == industryType
+      industryType: freezed == industryType
           ? _value.industryType
           : industryType // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       companyAddress: null == companyAddress
           ? _value.companyAddress
           : companyAddress // ignore: cast_nullable_to_non_nullable
@@ -196,9 +212,9 @@ class _$VisaApplicationCorpCopyWithImpl<$Res, $Val extends VisaApplicationCorp>
           ? _value.cpName
           : cpName // ignore: cast_nullable_to_non_nullable
               as String,
-      cpEMail: null == cpEMail
-          ? _value.cpEMail
-          : cpEMail // ignore: cast_nullable_to_non_nullable
+      cpEmail: null == cpEmail
+          ? _value.cpEmail
+          : cpEmail // ignore: cast_nullable_to_non_nullable
               as String,
       cpPhoneNumber: null == cpPhoneNumber
           ? _value.cpPhoneNumber
@@ -288,13 +304,15 @@ abstract class _$$VisaApplicationCorpImplCopyWith<$Res>
       String currency,
       String status,
       String? userName,
+      String createdChannel,
+      String lastUpdatedChannel,
       String companyName,
       String createdBy,
       String companyWebsite,
-      String industryType,
-      String companyAddress,
+      String? industryType,
+      @JsonKey(name: "cpAddress") String companyAddress,
       String cpName,
-      String cpEMail,
+      @JsonKey(name: "cpEmail") String cpEmail,
       String cpPhoneNumber,
       String? mobileCountryCode,
       String? mobileDialCode,
@@ -332,13 +350,15 @@ class __$$VisaApplicationCorpImplCopyWithImpl<$Res>
     Object? currency = null,
     Object? status = null,
     Object? userName = freezed,
+    Object? createdChannel = null,
+    Object? lastUpdatedChannel = null,
     Object? companyName = null,
     Object? createdBy = null,
     Object? companyWebsite = null,
-    Object? industryType = null,
+    Object? industryType = freezed,
     Object? companyAddress = null,
     Object? cpName = null,
-    Object? cpEMail = null,
+    Object? cpEmail = null,
     Object? cpPhoneNumber = null,
     Object? mobileCountryCode = freezed,
     Object? mobileDialCode = freezed,
@@ -386,6 +406,14 @@ class __$$VisaApplicationCorpImplCopyWithImpl<$Res>
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
               as String?,
+      createdChannel: null == createdChannel
+          ? _value.createdChannel
+          : createdChannel // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastUpdatedChannel: null == lastUpdatedChannel
+          ? _value.lastUpdatedChannel
+          : lastUpdatedChannel // ignore: cast_nullable_to_non_nullable
+              as String,
       companyName: null == companyName
           ? _value.companyName
           : companyName // ignore: cast_nullable_to_non_nullable
@@ -398,10 +426,10 @@ class __$$VisaApplicationCorpImplCopyWithImpl<$Res>
           ? _value.companyWebsite
           : companyWebsite // ignore: cast_nullable_to_non_nullable
               as String,
-      industryType: null == industryType
+      industryType: freezed == industryType
           ? _value.industryType
           : industryType // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       companyAddress: null == companyAddress
           ? _value.companyAddress
           : companyAddress // ignore: cast_nullable_to_non_nullable
@@ -410,9 +438,9 @@ class __$$VisaApplicationCorpImplCopyWithImpl<$Res>
           ? _value.cpName
           : cpName // ignore: cast_nullable_to_non_nullable
               as String,
-      cpEMail: null == cpEMail
-          ? _value.cpEMail
-          : cpEMail // ignore: cast_nullable_to_non_nullable
+      cpEmail: null == cpEmail
+          ? _value.cpEmail
+          : cpEmail // ignore: cast_nullable_to_non_nullable
               as String,
       cpPhoneNumber: null == cpPhoneNumber
           ? _value.cpPhoneNumber
@@ -497,13 +525,15 @@ class _$VisaApplicationCorpImpl implements _VisaApplicationCorp {
       this.currency = "",
       this.status = "Draft",
       this.userName,
+      this.createdChannel = 'Website',
+      this.lastUpdatedChannel = 'Website',
       this.companyName = "",
       this.createdBy = "",
       this.companyWebsite = "",
-      this.industryType = "",
-      this.companyAddress = "",
+      this.industryType,
+      @JsonKey(name: "cpAddress") this.companyAddress = "",
       this.cpName = "",
-      this.cpEMail = "",
+      @JsonKey(name: "cpEmail") this.cpEmail = "",
       this.cpPhoneNumber = "",
       this.mobileCountryCode,
       this.mobileDialCode,
@@ -548,6 +578,12 @@ class _$VisaApplicationCorpImpl implements _VisaApplicationCorp {
 //FORM
   @override
   @JsonKey()
+  final String createdChannel;
+  @override
+  @JsonKey()
+  final String lastUpdatedChannel;
+  @override
+  @JsonKey()
   final String companyName;
   @override
   @JsonKey()
@@ -556,17 +592,16 @@ class _$VisaApplicationCorpImpl implements _VisaApplicationCorp {
   @JsonKey()
   final String companyWebsite;
   @override
-  @JsonKey()
-  final String industryType;
+  final String? industryType;
   @override
-  @JsonKey()
+  @JsonKey(name: "cpAddress")
   final String companyAddress;
   @override
   @JsonKey()
   final String cpName;
   @override
-  @JsonKey()
-  final String cpEMail;
+  @JsonKey(name: "cpEmail")
+  final String cpEmail;
   @override
   @JsonKey()
   final String cpPhoneNumber;
@@ -610,7 +645,7 @@ class _$VisaApplicationCorpImpl implements _VisaApplicationCorp {
 
   @override
   String toString() {
-    return 'VisaApplicationCorp(title: $title, subTitle: $subTitle, entry: $entry, price: $price, currency: $currency, status: $status, userName: $userName, companyName: $companyName, createdBy: $createdBy, companyWebsite: $companyWebsite, industryType: $industryType, companyAddress: $companyAddress, cpName: $cpName, cpEMail: $cpEMail, cpPhoneNumber: $cpPhoneNumber, mobileCountryCode: $mobileCountryCode, mobileDialCode: $mobileDialCode, province: $province, city: $city, district: $district, numberForeigner: $numberForeigner, createdDate: $createdDate, submittedDate: $submittedDate, lastUpdatedDate: $lastUpdatedDate, lastUpdatedBy: $lastUpdatedBy, expectedTimelineFrom: $expectedTimelineFrom, expectedTimelineTo: $expectedTimelineTo, rejectionNote: $rejectionNote, guarantor: $guarantor, applicationID: $applicationID, firebaseDocId: $firebaseDocId)';
+    return 'VisaApplicationCorp(title: $title, subTitle: $subTitle, entry: $entry, price: $price, currency: $currency, status: $status, userName: $userName, createdChannel: $createdChannel, lastUpdatedChannel: $lastUpdatedChannel, companyName: $companyName, createdBy: $createdBy, companyWebsite: $companyWebsite, industryType: $industryType, companyAddress: $companyAddress, cpName: $cpName, cpEmail: $cpEmail, cpPhoneNumber: $cpPhoneNumber, mobileCountryCode: $mobileCountryCode, mobileDialCode: $mobileDialCode, province: $province, city: $city, district: $district, numberForeigner: $numberForeigner, createdDate: $createdDate, submittedDate: $submittedDate, lastUpdatedDate: $lastUpdatedDate, lastUpdatedBy: $lastUpdatedBy, expectedTimelineFrom: $expectedTimelineFrom, expectedTimelineTo: $expectedTimelineTo, rejectionNote: $rejectionNote, guarantor: $guarantor, applicationID: $applicationID, firebaseDocId: $firebaseDocId)';
   }
 
   @override
@@ -628,6 +663,10 @@ class _$VisaApplicationCorpImpl implements _VisaApplicationCorp {
             (identical(other.status, status) || other.status == status) &&
             (identical(other.userName, userName) ||
                 other.userName == userName) &&
+            (identical(other.createdChannel, createdChannel) ||
+                other.createdChannel == createdChannel) &&
+            (identical(other.lastUpdatedChannel, lastUpdatedChannel) ||
+                other.lastUpdatedChannel == lastUpdatedChannel) &&
             (identical(other.companyName, companyName) ||
                 other.companyName == companyName) &&
             (identical(other.createdBy, createdBy) ||
@@ -639,7 +678,7 @@ class _$VisaApplicationCorpImpl implements _VisaApplicationCorp {
             (identical(other.companyAddress, companyAddress) ||
                 other.companyAddress == companyAddress) &&
             (identical(other.cpName, cpName) || other.cpName == cpName) &&
-            (identical(other.cpEMail, cpEMail) || other.cpEMail == cpEMail) &&
+            (identical(other.cpEmail, cpEmail) || other.cpEmail == cpEmail) &&
             (identical(other.cpPhoneNumber, cpPhoneNumber) ||
                 other.cpPhoneNumber == cpPhoneNumber) &&
             (identical(other.mobileCountryCode, mobileCountryCode) ||
@@ -686,13 +725,15 @@ class _$VisaApplicationCorpImpl implements _VisaApplicationCorp {
         currency,
         status,
         userName,
+        createdChannel,
+        lastUpdatedChannel,
         companyName,
         createdBy,
         companyWebsite,
         industryType,
         companyAddress,
         cpName,
-        cpEMail,
+        cpEmail,
         cpPhoneNumber,
         mobileCountryCode,
         mobileDialCode,
@@ -736,13 +777,15 @@ abstract class _VisaApplicationCorp implements VisaApplicationCorp {
       final String currency,
       final String status,
       final String? userName,
+      final String createdChannel,
+      final String lastUpdatedChannel,
       final String companyName,
       final String createdBy,
       final String companyWebsite,
-      final String industryType,
-      final String companyAddress,
+      final String? industryType,
+      @JsonKey(name: "cpAddress") final String companyAddress,
       final String cpName,
-      final String cpEMail,
+      @JsonKey(name: "cpEmail") final String cpEmail,
       final String cpPhoneNumber,
       final String? mobileCountryCode,
       final String? mobileDialCode,
@@ -779,19 +822,25 @@ abstract class _VisaApplicationCorp implements VisaApplicationCorp {
   @override
   String? get userName;
   @override //FORM
+  String get createdChannel;
+  @override
+  String get lastUpdatedChannel;
+  @override
   String get companyName;
   @override
   String get createdBy;
   @override
   String get companyWebsite;
   @override
-  String get industryType;
+  String? get industryType;
   @override
+  @JsonKey(name: "cpAddress")
   String get companyAddress;
   @override
   String get cpName;
   @override
-  String get cpEMail;
+  @JsonKey(name: "cpEmail")
+  String get cpEmail;
   @override
   String get cpPhoneNumber;
   @override

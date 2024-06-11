@@ -128,9 +128,10 @@ _i1.GetIt $initGetIt(
       () => _i45.ContactUsCubit(gh<_i21.IContactUs>()));
   gh.factory<_i46.CustomerCubit>(
       () => _i46.CustomerCubit(gh<_i23.ICustomer>()));
-  gh.factory<_i47.DashboardApplicationCubit>(
-      () => _i47.DashboardApplicationCubit(gh<_i25.IDashboard>()));
-  gh.singleton<_i48.DashboardCubit>(_i48.DashboardCubit(gh<_i25.IDashboard>()));
+  gh.singleton<_i47.DashboardApplicationCubit>(
+      _i47.DashboardApplicationCubit(gh<_i25.IDashboard>()));
+  gh.factory<_i48.DashboardCubit>(
+      () => _i48.DashboardCubit(gh<_i25.IDashboard>()));
   gh.factory<_i49.FeedbackCubit>(
       () => _i49.FeedbackCubit(gh<_i27.IFeedback>()));
   gh.lazySingleton<_i50.GlobalUserCubit>(

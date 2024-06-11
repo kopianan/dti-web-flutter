@@ -3,6 +3,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dti_web/application/admin/cubit/admin_cubit.dart';
 import 'package:dti_web/application/app_list/app_list_cubit.dart';
 import 'package:dti_web/application/customer/cubit/customer_cubit.dart';
+import 'package:dti_web/application/dashboard/cubit/dashboard_application_cubit.dart';
 import 'package:dti_web/application/dashboard/dashboard_cubit.dart';
 import 'package:dti_web/application/document/document_cubit.dart';
 import 'package:dti_web/application/global/global_user_cubit.dart';
@@ -591,17 +592,29 @@ class _SuccessBodyState extends State<SuccessBody> with NavigateMixin {
           ],
         ),
         20.verticalSpace,
-        BlocProvider(
-          create: (context) => getIt<UpdateApplicationCubit>(),
-          child: BlocConsumer<UpdateApplicationCubit, UpdateApplicationState>(
-            listener: (context, updateState) {
-              updateState.maybeMap(
-                orElse: () {},
-                onLoading: (e) {},
-                onSubmitApplication: (e) {
-                  Future.delayed(const Duration(seconds: 3)).then((value) {
-                    getIt<DashboardCubit>().getLastPassportAndApplicationData();
-                  });
+        MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => getIt<UpdateApplicationCubit>(),
+            ),
+            BlocProvider(
+              create: (context) => getIt<DashboardCubit>(),
+            ),
+          ],
+          child: BlocListener<DashboardCubit, DashboardState>(
+            listener: (context, state) {
+              state.maybeMap(
+                orElse: () {
+                  EasyLoading.dismiss();
+                },
+                loading: (e) {
+                  EasyLoading.show();
+                },
+                onGetSingleAppsData: (value) {
+                  EasyLoading.dismiss();
+                  context
+                      .read<DashboardApplicationCubit>()
+                      .setLastCorporate(value.visa);
                   AwesomeDialog(
                     context: context,
                     width: ScreenUtil().screenWidth / 4,
@@ -622,38 +635,56 @@ class _SuccessBodyState extends State<SuccessBody> with NavigateMixin {
                 },
               );
             },
-            builder: (context, updateState) {
-              return updateState.maybeMap(orElse: () {
-                return PrimaryButton(
-                  bgColor: (isCheckedA && isCheckedB && isCheckedC)
-                      ? AppColor.primaryColor
-                      : Colors.grey,
-                  onClick: () {
-                    if (isCheckedA && isCheckedB && isCheckedC) {
-                      context
-                          .read<UpdateApplicationCubit>()
-                          .submitVisaApps(visa.firebaseDocId!);
-                    }
+            child: BlocConsumer<UpdateApplicationCubit, UpdateApplicationState>(
+              listener: (context, updateState) {
+                updateState.maybeMap(
+                  orElse: () {
+                    EasyLoading.dismiss();
                   },
-                  width: 300,
-                  label: "CONFIRM",
-                  labelStyle: TextStyle(fontSize: 20.sp),
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                  height: 60,
+                  onLoading: (e) {
+                    EasyLoading.show(
+                      maskType: EasyLoadingMaskType.black,
+                    );
+                  },
+                  onSubmitApplication: (e) async {
+                    await Future.delayed(const Duration(seconds: 3));
+                    getIt<DashboardCubit>().getLastPassportAndApplicationData();
+                  },
                 );
-              }, onLoading: (e) {
-                return PrimaryButton(
-                  onClick: () {},
-                  width: 300,
-                  label: "Loading . . . ",
-                  labelStyle: TextStyle(fontSize: 20.sp),
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                  height: 60,
-                );
-              });
-            },
+              },
+              builder: (context, updateState) {
+                return updateState.maybeMap(orElse: () {
+                  return PrimaryButton(
+                    bgColor: (isCheckedA && isCheckedB && isCheckedC)
+                        ? AppColor.primaryColor
+                        : Colors.grey,
+                    onClick: () {
+                      if (isCheckedA && isCheckedB && isCheckedC) {
+                        context
+                            .read<UpdateApplicationCubit>()
+                            .submitVisaApps(visa.firebaseDocId!);
+                      }
+                    },
+                    width: 300,
+                    label: "CONFIRM",
+                    labelStyle: TextStyle(fontSize: 20.sp),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 10),
+                    height: 60,
+                  );
+                }, onLoading: (e) {
+                  return PrimaryButton(
+                    onClick: () {},
+                    width: 300,
+                    label: "Loading . . . ",
+                    labelStyle: TextStyle(fontSize: 20.sp),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 10),
+                    height: 60,
+                  );
+                });
+              },
+            ),
           ),
         ),
       ],

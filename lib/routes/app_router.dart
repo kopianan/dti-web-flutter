@@ -31,6 +31,7 @@ import 'package:dti_web/presentation/corporate/feedback/admin_feedback_page.dart
 import 'package:dti_web/presentation/corporate/home/agent_home_page.dart';
 import 'package:dti_web/presentation/corporate/stat/admin_statistic_page.dart';
 import 'package:dti_web/presentation/dashboard/pages/application_card_page.dart';
+import 'package:dti_web/presentation/dashboard/pages/application_corp_card_page.dart';
 import 'package:dti_web/presentation/payment/payment_page.dart';
 import 'package:dti_web/presentation/questionnaire/application_corp_form_company_page.dart';
 import 'package:dti_web/presentation/questionnaire/application_corp_form_foreigner_page.dart';

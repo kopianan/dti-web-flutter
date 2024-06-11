@@ -14,12 +14,14 @@ class UpdateApplicationState with _$UpdateApplicationState {
       VisaApplicationModel visaApps) = _OnCreatePassport;
   const factory UpdateApplicationState.onSubmitApplication(
       String firebaseDocId) = _OnSubmitApplication;
+  const factory UpdateApplicationState.onSubmitCorporateApplication(
+      String firebaseDocId) = _OnSubmitCorporateApplication;
   const factory UpdateApplicationState.onSubmitPassport(String firebaseDocId) =
       _OnSubmitPassport;
   const factory UpdateApplicationState.onUpdateApplication() =
       _OnUpdateApplication;
-  const factory UpdateApplicationState.onUpdateCorpApplication() =
-      _OnUpdateCorpApplication;
+  const factory UpdateApplicationState.onUpdateCorpApplication(
+      String firebaseDocId) = _OnUpdateCorpApplication;
   const factory UpdateApplicationState.onUpdatePassport() = _OnUpdatePassport;
   const factory UpdateApplicationState.onUpdateMultiVisa(String message) =
       _OnUpdateMultiVisa;

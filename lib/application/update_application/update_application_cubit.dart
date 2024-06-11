@@ -233,7 +233,8 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
         await iUpdateApplication.updateCorporateApplication(visaCorps);
     result.fold(
       (l) => emit(UpdateApplicationState.onError(l)),
-      (r) => emit(const UpdateApplicationState.onUpdateCorpApplication()),
+      (r) => emit(UpdateApplicationState.onUpdateCorpApplication(
+          visaCorps.firebaseDocId)),
     );
   }
 
@@ -361,6 +362,20 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
       result.fold(
         (l) => emit(UpdateApplicationState.onError(l)),
         (r) => emit(UpdateApplicationState.onSubmitApplication(r)),
+      );
+    } on Exception {
+      emit(UpdateApplicationState.onError(Failures.serverError()));
+    }
+  }
+
+  void submitCorpVisaApps(String firebaseDocId) async {
+    emit(const UpdateApplicationState.onLoading());
+
+    final result = await iUpdateApplication.submitCorpVisa(firebaseDocId);
+    try {
+      result.fold(
+        (l) => emit(UpdateApplicationState.onError(l)),
+        (r) => emit(UpdateApplicationState.onSubmitCorporateApplication(r)),
       );
     } on Exception {
       emit(UpdateApplicationState.onError(Failures.serverError()));
