@@ -123,7 +123,7 @@ class CompanyParticularCompany extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      visaCorp.cpEmail,
+                      visaCorp.cpEMail,
                       style: const TextStyle(
                         color: AppColor.primaryColor,
                         fontSize: 18,

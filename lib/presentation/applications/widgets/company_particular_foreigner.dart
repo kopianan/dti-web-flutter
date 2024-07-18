@@ -64,7 +64,7 @@ class CompanyParticularForeigner extends StatelessWidget {
                         label: "Contact Name", value: visaCorp.cpName),
                     DetailItemWidget(
                       label: "Contact Email",
-                      value: visaCorp.cpEmail,
+                      value: visaCorp.cpEMail,
                     )
                   ],
                 ),

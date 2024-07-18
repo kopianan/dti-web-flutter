@@ -267,7 +267,7 @@ class _ApplicationCorpFormForeignerPageState
                                                 name: 'ContactPersonEmailField',
                                                 enableSuggestions: false,
                                                 autocorrect: false,
-                                                initialValue: visaCorp.cpEmail,
+                                                initialValue: visaCorp.cpEMail,
                                                 validator: (value) {
                                                   if (value!.isEmpty) {
                                                     return 'Please enter an email address';
@@ -445,7 +445,7 @@ class _ApplicationCorpFormForeignerPageState
                                                             "CompanyAddressField"],
                                                         cpName: formData[
                                                             "ContactPersonNameField"],
-                                                        cpEmail: formData[
+                                                        cpEMail: formData[
                                                             "ContactPersonEmailField"],
                                                         cpPhoneNumber: formData[
                                                             "ContactPersonPhoneField"],

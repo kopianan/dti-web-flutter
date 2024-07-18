@@ -10,7 +10,7 @@ Widget dateTimThemeChild(BuildContext context, Widget? child) {
           onSurface: Colors.black),
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
-          primary: Colors.red, // button text color
+          foregroundColor: Colors.red, // button text color
         ),
       ),
     ),
