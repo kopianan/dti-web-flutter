@@ -5,6 +5,8 @@ import 'package:dti_web/application/dashboard/cubit/dashboard_application_cubit.
 import 'package:dti_web/application/dashboard/dashboard_cubit.dart';
 import 'package:dti_web/application/global/global_user_cubit.dart';
 import 'package:dti_web/application/other/other_cubit.dart';
+import 'package:dti_web/core/analytic_service.dart';
+import 'package:dti_web/core/widgets/analytic_constant.dart';
 import 'package:dti_web/core/widgets/application_card.dart';
 import 'package:dti_web/core/widgets/passport_card.dart';
 import 'package:dti_web/core/widgets/social_button_widget.dart';
@@ -398,6 +400,9 @@ class _DashboardPageState extends State<DashboardPage> {
           children: [
             InkWell(
               onTap: () {
+                AnalyticService()
+                    .logEvent(AnalyticConstant.clickApplyForeigner);
+
                 final singleCorp =
                     getIt<DashboardApplicationCubit>().state.corporateApps;
                 if (singleCorp.status == "Draft") {
@@ -430,6 +435,7 @@ class _DashboardPageState extends State<DashboardPage> {
             ),
             InkWell(
               onTap: () {
+                AnalyticService().logEvent(AnalyticConstant.clickApplyCompany);
                 final singleCorp =
                     getIt<DashboardApplicationCubit>().state.corporateApps;
                 if (singleCorp.status == "Draft") {
@@ -483,6 +489,7 @@ class _DashboardPageState extends State<DashboardPage> {
           children: [
             InkWell(
               onTap: () {
+                AnalyticService().logEvent(AnalyticConstant.clickApplyVisa);
                 onCreateVisaApps(state);
               },
               child: const ServiceMenuItem(
@@ -492,6 +499,7 @@ class _DashboardPageState extends State<DashboardPage> {
             ),
             InkWell(
               onTap: () {
+                AnalyticService().logEvent(AnalyticConstant.clickApplyVOA);
                 onCreateVOA(state);
               },
               child: const ServiceMenuItem(
@@ -501,6 +509,7 @@ class _DashboardPageState extends State<DashboardPage> {
             ),
             InkWell(
               onTap: () {
+                AnalyticService().logEvent(AnalyticConstant.clickApplyVOA);
                 onCreatePassport(state);
               },
               child: const ServiceMenuItem(

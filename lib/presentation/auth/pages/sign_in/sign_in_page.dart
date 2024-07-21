@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dti_web/application/auth/auth_cubit.dart';
 import 'package:dti_web/application/global/global_user_cubit.dart';
+import 'package:dti_web/core/analytic_service.dart';
 import 'package:dti_web/core/storage.dart';
 import 'package:dti_web/core/widgets/auth_footer_widget.dart';
 import 'package:dti_web/core/widgets/loading_primary_button.dart';
@@ -111,6 +112,8 @@ class _SignInPageState extends State<SignInPage> {
                 context.read<AuthCubit>().getUserData();
               },
               onGetUserData: (e) async {
+                getIt<AnalyticService>().logLogin(e.userData.userId ?? '');
+
                 EasyLoading.dismiss();
                 //after get user data after login
                 //check the agent mode.

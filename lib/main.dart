@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:dti_web/app_widget.dart';
 import 'package:dti_web/firebase_options.dart';
 import 'package:dti_web/injection.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
@@ -25,8 +26,10 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  FirebaseAnalytics.instance;
+
   if (kIsWeb) {
-    print(dotenv.env['APP_ID'].toString()); 
+    print(dotenv.env['APP_ID'].toString());
     // initialiaze the facebook javascript SDK
     await FacebookAuth.i.webAndDesktopInitialize(
       appId: dotenv.env['APP_ID'].toString(),
