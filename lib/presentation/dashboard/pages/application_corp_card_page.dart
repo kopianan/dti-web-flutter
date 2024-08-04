@@ -163,10 +163,10 @@ class _ApplicationCorpCardPageState extends State<ApplicationCorpCardPage> {
                                           } else {
                                             await AutoRouter.of(context).pop();
                                             AutoRouter.of(context).navigate(
-                                              ApplicationDetailRoute(
-                                                  firebaseDocId: element
-                                                      .bodyData.firebaseDocId!,
-                                                  appsType: AppsType.passport),
+                                              ApplicationCorpDetailRoute(
+                                                firebaseDocId: element
+                                                    .bodyData.firebaseDocId!,
+                                              ),
                                             );
                                           }
                                         },
