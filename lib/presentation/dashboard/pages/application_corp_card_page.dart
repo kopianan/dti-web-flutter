@@ -2,9 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dti_web/application/app_list/app_list_cubit.dart';
 import 'package:dti_web/application/dashboard/dashboard_cubit.dart';
-import 'package:dti_web/core/widgets/application_card.dart';
-import 'package:dti_web/core/widgets/passport_card.dart';
-import 'package:dti_web/domain/core/apps_type.dart';
+import 'package:dti_web/presentation/dashboard/widgets/visa_application_corp_card.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:flutter/material.dart';
@@ -95,156 +93,67 @@ class _ApplicationCorpCardPageState extends State<ApplicationCorpCardPage> {
                       children: state.apps
                           .map((element) => SizedBox(
                                 width: 500,
-                                child: element.bodyData.subTitle!
-                                        .toLowerCase()
-                                        .contains('passport')
-                                    ? PassportCard(
-                                        visaApps: element.bodyData,
-                                        onCardClick: () async {
-                                          if (element.bodyData.status!
-                                                  .toLowerCase() ==
-                                              'draft') {
-                                            AwesomeDialog(
-                                              context: context,
-                                              width:
-                                                  ScreenUtil().screenWidth / 4,
-                                              title: "Draft Passport",
-                                              desc: element.bodyData.subTitle ==
-                                                      "Visa On Arrival"
-                                                  ? "You have Incomplete Visa On Arrival Application. Do you want to continue from your latest draft?"
-                                                  : element.bodyData.title!
-                                                          .toLowerCase()
-                                                          .contains('passport')
-                                                      ? "You have Incomplete Passport. Do you want to continue from your latest draft?"
-                                                      : "You have Incomplete Visa Application. Do you want to continue from your latest draft?",
-                                              btnOkText: "Continue",
-                                              btnCancelText: "Delete",
-                                              btnOkOnPress: () async {
-                                                await AutoRouter.of(context)
-                                                    .pop();
-                                                if (element.bodyData.title!
-                                                    .toLowerCase()
-                                                    .contains('passport')) {
-                                                  AutoRouter.of(context).push(
-                                                      PassportPersonalParticularRoute(
-                                                          firebaseDocId: element
-                                                              .bodyData
-                                                              .firebaseDocId!));
-                                                } else {
-                                                  AutoRouter.of(context).push(
-                                                      PersonalInformation1Route(
-                                                          firebaseDocId: element
-                                                              .bodyData
-                                                              .firebaseDocId!));
-                                                }
-                                              },
-                                              btnCancelOnPress: () async {
-                                                await AutoRouter.of(context)
-                                                    .pop();
-                                                if (element.bodyData.subTitle ==
-                                                    "Visa On Arrival") {
-                                                  widget.dashboardCubit
-                                                      .deleteSingleData(
-                                                          element.bodyData, 2);
-                                                } else if (element
-                                                    .bodyData.title!
-                                                    .toLowerCase()
-                                                    .contains('passport')) {
-                                                  widget.dashboardCubit
-                                                      .deleteSinglePassport(
-                                                          element.bodyData, 3);
-                                                } else {
-                                                  widget.dashboardCubit
-                                                      .deleteSingleData(
-                                                          element.bodyData, 1);
-                                                }
-                                              },
-                                            ).show();
+                                child: VisaApplicationCorpCard(
+                                  visa: element.bodyData,
+                                  onCardClick: () async {
+                                    print(element.bodyData);
+                                    if (element.bodyData.status!
+                                            .toLowerCase() ==
+                                        'draft') {
+                                      AwesomeDialog(
+                                        context: context,
+                                        width: ScreenUtil().screenWidth / 4,
+                                        title: "Draft Application",
+                                        desc:
+                                            "You have Incomplete ${element.bodyData.title}. Do you want to continue from your latest draft?",
+                                        btnOkText: "Continue",
+                                        btnCancelText: "Delete",
+                                        btnOkOnPress: () async {
+                                          await AutoRouter.of(context).pop();
+                                          if (element.bodyData.title
+                                                  ?.contains("Foreigner") ??
+                                              false) {
+                                            context.pushRoute(
+                                                ApplicationCorpFormForeignerRoute(
+                                                    firebaseDocId: element
+                                                            .bodyData
+                                                            .firebaseDocId ??
+                                                        ""));
                                           } else {
-                                            await AutoRouter.of(context).pop();
-                                            AutoRouter.of(context).navigate(
-                                              ApplicationCorpDetailRoute(
-                                                firebaseDocId: element
-                                                    .bodyData.firebaseDocId!,
-                                              ),
-                                            );
+                                            context.pushRoute(
+                                                ApplicationCorpFormCompanyRoute(
+                                                    firebaseDocId: element
+                                                            .bodyData
+                                                            .firebaseDocId ??
+                                                        ""));
                                           }
                                         },
-                                      )
-                                    : VisaApplicationCard(
-                                        visaApps: element.bodyData,
-                                        onCardClick: () async {
-                                          if (element.bodyData.status!
-                                                  .toLowerCase() ==
-                                              'draft') {
-                                            AwesomeDialog(
-                                              context: context,
-                                              width:
-                                                  ScreenUtil().screenWidth / 4,
-                                              title: "Draft Application",
-                                              desc: element.bodyData.subTitle ==
-                                                      "Visa On Arrival"
-                                                  ? "You have Incomplete Visa On Arrival Application. Do you want to continue from your latest draft?"
-                                                  : element.bodyData.title!
-                                                          .toLowerCase()
-                                                          .contains('passport')
-                                                      ? "You have Incomplete Passport. Do you want to continue from your latest draft?"
-                                                      : "You have Incomplete Visa Application. Do you want to continue from your latest draft?",
-                                              btnOkText: "Continue",
-                                              btnCancelText: "Delete",
-                                              btnOkOnPress: () async {
-                                                await AutoRouter.of(context)
-                                                    .pop();
-                                                if (element.bodyData.title!
-                                                    .toLowerCase()
-                                                    .contains('passport')) {
-                                                  AutoRouter.of(context).push(
-                                                      PassportPersonalParticularRoute(
-                                                          firebaseDocId: element
-                                                              .bodyData
-                                                              .firebaseDocId!));
-                                                } else {
-                                                  AutoRouter.of(context).push(
-                                                      PersonalInformation1Route(
-                                                          firebaseDocId: element
-                                                              .bodyData
-                                                              .firebaseDocId!));
-                                                }
-                                              },
-                                              btnCancelOnPress: () async {
-                                                await AutoRouter.of(context)
-                                                    .pop();
-                                                if (element.bodyData.subTitle ==
-                                                    "Visa On Arrival") {
-                                                  widget.dashboardCubit
-                                                      .deleteSingleData(
-                                                          element.bodyData, 2);
-                                                } else if (element
-                                                    .bodyData.title!
-                                                    .toLowerCase()
-                                                    .contains('passport')) {
-                                                  widget.dashboardCubit
-                                                      .deleteSinglePassport(
-                                                          element.bodyData, 3);
-                                                } else {
-                                                  widget.dashboardCubit
-                                                      .deleteSingleData(
-                                                          element.bodyData, 1);
-                                                }
-                                              },
-                                            ).show();
+                                        btnCancelOnPress: () {
+                                          if (element.bodyData.title
+                                                  ?.contains("Foreigner") ??
+                                              false) {
+                                            widget.dashboardCubit
+                                                .deleteCorporateData(
+                                                    element.bodyData, 0);
                                           } else {
-                                            await AutoRouter.of(context).pop();
-                                            AutoRouter.of(context).navigate(
-                                              ApplicationDetailRoute(
-                                                  firebaseDocId: element
-                                                      .bodyData.firebaseDocId!,
-                                                  appsType:
-                                                      AppsType.application),
-                                            );
+                                            widget.dashboardCubit
+                                                .deleteCorporateData(
+                                                    element.bodyData, 1);
                                           }
                                         },
-                                      ),
+                                      ).show();
+                                    } else {
+                                      await AutoRouter.of(context).pop();
+
+                                      AutoRouter.of(context).navigate(
+                                        ApplicationCorpDetailRoute(
+                                          firebaseDocId:
+                                              element.bodyData.firebaseDocId!,
+                                        ),
+                                      );
+                                    }
+                                  },
+                                ),
                               ))
                           .toList()),
                 ),

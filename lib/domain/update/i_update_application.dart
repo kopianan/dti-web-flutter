@@ -38,9 +38,12 @@ abstract class IUpdateApplication {
       VisaApplicationModel visa,
       Map<String, dynamic>? imageCollection,
       List<String> deletedImages);
-  Future<Either<Failures, String>> submitVisa(String firebaseDocId);
-  Future<Either<Failures, String>> submitCorpVisa(String firebaseDocId);
-  Future<Either<Failures, String>> submitPassport(String firebaseDocId);
+  Future<Either<Failures, String>> submitVisa(
+      String firebaseDocId, VisaApplicationModel visa);
+  Future<Either<Failures, String>> submitCorpVisa(
+      String firebaseDocId, VisaApplicationCorp visa);
+  Future<Either<Failures, String>> submitPassport(
+      String firebaseDocId, VisaApplicationModel visa);
   Future<Either<Failures, VisaApplicationModel>> getUserApplicationById(
       String firebaseDocId);
   Future<Either<Failures, VisaApplicationCorp>> getUserCorpApplicationById(

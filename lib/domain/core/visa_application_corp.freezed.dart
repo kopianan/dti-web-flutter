@@ -33,8 +33,10 @@ mixin _$VisaApplicationCorp {
   String get createdBy => throw _privateConstructorUsedError;
   String get companyWebsite => throw _privateConstructorUsedError;
   String? get industryType => throw _privateConstructorUsedError;
+  @JsonKey(name: "cpAddress")
   String get companyAddress => throw _privateConstructorUsedError;
   String get cpName => throw _privateConstructorUsedError;
+  @JsonKey(name: "cpEmail")
   String get cpEMail => throw _privateConstructorUsedError;
   String get cpPhoneNumber => throw _privateConstructorUsedError;
   String? get mobileCountryCode => throw _privateConstructorUsedError;
@@ -80,9 +82,9 @@ abstract class $VisaApplicationCorpCopyWith<$Res> {
       String createdBy,
       String companyWebsite,
       String? industryType,
-      String companyAddress,
+      @JsonKey(name: "cpAddress") String companyAddress,
       String cpName,
-      String cpEMail,
+      @JsonKey(name: "cpEmail") String cpEMail,
       String cpPhoneNumber,
       String? mobileCountryCode,
       String? mobileDialCode,
@@ -308,9 +310,9 @@ abstract class _$$VisaApplicationCorpImplCopyWith<$Res>
       String createdBy,
       String companyWebsite,
       String? industryType,
-      String companyAddress,
+      @JsonKey(name: "cpAddress") String companyAddress,
       String cpName,
-      String cpEMail,
+      @JsonKey(name: "cpEmail") String cpEMail,
       String cpPhoneNumber,
       String? mobileCountryCode,
       String? mobileDialCode,
@@ -529,9 +531,9 @@ class _$VisaApplicationCorpImpl implements _VisaApplicationCorp {
       this.createdBy = "",
       this.companyWebsite = "",
       this.industryType,
-      this.companyAddress = "",
+      @JsonKey(name: "cpAddress") this.companyAddress = "",
       this.cpName = "",
-      this.cpEMail = "",
+      @JsonKey(name: "cpEmail") this.cpEMail = "",
       this.cpPhoneNumber = "",
       this.mobileCountryCode,
       this.mobileDialCode,
@@ -592,13 +594,13 @@ class _$VisaApplicationCorpImpl implements _VisaApplicationCorp {
   @override
   final String? industryType;
   @override
-  @JsonKey()
+  @JsonKey(name: "cpAddress")
   final String companyAddress;
   @override
   @JsonKey()
   final String cpName;
   @override
-  @JsonKey()
+  @JsonKey(name: "cpEmail")
   final String cpEMail;
   @override
   @JsonKey()
@@ -781,9 +783,9 @@ abstract class _VisaApplicationCorp implements VisaApplicationCorp {
       final String createdBy,
       final String companyWebsite,
       final String? industryType,
-      final String companyAddress,
+      @JsonKey(name: "cpAddress") final String companyAddress,
       final String cpName,
-      final String cpEMail,
+      @JsonKey(name: "cpEmail") final String cpEMail,
       final String cpPhoneNumber,
       final String? mobileCountryCode,
       final String? mobileDialCode,
@@ -832,10 +834,12 @@ abstract class _VisaApplicationCorp implements VisaApplicationCorp {
   @override
   String? get industryType;
   @override
+  @JsonKey(name: "cpAddress")
   String get companyAddress;
   @override
   String get cpName;
   @override
+  @JsonKey(name: "cpEmail")
   String get cpEMail;
   @override
   String get cpPhoneNumber;

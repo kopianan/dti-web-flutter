@@ -15,8 +15,8 @@ import 'package:dti_web/domain/update/image_upload_response.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
-part 'update_application_state.dart';
 part 'update_application_cubit.freezed.dart';
+part 'update_application_state.dart';
 
 @Injectable()
 class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
@@ -354,10 +354,10 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
     );
   }
 
-  void submitVisaApps(String firebaseDocId) async {
+  void submitVisaApps(String firebaseDocId, VisaApplicationModel visa) async {
     emit(const UpdateApplicationState.onLoading());
 
-    final result = await iUpdateApplication.submitVisa(firebaseDocId);
+    final result = await iUpdateApplication.submitVisa(firebaseDocId, visa);
     try {
       result.fold(
         (l) => emit(UpdateApplicationState.onError(l)),
@@ -368,10 +368,11 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
     }
   }
 
-  void submitCorpVisaApps(String firebaseDocId) async {
+  void submitCorpVisaApps(
+      String firebaseDocId, VisaApplicationCorp visa) async {
     emit(const UpdateApplicationState.onLoading());
 
-    final result = await iUpdateApplication.submitCorpVisa(firebaseDocId);
+    final result = await iUpdateApplication.submitCorpVisa(firebaseDocId, visa);
     try {
       result.fold(
         (l) => emit(UpdateApplicationState.onError(l)),
@@ -382,10 +383,11 @@ class UpdateApplicationCubit extends Cubit<UpdateApplicationState> {
     }
   }
 
-  void submitPassportApps(String firebaseDocId) async {
+  void submitPassportApps(
+      String firebaseDocId, VisaApplicationModel visa) async {
     emit(const UpdateApplicationState.onLoading());
 
-    final result = await iUpdateApplication.submitPassport(firebaseDocId);
+    final result = await iUpdateApplication.submitPassport(firebaseDocId, visa);
     try {
       result.fold(
         (l) => emit(UpdateApplicationState.onError(l)),

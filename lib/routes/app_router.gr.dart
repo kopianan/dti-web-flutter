@@ -297,6 +297,7 @@ abstract class _$AppRouter extends RootStackRouter {
           images: args.images,
           isNetwork: args.isNetwork,
           isAsset: args.isAsset,
+          isShow: args.isShow,
           imagesBytes: args.imagesBytes,
         ),
       );
@@ -1311,6 +1312,7 @@ class PhotoViewRoute extends PageRouteInfo<PhotoViewRouteArgs> {
     required List<String> images,
     bool isNetwork = true,
     bool isAsset = false,
+    required bool isShow,
     List<Uint8List>? imagesBytes,
     List<PageRouteInfo>? children,
   }) : super(
@@ -1320,6 +1322,7 @@ class PhotoViewRoute extends PageRouteInfo<PhotoViewRouteArgs> {
             images: images,
             isNetwork: isNetwork,
             isAsset: isAsset,
+            isShow: isShow,
             imagesBytes: imagesBytes,
           ),
           initialChildren: children,
@@ -1337,6 +1340,7 @@ class PhotoViewRouteArgs {
     required this.images,
     this.isNetwork = true,
     this.isAsset = false,
+    required this.isShow,
     this.imagesBytes,
   });
 
@@ -1348,11 +1352,13 @@ class PhotoViewRouteArgs {
 
   final bool isAsset;
 
+  final bool isShow;
+
   final List<Uint8List>? imagesBytes;
 
   @override
   String toString() {
-    return 'PhotoViewRouteArgs{key: $key, images: $images, isNetwork: $isNetwork, isAsset: $isAsset, imagesBytes: $imagesBytes}';
+    return 'PhotoViewRouteArgs{key: $key, images: $images, isNetwork: $isNetwork, isAsset: $isAsset, isShow: $isShow, imagesBytes: $imagesBytes}';
   }
 }
 

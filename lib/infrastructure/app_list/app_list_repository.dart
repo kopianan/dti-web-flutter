@@ -25,7 +25,7 @@ class AppListRepository extends IAppList {
     try {
       final result = (isAgent)
           //AGENT
-          ? await dio.get('${dotenv.env['BASE_URL']}/overallApplicationsByUser',
+          ? await dio.get('${dotenv.env['BASE_URL']}/applicationsByUser',
               options: Options(
                 headers: {'Authorization': 'Bearer ${storage.getToken()}'},
               ))
@@ -39,7 +39,7 @@ class AppListRepository extends IAppList {
           .map((e) => SimpleVisaModel.fromJson(e))
           .toList();
       listData.sort(
-        (a, b) => a.createdDate!.compareTo(b.createdDate!),
+        (a, b) => b.createdDate!.compareTo(a.createdDate!),
       );
       return Right(listData);
     } on DioError catch (e) {
@@ -61,12 +61,14 @@ class AppListRepository extends IAppList {
     try {
       final result = (isAgent)
           //AGENT
-          ? await dio.get('${dotenv.env['BASE_URL']}/corporateApplicationsByUser',
+          ? await dio.get(
+              '${dotenv.env['BASE_URL']}/corporateApplicationsByUser',
               options: Options(
                 headers: {'Authorization': 'Bearer ${storage.getToken()}'},
               ))
           //ADMIN
-          : await dio.get('${dotenv.env['BASE_URL']}/corporateApplicationsByUser',
+          : await dio.get(
+              '${dotenv.env['BASE_URL']}/corporateApplicationsByUser',
               options: Options(
                 headers: {'Authorization': 'Bearer ${storage.getToken()}'},
               ));
@@ -75,7 +77,7 @@ class AppListRepository extends IAppList {
           .map((e) => SimpleVisaModel.fromJson(e))
           .toList();
       listData.sort(
-        (a, b) => a.createdDate!.compareTo(b.createdDate!),
+        (a, b) => b.createdDate!.compareTo(a.createdDate!),
       );
       return Right(listData);
     } on DioError catch (e) {

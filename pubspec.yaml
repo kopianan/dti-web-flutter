@@ -13,7 +13,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.1.5+3
 
 environment:
-  sdk: '>=2.19.6 <3.0.0'
+  sdk: '>=3.0.0'
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -36,7 +36,7 @@ dependencies:
   build_web_compilers: ^3.2.7
   camera: ^0.10.3+2
   carousel_slider: ^4.1.1
-  community_charts_flutter: ^1.0.2
+  community_charts_flutter: ^1.0.4
   country_code_picker: ^3.0.0
   country_codes: ^2.2.0
   country_picker: ^2.0.16
@@ -51,6 +51,7 @@ dependencies:
   firebase_analytics: ^11.2.0
   firebase_auth: ^5.1.2
   firebase_core: ^3.2.0
+  fl_chart: ^0.68.0
   flash: ^3.0.0
   flutter:
     sdk: flutter

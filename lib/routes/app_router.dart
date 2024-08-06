@@ -6,8 +6,9 @@ import 'package:dti_web/application/dashboard/dashboard_cubit.dart';
 import 'package:dti_web/core/storage.dart';
 import 'package:dti_web/domain/core/apps_type.dart';
 import 'package:dti_web/domain/core/corp_enum.dart';
-import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/domain/core/document_data_model.dart';
+import 'package:dti_web/domain/core/visa_application_model.dart';
+import 'package:dti_web/domain/questionnaire/questionnaire_model.dart';
 import 'package:dti_web/domain/questionnaire/result_model.dart';
 import 'package:dti_web/presentation/applications/application_corp_detail_page.dart';
 import 'package:dti_web/presentation/applications/application_detail_page.dart';
@@ -50,7 +51,6 @@ import 'package:dti_web/presentation/questionnaire/user_domicile_page.dart';
 import 'package:dti_web/presentation/questionnaire/voa_summary_page.dart';
 import 'package:dti_web/presentation/viewer/dti_pdf_viewer_page.dart';
 import 'package:flutter/material.dart';
-import 'package:dti_web/domain/questionnaire/questionnaire_model.dart';
 import 'package:flutter/services.dart';
 
 import '../presentation/auth/pages/check_email_page.dart';
@@ -64,6 +64,7 @@ import '../presentation/landing/presentation/pages/landing_page.dart';
 import '../presentation/questionnaire/personal_information_2_page.dart';
 import 'agent_guard.dart';
 import 'user_only_guard.dart';
+
 // import 'package:auto_route/annotations.dart';
 
 part "app_router.gr.dart";
@@ -77,6 +78,7 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
 
     final token = storage.getToken();
     log(token.toString(), name: "TOKEN");
+
     if (token != null || authRouteExcept.contains(resolver.route.name)) {
       resolver.next();
     } else {
@@ -96,6 +98,7 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
 
   @override
   RouteType get defaultRouteType => const RouteType.material();
+
   @override
   final List<AutoRoute> routes = [
     CustomRoute(
@@ -103,7 +106,7 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
       reverseDurationInMilliseconds: 0,
       path: '/agent-dashboard',
       page: CDashboardRoute.page,
-      guards: [AgentGuard()],
+      guards: [AgentGuard(), PlatformGuard()],
       children: [
         AutoRoute(
           path: 'create-application',

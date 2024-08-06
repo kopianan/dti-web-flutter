@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:dti_web/application/document/document_cubit.dart';
@@ -116,18 +115,25 @@ class ShowImage extends StatelessWidget {
     } else if (name!.contains('/')) {
       return imageFromFile(name!);
     } else {
+      final url = state.selectedMasterListData?.firstWhere(
+        (element) => element.contains(name!),
+      );
+      print(url);
       return Image.network(
-        state.selectedMasterListData!.firstWhere(
-          (element) => element.contains(name!),
-        ),
-        fit: BoxFit.cover,
+        url!,
+        fit: BoxFit.cover,  
         width: double.infinity,
         height: double.infinity,
+        errorBuilder: (context, error, stackTrace) {
+          print(stackTrace);
+          print(error);
+          return Container();
+        },
         loadingBuilder: (context, child, loadingProgress) {
           if (loadingProgress == null) {
             return child;
           }
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         },
       );
     }
@@ -194,7 +200,7 @@ class _ShowPdfState extends State<ShowPdf> {
             if (loadingProgress == null) {
               return child;
             }
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           },
         );
       }

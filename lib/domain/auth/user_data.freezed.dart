@@ -30,6 +30,7 @@ mixin _$UserData {
   String? get lastUpdatedBy => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
+  String? get hubspotId => throw _privateConstructorUsedError;
   bool get isAgent => throw _privateConstructorUsedError;
   int? get selfReferralCodeTotal => throw _privateConstructorUsedError;
   String? get createdAt => throw _privateConstructorUsedError;
@@ -60,6 +61,7 @@ abstract class $UserDataCopyWith<$Res> {
       String? lastUpdatedBy,
       String? email,
       String? name,
+      String? hubspotId,
       bool isAgent,
       int? selfReferralCodeTotal,
       String? createdAt,
@@ -92,6 +94,7 @@ class _$UserDataCopyWithImpl<$Res, $Val extends UserData>
     Object? lastUpdatedBy = freezed,
     Object? email = freezed,
     Object? name = freezed,
+    Object? hubspotId = freezed,
     Object? isAgent = null,
     Object? selfReferralCodeTotal = freezed,
     Object? createdAt = freezed,
@@ -140,6 +143,10 @@ class _$UserDataCopyWithImpl<$Res, $Val extends UserData>
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hubspotId: freezed == hubspotId
+          ? _value.hubspotId
+          : hubspotId // ignore: cast_nullable_to_non_nullable
               as String?,
       isAgent: null == isAgent
           ? _value.isAgent
@@ -192,6 +199,7 @@ abstract class _$$UserDataImplCopyWith<$Res>
       String? lastUpdatedBy,
       String? email,
       String? name,
+      String? hubspotId,
       bool isAgent,
       int? selfReferralCodeTotal,
       String? createdAt,
@@ -222,6 +230,7 @@ class __$$UserDataImplCopyWithImpl<$Res>
     Object? lastUpdatedBy = freezed,
     Object? email = freezed,
     Object? name = freezed,
+    Object? hubspotId = freezed,
     Object? isAgent = null,
     Object? selfReferralCodeTotal = freezed,
     Object? createdAt = freezed,
@@ -271,6 +280,10 @@ class __$$UserDataImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
+      hubspotId: freezed == hubspotId
+          ? _value.hubspotId
+          : hubspotId // ignore: cast_nullable_to_non_nullable
+              as String?,
       isAgent: null == isAgent
           ? _value.isAgent
           : isAgent // ignore: cast_nullable_to_non_nullable
@@ -317,6 +330,7 @@ class _$UserDataImpl extends _UserData {
       this.lastUpdatedBy,
       this.email,
       this.name,
+      this.hubspotId,
       this.isAgent = false,
       this.selfReferralCodeTotal,
       this.createdAt,
@@ -350,6 +364,8 @@ class _$UserDataImpl extends _UserData {
   @override
   final String? name;
   @override
+  final String? hubspotId;
+  @override
   @JsonKey()
   final bool isAgent;
   @override
@@ -367,7 +383,7 @@ class _$UserDataImpl extends _UserData {
 
   @override
   String toString() {
-    return 'UserData(usedReferralCodeFlag: $usedReferralCodeFlag, selfReferralCode: $selfReferralCode, userId: $userId, mobileNumber: $mobileNumber, outstandingAction: $outstandingAction, token: $token, lastUpdatedDate: $lastUpdatedDate, lastUpdatedBy: $lastUpdatedBy, email: $email, name: $name, isAgent: $isAgent, selfReferralCodeTotal: $selfReferralCodeTotal, createdAt: $createdAt, usedReferralCode: $usedReferralCode, totalVisa: $totalVisa, countryCode: $countryCode, userReferral: $userReferral)';
+    return 'UserData(usedReferralCodeFlag: $usedReferralCodeFlag, selfReferralCode: $selfReferralCode, userId: $userId, mobileNumber: $mobileNumber, outstandingAction: $outstandingAction, token: $token, lastUpdatedDate: $lastUpdatedDate, lastUpdatedBy: $lastUpdatedBy, email: $email, name: $name, hubspotId: $hubspotId, isAgent: $isAgent, selfReferralCodeTotal: $selfReferralCodeTotal, createdAt: $createdAt, usedReferralCode: $usedReferralCode, totalVisa: $totalVisa, countryCode: $countryCode, userReferral: $userReferral)';
   }
 
   @override
@@ -391,6 +407,8 @@ class _$UserDataImpl extends _UserData {
                 other.lastUpdatedBy == lastUpdatedBy) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.hubspotId, hubspotId) ||
+                other.hubspotId == hubspotId) &&
             (identical(other.isAgent, isAgent) || other.isAgent == isAgent) &&
             (identical(other.selfReferralCodeTotal, selfReferralCodeTotal) ||
                 other.selfReferralCodeTotal == selfReferralCodeTotal) &&
@@ -420,6 +438,7 @@ class _$UserDataImpl extends _UserData {
       lastUpdatedBy,
       email,
       name,
+      hubspotId,
       isAgent,
       selfReferralCodeTotal,
       createdAt,
@@ -454,6 +473,7 @@ abstract class _UserData extends UserData {
       final String? lastUpdatedBy,
       final String? email,
       final String? name,
+      final String? hubspotId,
       final bool isAgent,
       final int? selfReferralCodeTotal,
       final String? createdAt,
@@ -486,6 +506,8 @@ abstract class _UserData extends UserData {
   String? get email;
   @override
   String? get name;
+  @override
+  String? get hubspotId;
   @override
   bool get isAgent;
   @override

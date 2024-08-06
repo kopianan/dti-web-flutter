@@ -137,6 +137,7 @@ class PassportDetailWidget extends StatelessWidget {
                                             width: ScreenUtil().screenWidth,
                                             height: ScreenUtil().screenHeight,
                                             child: PhotoViewPage(
+                                              isShow: true,
                                               images: filtered,
                                               isNetwork: true,
                                             ),
@@ -207,6 +208,7 @@ class PassportDetailWidget extends StatelessWidget {
                                   width: ScreenUtil().screenWidth,
                                   height: ScreenUtil().screenHeight,
                                   child: PhotoViewPage(
+                                    isShow: true,
                                     images: [data.values.single],
                                     isNetwork: true,
                                   ),

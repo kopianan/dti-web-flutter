@@ -75,9 +75,8 @@ class AppWidget extends StatelessWidget with CoreMixin {
             ],
             title: 'DoorToID',
             builder: EasyLoading.init(),
-
             theme: ThemeData(
-              useMaterial3: false,
+                useMaterial3: false,
                 scrollbarTheme: const ScrollbarThemeData(
                   thumbColor: MaterialStatePropertyAll(AppColor.primaryColor),
                   thumbVisibility: MaterialStatePropertyAll(true),

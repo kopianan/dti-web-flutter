@@ -1,14 +1,13 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:dti_web/application/admin_application/cubit/admin_application_cubit.dart';
-import 'package:dti_web/application/application_cubit.dart';
-import 'package:dti_web/application/customer/cubit/customer_cubit.dart';
-import 'package:dti_web/domain/core/customer_model.dart';
-import 'package:dti_web/injection.dart';
-import 'package:dti_web/presentation/corporate/widgets/chart_filter_widget.dart';
-import 'package:dti_web/utils/app_color.dart';
-import 'package:flutter/material.dart';
+import 'package:collection/collection.dart';
 import 'package:community_charts_flutter/community_charts_flutter.dart'
     as charts;
+import 'package:dti_web/application/admin_application/cubit/admin_application_cubit.dart';
+import 'package:dti_web/application/customer/cubit/customer_cubit.dart';
+import 'package:dti_web/presentation/corporate/widgets/chart_filter_widget.dart';
+import 'package:dti_web/utils/date_converter.dart';
+import 'package:fl_chart/fl_chart.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../application/admin/admin_data/admin_data_cubit.dart';
@@ -221,27 +220,83 @@ class _AdminStatisticPageState extends State<AdminStatisticPage> {
                         ),
                       ),
                     ),
-                    Container(
-                      padding: const EdgeInsets.only(
-                        left: 20,
-                        right: 20,
-                        bottom: 30,
-                      ),
-                      height: 500,
-                      color: Colors.white,
-                      child: BlocBuilder<AdminDataCubit, AdminDataState>(
-                        builder: (context, state) {
-                          if (state.users.isNotEmpty) {
-                            return charts.TimeSeriesChart(
-                              state.getCustomerLineSeries(),
-                              animate: true,
-                            );
-                          } else {
-                            return Container();
-                          }
-                        },
+
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Container(
+                        padding: const EdgeInsets.only(
+                          left: 20,
+                          right: 20,
+                          bottom: 30,
+                        ),
+                        height: 500,
+                        width: 500,
+                        color: Colors.white,
+                        child: BlocBuilder<AdminDataCubit, AdminDataState>(
+                          builder: (context, state) {
+                            if (state.users.isNotEmpty) {
+                              return BarChart(
+                                BarChartData(
+                                  barTouchData: barTouchData,
+                                  
+                                  titlesData:
+                                      titlesData(state.getCustomerBarChart()),
+                                  borderData: borderData,
+                                  barGroups: state
+                                      .getCustomerBarChart()
+                                      .mapIndexed((idx, e) => BarChartGroupData(
+                                            x: idx,
+                                            barRods: [
+                                              BarChartRodData(
+                                                toY: e.total.toDouble(),
+                                                gradient: _barsGradient,
+                                              )
+                                            ],
+                                            showingTooltipIndicators: [0],
+                                          ))
+                                      .toList(),
+                                  gridData: const FlGridData(
+                                    show: true,
+                                  ),
+                                  alignment: BarChartAlignment.spaceAround,
+                                  maxY: 20,
+                                ),
+                              );
+                            } else {
+                              return Container();
+                            }
+                          },
+                        ),
                       ),
                     ),
+                    // Container(
+                    //   padding: const EdgeInsets.only(
+                    //     left: 20,
+                    //     right: 20,
+                    //     bottom: 30,
+                    //   ),
+                    //   height: 500,
+                    //   color: Colors.white,
+                    //   child: BlocBuilder<AdminDataCubit, AdminDataState>(
+                    //     builder: (context, state) {
+                    //       if (state.users.isNotEmpty) {
+                    //         return charts.TimeSeriesChart(
+                    //           state.getCustomerLineSeries(),
+                    //           defaultRenderer:
+                    //               charts.BarRendererConfig<DateTime>(),
+                    //           animate: true,
+                    //           primaryMeasureAxis: charts.NumericAxisSpec(scaleSpec: ScaleSp),
+                    //           behaviors: [
+                    //             charts.SelectNearest(),
+                    //             charts.DomainHighlighter()
+                    //           ],
+                    //         );
+                    //       } else {
+                    //         return Container();
+                    //       }
+                    //     },
+                    //   ),
+                    // ),
                   ],
                 ),
               )),
@@ -313,6 +368,76 @@ class _AdminStatisticPageState extends State<AdminStatisticPage> {
       )),
     );
   }
+
+  BarTouchData get barTouchData => BarTouchData(
+        enabled: false,
+        touchTooltipData: BarTouchTooltipData(
+          getTooltipColor: (group) => Colors.transparent,
+          tooltipPadding: EdgeInsets.zero,
+          tooltipMargin: 8,
+          getTooltipItem: (
+            BarChartGroupData group,
+            int groupIndex,
+            BarChartRodData rod,
+            int rodIndex,
+          ) {
+            return BarTooltipItem(
+              rod.toY.round().toString(),
+              const TextStyle(
+                color: Colors.indigo,
+                fontWeight: FontWeight.bold,
+              ),
+            );
+          },
+        ),
+      );
+
+  Widget getTitles(double value, TitleMeta meta, List<DateTime> lists) {
+    const style = TextStyle(
+      color: Colors.blue,
+      fontWeight: FontWeight.bold,
+      fontSize: 14,
+    );
+    String text = meta.formattedValue;
+    text = DateConverter.convertDateDefault2(lists[value.toInt()]);
+
+    return SideTitleWidget(
+      axisSide: meta.axisSide,
+      space: 4,
+      child: Text(text, style: style),
+    );
+  }
+
+  FlTitlesData titlesData(List<TimeSeriesCoordinate> lists) => FlTitlesData(
+        show: true,
+        bottomTitles: AxisTitles(
+          sideTitles: SideTitles(
+            showTitles: true,
+            reservedSize: 30,
+            getTitlesWidget: (value, meta) =>
+                getTitles(value, meta, lists.map((e) => e.time).toList()),
+          ),
+        ),
+        leftTitles: const AxisTitles(
+          sideTitles: SideTitles(showTitles: false),
+        ),
+        topTitles: const AxisTitles(
+          sideTitles: SideTitles(showTitles: false),
+        ),
+        rightTitles: const AxisTitles(
+          sideTitles: SideTitles(showTitles: false),
+        ),
+      );
+
+  FlBorderData get borderData => FlBorderData(
+        show: false,
+      );
+
+  LinearGradient get _barsGradient => const LinearGradient(
+        colors: [Colors.red, Colors.blue],
+        begin: Alignment.bottomCenter,
+        end: Alignment.topCenter,
+      );
 }
 
 class TableItemWidget extends StatelessWidget {

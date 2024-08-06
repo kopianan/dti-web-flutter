@@ -7,13 +7,11 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' hide ModalBottomSheetRoute;
-
 // import 'package:firebase_core/firebase_core.dart';
 // import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get_storage/get_storage.dart';
-
 import 'package:intl/date_symbol_data_local.dart';
 
 Future<void> main() async {

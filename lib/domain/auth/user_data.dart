@@ -17,6 +17,7 @@ class UserData with _$UserData {
     String? lastUpdatedBy,
     String? email,
     String? name,
+    String? hubspotId,
     @Default(false) bool isAgent,
     int? selfReferralCodeTotal,
     String? createdAt,
@@ -30,21 +31,21 @@ class UserData with _$UserData {
       _$UserDataFromJson(json);
 
   bool adminOrAgent() {
-    if (isAgent || email == "team@doortoid.com") {
+    if (isAgent || email?.contains("@doortoid.com") == true) {
       return true;
     }
     return false;
   }
 
   bool isAdmin() {
-    if (email == "team@doortoid.com") {
+    if (email?.contains("@doortoid.com") == true) {
       return true;
     }
     return false;
   }
 
   bool isUser() {
-    if (email != "team@doortoid.com" && !isAgent) {
+    if (email?.contains("@doortoid.com") == false && !isAgent) {
       return true;
     }
     return false;

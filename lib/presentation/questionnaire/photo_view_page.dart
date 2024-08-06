@@ -16,13 +16,14 @@ class PhotoViewPage extends StatefulWidget {
     required this.images,
     this.isNetwork = true,
     this.isAsset = false,
+    required this.isShow,
     this.imagesBytes,
   });
   final List<String> images;
   final bool isNetwork;
   final List<Uint8List>? imagesBytes;
   final bool isAsset;
-
+  final bool isShow;
   @override
   State<PhotoViewPage> createState() => _PhotoViewPageState();
 }
@@ -85,28 +86,31 @@ class _PhotoViewPageState extends State<PhotoViewPage> {
         backgroundColor: Colors.transparent,
         foregroundColor: Colors.black,
         actions: [
-          InkWell(
-            onTap: () {
-              launch(widget.images[_current]);
-            },
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  const Text(
-                    "Download",
-                    style: TextStyle(
-                        fontSize: 17,
-                        fontWeight: FontWeight.bold,
-                        color: AppColor.primaryColor),
-                  ),
-                  10.horizontalSpace,
-                  const Icon(
-                    Icons.download,
-                    color: AppColor.primaryColor,
-                  ),
-                  10.horizontalSpace
-                ],
+          Visibility(
+            visible: widget.isShow,
+            child: InkWell(
+              onTap: () {
+                launch(widget.images[_current]);
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    const Text(
+                      "Download",
+                      style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold,
+                          color: AppColor.primaryColor),
+                    ),
+                    10.horizontalSpace,
+                    const Icon(
+                      Icons.download,
+                      color: AppColor.primaryColor,
+                    ),
+                    10.horizontalSpace
+                  ],
+                ),
               ),
             ),
           )
@@ -137,7 +141,8 @@ class _PhotoViewPageState extends State<PhotoViewPage> {
               child: Container(
                 width: 12.0,
                 height: 12.0,
-                margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+                margin:
+                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: (Theme.of(context).brightness == Brightness.dark

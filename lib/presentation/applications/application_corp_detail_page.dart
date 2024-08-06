@@ -15,7 +15,6 @@ import 'package:dti_web/injection.dart';
 import 'package:dti_web/presentation/applications/widgets/company_particular_company.dart';
 import 'package:dti_web/presentation/applications/widgets/company_particular_foreigner.dart';
 import 'package:dti_web/presentation/questionnaire/widget/custom_second_header.dart';
-
 import 'package:dti_web/utils/app_color.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -560,7 +559,9 @@ class _SuccessBodyState extends State<SuccessBody> with NavigateMixin {
                 },
                 onGetSingleCorpData: (value) {
                   EasyLoading.dismiss();
-                  context.read<DashboardApplicationCubit>().setLastCorporate(value.visa); 
+                  context
+                      .read<DashboardApplicationCubit>()
+                      .setLastCorporate(value.visa);
                   AwesomeDialog(
                     context: context,
                     width: ScreenUtil().screenWidth / 4,
@@ -613,7 +614,10 @@ class _SuccessBodyState extends State<SuccessBody> with NavigateMixin {
                           if (isCheckedA && isCheckedB && isCheckedC) {
                             context
                                 .read<UpdateApplicationCubit>()
-                                .submitCorpVisaApps(visa.firebaseDocId);
+                                .submitCorpVisaApps(
+                                  visa.firebaseDocId,
+                                  visa
+                                );
                           }
                         },
                         width: 300,

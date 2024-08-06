@@ -1,10 +1,8 @@
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
-import 'package:camera/camera.dart';
 import 'package:community_charts_flutter/community_charts_flutter.dart'
     as charts;
-import 'package:dti_web/application/app_list/app_list_cubit.dart';
 import 'package:dti_web/core/widgets/application_card.dart';
 import 'package:dti_web/domain/contact_us/contact_us_model.dart';
 import 'package:dti_web/domain/core/chart_filter_model.dart';
@@ -12,16 +10,14 @@ import 'package:dti_web/domain/core/customer_model.dart';
 import 'package:dti_web/domain/core/search_type.dart';
 import 'package:dti_web/domain/core/simple_visa_model.dart';
 import 'package:dti_web/domain/feedback/feedback_model.dart';
-import 'package:dti_web/presentation/corporate/stat/admin_statistic_page.dart';
 import 'package:dti_web/utils/chart_util.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:get/utils.dart';
 import 'package:injectable/injectable.dart';
-import 'package:intl/intl.dart';
 
-part 'admin_data_state.dart';
 part 'admin_data_cubit.freezed.dart';
+part 'admin_data_state.dart';
 
 @injectable
 class AdminDataCubit extends Cubit<AdminDataState> {

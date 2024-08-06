@@ -14,7 +14,7 @@ class PlatformPage extends StatefulWidget {
 class _PlatformPageState extends State<PlatformPage> {
   @override
   void initState() {
-    launch('http://onelink.to/mrk8sq');
+    // launch('http://onelink.to/mrk8sq');
     super.initState();
   }
 

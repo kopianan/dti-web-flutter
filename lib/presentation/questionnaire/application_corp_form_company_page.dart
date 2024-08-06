@@ -1,11 +1,11 @@
-import 'package:dti_web/application/startup/startup_cubit.dart';
-import 'package:dti_web/domain/core/province.dart';
-import 'package:dti_web/presentation/questionnaire/widget/custom_second_header.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:country_code_picker/country_code_picker.dart';
+import 'package:dti_web/application/startup/startup_cubit.dart';
 import 'package:dti_web/application/update_application/update_application_cubit.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
+import 'package:dti_web/domain/core/province.dart';
 import 'package:dti_web/injection.dart';
+import 'package:dti_web/presentation/questionnaire/widget/custom_second_header.dart';
 import 'package:dti_web/presentation/widgets/loading_page.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
@@ -158,7 +158,7 @@ class _ApplicationCorpFormCompanyPageState
                               CustomSecondHeader(
                                 header: Center(
                                   child: Text(
-                                    '${visaCorp.title ?? ""} / ${visaCorp.subTitle ?? ""} }',
+                                    '${visaCorp.title ?? ""} / ${visaCorp.subTitle ?? ""}',
                                     style: TextStyle(
                                         fontSize: 18.sp,
                                         color: AppColor.primaryColor,
@@ -625,7 +625,10 @@ class _ApplicationCorpFormCompanyPageState
                                       ),
                                       20.verticalSpace,
                                       //validate button
-                                      PrimaryButton(
+                                      SizedBox(
+                                        width: double.infinity,
+                                        height: 50,
+                                        child: PrimaryButton(
                                           onClick: () {
                                             final validationSuccess = _formKey
                                                 .currentState!
@@ -666,7 +669,13 @@ class _ApplicationCorpFormCompanyPageState
                                                       curr);
                                             }
                                           },
-                                          label: "Continue"),
+                                          label: "Continue",
+                                          labelStyle: TextStyle(
+                                            fontSize: 17.sp,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ),

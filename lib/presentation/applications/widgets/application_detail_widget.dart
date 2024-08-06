@@ -301,6 +301,7 @@ class ApplicationDetailWidget extends StatelessWidget {
                                     width: ScreenUtil().screenWidth,
                                     height: ScreenUtil().screenHeight,
                                     child: PhotoViewPage(
+                                      isShow: true,
                                       images: filtered,
                                       isNetwork: true,
                                     ),
@@ -377,8 +378,6 @@ class ApplicationDetailWidget extends StatelessWidget {
                 )
               ],
             ),
-
-            
           ],
         ),
       ),

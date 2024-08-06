@@ -1,9 +1,8 @@
 import 'package:dti_web/domain/core/visa_application_corp.dart';
 import 'package:dti_web/presentation/applications/application_corp_detail_page.dart';
 import 'package:dti_web/utils/app_color.dart';
+import 'package:dti_web/utils/date_converter.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intl/intl.dart';
 
 class CompanyParticularCompany extends StatelessWidget {
   const CompanyParticularCompany({
@@ -207,7 +206,8 @@ class CompanyParticularCompany extends StatelessWidget {
                 TableRow(
                   children: [
                     Text(
-                      visaCorp.expectedTimelineFrom ?? "",
+                      DateConverter.convertDateDefault(
+                          visaCorp.expectedTimelineFrom),
                       style: const TextStyle(
                         color: AppColor.primaryColor,
                         fontSize: 18,
@@ -215,7 +215,8 @@ class CompanyParticularCompany extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      visaCorp.expectedTimelineTo ?? "",
+                      DateConverter.convertDateDefault(
+                          visaCorp.expectedTimelineTo),
                       style: const TextStyle(
                         color: AppColor.primaryColor,
                         fontSize: 18,

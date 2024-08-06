@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
-import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dti_web/application/document/document_cubit.dart';
 import 'package:dti_web/application/other/other_cubit.dart';
 import 'package:dti_web/application/update_application/update_application_cubit.dart';
@@ -13,7 +12,6 @@ import 'package:dti_web/presentation/questionnaire/photo_view_page.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:flash/flash.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -111,6 +109,7 @@ class _RighSideState extends State<RighSide> {
                                             width: ScreenUtil().screenWidth,
                                             height: ScreenUtil().screenHeight,
                                             child: PhotoViewPage(
+                                              isShow: false,
                                               images: [
                                                 (docState.selectedDocument!
                                                         .previewImage!
@@ -377,12 +376,13 @@ class _RighSideState extends State<RighSide> {
           final bytesData = docState.selectedDataCollection![selectedFile];
           if (kIsWeb) {
             AutoRouter.of(context).push(PhotoViewRoute(
+                isShow: true,
                 images: const ["noDataHere"],
                 isNetwork: false,
                 imagesBytes: [bytesData]));
           } else {
-            AutoRouter.of(context)
-                .push(PhotoViewRoute(images: [selectedFile], isNetwork: false));
+            AutoRouter.of(context).push(PhotoViewRoute(
+                isShow: true, images: [selectedFile], isNetwork: false));
           }
         } else {
           //come from url.
@@ -390,8 +390,8 @@ class _RighSideState extends State<RighSide> {
             (element) => element.contains(selectedFile),
           );
 
-          AutoRouter.of(context)
-              .push(PhotoViewRoute(images: [cek], isNetwork: true));
+          AutoRouter.of(context).push(
+              PhotoViewRoute(isShow: true, images: [cek], isNetwork: true));
         }
       }
     }

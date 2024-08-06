@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:math' as math;
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:dti_web/core/storage.dart';
@@ -12,7 +13,6 @@ import 'package:dti_web/domain/core/visa_application_model.dart';
 import 'package:dti_web/domain/global/failures.dart';
 import 'package:dti_web/domain/update/i_update_application.dart';
 import 'package:dti_web/domain/update/image_upload_response.dart';
-
 import 'package:dti_web/infrastructure/core/error_response.dart';
 import 'package:dti_web/utils/error_handling.dart';
 import 'package:flutter/foundation.dart';
@@ -378,7 +378,8 @@ class IUpdateApplicationRepository extends IUpdateApplication {
   }
 
   @override
-  Future<Either<Failures, String>> submitCorpVisa(String firebaseDocId) async {
+  Future<Either<Failures, String>> submitCorpVisa(
+      String firebaseDocId, VisaApplicationCorp visa) async {
     final storage = Storage();
 
     try {
@@ -387,6 +388,15 @@ class IUpdateApplicationRepository extends IUpdateApplication {
           options: Options(
               headers: {"Authorization": "Bearer ${storage.getToken()}"}));
 
+      final first = visa.cpName ?? '';
+
+      final dealName = '${visa.guarantor} - ${visa.title} / $first';
+      await createAndAssociateDeals(
+        visa.price ?? 0,
+        dealName,
+        visa.firebaseDocId ?? '',
+        dtiGuarantor: true,
+      );
       return Right(result.toString());
     } on DioError catch (e) {
       return left(ErrorHandling().onDioErrorHandle(e));
@@ -394,7 +404,8 @@ class IUpdateApplicationRepository extends IUpdateApplication {
   }
 
   @override
-  Future<Either<Failures, String>> submitPassport(String firebaseDocId) async {
+  Future<Either<Failures, String>> submitPassport(
+      String firebaseDocId, VisaApplicationModel visa) async {
     final storage = Storage();
 
     try {
@@ -402,7 +413,18 @@ class IUpdateApplicationRepository extends IUpdateApplication {
           "${dotenv.env['BASE_URL']}/passport/$firebaseDocId/submit",
           options: Options(
               headers: {"Authorization": "Bearer ${storage.getToken()}"}));
+      final isDoortoid =
+          visa.guarantorDTI == true ? "DoorToID" : "Non DoorToID";
 
+      final first = visa.firstName ?? '';
+      final last = visa.lastName ?? '';
+      final dealName = '$isDoortoid - ${visa.title} / $first $last';
+      await createAndAssociateDeals(
+        visa.price ?? 0,
+        dealName,
+        visa.firebaseDocId ?? '',
+        dtiGuarantor: visa.guarantorDTI ?? false,
+      );
       return Right(result.toString());
     } on DioError catch (e) {
       return left(ErrorHandling().onDioErrorHandle(e));
@@ -410,7 +432,8 @@ class IUpdateApplicationRepository extends IUpdateApplication {
   }
 
   @override
-  Future<Either<Failures, String>> submitVisa(String firebaseDocId) async {
+  Future<Either<Failures, String>> submitVisa(
+      String firebaseDocId, VisaApplicationModel visa) async {
     final storage = Storage();
 
     try {
@@ -418,7 +441,18 @@ class IUpdateApplicationRepository extends IUpdateApplication {
           "${dotenv.env['BASE_URL']}/application/$firebaseDocId/submit",
           options: Options(
               headers: {"Authorization": "Bearer ${storage.getToken()}"}));
+      final isDoortoid =
+          visa.guarantorDTI == true ? "DoorToID" : "Non DoorToID";
 
+      final first = visa.firstName ?? '';
+      final last = visa.lastName ?? '';
+      final dealName = '$isDoortoid - ${visa.title} / $first $last';
+      await createAndAssociateDeals(
+        visa.price ?? 0,
+        dealName,
+        visa.firebaseDocId ?? '',
+        dtiGuarantor: visa.guarantorDTI ?? false,
+      );
       return Right(result.toString());
     } on DioError catch (e) {
       return left(ErrorHandling().onDioErrorHandle(e));
@@ -710,6 +744,132 @@ class IUpdateApplicationRepository extends IUpdateApplication {
       return Right(result.data['data']['message']);
     } on DioException catch (e) {
       return left(ErrorHandling().onDioErrorHandle(e));
+    }
+  }
+
+  Future<void> createAndAssociateDeals(
+      double price, String dealName, String docId,
+      {bool dtiGuarantor = false}) async {
+    final dealsId = await createNewDeals(
+      amount: price,
+      dealName: dealName,
+      firebaseDocId: docId,
+    );
+    final storage = Storage();
+    final userData = storage.getLocalUserData();
+
+    await associateDeailsToContact(
+      dealsId: dealsId ?? "",
+      contactId: userData?.hubspotId ?? '',
+    );
+    if (dtiGuarantor) {
+      await associateDeailsToCompany(dealsId: dealsId ?? '');
+    }
+  }
+
+  ///Dealstage 'appointmentscheduled' for inprogress
+  Future<String?> createNewDeals(
+      {required double amount,
+      required String dealName,
+      String dealStage = 'appointmentscheduled',
+      String pipeLine = 'default',
+      required String firebaseDocId}) async {
+    try {
+      final contact = await createNewContactHubSpot();
+
+      final result =
+          await dio.post('https://api.hubapi.com/crm/v3/objects/deals',
+              options: Options(
+                headers: {'Authorization': dotenv.env['HUBSPOT']},
+              ),
+              data: {
+            "properties": {
+              "amount": amount,
+              "dealname": dealName,
+              "dealstage": "appointmentscheduled",
+              "pipeline": "default",
+              "firebasedocid": firebaseDocId
+            }
+          });
+      final body = result.data as Map<String, dynamic>;
+      //get deals id
+      final id = body['id'].toString();
+      return id;
+    } on DioException catch (e) {
+      return null;
+    }
+  }
+
+  Future<String?> associateDeailsToContact(
+      {required String dealsId, required String contactId}) async {
+    try {
+      final result = await dio.put(
+        'https://api.hubapi.com/crm/v3/objects/deals/$dealsId/associations/contact/$contactId/3',
+        options: Options(
+          headers: {'Authorization': dotenv.env['HUBSPOT']},
+        ),
+      );
+      final body = result.data as Map<String, dynamic>;
+      //get deals id
+      final id = body['id'].toString();
+      return id;
+    } on DioException catch (e) {
+      return null;
+    }
+  }
+
+  ///Company is doortoid with company ID 20873692288 , and type : 341(deal to company)
+  Future<String?> associateDeailsToCompany({required String dealsId}) async {
+    try {
+      final result = await dio.put(
+        'https://api.hubapi.com/crm/v3/objects/deals/$dealsId/associations/companies/20873692288/341',
+        options: Options(
+          headers: {'Authorization': dotenv.env['HUBSPOT']},
+        ),
+      );
+      final body = result.data as Map<String, dynamic>;
+      //get deals id
+      final id = body['id'].toString();
+      return id;
+    } on DioException catch (e) {
+      return null;
+    }
+  }
+
+  Future<String?> createNewContactHubSpot() async {
+    final storage = Storage();
+    final user = storage.getLocalUserData();
+
+    if (user == null || user.hubspotId == null) return null;
+    //create new user
+
+    final phoneNumber = '${user.countryCode}${user.mobileNumber}';
+
+    try {
+      final names = user.name?.split(' ') ?? ["EMPTY", "NAME"];
+      final result =
+          await dio.post('https://api.hubapi.com/crm/v3/objects/contacts',
+              options: Options(
+                headers: {'Authorization': dotenv.env['HUBSPOT']},
+              ),
+              data: {
+            "properties": {
+              "email": user.email,
+              "firstname": names.first,
+              "lastname": (names.length > 1) ? names.last : '',
+              "firebaseid": user.userId,
+              'mobilephone': phoneNumber
+            }
+          });
+
+      //update hubspot id to user
+      final body = result.data as Map<String, dynamic>;
+      final id = body['id'].toString();
+      final newUser = user.copyWith(hubspotId: id);
+      await storage.saveUser(newUser);
+      return id;
+    } on DioException catch (e) {
+      return null;
     }
   }
 }

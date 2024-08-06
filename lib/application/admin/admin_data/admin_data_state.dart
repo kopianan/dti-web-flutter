@@ -85,7 +85,7 @@ class AdminDataState with _$AdminDataState {
       return users
           .where((userData) =>
               userData.createdDate!
-                  .isAfter(DateTime.now().subtract(Duration(days: 7))) &&
+                  .isAfter(DateTime.now().subtract(const Duration(days: 7))) &&
               userData.createdDate!.isBefore(DateTime.now()))
           .toList();
     } on Exception catch (e) {
@@ -228,6 +228,79 @@ class AdminDataState with _$AdminDataState {
       )
     ];
   }
+
+  // get customer series by month
+  List<TimeSeriesCoordinate> getCustomerBarChart() {
+    List<TimeSeriesCoordinate> data = [];
+
+    final filter = getSelectedUserChartFilter();
+    DateTime endDate = DateTime.now();
+    DateTime startDate = DateTime.now();
+    startDate = endDate.subtract(Duration(days: filter.totalDays));
+    if (filter.totalDays == -1) {
+      final firstDate = users.reduce((oldest, current) =>
+          oldest.createdDate!.isBefore(current.createdDate!)
+              ? oldest
+              : current);
+      final days = DateTime.now().difference(firstDate.createdDate!).inDays;
+      startDate = endDate.subtract(Duration(days: days));
+    }
+
+    for (DateTime date = startDate;
+        date.isBefore(endDate) || date.isAtSameMomentAs(endDate);
+        date = date.add(const Duration(days: 1))) {
+      int count = users
+          .where((visa) =>
+              visa.createdDate != null &&
+              visa.createdDate!.year == date.year &&
+              visa.createdDate!.month == date.month &&
+              visa.createdDate!.day == date.day)
+          .length;
+      data.add(TimeSeriesCoordinate(date, count));
+    }
+    data.removeWhere((element) => element.total == 0);  
+    return data;
+  }
+}
+
+Widget getTitles(double value, TitleMeta meta) {
+  const style = TextStyle(
+    color: Colors.blue,
+    fontWeight: FontWeight.bold,
+    fontSize: 14,
+  );
+  String text;
+  switch (value.toInt()) {
+    case 0:
+      text = 'Mn';
+      break;
+    case 1:
+      text = 'Te';
+      break;
+    case 2:
+      text = 'Wd';
+      break;
+    case 3:
+      text = 'Tu';
+      break;
+    case 4:
+      text = 'Fr';
+      break;
+    case 5:
+      text = 'St';
+      break;
+    case 6:
+      text = 'Sn';
+      break;
+    default:
+      text = '';
+      break;
+  }
+  return SideTitleWidget(
+    axisSide: meta.axisSide,
+    space: 4,
+    child: Text(text, style: style),
+  );
 }
 
 class GraphCoordinate {

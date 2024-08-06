@@ -316,6 +316,7 @@ class _SuccessBodyState extends State<SuccessBody> with NavigateMixin {
                                   // );
                                 } else {
                                   AutoRouter.of(context).push(PhotoViewRoute(
+                                      isShow: true,
                                       images: [data['EVISA'].toString()],
                                       isNetwork: true));
                                 }
@@ -647,8 +648,11 @@ class _SuccessBodyState extends State<SuccessBody> with NavigateMixin {
                     );
                   },
                   onSubmitApplication: (e) async {
+                    EasyLoading.dismiss();
                     await Future.delayed(const Duration(seconds: 3));
-                    getIt<DashboardCubit>().getLastPassportAndApplicationData();
+                    context
+                        .read<DashboardCubit>()
+                        .getLastPassportAndApplicationData();
                   },
                 );
               },
@@ -662,7 +666,7 @@ class _SuccessBodyState extends State<SuccessBody> with NavigateMixin {
                       if (isCheckedA && isCheckedB && isCheckedC) {
                         context
                             .read<UpdateApplicationCubit>()
-                            .submitVisaApps(visa.firebaseDocId!);
+                            .submitVisaApps(visa.firebaseDocId!, visa);
                       }
                     },
                     width: 300,

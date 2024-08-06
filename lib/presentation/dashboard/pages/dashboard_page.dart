@@ -7,8 +7,6 @@ import 'package:dti_web/application/global/global_user_cubit.dart';
 import 'package:dti_web/application/other/other_cubit.dart';
 import 'package:dti_web/core/analytic_service.dart';
 import 'package:dti_web/core/widgets/analytic_constant.dart';
-import 'package:dti_web/core/widgets/application_card.dart';
-import 'package:dti_web/core/widgets/passport_card.dart';
 import 'package:dti_web/core/widgets/social_button_widget.dart';
 import 'package:dti_web/domain/core/simple_visa_model.dart';
 import 'package:dti_web/domain/core/visa_application_model.dart';
@@ -19,7 +17,6 @@ import 'package:dti_web/presentation/dashboard/pages/section/feedback_section.da
 import 'package:dti_web/presentation/dashboard/widgets/application_section.dart';
 import 'package:dti_web/presentation/dashboard/widgets/corporate_section.dart';
 import 'package:dti_web/routes/app_router.dart';
-
 import 'package:dti_web/utils/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -144,11 +141,6 @@ class _DashboardPageState extends State<DashboardPage> {
               );
             },
             child: Scaffold(
-              // floatingActionButton: FloatingActionButton(
-              //   onPressed: () {
-              //     AutoRouter.of(context).push(CameraRoute());
-              //   },
-              // ),
               appBar: AppBar(
                 toolbarHeight: 80.h,
                 backgroundColor: const Color(0xff000649),

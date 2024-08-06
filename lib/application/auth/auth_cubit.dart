@@ -8,10 +8,10 @@ import 'package:dti_web/domain/global/failures.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
-
 import 'package:universal_html/html.dart' as html;
-part 'auth_state.dart';
+
 part 'auth_cubit.freezed.dart';
+part 'auth_state.dart';
 
 @Injectable()
 class AuthCubit extends Cubit<AuthState> {
@@ -42,7 +42,11 @@ class AuthCubit extends Cubit<AuthState> {
     } else if (userAgent.contains("android")) {
       return 'android';
     } else {
-      return null;
+      if (html.window.navigator.userAgent.contains('Mobi')) {
+        return 'iphone';
+      } else {
+        return null;
+      }
     }
   }
 
@@ -107,7 +111,7 @@ class AuthCubit extends Cubit<AuthState> {
       (l) => emit(AuthState.error(l)),
       (r) async {
         await storage.saveToken(r);
-        await Future.delayed(Duration(seconds: 4));
+        await Future.delayed(const Duration(seconds: 4));
         final result = await iAuth.getUserData();
 
         result.fold(
