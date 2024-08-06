@@ -48,9 +48,9 @@ dependencies:
   excel: ^2.0.4
   file_picker: ^5.2.2
   file_saver: ^0.2.8
-  firebase_analytics: ^11.2.0
-  firebase_auth: ^5.1.2
-  firebase_core: ^3.2.0
+  firebase_analytics: ^11.2.1
+  firebase_auth: ^5.1.4
+  firebase_core: ^3.3.0
   fl_chart: ^0.68.0
   flash: ^3.0.0
   flutter:

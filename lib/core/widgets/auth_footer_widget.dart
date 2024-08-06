@@ -20,7 +20,7 @@ class AuthFooterWidget extends StatelessWidget {
               'assets/images/dti_bottom_icon.png',
               width: 40.w,
             ),
-            SocialButtonWidget()
+            const SocialButtonWidget()
           ],
         ),
         Divider(
@@ -30,20 +30,21 @@ class AuthFooterWidget extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text("Copyright © 2022 DoorToID. All Rights Reserved."),
+            Text(
+                "Copyright © ${DateTime.now().year} DoorToID. All Rights Reserved."),
             Row(
               children: [
                 InkWell(
                     onTap: () {
                       launch("https://doortoid.com/term-of-use/");
                     },
-                    child: Text("Terms of Use")),
+                    child: const Text("Terms of Use")),
                 30.horizontalSpace,
                 InkWell(
                   onTap: () {
                     launch("https://doortoid.com/privacy-policy/");
                   },
-                  child: Text("Privacy Policy"),
+                  child: const Text("Privacy Policy"),
                 ),
               ],
             )

@@ -469,160 +469,160 @@ class _ApplicationCorpFormCompanyPageState
 
                                       20.verticalSpace,
 
-                                      FormBuilderTextField(
-                                        onTap: () async {
-                                          var initial = curretDate;
-                                          if (visaCorp.expectedTimelineTo !=
-                                              null) {
-                                            try {
-                                              initial =
-                                                  DateConverter.stringToDate(
-                                                      visaCorp
-                                                          .expectedTimelineTo);
-                                            } on Exception {
-                                              initial = DateTime.parse(
-                                                  visaCorp.expectedTimelineTo!);
-                                            }
-                                          }
+                                      // FormBuilderTextField(
+                                      //   onTap: () async {
+                                      //     var initial = curretDate;
+                                      //     if (visaCorp.expectedTimelineTo !=
+                                      //         null) {
+                                      //       try {
+                                      //         initial =
+                                      //             DateConverter.stringToDate(
+                                      //                 visaCorp
+                                      //                     .expectedTimelineTo);
+                                      //       } on Exception {
+                                      //         initial = DateTime.parse(
+                                      //             visaCorp.expectedTimelineTo!);
+                                      //       }
+                                      //     }
 
-                                          final nowDate = DateTime.now();
-                                          final selectedDate =
-                                              await showDatePicker(
-                                                  context: context,
-                                                  initialDate: initial,
-                                                  firstDate: DateTime(1800),
-                                                  builder: dateTimThemeChild,
-                                                  lastDate: nowDate);
-                                          if (selectedDate != null) {
-                                            final date = DateConverter
-                                                .convertDateDefault2(
-                                                    selectedDate);
-                                            _formKey.currentState!
-                                                .fields['FromDate']!
-                                                .didChange(date);
-                                          }
-                                        },
-                                        readOnly: true,
-                                        name: 'FromDate',
-                                        initialValue:
-                                            DateConverter.convertDateDefault(
-                                                visaCorp.expectedTimelineFrom),
-                                        validator:
-                                            FormBuilderValidators.compose(
-                                          [
-                                            (value) {
-                                              if (value != "" &&
-                                                  value != null) {
-                                                var x =
-                                                    DateFormat("dd MMM yyyy")
-                                                        .parse(value);
-                                                //maximum today
-                                                if (x.isAfter(curretDate)) {
-                                                  return "Please specify a date in the future";
-                                                }
-                                              }
-                                              return null;
-                                            },
-                                            FormBuilderValidators.required()
-                                          ],
-                                        ),
-                                        autovalidateMode:
-                                            AutovalidateMode.onUserInteraction,
-                                        decoration: const InputDecoration(
-                                          labelText: "Expected Timeline From",
-                                          border: OutlineInputBorder(
-                                            borderRadius: BorderRadius.all(
-                                              Radius.circular(10.0),
-                                            ),
-                                          ),
-                                          hintStyle:
-                                              TextStyle(color: Colors.grey),
-                                          hintText: "Expected Timeline From",
-                                          fillColor: Colors.white70,
-                                        ),
-                                      ),
-                                      20.verticalSpace,
+                                      //     final nowDate = DateTime.now();
+                                      //     final selectedDate =
+                                      //         await showDatePicker(
+                                      //             context: context,
+                                      //             initialDate: initial,
+                                      //             firstDate: DateTime(1800),
+                                      //             builder: dateTimThemeChild,
+                                      //             lastDate: nowDate);
+                                      //     if (selectedDate != null) {
+                                      //       final date = DateConverter
+                                      //           .convertDateDefault2(
+                                      //               selectedDate);
+                                      //       _formKey.currentState!
+                                      //           .fields['FromDate']!
+                                      //           .didChange(date);
+                                      //     }
+                                      //   },
+                                      //   readOnly: true,
+                                      //   name: 'FromDate',
+                                      //   initialValue:
+                                      //       DateConverter.convertDateDefault(
+                                      //           visaCorp.expectedTimelineFrom),
+                                      //   validator:
+                                      //       FormBuilderValidators.compose(
+                                      //     [
+                                      //       (value) {
+                                      //         if (value != "" &&
+                                      //             value != null) {
+                                      //           var x =
+                                      //               DateFormat("dd MMM yyyy")
+                                      //                   .parse(value);
+                                      //           //maximum today
+                                      //           if (x.isAfter(curretDate)) {
+                                      //             return "Please specify a date in the future";
+                                      //           }
+                                      //         }
+                                      //         return null;
+                                      //       },
+                                      //       FormBuilderValidators.required()
+                                      //     ],
+                                      //   ),
+                                      //   autovalidateMode:
+                                      //       AutovalidateMode.onUserInteraction,
+                                      //   decoration: const InputDecoration(
+                                      //     labelText: "Expected Timeline From",
+                                      //     border: OutlineInputBorder(
+                                      //       borderRadius: BorderRadius.all(
+                                      //         Radius.circular(10.0),
+                                      //       ),
+                                      //     ),
+                                      //     hintStyle:
+                                      //         TextStyle(color: Colors.grey),
+                                      //     hintText: "Expected Timeline From",
+                                      //     fillColor: Colors.white70,
+                                      //   ),
+                                      // ),
+                                      // 20.verticalSpace,
                                       //Date of Expiration
-                                      FormBuilderTextField(
-                                        onTap: () async {
-                                          var currToDate =
-                                              visaCorp.expectedTimelineTo;
-                                          var toDate = curretDate;
+                                      // FormBuilderTextField(
+                                      //   onTap: () async {
+                                      //     var currToDate =
+                                      //         visaCorp.expectedTimelineTo;
+                                      //     var toDate = curretDate;
 
-                                          final nowDate = DateTime.now();
+                                      //     final nowDate = DateTime.now();
 
-                                          if (currToDate != null) {
-                                            try {
-                                              toDate =
-                                                  DateConverter.stringToDate(
-                                                      currToDate);
-                                            } on Exception {
-                                              toDate =
-                                                  DateTime.parse(currToDate);
-                                            }
-                                          }
-                                          final selectedDate =
-                                              await showDatePicker(
-                                            context: context,
-                                            initialDate: toDate,
-                                            firstDate: curretDate,
-                                            builder: dateTimThemeChild,
-                                            lastDate:
-                                                DateTime(nowDate.year + 100000),
-                                          );
-                                          if (selectedDate != null) {
-                                            _formKey
-                                                .currentState!.fields['ToDate']!
-                                                .didChange(DateConverter
-                                                    .convertDateDefault2(
-                                              selectedDate,
-                                            ));
-                                          }
-                                        },
-                                        readOnly: true,
-                                        name: 'ToDate',
-                                        initialValue: visaCorp
-                                                    .expectedTimelineTo ==
-                                                null
-                                            ? ''
-                                            : DateConverter.convertDateDefault(
-                                                visaCorp.expectedTimelineTo),
-                                        validator:
-                                            FormBuilderValidators.compose(
-                                          [
-                                            (value) {
-                                              if (value != "" &&
-                                                  value != null) {
-                                                var x =
-                                                    DateFormat("dd MMM yyyy")
-                                                        .parse(value);
-                                                //minimum today
-                                                if (x.isBefore(
-                                                  curretDate,
-                                                )) {
-                                                  return "Please specify a date in the future";
-                                                }
-                                              }
-                                              return null;
-                                            },
-                                            FormBuilderValidators.required()
-                                          ],
-                                        ),
-                                        autovalidateMode:
-                                            AutovalidateMode.onUserInteraction,
-                                        decoration: const InputDecoration(
-                                          labelText: "Expected Timeline To",
-                                          border: OutlineInputBorder(
-                                            borderRadius: BorderRadius.all(
-                                              Radius.circular(10.0),
-                                            ),
-                                          ),
-                                          hintStyle:
-                                              TextStyle(color: Colors.grey),
-                                          hintText: "Expected Timeline To",
-                                          fillColor: Colors.white70,
-                                        ),
-                                      ),
+                                      //     if (currToDate != null) {
+                                      //       try {
+                                      //         toDate =
+                                      //             DateConverter.stringToDate(
+                                      //                 currToDate);
+                                      //       } on Exception {
+                                      //         toDate =
+                                      //             DateTime.parse(currToDate);
+                                      //       }
+                                      //     }
+                                      //     final selectedDate =
+                                      //         await showDatePicker(
+                                      //       context: context,
+                                      //       initialDate: toDate,
+                                      //       firstDate: curretDate,
+                                      //       builder: dateTimThemeChild,
+                                      //       lastDate:
+                                      //           DateTime(nowDate.year + 100000),
+                                      //     );
+                                      //     if (selectedDate != null) {
+                                      //       _formKey
+                                      //           .currentState!.fields['ToDate']!
+                                      //           .didChange(DateConverter
+                                      //               .convertDateDefault2(
+                                      //         selectedDate,
+                                      //       ));
+                                      //     }
+                                      //   },
+                                      //   readOnly: true,
+                                      //   name: 'ToDate',
+                                      //   initialValue: visaCorp
+                                      //               .expectedTimelineTo ==
+                                      //           null
+                                      //       ? ''
+                                      //       : DateConverter.convertDateDefault(
+                                      //           visaCorp.expectedTimelineTo),
+                                      //   validator:
+                                      //       FormBuilderValidators.compose(
+                                      //     [
+                                      //       (value) {
+                                      //         if (value != "" &&
+                                      //             value != null) {
+                                      //           var x =
+                                      //               DateFormat("dd MMM yyyy")
+                                      //                   .parse(value);
+                                      //           //minimum today
+                                      //           if (x.isBefore(
+                                      //             curretDate,
+                                      //           )) {
+                                      //             return "Please specify a date in the future";
+                                      //           }
+                                      //         }
+                                      //         return null;
+                                      //       },
+                                      //       FormBuilderValidators.required()
+                                      //     ],
+                                      //   ),
+                                      //   autovalidateMode:
+                                      //       AutovalidateMode.onUserInteraction,
+                                      //   decoration: const InputDecoration(
+                                      //     labelText: "Expected Timeline To",
+                                      //     border: OutlineInputBorder(
+                                      //       borderRadius: BorderRadius.all(
+                                      //         Radius.circular(10.0),
+                                      //       ),
+                                      //     ),
+                                      //     hintStyle:
+                                      //         TextStyle(color: Colors.grey),
+                                      //     hintText: "Expected Timeline To",
+                                      //     fillColor: Colors.white70,
+                                      //   ),
+                                      // ),
                                       20.verticalSpace,
                                       //validate button
                                       SizedBox(
@@ -638,10 +638,10 @@ class _ApplicationCorpFormCompanyPageState
                                               final formData =
                                                   _formKey.currentState!.value;
                                               var curr = visaCorp.copyWith(
-                                                expectedTimelineTo:
-                                                    formData["ToDate"],
-                                                expectedTimelineFrom:
-                                                    formData["FromDate"],
+                                                // expectedTimelineTo:
+                                                //     formData["ToDate"],
+                                                // expectedTimelineFrom:
+                                                //     formData["FromDate"],
                                                 companyName: formData[
                                                     "CompanyNameField"],
                                                 industryType: formData[
@@ -688,7 +688,7 @@ class _ApplicationCorpFormCompanyPageState
                     child: Container(
                       margin: EdgeInsets.all(100.sp),
                       child: Image.asset(
-                        'assets/images/bg/bg_visa3.webp',
+                        'assets/images/bg/bg_visa4.png',
                       ),
                     ),
                   )

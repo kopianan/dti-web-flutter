@@ -418,7 +418,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
 
       final first = visa.firstName ?? '';
       final last = visa.lastName ?? '';
-      final dealName = '$isDoortoid - ${visa.title} / $first $last';
+      final dealName = '$isDoortoid - ${visa.title} / $first';
       await createAndAssociateDeals(
         visa.price ?? 0,
         dealName,
@@ -446,7 +446,7 @@ class IUpdateApplicationRepository extends IUpdateApplication {
 
       final first = visa.firstName ?? '';
       final last = visa.lastName ?? '';
-      final dealName = '$isDoortoid - ${visa.title} / $first $last';
+      final dealName = '$isDoortoid - ${visa.title} / $first';
       await createAndAssociateDeals(
         visa.price ?? 0,
         dealName,

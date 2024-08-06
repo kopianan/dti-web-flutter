@@ -183,48 +183,48 @@ class CompanyParticularCompany extends StatelessWidget {
                     Text(''),
                   ],
                 ),
-                TableRow(
-                  children: [
-                    Text(
-                      "Start Date",
-                      style: TextStyle(
-                        color: Colors.grey[700],
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      "End Date",
-                      style: TextStyle(
-                        color: Colors.grey[700],
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-                TableRow(
-                  children: [
-                    Text(
-                      DateConverter.convertDateDefault(
-                          visaCorp.expectedTimelineFrom),
-                      style: const TextStyle(
-                        color: AppColor.primaryColor,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      DateConverter.convertDateDefault(
-                          visaCorp.expectedTimelineTo),
-                      style: const TextStyle(
-                        color: AppColor.primaryColor,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                )
+                // TableRow(
+                //   children: [
+                //     Text(
+                //       "Start Date",
+                //       style: TextStyle(
+                //         color: Colors.grey[700],
+                //         fontSize: 16,
+                //         fontWeight: FontWeight.bold,
+                //       ),
+                //     ),
+                //     Text(
+                //       "End Date",
+                //       style: TextStyle(
+                //         color: Colors.grey[700],
+                //         fontSize: 16,
+                //         fontWeight: FontWeight.bold,
+                //       ),
+                //     ),
+                //   ],
+                // ),
+                // TableRow(
+                //   children: [
+                //     Text(
+                //       DateConverter.convertDateDefault(
+                //           visaCorp.expectedTimelineFrom),
+                //       style: const TextStyle(
+                //         color: AppColor.primaryColor,
+                //         fontSize: 18,
+                //         fontWeight: FontWeight.bold,
+                //       ),
+                //     ),
+                //     Text(
+                //       DateConverter.convertDateDefault(
+                //           visaCorp.expectedTimelineTo),
+                //       style: const TextStyle(
+                //         color: AppColor.primaryColor,
+                //         fontSize: 18,
+                //         fontWeight: FontWeight.bold,
+                //       ),
+                //     ),
+                //   ],
+                // )
               ],
             ),
           ],

@@ -23,7 +23,7 @@ class _LandingPageState extends State<LandingPage> {
       body: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
-            child: Container(
+            child: SizedBox(
               height: ScreenUtil().screenHeight,
               child: Column(children: [
                 Row(
@@ -40,12 +40,12 @@ class _LandingPageState extends State<LandingPage> {
                         PrimaryButton(
                           onClick: () {},
                           label: "Login",
-                          bgColor: Color(0xff0F1EAE),
+                          bgColor: const Color(0xff0F1EAE),
                         ),
                         10.horizontalSpace,
                         DropdownButton(
                           value: 'en',
-                          items: [
+                          items: const [
                             DropdownMenuItem(
                               value: 'en',
                               child: Text("EN"),
@@ -68,6 +68,13 @@ class _LandingPageState extends State<LandingPage> {
                 Expanded(
                   child: Container(
                     alignment: Alignment.center,
+                    width: ScreenUtil().screenWidth,
+                    decoration: const BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage(
+                              'assets/images/img_landing.png',
+                            ),
+                            fit: BoxFit.contain)),
                     child: Text(
                       "Agile and Seamless\n. . .",
                       textAlign: TextAlign.center,
@@ -76,13 +83,6 @@ class _LandingPageState extends State<LandingPage> {
                           fontSize: 60.sp,
                           fontWeight: FontWeight.bold),
                     ),
-                    width: ScreenUtil().screenWidth,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage(
-                              'assets/images/img_landing.png',
-                            ),
-                            fit: BoxFit.contain)),
                   ),
                 )
               ]),
@@ -99,6 +99,16 @@ class _LandingPageState extends State<LandingPage> {
                     Expanded(
                         flex: 2,
                         child: Container(
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                  blurRadius: 3,
+                                  spreadRadius: 4,
+                                  color: Colors.grey[200]!,
+                                )
+                              ],
+                              borderRadius: BorderRadius.circular(20)),
                           child: Row(children: [
                             Padding(
                               padding: REdgeInsets.symmetric(
@@ -116,16 +126,6 @@ class _LandingPageState extends State<LandingPage> {
                               ),
                             )
                           ]),
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              boxShadow: [
-                                BoxShadow(
-                                  blurRadius: 3,
-                                  spreadRadius: 4,
-                                  color: Colors.grey[200]!,
-                                )
-                              ],
-                              borderRadius: BorderRadius.circular(20)),
                         )),
                     20.horizontalSpace,
                     Expanded(
@@ -150,7 +150,7 @@ class _LandingPageState extends State<LandingPage> {
                                 style: TextStyle(
                                     color: Colors.grey, fontSize: 16.sp),
                               ),
-                              Container(
+                              SizedBox(
                                 height: 50.h,
                                 child: Row(
                                   children: [
@@ -174,7 +174,7 @@ class _LandingPageState extends State<LandingPage> {
           ),
           SliverPadding(padding: REdgeInsets.symmetric(vertical: 20)),
           SliverToBoxAdapter(
-            child: Container(
+            child: SizedBox(
               width: double.infinity,
               height: ScreenUtil().screenHeight * 2 / 3,
               child: Image.asset(
@@ -237,7 +237,7 @@ class _LandingPageState extends State<LandingPage> {
           ),
           SliverPadding(padding: REdgeInsets.symmetric(vertical: 20)),
           SliverToBoxAdapter(
-            child: Container(
+            child: SizedBox(
                 height: 100.h,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -296,7 +296,7 @@ class _LandingPageState extends State<LandingPage> {
                       child: Container(
                     margin: REdgeInsets.only(left: 40),
                     padding: REdgeInsets.only(left: 40),
-                    child: Column(
+                    child: const Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         TestimoniWidget(),
@@ -313,7 +313,7 @@ class _LandingPageState extends State<LandingPage> {
           SliverToBoxAdapter(
             child: Container(
               height: ScreenUtil().screenHeight / 2.5,
-              margin: EdgeInsets.symmetric(horizontal: 300),
+              margin: const EdgeInsets.symmetric(horizontal: 300),
               decoration: BoxDecoration(
                 color: Colors.blue,
                 borderRadius: BorderRadius.circular(12),
@@ -322,7 +322,7 @@ class _LandingPageState extends State<LandingPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(
+                  const Text(
                     "DOWNLOAD OUR APP",
                     style: TextStyle(
                         fontSize: 18,
@@ -330,7 +330,7 @@ class _LandingPageState extends State<LandingPage> {
                         color: Colors.grey),
                   ),
                   20.verticalSpace,
-                  Text(
+                  const Text(
                     "CONSULT WITH US",
                     style: TextStyle(
                         fontSize: 40,
@@ -347,8 +347,8 @@ class _LandingPageState extends State<LandingPage> {
                         child: ElevatedButton(
                           style: ButtonStyle(
                               backgroundColor:
-                                  MaterialStateProperty.all(Colors.white)),
-                          child: Text(
+                                  WidgetStateProperty.all(Colors.white)),
+                          child: const Text(
                             "GET APP NOW",
                             style: TextStyle(
                                 fontSize: 16,
@@ -365,8 +365,8 @@ class _LandingPageState extends State<LandingPage> {
                         child: ElevatedButton(
                           style: ButtonStyle(
                               backgroundColor:
-                                  MaterialStateProperty.all(Colors.white)),
-                          child: Text(
+                                  WidgetStateProperty.all(Colors.white)),
+                          child: const Text(
                             "CONTACT US",
                             style: TextStyle(
                                 fontSize: 16,
@@ -500,11 +500,11 @@ class _LandingPageState extends State<LandingPage> {
                             20.verticalSpace,
                             Row(
                               children: [
-                                CircleAvatar(),
+                                const CircleAvatar(),
                                 10.horizontalSpace,
-                                CircleAvatar(),
+                                const CircleAvatar(),
                                 10.horizontalSpace,
-                                CircleAvatar(),
+                                const CircleAvatar(),
                               ],
                             )
                           ],
@@ -519,20 +519,21 @@ class _LandingPageState extends State<LandingPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("Copyright © 2022 DoorToID. All Rights Reserved."),
+                      Text(
+                          "Copyright © ${DateTime.now().year} DoorToID. All Rights Reserved."),
                       Row(
                         children: [
                           InkWell(
                               onTap: () {
                                 launch("https://doortoid.com/term-of-use/");
                               },
-                              child: Text("Terms of Use")),
+                              child: const Text("Terms of Use")),
                           30.horizontalSpace,
                           InkWell(
                               onTap: () {
                                 launch("https://doortoid.com/privacy-policy/");
                               },
-                              child: Text("Privacy Policy")),
+                              child: const Text("Privacy Policy")),
                         ],
                       )
                     ],
@@ -564,7 +565,7 @@ class TestimoniWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                child: CircleAvatar(radius: 50),
+                child: const CircleAvatar(radius: 50),
               ),
               30.horizontalSpace,
               Expanded(

@@ -163,8 +163,8 @@ class _DashboardPageState extends State<DashboardPage> {
                             onGetUserData: (e) {
                               if (e.userData.mobileNumber == null) {
                                 //user must verify the number.
-                                AutoRouter.of(context)
-                                    .navigate(const NumberRegistrationRoute());
+                                AutoRouter.of(context).replaceAll(
+                                    [const NumberRegistrationRoute()]);
                               }
                             });
                       },
@@ -949,7 +949,8 @@ class _DashboardFooter extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text("Copyright © 2022 DoorToID. All Rights Reserved."),
+            Text(
+                "Copyright © ${DateTime.now().year} DoorToID. All Rights Reserved."),
             Row(
               children: [
                 InkWell(
