@@ -50,6 +50,7 @@ class AdminDashboardWidget extends StatelessWidget with CoreMixin {
         routes: const [
           AdminStatisticRoute(),
           AdminApplicationRoute(),
+          AdminCorpApplicationRoute(),
           AdminCustomerRoute(),
           AdminFeedbackRoute(),
           AdminContactUsRoute(),
@@ -189,6 +190,14 @@ class AdminDashboardWidget extends StatelessWidget with CoreMixin {
           selectedIcon: Icon(Icons.home, size: 30),
           label: Text(
             'Application',
+            style: TextStyle(fontSize: 20, color: Colors.white),
+          ),
+        ),
+        const NavigationRailDestination(
+          icon: Icon(Icons.home_outlined, size: 30),
+          selectedIcon: Icon(Icons.home, size: 30),
+          label: Text(
+            'Corp. Application',
             style: TextStyle(fontSize: 20, color: Colors.white),
           ),
         ),

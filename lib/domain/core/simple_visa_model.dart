@@ -12,15 +12,19 @@ class SimpleVisaModel with _$SimpleVisaModel {
     String? status,
     String? bookingCode,
     String? title,
-    String? subTitle, 
+    String? subTitle,
     @DateTimeOrNullConverter() DateTime? usedByDate,
     String? userName,
     int? lengthOfStay,
+    @DateTimeOrNullConverter() DateTime? lastUpdatedDate,
     @DateTimeOrNullConverter() DateTime? createdDate,
   }) = _SimpleVisaModel;
 
-  factory SimpleVisaModel.empty() =>
-      SimpleVisaModel(usedByDate: DateTime(1990), createdDate: DateTime(1990));
+  factory SimpleVisaModel.empty() => SimpleVisaModel(
+        usedByDate: DateTime(1990),
+        createdDate: DateTime(1990),
+        lastUpdatedDate: DateTime(1990),
+      );
 
   factory SimpleVisaModel.fromJson(Map<String, dynamic> json) =>
       _$SimpleVisaModelFromJson(json);

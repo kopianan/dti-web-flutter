@@ -19,6 +19,8 @@ _$SimpleVisaModelImpl _$$SimpleVisaModelImplFromJson(
           .fromJson(json['usedByDate'] as String?),
       userName: json['userName'] as String?,
       lengthOfStay: json['lengthOfStay'] as int?,
+      lastUpdatedDate: const DateTimeOrNullConverter()
+          .fromJson(json['lastUpdatedDate'] as String?),
       createdDate: const DateTimeOrNullConverter()
           .fromJson(json['createdDate'] as String?),
     );
@@ -35,6 +37,8 @@ Map<String, dynamic> _$$SimpleVisaModelImplToJson(
       'usedByDate': const DateTimeOrNullConverter().toJson(instance.usedByDate),
       'userName': instance.userName,
       'lengthOfStay': instance.lengthOfStay,
+      'lastUpdatedDate':
+          const DateTimeOrNullConverter().toJson(instance.lastUpdatedDate),
       'createdDate':
           const DateTimeOrNullConverter().toJson(instance.createdDate),
     };

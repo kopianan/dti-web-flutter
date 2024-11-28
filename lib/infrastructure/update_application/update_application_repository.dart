@@ -840,7 +840,8 @@ class IUpdateApplicationRepository extends IUpdateApplication {
     final storage = Storage();
     final user = storage.getLocalUserData();
 
-    if (user == null || user.hubspotId == null) return null;
+    if (user == null) return null;
+    if (user.hubspotId != null) return null;
     //create new user
 
     final phoneNumber = '${user.countryCode}${user.mobileNumber}';

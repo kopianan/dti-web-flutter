@@ -10,8 +10,6 @@ import 'package:dti_web/presentation/widgets/loading_page.dart';
 import 'package:dti_web/routes/app_router.dart';
 import 'package:dti_web/utils/app_color.dart';
 import 'package:dti_web/utils/constant.dart';
-import 'package:dti_web/utils/date_converter.dart';
-import 'package:dti_web/utils/date_time_child.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -19,7 +17,6 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_material_pickers/helpers/show_scroll_picker.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:intl/intl.dart';
 
 @RoutePage()
 class ApplicationCorpFormCompanyPage extends StatefulWidget {
@@ -424,31 +421,27 @@ class _ApplicationCorpFormCompanyPageState
                                       BlocBuilder<StartupCubit, StartupState>(
                                         builder: (context, state) {
                                           return FormBuilderTextField(
-                                            onTap: () =>
-                                                showMaterialScrollPicker<
-                                                        Province>(
-                                                    context: context,
-                                                    title: "Pick Your Province",
-                                                    showDivider: false,
-                                                    items: state.provinces!,
-                                                    headerColor:
-                                                        AppColor.primaryColor,
-                                                    selectedItem:
-                                                        state.selectedProvince,
-                                                    onChanged: (value) {
-                                                      //change selected province
-                                                      context
-                                                          .read<StartupCubit>()
-                                                          .chooseProvince(
-                                                              value);
-                                                      //update field data
-                                                      _formKey
-                                                          .currentState!
-                                                          .fields[
-                                                              'ProvinceField']!
-                                                          .didChange(
-                                                              value.name);
-                                                    }),
+                                            onTap: () => showMaterialScrollPicker<
+                                                    Province>(
+                                                context: context,
+                                                title:
+                                                    "Pick Your Company Location in Indonesia",
+                                                showDivider: false,
+                                                items: state.provinces!,
+                                                headerColor:
+                                                    AppColor.primaryColor,
+                                                selectedItem:
+                                                    state.selectedProvince,
+                                                onChanged: (value) {
+                                                  //change selected province
+                                                  context
+                                                      .read<StartupCubit>()
+                                                      .chooseProvince(value);
+                                                  //update field data
+                                                  _formKey.currentState!
+                                                      .fields['ProvinceField']!
+                                                      .didChange(value.name);
+                                                }),
                                             readOnly: true,
                                             name: 'ProvinceField',
                                             initialValue:
@@ -458,10 +451,12 @@ class _ApplicationCorpFormCompanyPageState
                                             autovalidateMode: AutovalidateMode
                                                 .onUserInteraction,
                                             decoration: const InputDecoration(
-                                              labelText: "Province",
+                                              labelText:
+                                                  "Company Location in Indonesia",
                                               hintStyle:
                                                   TextStyle(color: Colors.grey),
-                                              hintText: "Province",
+                                              hintText:
+                                                  "Company Location in Indonesia",
                                             ),
                                           );
                                         },

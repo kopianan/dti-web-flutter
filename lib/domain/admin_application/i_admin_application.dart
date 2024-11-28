@@ -4,4 +4,5 @@ import 'package:dti_web/domain/global/failures.dart';
 
 abstract class IAdminApplication {
   Future<Either<Failures, List<SimpleVisaModel>>> getAllUserApplication();
+  Future<Either<Failures, List<SimpleVisaModel>>> getAllUserCorpApplication();
 }

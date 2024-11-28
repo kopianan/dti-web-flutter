@@ -9,6 +9,6 @@ class ChartFilterModel with _$ChartFilterModel {
     required String name,
     required int totalDays,
     required String label,
-    required bool active,
+    required TimeRange range,
   }) = _ChartFilterModel;
 }

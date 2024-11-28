@@ -19,7 +19,7 @@ mixin _$ChartFilterModel {
   String get name => throw _privateConstructorUsedError;
   int get totalDays => throw _privateConstructorUsedError;
   String get label => throw _privateConstructorUsedError;
-  bool get active => throw _privateConstructorUsedError;
+  TimeRange get range => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ChartFilterModelCopyWith<ChartFilterModel> get copyWith =>
@@ -32,7 +32,7 @@ abstract class $ChartFilterModelCopyWith<$Res> {
           ChartFilterModel value, $Res Function(ChartFilterModel) then) =
       _$ChartFilterModelCopyWithImpl<$Res, ChartFilterModel>;
   @useResult
-  $Res call({String name, int totalDays, String label, bool active});
+  $Res call({String name, int totalDays, String label, TimeRange range});
 }
 
 /// @nodoc
@@ -51,7 +51,7 @@ class _$ChartFilterModelCopyWithImpl<$Res, $Val extends ChartFilterModel>
     Object? name = null,
     Object? totalDays = null,
     Object? label = null,
-    Object? active = null,
+    Object? range = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -66,10 +66,10 @@ class _$ChartFilterModelCopyWithImpl<$Res, $Val extends ChartFilterModel>
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
               as String,
-      active: null == active
-          ? _value.active
-          : active // ignore: cast_nullable_to_non_nullable
-              as bool,
+      range: null == range
+          ? _value.range
+          : range // ignore: cast_nullable_to_non_nullable
+              as TimeRange,
     ) as $Val);
   }
 }
@@ -82,7 +82,7 @@ abstract class _$$ChartFilterModelImplCopyWith<$Res>
       __$$ChartFilterModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, int totalDays, String label, bool active});
+  $Res call({String name, int totalDays, String label, TimeRange range});
 }
 
 /// @nodoc
@@ -99,7 +99,7 @@ class __$$ChartFilterModelImplCopyWithImpl<$Res>
     Object? name = null,
     Object? totalDays = null,
     Object? label = null,
-    Object? active = null,
+    Object? range = null,
   }) {
     return _then(_$ChartFilterModelImpl(
       name: null == name
@@ -114,10 +114,10 @@ class __$$ChartFilterModelImplCopyWithImpl<$Res>
           ? _value.label
           : label // ignore: cast_nullable_to_non_nullable
               as String,
-      active: null == active
-          ? _value.active
-          : active // ignore: cast_nullable_to_non_nullable
-              as bool,
+      range: null == range
+          ? _value.range
+          : range // ignore: cast_nullable_to_non_nullable
+              as TimeRange,
     ));
   }
 }
@@ -129,7 +129,7 @@ class _$ChartFilterModelImpl implements _ChartFilterModel {
       {required this.name,
       required this.totalDays,
       required this.label,
-      required this.active});
+      required this.range});
 
   @override
   final String name;
@@ -138,11 +138,11 @@ class _$ChartFilterModelImpl implements _ChartFilterModel {
   @override
   final String label;
   @override
-  final bool active;
+  final TimeRange range;
 
   @override
   String toString() {
-    return 'ChartFilterModel(name: $name, totalDays: $totalDays, label: $label, active: $active)';
+    return 'ChartFilterModel(name: $name, totalDays: $totalDays, label: $label, range: $range)';
   }
 
   @override
@@ -154,11 +154,11 @@ class _$ChartFilterModelImpl implements _ChartFilterModel {
             (identical(other.totalDays, totalDays) ||
                 other.totalDays == totalDays) &&
             (identical(other.label, label) || other.label == label) &&
-            (identical(other.active, active) || other.active == active));
+            (identical(other.range, range) || other.range == range));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, totalDays, label, active);
+  int get hashCode => Object.hash(runtimeType, name, totalDays, label, range);
 
   @JsonKey(ignore: true)
   @override
@@ -173,7 +173,7 @@ abstract class _ChartFilterModel implements ChartFilterModel {
       {required final String name,
       required final int totalDays,
       required final String label,
-      required final bool active}) = _$ChartFilterModelImpl;
+      required final TimeRange range}) = _$ChartFilterModelImpl;
 
   @override
   String get name;
@@ -182,7 +182,7 @@ abstract class _ChartFilterModel implements ChartFilterModel {
   @override
   String get label;
   @override
-  bool get active;
+  TimeRange get range;
   @override
   @JsonKey(ignore: true)
   _$$ChartFilterModelImplCopyWith<_$ChartFilterModelImpl> get copyWith =>

@@ -1,3 +1,4 @@
+import 'dart:core';
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
@@ -29,11 +30,11 @@ class AdminDataCubit extends Cubit<AdminDataState> {
 
   void setSearchType(int index) {
     late SearchType type;
-    if (index == 0) {
+    if (index == 1) {
       type = SearchType.application;
-    } else if (index == 1) {
-      type = SearchType.customer;
     } else if (index == 2) {
+      type = SearchType.customer;
+    } else if (index == 3) {
       type = SearchType.feedback;
     } else {
       type = SearchType.contactUse;
@@ -42,7 +43,21 @@ class AdminDataCubit extends Cubit<AdminDataState> {
   }
 
   void setApplicationData(List<SimpleVisaModel> visa) async {
+    for (var element in visa) {
+      if (element.createdDate!.year < 2000) {
+        print(element);
+      }
+    }
     emit(state.copyWith(application: visa));
+  }
+
+  void setApplicationCorpData(List<SimpleVisaModel> visa) async {
+    for (var element in visa) {
+      if (element.createdDate!.year < 2000) {
+        print(element);
+      }
+    }
+    emit(state.copyWith(corpApplication: visa));
   }
 
   void setContactUsData(List<ContactUsModel> contacts) async {
@@ -57,35 +72,11 @@ class AdminDataCubit extends Cubit<AdminDataState> {
     emit(state.copyWith(feedbacks: feedbacks));
   }
 
-  void setActiveFilter(ChartFilterModel model) {
-    final updatedModel = model.copyWith(active: true);
-
-    var chartsFilter = state.usersChartFilter;
-
-    chartsFilter =
-        chartsFilter.map((filter) => filter.copyWith(active: false)).toList();
-
-    int indexToUpdate =
-        chartsFilter.indexWhere((element) => element.label == model.label);
-
-    chartsFilter[indexToUpdate] = updatedModel;
-
-    emit(state.copyWith(usersChartFilter: chartsFilter));
+  void setActiveFilterCustomer(ChartFilterModel model) {
+    emit(state.copyWith(customerFilter: model));
   }
 
   void setActiveFilterApplication(ChartFilterModel model) {
-    final updatedModel = model.copyWith(active: true);
-
-    var chartsFilter = state.appsChartFilter;
-
-    chartsFilter =
-        chartsFilter.map((filter) => filter.copyWith(active: false)).toList();
-
-    int indexToUpdate =
-        chartsFilter.indexWhere((element) => element.label == model.label);
-
-    chartsFilter[indexToUpdate] = updatedModel;
-
-    emit(state.copyWith(appsChartFilter: chartsFilter));
+    emit(state.copyWith(applicationFilter: model));
   }
 }

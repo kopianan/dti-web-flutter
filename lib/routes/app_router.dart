@@ -26,6 +26,7 @@ import 'package:dti_web/presentation/corporate/application/admin_application_pag
 import 'package:dti_web/presentation/corporate/application/application_page.dart';
 import 'package:dti_web/presentation/corporate/c_dashboard_page.dart';
 import 'package:dti_web/presentation/corporate/contact_us/admin_contact_us_page.dart';
+import 'package:dti_web/presentation/corporate/corp_application/admin_corp_application_page.dart';
 import 'package:dti_web/presentation/corporate/create_application/create_application_page.dart';
 import 'package:dti_web/presentation/corporate/customer/admin_customer_page.dart';
 import 'package:dti_web/presentation/corporate/feedback/admin_feedback_page.dart';
@@ -135,6 +136,10 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
         AutoRoute(
           path: 'admin-application',
           page: AdminApplicationRoute.page,
+        ),
+        AutoRoute(
+          path: 'admin-corp-application',
+          page: AdminCorpApplicationRoute.page,
         ),
         AutoRoute(
           path: 'admin-customer',

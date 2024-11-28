@@ -38,6 +38,9 @@ class CustomerRepository extends ICustomer {
       );
       final user = result.data['data'] as List;
       final listData = user.map((e) => CustomerModel.fromJson(e)).toList();
+      listData.sort(
+        (a, b) => a.name.compareTo(b.name),
+      );
 
       return Right(listData);
     } on DioError catch (e) {

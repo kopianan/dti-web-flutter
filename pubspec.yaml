@@ -81,9 +81,10 @@ dependencies:
   pinput: ^2.2.31
   rating_dialog: ^2.0.4
   shimmer: ^2.0.0
-  syncfusion_flutter_pdf: ^21.1.38
-  syncfusion_flutter_pdfviewer: ^21.1.38
-  syncfusion_flutter_signaturepad: ^21.1.38
+  syncfusion_flutter_charts: ^26.2.10
+  syncfusion_flutter_pdf: ^26.2.10
+  syncfusion_flutter_pdfviewer: ^26.2.10
+  syncfusion_flutter_signaturepad: ^26.2.10
   toggle_switch: ^2.0.1
   universal_io: ^2.2.0
   url_launcher: ^6.1.6

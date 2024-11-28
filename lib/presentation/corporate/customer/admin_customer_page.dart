@@ -67,6 +67,8 @@ class _AdminCustomerPageState extends State<AdminCustomerPage> {
                     controller.clear();
                   },
                   onSearch: (e) {
+                    print(e);
+
                     context.read<AdminDataCubit>().searchKeywoard(e);
                   },
                 );
@@ -103,6 +105,9 @@ class _AdminCustomerPageState extends State<AdminCustomerPage> {
                         applicationHeaderColumn(
                           label: "Phone Number",
                         ),
+                        applicationHeaderColumn(
+                          label: "Email",
+                        ),
                         applicationHeaderColumn(label: "Total Visa"),
                         applicationHeaderColumn(label: "Contact", width: 400),
                       ],
@@ -127,11 +132,12 @@ class _AdminCustomerPageState extends State<AdminCustomerPage> {
     return DataRow2(
       onTap: () {},
       color: index % 2 == 0
-          ? MaterialStatePropertyAll(Colors.blue[100])
-          : const MaterialStatePropertyAll(Colors.white),
+          ? WidgetStatePropertyAll(Colors.blue[100])
+          : const WidgetStatePropertyAll(Colors.white),
       cells: [
         DataCell(Text(customer.name)),
         DataCell(Text(customer.countryCode + customer.mobileNumber)),
+        DataCell(Text(customer.email)),
         DataCell(Text(customer.totalVisa.toString())),
         DataCell(BlocProvider(
           create: (context) => getIt<AdminCubit>(),

@@ -1,42 +1,31 @@
 import 'package:dti_web/application/admin/admin_data/admin_data_cubit.dart';
 import 'package:dti_web/domain/core/chart_filter_model.dart';
-import 'package:dti_web/presentation/corporate/stat/admin_statistic_page.dart';
 
 class ChartUtil {
-  List<ChartFilterModel> getUserChartFilter() {
+  List<ChartFilterModel> getChartFilter() {
     return [
       ChartFilterModel(
-          name: "7 Days", label: "7D", active: true, totalDays: 7),
+          name: "7 Days",
+          label: "7D",
+          totalDays: 7,
+          range: TimeRange.Last7Days),
       ChartFilterModel(
-        name: "1 Month",
-        label: "1M",
-        active: false,
-        totalDays: 30,
-      ),
+          name: "1 Month",
+          label: "1M",
+          totalDays: 30,
+          range: TimeRange.Last1Month),
       ChartFilterModel(
-        name: "3 Months",
-        label: "3M",
-        active: false,
-        totalDays: 90,
-      ),
+          name: "3 Months",
+          label: "3M",
+          totalDays: 90,
+          range: TimeRange.Last3Months),
       ChartFilterModel(
-        name: "6 Months",
-        label: "6M",
-        active: false,
-        totalDays: 180,
-      ),
+          name: "1 Year",
+          label: "1Y",
+          totalDays: 365,
+          range: TimeRange.Last1Year),
       ChartFilterModel(
-        name: "1 Year",
-        label: "1Y",
-        active: false,
-        totalDays: 365,
-      ),
-      ChartFilterModel(
-        name: "All",
-        label: "ALL",
-        active: false,
-        totalDays: -1,
-      ),
+          name: "All", label: "ALL", totalDays: -1, range: TimeRange.All),
     ];
   }
 }

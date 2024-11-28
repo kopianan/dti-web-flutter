@@ -39,7 +39,7 @@ class AppListRepository extends IAppList {
           .map((e) => SimpleVisaModel.fromJson(e))
           .toList();
       listData.sort(
-        (a, b) => b.createdDate!.compareTo(a.createdDate!),
+        (a, b) => b.lastUpdatedDate!.compareTo(a.lastUpdatedDate!),
       );
       return Right(listData);
     } on DioError catch (e) {
@@ -77,7 +77,7 @@ class AppListRepository extends IAppList {
           .map((e) => SimpleVisaModel.fromJson(e))
           .toList();
       listData.sort(
-        (a, b) => b.createdDate!.compareTo(a.createdDate!),
+        (a, b) => b.lastUpdatedDate!.compareTo(a.lastUpdatedDate!),
       );
       return Right(listData);
     } on DioError catch (e) {

@@ -31,6 +31,8 @@ mixin _$SimpleVisaModel {
   String? get userName => throw _privateConstructorUsedError;
   int? get lengthOfStay => throw _privateConstructorUsedError;
   @DateTimeOrNullConverter()
+  DateTime? get lastUpdatedDate => throw _privateConstructorUsedError;
+  @DateTimeOrNullConverter()
   DateTime? get createdDate => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -55,6 +57,7 @@ abstract class $SimpleVisaModelCopyWith<$Res> {
       @DateTimeOrNullConverter() DateTime? usedByDate,
       String? userName,
       int? lengthOfStay,
+      @DateTimeOrNullConverter() DateTime? lastUpdatedDate,
       @DateTimeOrNullConverter() DateTime? createdDate});
 }
 
@@ -80,6 +83,7 @@ class _$SimpleVisaModelCopyWithImpl<$Res, $Val extends SimpleVisaModel>
     Object? usedByDate = freezed,
     Object? userName = freezed,
     Object? lengthOfStay = freezed,
+    Object? lastUpdatedDate = freezed,
     Object? createdDate = freezed,
   }) {
     return _then(_value.copyWith(
@@ -119,6 +123,10 @@ class _$SimpleVisaModelCopyWithImpl<$Res, $Val extends SimpleVisaModel>
           ? _value.lengthOfStay
           : lengthOfStay // ignore: cast_nullable_to_non_nullable
               as int?,
+      lastUpdatedDate: freezed == lastUpdatedDate
+          ? _value.lastUpdatedDate
+          : lastUpdatedDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       createdDate: freezed == createdDate
           ? _value.createdDate
           : createdDate // ignore: cast_nullable_to_non_nullable
@@ -145,6 +153,7 @@ abstract class _$$SimpleVisaModelImplCopyWith<$Res>
       @DateTimeOrNullConverter() DateTime? usedByDate,
       String? userName,
       int? lengthOfStay,
+      @DateTimeOrNullConverter() DateTime? lastUpdatedDate,
       @DateTimeOrNullConverter() DateTime? createdDate});
 }
 
@@ -168,6 +177,7 @@ class __$$SimpleVisaModelImplCopyWithImpl<$Res>
     Object? usedByDate = freezed,
     Object? userName = freezed,
     Object? lengthOfStay = freezed,
+    Object? lastUpdatedDate = freezed,
     Object? createdDate = freezed,
   }) {
     return _then(_$SimpleVisaModelImpl(
@@ -207,6 +217,10 @@ class __$$SimpleVisaModelImplCopyWithImpl<$Res>
           ? _value.lengthOfStay
           : lengthOfStay // ignore: cast_nullable_to_non_nullable
               as int?,
+      lastUpdatedDate: freezed == lastUpdatedDate
+          ? _value.lastUpdatedDate
+          : lastUpdatedDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       createdDate: freezed == createdDate
           ? _value.createdDate
           : createdDate // ignore: cast_nullable_to_non_nullable
@@ -228,6 +242,7 @@ class _$SimpleVisaModelImpl implements _SimpleVisaModel {
       @DateTimeOrNullConverter() this.usedByDate,
       this.userName,
       this.lengthOfStay,
+      @DateTimeOrNullConverter() this.lastUpdatedDate,
       @DateTimeOrNullConverter() this.createdDate});
 
   factory _$SimpleVisaModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -254,11 +269,14 @@ class _$SimpleVisaModelImpl implements _SimpleVisaModel {
   final int? lengthOfStay;
   @override
   @DateTimeOrNullConverter()
+  final DateTime? lastUpdatedDate;
+  @override
+  @DateTimeOrNullConverter()
   final DateTime? createdDate;
 
   @override
   String toString() {
-    return 'SimpleVisaModel(firebaseDocId: $firebaseDocId, applicationID: $applicationID, status: $status, bookingCode: $bookingCode, title: $title, subTitle: $subTitle, usedByDate: $usedByDate, userName: $userName, lengthOfStay: $lengthOfStay, createdDate: $createdDate)';
+    return 'SimpleVisaModel(firebaseDocId: $firebaseDocId, applicationID: $applicationID, status: $status, bookingCode: $bookingCode, title: $title, subTitle: $subTitle, usedByDate: $usedByDate, userName: $userName, lengthOfStay: $lengthOfStay, lastUpdatedDate: $lastUpdatedDate, createdDate: $createdDate)';
   }
 
   @override
@@ -282,6 +300,8 @@ class _$SimpleVisaModelImpl implements _SimpleVisaModel {
                 other.userName == userName) &&
             (identical(other.lengthOfStay, lengthOfStay) ||
                 other.lengthOfStay == lengthOfStay) &&
+            (identical(other.lastUpdatedDate, lastUpdatedDate) ||
+                other.lastUpdatedDate == lastUpdatedDate) &&
             (identical(other.createdDate, createdDate) ||
                 other.createdDate == createdDate));
   }
@@ -299,6 +319,7 @@ class _$SimpleVisaModelImpl implements _SimpleVisaModel {
       usedByDate,
       userName,
       lengthOfStay,
+      lastUpdatedDate,
       createdDate);
 
   @JsonKey(ignore: true)
@@ -327,6 +348,7 @@ abstract class _SimpleVisaModel implements SimpleVisaModel {
           @DateTimeOrNullConverter() final DateTime? usedByDate,
           final String? userName,
           final int? lengthOfStay,
+          @DateTimeOrNullConverter() final DateTime? lastUpdatedDate,
           @DateTimeOrNullConverter() final DateTime? createdDate}) =
       _$SimpleVisaModelImpl;
 
@@ -352,6 +374,9 @@ abstract class _SimpleVisaModel implements SimpleVisaModel {
   String? get userName;
   @override
   int? get lengthOfStay;
+  @override
+  @DateTimeOrNullConverter()
+  DateTime? get lastUpdatedDate;
   @override
   @DateTimeOrNullConverter()
   DateTime? get createdDate;

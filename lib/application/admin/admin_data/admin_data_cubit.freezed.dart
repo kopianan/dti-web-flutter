@@ -17,15 +17,15 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AdminDataState {
   List<SimpleVisaModel> get application => throw _privateConstructorUsedError;
+  List<SimpleVisaModel> get corpApplication =>
+      throw _privateConstructorUsedError;
   List<ContactUsModel> get contacts => throw _privateConstructorUsedError;
   List<CustomerModel> get users => throw _privateConstructorUsedError;
   List<FeedbackModel> get feedbacks => throw _privateConstructorUsedError;
   SearchType get searchType => throw _privateConstructorUsedError;
   String get searchKeywoard => throw _privateConstructorUsedError;
-  List<ChartFilterModel> get usersChartFilter =>
-      throw _privateConstructorUsedError;
-  List<ChartFilterModel> get appsChartFilter =>
-      throw _privateConstructorUsedError;
+  ChartFilterModel get customerFilter => throw _privateConstructorUsedError;
+  ChartFilterModel get applicationFilter => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AdminDataStateCopyWith<AdminDataState> get copyWith =>
@@ -40,13 +40,17 @@ abstract class $AdminDataStateCopyWith<$Res> {
   @useResult
   $Res call(
       {List<SimpleVisaModel> application,
+      List<SimpleVisaModel> corpApplication,
       List<ContactUsModel> contacts,
       List<CustomerModel> users,
       List<FeedbackModel> feedbacks,
       SearchType searchType,
       String searchKeywoard,
-      List<ChartFilterModel> usersChartFilter,
-      List<ChartFilterModel> appsChartFilter});
+      ChartFilterModel customerFilter,
+      ChartFilterModel applicationFilter});
+
+  $ChartFilterModelCopyWith<$Res> get customerFilter;
+  $ChartFilterModelCopyWith<$Res> get applicationFilter;
 }
 
 /// @nodoc
@@ -63,18 +67,23 @@ class _$AdminDataStateCopyWithImpl<$Res, $Val extends AdminDataState>
   @override
   $Res call({
     Object? application = null,
+    Object? corpApplication = null,
     Object? contacts = null,
     Object? users = null,
     Object? feedbacks = null,
     Object? searchType = null,
     Object? searchKeywoard = null,
-    Object? usersChartFilter = null,
-    Object? appsChartFilter = null,
+    Object? customerFilter = null,
+    Object? applicationFilter = null,
   }) {
     return _then(_value.copyWith(
       application: null == application
           ? _value.application
           : application // ignore: cast_nullable_to_non_nullable
+              as List<SimpleVisaModel>,
+      corpApplication: null == corpApplication
+          ? _value.corpApplication
+          : corpApplication // ignore: cast_nullable_to_non_nullable
               as List<SimpleVisaModel>,
       contacts: null == contacts
           ? _value.contacts
@@ -96,15 +105,31 @@ class _$AdminDataStateCopyWithImpl<$Res, $Val extends AdminDataState>
           ? _value.searchKeywoard
           : searchKeywoard // ignore: cast_nullable_to_non_nullable
               as String,
-      usersChartFilter: null == usersChartFilter
-          ? _value.usersChartFilter
-          : usersChartFilter // ignore: cast_nullable_to_non_nullable
-              as List<ChartFilterModel>,
-      appsChartFilter: null == appsChartFilter
-          ? _value.appsChartFilter
-          : appsChartFilter // ignore: cast_nullable_to_non_nullable
-              as List<ChartFilterModel>,
+      customerFilter: null == customerFilter
+          ? _value.customerFilter
+          : customerFilter // ignore: cast_nullable_to_non_nullable
+              as ChartFilterModel,
+      applicationFilter: null == applicationFilter
+          ? _value.applicationFilter
+          : applicationFilter // ignore: cast_nullable_to_non_nullable
+              as ChartFilterModel,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ChartFilterModelCopyWith<$Res> get customerFilter {
+    return $ChartFilterModelCopyWith<$Res>(_value.customerFilter, (value) {
+      return _then(_value.copyWith(customerFilter: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ChartFilterModelCopyWith<$Res> get applicationFilter {
+    return $ChartFilterModelCopyWith<$Res>(_value.applicationFilter, (value) {
+      return _then(_value.copyWith(applicationFilter: value) as $Val);
+    });
   }
 }
 
@@ -118,13 +143,19 @@ abstract class _$$AdminDataStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {List<SimpleVisaModel> application,
+      List<SimpleVisaModel> corpApplication,
       List<ContactUsModel> contacts,
       List<CustomerModel> users,
       List<FeedbackModel> feedbacks,
       SearchType searchType,
       String searchKeywoard,
-      List<ChartFilterModel> usersChartFilter,
-      List<ChartFilterModel> appsChartFilter});
+      ChartFilterModel customerFilter,
+      ChartFilterModel applicationFilter});
+
+  @override
+  $ChartFilterModelCopyWith<$Res> get customerFilter;
+  @override
+  $ChartFilterModelCopyWith<$Res> get applicationFilter;
 }
 
 /// @nodoc
@@ -139,18 +170,23 @@ class __$$AdminDataStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? application = null,
+    Object? corpApplication = null,
     Object? contacts = null,
     Object? users = null,
     Object? feedbacks = null,
     Object? searchType = null,
     Object? searchKeywoard = null,
-    Object? usersChartFilter = null,
-    Object? appsChartFilter = null,
+    Object? customerFilter = null,
+    Object? applicationFilter = null,
   }) {
     return _then(_$AdminDataStateImpl(
       application: null == application
           ? _value.application
           : application // ignore: cast_nullable_to_non_nullable
+              as List<SimpleVisaModel>,
+      corpApplication: null == corpApplication
+          ? _value.corpApplication
+          : corpApplication // ignore: cast_nullable_to_non_nullable
               as List<SimpleVisaModel>,
       contacts: null == contacts
           ? _value.contacts
@@ -172,14 +208,14 @@ class __$$AdminDataStateImplCopyWithImpl<$Res>
           ? _value.searchKeywoard
           : searchKeywoard // ignore: cast_nullable_to_non_nullable
               as String,
-      usersChartFilter: null == usersChartFilter
-          ? _value.usersChartFilter
-          : usersChartFilter // ignore: cast_nullable_to_non_nullable
-              as List<ChartFilterModel>,
-      appsChartFilter: null == appsChartFilter
-          ? _value.appsChartFilter
-          : appsChartFilter // ignore: cast_nullable_to_non_nullable
-              as List<ChartFilterModel>,
+      customerFilter: null == customerFilter
+          ? _value.customerFilter
+          : customerFilter // ignore: cast_nullable_to_non_nullable
+              as ChartFilterModel,
+      applicationFilter: null == applicationFilter
+          ? _value.applicationFilter
+          : applicationFilter // ignore: cast_nullable_to_non_nullable
+              as ChartFilterModel,
     ));
   }
 }
@@ -189,18 +225,22 @@ class __$$AdminDataStateImplCopyWithImpl<$Res>
 class _$AdminDataStateImpl extends _AdminDataState {
   const _$AdminDataStateImpl(
       {this.application = const [],
+      this.corpApplication = const [],
       this.contacts = const [],
       this.users = const [],
       this.feedbacks = const [],
       this.searchType = SearchType.application,
       this.searchKeywoard = "",
-      required this.usersChartFilter,
-      required this.appsChartFilter})
+      required this.customerFilter,
+      required this.applicationFilter})
       : super._();
 
   @override
   @JsonKey()
   final List<SimpleVisaModel> application;
+  @override
+  @JsonKey()
+  final List<SimpleVisaModel> corpApplication;
   @override
   @JsonKey()
   final List<ContactUsModel> contacts;
@@ -217,13 +257,13 @@ class _$AdminDataStateImpl extends _AdminDataState {
   @JsonKey()
   final String searchKeywoard;
   @override
-  final List<ChartFilterModel> usersChartFilter;
+  final ChartFilterModel customerFilter;
   @override
-  final List<ChartFilterModel> appsChartFilter;
+  final ChartFilterModel applicationFilter;
 
   @override
   String toString() {
-    return 'AdminDataState(application: $application, contacts: $contacts, users: $users, feedbacks: $feedbacks, searchType: $searchType, searchKeywoard: $searchKeywoard, usersChartFilter: $usersChartFilter, appsChartFilter: $appsChartFilter)';
+    return 'AdminDataState(application: $application, corpApplication: $corpApplication, contacts: $contacts, users: $users, feedbacks: $feedbacks, searchType: $searchType, searchKeywoard: $searchKeywoard, customerFilter: $customerFilter, applicationFilter: $applicationFilter)';
   }
 
   @override
@@ -233,6 +273,8 @@ class _$AdminDataStateImpl extends _AdminDataState {
             other is _$AdminDataStateImpl &&
             const DeepCollectionEquality()
                 .equals(other.application, application) &&
+            const DeepCollectionEquality()
+                .equals(other.corpApplication, corpApplication) &&
             const DeepCollectionEquality().equals(other.contacts, contacts) &&
             const DeepCollectionEquality().equals(other.users, users) &&
             const DeepCollectionEquality().equals(other.feedbacks, feedbacks) &&
@@ -240,23 +282,24 @@ class _$AdminDataStateImpl extends _AdminDataState {
                 other.searchType == searchType) &&
             (identical(other.searchKeywoard, searchKeywoard) ||
                 other.searchKeywoard == searchKeywoard) &&
-            const DeepCollectionEquality()
-                .equals(other.usersChartFilter, usersChartFilter) &&
-            const DeepCollectionEquality()
-                .equals(other.appsChartFilter, appsChartFilter));
+            (identical(other.customerFilter, customerFilter) ||
+                other.customerFilter == customerFilter) &&
+            (identical(other.applicationFilter, applicationFilter) ||
+                other.applicationFilter == applicationFilter));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(application),
+      const DeepCollectionEquality().hash(corpApplication),
       const DeepCollectionEquality().hash(contacts),
       const DeepCollectionEquality().hash(users),
       const DeepCollectionEquality().hash(feedbacks),
       searchType,
       searchKeywoard,
-      const DeepCollectionEquality().hash(usersChartFilter),
-      const DeepCollectionEquality().hash(appsChartFilter));
+      customerFilter,
+      applicationFilter);
 
   @JsonKey(ignore: true)
   @override
@@ -269,18 +312,21 @@ class _$AdminDataStateImpl extends _AdminDataState {
 abstract class _AdminDataState extends AdminDataState {
   const factory _AdminDataState(
           {final List<SimpleVisaModel> application,
+          final List<SimpleVisaModel> corpApplication,
           final List<ContactUsModel> contacts,
           final List<CustomerModel> users,
           final List<FeedbackModel> feedbacks,
           final SearchType searchType,
           final String searchKeywoard,
-          required final List<ChartFilterModel> usersChartFilter,
-          required final List<ChartFilterModel> appsChartFilter}) =
+          required final ChartFilterModel customerFilter,
+          required final ChartFilterModel applicationFilter}) =
       _$AdminDataStateImpl;
   const _AdminDataState._() : super._();
 
   @override
   List<SimpleVisaModel> get application;
+  @override
+  List<SimpleVisaModel> get corpApplication;
   @override
   List<ContactUsModel> get contacts;
   @override
@@ -292,9 +338,9 @@ abstract class _AdminDataState extends AdminDataState {
   @override
   String get searchKeywoard;
   @override
-  List<ChartFilterModel> get usersChartFilter;
+  ChartFilterModel get customerFilter;
   @override
-  List<ChartFilterModel> get appsChartFilter;
+  ChartFilterModel get applicationFilter;
   @override
   @JsonKey(ignore: true)
   _$$AdminDataStateImplCopyWith<_$AdminDataStateImpl> get copyWith =>

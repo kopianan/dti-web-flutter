@@ -14,20 +14,22 @@ class AdminDataState with _$AdminDataState {
   const AdminDataState._();
   const factory AdminDataState({
     @Default([]) final List<SimpleVisaModel> application,
+    @Default([]) final List<SimpleVisaModel> corpApplication,
     @Default([]) final List<ContactUsModel> contacts,
     @Default([]) final List<CustomerModel> users,
     @Default([]) final List<FeedbackModel> feedbacks,
     @Default(SearchType.application) SearchType searchType,
     @Default("") String searchKeywoard,
-    required List<ChartFilterModel> usersChartFilter,
-    required List<ChartFilterModel> appsChartFilter,
+    required ChartFilterModel customerFilter,
+    required ChartFilterModel applicationFilter,
   }) = _AdminDataState;
   factory AdminDataState.initial() => AdminDataState(
-        usersChartFilter: ChartUtil().getUserChartFilter(),
-        appsChartFilter: ChartUtil().getUserChartFilter(),
+        customerFilter: ChartUtil().getChartFilter().first,
+        applicationFilter: ChartUtil().getChartFilter().first,
       );
 
   List<CustomerModel> getCustomers() {
+    print(searchType);
     if (searchType == SearchType.customer && searchKeywoard.isNotEmpty) {
       return users.where((element) {
         return element.name
@@ -67,6 +69,25 @@ class AdminDataState with _$AdminDataState {
     }
     log("TOTAL + ${application.length}");
     return application.toList();
+  }
+
+  List<SimpleVisaModel> getListCorpApplication() {
+    if (searchType == SearchType.corpApplication && searchKeywoard.isNotEmpty) {
+      final filtered = corpApplication.where((element) {
+        if (element.userName != null) {
+          return element.userName!
+              .toLowerCase()
+              .contains(searchKeywoard.toLowerCase());
+        }
+        return false;
+      }).toList();
+
+      log("TOTAL + ${filtered.length}");
+
+      return filtered;
+    }
+    log("TOTAL + ${corpApplication.length}");
+    return corpApplication.toList();
   }
 
   List<ContactUsModel> getContactUs() {
@@ -137,16 +158,12 @@ class AdminDataState with _$AdminDataState {
 
   //get selected chart
   ChartFilterModel getSelectedUserChartFilter() {
-    final selected =
-        usersChartFilter.firstWhere((element) => element.active == true);
-    return selected;
+    return customerFilter;
   }
 
   //get selected chart
   ChartFilterModel getSelectedAppsChartFilter() {
-    final selected =
-        appsChartFilter.firstWhere((element) => element.active == true);
-    return selected;
+    return applicationFilter;
   }
 
   // //get apps series by month
@@ -178,6 +195,7 @@ class AdminDataState with _$AdminDataState {
           .length;
       data.add(TimeSeriesCoordinate(date, count));
     }
+
     return [
       charts.Series<TimeSeriesCoordinate, DateTime>(
         id: 'Applications',
@@ -189,118 +207,241 @@ class AdminDataState with _$AdminDataState {
     ];
   }
 
-  // get customer series by month
-  List<charts.Series<TimeSeriesCoordinate, DateTime>> getCustomerLineSeries() {
-    List<TimeSeriesCoordinate> data = [];
+  List<TimeSeriesCoordinate> getApplicationByTimeFrame() {
+    final totaldays = applicationFilter.totalDays;
 
-    final filter = getSelectedUserChartFilter();
-    DateTime endDate = DateTime.now();
-    DateTime startDate = DateTime.now();
-    startDate = endDate.subtract(Duration(days: filter.totalDays));
-    if (filter.totalDays == -1) {
-      final firstDate = users.reduce((oldest, current) =>
-          oldest.createdDate!.isBefore(current.createdDate!)
-              ? oldest
-              : current);
-      final days = DateTime.now().difference(firstDate.createdDate!).inDays;
-      startDate = endDate.subtract(Duration(days: days));
-    }
+    // Grouping the filtered data by day (ignoring the time) using TimeSeriesCoordinate model
+    List<TimeSeriesCoordinate> listsDateData = [];
 
-    for (DateTime date = startDate;
-        date.isBefore(endDate) || date.isAtSameMomentAs(endDate);
-        date = date.add(const Duration(days: 1))) {
-      int count = users
-          .where((visa) =>
-              visa.createdDate != null &&
-              visa.createdDate!.year == date.year &&
-              visa.createdDate!.month == date.month &&
-              visa.createdDate!.day == date.day)
-          .length;
-      data.add(TimeSeriesCoordinate(date, count));
-    }
-    return [
-      charts.Series<TimeSeriesCoordinate, DateTime>(
-        id: 'Customers',
-        colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
-        domainFn: (TimeSeriesCoordinate trans, _) => trans.time,
-        measureFn: (TimeSeriesCoordinate trans, _) => trans.total,
-        data: data,
-      )
-    ];
+    if (applicationFilter.range == TimeRange.Last7Days) {
+      for (var i = 0; i < totaldays; i++) {
+        final dateToFilter = DateTime.now().subtract(Duration(days: i));
+        final list = application
+            .where((element) => element.createdDate!.isSameDate(dateToFilter))
+            .toList();
+        listsDateData.add(TimeSeriesCoordinate(dateToFilter, list.length));
+      }
+    } else if (applicationFilter.range == TimeRange.Last1Month) {
+      for (int i = 0; i < totaldays; i += 7) {
+        //write here.
+        DateTime weekStart =
+            DateTime.now().subtract(Duration(days: i + 6)); // Start of the week
+        DateTime weekEnd =
+            DateTime.now().subtract(Duration(days: i)); // End of the week
+
+        // Filter data within the start and end of the week
+        final list = application.where((element) {
+          DateTime createdDate = element.createdDate!;
+          return (createdDate.isAfter(weekStart) &&
+                  createdDate.isBefore(weekEnd)) ||
+              createdDate.isSameDate(weekStart) ||
+              createdDate.isSameDate(weekEnd);
+        }).toList();
+
+        // Use the start of the week as the key in TimeSeriesCoordinate
+        listsDateData.add(TimeSeriesCoordinate(weekStart, list.length));
+      }
+    } else if (applicationFilter.range == TimeRange.Last3Months) {
+      for (int i = 0; i < 90; i += 30) {
+        DateTime periodStart = DateTime.now()
+            .subtract(Duration(days: i + 29)); // Start of the period (30 days)
+        DateTime periodEnd =
+            DateTime.now().subtract(Duration(days: i)); // End of the period
+
+        // Filter data within the start and end of the 30-day period
+        final list = application.where((element) {
+          DateTime createdDate = element.createdDate!;
+          return (createdDate.isAfter(periodStart) &&
+                  createdDate.isBefore(periodEnd)) ||
+              createdDate.isSameDate(periodStart) ||
+              createdDate.isSameDate(periodEnd);
+        }).toList();
+
+        // Use the start of the period as the key in TimeSeriesCoordinate
+        listsDateData.add(TimeSeriesCoordinate(periodStart, list.length));
+      }
+    } else if (applicationFilter.range == TimeRange.Last1Year) {
+      // Iterate through each month for the last 12 months
+      for (int i = 0; i < 12; i++) {
+        DateTime monthEnd = DateTime.now()
+            .subtract(Duration(days: i * 30)); // Approximate end of the month
+        DateTime monthStart =
+            DateTime(monthEnd.year, monthEnd.month, 1); // Start of the month
+
+        // Ensure monthEnd is the last day of the current month being processed
+        monthEnd = DateTime(monthEnd.year, monthEnd.month + 1, 1)
+            .subtract(const Duration(days: 1));
+
+        // Filter data within the start and end of the month
+        final list = application.where((element) {
+          DateTime createdDate = element.createdDate!;
+          return (createdDate.isAfter(monthStart) &&
+                  createdDate.isBefore(monthEnd)) ||
+              createdDate.isSameDate(monthStart) ||
+              createdDate.isSameDate(monthEnd);
+        }).toList();
+
+        // Use the start of the month as the key in TimeSeriesCoordinate
+        listsDateData.add(TimeSeriesCoordinate(monthStart, list.length));
+      }
+    } else {}
+    return listsDateData;
   }
 
-  // get customer series by month
-  List<TimeSeriesCoordinate> getCustomerBarChart() {
-    List<TimeSeriesCoordinate> data = [];
+  List<ChartData> getApplicationByTimeFoAll() {
+    List<GroupChartData> totalYear = [];
+    List<ChartData> chartList = [];
+    List<int> uniqueYears =
+        application.map((item) => item.createdDate!.year).toSet().toList();
 
-    final filter = getSelectedUserChartFilter();
-    DateTime endDate = DateTime.now();
-    DateTime startDate = DateTime.now();
-    startDate = endDate.subtract(Duration(days: filter.totalDays));
-    if (filter.totalDays == -1) {
-      final firstDate = users.reduce((oldest, current) =>
-          oldest.createdDate!.isBefore(current.createdDate!)
-              ? oldest
-              : current);
-      final days = DateTime.now().difference(firstDate.createdDate!).inDays;
-      startDate = endDate.subtract(Duration(days: days));
+    for (int year in uniqueYears) {
+      // Mengambil data yang termasuk dalam tahun tertentu
+      final dataForYear =
+          application.where((item) => item.createdDate!.year == year).toList();
+      totalYear.add(GroupChartData(DateTime(year), results: dataForYear));
     }
 
-    for (DateTime date = startDate;
-        date.isBefore(endDate) || date.isAtSameMomentAs(endDate);
-        date = date.add(const Duration(days: 1))) {
-      int count = users
-          .where((visa) =>
-              visa.createdDate != null &&
-              visa.createdDate!.year == date.year &&
-              visa.createdDate!.month == date.month &&
-              visa.createdDate!.day == date.day)
-          .length;
-      data.add(TimeSeriesCoordinate(date, count));
-    }
-    data.removeWhere((element) => element.total == 0);  
-    return data;
-  }
-}
+    for (var element in totalYear) {
+      int q1 = 0, q2 = 0, q3 = 0, q4 = 0;
 
-Widget getTitles(double value, TitleMeta meta) {
-  const style = TextStyle(
-    color: Colors.blue,
-    fontWeight: FontWeight.bold,
-    fontSize: 14,
-  );
-  String text;
-  switch (value.toInt()) {
-    case 0:
-      text = 'Mn';
-      break;
-    case 1:
-      text = 'Te';
-      break;
-    case 2:
-      text = 'Wd';
-      break;
-    case 3:
-      text = 'Tu';
-      break;
-    case 4:
-      text = 'Fr';
-      break;
-    case 5:
-      text = 'St';
-      break;
-    case 6:
-      text = 'Sn';
-      break;
-    default:
-      text = '';
-      break;
+      for (var item in element.results) {
+        int month = item.createdDate!.month;
+
+        if (month >= 1 && month <= 3) {
+          q1++;
+        } else if (month >= 4 && month <= 6) {
+          q2++;
+        } else if (month >= 7 && month <= 9) {
+          q3++;
+        } else if (month >= 10 && month <= 12) {
+          q4++;
+        }
+      }
+      chartList.add(ChartData(element.time, q1, q2, q3, q4));
+    }
+
+    return chartList.reversed.toList();
   }
-  return SideTitleWidget(
-    axisSide: meta.axisSide,
-    space: 4,
-    child: Text(text, style: style),
-  );
+
+  List<TimeSeriesCoordinate> getUserDataByTimeFrame() {
+    final totaldays = customerFilter.totalDays;
+
+    // Grouping the filtered data by day (ignoring the time) using TimeSeriesCoordinate model
+    List<TimeSeriesCoordinate> listsDateData = [];
+
+    if (customerFilter.range == TimeRange.Last7Days) {
+      for (var i = 0; i < totaldays; i++) {
+        final dateToFilter = DateTime.now().subtract(Duration(days: i));
+        final list = users
+            .where((element) => element.createdDate!.isSameDate(dateToFilter))
+            .toList();
+        listsDateData.add(TimeSeriesCoordinate(dateToFilter, list.length));
+      }
+    } else if (customerFilter.range == TimeRange.Last1Month) {
+      for (int i = 0; i < totaldays; i += 7) {
+        //write here.
+        DateTime weekStart =
+            DateTime.now().subtract(Duration(days: i + 6)); // Start of the week
+        DateTime weekEnd =
+            DateTime.now().subtract(Duration(days: i)); // End of the week
+
+        // Filter data within the start and end of the week
+        final list = users.where((element) {
+          DateTime createdDate = element.createdDate!;
+          return (createdDate.isAfter(weekStart) &&
+                  createdDate.isBefore(weekEnd)) ||
+              createdDate.isSameDate(weekStart) ||
+              createdDate.isSameDate(weekEnd);
+        }).toList();
+
+        // Use the start of the week as the key in TimeSeriesCoordinate
+        listsDateData.add(TimeSeriesCoordinate(weekStart, list.length));
+      }
+    } else if (customerFilter.range == TimeRange.Last3Months) {
+      for (int i = 0; i < 90; i += 30) {
+        DateTime periodStart = DateTime.now()
+            .subtract(Duration(days: i + 29)); // Start of the period (30 days)
+        DateTime periodEnd =
+            DateTime.now().subtract(Duration(days: i)); // End of the period
+
+        // Filter data within the start and end of the 30-day period
+        final list = users.where((element) {
+          DateTime createdDate = element.createdDate!;
+          return (createdDate.isAfter(periodStart) &&
+                  createdDate.isBefore(periodEnd)) ||
+              createdDate.isSameDate(periodStart) ||
+              createdDate.isSameDate(periodEnd);
+        }).toList();
+
+        // Use the start of the period as the key in TimeSeriesCoordinate
+        listsDateData.add(TimeSeriesCoordinate(periodStart, list.length));
+      }
+    } else if (customerFilter.range == TimeRange.Last1Year) {
+      // Iterate through each month for the last 12 months
+      for (int i = 0; i < 12; i++) {
+        DateTime monthEnd = DateTime.now()
+            .subtract(Duration(days: i * 30)); // Approximate end of the month
+        DateTime monthStart =
+            DateTime(monthEnd.year, monthEnd.month, 1); // Start of the month
+
+        // Ensure monthEnd is the last day of the current month being processed
+        monthEnd = DateTime(monthEnd.year, monthEnd.month + 1, 1)
+            .subtract(const Duration(days: 1));
+
+        // Filter data within the start and end of the month
+        final list = users.where((element) {
+          DateTime createdDate = element.createdDate!;
+          return (createdDate.isAfter(monthStart) &&
+                  createdDate.isBefore(monthEnd)) ||
+              createdDate.isSameDate(monthStart) ||
+              createdDate.isSameDate(monthEnd);
+        }).toList();
+
+        // Use the start of the month as the key in TimeSeriesCoordinate
+        listsDateData.add(TimeSeriesCoordinate(monthStart, list.length));
+      }
+    } else {}
+    return listsDateData;
+  }
+
+  List<ChartData> getUsersByTimeFoAll() {
+    List<GroupChartData> totalYear = [];
+    List<ChartData> chartList = [];
+    List<int> uniqueYears =
+        users.map((item) => item.createdDate!.year).toSet().toList();
+
+    for (int year in uniqueYears) {
+      // Mengambil data yang termasuk dalam tahun tertentu
+      final dataForYear =
+          users.where((item) => item.createdDate!.year == year).toList();
+      totalYear.add(GroupChartData(DateTime(year), resultsUser: dataForYear));
+    }
+
+    for (var element in totalYear) {
+      int q1 = 0, q2 = 0, q3 = 0, q4 = 0;
+
+      for (var item in element.resultsUser) {
+        int month = item.createdDate!.month;
+
+        if (month >= 1 && month <= 3) {
+          q1++;
+        } else if (month >= 4 && month <= 6) {
+          q2++;
+        } else if (month >= 7 && month <= 9) {
+          q3++;
+        } else if (month >= 10 && month <= 12) {
+          q4++;
+        }
+      }
+      chartList.add(ChartData(element.time, q1, q2, q3, q4));
+    }
+
+    chartList.sort(
+      (a, b) => a.time.year.compareTo(b.time.year),
+    );
+
+    return chartList;
+  }
 }
 
 class GraphCoordinate {
@@ -312,7 +453,40 @@ class GraphCoordinate {
 
 class TimeSeriesCoordinate {
   final DateTime time;
+  final DateTime? time2;
   final int total;
 
-  TimeSeriesCoordinate(this.time, this.total);
+  TimeSeriesCoordinate(this.time, this.total, {this.time2});
+}
+
+extension DateOnlyCompare on DateTime {
+  bool isSameDate(DateTime other) {
+    return year == other.year && month == other.month && day == other.day;
+  }
+}
+
+class GroupTimeSeriesCoordinate {
+  final DateTime time;
+  final List<TimeSeriesCoordinate> results;
+
+  GroupTimeSeriesCoordinate(this.time, this.results);
+}
+
+class GroupChartData {
+  final DateTime time;
+  final List<SimpleVisaModel> results;
+  final List<CustomerModel> resultsUser;
+
+  GroupChartData(this.time,
+      {this.results = const [], this.resultsUser = const []});
+}
+
+class ChartData {
+  final DateTime time;
+  final int q1;
+  final int q2;
+  final int q3;
+  final int q4;
+
+  ChartData(this.time, this.q1, this.q2, this.q3, this.q4);
 }

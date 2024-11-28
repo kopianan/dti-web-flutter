@@ -1,4 +1,3 @@
-
 import 'package:auto_route/auto_route.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:dti_web/application/auth/auth_cubit.dart';
@@ -78,7 +77,8 @@ class _SignUpPageState extends State<SignUpPage> {
 
               //loginuser
 
-              AutoRouter.of(context).replaceAll([const NumberRegistrationRoute()]);
+              AutoRouter.of(context)
+                  .replaceAll([const NumberRegistrationRoute()]);
               // context
               //     .read<AuthCubit>()
               //     .loginWithEmailAndPassword(email.text, password.text);
@@ -102,6 +102,11 @@ class _SignUpPageState extends State<SignUpPage> {
         child: BlocBuilder<AuthCubit, AuthState>(
           builder: (context, state) {
             return Scaffold(
+              appBar: AppBar(
+                leading: null,
+                backgroundColor: Colors.transparent,
+                elevation: 0,
+              ),
               body: SingleChildScrollView(
                 child: Container(
                   margin: EdgeInsets.symmetric(horizontal: 0.1.sw),

@@ -1,14 +1,16 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:collection/collection.dart';
 import 'package:community_charts_flutter/community_charts_flutter.dart'
     as charts;
 import 'package:dti_web/application/admin_application/cubit/admin_application_cubit.dart';
 import 'package:dti_web/application/customer/cubit/customer_cubit.dart';
 import 'package:dti_web/presentation/corporate/widgets/chart_filter_widget.dart';
+import 'package:dti_web/utils/chart_util.dart';
 import 'package:dti_web/utils/date_converter.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../../../application/admin/admin_data/admin_data_cubit.dart';
 
@@ -22,23 +24,6 @@ class AdminStatisticPage extends StatefulWidget {
 
 class _AdminStatisticPageState extends State<AdminStatisticPage> {
   /// Create one series with sample hard coded data.
-  static List<charts.Series<OrdinalSales, String>> _createSampleData() {
-    final data = [
-      OrdinalSales('2014', 5),
-      OrdinalSales('2015', 25),
-      OrdinalSales('2016', 100),
-      OrdinalSales('2017', 75),
-    ];
-    return [
-      charts.Series<OrdinalSales, String>(
-        id: 'Sales',
-        colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
-        domainFn: (OrdinalSales sales, _) => sales.year,
-        measureFn: (OrdinalSales sales, _) => sales.sales,
-        data: data,
-      )
-    ];
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -167,7 +152,8 @@ class _AdminStatisticPageState extends State<AdminStatisticPage> {
                                   state.getApplicationsSeries(),
                                   defaultRenderer: charts.ArcRendererConfig(
                                       arcRendererDecorators: [
-                                        charts.ArcLabelDecorator()
+                                        charts.ArcLabelDecorator(
+                                            showLeaderLines: true)
                                       ]),
                                   animate: false,
                                 );
@@ -181,192 +167,421 @@ class _AdminStatisticPageState extends State<AdminStatisticPage> {
                 ],
               )),
           const SizedBox(height: 20),
-          Container(
-              margin: const EdgeInsets.symmetric(horizontal: 30),
-              child: Card(
-                elevation: 6,
-                shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
-                child: Column(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 20),
-                      child: const Text(
-                        "Customer Graph",
-                        style: TextStyle(
-                            fontSize: 30, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 50,
-                      child: Container(
-                        padding: const EdgeInsets.only(left: 30),
-                        child: BlocBuilder<AdminDataCubit, AdminDataState>(
-                          builder: (context, state) => Row(
-                            children: state.usersChartFilter
-                                .map(
-                                  (e) => InkWell(
-                                    onTap: () {
-                                      context
-                                          .read<AdminDataCubit>()
-                                          .setActiveFilter(e);
-                                    },
-                                    child: ChartFilterWidget(filterModel: e),
-                                  ),
-                                )
-                                .toList(),
-                          ),
-                        ),
-                      ),
-                    ),
-
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Container(
-                        padding: const EdgeInsets.only(
-                          left: 20,
-                          right: 20,
-                          bottom: 30,
-                        ),
-                        height: 500,
-                        width: 500,
-                        color: Colors.white,
-                        child: BlocBuilder<AdminDataCubit, AdminDataState>(
-                          builder: (context, state) {
-                            if (state.users.isNotEmpty) {
-                              return BarChart(
-                                BarChartData(
-                                  barTouchData: barTouchData,
-                                  
-                                  titlesData:
-                                      titlesData(state.getCustomerBarChart()),
-                                  borderData: borderData,
-                                  barGroups: state
-                                      .getCustomerBarChart()
-                                      .mapIndexed((idx, e) => BarChartGroupData(
-                                            x: idx,
-                                            barRods: [
-                                              BarChartRodData(
-                                                toY: e.total.toDouble(),
-                                                gradient: _barsGradient,
-                                              )
-                                            ],
-                                            showingTooltipIndicators: [0],
-                                          ))
-                                      .toList(),
-                                  gridData: const FlGridData(
-                                    show: true,
-                                  ),
-                                  alignment: BarChartAlignment.spaceAround,
-                                  maxY: 20,
-                                ),
-                              );
-                            } else {
-                              return Container();
-                            }
-                          },
-                        ),
-                      ),
-                    ),
-                    // Container(
-                    //   padding: const EdgeInsets.only(
-                    //     left: 20,
-                    //     right: 20,
-                    //     bottom: 30,
-                    //   ),
-                    //   height: 500,
-                    //   color: Colors.white,
-                    //   child: BlocBuilder<AdminDataCubit, AdminDataState>(
-                    //     builder: (context, state) {
-                    //       if (state.users.isNotEmpty) {
-                    //         return charts.TimeSeriesChart(
-                    //           state.getCustomerLineSeries(),
-                    //           defaultRenderer:
-                    //               charts.BarRendererConfig<DateTime>(),
-                    //           animate: true,
-                    //           primaryMeasureAxis: charts.NumericAxisSpec(scaleSpec: ScaleSp),
-                    //           behaviors: [
-                    //             charts.SelectNearest(),
-                    //             charts.DomainHighlighter()
-                    //           ],
-                    //         );
-                    //       } else {
-                    //         return Container();
-                    //       }
-                    //     },
-                    //   ),
-                    // ),
-                  ],
-                ),
-              )),
+          // Container(
+          // margin: const EdgeInsets.symmetric(horizontal: 30),
+          // child: Card(
+          //   elevation: 6,
+          //   shape: const RoundedRectangleBorder(
+          //       borderRadius: BorderRadius.all(Radius.circular(10))),
+          //   child: Column(
+          //     children: [
+          //       Container(
+          //         padding: const EdgeInsets.symmetric(
+          //             horizontal: 20, vertical: 20),
+          //         child: const Text(
+          //           "Customer Graph",
+          //           style: TextStyle(
+          //               fontSize: 30, fontWeight: FontWeight.bold),
+          //         ),
+          //       ),
+          //       SizedBox(
+          //         height: 50,
+          //         child: Container(
+          //           padding: const EdgeInsets.only(left: 30),
+          //           child: BlocBuilder<AdminDataCubit, AdminDataState>(
+          //             builder: (context, state) => Row(
+          //               children: state.usersChartFilter
+          //                   .map(
+          //                     (e) => InkWell(
+          //                       onTap: () {
+          //                         context
+          //                             .read<AdminDataCubit>()
+          //                             .setActiveFilter(e);
+          //                         context
+          //                             .read<AdminDataCubit>()
+          //                             .setTimeRangeCustomer(e.range);
+          //                       },
+          //                       child: ChartFilterWidget(filterModel: e),
+          //                     ),
+          //                   )
+          //                   .toList(),
+          //             ),
+          //           ),
+          //         ),
+          //       ),
+          //       Container(
+          //         padding: const EdgeInsets.only(
+          //           left: 20,
+          //           right: 20,
+          //           bottom: 30,
+          //         ),
+          //         height: 500,
+          //         color: Colors.white,
+          //         child: BlocBuilder<AdminDataCubit, AdminDataState>(
+          //           builder: (context, state) {
+          //             if (state.users.isNotEmpty) {
+          //               return SfCartesianChart(
+          //                   primaryXAxis: const DateTimeCategoryAxis(
+          //                     intervalType: DateTimeIntervalType.auto,
+          //                   ),
+          //                   series: <CartesianSeries<TimeSeriesCoordinate,
+          //                       DateTime>>[
+          //                     // Renders line chart
+          //                     ColumnSeries<TimeSeriesCoordinate, DateTime>(
+          //                         width: 0.5,
+          //                         dataSource:
+          //                             state.getCustomerLineSeries2(),
+          //                         xValueMapper:
+          //                             (TimeSeriesCoordinate data, _) =>
+          //                                 data.time,
+          //                         yValueMapper:
+          //                             (TimeSeriesCoordinate data, _) =>
+          //                                 data.total)
+          //                   ]);
+          //               // return charts.TimeSeriesChart(
+          //               //   state.getCustomerLineSeries(),
+          //               //   defaultRenderer:
+          //               //       charts.BarRendererConfig<DateTime>(
+          //               //           minBarLengthPx: 50,
+          //               //           maxBarWidthPx: 30,
+          //               //           barGroupInnerPaddingPx: 20),
+          //               //   animate: true,
+          //               //   behaviors: [
+          //               //     charts.DomainHighlighter(),
+          //               //     charts.SelectNearest(),
+          //               //   ],
+          //               // );
+          //             } else {
+          //               return Container();
+          //             }
+          //           },
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // )),
+          userGraph(),
           const SizedBox(height: 20),
-          Container(
-              margin: const EdgeInsets.symmetric(horizontal: 30),
-              child: Card(
-                elevation: 6,
-                shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
-                child: Column(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 20),
-                      child: const Text(
-                        "Application Graph",
-                        style: TextStyle(
-                            fontSize: 30, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 50,
-                      child: Container(
-                        padding: const EdgeInsets.only(left: 30),
-                        child: BlocBuilder<AdminDataCubit, AdminDataState>(
-                          builder: (context, state) => Row(
-                            children: state.appsChartFilter
-                                .map(
-                                  (e) => InkWell(
-                                    onTap: () {
-                                      context
-                                          .read<AdminDataCubit>()
-                                          .setActiveFilterApplication(e);
-                                    },
-                                    child: ChartFilterWidget(filterModel: e),
-                                  ),
-                                )
-                                .toList(),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.only(
-                        left: 20,
-                        right: 20,
-                        bottom: 30,
-                      ),
-                      height: 500,
-                      color: Colors.white,
-                      child: BlocBuilder<AdminDataCubit, AdminDataState>(
-                        builder: (context, state) {
-                          if (state.application.isNotEmpty) {
-                            return charts.TimeSeriesChart(
-                              state.getApplicationLineSeries(),
-                              animate: true,
-                            );
-                          } else {
-                            return Container();
-                          }
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-              )),
+          applicationGraph(),
         ],
       )),
     );
+  }
+
+  Container applicationGraph() {
+    return Container(
+        margin: const EdgeInsets.symmetric(horizontal: 30),
+        child: Card(
+          elevation: 6,
+          shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10))),
+          child: Column(
+            children: [
+              Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                child: const Text(
+                  "Application Graph",
+                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                ),
+              ),
+              SizedBox(
+                height: 50,
+                child: Container(
+                  padding: const EdgeInsets.only(left: 30),
+                  child: BlocBuilder<AdminDataCubit, AdminDataState>(
+                    builder: (context, state) => Row(
+                      children: ChartUtil()
+                          .getChartFilter()
+                          .map(
+                            (e) => InkWell(
+                              onTap: () {
+                                context
+                                    .read<AdminDataCubit>()
+                                    .setActiveFilterApplication(e);
+                              },
+                              child: ChartFilterWidget(
+                                filterModel: e,
+                                active: e.name == state.applicationFilter.name,
+                              ),
+                            ),
+                          )
+                          .toList(),
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.only(
+                  left: 20,
+                  right: 20,
+                  bottom: 30,
+                ),
+                height: 500,
+                color: Colors.white,
+                child: BlocBuilder<AdminDataCubit, AdminDataState>(
+                  builder: (context, state) {
+                    if (state.application.isNotEmpty) {
+                      if (state.getSelectedAppsChartFilter().range !=
+                          TimeRange.All) {
+                        return SfCartesianChart(
+                          legend: const Legend(isVisible: true),
+                          primaryXAxis: DateTimeCategoryAxis(
+                            interactiveTooltip: const InteractiveTooltip(),
+                            labelPosition: ChartDataLabelPosition.outside,
+                            dateFormat: DateFormat('dd-MMM-yyyy'),
+                          ),
+                          series: <CartesianSeries<TimeSeriesCoordinate,
+                              DateTime>>[
+                            // Renders line chart
+                            ColumnSeries<TimeSeriesCoordinate, DateTime>(
+                              name: 'Total',
+                              dataLabelSettings: DataLabelSettings(
+                                showCumulativeValues: true,
+                                builder: (data, point, series, pointIndex,
+                                    seriesIndex) {
+                                  return Text(data.total.toString());
+                                },
+                                isVisible: true,
+                              ),
+                              width: 0.5,
+                              dataSource: state.getApplicationByTimeFrame(),
+                              xValueMapper: (TimeSeriesCoordinate data, _) =>
+                                  data.time,
+                              yValueMapper: (TimeSeriesCoordinate data, _) =>
+                                  data.total,
+                              dataLabelMapper: (datum, index) =>
+                                  datum.time.day.toString(),
+                            )
+                          ],
+                        );
+                      } else {
+                        return Container(
+                            child: SfCartesianChart(
+                                legend: const Legend(isVisible: true),
+                                axes: const [CategoryAxis()],
+                                primaryXAxis: DateTimeCategoryAxis(
+                                  dateFormat: DateFormat.y(),
+                                ),
+                                series: [
+                                  ColumnSeries<ChartData, DateTime>(
+                                    name: "Jan-Mar",
+                                    enableTooltip: true,
+                                    dataLabelSettings: const DataLabelSettings(
+                                      isVisible: true,
+                                    ),
+                                    dataSource:
+                                        state.getApplicationByTimeFoAll(),
+                                    xValueMapper: (ChartData data, _) =>
+                                        data.time,
+                                    yValueMapper: (ChartData data, _) =>
+                                        data.q1,
+                                  ),
+                                  ColumnSeries<ChartData, DateTime>(
+                                    name: "Apr-Jun",
+                                    dataLabelSettings: const DataLabelSettings(
+                                      isVisible: true,
+                                      showCumulativeValues: true,
+                                    ),
+                                    dataSource:
+                                        state.getApplicationByTimeFoAll(),
+                                    xValueMapper: (ChartData data, _) =>
+                                        data.time,
+                                    yValueMapper: (ChartData data, _) =>
+                                        data.q2,
+                                  ),
+                                  ColumnSeries<ChartData, DateTime>(
+                                    name: "Jul-Sep",
+                                    dataLabelSettings: const DataLabelSettings(
+                                      isVisible: true,
+                                    ),
+                                    dataSource:
+                                        state.getApplicationByTimeFoAll(),
+                                    xValueMapper: (ChartData data, _) =>
+                                        data.time,
+                                    yValueMapper: (ChartData data, _) =>
+                                        data.q3,
+                                  ),
+                                  ColumnSeries<ChartData, DateTime>(
+                                    name: "Oct-Dec",
+                                    dataLabelSettings: const DataLabelSettings(
+                                        isVisible: true,
+                                        showCumulativeValues: true,
+                                        useSeriesColor: false),
+                                    dataSource:
+                                        state.getApplicationByTimeFoAll(),
+                                    xValueMapper: (ChartData data, _) =>
+                                        data.time,
+                                    yValueMapper: (ChartData data, _) =>
+                                        data.q4,
+                                  )
+                                ]));
+                      }
+                    } else {
+                      return Container();
+                    }
+                  },
+                ),
+              ),
+            ],
+          ),
+        ));
+  }
+
+  Container userGraph() {
+    return Container(
+        margin: const EdgeInsets.symmetric(horizontal: 30),
+        child: Card(
+          elevation: 6,
+          shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10))),
+          child: Column(
+            children: [
+              Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                child: const Text(
+                  "Customer Graph",
+                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                ),
+              ),
+              SizedBox(
+                height: 50,
+                child: Container(
+                  padding: const EdgeInsets.only(left: 30),
+                  child: BlocBuilder<AdminDataCubit, AdminDataState>(
+                    builder: (context, state) => Row(
+                      children: ChartUtil()
+                          .getChartFilter()
+                          .map(
+                            (e) => InkWell(
+                              onTap: () {
+                                context
+                                    .read<AdminDataCubit>()
+                                    .setActiveFilterCustomer(e);
+                              },
+                              child: ChartFilterWidget(
+                                filterModel: e,
+                                active: e.name == state.applicationFilter.name,
+                              ),
+                            ),
+                          )
+                          .toList(),
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.only(
+                  left: 20,
+                  right: 20,
+                  bottom: 30,
+                ),
+                height: 500,
+                color: Colors.white,
+                child: BlocBuilder<AdminDataCubit, AdminDataState>(
+                  builder: (context, state) {
+                    if (state.application.isNotEmpty) {
+                      if (state.getSelectedUserChartFilter().range !=
+                          TimeRange.All) {
+                        return SfCartesianChart(
+                          legend: const Legend(isVisible: true),
+                          primaryXAxis: DateTimeCategoryAxis(
+                            interactiveTooltip: const InteractiveTooltip(),
+                            labelPosition: ChartDataLabelPosition.outside,
+                            dateFormat: DateFormat('dd-MMM-yyyy'),
+                          ),
+                          series: <CartesianSeries<TimeSeriesCoordinate,
+                              DateTime>>[
+                            // Renders line chart
+                            ColumnSeries<TimeSeriesCoordinate, DateTime>(
+                              name: 'Total',
+                              dataLabelSettings: DataLabelSettings(
+                                showCumulativeValues: true,
+                                builder: (data, point, series, pointIndex,
+                                    seriesIndex) {
+                                  return Text(data.total.toString());
+                                },
+                                isVisible: true,
+                              ),
+                              width: 0.5,
+                              dataSource: state.getUserDataByTimeFrame(),
+                              xValueMapper: (TimeSeriesCoordinate data, _) =>
+                                  data.time,
+                              yValueMapper: (TimeSeriesCoordinate data, _) =>
+                                  data.total,
+                              dataLabelMapper: (datum, index) =>
+                                  datum.time.day.toString(),
+                            )
+                          ],
+                        );
+                      } else {
+                        return Container(
+                            child: SfCartesianChart(
+                                legend: const Legend(isVisible: true),
+                                axes: const [CategoryAxis()],
+                                primaryXAxis: DateTimeCategoryAxis(
+                                  dateFormat: DateFormat.y(),
+                                ),
+                                series: [
+                                  ColumnSeries<ChartData, DateTime>(
+                                    name: "Jan-Mar",
+                                    enableTooltip: true,
+                                    dataLabelSettings: const DataLabelSettings(
+                                      isVisible: true,
+                                    ),
+                                    dataSource: state.getUsersByTimeFoAll(),
+                                    xValueMapper: (ChartData data, _) =>
+                                        data.time,
+                                    yValueMapper: (ChartData data, _) =>
+                                        data.q1,
+                                  ),
+                                  ColumnSeries<ChartData, DateTime>(
+                                    name: "Apr-Jun",
+                                    dataLabelSettings: const DataLabelSettings(
+                                      isVisible: true,
+                                      showCumulativeValues: true,
+                                    ),
+                                    dataSource: state.getUsersByTimeFoAll(),
+                                    xValueMapper: (ChartData data, _) =>
+                                        data.time,
+                                    yValueMapper: (ChartData data, _) =>
+                                        data.q2,
+                                  ),
+                                  ColumnSeries<ChartData, DateTime>(
+                                    name: "Jul-Sep",
+                                    dataLabelSettings: const DataLabelSettings(
+                                      isVisible: true,
+                                    ),
+                                    dataSource: state.getUsersByTimeFoAll(),
+                                    xValueMapper: (ChartData data, _) =>
+                                        data.time,
+                                    yValueMapper: (ChartData data, _) =>
+                                        data.q3,
+                                  ),
+                                  ColumnSeries<ChartData, DateTime>(
+                                    name: "Oct-Dec",
+                                    dataLabelSettings: const DataLabelSettings(
+                                        isVisible: true,
+                                        showCumulativeValues: true,
+                                        useSeriesColor: false),
+                                    dataSource: state.getUsersByTimeFoAll(),
+                                    xValueMapper: (ChartData data, _) =>
+                                        data.time,
+                                    yValueMapper: (ChartData data, _) =>
+                                        data.q4,
+                                  )
+                                ]));
+                      }
+                    } else {
+                      return Container();
+                    }
+                  },
+                ),
+              ),
+            ],
+          ),
+        ));
   }
 
   BarTouchData get barTouchData => BarTouchData(

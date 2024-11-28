@@ -9,7 +9,8 @@ mixin NavigateMixin {
     final user = getIt<GlobalUserCubit>().state.user;
 
     if (user.adminOrAgent()) {
-      AutoRouter.of(context).replaceAll([const CDashboardRoute()]);
+      AutoRouter.of(context)
+          .replaceAll([const CDashboardRoute()], updateExistingRoutes: false);
     } else {
       AutoRouter.of(context)
           .replaceAll([const DashboardRoute()], updateExistingRoutes: false);

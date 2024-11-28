@@ -48,7 +48,11 @@ class _SignInPageState extends State<SignInPage> {
               backgroundColor: Colors.red,
               title: const Text("TESTING NOW V.3.0"),
             )
-          : null,
+          : AppBar(
+              leading: null,
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+            ),
       body: BlocProvider(
         create: (context) => authCubit,
         child: BlocConsumer<AuthCubit, AuthState>(
@@ -273,7 +277,7 @@ class _SignInPageState extends State<SignInPage> {
                     ),
                     40.verticalSpace,
                     const AuthFooterWidget(),
-                    const Center(child: Text("V.3.5.3"))
+                    const Center(child: Text("V.3.5.4"))
                   ],
                 ),
               ),

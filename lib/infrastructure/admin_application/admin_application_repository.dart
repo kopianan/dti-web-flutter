@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:dti_web/core/storage.dart';
@@ -29,6 +27,34 @@ class AdminApplicationRepository extends IAdminApplication {
           .toList();
       try {
         listData.sort((a, b) => a.createdDate!.compareTo(b.createdDate!));
+      } on Exception {
+        // TODO
+      }
+      return Right(listData);
+    } on DioError catch (e) {
+      return left(ErrorHandling().onDioErrorHandle(e));
+    } on Exception {
+      return left(Failures.serverError());
+    }
+  }
+
+  @override
+  Future<Either<Failures, List<SimpleVisaModel>>>
+      getAllUserCorpApplication() async {
+    try {
+      final result =
+          await dio.get('${dotenv.env['BASE_URL']}/corporateApplications',
+              options: Options(
+                headers: {'Authorization': 'Bearer ${storage.getToken()}'},
+              ));
+
+      var listData = (result.data['data'] as List)
+          .map((e) => SimpleVisaModel.fromJson(e))
+          .toList();
+
+      try {
+        listData.sort((a, b) => a.createdDate!.compareTo(b.createdDate!));
+        listData.removeWhere((e) => e.status == "Draft");
       } on Exception {
         // TODO
       }
