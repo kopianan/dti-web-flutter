@@ -29,7 +29,8 @@ class PhotoViewPage extends StatefulWidget {
 }
 
 class _PhotoViewPageState extends State<PhotoViewPage> {
-  final CarouselController carouselController = CarouselController();
+  final CarouselSliderController carouselController =
+      CarouselSliderController();
   List<Widget> setupImages() {
     if (kIsWeb && widget.imagesBytes != null) {
       return widget.imagesBytes!

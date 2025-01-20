@@ -142,7 +142,8 @@ class _ConfirmationSectionState extends State<ConfirmationSection>
               Visibility(
                 visible: selectedReview == 0,
                 child: Visibility(
-                  visible: widget.visa.status == "Submitted",
+                  visible: widget.visa.status == "Submitted" ||
+                      widget.visa.status == "Pending Payment",
                   child: Column(
                     children: [
                       Padding(

@@ -18,7 +18,7 @@ _$DocumentDataModelImpl _$$DocumentDataModelImplFromJson(
       body: json['body'] as String?,
       id: json['id'] as String?,
       attachment: json['attachment'] as String?,
-      numberOfDocs: json['numberOfDocs'] as int?,
+      numberOfDocs: (json['numberOfDocs'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$DocumentDataModelImplToJson(

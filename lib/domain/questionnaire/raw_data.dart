@@ -672,14 +672,14 @@ dynamic rawData = {
                 },
                 {
                   "importantNotes": "",
-                  "header": "VISA ON ARRIVAL (BALI)",
+                  "header": "VISA ON ARRIVAL",
                   "imgName": "questionnairepage/13.BerliburdiBali",
                   "subQuestionnaire": [
                     {
                       "header": "SINGLE ENTRY",
                       "results": {
                         "documents": "A2, A3, A6, A4",
-                        "visaSubTitle": "Visa On Arrival (Bali)",
+                        "visaSubTitle": "Visa On Arrival",
                         "visaTitle": "Visit Visa",
                         "visaEntry": "Single Entry Visa",
                         "visaPrice": {"usd": 0}

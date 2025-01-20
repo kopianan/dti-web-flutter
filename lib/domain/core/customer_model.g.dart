@@ -13,7 +13,7 @@ _$CustomerModelImpl _$$CustomerModelImplFromJson(Map<String, dynamic> json) =>
       email: json['email'] as String? ?? "",
       countryCode: json['countryCode'] as String? ?? "",
       mobileNumber: json['mobileNumber'] as String? ?? "",
-      totalVisa: json['totalVisa'] as int? ?? 0,
+      totalVisa: (json['totalVisa'] as num?)?.toInt() ?? 0,
       createdDate: const DateTimeOrNullConverter()
           .fromJson(json['createdDate'] as String?),
       lastUpdatedDate: const DateTimeOrNullConverter()

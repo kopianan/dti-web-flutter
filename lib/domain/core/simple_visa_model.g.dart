@@ -18,7 +18,7 @@ _$SimpleVisaModelImpl _$$SimpleVisaModelImplFromJson(
       usedByDate: const DateTimeOrNullConverter()
           .fromJson(json['usedByDate'] as String?),
       userName: json['userName'] as String?,
-      lengthOfStay: json['lengthOfStay'] as int?,
+      lengthOfStay: (json['lengthOfStay'] as num?)?.toInt(),
       lastUpdatedDate: const DateTimeOrNullConverter()
           .fromJson(json['lastUpdatedDate'] as String?),
       createdDate: const DateTimeOrNullConverter()

@@ -8,7 +8,7 @@ part of 'visa_price_model.dart';
 
 _$VisaPriceModelImpl _$$VisaPriceModelImplFromJson(Map<String, dynamic> json) =>
     _$VisaPriceModelImpl(
-      usd: json['usd'] as int?,
+      usd: (json['usd'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$VisaPriceModelImplToJson(

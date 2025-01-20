@@ -84,7 +84,7 @@ _i1.GetIt $initGetIt(
   gh.factory<_i7.CameraCubit>(() => _i7.CameraCubit());
   gh.lazySingleton<_i8.CreateNewApplicationCubit>(
       () => _i8.CreateNewApplicationCubit());
-  gh.singleton<_i9.DashboardDataCubit>(_i9.DashboardDataCubit());
+  gh.singleton<_i9.DashboardDataCubit>(() => _i9.DashboardDataCubit());
   gh.lazySingleton<_i10.Dio>(() => firebaseInjectableModule.dio);
   gh.lazySingleton<_i11.DocumentCubit>(() => _i11.DocumentCubit());
   gh.lazySingleton<_i12.FirebaseAuth>(
@@ -124,14 +124,14 @@ _i1.GetIt $initGetIt(
         gh<_i16.IAgent>(),
         gh<_i26.IDashboard>(),
       ));
-  gh.singleton<_i44.AppListCubit>(_i44.AppListCubit(gh<_i18.IAppList>()));
+  gh.singleton<_i44.AppListCubit>(() => _i44.AppListCubit(gh<_i18.IAppList>()));
   gh.factory<_i45.AuthCubit>(() => _i45.AuthCubit(gh<_i20.IAuth>()));
   gh.factory<_i46.ContactUsCubit>(
       () => _i46.ContactUsCubit(gh<_i22.IContactUs>()));
   gh.factory<_i47.CustomerCubit>(
       () => _i47.CustomerCubit(gh<_i24.ICustomer>()));
   gh.singleton<_i48.DashboardApplicationCubit>(
-      _i48.DashboardApplicationCubit(gh<_i26.IDashboard>()));
+      () => _i48.DashboardApplicationCubit(gh<_i26.IDashboard>()));
   gh.factory<_i49.DashboardCubit>(
       () => _i49.DashboardCubit(gh<_i26.IDashboard>()));
   gh.factory<_i50.FeedbackCubit>(

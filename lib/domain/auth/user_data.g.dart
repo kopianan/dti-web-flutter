@@ -20,10 +20,10 @@ _$UserDataImpl _$$UserDataImplFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String?,
       hubspotId: json['hubspotId'] as String?,
       isAgent: json['isAgent'] as bool? ?? false,
-      selfReferralCodeTotal: json['selfReferralCodeTotal'] as int?,
+      selfReferralCodeTotal: (json['selfReferralCodeTotal'] as num?)?.toInt(),
       createdAt: json['createdAt'] as String?,
       usedReferralCode: json['usedReferralCode'] as String?,
-      totalVisa: json['totalVisa'] as int?,
+      totalVisa: (json['totalVisa'] as num?)?.toInt(),
       countryCode: json['countryCode'] as String?,
       userReferral: json['userReferral'] as String?,
     );

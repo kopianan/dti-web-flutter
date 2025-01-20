@@ -14,7 +14,7 @@ _$DocumentDataModelImpl _$$DocumentDataModelImplFromJson(
       isSubmited: json['isSubmited'] as bool?,
       body: json['body'] as String?,
       attachment: json['attachment'] as String?,
-      numberOfDocs: json['numberOfDocs'] as int?,
+      numberOfDocs: (json['numberOfDocs'] as num?)?.toInt(),
       header: json['header'] as String?,
       imageList: (json['imageList'] as List<dynamic>?)
           ?.map((e) => e as String)

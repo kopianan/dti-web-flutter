@@ -31,7 +31,7 @@ _$VisaApplicationCorpImpl _$$VisaApplicationCorpImplFromJson(
       province: json['province'] as String?,
       city: json['city'] as String?,
       district: json['district'] as String?,
-      numberForeigner: json['numberForeigner'] as int? ?? 0,
+      numberForeigner: (json['numberForeigner'] as num?)?.toInt() ?? 0,
       createdDate: json['createdDate'] as String?,
       submittedDate: json['submittedDate'] as String?,
       lastUpdatedDate: json['lastUpdatedDate'] as String?,

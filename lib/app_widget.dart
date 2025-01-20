@@ -77,13 +77,6 @@ class AppWidget extends StatelessWidget with CoreMixin {
             builder: EasyLoading.init(),
             theme: ThemeData(
                 useMaterial3: false,
-                scrollbarTheme: const ScrollbarThemeData(
-                  thumbColor: MaterialStatePropertyAll(AppColor.primaryColor),
-                  thumbVisibility: MaterialStatePropertyAll(true),
-                  thickness: MaterialStatePropertyAll(15),
-                  radius: Radius.circular(4),
-                  trackColor: MaterialStatePropertyAll(Colors.transparent),
-                ),
                 textTheme: GoogleFonts.latoTextTheme(),
                 primaryColor: AppColor.primaryColor,
                 inputDecorationTheme: const InputDecorationTheme(

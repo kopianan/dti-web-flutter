@@ -60,7 +60,8 @@ _$VisaApplicationModelImpl _$$VisaApplicationModelImplFromJson(
       mobileDialCode: json['mobileDialCode'] as String?,
       currency: json['currency'] as String?,
       inIndonesia: json['inIndonesia'] as bool?,
-      xenditPaymentPaidAmount: json['xenditPaymentPaidAmount'] as int?,
+      xenditPaymentPaidAmount:
+          (json['xenditPaymentPaidAmount'] as num?)?.toInt(),
       dateOfIssue: json['dateOfIssue'] as String?,
       lastUpdatedBy: json['lastUpdatedBy'] as String?,
       documents: json['documents'] as String?,
@@ -71,7 +72,7 @@ _$VisaApplicationModelImpl _$$VisaApplicationModelImplFromJson(
               json['assistanceForPermit'] as Map<String, dynamic>),
       issuingCountry: json['issuingCountry'] as String?,
       province: json['province'] as String?,
-      xenditPaymentAmount: json['xenditPaymentAmount'] as int?,
+      xenditPaymentAmount: (json['xenditPaymentAmount'] as num?)?.toInt(),
       mobileCountryCode: json['mobileCountryCode'] as String?,
       gender: json['gender'] as String?,
       deportedFlag: json['deportedFlag'] as bool?,

@@ -8,7 +8,7 @@ part of 'feedback_model.dart';
 
 _$FeedbackModelImpl _$$FeedbackModelImplFromJson(Map<String, dynamic> json) =>
     _$FeedbackModelImpl(
-      rating: json['rating'] as int? ?? 0,
+      rating: (json['rating'] as num?)?.toInt() ?? 0,
       createdDate: DateTime.parse(json['createdDate'] as String),
       name: json['name'] as String? ?? "",
       comment: json['comment'] as String? ?? "",

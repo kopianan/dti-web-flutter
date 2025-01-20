@@ -118,7 +118,7 @@ class OTPPage extends StatelessWidget with NavigateMixin {
                                     ),
                                     InkWell(
                                         onTap: () {
-                                          AutoRouter.of(context).navigateBack();
+                                          AutoRouter.of(context).back();
                                         },
                                         child: Text(
                                           "Request again",

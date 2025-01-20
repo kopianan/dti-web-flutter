@@ -3,7 +3,7 @@ description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 #How to deploy Prod/Env  google-signin-client_id
 #1. change dotenv for change the environment
@@ -13,7 +13,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.1.5+3
 
 environment:
-  sdk: '>=3.0.0'
+  sdk: ">=3.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -35,14 +35,14 @@ dependencies:
   bloc: ^8.1.0
   build_web_compilers: ^3.2.7
   camera: ^0.10.3+2
-  carousel_slider: ^4.1.1
+  carousel_slider: ^5.0.0
   community_charts_flutter: ^1.0.4
   country_code_picker: ^3.0.0
   country_codes: ^2.2.0
   country_picker: ^2.0.16
   cupertino_icons: ^1.0.2
   dartz: ^0.10.1
-  data_table_2: ^2.4.2
+  data_table_2: ^2.5.18
   dio: ^5.1.1
   dropdown_search: ^5.0.3
   excel: ^2.0.4
@@ -104,7 +104,6 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter packages.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
