@@ -171,234 +171,242 @@ class _SuccessBodyState extends State<SuccessBody> with NavigateMixin {
                       imagesUrl: imagesUrl!,
                     ),
               const SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Visibility(
-                      visible:
-                          context.read<GlobalUserCubit>().state.user.isAdmin(),
-                      child: Visibility(
+              Visibility(
+                visible: visa.status != 'Draft',
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Visibility(
                         visible:
-                            visa.status == "Completed" || visa.status == "Paid",
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Promo Used",
-                              style: TextStyle(
-                                color: Colors.grey[700],
-                                fontSize: 25.sp,
-                                fontWeight: FontWeight.bold,
+                            context.read<GlobalUserCubit>().state.user.isAdmin(),
+                        child: Visibility(
+                          visible:
+                              visa.status == "Completed" || visa.status == "Paid",
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Promo Used",
+                                style: TextStyle(
+                                  color: Colors.grey[700],
+                                  fontSize: 25.sp,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                            ),
-                            Text(
-                              visa.promoUsed ?? "No Promo",
-                              style: TextStyle(
-                                color: AppColor.primaryColor,
-                                fontSize: 22.sp,
-                                fontWeight: FontWeight.bold,
+                              Text(
+                                visa.promoUsed ?? "No Promo",
+                                style: TextStyle(
+                                  color: AppColor.primaryColor,
+                                  fontSize: 22.sp,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    const SizedBox(height: 20),
-                    Visibility(
-                      visible: getIt<GlobalUserCubit>().state.user.isAdmin(),
-                      child: MultiBlocProvider(
-                        providers: [
-                          BlocProvider(
-                            create: (context) => getIt<CustomerCubit>()
-                              ..getUserById(visa.createdBy ?? ""),
+                      const SizedBox(height: 20),
+                      Visibility(
+                        visible: getIt<GlobalUserCubit>().state.user.isAdmin(),
+                        child: MultiBlocProvider(
+                          providers: [
+                            BlocProvider(
+                              create: (context) => getIt<CustomerCubit>()
+                                ..getUserById(visa.createdBy ?? ""),
+                            ),
+                            BlocProvider(
+                              create: (context) => getIt<AdminCubit>(),
+                            ),
+                          ],
+                          child: BlocBuilder<AdminCubit, AdminState>(
+                            builder: (context, state) {
+                              return BlocBuilder<CustomerCubit, CustomerState>(
+                                builder: (context, state) {
+                                  return state.maybeMap(orElse: () {
+                                    return Container();
+                                  }, getSingleCustomer: (user) {
+                                    return Row(
+                                      children: [
+                                        Expanded(
+                                          child: MessageButtonWithIcon(
+                                            iconPath: 'assets/icons/email.png',
+                                            label: "Email",
+                                            onPressed: () {
+                                              context
+                                                  .read<AdminCubit>()
+                                                  .sendEmail(visa.title ?? "",
+                                                      user.user.email);
+                                            },
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: MessageButtonWithIcon(
+                                            iconPath: 'assets/icons/whatsapp.png',
+                                            label: "Whatsapp",
+                                            onPressed: () {
+                                              final phone = user.user.countryCode
+                                                      .replaceFirst("+", "") +
+                                                  user.user.mobileNumber;
+                
+                                              context
+                                                  .read<AdminCubit>()
+                                                  .sendWhatsapp(phone);
+                                            },
+                                          ),
+                                        ),
+                                      ],
+                                    );
+                                  });
+                                },
+                              );
+                            },
                           ),
-                          BlocProvider(
-                            create: (context) => getIt<AdminCubit>(),
-                          ),
-                        ],
-                        child: BlocBuilder<AdminCubit, AdminState>(
+                        ),
+                      ),
+                      Visibility(
+                        visible: getIt<GlobalUserCubit>().state.user.isAdmin(),
+                        child: BlocBuilder<DocumentCubit, DocumentState>(
                           builder: (context, state) {
-                            return BlocBuilder<CustomerCubit, CustomerState>(
-                              builder: (context, state) {
-                                return state.maybeMap(orElse: () {
-                                  return Container();
-                                }, getSingleCustomer: (user) {
-                                  return Row(
-                                    children: [
-                                      Expanded(
-                                        child: MessageButtonWithIcon(
-                                          iconPath: 'assets/icons/email.png',
-                                          label: "Email",
-                                          onPressed: () {
-                                            context
-                                                .read<AdminCubit>()
-                                                .sendEmail(visa.title ?? "",
-                                                    user.user.email);
-                                          },
-                                        ),
-                                      ),
-                                      Expanded(
-                                        child: MessageButtonWithIcon(
-                                          iconPath: 'assets/icons/whatsapp.png',
-                                          label: "Whatsapp",
-                                          onPressed: () {
-                                            final phone = user.user.countryCode
-                                                    .replaceFirst("+", "") +
-                                                user.user.mobileNumber;
-
-                                            context
-                                                .read<AdminCubit>()
-                                                .sendWhatsapp(phone);
-                                          },
-                                        ),
-                                      ),
-                                    ],
-                                  );
-                                });
-                              },
+                            return Visibility(
+                              visible: state.visa!.status == "Submitted" ||
+                                  state.visa!.status == "Pending Payment",
+                              child: Column(
+                                children: [
+                                  const Divider(),
+                                  const SizedBox(height: 20),
+                                  ConfirmationSection(
+                                    visa: visa,
+                                    type: appsType,
+                                  ),
+                                  const Divider(height: 40),
+                                ],
+                              ),
                             );
                           },
                         ),
                       ),
-                    ),
-                    Visibility(
-                      visible: getIt<GlobalUserCubit>().state.user.isAdmin(),
-                      child: BlocBuilder<DocumentCubit, DocumentState>(
-                        builder: (context, state) {
-                          return Visibility(
-                            visible: state.visa!.status == "Submitted",
-                            child: Column(
+                      20.verticalSpace,
+                      //ONLY SHOW WHEN USER ONLY
+                      Visibility(
+                        visible: visa.status?.toLowerCase() == 'draft',
+                        child: termAndCondition(getColor),
+                      ),
+                      // REFERENCE NUMBER
+                      20.verticalSpace,
+                      Visibility(
+                          visible: visa.status!.toLowerCase() == 'completed',
+                          child: SizedBox(
+                            width: double.infinity,
+                            height: 50,
+                            child: PrimaryButton(
+                              onClick: () {
+                                try {
+                                  final data = imagesUrl!.firstWhere(
+                                      (dynamic element) =>
+                                          (element as Map<String, dynamic>)
+                                              .containsKey('EVISA'));
+                                  if (data['EVISA'].toString().contains('.pdf')) {
+                                    launch(data['EVISA']);
+                
+                                    // AutoRouter.of(context).push(
+                                    //   DTIPdfViewerRoute(
+                                    //     imageUrl: data['EVISA'].toString(),
+                                    //     isNetwork: true,
+                                    //   ),
+                                    // );
+                                  } else {
+                                    AutoRouter.of(context).push(PhotoViewRoute(
+                                        isShow: true,
+                                        images: [data['EVISA'].toString()],
+                                        isNetwork: true));
+                                  }
+                                } catch (e) {}
+                              },
+                              label: "Download EVISA",
+                              labelStyle: TextStyle(fontSize: 17.sp),
+                            ),
+                          )),
+                
+                      Visibility(
+                        visible:
+                            visa.status?.toLowerCase() == 'pending payment' &&
+                                getIt<GlobalUserCubit>().state.user.isUser(),
+                        child: Column(
+                          children: [
+                            Row(
                               children: [
-                                const Divider(),
-                                const SizedBox(height: 20),
-                                ConfirmationSection(
-                                  visa: visa,
-                                  type: appsType,
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    SelectableText(
+                                      "Total Price (IDR)",
+                                      style: TextStyle(
+                                        fontSize: 25.sp,
+                                        color: Colors.grey,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    10.verticalSpace,
+                                    SelectableText(
+                                      "${visa.currency == 'rp' ? "IDR" : visa.currency ?? "IDR"} ${Converter.convertStringToIDR(visa.price ?? 0)}",
+                                      style: TextStyle(
+                                        fontSize: 30.sp,
+                                        color: AppColor.primaryColor,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    20.verticalSpace,
+                                  ],
                                 ),
-                                const Divider(height: 40),
+                                const Spacer(),
+                                Expanded(
+                                  child: PrimaryButton(
+                                    onClick: () {
+                                      AutoRouter.of(context)
+                                          .push(PaymentRoute(visa: visa));
+                                    },
+                                    width: 300,
+                                    label: "Pay",
+                                    labelStyle: TextStyle(fontSize: 20.sp),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20, vertical: 10),
+                                    height: 60,
+                                  ),
+                                ),
                               ],
                             ),
-                          );
-                        },
+                            30.verticalSpace,
+                            Image.asset(
+                              'assets/images/payment_example.png',
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    20.verticalSpace,
-                    //ONLY SHOW WHEN USER ONLY
-                    Visibility(
-                      visible: visa.status?.toLowerCase() == 'draft',
-                      child: termAndCondition(getColor),
-                    ),
-                    // REFERENCE NUMBER
-                    20.verticalSpace,
-                    Visibility(
-                        visible: visa.status!.toLowerCase() == 'completed',
+                
+                      50.verticalSpace,
+                      //Back to dashboard
+                      Visibility(
+                        visible: visa.status?.toLowerCase() != 'draft',
                         child: SizedBox(
                           width: double.infinity,
                           height: 50,
                           child: PrimaryButton(
                             onClick: () {
-                              try {
-                                final data = imagesUrl!.firstWhere(
-                                    (dynamic element) =>
-                                        (element as Map<String, dynamic>)
-                                            .containsKey('EVISA'));
-                                if (data['EVISA'].toString().contains('.pdf')) {
-                                  launch(data['EVISA']);
-
-                                  // AutoRouter.of(context).push(
-                                  //   DTIPdfViewerRoute(
-                                  //     imageUrl: data['EVISA'].toString(),
-                                  //     isNetwork: true,
-                                  //   ),
-                                  // );
-                                } else {
-                                  AutoRouter.of(context).push(PhotoViewRoute(
-                                      isShow: true,
-                                      images: [data['EVISA'].toString()],
-                                      isNetwork: true));
-                                }
-                              } catch (e) {}
+                              backToDashboard(context);
                             },
-                            label: "Download EVISA",
-                            labelStyle: TextStyle(fontSize: 17.sp),
+                            label: "Back to dashboard",
+                            labelStyle: TextStyle(
+                              fontSize: 17.sp,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        )),
-
-                    Visibility(
-                      visible:
-                          visa.status?.toLowerCase() == 'pending payment' &&
-                              getIt<GlobalUserCubit>().state.user.isUser(),
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SelectableText(
-                                    "Total Price (IDR)",
-                                    style: TextStyle(
-                                      fontSize: 25.sp,
-                                      color: Colors.grey,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  10.verticalSpace,
-                                  SelectableText(
-                                    "${visa.currency == 'rp' ? "IDR" : visa.currency ?? "IDR"} ${Converter.convertStringToIDR(visa.price ?? 0)}",
-                                    style: TextStyle(
-                                      fontSize: 30.sp,
-                                      color: AppColor.primaryColor,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  20.verticalSpace,
-                                ],
-                              ),
-                              const Spacer(),
-                              Expanded(
-                                child: PrimaryButton(
-                                  onClick: () {
-                                    AutoRouter.of(context)
-                                        .push(PaymentRoute(visa: visa));
-                                  },
-                                  width: 300,
-                                  label: "Pay",
-                                  labelStyle: TextStyle(fontSize: 20.sp),
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 20, vertical: 10),
-                                  height: 60,
-                                ),
-                              ),
-                            ],
-                          ),
-                          30.verticalSpace,
-                          Image.asset(
-                            'assets/images/payment_example.png',
-                          ),
-                        ],
-                      ),
-                    ),
-
-                    50.verticalSpace,
-                    SizedBox(
-                      width: double.infinity,
-                      height: 50,
-                      child: PrimaryButton(
-                        onClick: () {
-                          backToDashboard(context);
-                        },
-                        label: "Back to dashboard",
-                        labelStyle: TextStyle(
-                          fontSize: 17.sp,
-                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(height: 20)
@@ -618,11 +626,12 @@ class _SuccessBodyState extends State<SuccessBody> with NavigateMixin {
                       .setLastCorporate(value.visa);
                   AwesomeDialog(
                     context: context,
+                    dialogType: DialogType.success,
                     width: ScreenUtil().screenWidth / 4,
                     title: "SUBMIT DOCUMENT",
                     body: const Center(
                       child: SelectableText(
-                        "Document Has Been Submitted",
+                        "Application Has Been Submitted",
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -669,7 +678,7 @@ class _SuccessBodyState extends State<SuccessBody> with NavigateMixin {
                             .submitVisaApps(visa.firebaseDocId!, visa);
                       }
                     },
-                    width: 300,
+                    width: double.infinity,
                     label: "CONFIRM",
                     labelStyle: TextStyle(fontSize: 20.sp),
                     padding: const EdgeInsets.symmetric(

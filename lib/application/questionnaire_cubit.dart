@@ -38,14 +38,18 @@ class QuestionnaireCubit extends Cubit<QuestionnaireState> {
   }
 
   void removeLastQuestionnaire() {
-    var impNotes = state.importantNotes?.toList();
-    var descs = state.description?.toList();
-    var list = state.listQuestionnaire;
-    list!.removeLast();
-    impNotes!.removeLast();
-    descs!.removeLast();
+    try {
+      var impNotes = state.importantNotes?.toList();
+      var descs = state.description?.toList();
+      var list = state.listQuestionnaire;
+      list?.removeLast();
+      impNotes?.removeLast();
+      descs?.removeLast();
 
-    emit(state.copyWith(importantNotes: impNotes, description: descs));
+      emit(state.copyWith(importantNotes: impNotes, description: descs));
+    } on Exception catch (e) {
+      throw Exception(e);
+    }
   }
 
   void updateStateNotesAndDescription() async {

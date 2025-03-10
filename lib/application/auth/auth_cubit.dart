@@ -31,7 +31,7 @@ class AuthCubit extends Cubit<AuthState> {
     emit(const AuthState.onSignOut());
   }
 
-  String? _isFromPhone() {
+  String? isFromPhone() {
     String userAgent = html.window.navigator.userAgent.toString().toLowerCase();
     log(userAgent);
     if (userAgent.contains("iphone") ||
@@ -50,10 +50,17 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
+  void checkIsFromPhone() {
+    final phone = isFromPhone();
+    if (phone != null) {
+      emit(AuthState.isOpenFromPhone(phone ?? ''));
+    }
+  }
+
   void checkSession() async {
     emit(const AuthState.loading());
 
-    var userAgent = _isFromPhone();
+    var userAgent = isFromPhone();
     if (userAgent != null) {
       await Future.delayed(const Duration(seconds: 0));
 

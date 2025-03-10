@@ -33,8 +33,14 @@ class AdminDataCubit extends Cubit<AdminDataState> {
     if (index == 1) {
       type = SearchType.application;
     } else if (index == 2) {
-      type = SearchType.customer;
+      type = SearchType.applicationDraft;
     } else if (index == 3) {
+      type = SearchType.corpApplication;
+    } else if (index == 4) {
+      type = SearchType.corpApplicationDraft;
+    } else if (index == 5) {
+      type = SearchType.customer;
+    } else if (index == 6) {
       type = SearchType.feedback;
     } else {
       type = SearchType.contactUse;
@@ -49,6 +55,24 @@ class AdminDataCubit extends Cubit<AdminDataState> {
       }
     }
     emit(state.copyWith(application: visa));
+  }
+
+  void setApplicationDraftData(List<SimpleVisaModel> draftVisa) async {
+    for (var element in draftVisa) {
+      if (element.createdDate!.year < 2000) {
+        print(element);
+      }
+    }
+    emit(state.copyWith(applicationDraft: draftVisa));
+  }
+
+  void setApplicationCorpDraftData(List<SimpleVisaModel> visa) async {
+    for (var element in visa) {
+      if (element.createdDate!.year < 2000) {
+        print(element);
+      }
+    }
+    emit(state.copyWith(corpApplicationDraft: visa));
   }
 
   void setApplicationCorpData(List<SimpleVisaModel> visa) async {

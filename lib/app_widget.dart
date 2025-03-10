@@ -78,6 +78,13 @@ class AppWidget extends StatelessWidget with CoreMixin {
             theme: ThemeData(
                 useMaterial3: false,
                 textTheme: GoogleFonts.latoTextTheme(),
+                scrollbarTheme: const ScrollbarThemeData(
+                  thumbColor: WidgetStatePropertyAll(AppColor.primaryColor),
+                  thumbVisibility: WidgetStatePropertyAll(true),
+                  thickness: WidgetStatePropertyAll(15),
+                  radius: Radius.circular(4),
+                  trackColor: WidgetStatePropertyAll(Colors.transparent),
+                ),
                 primaryColor: AppColor.primaryColor,
                 inputDecorationTheme: const InputDecorationTheme(
                   prefixIconColor: AppColor.primaryColor,

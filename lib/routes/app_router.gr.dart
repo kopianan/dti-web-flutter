@@ -15,6 +15,12 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    AdminApplicationDraftRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AdminApplicationDraftPage(),
+      );
+    },
     AdminApplicationRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -25,6 +31,12 @@ abstract class _$AppRouter extends RootStackRouter {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const AdminContactUsPage(),
+      );
+    },
+    AdminCorpApplicationDraftRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const AdminCorpApplicationDraftPage(),
       );
     },
     AdminCorpApplicationRoute.name: (routeData) {
@@ -436,6 +448,20 @@ abstract class _$AppRouter extends RootStackRouter {
 }
 
 /// generated route for
+/// [AdminApplicationDraftPage]
+class AdminApplicationDraftRoute extends PageRouteInfo<void> {
+  const AdminApplicationDraftRoute({List<PageRouteInfo>? children})
+      : super(
+          AdminApplicationDraftRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AdminApplicationDraftRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [AdminApplicationPage]
 class AdminApplicationRoute extends PageRouteInfo<void> {
   const AdminApplicationRoute({List<PageRouteInfo>? children})
@@ -459,6 +485,20 @@ class AdminContactUsRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'AdminContactUsRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [AdminCorpApplicationDraftPage]
+class AdminCorpApplicationDraftRoute extends PageRouteInfo<void> {
+  const AdminCorpApplicationDraftRoute({List<PageRouteInfo>? children})
+      : super(
+          AdminCorpApplicationDraftRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'AdminCorpApplicationDraftRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

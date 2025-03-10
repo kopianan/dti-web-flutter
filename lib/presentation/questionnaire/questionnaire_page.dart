@@ -103,10 +103,14 @@ class _QuestionnairePageState extends State<QuestionnairePage> {
                                       CustomSecondHeader(
                                         onBack: () {
                                           //remove the last item
-                                          context
-                                              .read<QuestionnaireCubit>()
-                                              .removeLastQuestionnaire();
-                                          AutoRouter.of(context).pop();
+                                          AutoRouter.of(context).maybePop();
+                                          try {
+                                            context
+                                                .read<QuestionnaireCubit>()
+                                                .removeLastQuestionnaire();
+                                          } on Exception catch (e) {
+                                            // TODO
+                                          }
                                         },
                                       ),
                                       10.verticalSpace,

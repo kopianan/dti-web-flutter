@@ -32,6 +32,24 @@ class AdminApplicationCubit extends Cubit<AdminApplicationState> {
     );
   }
 
+  void getAllUserVisaDraft() async {
+    emit(const AdminApplicationState.loading());
+    final result = await iAdminApplication.getAllUserApplicationDraft();
+    result.fold(
+      (l) => emit(const AdminApplicationState.error()),
+      (r) {
+        var visa = r.toList();
+
+        try {
+          visa.sort((a, b) => b.createdDate!.compareTo(a.createdDate!));
+        } on Exception {
+          // TODO
+        }
+        emit(AdminApplicationState.getAllUserVisaDraft(visa));
+      },
+    );
+  }
+
   void getAllUserCorpVisa() async {
     emit(const AdminApplicationState.loading());
     final result = await iAdminApplication.getAllUserCorpApplication();
@@ -46,6 +64,24 @@ class AdminApplicationCubit extends Cubit<AdminApplicationState> {
           // TODO
         }
         emit(AdminApplicationState.getAllUserCorpVisa(visa));
+      },
+    );
+  }
+
+  void getAllUserCorpVisaDraft() async {
+    emit(const AdminApplicationState.loading());
+    final result = await iAdminApplication.getAllUserCorpApplicationDraft();
+    result.fold(
+      (l) => emit(const AdminApplicationState.error()),
+      (r) {
+        var visa = r.toList();
+
+        try {
+          visa.sort((a, b) => b.createdDate!.compareTo(a.createdDate!));
+        } on Exception {
+          // TODO
+        }
+        emit(AdminApplicationState.getAllUserCorpVisaDraft(visa));
       },
     );
   }

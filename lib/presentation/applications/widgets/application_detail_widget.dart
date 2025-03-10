@@ -41,7 +41,7 @@ class ApplicationDetailWidget extends StatelessWidget {
             20.verticalSpace,
             DetailItemWidget(
               label: "Guarantor",
-              value: visa.guarantorDTI!
+              value: visa.guarantorDTI == true
                   ? "Door To Indonesia"
                   : "Non Door To Indonesia",
             ),
@@ -85,29 +85,29 @@ class ApplicationDetailWidget extends StatelessWidget {
                 TableRow(children: [
                   DetailItemWidget(
                     label: "First Name",
-                    value: visa.firstName!,
+                    value: visa.firstName ?? '',
                   ),
                   DetailItemWidget(
                     label: "Last Name",
-                    value: visa.lastName!,
+                    value: visa.lastName ?? '',
                   ),
                 ]),
                 TableRow(children: [10.verticalSpace, 10.verticalSpace]),
                 TableRow(children: [
                   DetailItemWidget(
                     label: "Gender",
-                    value: visa.gender!.capitalize(),
+                    value: visa.gender?.capitalize() ?? '',
                   ),
                   DetailItemWidget(
                     label: "Nationality",
-                    value: visa.nationality!.capitalize(),
+                    value: visa.nationality?.capitalize() ?? '',
                   ),
                 ]),
                 TableRow(children: [10.verticalSpace, 10.verticalSpace]),
                 TableRow(children: [
                   DetailItemWidget(
                     label: "Relationship Status",
-                    value: visa.status!.capitalize(),
+                    value: visa.status?.capitalize() ?? '',
                   ),
                   DetailItemWidget(
                     label: "Mobile Number",
@@ -118,11 +118,12 @@ class ApplicationDetailWidget extends StatelessWidget {
                 TableRow(children: [
                   DetailItemWidget(
                     label: "Place Of Birth",
-                    value: visa.placeOfBirth!,
+                    value: visa.placeOfBirth ?? '',
                   ),
                   DetailItemWidget(
                     label: "Date of Birth",
-                    value: DateConverter.convertDateDefault(visa.dateOfBirth!),
+                    value: DateConverter.convertDateDefault(
+                        visa.dateOfBirth ?? ''),
                   ),
                 ]),
                 TableRow(children: [10.verticalSpace, 10.verticalSpace]),
@@ -159,11 +160,11 @@ class ApplicationDetailWidget extends StatelessWidget {
                 TableRow(children: [
                   DetailItemWidget(
                     label: "Passport No",
-                    value: visa.passportNumber!,
+                    value: visa.passportNumber ?? '',
                   ),
                   DetailItemWidget(
                     label: "Issuing Country",
-                    value: visa.issuingCountry!,
+                    value: visa.issuingCountry ?? '',
                   ),
                 ]),
                 TableRow(children: [10.verticalSpace, 10.verticalSpace]),
@@ -171,12 +172,12 @@ class ApplicationDetailWidget extends StatelessWidget {
                   DetailItemWidget(
                     label: "Date of Issue",
                     value: DateConverter.convertDateDefault2(
-                        DateTime.parse(visa.dateOfIssue!)),
+                        DateTime.tryParse(visa.dateOfIssue ?? '')),
                   ),
                   DetailItemWidget(
                     label: "Date of expiration",
                     value: DateConverter.convertDateDefault2(
-                        DateTime.parse(visa.dateOfExpiration!)),
+                        DateTime.tryParse(visa.dateOfExpiration ?? '')),
                   ),
                 ]),
               ],
@@ -191,22 +192,22 @@ class ApplicationDetailWidget extends StatelessWidget {
                 TableRow(children: [
                   DetailItemWidget(
                     label: "Address",
-                    value: visa.address!,
+                    value: visa.address ?? '',
                   ),
                   DetailItemWidget(
                     label: "Province",
-                    value: visa.province!,
+                    value: visa.province ?? '',
                   ),
                 ]),
                 TableRow(children: [10.verticalSpace, 10.verticalSpace]),
                 TableRow(children: [
                   DetailItemWidget(
                     label: "City",
-                    value: visa.city!,
+                    value: visa.city ?? '',
                   ),
                   DetailItemWidget(
                     label: "District",
-                    value: visa.district!,
+                    value: visa.district ?? '',
                   ),
                 ]),
               ],
@@ -239,7 +240,7 @@ class ApplicationDetailWidget extends StatelessWidget {
                           value: visa.arrivalDate == null
                               ? ""
                               : DateConverter.convertDateDefault2(
-                                  DateTime.parse(visa.arrivalDate!)),
+                                  DateTime.tryParse(visa.arrivalDate ?? '')),
                         ),
                         const DetailItemWidget(
                           label: "",
@@ -261,96 +262,99 @@ class ApplicationDetailWidget extends StatelessWidget {
               builder: (context, state) {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: state.docs!.map((e) {
-                    return InkWell(
-                        onTap: () {
-                          var data = e.imageList!;
-                          List<String>? filtered = [];
-                          data.removeWhere((element) => element == null);
-                          if (data.isNotEmpty) {
-                            for (var element in imagesUrl) {
-                              final data = element;
-                              if (data.containsKey(e.id)) {
-                                //check if id is same then get the data
-                                filtered.add(data[e.id!.trim()]);
-                              }
-                            }
+                  children: state.docs?.map((e) {
+                        return InkWell(
+                            onTap: () {
+                              var data = e.imageList;
+                              if (data == null) return;
+                              List<String>? filtered = [];
+                              data.removeWhere((element) => element == null);
+                              if (data.isNotEmpty) {
+                                for (var element in imagesUrl) {
+                                  final data = element;
+                                  if (data.containsKey(e.id)) {
+                                    //check if id is same then get the data
+                                    filtered.add(data[e.id!.trim()]);
+                                  }
+                                }
 
-                            //check if image is pdf
-                            if (e.attachment != null &&
-                                e.attachment!.contains('.doc')) {
-                              // file is document, not picture
-                              launch(filtered.single);
-                              // AutoRouter.of(context).navigate(
-                              //   DTIPdfViewerRoute(
-                              //     imageUrl: filtered.single,
-                              //     isNetwork: true,
-                              //   ),
-                              // );
-                            } else {
-                              showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: Colors.white,
-                                    ),
-                                    margin: const EdgeInsets.symmetric(
-                                        horizontal: 100, vertical: 100),
-                                    width: ScreenUtil().screenWidth,
-                                    height: ScreenUtil().screenHeight,
-                                    child: PhotoViewPage(
-                                      isShow: true,
-                                      images: filtered,
-                                      isNetwork: true,
-                                    ),
+                                //check if image is pdf
+                                if (e.attachment != null &&
+                                    e.attachment!.contains('.doc')) {
+                                  // file is document, not picture
+                                  launch(filtered.single);
+                                  // AutoRouter.of(context).navigate(
+                                  //   DTIPdfViewerRoute(
+                                  //     imageUrl: filtered.single,
+                                  //     isNetwork: true,
+                                  //   ),
+                                  // );
+                                } else {
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          color: Colors.white,
+                                        ),
+                                        margin: const EdgeInsets.symmetric(
+                                            horizontal: 100, vertical: 100),
+                                        width: ScreenUtil().screenWidth,
+                                        height: ScreenUtil().screenHeight,
+                                        child: PhotoViewPage(
+                                          isShow: true,
+                                          images: filtered,
+                                          isNetwork: true,
+                                        ),
+                                      );
+                                    },
                                   );
-                                },
-                              );
-                              // AutoRouter.of(context).push(PhotoViewRoute(
-                              //     images: filtered, isNetwork: true));
-                            }
+                                  // AutoRouter.of(context).push(PhotoViewRoute(
+                                  //     images: filtered, isNetwork: true));
+                                }
 
-                            // showDialog(
-                            //     context: context,
-                            //     builder: (context) {
-                            //       return Container(
-                            //         color: Colors.green,
-                            //       );
-                            //     });
-                          }
-                        },
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(vertical: 8),
-                          decoration: const BoxDecoration(
-                              border: Border(
-                            bottom: BorderSide(
-                              width: 1,
-                              color: AppColor.primaryColor,
-                            ),
-                          )),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              const Icon(
-                                Icons.download_sharp,
-                                size: 30,
-                                color: AppColor.primaryColor,
-                              ),
-                              5.horizontalSpace,
-                              Expanded(
-                                child: SelectableText(
-                                  e.header!,
-                                  style: TextStyle(
-                                      fontSize: 20.sp,
-                                      color: AppColor.primaryColor),
+                                // showDialog(
+                                //     context: context,
+                                //     builder: (context) {
+                                //       return Container(
+                                //         color: Colors.green,
+                                //       );
+                                //     });
+                              }
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(vertical: 8),
+                              decoration: const BoxDecoration(
+                                  border: Border(
+                                bottom: BorderSide(
+                                  width: 1,
+                                  color: AppColor.primaryColor,
                                 ),
+                              )),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  const Icon(
+                                    Icons.download_sharp,
+                                    size: 30,
+                                    color: AppColor.primaryColor,
+                                  ),
+                                  5.horizontalSpace,
+                                  Expanded(
+                                    child: SelectableText(
+                                      e.header ?? '',
+                                      style: TextStyle(
+                                          fontSize: 20.sp,
+                                          color: AppColor.primaryColor),
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
-                        ));
-                  }).toList(),
+                            ));
+                      }).toList() ??
+                      [],
                 );
               },
             ),

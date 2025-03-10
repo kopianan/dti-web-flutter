@@ -105,7 +105,7 @@ class _CorporateSectionState extends State<CorporateSection> {
                       height: 200,
                       alignment: Alignment.center,
                       child: Text(
-                        "No Application. Make Your First Application",
+                        "No Corporate Application. Make your First Application",
                         style: TextStyle(
                             fontSize: 20.sp,
                             fontWeight: FontWeight.bold,

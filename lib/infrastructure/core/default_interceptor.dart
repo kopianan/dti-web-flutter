@@ -28,7 +28,7 @@ class DefaultInterceptor extends Interceptor {
   }
 
   @override
-  void onError(DioError err, ErrorInterceptorHandler handler) {
+  void onError(DioException err, ErrorInterceptorHandler handler) {
     final resp = err.response!;
 
     if (resp.data['code'] == 'auth/id-token-expired') {
@@ -36,7 +36,7 @@ class DefaultInterceptor extends Interceptor {
       //can refresh token here.
       log(resp.data['message']);
       getIt<GlobalUserCubit>().logOutUserBecauseTokenExpired();
-      return handler.reject(err.copyWith(error: DioErrorType.sendTimeout));
+      return handler.reject(err.copyWith(error: DioExceptionType.sendTimeout));
     } else {
       super.onError(err, handler);
     }

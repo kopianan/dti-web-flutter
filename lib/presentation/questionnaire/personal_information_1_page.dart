@@ -423,11 +423,11 @@ class _PersonalInformation1PageState extends State<PersonalInformation1Page> {
                                                         .toList(),
                                                     decoration: const InputDecoration(
                                                         labelText:
-                                                            "Relationshop Status",
+                                                            "Relationship Status",
                                                         hintStyle: TextStyle(
                                                             color: Colors.grey),
                                                         hintText:
-                                                            "Relationshop Status"),
+                                                            "Relationship Status"),
                                                   ),
                                                   20.verticalSpace,
 

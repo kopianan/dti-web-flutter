@@ -14,7 +14,9 @@ class AdminDataState with _$AdminDataState {
   const AdminDataState._();
   const factory AdminDataState({
     @Default([]) final List<SimpleVisaModel> application,
+    @Default([]) final List<SimpleVisaModel> applicationDraft,
     @Default([]) final List<SimpleVisaModel> corpApplication,
+    @Default([]) final List<SimpleVisaModel> corpApplicationDraft,
     @Default([]) final List<ContactUsModel> contacts,
     @Default([]) final List<CustomerModel> users,
     @Default([]) final List<FeedbackModel> feedbacks,
@@ -71,6 +73,44 @@ class AdminDataState with _$AdminDataState {
     return application.toList();
   }
 
+  List<SimpleVisaModel> getListApplicationDraft() {
+    if (searchType == SearchType.applicationDraft &&
+        searchKeywoard.isNotEmpty) {
+      final filtered = applicationDraft.where((element) {
+        if (element.userName != null) {
+          return element.userName!
+              .toLowerCase()
+              .contains(searchKeywoard.toLowerCase());
+        }
+        return false;
+      }).toList();
+
+      log("TOTAL + ${filtered.length}");
+
+      return filtered;
+    }
+    log("TOTAL + ${applicationDraft.length}");
+    return applicationDraft.toList();
+  }
+
+  List<SimpleVisaModel> getListCorpApplicationDraft() {
+    if (searchType == SearchType.corpApplicationDraft && searchKeywoard.isNotEmpty) {
+      final filtered = corpApplicationDraft.where((element) {
+        if (element.userName != null) {
+          return element.userName!
+              .toLowerCase()
+              .contains(searchKeywoard.toLowerCase());
+        }
+        return false;
+      }).toList();
+
+      log("TOTAL + ${filtered.length}");
+
+      return filtered;
+    }
+    log("TOTAL + ${corpApplicationDraft.length}");
+    return corpApplicationDraft.toList();
+  }
   List<SimpleVisaModel> getListCorpApplication() {
     if (searchType == SearchType.corpApplication && searchKeywoard.isNotEmpty) {
       final filtered = corpApplication.where((element) {

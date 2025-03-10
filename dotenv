@@ -1,9 +1,9 @@
 
  
 DEV
-#BASE_URL = 'https://us-central1-doortoid-mobile.cloudfunctions.net/api'
-#APP_ID =  '1224414981412498'
+BASE_URL = 'https://us-central1-doortoid-mobile.cloudfunctions.net/api'
+APP_ID =  '1224414981412498'
 #PROD
-BASE_URL = 'https://us-central1-doortoid.cloudfunctions.net/api'
-APP_ID =  '474513857750668'
+#BASE_URL = 'https://us-central1-doortoid.cloudfunctions.net/api'
+#APP_ID =  '474513857750668'    
 HUBSPOT="Bearer pat-na1-04f52ba5-cfca-41b3-b58e-e28aa532b933"

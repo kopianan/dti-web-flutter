@@ -7,6 +7,7 @@ import 'package:dti_web/core/storage.dart';
 import 'package:dti_web/core/widgets/auth_footer_widget.dart';
 import 'package:dti_web/core/widgets/loading_primary_button.dart';
 import 'package:dti_web/core/widgets/primary_button.dart';
+import 'package:dti_web/infrastructure/auth/auth_repository.dart';
 import 'package:dti_web/injection.dart';
 import 'package:dti_web/presentation/auth/widgets/password_text_field.dart';
 import 'package:dti_web/routes/app_router.dart';
@@ -54,11 +55,14 @@ class _SignInPageState extends State<SignInPage> {
               elevation: 0,
             ),
       body: BlocProvider(
-        create: (context) => authCubit,
+        create: (context) => authCubit..checkIsFromPhone(),
         child: BlocConsumer<AuthCubit, AuthState>(
           listener: (context, state) {
             state.maybeMap(
               orElse: () {},
+              isOpenFromPhone: (value) {
+                AutoRouter.of(context).replaceAll([const PlatformRoute()]);
+              },
               onError: (e) {
                 e.error.maybeMap(
                   orElse: () {},
@@ -277,7 +281,7 @@ class _SignInPageState extends State<SignInPage> {
                     ),
                     40.verticalSpace,
                     const AuthFooterWidget(),
-                    const Center(child: Text("V.3.5.4"))
+                    const Center(child: Text("V.3.6.1"))
                   ],
                 ),
               ),

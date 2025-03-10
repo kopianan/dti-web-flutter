@@ -65,4 +65,58 @@ class AdminApplicationRepository extends IAdminApplication {
       return left(Failures.serverError());
     }
   }
+
+  @override
+  Future<Either<Failures, List<SimpleVisaModel>>>
+      getAllUserApplicationDraft() async {
+    try {
+      final result =
+          await dio.get('${dotenv.env['BASE_URL']}/draftApplications',
+              options: Options(
+                headers: {'Authorization': 'Bearer ${storage.getToken()}'},
+              ));
+
+      final listData = (result.data['data'] as List)
+          .map((e) => SimpleVisaModel.fromJson(e))
+          .toList();
+      try {
+        listData.sort((a, b) => a.createdDate!.compareTo(b.createdDate!));
+      } on Exception {
+        // TODO
+      }
+      return Right(listData);
+    } on DioError catch (e) {
+      return left(ErrorHandling().onDioErrorHandle(e));
+    } on Exception {
+      return left(Failures.serverError());
+    }
+  }
+
+  @override
+  Future<Either<Failures, List<SimpleVisaModel>>>
+      getAllUserCorpApplicationDraft() async {
+    try {
+      final result =
+          await dio.get('${dotenv.env['BASE_URL']}/corporateDraftApplications',
+              options: Options(
+                headers: {'Authorization': 'Bearer ${storage.getToken()}'},
+              ));
+
+      var listData = (result.data['data'] as List)
+          .map((e) => SimpleVisaModel.fromJson(e))
+          .toList();
+
+      try {
+        listData.sort((a, b) => a.createdDate!.compareTo(b.createdDate!));
+        
+      } on Exception {
+        // TODO
+      }
+      return Right(listData);
+    } on DioError catch (e) {
+      return left(ErrorHandling().onDioErrorHandle(e));
+    } on Exception {
+      return left(Failures.serverError());
+    }
+  }
 }

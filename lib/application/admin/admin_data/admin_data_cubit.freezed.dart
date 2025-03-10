@@ -17,7 +17,11 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AdminDataState {
   List<SimpleVisaModel> get application => throw _privateConstructorUsedError;
+  List<SimpleVisaModel> get applicationDraft =>
+      throw _privateConstructorUsedError;
   List<SimpleVisaModel> get corpApplication =>
+      throw _privateConstructorUsedError;
+  List<SimpleVisaModel> get corpApplicationDraft =>
       throw _privateConstructorUsedError;
   List<ContactUsModel> get contacts => throw _privateConstructorUsedError;
   List<CustomerModel> get users => throw _privateConstructorUsedError;
@@ -40,7 +44,9 @@ abstract class $AdminDataStateCopyWith<$Res> {
   @useResult
   $Res call(
       {List<SimpleVisaModel> application,
+      List<SimpleVisaModel> applicationDraft,
       List<SimpleVisaModel> corpApplication,
+      List<SimpleVisaModel> corpApplicationDraft,
       List<ContactUsModel> contacts,
       List<CustomerModel> users,
       List<FeedbackModel> feedbacks,
@@ -67,7 +73,9 @@ class _$AdminDataStateCopyWithImpl<$Res, $Val extends AdminDataState>
   @override
   $Res call({
     Object? application = null,
+    Object? applicationDraft = null,
     Object? corpApplication = null,
+    Object? corpApplicationDraft = null,
     Object? contacts = null,
     Object? users = null,
     Object? feedbacks = null,
@@ -81,9 +89,17 @@ class _$AdminDataStateCopyWithImpl<$Res, $Val extends AdminDataState>
           ? _value.application
           : application // ignore: cast_nullable_to_non_nullable
               as List<SimpleVisaModel>,
+      applicationDraft: null == applicationDraft
+          ? _value.applicationDraft
+          : applicationDraft // ignore: cast_nullable_to_non_nullable
+              as List<SimpleVisaModel>,
       corpApplication: null == corpApplication
           ? _value.corpApplication
           : corpApplication // ignore: cast_nullable_to_non_nullable
+              as List<SimpleVisaModel>,
+      corpApplicationDraft: null == corpApplicationDraft
+          ? _value.corpApplicationDraft
+          : corpApplicationDraft // ignore: cast_nullable_to_non_nullable
               as List<SimpleVisaModel>,
       contacts: null == contacts
           ? _value.contacts
@@ -143,7 +159,9 @@ abstract class _$$AdminDataStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {List<SimpleVisaModel> application,
+      List<SimpleVisaModel> applicationDraft,
       List<SimpleVisaModel> corpApplication,
+      List<SimpleVisaModel> corpApplicationDraft,
       List<ContactUsModel> contacts,
       List<CustomerModel> users,
       List<FeedbackModel> feedbacks,
@@ -170,7 +188,9 @@ class __$$AdminDataStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? application = null,
+    Object? applicationDraft = null,
     Object? corpApplication = null,
+    Object? corpApplicationDraft = null,
     Object? contacts = null,
     Object? users = null,
     Object? feedbacks = null,
@@ -184,9 +204,17 @@ class __$$AdminDataStateImplCopyWithImpl<$Res>
           ? _value.application
           : application // ignore: cast_nullable_to_non_nullable
               as List<SimpleVisaModel>,
+      applicationDraft: null == applicationDraft
+          ? _value.applicationDraft
+          : applicationDraft // ignore: cast_nullable_to_non_nullable
+              as List<SimpleVisaModel>,
       corpApplication: null == corpApplication
           ? _value.corpApplication
           : corpApplication // ignore: cast_nullable_to_non_nullable
+              as List<SimpleVisaModel>,
+      corpApplicationDraft: null == corpApplicationDraft
+          ? _value.corpApplicationDraft
+          : corpApplicationDraft // ignore: cast_nullable_to_non_nullable
               as List<SimpleVisaModel>,
       contacts: null == contacts
           ? _value.contacts
@@ -225,7 +253,9 @@ class __$$AdminDataStateImplCopyWithImpl<$Res>
 class _$AdminDataStateImpl extends _AdminDataState {
   const _$AdminDataStateImpl(
       {this.application = const [],
+      this.applicationDraft = const [],
       this.corpApplication = const [],
+      this.corpApplicationDraft = const [],
       this.contacts = const [],
       this.users = const [],
       this.feedbacks = const [],
@@ -240,7 +270,13 @@ class _$AdminDataStateImpl extends _AdminDataState {
   final List<SimpleVisaModel> application;
   @override
   @JsonKey()
+  final List<SimpleVisaModel> applicationDraft;
+  @override
+  @JsonKey()
   final List<SimpleVisaModel> corpApplication;
+  @override
+  @JsonKey()
+  final List<SimpleVisaModel> corpApplicationDraft;
   @override
   @JsonKey()
   final List<ContactUsModel> contacts;
@@ -263,7 +299,7 @@ class _$AdminDataStateImpl extends _AdminDataState {
 
   @override
   String toString() {
-    return 'AdminDataState(application: $application, corpApplication: $corpApplication, contacts: $contacts, users: $users, feedbacks: $feedbacks, searchType: $searchType, searchKeywoard: $searchKeywoard, customerFilter: $customerFilter, applicationFilter: $applicationFilter)';
+    return 'AdminDataState(application: $application, applicationDraft: $applicationDraft, corpApplication: $corpApplication, corpApplicationDraft: $corpApplicationDraft, contacts: $contacts, users: $users, feedbacks: $feedbacks, searchType: $searchType, searchKeywoard: $searchKeywoard, customerFilter: $customerFilter, applicationFilter: $applicationFilter)';
   }
 
   @override
@@ -274,7 +310,11 @@ class _$AdminDataStateImpl extends _AdminDataState {
             const DeepCollectionEquality()
                 .equals(other.application, application) &&
             const DeepCollectionEquality()
+                .equals(other.applicationDraft, applicationDraft) &&
+            const DeepCollectionEquality()
                 .equals(other.corpApplication, corpApplication) &&
+            const DeepCollectionEquality()
+                .equals(other.corpApplicationDraft, corpApplicationDraft) &&
             const DeepCollectionEquality().equals(other.contacts, contacts) &&
             const DeepCollectionEquality().equals(other.users, users) &&
             const DeepCollectionEquality().equals(other.feedbacks, feedbacks) &&
@@ -292,7 +332,9 @@ class _$AdminDataStateImpl extends _AdminDataState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(application),
+      const DeepCollectionEquality().hash(applicationDraft),
       const DeepCollectionEquality().hash(corpApplication),
+      const DeepCollectionEquality().hash(corpApplicationDraft),
       const DeepCollectionEquality().hash(contacts),
       const DeepCollectionEquality().hash(users),
       const DeepCollectionEquality().hash(feedbacks),
@@ -312,7 +354,9 @@ class _$AdminDataStateImpl extends _AdminDataState {
 abstract class _AdminDataState extends AdminDataState {
   const factory _AdminDataState(
           {final List<SimpleVisaModel> application,
+          final List<SimpleVisaModel> applicationDraft,
           final List<SimpleVisaModel> corpApplication,
+          final List<SimpleVisaModel> corpApplicationDraft,
           final List<ContactUsModel> contacts,
           final List<CustomerModel> users,
           final List<FeedbackModel> feedbacks,
@@ -326,7 +370,11 @@ abstract class _AdminDataState extends AdminDataState {
   @override
   List<SimpleVisaModel> get application;
   @override
+  List<SimpleVisaModel> get applicationDraft;
+  @override
   List<SimpleVisaModel> get corpApplication;
+  @override
+  List<SimpleVisaModel> get corpApplicationDraft;
   @override
   List<ContactUsModel> get contacts;
   @override

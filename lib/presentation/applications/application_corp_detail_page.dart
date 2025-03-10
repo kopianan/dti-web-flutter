@@ -564,11 +564,12 @@ class _SuccessBodyState extends State<SuccessBody> with NavigateMixin {
                       .setLastCorporate(value.visa);
                   AwesomeDialog(
                     context: context,
+                    dialogType: DialogType.success,
                     width: ScreenUtil().screenWidth / 4,
                     title: "SUBMIT DOCUMENT",
                     body: const Center(
                       child: SelectableText(
-                        "Document Has Been Submitted",
+                        "Application Has Been Submitted",
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -614,13 +615,10 @@ class _SuccessBodyState extends State<SuccessBody> with NavigateMixin {
                           if (isCheckedA && isCheckedB && isCheckedC) {
                             context
                                 .read<UpdateApplicationCubit>()
-                                .submitCorpVisaApps(
-                                  visa.firebaseDocId,
-                                  visa
-                                );
+                                .submitCorpVisaApps(visa.firebaseDocId, visa);
                           }
                         },
-                        width: 300,
+                        width: double.infinity,
                         label: "CONFIRM",
                         labelStyle: TextStyle(fontSize: 20.sp),
                         padding: const EdgeInsets.symmetric(

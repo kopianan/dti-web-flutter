@@ -129,6 +129,8 @@ class AuthRepository extends IAuth {
         }
       }
       return Left(e.toString());
+    }on Exception catch(e){
+      return Left(e.toString());
     }
   }
 

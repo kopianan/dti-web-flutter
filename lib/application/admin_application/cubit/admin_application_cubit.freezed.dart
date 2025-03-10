@@ -22,7 +22,10 @@ mixin _$AdminApplicationState {
     required TResult Function() loading,
     required TResult Function() error,
     required TResult Function(List<SimpleVisaModel> visas) getAllUserVisa,
+    required TResult Function(List<SimpleVisaModel> visas) getAllUserVisaDraft,
     required TResult Function(List<SimpleVisaModel> visas) getAllUserCorpVisa,
+    required TResult Function(List<SimpleVisaModel> visas)
+        getAllUserCorpVisaDraft,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -31,7 +34,9 @@ mixin _$AdminApplicationState {
     TResult? Function()? loading,
     TResult? Function()? error,
     TResult? Function(List<SimpleVisaModel> visas)? getAllUserVisa,
+    TResult? Function(List<SimpleVisaModel> visas)? getAllUserVisaDraft,
     TResult? Function(List<SimpleVisaModel> visas)? getAllUserCorpVisa,
+    TResult? Function(List<SimpleVisaModel> visas)? getAllUserCorpVisaDraft,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,7 +45,9 @@ mixin _$AdminApplicationState {
     TResult Function()? loading,
     TResult Function()? error,
     TResult Function(List<SimpleVisaModel> visas)? getAllUserVisa,
+    TResult Function(List<SimpleVisaModel> visas)? getAllUserVisaDraft,
     TResult Function(List<SimpleVisaModel> visas)? getAllUserCorpVisa,
+    TResult Function(List<SimpleVisaModel> visas)? getAllUserCorpVisaDraft,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -50,7 +57,10 @@ mixin _$AdminApplicationState {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
     required TResult Function(_GetAllUserVisa value) getAllUserVisa,
+    required TResult Function(GetAllUserVisaDraft value) getAllUserVisaDraft,
     required TResult Function(_GetAllUserCorpVisa value) getAllUserCorpVisa,
+    required TResult Function(_GetAllUserCorpVisaDraft value)
+        getAllUserCorpVisaDraft,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -59,7 +69,9 @@ mixin _$AdminApplicationState {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Error value)? error,
     TResult? Function(_GetAllUserVisa value)? getAllUserVisa,
+    TResult? Function(GetAllUserVisaDraft value)? getAllUserVisaDraft,
     TResult? Function(_GetAllUserCorpVisa value)? getAllUserCorpVisa,
+    TResult? Function(_GetAllUserCorpVisaDraft value)? getAllUserCorpVisaDraft,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -68,7 +80,9 @@ mixin _$AdminApplicationState {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_GetAllUserVisa value)? getAllUserVisa,
+    TResult Function(GetAllUserVisaDraft value)? getAllUserVisaDraft,
     TResult Function(_GetAllUserCorpVisa value)? getAllUserCorpVisa,
+    TResult Function(_GetAllUserCorpVisaDraft value)? getAllUserCorpVisaDraft,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -135,7 +149,10 @@ class _$InitialImpl implements _Initial {
     required TResult Function() loading,
     required TResult Function() error,
     required TResult Function(List<SimpleVisaModel> visas) getAllUserVisa,
+    required TResult Function(List<SimpleVisaModel> visas) getAllUserVisaDraft,
     required TResult Function(List<SimpleVisaModel> visas) getAllUserCorpVisa,
+    required TResult Function(List<SimpleVisaModel> visas)
+        getAllUserCorpVisaDraft,
   }) {
     return initial();
   }
@@ -147,7 +164,9 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? loading,
     TResult? Function()? error,
     TResult? Function(List<SimpleVisaModel> visas)? getAllUserVisa,
+    TResult? Function(List<SimpleVisaModel> visas)? getAllUserVisaDraft,
     TResult? Function(List<SimpleVisaModel> visas)? getAllUserCorpVisa,
+    TResult? Function(List<SimpleVisaModel> visas)? getAllUserCorpVisaDraft,
   }) {
     return initial?.call();
   }
@@ -159,7 +178,9 @@ class _$InitialImpl implements _Initial {
     TResult Function()? loading,
     TResult Function()? error,
     TResult Function(List<SimpleVisaModel> visas)? getAllUserVisa,
+    TResult Function(List<SimpleVisaModel> visas)? getAllUserVisaDraft,
     TResult Function(List<SimpleVisaModel> visas)? getAllUserCorpVisa,
+    TResult Function(List<SimpleVisaModel> visas)? getAllUserCorpVisaDraft,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -175,7 +196,10 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
     required TResult Function(_GetAllUserVisa value) getAllUserVisa,
+    required TResult Function(GetAllUserVisaDraft value) getAllUserVisaDraft,
     required TResult Function(_GetAllUserCorpVisa value) getAllUserCorpVisa,
+    required TResult Function(_GetAllUserCorpVisaDraft value)
+        getAllUserCorpVisaDraft,
   }) {
     return initial(this);
   }
@@ -187,7 +211,9 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Error value)? error,
     TResult? Function(_GetAllUserVisa value)? getAllUserVisa,
+    TResult? Function(GetAllUserVisaDraft value)? getAllUserVisaDraft,
     TResult? Function(_GetAllUserCorpVisa value)? getAllUserCorpVisa,
+    TResult? Function(_GetAllUserCorpVisaDraft value)? getAllUserCorpVisaDraft,
   }) {
     return initial?.call(this);
   }
@@ -199,7 +225,9 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_GetAllUserVisa value)? getAllUserVisa,
+    TResult Function(GetAllUserVisaDraft value)? getAllUserVisaDraft,
     TResult Function(_GetAllUserCorpVisa value)? getAllUserCorpVisa,
+    TResult Function(_GetAllUserCorpVisaDraft value)? getAllUserCorpVisaDraft,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -255,7 +283,10 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() loading,
     required TResult Function() error,
     required TResult Function(List<SimpleVisaModel> visas) getAllUserVisa,
+    required TResult Function(List<SimpleVisaModel> visas) getAllUserVisaDraft,
     required TResult Function(List<SimpleVisaModel> visas) getAllUserCorpVisa,
+    required TResult Function(List<SimpleVisaModel> visas)
+        getAllUserCorpVisaDraft,
   }) {
     return loading();
   }
@@ -267,7 +298,9 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? loading,
     TResult? Function()? error,
     TResult? Function(List<SimpleVisaModel> visas)? getAllUserVisa,
+    TResult? Function(List<SimpleVisaModel> visas)? getAllUserVisaDraft,
     TResult? Function(List<SimpleVisaModel> visas)? getAllUserCorpVisa,
+    TResult? Function(List<SimpleVisaModel> visas)? getAllUserCorpVisaDraft,
   }) {
     return loading?.call();
   }
@@ -279,7 +312,9 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? loading,
     TResult Function()? error,
     TResult Function(List<SimpleVisaModel> visas)? getAllUserVisa,
+    TResult Function(List<SimpleVisaModel> visas)? getAllUserVisaDraft,
     TResult Function(List<SimpleVisaModel> visas)? getAllUserCorpVisa,
+    TResult Function(List<SimpleVisaModel> visas)? getAllUserCorpVisaDraft,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -295,7 +330,10 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
     required TResult Function(_GetAllUserVisa value) getAllUserVisa,
+    required TResult Function(GetAllUserVisaDraft value) getAllUserVisaDraft,
     required TResult Function(_GetAllUserCorpVisa value) getAllUserCorpVisa,
+    required TResult Function(_GetAllUserCorpVisaDraft value)
+        getAllUserCorpVisaDraft,
   }) {
     return loading(this);
   }
@@ -307,7 +345,9 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Error value)? error,
     TResult? Function(_GetAllUserVisa value)? getAllUserVisa,
+    TResult? Function(GetAllUserVisaDraft value)? getAllUserVisaDraft,
     TResult? Function(_GetAllUserCorpVisa value)? getAllUserCorpVisa,
+    TResult? Function(_GetAllUserCorpVisaDraft value)? getAllUserCorpVisaDraft,
   }) {
     return loading?.call(this);
   }
@@ -319,7 +359,9 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_GetAllUserVisa value)? getAllUserVisa,
+    TResult Function(GetAllUserVisaDraft value)? getAllUserVisaDraft,
     TResult Function(_GetAllUserCorpVisa value)? getAllUserCorpVisa,
+    TResult Function(_GetAllUserCorpVisaDraft value)? getAllUserCorpVisaDraft,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -375,7 +417,10 @@ class _$ErrorImpl implements _Error {
     required TResult Function() loading,
     required TResult Function() error,
     required TResult Function(List<SimpleVisaModel> visas) getAllUserVisa,
+    required TResult Function(List<SimpleVisaModel> visas) getAllUserVisaDraft,
     required TResult Function(List<SimpleVisaModel> visas) getAllUserCorpVisa,
+    required TResult Function(List<SimpleVisaModel> visas)
+        getAllUserCorpVisaDraft,
   }) {
     return error();
   }
@@ -387,7 +432,9 @@ class _$ErrorImpl implements _Error {
     TResult? Function()? loading,
     TResult? Function()? error,
     TResult? Function(List<SimpleVisaModel> visas)? getAllUserVisa,
+    TResult? Function(List<SimpleVisaModel> visas)? getAllUserVisaDraft,
     TResult? Function(List<SimpleVisaModel> visas)? getAllUserCorpVisa,
+    TResult? Function(List<SimpleVisaModel> visas)? getAllUserCorpVisaDraft,
   }) {
     return error?.call();
   }
@@ -399,7 +446,9 @@ class _$ErrorImpl implements _Error {
     TResult Function()? loading,
     TResult Function()? error,
     TResult Function(List<SimpleVisaModel> visas)? getAllUserVisa,
+    TResult Function(List<SimpleVisaModel> visas)? getAllUserVisaDraft,
     TResult Function(List<SimpleVisaModel> visas)? getAllUserCorpVisa,
+    TResult Function(List<SimpleVisaModel> visas)? getAllUserCorpVisaDraft,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -415,7 +464,10 @@ class _$ErrorImpl implements _Error {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
     required TResult Function(_GetAllUserVisa value) getAllUserVisa,
+    required TResult Function(GetAllUserVisaDraft value) getAllUserVisaDraft,
     required TResult Function(_GetAllUserCorpVisa value) getAllUserCorpVisa,
+    required TResult Function(_GetAllUserCorpVisaDraft value)
+        getAllUserCorpVisaDraft,
   }) {
     return error(this);
   }
@@ -427,7 +479,9 @@ class _$ErrorImpl implements _Error {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Error value)? error,
     TResult? Function(_GetAllUserVisa value)? getAllUserVisa,
+    TResult? Function(GetAllUserVisaDraft value)? getAllUserVisaDraft,
     TResult? Function(_GetAllUserCorpVisa value)? getAllUserCorpVisa,
+    TResult? Function(_GetAllUserCorpVisaDraft value)? getAllUserCorpVisaDraft,
   }) {
     return error?.call(this);
   }
@@ -439,7 +493,9 @@ class _$ErrorImpl implements _Error {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_GetAllUserVisa value)? getAllUserVisa,
+    TResult Function(GetAllUserVisaDraft value)? getAllUserVisaDraft,
     TResult Function(_GetAllUserCorpVisa value)? getAllUserCorpVisa,
+    TResult Function(_GetAllUserCorpVisaDraft value)? getAllUserCorpVisaDraft,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -529,7 +585,10 @@ class _$GetAllUserVisaImpl implements _GetAllUserVisa {
     required TResult Function() loading,
     required TResult Function() error,
     required TResult Function(List<SimpleVisaModel> visas) getAllUserVisa,
+    required TResult Function(List<SimpleVisaModel> visas) getAllUserVisaDraft,
     required TResult Function(List<SimpleVisaModel> visas) getAllUserCorpVisa,
+    required TResult Function(List<SimpleVisaModel> visas)
+        getAllUserCorpVisaDraft,
   }) {
     return getAllUserVisa(visas);
   }
@@ -541,7 +600,9 @@ class _$GetAllUserVisaImpl implements _GetAllUserVisa {
     TResult? Function()? loading,
     TResult? Function()? error,
     TResult? Function(List<SimpleVisaModel> visas)? getAllUserVisa,
+    TResult? Function(List<SimpleVisaModel> visas)? getAllUserVisaDraft,
     TResult? Function(List<SimpleVisaModel> visas)? getAllUserCorpVisa,
+    TResult? Function(List<SimpleVisaModel> visas)? getAllUserCorpVisaDraft,
   }) {
     return getAllUserVisa?.call(visas);
   }
@@ -553,7 +614,9 @@ class _$GetAllUserVisaImpl implements _GetAllUserVisa {
     TResult Function()? loading,
     TResult Function()? error,
     TResult Function(List<SimpleVisaModel> visas)? getAllUserVisa,
+    TResult Function(List<SimpleVisaModel> visas)? getAllUserVisaDraft,
     TResult Function(List<SimpleVisaModel> visas)? getAllUserCorpVisa,
+    TResult Function(List<SimpleVisaModel> visas)? getAllUserCorpVisaDraft,
     required TResult orElse(),
   }) {
     if (getAllUserVisa != null) {
@@ -569,7 +632,10 @@ class _$GetAllUserVisaImpl implements _GetAllUserVisa {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
     required TResult Function(_GetAllUserVisa value) getAllUserVisa,
+    required TResult Function(GetAllUserVisaDraft value) getAllUserVisaDraft,
     required TResult Function(_GetAllUserCorpVisa value) getAllUserCorpVisa,
+    required TResult Function(_GetAllUserCorpVisaDraft value)
+        getAllUserCorpVisaDraft,
   }) {
     return getAllUserVisa(this);
   }
@@ -581,7 +647,9 @@ class _$GetAllUserVisaImpl implements _GetAllUserVisa {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Error value)? error,
     TResult? Function(_GetAllUserVisa value)? getAllUserVisa,
+    TResult? Function(GetAllUserVisaDraft value)? getAllUserVisaDraft,
     TResult? Function(_GetAllUserCorpVisa value)? getAllUserCorpVisa,
+    TResult? Function(_GetAllUserCorpVisaDraft value)? getAllUserCorpVisaDraft,
   }) {
     return getAllUserVisa?.call(this);
   }
@@ -593,7 +661,9 @@ class _$GetAllUserVisaImpl implements _GetAllUserVisa {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_GetAllUserVisa value)? getAllUserVisa,
+    TResult Function(GetAllUserVisaDraft value)? getAllUserVisaDraft,
     TResult Function(_GetAllUserCorpVisa value)? getAllUserCorpVisa,
+    TResult Function(_GetAllUserCorpVisaDraft value)? getAllUserCorpVisaDraft,
     required TResult orElse(),
   }) {
     if (getAllUserVisa != null) {
@@ -610,6 +680,180 @@ abstract class _GetAllUserVisa implements AdminApplicationState {
   List<SimpleVisaModel> get visas;
   @JsonKey(ignore: true)
   _$$GetAllUserVisaImplCopyWith<_$GetAllUserVisaImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetAllUserVisaDraftImplCopyWith<$Res> {
+  factory _$$GetAllUserVisaDraftImplCopyWith(_$GetAllUserVisaDraftImpl value,
+          $Res Function(_$GetAllUserVisaDraftImpl) then) =
+      __$$GetAllUserVisaDraftImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<SimpleVisaModel> visas});
+}
+
+/// @nodoc
+class __$$GetAllUserVisaDraftImplCopyWithImpl<$Res>
+    extends _$AdminApplicationStateCopyWithImpl<$Res, _$GetAllUserVisaDraftImpl>
+    implements _$$GetAllUserVisaDraftImplCopyWith<$Res> {
+  __$$GetAllUserVisaDraftImplCopyWithImpl(_$GetAllUserVisaDraftImpl _value,
+      $Res Function(_$GetAllUserVisaDraftImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? visas = null,
+  }) {
+    return _then(_$GetAllUserVisaDraftImpl(
+      null == visas
+          ? _value._visas
+          : visas // ignore: cast_nullable_to_non_nullable
+              as List<SimpleVisaModel>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetAllUserVisaDraftImpl implements GetAllUserVisaDraft {
+  const _$GetAllUserVisaDraftImpl(final List<SimpleVisaModel> visas)
+      : _visas = visas;
+
+  final List<SimpleVisaModel> _visas;
+  @override
+  List<SimpleVisaModel> get visas {
+    if (_visas is EqualUnmodifiableListView) return _visas;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_visas);
+  }
+
+  @override
+  String toString() {
+    return 'AdminApplicationState.getAllUserVisaDraft(visas: $visas)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetAllUserVisaDraftImpl &&
+            const DeepCollectionEquality().equals(other._visas, _visas));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_visas));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetAllUserVisaDraftImplCopyWith<_$GetAllUserVisaDraftImpl> get copyWith =>
+      __$$GetAllUserVisaDraftImplCopyWithImpl<_$GetAllUserVisaDraftImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() error,
+    required TResult Function(List<SimpleVisaModel> visas) getAllUserVisa,
+    required TResult Function(List<SimpleVisaModel> visas) getAllUserVisaDraft,
+    required TResult Function(List<SimpleVisaModel> visas) getAllUserCorpVisa,
+    required TResult Function(List<SimpleVisaModel> visas)
+        getAllUserCorpVisaDraft,
+  }) {
+    return getAllUserVisaDraft(visas);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? error,
+    TResult? Function(List<SimpleVisaModel> visas)? getAllUserVisa,
+    TResult? Function(List<SimpleVisaModel> visas)? getAllUserVisaDraft,
+    TResult? Function(List<SimpleVisaModel> visas)? getAllUserCorpVisa,
+    TResult? Function(List<SimpleVisaModel> visas)? getAllUserCorpVisaDraft,
+  }) {
+    return getAllUserVisaDraft?.call(visas);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? error,
+    TResult Function(List<SimpleVisaModel> visas)? getAllUserVisa,
+    TResult Function(List<SimpleVisaModel> visas)? getAllUserVisaDraft,
+    TResult Function(List<SimpleVisaModel> visas)? getAllUserCorpVisa,
+    TResult Function(List<SimpleVisaModel> visas)? getAllUserCorpVisaDraft,
+    required TResult orElse(),
+  }) {
+    if (getAllUserVisaDraft != null) {
+      return getAllUserVisaDraft(visas);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Error value) error,
+    required TResult Function(_GetAllUserVisa value) getAllUserVisa,
+    required TResult Function(GetAllUserVisaDraft value) getAllUserVisaDraft,
+    required TResult Function(_GetAllUserCorpVisa value) getAllUserCorpVisa,
+    required TResult Function(_GetAllUserCorpVisaDraft value)
+        getAllUserCorpVisaDraft,
+  }) {
+    return getAllUserVisaDraft(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_GetAllUserVisa value)? getAllUserVisa,
+    TResult? Function(GetAllUserVisaDraft value)? getAllUserVisaDraft,
+    TResult? Function(_GetAllUserCorpVisa value)? getAllUserCorpVisa,
+    TResult? Function(_GetAllUserCorpVisaDraft value)? getAllUserCorpVisaDraft,
+  }) {
+    return getAllUserVisaDraft?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_GetAllUserVisa value)? getAllUserVisa,
+    TResult Function(GetAllUserVisaDraft value)? getAllUserVisaDraft,
+    TResult Function(_GetAllUserCorpVisa value)? getAllUserCorpVisa,
+    TResult Function(_GetAllUserCorpVisaDraft value)? getAllUserCorpVisaDraft,
+    required TResult orElse(),
+  }) {
+    if (getAllUserVisaDraft != null) {
+      return getAllUserVisaDraft(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetAllUserVisaDraft implements AdminApplicationState {
+  const factory GetAllUserVisaDraft(final List<SimpleVisaModel> visas) =
+      _$GetAllUserVisaDraftImpl;
+
+  List<SimpleVisaModel> get visas;
+  @JsonKey(ignore: true)
+  _$$GetAllUserVisaDraftImplCopyWith<_$GetAllUserVisaDraftImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -689,7 +933,10 @@ class _$GetAllUserCorpVisaImpl implements _GetAllUserCorpVisa {
     required TResult Function() loading,
     required TResult Function() error,
     required TResult Function(List<SimpleVisaModel> visas) getAllUserVisa,
+    required TResult Function(List<SimpleVisaModel> visas) getAllUserVisaDraft,
     required TResult Function(List<SimpleVisaModel> visas) getAllUserCorpVisa,
+    required TResult Function(List<SimpleVisaModel> visas)
+        getAllUserCorpVisaDraft,
   }) {
     return getAllUserCorpVisa(visas);
   }
@@ -701,7 +948,9 @@ class _$GetAllUserCorpVisaImpl implements _GetAllUserCorpVisa {
     TResult? Function()? loading,
     TResult? Function()? error,
     TResult? Function(List<SimpleVisaModel> visas)? getAllUserVisa,
+    TResult? Function(List<SimpleVisaModel> visas)? getAllUserVisaDraft,
     TResult? Function(List<SimpleVisaModel> visas)? getAllUserCorpVisa,
+    TResult? Function(List<SimpleVisaModel> visas)? getAllUserCorpVisaDraft,
   }) {
     return getAllUserCorpVisa?.call(visas);
   }
@@ -713,7 +962,9 @@ class _$GetAllUserCorpVisaImpl implements _GetAllUserCorpVisa {
     TResult Function()? loading,
     TResult Function()? error,
     TResult Function(List<SimpleVisaModel> visas)? getAllUserVisa,
+    TResult Function(List<SimpleVisaModel> visas)? getAllUserVisaDraft,
     TResult Function(List<SimpleVisaModel> visas)? getAllUserCorpVisa,
+    TResult Function(List<SimpleVisaModel> visas)? getAllUserCorpVisaDraft,
     required TResult orElse(),
   }) {
     if (getAllUserCorpVisa != null) {
@@ -729,7 +980,10 @@ class _$GetAllUserCorpVisaImpl implements _GetAllUserCorpVisa {
     required TResult Function(_Loading value) loading,
     required TResult Function(_Error value) error,
     required TResult Function(_GetAllUserVisa value) getAllUserVisa,
+    required TResult Function(GetAllUserVisaDraft value) getAllUserVisaDraft,
     required TResult Function(_GetAllUserCorpVisa value) getAllUserCorpVisa,
+    required TResult Function(_GetAllUserCorpVisaDraft value)
+        getAllUserCorpVisaDraft,
   }) {
     return getAllUserCorpVisa(this);
   }
@@ -741,7 +995,9 @@ class _$GetAllUserCorpVisaImpl implements _GetAllUserCorpVisa {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_Error value)? error,
     TResult? Function(_GetAllUserVisa value)? getAllUserVisa,
+    TResult? Function(GetAllUserVisaDraft value)? getAllUserVisaDraft,
     TResult? Function(_GetAllUserCorpVisa value)? getAllUserCorpVisa,
+    TResult? Function(_GetAllUserCorpVisaDraft value)? getAllUserCorpVisaDraft,
   }) {
     return getAllUserCorpVisa?.call(this);
   }
@@ -753,7 +1009,9 @@ class _$GetAllUserCorpVisaImpl implements _GetAllUserCorpVisa {
     TResult Function(_Loading value)? loading,
     TResult Function(_Error value)? error,
     TResult Function(_GetAllUserVisa value)? getAllUserVisa,
+    TResult Function(GetAllUserVisaDraft value)? getAllUserVisaDraft,
     TResult Function(_GetAllUserCorpVisa value)? getAllUserCorpVisa,
+    TResult Function(_GetAllUserCorpVisaDraft value)? getAllUserCorpVisaDraft,
     required TResult orElse(),
   }) {
     if (getAllUserCorpVisa != null) {
@@ -771,4 +1029,181 @@ abstract class _GetAllUserCorpVisa implements AdminApplicationState {
   @JsonKey(ignore: true)
   _$$GetAllUserCorpVisaImplCopyWith<_$GetAllUserCorpVisaImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetAllUserCorpVisaDraftImplCopyWith<$Res> {
+  factory _$$GetAllUserCorpVisaDraftImplCopyWith(
+          _$GetAllUserCorpVisaDraftImpl value,
+          $Res Function(_$GetAllUserCorpVisaDraftImpl) then) =
+      __$$GetAllUserCorpVisaDraftImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<SimpleVisaModel> visas});
+}
+
+/// @nodoc
+class __$$GetAllUserCorpVisaDraftImplCopyWithImpl<$Res>
+    extends _$AdminApplicationStateCopyWithImpl<$Res,
+        _$GetAllUserCorpVisaDraftImpl>
+    implements _$$GetAllUserCorpVisaDraftImplCopyWith<$Res> {
+  __$$GetAllUserCorpVisaDraftImplCopyWithImpl(
+      _$GetAllUserCorpVisaDraftImpl _value,
+      $Res Function(_$GetAllUserCorpVisaDraftImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? visas = null,
+  }) {
+    return _then(_$GetAllUserCorpVisaDraftImpl(
+      null == visas
+          ? _value._visas
+          : visas // ignore: cast_nullable_to_non_nullable
+              as List<SimpleVisaModel>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetAllUserCorpVisaDraftImpl implements _GetAllUserCorpVisaDraft {
+  const _$GetAllUserCorpVisaDraftImpl(final List<SimpleVisaModel> visas)
+      : _visas = visas;
+
+  final List<SimpleVisaModel> _visas;
+  @override
+  List<SimpleVisaModel> get visas {
+    if (_visas is EqualUnmodifiableListView) return _visas;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_visas);
+  }
+
+  @override
+  String toString() {
+    return 'AdminApplicationState.getAllUserCorpVisaDraft(visas: $visas)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetAllUserCorpVisaDraftImpl &&
+            const DeepCollectionEquality().equals(other._visas, _visas));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_visas));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetAllUserCorpVisaDraftImplCopyWith<_$GetAllUserCorpVisaDraftImpl>
+      get copyWith => __$$GetAllUserCorpVisaDraftImplCopyWithImpl<
+          _$GetAllUserCorpVisaDraftImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() error,
+    required TResult Function(List<SimpleVisaModel> visas) getAllUserVisa,
+    required TResult Function(List<SimpleVisaModel> visas) getAllUserVisaDraft,
+    required TResult Function(List<SimpleVisaModel> visas) getAllUserCorpVisa,
+    required TResult Function(List<SimpleVisaModel> visas)
+        getAllUserCorpVisaDraft,
+  }) {
+    return getAllUserCorpVisaDraft(visas);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? error,
+    TResult? Function(List<SimpleVisaModel> visas)? getAllUserVisa,
+    TResult? Function(List<SimpleVisaModel> visas)? getAllUserVisaDraft,
+    TResult? Function(List<SimpleVisaModel> visas)? getAllUserCorpVisa,
+    TResult? Function(List<SimpleVisaModel> visas)? getAllUserCorpVisaDraft,
+  }) {
+    return getAllUserCorpVisaDraft?.call(visas);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? error,
+    TResult Function(List<SimpleVisaModel> visas)? getAllUserVisa,
+    TResult Function(List<SimpleVisaModel> visas)? getAllUserVisaDraft,
+    TResult Function(List<SimpleVisaModel> visas)? getAllUserCorpVisa,
+    TResult Function(List<SimpleVisaModel> visas)? getAllUserCorpVisaDraft,
+    required TResult orElse(),
+  }) {
+    if (getAllUserCorpVisaDraft != null) {
+      return getAllUserCorpVisaDraft(visas);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_Error value) error,
+    required TResult Function(_GetAllUserVisa value) getAllUserVisa,
+    required TResult Function(GetAllUserVisaDraft value) getAllUserVisaDraft,
+    required TResult Function(_GetAllUserCorpVisa value) getAllUserCorpVisa,
+    required TResult Function(_GetAllUserCorpVisaDraft value)
+        getAllUserCorpVisaDraft,
+  }) {
+    return getAllUserCorpVisaDraft(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_Error value)? error,
+    TResult? Function(_GetAllUserVisa value)? getAllUserVisa,
+    TResult? Function(GetAllUserVisaDraft value)? getAllUserVisaDraft,
+    TResult? Function(_GetAllUserCorpVisa value)? getAllUserCorpVisa,
+    TResult? Function(_GetAllUserCorpVisaDraft value)? getAllUserCorpVisaDraft,
+  }) {
+    return getAllUserCorpVisaDraft?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_Error value)? error,
+    TResult Function(_GetAllUserVisa value)? getAllUserVisa,
+    TResult Function(GetAllUserVisaDraft value)? getAllUserVisaDraft,
+    TResult Function(_GetAllUserCorpVisa value)? getAllUserCorpVisa,
+    TResult Function(_GetAllUserCorpVisaDraft value)? getAllUserCorpVisaDraft,
+    required TResult orElse(),
+  }) {
+    if (getAllUserCorpVisaDraft != null) {
+      return getAllUserCorpVisaDraft(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetAllUserCorpVisaDraft implements AdminApplicationState {
+  const factory _GetAllUserCorpVisaDraft(final List<SimpleVisaModel> visas) =
+      _$GetAllUserCorpVisaDraftImpl;
+
+  List<SimpleVisaModel> get visas;
+  @JsonKey(ignore: true)
+  _$$GetAllUserCorpVisaDraftImplCopyWith<_$GetAllUserCorpVisaDraftImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

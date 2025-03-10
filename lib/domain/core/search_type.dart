@@ -1,9 +1,11 @@
 enum SearchType {
   application(0),
-  corpApplication(1),
-  feedback(2),
-  customer(3),
-  contactUse(4);
+  applicationDraft(1),
+  corpApplication(2),
+  corpApplicationDraft(3),
+  feedback(4),
+  customer(5),
+  contactUse(6);
 
   const SearchType(this.searchTypeIndex);
   final int searchTypeIndex;
