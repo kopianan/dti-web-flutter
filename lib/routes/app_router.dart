@@ -211,7 +211,10 @@ class AppRouter extends _$AppRouter implements AutoRouteGuard {
     AutoRoute(
         page: PersonalInformation1Route.page,
         path: PersonalInformation1Page.routeName),
-    AutoRoute(path: SignInPage.routeName, page: SignInRoute.page),
+    AutoRoute(
+        path: SignInPage.routeName,
+        page: SignInRoute.page,
+        guards: [PlatformGuard()]),
     AutoRoute(
         path: UploadDocumentPage.routeName, page: UploadDocumentRoute.page),
     AutoRoute(

@@ -30,7 +30,7 @@ Future<void> main() async {
     print(dotenv.env['APP_ID'].toString());
     // initialiaze the facebook javascript SDK
     await FacebookAuth.i.webAndDesktopInitialize(
-      appId: dotenv.env['APP_ID'].toString(),
+      appId: dotenv.env['APP_ID'].toString(), 
       cookie: true,
       xfbml: true,
       version: "v15.0",

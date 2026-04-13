@@ -138,11 +138,11 @@ class _SuccessBodyState extends State<SuccessBody> with NavigateMixin {
 
   @override
   Widget build(BuildContext context) {
-    Color getColor(Set<MaterialState> states) {
-      const Set<MaterialState> interactiveStates = <MaterialState>{
-        MaterialState.pressed,
-        MaterialState.hovered,
-        MaterialState.focused,
+    Color getColor(Set<WidgetState> states) {
+      const Set<WidgetState> interactiveStates = <WidgetState>{
+        WidgetState.pressed,
+        WidgetState.hovered,
+        WidgetState.focused,
       };
       if (states.any(interactiveStates.contains)) {
         return AppColor.primaryColor;
@@ -385,7 +385,7 @@ class _SuccessBodyState extends State<SuccessBody> with NavigateMixin {
                           ],
                         ),
                       ),
-                
+                      
                       50.verticalSpace,
                       //Back to dashboard
                       Visibility(
@@ -424,7 +424,7 @@ class _SuccessBodyState extends State<SuccessBody> with NavigateMixin {
     );
   }
 
-  Column termAndCondition(Color Function(Set<MaterialState> states) getColor) {
+  Column termAndCondition(Color Function(Set<WidgetState> states) getColor) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -446,7 +446,7 @@ class _SuccessBodyState extends State<SuccessBody> with NavigateMixin {
                 scale: 1.2,
                 child: Checkbox(
                   checkColor: Colors.white,
-                  fillColor: MaterialStateProperty.resolveWith(getColor),
+                  fillColor: WidgetStateProperty.resolveWith(getColor),
                   value: isCheckedA,
                   onChanged: (bool? value) {
                     setState(() {
@@ -477,7 +477,7 @@ class _SuccessBodyState extends State<SuccessBody> with NavigateMixin {
                 scale: 1.2,
                 child: Checkbox(
                   checkColor: Colors.white,
-                  fillColor: MaterialStateProperty.resolveWith(getColor),
+                  fillColor: WidgetStateProperty.resolveWith(getColor),
                   value: isCheckedB,
                   onChanged: (bool? value) {
                     setState(() {
@@ -535,7 +535,7 @@ class _SuccessBodyState extends State<SuccessBody> with NavigateMixin {
               scale: 1.2,
               child: Checkbox(
                 checkColor: Colors.white,
-                fillColor: MaterialStateProperty.resolveWith(getColor),
+                fillColor: WidgetStateProperty.resolveWith(getColor),
                 value: isCheckedC,
                 onChanged: (bool? value) {
                   setState(() {
